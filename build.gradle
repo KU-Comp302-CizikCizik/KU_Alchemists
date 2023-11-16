@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 group = 'org.example'
@@ -19,16 +20,12 @@ test {
     useJUnitPlatform()
 }
 
-jar {
-    manifest {
-        attributes "Main-Class": "com.KUAlchemists.backend.AlchemistsGame"
-    }
-
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-}
 
 application {
-    mainClassName = 'com.KUAlchemists.backend.AlchemistsGame'
+    mainClassName = 'com.KUAlchemists.app.Main'
+}
+
+javafx {
+    version = '19.0.2'
+    modules = ['javafx.controls', 'javafx.fxml']
 }
