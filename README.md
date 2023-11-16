@@ -24,3 +24,6 @@ enthusiasts, aims to give users a fantastic gaming experience.
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
+## Linter
+
+[![GitHub Super-Linter](https://github.com/KU-Comp302-CizikCizik/KU_Alchemists/actions/workflows/super-linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
