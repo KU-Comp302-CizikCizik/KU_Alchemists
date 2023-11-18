@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.backend.controllers.LoginController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a6a6a6;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="302.0" fitWidth="273.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/tomek-larek-alchemist-tomek-larek.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="519.0" style="-fx-background-color: #a6a6a6;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="141.0" layoutY="62.0" prefHeight="23.0" prefWidth="45.0" text="Login" />
+            <Label layoutX="29.0" layoutY="123.0" prefHeight="23.0" prefWidth="80.0" text="User Name" />
+            <Label layoutX="29.0" layoutY="172.0" prefHeight="23.0" prefWidth="80.0" text="Password" />
+            <PasswordField fx:id="passwordTextField" layoutX="120.0" layoutY="171.0"/>
+            <TextField fx:id="userNameTextField" layoutX="120.0" layoutY="122.0" />
+            <Button fx:id="loginButton" layoutX="122.0" layoutY="218.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Login " />
+         </children>
+      </AnchorPane>
+   </right>
+</fx:root>
