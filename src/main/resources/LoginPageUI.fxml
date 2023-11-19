@@ -8,30 +8,35 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-
+<?import javafx.scene.text.Font?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.backend.controllers.LoginController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a6a6a6;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="302.0" fitWidth="273.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="407.0" fitWidth="365.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@com.KUAlchemists/images/tomek-larek-alchemist-tomek-larek.jpg" />
+                  <Image url="@com.KUAlchemists/images/craiyon_122852_an_alchemist_who_is_surrounded_by_potions.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
    </left>
-   <right>
-      <AnchorPane prefHeight="400.0" prefWidth="519.0" style="-fx-background-color: #a6a6a6;" BorderPane.alignment="CENTER">
+   <center>
+      <AnchorPane prefHeight="411.0" prefWidth="284.0" style="-fx-background-color: #1b1109;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="141.0" layoutY="62.0" prefHeight="23.0" prefWidth="45.0" text="Login" />
-            <Label layoutX="29.0" layoutY="123.0" prefHeight="23.0" prefWidth="80.0" text="User Name" />
-            <Label layoutX="29.0" layoutY="172.0" prefHeight="23.0" prefWidth="80.0" text="Password" />
-            <PasswordField fx:id="passwordTextField" layoutX="120.0" layoutY="171.0"/>
-            <TextField fx:id="userNameTextField" layoutX="120.0" layoutY="122.0" />
-            <Button fx:id="loginButton" layoutX="122.0" layoutY="218.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Login " />
+            <Label layoutX="6.0" layoutY="123.0" prefHeight="23.0" prefWidth="100.0" text="Alchemists Name" textFill="#e8e851">
+               <font>
+                  <Font name="Book Antiqua" size="12.0" />
+               </font></Label>
+            <Label layoutX="17.0" layoutY="172.0" prefHeight="23.0" prefWidth="70.0" text="Password" textFill="#e8e851">
+               <font>
+                  <Font name="Book Antiqua" size="12.0" />
+               </font></Label>
+            <PasswordField fx:id="passwordTextField" layoutX="105.0" layoutY="171.0" prefHeight="25.0" prefWidth="134.0" />
+            <TextField fx:id="userNameTextField" layoutX="104.0" layoutY="122.0" prefHeight="26.0" prefWidth="133.0" />
+            <Button fx:id="loginButton" layoutX="173.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #1b1109;" text="Login " textFill="#e8e851" />
          </children>
       </AnchorPane>
-   </right>
+   </center>
 </fx:root>
