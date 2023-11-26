@@ -38,13 +38,21 @@ public class LoginController {
     /**
      * The LoginService that this controller uses to validate users.
      */
-    private final LoginService loginService;
+    private LoginService loginService;
 
     /**
      * Constructor for LoginController.
-     * @param properties The properties that the LoginService needs.
+     *
      */
-    public LoginController(Properties properties) {
+    public LoginController() {
+
+    }
+
+    /**
+     * This method is called by the JavaFX framework when the controller is initialized.
+     * @param properties
+     */
+    public void setProperties(Properties properties) {
         this.loginService = new LoginService(properties);
     }
 
