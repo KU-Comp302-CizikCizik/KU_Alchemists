@@ -6,6 +6,7 @@ module com.KUAlchemists{
     opens com.KUAlchemists.ui to javafx.fxml;
     exports com.KUAlchemists.ui;
     exports com.KUAlchemists.backend.controllers;
+    opens com.KUAlchemists.backend.controllers;
     exports com.KUAlchemists;
 
 }
