@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.backend.controllers.LoginController">
+<fx:root type ="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.backend.controllers.LoginController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a6a6a6;" BorderPane.alignment="CENTER">
          <children>
@@ -35,7 +35,8 @@
                </font></Label>
             <PasswordField fx:id="passwordTextField" layoutX="105.0" layoutY="171.0" prefHeight="25.0" prefWidth="134.0" />
             <TextField fx:id="userNameTextField" layoutX="104.0" layoutY="122.0" prefHeight="26.0" prefWidth="133.0" />
-            <Button fx:id="loginButton" layoutX="173.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #1b1109;" text="Login " textFill="#e8e851" />
+            <Button fx:id="loginButton" onAction="#loginButtonOnAction" layoutX="173.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #1b1109;" text="Login " textFill="#e8e851" />
+            <Label fx:id="loginMessageLabel" text="" />
          </children>
       </AnchorPane>
    </center>
