@@ -1,7 +1,14 @@
 package com.KUAlchemists.backend.controllers;
 
 import com.KUAlchemists.backend.services.LoginService;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
+import java.awt.*;
 import java.util.Properties;
 
 /**
@@ -9,16 +16,43 @@ import java.util.Properties;
  */
 public class LoginController {
 
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private TextField userNameTextField;
+
+    @FXML
+    private PasswordField passwordTextField;
+
+    @FXML
+    private Label loginMessageLabel;
+
+    public void loginButtonOnAction(ActionEvent event) {
+        String username = userNameTextField.getText();
+        String password = passwordTextField.getText();
+
+        String loginResult = login(username, password);
+        loginMessageLabel.setText(loginResult);
+    }
+
     /**
      * The LoginService that this controller uses to validate users.
      */
-    private final LoginService loginService;
+    private LoginService loginService;
 
     /**
      * Constructor for LoginController.
-     * @param properties The properties that the LoginService needs.
+     *
      */
-    public LoginController(Properties properties) {
+    public LoginController() {
+    }
+
+    /**
+     * This method is called by the JavaFX framework when the controller is initialized.
+     * @param properties
+     */
+    public void setProperties(Properties properties) {
         this.loginService = new LoginService(properties);
     }
 

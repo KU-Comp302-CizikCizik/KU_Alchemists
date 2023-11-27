@@ -1,14 +1,20 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.openjfx.javafxplugin' version '0.0.12'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+
+group = 'com.KUAlchemists.app'
+version = '1.0'
 
 repositories {
     mavenCentral()
+}
+
+javafx {
+    version = '19.0.2'
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics']
 }
 
 dependencies {
@@ -23,12 +29,23 @@ test {
     useJUnitPlatform()
 }
 
-
 application {
-    mainClassName = 'com.KUAlchemists.app.Main'
+    mainModule.set('com.KUAlchemists')
+    mainClass.set('com.KUAlchemists.Main')
 }
 
-javafx {
-    version = '19.0.2'
-    modules = ['javafx.controls', 'javafx.fxml']
+java {
+    modularity.inferModulePath.set(true)
 }
+
+run {
+    // Ensure the module-path includes the JavaFX SDK
+    doFirst {
+        jvmArgs = [
+                '--module-path', classpath.asPath,
+                '--module', 'com.KUAlchemists/com.KUAlchemists.Main'
+        ]
+        classpath = files()
+    }
+}
+

@@ -1,4 +1,4 @@
-package com.KUAlchemists.app;
+package com.KUAlchemists;
 
 import com.KUAlchemists.backend.controllers.GameController;
 import javafx.application.Application;
