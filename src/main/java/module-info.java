@@ -5,8 +5,8 @@ module com.KUAlchemists{
     requires java.desktop;
     opens com.KUAlchemists.ui to javafx.fxml;
     exports com.KUAlchemists.ui;
-    exports com.KUAlchemists.backend.controllers;
-    opens com.KUAlchemists.backend.controllers;
+    exports com.KUAlchemists.ui.controllers;
+    opens com.KUAlchemists.ui.controllers;
     exports com.KUAlchemists;
 
 }
