@@ -32,23 +32,8 @@ public class LoginController {
         String username = userNameTextField.getText();
         String password = passwordTextField.getText();
 
-        if (username != null && password != null) {
-            //String loginResult = login(username, password);
-            //loginMessageLabel.setText(loginResult);
-            if (username.equals("admin") && password.equals("admin")) {
-                loginMessageLabel.setText("Login successful!");
-            } else {
-                loginMessageLabel.setText("Invalid username or password.");
-            }
-        } else {
-            loginMessageLabel.setText("Please enter username and password.");
-        }
-
-
-    }
-
-    private void validateUser() {
-
+        String loginResult = login(username, password);
+        loginMessageLabel.setText(loginResult);
     }
 
     /**
@@ -61,7 +46,6 @@ public class LoginController {
      *
      */
     public LoginController() {
-
     }
 
     /**
