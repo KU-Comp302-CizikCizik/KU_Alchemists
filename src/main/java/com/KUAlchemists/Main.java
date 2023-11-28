@@ -1,13 +1,11 @@
 package com.KUAlchemists;
 
-import com.KUAlchemists.backend.controllers.GameController;
-import javafx.application.Application;
-import javafx.stage.Stage;
+import com.KUAlchemists.backend.engine.GameEngine;
 
 public class Main {
 
         public static void main(String[] args) {
-            GameController gameController = new GameController();
+            GameEngine gameEngine = GameEngine.getInstance();
 
         }
 }
