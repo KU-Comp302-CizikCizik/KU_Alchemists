@@ -17,3 +17,4 @@ public enum Gamestate {
     public static Gamestate gamestate = LOGIN;
 
 }
+

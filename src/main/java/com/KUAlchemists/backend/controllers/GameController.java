@@ -16,13 +16,6 @@ public class GameController{
         update();
     }
 
-    public static GameController getInstance(){
-        if(Instance == null){
-            Instance = new GameController();
-        }
-        return Instance;
-    }
-
     private void update() {
         switch (Gamestate.gamestate){
             case LOGIN:
@@ -37,6 +30,7 @@ public class GameController{
                 break;
             case MIXING_INGREDIENT:
                 break;
+
             case PUBLICATION:
                 break;
             case DEDUCTION:
@@ -49,6 +43,13 @@ public class GameController{
                 break;
 
         }
+    }
+
+    public static GameController getInstance(){
+        if(Instance == null){
+            Instance = new GameController();
+        }
+        return Instance;
     }
 
 
