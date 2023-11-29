@@ -52,6 +52,8 @@ public class GameEngine {
             case LOGIN:
                 Application.launch(LoginPageUI.class);
                 break;
+            case MENU:
+                break;
             case GAME:
                 Application.launch(MainGameUI.class);
                 break;

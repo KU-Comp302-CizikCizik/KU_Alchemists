@@ -6,6 +6,7 @@ package com.KUAlchemists.backend.enums;
 public enum Gamestate {
 
     LOGIN,
+    MENU,
     GAME,
     DASHBOARD,
     INVENTORY,
