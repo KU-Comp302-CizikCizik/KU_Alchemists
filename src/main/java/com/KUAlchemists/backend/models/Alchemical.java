@@ -13,6 +13,7 @@ public class Alchemical {
 
     public String combineWith(Alchemical other) {
         // TODO: Implement this method
+
         return "No Potion"; // In case there is no match
     }
 

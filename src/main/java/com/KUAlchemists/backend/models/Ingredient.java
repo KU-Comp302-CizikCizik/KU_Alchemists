@@ -18,22 +18,9 @@ public class Ingredient {
 
     private Alchemical alchemical; // alchemical of the ingredient
 
-    public Ingredient(String name, String color, int value, String description, String type, String image) {
+    public Ingredient(String name, Alchemical alchemical) {
         this.name = name;
-        this.color = color;
-        this.value = value;
-        this.description = description;
-        this.type = type;
-        this.image = image;
-    }
-
-    public Ingredient() {
-        this.name = "";
-        this.color = "";
-        this.value = 0;
-        this.description = "";
-        this.type = "";
-        this.image = "";
+        this.alchemical = alchemical;
     }
 
     public String getName() {
