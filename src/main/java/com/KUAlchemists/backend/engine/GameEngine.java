@@ -59,7 +59,7 @@ public class GameEngine {
                 break;
             case INVENTORY:
                 break;
-            case MIXING_INGREDIENT:
+            case POTION_BREWING:
                 break;
             case PUBLICATION:
                 break;
