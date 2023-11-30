@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.enums.Gamestate;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.ui.LoginPageUI;
@@ -14,7 +15,7 @@ public class GameEngine {
     public static GameEngine Instance;
 
     // player list
-    private static ArrayList<Player> playerList = new ArrayList<>();
+    private static final ArrayList<Player> playerList = new ArrayList<>();
 
     // current player
     private static Player currentPlayer;
@@ -23,7 +24,6 @@ public class GameEngine {
 
     private static int currentPlayerIndex = 0;
 
-    //TO-DO: Add switching player mechanism
 
     /**
      * Constructor for GameEngine
@@ -131,6 +131,16 @@ public class GameEngine {
      */
     public static void setCurrentPlayerIndex(int currentPlayerIndex) {
         GameEngine.currentPlayerIndex = currentPlayerIndex;
+    }
+
+    /**
+     * Get the next player
+     * @return the next player
+     */
+    public static void nextPlayer(){
+        currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
+        currentPlayer = playerList.get(currentPlayerIndex);
+        //TODO: update Board UI with new currentPlayer
     }
 
 }
