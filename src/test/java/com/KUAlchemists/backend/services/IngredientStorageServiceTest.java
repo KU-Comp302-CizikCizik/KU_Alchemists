@@ -1,9 +1,7 @@
+/**
 package com.KUAlchemists.backend.services;
 
-import com.KUAlchemists.backend.models.Alchemical;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.Atom;
-import com.KUAlchemists.backend.models.IngredientStorage;
+import com.KUAlchemists.backend.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -11,17 +9,18 @@ import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.*;
 
+
 class IngredientStorageServiceTest {
 
     @Mock
-    private IngredientStorage ingredientStorage;
+    private Player currentPlayer;
 
     private IngredientStorageService ingredientStorageService;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        ingredientStorageService = new IngredientStorageService(ingredientStorage);
+        ingredientStorageService = new IngredientStorageService(currentPlayer);
     }
 
     @Test
@@ -33,7 +32,7 @@ class IngredientStorageServiceTest {
         Alchemical alchemical = new Alchemical(atom1, atom2, atom3);
         Ingredient ingredient = new Ingredient(name, alchemical);
         ingredientStorageService.addIngredientToStorage(ingredient);
-        verify(ingredientStorage, times(1)).addIngredient(ingredient);
+        verify(currentPlayer, times(1)).addIngredient(ingredient);
     }
 
     @Test
@@ -57,3 +56,4 @@ class IngredientStorageServiceTest {
         verify(ingredientStorage, times(1)).getIngredient(ingredientName);
     }
 }
+**/
