@@ -24,7 +24,6 @@ public class GameEngine {
 
     private static int currentPlayerIndex = 0;
 
-
     /**
      * Constructor for GameEngine
      */
@@ -60,6 +59,7 @@ public class GameEngine {
             case DASHBOARD:
                 break;
             case INVENTORY:
+
                 break;
             case MIXING_INGREDIENT:
                 break;

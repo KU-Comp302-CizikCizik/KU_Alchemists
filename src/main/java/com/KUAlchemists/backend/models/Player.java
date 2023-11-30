@@ -12,7 +12,7 @@ public class Player {
     private DeductionBoard playersDeductionBoard;
 
     public Player(){
-        this.playerInventory = new Inventory();
+        this.playerInventory = new Inventory(this);
         this.gold = 0;
         this.status = "";
         this.sickness_level = 0;
