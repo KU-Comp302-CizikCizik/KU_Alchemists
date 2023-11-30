@@ -1,26 +1,21 @@
 package com.KUAlchemists.ui;
 
-import com.KUAlchemists.ui.controllers.IngredientCardController;
+import com.KUAlchemists.ui.controllers.InventoryStorageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class testUI extends Application {
-
-
-    public static void main(String[] args) {
-        Application.launch(IngredientStorageUI.class);
-    }
-
+public class IngredientStorageUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         // Load properties from config.properties
         Properties prop = new Properties();
         InputStream inputStream = null;
@@ -33,16 +28,19 @@ public class testUI extends Application {
         }
 
         // Load the FXML file
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("IngredientCardUI.fxml"));
-        VBox cardBox = fxmlLoader.load();
-        IngredientCardController controller = fxmlLoader.getController();
-        controller.setIngredientCard("mushroom-ingredient.jpg");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("IngeridentStorageUI.fxml"));
+        Parent parent = fxmlLoader.load();
 
-        fxmlLoader.setRoot(new BorderPane());
+        // Get the controller from the FXMLLoader
+        InventoryStorageController controller = fxmlLoader.getController();
+        // Set the properties
 
         // Initialize the stage
         primaryStage.setTitle("KU Alchemists");
-        primaryStage.setScene(new Scene(cardBox, 320, 240));
+        primaryStage.setScene(new Scene(parent, 700,500));
+
+
         primaryStage.show();
     }
+
 }
