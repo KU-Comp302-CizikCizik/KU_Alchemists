@@ -1,6 +1,5 @@
 package com.KUAlchemists.backend.models;
 
-
 import java.util.ArrayList;
 
 public class Inventory {
@@ -8,6 +7,7 @@ public class Inventory {
     private ArrayList<Ingredient> ingredientsList = new ArrayList<Ingredient>();
     private ArrayList<Potion> potionList = new ArrayList<Potion>();
     private ArrayList<Artifact> artifactList = new ArrayList<Artifact>();
+
 
     public Inventory(Player owner) {
         this.owner = owner;

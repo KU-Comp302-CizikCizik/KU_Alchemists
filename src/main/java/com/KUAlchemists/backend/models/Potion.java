@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.models;
 
+
 import com.KUAlchemists.backend.enums.PotionEffect;
 
 public class Potion {
@@ -23,4 +24,5 @@ public class Potion {
     public PotionEffect getPotionEffect() {
         return potionEffect;
     }
+
 }

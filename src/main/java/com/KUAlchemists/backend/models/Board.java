@@ -11,4 +11,6 @@ public class Board {
     public IngredientStorage getIngredientStorage() {
         return ingredientStorage;
     }
+
 }
+

@@ -30,9 +30,12 @@ public class Ingredient {
         this.description = "";
         this.type = IngredientType.NONE;
     }
-    /**
-     * @return the name
-     */
+
+    public Ingredient(String name, Alchemical alchemical) {
+        this.name = name;
+        this.alchemical = alchemical;
+    }
+
     public String getName() {
         return name;
     }
@@ -71,3 +74,4 @@ public class Ingredient {
         this.alchemical = alchemical;
     }
 }
+
