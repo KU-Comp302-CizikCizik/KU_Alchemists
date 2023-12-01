@@ -2,7 +2,6 @@ package com.KUAlchemists.backend.models;
 
 public class Alchemical {
 
-
     private Aspect redAspect;
     private Aspect blueAspect;
     private Aspect greenAspect;

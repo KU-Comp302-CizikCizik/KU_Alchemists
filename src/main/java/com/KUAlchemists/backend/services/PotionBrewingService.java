@@ -26,19 +26,19 @@ public class PotionBrewingService {
      */
     private PotionEffect determinePotionEffect(Alchemical alchemical1, Alchemical alchemical2){
 
-        //For red atom
+        //For red aspect
         Aspect redAspect1 = alchemical1.getRedAspect();
         Aspect redAspect2 = alchemical2.getRedAspect();
 
-        //For blue atom
+        //For blue aspect
         Aspect blueAspect1 = alchemical1.getBlueAspect();
         Aspect blueAspect2 = alchemical2.getBlueAspect();
 
-        //For green atom
+        //For green aspect
         Aspect greenAspect1 = alchemical1.getGreenAspect();
         Aspect greenAspect2 = alchemical2.getGreenAspect();
 
-
+        //determine the potion effect
         if (canAspectsCombineForPotion(redAspect1, redAspect2)) {
             return areAspectsBothPositive(redAspect1, redAspect2) ? PotionEffect.HEALING : PotionEffect.POISON;
         } else if (canAspectsCombineForPotion(blueAspect1, blueAspect2)) {
@@ -52,7 +52,7 @@ public class PotionBrewingService {
     }
 
     /**
-     * canFormPotion
+     * canAspectsCombineForPotion
      * @param aspect1, aspect2
      */
     private boolean canAspectsCombineForPotion(Aspect aspect1, Aspect aspect2) {
@@ -60,7 +60,7 @@ public class PotionBrewingService {
     }
 
     /**
-     * areSignsCorrect
+     * canSignsCombineForPotion
      * @param aspect1, aspect2
      */
     private boolean canSignsCombineForPotion(Aspect aspect1, Aspect aspect2){
@@ -68,7 +68,7 @@ public class PotionBrewingService {
     }
 
     /**
-     * areSizesCorrect
+     * canSizesCombineForPotion
      * @param aspect1, aspect2
      */
     private boolean canSizesCombineForPotion(Aspect aspect1, Aspect aspect2){
@@ -76,7 +76,7 @@ public class PotionBrewingService {
     }
 
     /**
-     * areAtomsPositive
+     * areAspectsBothPositive
      * @param aspect1, aspect2
      */
     private boolean areAspectsBothPositive(Aspect aspect1, Aspect aspect2){
