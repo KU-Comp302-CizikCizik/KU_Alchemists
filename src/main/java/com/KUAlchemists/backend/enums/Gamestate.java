@@ -8,7 +8,6 @@ public enum Gamestate {
     LOGIN,
     MENU,
     GAME,
-    MENU,
     DASHBOARD,
     INVENTORY,
     POTION_BREWING,

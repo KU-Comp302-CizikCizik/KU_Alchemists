@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.enums.PotionEffect;
+import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.models.*;
 
 public class PotionBrewingService {

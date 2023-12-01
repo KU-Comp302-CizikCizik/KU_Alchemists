@@ -9,9 +9,9 @@ import com.KUAlchemists.backend.enums.IngredientType;
 public class Ingredient {
 
     private final String name;  // name of the ingredient
-    private final int value;  // value in gold
-    private final String description; // description of the ingredient
-    private final IngredientType type; //herb, mineral, mushroom
+    private  int value;  // value in gold
+    private  String description; // description of the ingredient
+    private  IngredientType type; //herb, mineral, mushroom
     private Alchemical alchemical; // alchemical of the ingredient
 
     public Ingredient(String name, int value, String description, IngredientType type) {
@@ -67,5 +67,8 @@ public class Ingredient {
         this.alchemical = alchemical;
     }
 
+    public String getName() {
+        return name;
+    }
 }
 

@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
 
@@ -67,7 +68,7 @@ public class Player {
     }
 
     public void setPublishedTheories(List<Theory> publishedTheories) {
-        this.publishedTheories = publishedTheories;
+        this.publishedTheories = (ArrayList<Theory>) publishedTheories;
     }
 
     public DeductionBoard getPlayersDeductionBoard() {
@@ -76,47 +77,10 @@ public class Player {
 
     public void setPlayersDeductionBoard(DeductionBoard playersDeductionBoard) {
         this.playersDeductionBoard = playersDeductionBoard;
-    }
-
-    public Inventory getPlayerInventory() {
-        return playerInventory;
-    }
-
-    public void setPlayerInventory(Inventory playerInventory) {
-        this.playerInventory = playerInventory;
-    }
-
-    public int getGold() {
-        return gold;
-    }
-
-    public String getStatus() {
-        return status;
     }
 
     public int getSickness_level() {
-        return sickness_level;
-    }
-
-    public int getReputation() {
-        return reputation;
-    }
-
-    public void setReputation(int reputation) {
-        this.reputation = reputation;
-    }
-
-
-    public DeductionBoard getPlayersDeductionBoard() {
-        return playersDeductionBoard;
-    }
-
-    public void setPlayersDeductionBoard(DeductionBoard playersDeductionBoard) {
-        this.playersDeductionBoard = playersDeductionBoard;
-    }
-
-    public ArrayList<Theory> getPublishedTheories() {
-        return publishedTheories;
+        return sicknessLevel;
     }
 
     public void setPublishedTheories(ArrayList<Theory> publishedTheories) {

@@ -38,12 +38,12 @@ public class Alchemical {
         return redAspect;
     }
 
-    public Aspect getGreenAspect() {
-        return greenAspect;
-    }
-
     public Aspect getBlueAspect() {
         return blueAspect;
+    }
+
+    public Aspect getGreenAspect() {
+        return greenAspect;
     }
 
     // Setters for each aspect
@@ -51,28 +51,11 @@ public class Alchemical {
         this.redAspect = redAspect;
     }
 
-    public void setGreenAspect(Aspect greenAspect) {
-        this.greenAspect = greenAspect;
-    }
 
     public void setBlueAspect(Aspect blueAspect) {
         this.blueAspect = blueAspect;
     }
 
-
-    /**
-     * getGreenAspect
-     * @return greenAspect
-     */
-    public Aspect getGreenAspect() {
-        return greenAspect;
-    }
-
-
-    /**
-     * setGreenAspect
-     * @param greenAspect
-     */
     public void setGreenAspect(Aspect greenAspect) {
         this.greenAspect = greenAspect;
     }
