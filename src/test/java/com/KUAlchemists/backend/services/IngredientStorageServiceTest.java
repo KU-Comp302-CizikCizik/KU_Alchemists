@@ -1,14 +1,13 @@
 package com.KUAlchemists.backend.services;
 
-import com.KUAlchemists.backend.models.Alchemical;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.Atom;
-import com.KUAlchemists.backend.models.IngredientStorage;
+import com.KUAlchemists.backend.enums.Aspect;
+import com.KUAlchemists.backend.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static com.KUAlchemists.backend.enums.Aspect.POSITIVE_BIG;
 import static org.mockito.Mockito.*;
 
 class IngredientStorageServiceTest {
@@ -27,10 +26,10 @@ class IngredientStorageServiceTest {
     @Test
     void addIngredientToStorage() {
         String name = "testIngredient";
-        Atom atom1 = new Atom(true,true);
-        Atom atom2 = new Atom(true,true);
-        Atom atom3 = new Atom(true,true);
-        Alchemical alchemical = new Alchemical(atom1, atom2, atom3);
+        Aspect aspect1 = POSITIVE_BIG;
+        Aspect aspect2 = POSITIVE_BIG;
+        Aspect aspect3 = POSITIVE_BIG;
+        Alchemical alchemical = new Alchemical(aspect1, aspect2, aspect3);
         Ingredient ingredient = new Ingredient(name, alchemical);
         ingredientStorageService.addIngredientToStorage(ingredient);
         verify(ingredientStorage, times(1)).addIngredient(ingredient);
@@ -39,10 +38,10 @@ class IngredientStorageServiceTest {
     @Test
     void removeIngredientFromStorage() {
         String name = "testIngredient";
-        Atom atom1 = new Atom(true,true);
-        Atom atom2 = new Atom(true,true);
-        Atom atom3 = new Atom(true,true);
-        Alchemical alchemical = new Alchemical(atom1, atom2, atom3);
+        Aspect aspect1 = POSITIVE_BIG;
+        Aspect aspect2 = POSITIVE_BIG;
+        Aspect aspect3 = POSITIVE_BIG;
+        Alchemical alchemical = new Alchemical(aspect1, aspect2, aspect3);
         Ingredient ingredient = new Ingredient(name, alchemical);
         ingredientStorageService.removeIngredientFromStorage(ingredient);
 

@@ -1,25 +1,45 @@
 package com.KUAlchemists.backend.models;
-
 /**
- * The game features various types of ingredients (e.g., herbs, minerals, mushrooms), each with unique attributes:
- * Unique identifier.
- * Name.
- * Properties, including color, value, and other characteristics.
- * Ingredients are stored in the Ingredient Storage area on the board.
+ * This class represents an ingredient in the game. Each ingredient is associated with a unique
+ * alchemical that defines its properties for gameplay, such as potion crafting.
  */
 public class Ingredient {
-
-    private String name;  // name of the ingredient
-    private String color;  // color of the ingredient
-    private int value;  // value in gold
-    private String description; // description of the ingredient
-    private String type; //herb, mineral, mushroom
-    private String image;  //image path
-
-    private Alchemical alchemical; // alchemical of the ingredient
+    // Unique identifier for the ingredient
+    private String identifier;
+    // Human-readable name of the ingredient
+    private String name;
+    // The associated alchemical object
+    private Alchemical alchemical;
+    // description of the ingredient
+    private String description; 
 
     public Ingredient(String name, Alchemical alchemical) {
         this.name = name;
+        this.alchemical = alchemical;
+    }
+
+    // Getter for identifier
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    // Setter for identifier
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    // Setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter for alchemical
+    public Alchemical getAlchemical() {
+        return alchemical;
+    }
+
+    // Setter for alchemical
+    public void setAlchemical(Alchemical alchemical) {
         this.alchemical = alchemical;
     }
 
@@ -27,24 +47,5 @@ public class Ingredient {
         return name;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getImage() {
-        return image;
-    }
 
 }
