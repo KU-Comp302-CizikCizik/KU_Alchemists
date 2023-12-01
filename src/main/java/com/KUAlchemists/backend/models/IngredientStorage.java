@@ -11,7 +11,6 @@ public class IngredientStorage {
     private ArrayList<Ingredient> ingredientsList = new ArrayList<Ingredient>();
 
     public IngredientStorage(){
-
     }
 
     public void addIngredient(Ingredient ingredient){

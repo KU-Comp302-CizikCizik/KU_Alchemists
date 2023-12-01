@@ -1,59 +1,68 @@
-/**
 package com.KUAlchemists.backend.services;
 
-import com.KUAlchemists.backend.models.*;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Ingredient;
+import com.KUAlchemists.backend.models.IngredientStorage;
+import com.KUAlchemists.backend.models.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Mockito;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-
-class IngredientStorageServiceTest {
-
-    @Mock
-    private Player currentPlayer;
+public class IngredientStorageServiceTest {
 
     private IngredientStorageService ingredientStorageService;
+    @Mock
+    private IngredientStorage ingredientStorage;
+    private Player player;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
-        ingredientStorageService = new IngredientStorageService(currentPlayer);
+        player = mock(Player.class);
+        //ingredientStorage = Mockito.mock(IngredientStorage.class);
+        ingredientStorage = mock(IngredientStorage.class);
+        when(Board.getIngredientStorage(player)).thenReturn(ingredientStorage);
+        ingredientStorageService = new IngredientStorageService(player);
     }
 
     @Test
-    void addIngredientToStorage() {
-        String name = "testIngredient";
-        Atom atom1 = new Atom(true,true);
-        Atom atom2 = new Atom(true,true);
-        Atom atom3 = new Atom(true,true);
-        Alchemical alchemical = new Alchemical(atom1, atom2, atom3);
-        Ingredient ingredient = new Ingredient(name, alchemical);
-        ingredientStorageService.addIngredientToStorage(ingredient);
-        verify(currentPlayer, times(1)).addIngredient(ingredient);
-    }
+    void testRemoveIngredientFromStorage() {
+        // Setup mock data
+        Ingredient ingredient = new Ingredient("Salt", "A common ingredient...");
+        when(ingredientStorage.getIngredientsList()).thenReturn(new ArrayList<>(Arrays.asList(ingredient)));
 
-    @Test
-    void removeIngredientFromStorage() {
-        String name = "testIngredient";
-        Atom atom1 = new Atom(true,true);
-        Atom atom2 = new Atom(true,true);
-        Atom atom3 = new Atom(true,true);
-        Alchemical alchemical = new Alchemical(atom1, atom2, atom3);
-        Ingredient ingredient = new Ingredient(name, alchemical);
-        ingredientStorageService.removeIngredientFromStorage(ingredient);
+        // Execute method
+        ingredientStorageService.removeIngredientFromStorage("Salt");
 
+        // Verify behavior
         verify(ingredientStorage, times(1)).removeIngredient(ingredient);
     }
 
     @Test
-    void getIngredientFromStorage() {
-        String ingredientName = "testIngredient";
-        ingredientStorageService.getIngredientFromStorage(ingredientName);
+    void testGetIngredientDescription() {
+        // Setup mock data
+        String description = "A magical herb...";
+        Ingredient ingredient = new Ingredient("Herb", description);
+        when(ingredientStorage.getIngredient("Herb")).thenReturn(ingredient);
 
-        verify(ingredientStorage, times(1)).getIngredient(ingredientName);
+        // Execute and assert
+        assertEquals(description, ingredientStorageService.getIngredientDescription("Herb"));
+    }
+
+    @Test
+    void testGetIngredientsList() {
+        // Setup mock data
+        ArrayList<Ingredient> mockIngredients = new ArrayList<>(Arrays.asList(new Ingredient("Herb", "desc"), new Ingredient("Salt", "desc")));
+        when(ingredientStorage.getIngredientsList()).thenReturn(mockIngredients);
+
+        // Execute and assert
+        ArrayList<String> expectedList = new ArrayList<>(Arrays.asList("Herb", "Salt"));
+        assertEquals(expectedList, ingredientStorageService.getIngredientsList());
     }
 }
-**/

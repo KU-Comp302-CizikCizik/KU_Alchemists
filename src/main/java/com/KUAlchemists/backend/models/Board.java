@@ -18,7 +18,9 @@ public class Board {
     //private static final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
 
     private Board (){
-
+        // create empty storages for players // if we have 2 players, otherwise we need to change this
+        createEmptyStoragesForPlayer(GameEngine.getPlayer(0));
+        createEmptyStoragesForPlayer(GameEngine.getPlayer(1));
     }
     public static Board getInstance(){
         if(Instance == null){
@@ -27,24 +29,10 @@ public class Board {
         return Instance;
     }
 
-    public static void addPlayer(Player player){
+    public static void createEmptyStoragesForPlayer(Player player){
         ingredientStorages.put(player, new IngredientStorage());
         //potionStorages.put(player, new PotionStorage());
         //artifactStorages.put(player, new ArtifactStorage());
-    }
-
-    public static void removePlayer(Player player){
-        ingredientStorages.remove(player);
-        //potionStorages.remove(player);
-        //artifactStorages.remove(player);
-    }
-
-    public static void addIngredientToStorage(Player player, Ingredient ingredient){
-        ingredientStorages.get(player).addIngredient(ingredient);
-    }
-
-    public static void removeIngredientFromStorage(Player player, Ingredient ingredient){
-        ingredientStorages.get(player).removeIngredient(ingredient);
     }
 
     public static IngredientStorage getIngredientStorage(Player player){

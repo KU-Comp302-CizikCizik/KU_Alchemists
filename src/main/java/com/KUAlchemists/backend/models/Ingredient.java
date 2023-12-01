@@ -23,6 +23,11 @@ public class Ingredient {
         this.alchemical = alchemical;
     }
 
+    public Ingredient(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public String getName() {
         return name;
     }
@@ -45,6 +50,10 @@ public class Ingredient {
 
     public String getImage() {
         return image;
+    }
+
+    public Alchemical getAlchemical() {
+        return alchemical;
     }
 
 }

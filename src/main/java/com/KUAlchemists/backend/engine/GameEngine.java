@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.engine;
 
 import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.enums.Gamestate;
+import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.ui.LoginPageUI;
 import com.KUAlchemists.ui.MainGameUI;
@@ -23,6 +24,8 @@ public class GameEngine {
     // current player index
 
     private static int currentPlayerIndex = 0;
+
+    private static final Board board = Board.getInstance();
 
     /**
      * Constructor for GameEngine
@@ -140,6 +143,10 @@ public class GameEngine {
         currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
         currentPlayer = playerList.get(currentPlayerIndex);
         //TODO: update Board UI with new currentPlayer
+    }
+
+    public static Player getPlayer(int index){
+        return playerList.get(index);
     }
 
 }
