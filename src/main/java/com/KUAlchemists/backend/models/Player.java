@@ -1,7 +1,8 @@
 package com.KUAlchemists.backend.models;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
 
     private Inventory playerInventory;
@@ -9,7 +10,7 @@ public class Player {
     private String status;
     private int sicknessLevel;
     private int reputation;
-    private List<Theory> publishedTheories; // Assuming a player can have multiple published theories
+    private ArrayList<Theory> publishedTheories;
     private DeductionBoard playersDeductionBoard;
 
     public Player(){
@@ -67,7 +68,7 @@ public class Player {
     }
 
     public void setPublishedTheories(List<Theory> publishedTheories) {
-        this.publishedTheories = publishedTheories;
+        this.publishedTheories = (ArrayList<Theory>) publishedTheories;
     }
 
     public DeductionBoard getPlayersDeductionBoard() {
@@ -78,4 +79,11 @@ public class Player {
         this.playersDeductionBoard = playersDeductionBoard;
     }
 
+    public int getSickness_level() {
+        return sicknessLevel;
+    }
+
+    public void setPublishedTheories(ArrayList<Theory> publishedTheories) {
+        this.publishedTheories = publishedTheories;
+    }
 }

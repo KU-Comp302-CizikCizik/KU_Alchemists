@@ -60,7 +60,7 @@ public class GameEngine {
                 break;
             case INVENTORY:
                 break;
-            case MIXING_INGREDIENT:
+            case POTION_BREWING:
                 break;
             case PUBLICATION:
                 break;
@@ -74,6 +74,15 @@ public class GameEngine {
                 break;
 
         }
+    }
+
+    /**
+     * Update the game state
+     * @param gamestate the game state to be updated
+     */
+    public void update(Gamestate gamestate){
+        Gamestate.gamestate = gamestate;
+        update();
     }
 
     /**

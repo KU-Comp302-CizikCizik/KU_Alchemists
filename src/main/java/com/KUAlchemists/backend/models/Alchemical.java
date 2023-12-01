@@ -9,6 +9,7 @@ import com.KUAlchemists.backend.enums.Aspect;
  * combining alchemicals to produce various effects or potions.
  */
 public class Alchemical {
+
     // Define the three aspects of the alchemical, with size and polarity
     private Aspect redAspect;
     private Aspect greenAspect;
@@ -37,12 +38,12 @@ public class Alchemical {
         return redAspect;
     }
 
-    public Aspect getGreenAspect() {
-        return greenAspect;
-    }
-
     public Aspect getBlueAspect() {
         return blueAspect;
+    }
+
+    public Aspect getGreenAspect() {
+        return greenAspect;
     }
 
     // Setters for each aspect
@@ -50,15 +51,13 @@ public class Alchemical {
         this.redAspect = redAspect;
     }
 
-    public void setGreenAspect(Aspect greenAspect) {
-        this.greenAspect = greenAspect;
-    }
 
     public void setBlueAspect(Aspect blueAspect) {
         this.blueAspect = blueAspect;
     }
 
-    // Additional methods can be added if necessary.
-
+    public void setGreenAspect(Aspect greenAspect) {
+        this.greenAspect = greenAspect;
+    }
 }
 

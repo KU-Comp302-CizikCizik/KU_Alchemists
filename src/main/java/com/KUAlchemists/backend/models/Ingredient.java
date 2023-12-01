@@ -1,44 +1,68 @@
 package com.KUAlchemists.backend.models;
+
+import com.KUAlchemists.backend.enums.IngredientType;
+
 /**
  * This class represents an ingredient in the game. Each ingredient is associated with a unique
  * alchemical that defines its properties for gameplay, such as potion crafting.
  */
 public class Ingredient {
-    // Unique identifier for the ingredient
-    private String identifier;
-    // Human-readable name of the ingredient
-    private String name;
-    // The associated alchemical object
-    private Alchemical alchemical;
-    // description of the ingredient
-    private String description; 
+
+    private final String name;  // name of the ingredient
+    private  int value;  // value in gold
+    private  String description; // description of the ingredient
+    private  IngredientType type; //herb, mineral, mushroom
+    private Alchemical alchemical; // alchemical of the ingredient
+
+    public Ingredient(String name, int value, String description, IngredientType type) {
+        this.name = name;
+        this.value = value;
+        this.description = description;
+        this.type = type;
+    }
+
+    public Ingredient() {
+        this.name = "";
+        this.value = 0;
+        this.description = "";
+        this.type = IngredientType.NONE;
+    }
 
     public Ingredient(String name, Alchemical alchemical) {
         this.name = name;
         this.alchemical = alchemical;
     }
 
-    // Getter for identifier
-    public String getIdentifier() {
-        return identifier;
+    /**
+     * @return the value
+     */
+    public int getValue() {
+        return value;
+    }
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+    /**
+     * @return the type
+     */
+    public IngredientType getType() {
+        return type;
     }
 
-    // Setter for identifier
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
-    }
+    /**
+     * @return the alchemical
 
-    // Setter for name
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Getter for alchemical
+     */
     public Alchemical getAlchemical() {
         return alchemical;
     }
 
-    // Setter for alchemical
+    /**
+     * @param alchemical the alchemical to set
+     */
     public void setAlchemical(Alchemical alchemical) {
         this.alchemical = alchemical;
     }
@@ -46,6 +70,5 @@ public class Ingredient {
     public String getName() {
         return name;
     }
-
-
 }
+

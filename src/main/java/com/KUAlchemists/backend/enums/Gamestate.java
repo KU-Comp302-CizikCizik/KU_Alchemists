@@ -10,7 +10,7 @@ public enum Gamestate {
     GAME,
     DASHBOARD,
     INVENTORY,
-    MIXING_INGREDIENT,
+    POTION_BREWING,
     PUBLICATION,
     DEDUCTION,
     DEBUNK,
