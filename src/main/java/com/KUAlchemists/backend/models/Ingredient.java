@@ -3,11 +3,8 @@ package com.KUAlchemists.backend.models;
 import com.KUAlchemists.backend.enums.IngredientType;
 
 /**
- * The game features various types of ingredients (e.g., herbs, minerals, mushrooms), each with unique attributes:
- * Unique identifier.
- * Name.
- * Properties, including color, value, and other characteristics.
- * Ingredients are stored in the Ingredient Storage area on the board.
+ * This class represents an ingredient in the game. Each ingredient is associated with a unique
+ * alchemical that defines its properties for gameplay, such as potion crafting.
  */
 public class Ingredient {
 
@@ -34,10 +31,6 @@ public class Ingredient {
     public Ingredient(String name, Alchemical alchemical) {
         this.name = name;
         this.alchemical = alchemical;
-    }
-
-    public String getName() {
-        return name;
     }
 
     /**
@@ -73,5 +66,6 @@ public class Ingredient {
     public void setAlchemical(Alchemical alchemical) {
         this.alchemical = alchemical;
     }
+
 }
 
