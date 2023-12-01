@@ -1,38 +1,65 @@
 package com.KUAlchemists.backend.models;
 
 public class Alchemical {
-    private Atom redAtom;
-    private Atom blueAtom;
-    private Atom greenAtom;
 
-    public Alchemical (Atom redAtom, Atom blueAtom, Atom greenAtom){
-        this.redAtom = redAtom;
-        this.blueAtom = blueAtom;
-        this.greenAtom = greenAtom;
+
+    private Aspect redAspect;
+    private Aspect blueAspect;
+    private Aspect greenAspect;
+
+    /**
+     * Alchemical
+     * @param redAspect, blueAspect, greenAspect
+     */
+    public Alchemical (Aspect redAspect, Aspect blueAspect, Aspect greenAspect){
+        this.redAspect = redAspect;
+        this.blueAspect = blueAspect;
+        this.greenAspect = greenAspect;
+    }
+    /**
+     * getRedAspect
+     * @return redAspect
+     */
+    public Aspect getRedAspect(){
+        return redAspect;
+    }
+    /**
+     * setRedAspect
+     * @param redAspect
+     */
+    public void setRedAspect(Aspect redAspect){
+        this.redAspect = redAspect;
     }
 
-
-    public Atom getRedAtom() {
-        return redAtom;
+    /**
+     * getBlueAspect
+     * @return blueAspect
+     */
+    public Aspect getBlueAspect() {
+        return blueAspect;
     }
 
-    public void setRedAtom(Atom redAtom) {
-        this.redAtom = redAtom;
+    /**
+     * setBlueAspect
+     * @param blueAspect
+     */
+    public void setBlueAspect(Aspect blueAspect) {
+        this.blueAspect = blueAspect;
     }
 
-    public Atom getBlueAtom() {
-        return blueAtom;
+    /**
+     * getGreenAspect
+     * @return greenAspect
+     */
+    public Aspect getGreenAspect() {
+        return greenAspect;
     }
 
-    public void setBlueAtom(Atom blueAtom) {
-        this.blueAtom = blueAtom;
-    }
-
-    public Atom getGreenAtom() {
-        return greenAtom;
-    }
-
-    public void setGreenAtom(Atom greenAtom) {
-        this.greenAtom = greenAtom;
+    /**
+     * setGreenAspect
+     * @param greenAspect
+     */
+    public void setGreenAspect(Aspect greenAspect) {
+        this.greenAspect = greenAspect;
     }
 }

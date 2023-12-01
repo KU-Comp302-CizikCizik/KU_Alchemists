@@ -1,10 +1,7 @@
 package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.enums.PotionEffect;
-import com.KUAlchemists.backend.models.Alchemical;
-import com.KUAlchemists.backend.models.Atom;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.Potion;
+import com.KUAlchemists.backend.models.*;
 
 public class PotionBrewingService {
 
@@ -30,24 +27,24 @@ public class PotionBrewingService {
     private PotionEffect determinePotionEffect(Alchemical alchemical1, Alchemical alchemical2){
 
         //For red atom
-        Atom redAtom1 = alchemical1.getRedAtom();
-        Atom redAtom2 = alchemical2.getRedAtom();
+        Aspect redAspect1 = alchemical1.getRedAspect();
+        Aspect redAspect2 = alchemical2.getRedAspect();
 
         //For blue atom
-        Atom blueAtom1 = alchemical1.getBlueAtom();
-        Atom blueAtom2 = alchemical2.getBlueAtom();
+        Aspect blueAspect1 = alchemical1.getBlueAspect();
+        Aspect blueAspect2 = alchemical2.getBlueAspect();
 
         //For green atom
-        Atom greenAtom1 = alchemical1.getGreenAtom();
-        Atom greenAtom2 = alchemical2.getGreenAtom();
+        Aspect greenAspect1 = alchemical1.getGreenAspect();
+        Aspect greenAspect2 = alchemical2.getGreenAspect();
 
 
-        if (canAtomsCombineForPotion(redAtom1, redAtom2)) {
-            return areAtomsBothPositive(redAtom1, redAtom2) ? PotionEffect.HEALING : PotionEffect.POISON;
-        } else if (canAtomsCombineForPotion(blueAtom1, blueAtom2)) {
-            return areAtomsBothPositive(blueAtom1, blueAtom2) ? PotionEffect.SPEED : PotionEffect.PARALYSIS;
-        } else if (canAtomsCombineForPotion(greenAtom1, greenAtom2)) {
-            return areAtomsBothPositive(greenAtom1, greenAtom2) ? PotionEffect.WISDOM : PotionEffect.INSANITY;
+        if (canAspectsCombineForPotion(redAspect1, redAspect2)) {
+            return areAspectsBothPositive(redAspect1, redAspect2) ? PotionEffect.HEALING : PotionEffect.POISON;
+        } else if (canAspectsCombineForPotion(blueAspect1, blueAspect2)) {
+            return areAspectsBothPositive(blueAspect1, blueAspect2) ? PotionEffect.SPEED : PotionEffect.PARALYSIS;
+        } else if (canAspectsCombineForPotion(greenAspect1, greenAspect2)) {
+            return areAspectsBothPositive(greenAspect1, greenAspect2) ? PotionEffect.WISDOM : PotionEffect.INSANITY;
         }
 
         return PotionEffect.NEUTRAL;
@@ -56,34 +53,34 @@ public class PotionBrewingService {
 
     /**
      * canFormPotion
-     * @param atom1, atom2
+     * @param aspect1, aspect2
      */
-    private boolean canAtomsCombineForPotion(Atom atom1, Atom atom2) {
-        return canSignsCombineForPotion(atom1, atom2) && canSizesCombineForPotion(atom1, atom2);
+    private boolean canAspectsCombineForPotion(Aspect aspect1, Aspect aspect2) {
+        return canSignsCombineForPotion(aspect1, aspect2) && canSizesCombineForPotion(aspect1, aspect2);
     }
 
     /**
      * areSignsCorrect
-     * @param atom1, atom2
+     * @param aspect1, aspect2
      */
-    private boolean canSignsCombineForPotion(Atom atom1, Atom atom2){
-        return ( areAtomsBothPositive(atom1,atom2) || (!areAtomsBothPositive(atom1,atom2)));
+    private boolean canSignsCombineForPotion(Aspect aspect1, Aspect aspect2){
+        return ( areAspectsBothPositive(aspect1,aspect2) || (!areAspectsBothPositive(aspect1,aspect2)));
     }
 
     /**
      * areSizesCorrect
-     * @param atom1, atom2
+     * @param aspect1, aspect2
      */
-    private boolean canSizesCombineForPotion(Atom atom1, Atom atom2){
-        return (atom1.isBig() && atom2.isSmall()) || (atom1.isSmall() && atom2.isBig());
+    private boolean canSizesCombineForPotion(Aspect aspect1, Aspect aspect2){
+        return (aspect1.isBig() && aspect2.isSmall()) || (aspect1.isSmall() && aspect2.isBig());
     }
 
     /**
      * areAtomsPositive
-     * @param atom1, atom2
+     * @param aspect1, aspect2
      */
-    private boolean areAtomsBothPositive(Atom atom1, Atom atom2){
-        return (atom1.isPositive() && atom2.isPositive());
+    private boolean areAspectsBothPositive(Aspect aspect1, Aspect aspect2){
+        return (aspect1.isPositive() && aspect2.isPositive());
     }
 
 }

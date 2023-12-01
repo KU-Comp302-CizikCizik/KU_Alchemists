@@ -39,7 +39,7 @@ public class LoginPageUI extends Application {
 
         // Initialize the stage
         primaryStage.setTitle("KU Alchemists");
-        primaryStage.setScene(new Scene(parent, 320, 240));
+        primaryStage.setScene(new Scene(parent, 600, 400));
         primaryStage.show();
     }
 }

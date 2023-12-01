@@ -76,6 +76,15 @@ public class GameEngine {
     }
 
     /**
+     * Update the game state
+     * @param gamestate the game state to be updated
+     */
+    public void update(Gamestate gamestate){
+        Gamestate.gamestate = gamestate;
+        update();
+    }
+
+    /**
      * Add a player to the player list
      * @param player the player to be added
      */
