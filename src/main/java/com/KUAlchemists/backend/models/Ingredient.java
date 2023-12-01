@@ -28,11 +28,6 @@ public class Ingredient {
         this.identifier = identifier;
     }
 
-    // Getter for name
-    public String getName() {
-        return name;
-    }
-
     // Setter for name
     public void setName(String name) {
         this.name = name;
@@ -48,29 +43,9 @@ public class Ingredient {
         this.alchemical = alchemical;
     }
 
-    // Additional methods can be added here as necessary.
     public String getName() {
         return name;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getImage() {
-        return image;
-    }
 
 }
