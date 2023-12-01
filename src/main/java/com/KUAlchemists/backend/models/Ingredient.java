@@ -10,21 +10,13 @@ public class Ingredient {
     private String name;
     // The associated alchemical object
     private Alchemical alchemical;
+    // description of the ingredient
+    private String description; 
 
-    /**
-     * Constructor for Ingredient.
-     * @param identifier Unique identifier for the ingredient.
-     *        In the game, an identifier for an ingredient might look like "ING_001" for an herb or "ING_002" for a mineral.
-     *        The specific format and structure of the identifier would depend on your game's design and requirements (on going process).
-     * @param name       Human-readable name for the ingredient.
-     * @param alchemical The associated alchemical object that defines the ingredient's properties.
-     */
-    public Ingredient(String identifier, String name, Alchemical alchemical) {
-        this.identifier = identifier; //
+    public Ingredient(String name, Alchemical alchemical) {
         this.name = name;
         this.alchemical = alchemical;
     }
-
 
     // Getter for identifier
     public String getIdentifier() {
@@ -57,4 +49,28 @@ public class Ingredient {
     }
 
     // Additional methods can be added here as necessary.
+    public String getName() {
+        return name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
 }

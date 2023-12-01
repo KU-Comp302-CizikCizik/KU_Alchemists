@@ -82,3 +82,4 @@ public class Alchemical {
     // Additional methods can be added if necessary.
 
 }
+
