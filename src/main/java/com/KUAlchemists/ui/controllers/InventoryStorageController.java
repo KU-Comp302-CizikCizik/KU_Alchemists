@@ -1,29 +1,24 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.IngeridentStorageHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class InventoryStorageController {
     @FXML
     private GridPane cardContainer;
 
-    @FXML
-    private ScrollPane ingredientScrollPane;
-
-    private List<String> cards;
+    private final IngeridentStorageHandler ingeridentStorageHandler = new IngeridentStorageHandler();
 
     @FXML
     private void initialize() {
-        cards = getCards();
+        List<String> cards = ingeridentStorageHandler.getCards();
         int column = 0;
         int row = 0;
         try {
@@ -34,30 +29,17 @@ public class InventoryStorageController {
                 controller.setIngredientCard(cards.get(i));
 
                 //TO-DO: row colum should be checked
-                if (column == 3) {
+                if (column == 4) {
                     column = 0;
                     row++;
                 }
                 cardContainer.add(cardBox, column++, row);
-                GridPane.setMargin(cardBox, new Insets(10));
+                GridPane.setMargin(cardBox, new Insets(5,10,5,10));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
 
 
-    }
-
-    private List<String> getCards() {
-        List<String> ls = new ArrayList<>();
-        ls.add("mushroom-ingredient.jpg");
-        ls.add("plant-ingredient.jpg");
-        ls.add("mushroom-ingredient.jpg");
-        ls.add("plant-ingredient.jpg");
-        ls.add("mushroom-ingredient.jpg");
-        ls.add("plant-ingredient.jpg");
-        ls.add("mushroom-ingredient.jpg");
-        ls.add("plant-ingredient.jpg");
-        return ls;
     }
 }
