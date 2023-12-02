@@ -1,6 +1,8 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.LoginHandler;
+import com.KUAlchemists.backend.utils.GameConstants;
+import com.KUAlchemists.backend.utils.Loader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +15,7 @@ import java.util.Properties;
  * This class is responsible for handling login requests.
  */
 public class LoginController extends Controller {
+
 
     @FXML
     private Button loginButton;
@@ -29,14 +32,16 @@ public class LoginController extends Controller {
     /**
      * The handler for login requests.
      * */
-    private LoginHandler loginHandler;
+    private static LoginHandler loginHandler;
 
     /**
      * Constructor for LoginController.
      *
      */
     public LoginController() {
+
     }
+
 
     /**
      * This method is called when the login button is pressed.
@@ -54,8 +59,8 @@ public class LoginController extends Controller {
      * This method is called by the JavaFX framework when the controller is initialized.
      * @param properties
      */
-    public void setProperties(Properties properties) {
-        this.loginHandler = new LoginHandler(properties);
+    public static void setProperties(Properties properties) {
+        loginHandler = new LoginHandler(properties);
     }
 
 }

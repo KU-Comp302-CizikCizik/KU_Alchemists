@@ -31,7 +31,6 @@ public class GameEngine {
         Player player2 = new Player();
         playerList.add(player1);
         playerList.add(player2);
-        updateGameState(Gamestate.LOGIN);
     }
 
     /**

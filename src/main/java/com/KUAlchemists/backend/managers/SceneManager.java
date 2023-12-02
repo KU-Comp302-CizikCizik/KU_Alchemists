@@ -5,6 +5,7 @@ import com.KUAlchemists.backend.utils.GameConstants;
 import com.KUAlchemists.backend.utils.Loader;
 import com.KUAlchemists.ui.MainApplicationUI;
 import com.KUAlchemists.ui.controllers.LoginController;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,6 +22,7 @@ public class SceneManager {
     // Singleton
     private static SceneManager Instance;
 
+    private Parent root;
 
     /**
      * @return the instance
@@ -50,17 +52,17 @@ public class SceneManager {
     }
 
     private void loadMenu() {
-        MainApplicationUI.root = Loader.loadFXML(GameConstants.MAINGAME_UI_FXML);
+        root = Loader.loadFXML(GameConstants.MENU_UI_FXML);
         Scene oldScene = MainApplicationUI.stage.getScene();
-        MainApplicationUI.scene = new Scene(MainApplicationUI.root, GameConstants.WINDOW_WIDTH, GameConstants.WINDOW_HEIGHT);
+        MainApplicationUI.scene = new Scene(root, GameConstants.WINDOW_WIDTH, GameConstants.WINDOW_HEIGHT);
         MainApplicationUI.stage = (Stage) oldScene.getWindow();
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.show();
     }
 
     private void loadLogin() {
-        MainApplicationUI.root = Loader.loadFXML(GameConstants.LOGINPAGE_UI_FXML);
-        MainApplicationUI.scene = new Scene(MainApplicationUI.root, GameConstants.WINDOW_WIDTH, GameConstants.WINDOW_HEIGHT);
+        root = Loader.loadFXMLFirstTime(GameConstants.LOGINPAGE_UI_FXML);
+        MainApplicationUI.scene = new Scene(root, GameConstants.WINDOW_WIDTH, GameConstants.WINDOW_HEIGHT);
 
         // Load properties from config.properties
         Properties prop = new Properties();
@@ -81,10 +83,8 @@ public class SceneManager {
             }
         }
 
-        // Get the controller from the FXMLLoader
-        LoginController controller = (LoginController) Loader.getFXMLController(GameConstants.LOGINPAGE_UI_FXML);
         // Set the properties
-        controller.setProperties(prop);
+        LoginController.setProperties(prop);
         MainApplicationUI.stage.setTitle(GameConstants.GAME_TITLE);
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.show();
