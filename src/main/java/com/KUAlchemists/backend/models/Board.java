@@ -17,10 +17,16 @@ public class Board {
     //private static final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
     //private static final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
 
+    private static final Deck deck = Deck.getInstance();
+
     private Board (){
         // create empty storages for players // if we have 2 players, otherwise we need to change this
-        createEmptyStoragesForPlayer(GameEngine.getPlayer(0));
-        createEmptyStoragesForPlayer(GameEngine.getPlayer(1));
+        //createEmptyStoragesForPlayer(GameEngine.getInstance().getPlayer(0));
+        //createEmptyStoragesForPlayer(GameEngine.getInstance().getPlayer(1));
+        createEmptyStoragesForPlayer(new Player("mete"));
+        createEmptyStoragesForPlayer(new Player("deniz"));
+        // create deck
+
     }
     public static Board getInstance(){
         if(Instance == null){
@@ -39,6 +45,14 @@ public class Board {
     public static IngredientStorage getIngredientStorage(Player player){
         return ingredientStorages.get(player);
     }
+
+    public static IngredientStorage getIngredientStorage(String playerName){
+        return ingredientStorages.get(GameEngine.getInstance().getPlayer(playerName));
+    }
+
+
+
+
 
 
 

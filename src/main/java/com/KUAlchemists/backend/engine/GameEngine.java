@@ -15,8 +15,11 @@ public class GameEngine {
     // singleton instance
     public static GameEngine Instance;
 
-    // player list
+    // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
+
+
+
 
     // current player
     private static Player currentPlayer;
@@ -156,6 +159,15 @@ public class GameEngine {
 
     public static Player getPlayer(int index){
         return playerList.get(index);
+    }
+
+    public static Player getPlayer(String name){
+        for (Player player : playerList) {
+            if (name.equals(player.getName())) {
+                return player;
+            }
+        }
+        return null;
     }
 
 }
