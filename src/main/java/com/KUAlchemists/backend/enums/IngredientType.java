@@ -6,4 +6,6 @@ public enum IngredientType {
     MINERAL,
     MUSHROOM,
     NONE;
+
 }
+

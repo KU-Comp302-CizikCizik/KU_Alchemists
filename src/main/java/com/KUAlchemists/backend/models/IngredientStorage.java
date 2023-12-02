@@ -27,7 +27,7 @@ public class IngredientStorage {
 
     public Ingredient getIngredient(String name) {
         for (Ingredient ingredient : ingredientsList) {
-            if (ingredient.getName().equals(name)) {
+            if (name.equals(ingredient.getName())) {
                 return ingredient;
             }
         }
@@ -36,4 +36,6 @@ public class IngredientStorage {
 
 
 
+
 }
+

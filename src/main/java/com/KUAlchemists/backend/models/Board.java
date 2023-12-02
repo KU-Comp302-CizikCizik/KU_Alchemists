@@ -35,9 +35,12 @@ public class Board {
         //artifactStorages.put(player, new ArtifactStorage());
     }
 
+
     public static IngredientStorage getIngredientStorage(Player player){
         return ingredientStorages.get(player);
     }
 
 
+
 }
+

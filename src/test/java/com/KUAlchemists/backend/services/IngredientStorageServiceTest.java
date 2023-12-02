@@ -1,19 +1,19 @@
 package com.KUAlchemists.backend.services;
 
+
 import com.KUAlchemists.backend.enums.IngredientType;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.models.IngredientStorage;
 import com.KUAlchemists.backend.models.Player;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -41,6 +41,7 @@ public class IngredientStorageServiceTest {
     }
 
     @Test
+
     void testRemoveIngredientFromStorage() {
         // Setup mock data
         Ingredient ingredient = new Ingredient("Salt", 0, "A common ingredient...", IngredientType.HERB);
