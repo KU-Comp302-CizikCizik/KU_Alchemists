@@ -1,18 +1,20 @@
 package com.KUAlchemists.backend.utils;
 
-import com.KUAlchemists.ui.controllers.Controller;
-import com.KUAlchemists.ui.controllers.LoginController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class Loader {
 
     private static FXMLLoader loader;
 
+    /**
+     * This method is used to load the fxml file.
+     * @param fxml_path The path to the fxml file.
+     * @return The root node of the fxml file.
+     */
     public static Parent loadFXML(String fxml_path) {
         loader.setLocation(Loader.class.getClassLoader().getResource(fxml_path));
         try {
@@ -22,11 +24,15 @@ public class Loader {
         }
     }
 
+    /**
+     * This method is used to load the fxml file for the first time.
+     * @param fxml_path The path to the fxml file.
+     * @return The root node of the fxml file.
+     */
     public static Parent loadFXMLFirstTime(String fxml_path){
-        if(loader == null) {
-            loader = new FXMLLoader();
-            loader.setRoot(new BorderPane());
-        }
+        loader = new FXMLLoader();
+        loader.setRoot(new BorderPane());
+
         loader.setLocation(Loader.class.getClassLoader().getResource(fxml_path));
         try {
             return loader.load();

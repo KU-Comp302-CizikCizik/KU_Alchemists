@@ -14,7 +14,7 @@ import java.util.Properties;
 /**
  * This class is responsible for handling login requests.
  */
-public class LoginController extends Controller {
+public class LoginController {
 
 
     @FXML
