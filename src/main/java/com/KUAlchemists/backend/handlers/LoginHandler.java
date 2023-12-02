@@ -11,8 +11,22 @@ import java.util.Properties;
  */
 public class LoginHandler {
 
-    private final LoginService loginService;
-    public LoginHandler(Properties properties) {
+    public static LoginHandler Instance;
+
+
+    public static LoginHandler getInstance(){
+        if(Instance == null){
+            Instance = new LoginHandler();
+        }
+        return Instance;
+    }
+
+    private LoginService loginService;
+    public LoginHandler() {
+
+    }
+
+    public void createService(Properties properties) {
         loginService = new LoginService(properties);
     }
 

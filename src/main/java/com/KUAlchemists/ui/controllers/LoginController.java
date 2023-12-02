@@ -32,7 +32,6 @@ public class LoginController extends Controller {
     /**
      * The handler for login requests.
      * */
-    private static LoginHandler loginHandler;
 
     /**
      * Constructor for LoginController.
@@ -50,7 +49,7 @@ public class LoginController extends Controller {
     public void loginButtonOnAction(ActionEvent event) {
         String username = userNameTextField.getText();
         String password = passwordTextField.getText();
-        String loginResult = loginHandler.login(username, password);
+        String loginResult = LoginHandler.getInstance().login(username, password);
         loginMessageLabel.setText(loginResult);
     }
 
@@ -60,7 +59,7 @@ public class LoginController extends Controller {
      * @param properties
      */
     public static void setProperties(Properties properties) {
-        loginHandler = new LoginHandler(properties);
+        LoginHandler.getInstance().createService(properties);
     }
 
 }
