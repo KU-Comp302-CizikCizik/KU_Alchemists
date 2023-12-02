@@ -25,7 +25,6 @@ public class LoginHandler {
      */
     public String login(String username, String password) {
         if (loginService.validateUser(username, password)) {
-            GameEngine.getInstance().update(Gamestate.MENU);
             return "Login successful!";
         } else {
             return "Invalid username or password.";
