@@ -16,13 +16,14 @@ public class InventoryStorageController {
     @FXML
     private GridPane cardContainer;
 
+    @FXML
+    private ScrollPane ingredientScrollPane;
 
     private List<String> cards;
 
     @FXML
     private void initialize() {
         cards = getCards();
-
         int column = 0;
         int row = 0;
         try {
@@ -51,7 +52,12 @@ public class InventoryStorageController {
         List<String> ls = new ArrayList<>();
         ls.add("mushroom-ingredient.jpg");
         ls.add("plant-ingredient.jpg");
-        ls.add("frog-ingredient.jpg");
+        ls.add("mushroom-ingredient.jpg");
+        ls.add("plant-ingredient.jpg");
+        ls.add("mushroom-ingredient.jpg");
+        ls.add("plant-ingredient.jpg");
+        ls.add("mushroom-ingredient.jpg");
+        ls.add("plant-ingredient.jpg");
         return ls;
     }
 }

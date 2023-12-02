@@ -1,0 +1,4 @@
+.transparent {
+    -fx-background-color: regba(0, 0, 0, 0);
+}
+```
