@@ -12,7 +12,7 @@ import java.util.Properties;
 /**
  * This class is responsible for handling login requests.
  */
-public class LoginController {
+public class LoginController extends Controller {
 
     @FXML
     private Button loginButton;

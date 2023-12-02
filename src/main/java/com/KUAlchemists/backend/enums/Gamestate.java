@@ -17,7 +17,4 @@ public enum Gamestate {
     GAME_LOG,
     ENDGAME;
 
-
-    public static Gamestate gamestate = LOGIN;
-
 }

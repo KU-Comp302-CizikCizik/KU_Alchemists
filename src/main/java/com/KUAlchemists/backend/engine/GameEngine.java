@@ -1,12 +1,9 @@
 package com.KUAlchemists.backend.engine;
 
-import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.enums.Gamestate;
+import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.ui.LoginPageUI;
-import com.KUAlchemists.ui.MainGameUI;
-import javafx.application.Application;
 
 import java.util.ArrayList;
 
@@ -22,7 +19,6 @@ public class GameEngine {
     private static Player currentPlayer;
 
     // current player index
-
     private static int currentPlayerIndex = 0;
 
     private static final Board board = Board.getInstance();
@@ -35,8 +31,7 @@ public class GameEngine {
         Player player2 = new Player();
         playerList.add(player1);
         playerList.add(player2);
-        Gamestate.gamestate = Gamestate.LOGIN;
-        update();
+        updateGameState(Gamestate.LOGIN);
     }
 
     /**
@@ -52,44 +47,10 @@ public class GameEngine {
 
     /**
      * Update the game state
-     */
-    private void update() {
-        switch (Gamestate.gamestate){
-            case LOGIN:
-                Application.launch(LoginPageUI.class);
-                break;
-            case MENU:
-                break;
-            case GAME:
-                Application.launch(MainGameUI.class);
-                break;
-            case DASHBOARD:
-                break;
-            case INVENTORY:
-                break;
-            case POTION_BREWING:
-                break;
-            case PUBLICATION:
-                break;
-            case DEDUCTION:
-                break;
-            case DEBUNK:
-                break;
-            case GAME_LOG:
-                break;
-            case ENDGAME:
-                break;
-
-        }
-    }
-
-    /**
-     * Update the game state
      * @param gamestate the game state to be updated
      */
-    public void update(Gamestate gamestate){
-        Gamestate.gamestate = gamestate;
-        update();
+    public void updateGameState(Gamestate gamestate){
+        SceneManager.getInstance().changeScene(gamestate);
     }
 
     /**
