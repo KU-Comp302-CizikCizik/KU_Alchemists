@@ -1,7 +1,12 @@
 package com.KUAlchemists.backend.services;
 
+import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.models.IngredientStorage;
+import com.KUAlchemists.backend.models.Player;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * This class is responsible for storing the ingredients in the game.
@@ -10,20 +15,31 @@ public class IngredientStorageService {
 
     private IngredientStorage ingredientStorage;
 
-    public IngredientStorageService(IngredientStorage storage) {
-        this.ingredientStorage = storage;
+    public IngredientStorageService(Player player) {
+        this.ingredientStorage = Board.getIngredientStorage(player);
     }
 
-    public void addIngredientToStorage(Ingredient ingredient) {
-        ingredientStorage.addIngredient(ingredient);
+    public void removeIngredientFromStorage(String ingredientName) {
+        ArrayList<Ingredient> ingredientsList = ingredientStorage.getIngredientsList();
+        for (Ingredient ingredient : ingredientsList) {
+            if (ingredient.getName().equals(ingredientName)) {
+                ingredientStorage.removeIngredient(ingredient);
+            }
+        }
     }
 
-    public void removeIngredientFromStorage(Ingredient ingredient) {
-        ingredientStorage.removeIngredient(ingredient);
+    public String getIngredientDescription(String name) {
+        return ingredientStorage.getIngredient(name).getDescription();
     }
 
-    public Ingredient getIngredientFromStorage(String name) {
-        return ingredientStorage.getIngredient(name);
+    public ArrayList<String> getIngredientsList() {
+        ArrayList<String> ingredientsList = new ArrayList<>();
+        // Add ingredientsNames to the ingredientsList
+        for (Ingredient ingredient : ingredientStorage.getIngredientsList()) {
+            String ingredientName = ingredient.getName();
+            ingredientsList.add(ingredientName);
+        }
+        return ingredientsList;
     }
 
 }
