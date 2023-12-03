@@ -25,7 +25,6 @@ public class Deck {
     }
 
     private void loadIngredientsFromResources() {
-        System.out.println("Loading ingredients from resources");
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("ingredients.csv");
              BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
             String line;
@@ -43,7 +42,6 @@ public class Deck {
                 Ingredient ingredient = new Ingredient(name, value, description, type);
                 ingredient.setAlchemical(alchemical);
                 ingredients.add(ingredient);
-                System.out.println(name);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,5 +52,13 @@ public class Deck {
         Random rand = new Random();
         int index = rand.nextInt(ingredients.size());
         return ingredients.remove(index);
+    }
+
+    public ArrayList<String> getIngredientsNames() {
+        ArrayList<String> names = new ArrayList<>();
+        for (Ingredient ingredient : ingredients) {
+            names.add(ingredient.getName());
+        }
+        return names;
     }
 }

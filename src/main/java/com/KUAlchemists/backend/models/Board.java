@@ -23,8 +23,8 @@ public class Board {
         // create empty storages for players // if we have 2 players, otherwise we need to change this
         //createEmptyStoragesForPlayer(GameEngine.getInstance().getPlayer(0));
         //createEmptyStoragesForPlayer(GameEngine.getInstance().getPlayer(1));
-        createEmptyStoragesForPlayer(new Player("mete"));
-        createEmptyStoragesForPlayer(new Player("deniz"));
+        //createEmptyStoragesForPlayer(new Player("mete"));
+        //createEmptyStoragesForPlayer(new Player("deniz"));
         // create deck
 
     }
@@ -48,6 +48,14 @@ public class Board {
 
     public static IngredientStorage getIngredientStorage(String playerName){
         return ingredientStorages.get(GameEngine.getInstance().getPlayer(playerName));
+    }
+
+    public static HashMap<Player, IngredientStorage> getIngredientStorages(){
+        return ingredientStorages;
+    }
+
+    public static Deck getDeck(){
+        return deck;
     }
 
 
