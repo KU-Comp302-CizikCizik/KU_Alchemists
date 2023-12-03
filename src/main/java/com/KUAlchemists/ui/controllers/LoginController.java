@@ -1,8 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.LoginHandler;
-import com.KUAlchemists.backend.utils.GameConstants;
-import com.KUAlchemists.backend.utils.Loader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
