@@ -14,6 +14,7 @@ import java.util.Properties;
  */
 public class LoginController {
 
+
     @FXML
     private Button loginButton;
 
@@ -29,14 +30,15 @@ public class LoginController {
     /**
      * The handler for login requests.
      * */
-    private LoginHandler loginHandler;
 
     /**
      * Constructor for LoginController.
      *
      */
     public LoginController() {
+
     }
+
 
     /**
      * This method is called when the login button is pressed.
@@ -45,7 +47,7 @@ public class LoginController {
     public void loginButtonOnAction(ActionEvent event) {
         String username = userNameTextField.getText();
         String password = passwordTextField.getText();
-        String loginResult = loginHandler.login(username, password);
+        String loginResult = LoginHandler.getInstance().login(username, password);
         loginMessageLabel.setText(loginResult);
     }
 
@@ -54,8 +56,8 @@ public class LoginController {
      * This method is called by the JavaFX framework when the controller is initialized.
      * @param properties
      */
-    public void setProperties(Properties properties) {
-        this.loginHandler = new LoginHandler(properties);
+    public static void setProperties(Properties properties) {
+        LoginHandler.getInstance().createService(properties);
     }
 
 }

@@ -11,8 +11,22 @@ import java.util.Properties;
  */
 public class LoginHandler {
 
-    private final LoginService loginService;
-    public LoginHandler(Properties properties) {
+    public static LoginHandler Instance;
+
+
+    public static LoginHandler getInstance(){
+        if(Instance == null){
+            Instance = new LoginHandler();
+        }
+        return Instance;
+    }
+
+    private LoginService loginService;
+    public LoginHandler() {
+
+    }
+
+    public void createService(Properties properties) {
         loginService = new LoginService(properties);
     }
 
@@ -25,6 +39,7 @@ public class LoginHandler {
      */
     public String login(String username, String password) {
         if (loginService.validateUser(username, password)) {
+            GameEngine.getInstance().updateGameState(Gamestate.MENU);
             return "Login successful!";
         } else {
             return "Invalid username or password.";
