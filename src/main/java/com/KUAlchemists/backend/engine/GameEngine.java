@@ -34,6 +34,10 @@ public class GameEngine {
      * Constructor for GameEngine
      */
     private GameEngine(){
+        Player player1 = new Player();
+        Player player2 = new Player();
+        playerList.add(player1);
+        playerList.add(player2);
         Gamestate.gamestate = Gamestate.LOGIN;
         update();
     }

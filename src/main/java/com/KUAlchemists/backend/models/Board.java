@@ -23,8 +23,6 @@ public class Board {
         // create empty storages for players // if we have 2 players, otherwise we need to change this
         createEmptyStoragesForPlayer(GameEngine.getInstance().getPlayer(0));
         createEmptyStoragesForPlayer(GameEngine.getInstance().getPlayer(1));
-
-
     }
     public static Board getInstance(){
         if(Instance == null){
