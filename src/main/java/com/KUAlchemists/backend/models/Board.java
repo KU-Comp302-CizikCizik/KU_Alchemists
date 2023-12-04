@@ -2,7 +2,6 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -19,8 +18,8 @@ public class Board {
 
     private Board (){
         // create empty storages for players // if we have 2 players, otherwise we need to change this
-        createEmptyStoragesForPlayer(GameEngine.getInstance().getPlayer(0));
-        createEmptyStoragesForPlayer(GameEngine.getInstance().getPlayer(1));
+        createEmptyStoragesForPlayer(GameEngine.getINSTANCE().getPlayer(0));
+        createEmptyStoragesForPlayer(GameEngine.getINSTANCE().getPlayer(1));
     }
     public static Board getInstance(){
         if(Instance == null){
