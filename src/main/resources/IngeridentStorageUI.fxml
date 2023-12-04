@@ -15,9 +15,9 @@
             <Font name="Bookman Old Style" size="62.0" />
          </font>
       </Text>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="28.0" layoutY="118.0" prefHeight="262.0" prefWidth="440.0" style="-fx-background-color: DB9E42; -fx-border-color: DB9E42;" styleClass="scroll" stylesheets="@CSS/style.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="118.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="28.0" layoutY="118.0" prefHeight="262.0" prefWidth="440.0" style="-fx-background-color: #12232bd9; -fx-border-color: #12232bd9;" styleClass="scroll" stylesheets="@CSS/style.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="118.0">
          <content>
-            <GridPane fx:id="cardContainer" gridLinesVisible="true" prefHeight="400.0" prefWidth="110.0" style="-fx-background-color: DB9E42; -fx-border-color: DB9E42;">
+            <GridPane fx:id="cardContainer" gridLinesVisible="true" prefHeight="400.0" prefWidth="110.0" style="-fx-background-color: #12232bd9; -fx-border-color: #12232bd9;">
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
