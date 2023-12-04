@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="966.0" style="-fx-background-color: #300900;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.DeductionBoardController">
+    <children>
+      <AnchorPane prefHeight="446.0" prefWidth="979.0">
+         <children>
+              <ImageView id="image-board" fitHeight="461.0" fitWidth="964.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@com.KUAlchemists/images/deductionboard.png" />
+                  </image>
+              </ImageView>
+            <ImageView id="circle1" fitHeight="52.0" fitWidth="60.0" layoutX="460.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-2" fitHeight="59.0" fitWidth="60.0" layoutX="430.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-3" fitHeight="59.0" fitWidth="60.0" layoutX="494.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-4" fitHeight="59.0" fitWidth="60.0" layoutX="400.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-5" fitHeight="52.0" fitWidth="60.0" layoutX="464.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-6" fitHeight="59.0" fitWidth="60.0" layoutX="533.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-7" fitHeight="52.0" fitWidth="60.0" layoutX="361.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-8" fitHeight="52.0" fitWidth="60.0" layoutX="430.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-9" fitHeight="52.0" fitWidth="53.0" layoutX="501.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-10" fitHeight="52.0" fitWidth="60.0" layoutX="563.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-11" fitHeight="52.0" fitWidth="60.0" layoutX="331.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-12" fitHeight="52.0" fitWidth="60.0" layoutX="400.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-13" fitHeight="52.0" fitWidth="60.0" layoutX="460.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-14" fitHeight="52.0" fitWidth="60.0" layoutX="533.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-15" fitHeight="52.0" fitWidth="45.0" layoutX="601.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-16" fitHeight="52.0" fitWidth="53.0" layoutX="292.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-17" fitHeight="52.0" fitWidth="60.0" layoutX="361.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-18" fitHeight="52.0" fitWidth="53.0" layoutX="427.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-19" fitHeight="52.0" fitWidth="60.0" layoutX="494.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-20" fitHeight="52.0" fitWidth="60.0" layoutX="563.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-21" fitHeight="52.0" fitWidth="60.0" layoutX="630.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-22" fitHeight="59.0" fitWidth="53.0" layoutX="265.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-23" fitHeight="59.0" fitWidth="53.0" layoutX="335.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-24" fitHeight="59.0" fitWidth="53.0" layoutX="395.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-25" fitHeight="59.0" fitWidth="53.0" layoutX="463.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-26" fitHeight="59.0" fitWidth="53.0" layoutX="528.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-27" fitHeight="59.0" fitWidth="53.0" layoutX="593.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle-28" fitHeight="59.0" fitWidth="53.0" layoutX="660.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="345.0" prefWidth="979.0" style="-fx-background-color: #300900;">
+            <children>
+                <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="120.0">
+                    <children>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                            <children>
+                                <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Button>
+                                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                            <children>
+                                <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font></Button>
+                                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                            <children>
+                                <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                            <children>
+                                <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                            <children>
+                                <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                            <children>
+                                <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                            <children>
+                                <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                            <children>
+                                <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                                <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                    </children>
+                </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="120.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="120.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="120.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="120.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="120.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="120.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="120.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X">
+                           <font>
+                              <Font name="Calibri" size="15.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="120.0">
+                     <children>
+                        <Button layoutX="56.0" layoutY="9.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #D3B78B;" text="X" />
+                        <ImageView fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>
