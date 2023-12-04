@@ -19,7 +19,6 @@ public class GameEngine {
     // current player index
     private static int currentPlayerIndex = 0;
 
-    private static final Board board = Board.getInstance();
 
     /**
      * Constructor for GameEngine

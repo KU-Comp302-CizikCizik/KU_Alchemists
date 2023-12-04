@@ -28,7 +28,6 @@ public class SceneManager implements GameStateObserver {
 
     @Override
     public void onGameStateChange(Gamestate to) {
-        if(currentState == to)return;
 
         switch (to) {
             case LOGIN:
