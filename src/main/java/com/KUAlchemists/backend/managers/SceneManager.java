@@ -28,12 +28,15 @@ public class SceneManager {
 
     public void changeScene(Gamestate to) {
         switch (to) {
+            case DEDUCTION:
+                sceneLoader.loadDeductionBoard();
             case LOGIN:
                 sceneLoader.loadLogin();
                 break;
             case MENU:
                 sceneLoader.loadMenu();
                 break;
+
             default:
                 break;
         }

@@ -14,6 +14,6 @@ public class MainApplicationUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        GameEngine.getInstance().updateGameState(Gamestate.LOGIN);
+        GameEngine.getInstance().updateGameState(Gamestate.DEDUCTION);
     }
 }

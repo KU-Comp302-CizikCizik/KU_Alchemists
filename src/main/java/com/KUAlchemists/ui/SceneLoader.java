@@ -24,6 +24,25 @@ public class SceneLoader {
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.show();
     }
+    public void loadDeductionBoard() {
+        root = UILoader.loadFXMLFirstTime(UIConstants.DEDUCTIONBOARD_FXML);
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+
+        // Load properties from config.properties
+        /*Properties prop = new Properties();
+        InputStream inputStream = null;
+        String propFileName = "config.properties";
+        inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);*/
+
+        // Set the properties
+        //LoginController.setProperties(prop);
+        MainApplicationUI.stage.setTitle(UIConstants.GAME_TITLE);
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.show();
+
+    }
+
+
 
     public void loadLogin() {
         root = UILoader.loadFXMLFirstTime(UIConstants.LOGINPAGE_UI_FXML);
