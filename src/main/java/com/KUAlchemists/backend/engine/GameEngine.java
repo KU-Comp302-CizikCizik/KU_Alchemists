@@ -1,6 +1,5 @@
 package com.KUAlchemists.backend.engine;
 
-import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class GameEngine {
      * Get the singleton instance of GameEngine
      * @return the singleton instance of GameEngine
      */
-    public static GameEngine getINSTANCE(){
+    public static GameEngine getInstance(){
         if(INSTANCE == null){
             INSTANCE = new GameEngine();
         }
