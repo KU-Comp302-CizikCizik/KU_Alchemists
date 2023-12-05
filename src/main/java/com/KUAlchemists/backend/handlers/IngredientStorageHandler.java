@@ -46,4 +46,13 @@ public class IngredientStorageHandler {
             // Update UI with error message
         }
     }
+
+    public void handleTransmuteIngredient(String ingredientName) {
+        try {
+            service.transmuteIngredient(ingredientName);
+            // Update UI with the ingredient details
+        } catch (IllegalArgumentException e) {
+            // Update UI with error message
+        }
+    }
 }

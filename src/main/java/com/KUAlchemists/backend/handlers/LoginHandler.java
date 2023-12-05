@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Gamestate;
+import com.KUAlchemists.backend.managers.StateManager;
 import com.KUAlchemists.backend.services.LoginService;
 
 import java.util.Properties;
@@ -39,7 +40,7 @@ public class LoginHandler {
      */
     public String login(String username, String password) {
         if (loginService.validateUser(username, password)) {
-            GameEngine.getInstance().updateGameState(Gamestate.MENU);
+            StateManager.getInstance().updateGameState(Gamestate.MENU);
             return "Login successful!";
         } else {
             return "Invalid username or password.";
