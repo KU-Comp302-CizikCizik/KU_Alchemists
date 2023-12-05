@@ -15,7 +15,10 @@ public class IngredientStorageService {
 
     private IngredientStorage ingredientStorage;
 
+    private Player player;
+
     public IngredientStorageService(Player player) {
+        this.player = player;
         this.ingredientStorage = Board.getIngredientStorage(player);
     }
 
@@ -41,5 +44,17 @@ public class IngredientStorageService {
         }
         return ingredientsList;
     }
+
+    public void transmuteIngredient(String ingredientName) {
+        ArrayList<Ingredient> ingredientsList = ingredientStorage.getIngredientsList();
+        for (Ingredient ingredient : ingredientsList) {
+            if (ingredient.getName().equals(ingredientName)) {
+                ingredientStorage.removeIngredient(ingredient);
+                player.setGold(player.getGold() + 1); //
+            }
+        }
+    }
+
+
 
 }
