@@ -1,7 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.handlers.IngredientStorageService;
-import com.KUAlchemists.backend.handlers.IngredientStorageService;
+import com.KUAlchemists.backend.handlers.IngredientStorageHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -15,7 +14,7 @@ public class InventoryStorageController {
     @FXML
     private GridPane cardContainer;
 
-    private final IngredientStorageService ingredientStorageService = new IngredientStorageService();
+    private final IngredientStorageHandler ingredientStorageService = new IngredientStorageHandler();
 
     @FXML
     private void initialize() {
