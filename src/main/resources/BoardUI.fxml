@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #8E8B9C;" styleClass="mypane" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BoardController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #8E8B9C;" styleClass="BoardPane" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BoardController">
    <children>
-      <BorderPane layoutX="-14.0" prefHeight="720.0" prefWidth="1080.0" styleClass="BoardPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="-14.0" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="129.0" prefWidth="1082.0" BorderPane.alignment="CENTER">
                <children>
