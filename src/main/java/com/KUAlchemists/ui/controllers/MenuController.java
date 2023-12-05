@@ -4,7 +4,7 @@ import com.KUAlchemists.backend.handlers.MenuHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import java.awt.*;
+import javafx.scene.control.Button;
 
 public class MenuController {
     @FXML
@@ -25,6 +25,7 @@ public class MenuController {
     @FXML
     void openRules(ActionEvent event) {
         menuHandler.openRules();
+        System.out.println("Rules");
 
     }
 
