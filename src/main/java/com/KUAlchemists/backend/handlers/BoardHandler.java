@@ -1,6 +1,6 @@
 package com.KUAlchemists.backend.handlers;
 
-public class MainPageHandler {
+public class BoardHandler {
     public void openDebunkPopUp() {
         System.out.println("Debunk button pressed");
     }
@@ -31,5 +31,20 @@ public class MainPageHandler {
 
     public void openBuyArtifactPopUp() {
         System.out.println("Buy artifact button pressed");
+    }
+
+    public void openUseArtifacy() {
+        System.out.println("Use artifact button pressed");
+    }
+
+    public void openPausePopUp() {
+        System.out.println("Pause button pressed");
+    }
+
+    public void openHelpPopUp() {
+        System.out.println("Help button pressed");
+    }
+
+    public void openSellPotion() {
     }
 }

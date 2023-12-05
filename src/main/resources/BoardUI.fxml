@@ -114,7 +114,7 @@
                         <Font name="Book Antiqua" size="10.0" />
                      </font>
                   </Button>
-                  <Button fx:id="publishTheoryButton" mnemonicParsing="false" onAction="#publishTheoryPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: #ecd0b0;" text="Publish Theory" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0">
+                  <Button fx:id="publishTheoryButton" mnemonicParsing="false" onAction="#publishTheoryPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: #ecd0b0; -fx-opacity: 0.5;" text="Publish Theory" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0">
                      <font>
                         <Font name="Book Antiqua" size="10.0" />
                      </font>
@@ -124,7 +124,7 @@
                         <Image url="@com.KUAlchemists/images/blue-alchemist.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="debunkButton" mnemonicParsing="false" onAction="#debunkPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0;" text="Debunk" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="340.0">
+                  <Button fx:id="debunkButton" mnemonicParsing="false" onAction="#debunkPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0; -fx-opacity: 0.5;" text="Debunk" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="340.0">
                      <font>
                         <Font name="Book Antiqua" size="10.0" />
                      </font>
@@ -134,7 +134,7 @@
                         <Font name="Book Antiqua" size="10.0" />
                      </font>
                   </Button>
-                  <Button fx:id="sellPotionButton" layoutX="905.0" layoutY="60.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0;" text="Sell Potion" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="120.0">
+                  <Button fx:id="sellPotionButton" layoutX="905.0" layoutY="60.0" mnemonicParsing="false" onAction="#sellPotionPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0; -fx-opacity: 0.5;" text="Sell Potion" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="120.0">
                      <font>
                         <Font name="Book Antiqua" size="10.0" />
                      </font>

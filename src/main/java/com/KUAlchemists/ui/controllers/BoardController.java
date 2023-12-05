@@ -1,6 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.handlers.MainPageHandler;
+import com.KUAlchemists.backend.handlers.BoardHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -67,7 +67,7 @@ public class BoardController {
 
 
 
-    private MainPageHandler mainPageHandler;
+    private BoardHandler mainPageHandler;
 
     @FXML
     void debunkPopUp(ActionEvent event) {
@@ -112,9 +112,23 @@ public class BoardController {
 
     @FXML
     void useArtifactPopUp(ActionEvent event) {
-        System.out.println("Artifact button pressed");
+        mainPageHandler.openUseArtifacy();
     }
 
+    @FXML
+    void pausePopUp(ActionEvent event) {
+        mainPageHandler.openPausePopUp();
+    }
+
+    @FXML
+    void helpPopUp(ActionEvent event) {
+        mainPageHandler.openHelpPopUp();
+    }
+
+    @FXML
+    void sellPotionPopUp(ActionEvent event) {
+        mainPageHandler.openSellPotion();
+    }
     @FXML
     public void changeRound() {
         Image currentAvatarImg = currentAvatarImage.getImage();
@@ -145,6 +159,6 @@ public class BoardController {
     }
 
     public BoardController() {
-        MainPageHandler mainPageHandler = new MainPageHandler();
+        mainPageHandler = new BoardHandler();
     }
 }
