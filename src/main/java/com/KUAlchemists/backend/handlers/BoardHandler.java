@@ -46,5 +46,10 @@ public class BoardHandler {
     }
 
     public void openSellPotion() {
+        System.out.println("Sell potion button pressed");
+    }
+
+    public void endTheRound() {
+        System.out.println("End the round button pressed");
     }
 }

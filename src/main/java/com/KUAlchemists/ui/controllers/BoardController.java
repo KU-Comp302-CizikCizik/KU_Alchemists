@@ -63,71 +63,73 @@ public class BoardController {
 
     @FXML
     private Button pauseButton;
-
-
-
-
-    private BoardHandler mainPageHandler;
+    @FXML
+    private TextField alchemist2ActionPointTextField;
+    
+    @FXML
+    private TextField alchemist1ActionPointTextField;
+    
+    private BoardHandler boardhandler;
 
     @FXML
     void debunkPopUp(ActionEvent event) {
-        mainPageHandler.openDebunkPopUp();
+        boardhandler.openDebunkPopUp();
     }
 
     @FXML
     void deductionBoardPopUp(ActionEvent event) {
-        mainPageHandler.openDeductionBoardPopUp();
+        boardhandler.openDeductionBoardPopUp();
     }
 
     @FXML
     void ingredientStoragePopUp(ActionEvent event) {
-        mainPageHandler.openIngredientStoragePopUp();
+        boardhandler.openIngredientStoragePopUp();
     }
 
     @FXML
     void potionBrewingPopUp(ActionEvent event) {
-        mainPageHandler.openPotionBrewingPopUp();
+        boardhandler.openPotionBrewingPopUp();
     }
 
     @FXML
     void publicationTrackPopUp(ActionEvent event) {
-        mainPageHandler.openPublicationTrackPopUp();
+        boardhandler.openPublicationTrackPopUp();
     }
 
     @FXML
     void publishTheoryPopUp(ActionEvent event) {
-        mainPageHandler.openPublishTheoryPopUp();
+        boardhandler.openPublishTheoryPopUp();
     }
 
     @FXML
     void buyArtifactPopUp(ActionEvent event) {
-        mainPageHandler.openBuyArtifactPopUp();
+        boardhandler.openBuyArtifactPopUp();
     }
 
     @FXML
     void forageIngredientPopUp(ActionEvent event) {
-        mainPageHandler.forageIngredientPopUp();
+        boardhandler.forageIngredientPopUp();
     }
 
 
     @FXML
     void useArtifactPopUp(ActionEvent event) {
-        mainPageHandler.openUseArtifacy();
+        boardhandler.openUseArtifacy();
     }
 
     @FXML
     void pausePopUp(ActionEvent event) {
-        mainPageHandler.openPausePopUp();
+        boardhandler.openPausePopUp();
     }
 
     @FXML
     void helpPopUp(ActionEvent event) {
-        mainPageHandler.openHelpPopUp();
+        boardhandler.openHelpPopUp();
     }
 
     @FXML
     void sellPotionPopUp(ActionEvent event) {
-        mainPageHandler.openSellPotion();
+        boardhandler.openSellPotion();
     }
     @FXML
     public void changeRound() {
@@ -157,8 +159,34 @@ public class BoardController {
             throw new IllegalArgumentException("Invalid player number");
         }
     }
+    
+    @FXML
+    public void setActionPoint(Integer player, Integer actionPoint) {
+        if (player == 1) {
+            alchemist1ActionPointTextField.setText(Integer.toString(actionPoint));
+        } else if (player == 2) {
+            alchemist2ActionPointTextField.setText(Integer.toString(actionPoint));
+        } else{
+            throw new IllegalArgumentException("Invalid player number");
+        }
+    }
+
+    @FXML
+    public void endTheRound() {
+        boardhandler.endTheRound();
+    }
 
     public BoardController() {
-        mainPageHandler = new BoardHandler();
+        boardhandler = new BoardHandler();
+    }
+    
+    @FXML
+    public void initialize() {
+        alchemist1GoldTextField.setText("10");
+        alchemist1ReputationTextField.setText("0");
+        alchemist2GoldTextField.setText("10");
+        alchemist2ReputationTextField.setText("0");
+        alchemist1ActionPointTextField.setText("3");
+        alchemist2ActionPointTextField.setText("3");
     }
 }
