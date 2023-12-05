@@ -13,6 +13,8 @@ public class Player {
     private ArrayList<Theory> publishedTheories;
     private DeductionBoard playersDeductionBoard;
 
+    private String name;
+
     public Player(){
         this.playerInventory = new Inventory(this);
         this.gold = 0;
@@ -21,6 +23,17 @@ public class Player {
         this.reputation = 0;
         this.publishedTheories = new ArrayList<>();
         this.playersDeductionBoard = new DeductionBoard();
+    }
+
+    public Player(String name){
+        this.playerInventory = new Inventory(this);
+        this.gold = 0;
+        this.status = "Healthy"; // Default status
+        this.sicknessLevel = 0;
+        this.reputation = 0;
+        this.publishedTheories = new ArrayList<>();
+        this.playersDeductionBoard = new DeductionBoard();
+        this.name = name;
     }
     // Getters and Setters
     public Inventory getPlayerInventory() {
@@ -85,5 +98,9 @@ public class Player {
 
     public void setPublishedTheories(ArrayList<Theory> publishedTheories) {
         this.publishedTheories = publishedTheories;
+    }
+
+    public String getName() {
+        return name;
     }
 }
