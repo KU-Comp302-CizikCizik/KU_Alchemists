@@ -13,11 +13,11 @@ public class InventoryStorageController {
     @FXML
     private GridPane cardContainer;
 
-    private final IngredientStorageHandler ingredientStorageService = new IngredientStorageHandler();
+    private final IngredientStorageHandler ingredientStorageHandler = new IngredientStorageHandler();
 
     @FXML
     private void initialize() {
-        List<String> cards = ingredientStorageService.handleGetIngredientList();
+        List<String> cards = ingredientStorageHandler.handleGetIngredientList();
         int column = 0;
         int row = 0;
         try {
