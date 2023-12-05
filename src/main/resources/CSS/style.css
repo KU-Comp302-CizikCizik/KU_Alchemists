@@ -12,8 +12,8 @@
     -fx-background-size: contain;
     -fx-background-position: center center;
 }
-.mypane {
-    -fx-background-image: url("../com.KUAlchemists/images/InventoryStorage(2).jpg");
+.mypane{
+   -fx-background-image: url("../com.KUAlchemists/images/InventoryStorage(2).jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: contain;
     -fx-background-position: right bottom;

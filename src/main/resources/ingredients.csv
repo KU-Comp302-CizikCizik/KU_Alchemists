@@ -1,0 +1,5 @@
+Frostleaf,100,A leaf covered in frost,HERB,POSITIVE_BIG,NEGATIVE_BIG,NEGATIVE_SMALL
+Moonstone,200,A rare mineral that shines like moonlight,MINERAL,POSITIVE_BIG,NEGATIVE_BIG,NEGATIVE_SMALL
+Dragon's Breath,300,A spicy mushroom with a fiery taste,MUSHROOM,NEGATIVE_BIG,POSITIVE_SMALL,NEGATIVE_SMALL
+Sunflower,50,A bright and sunny flower,HERB,POSITIVE_SMALL,POSITIVE_BIG,NEGATIVE_BIG
+Crystal Shard,150,A shard of pure crystal,MINERAL,POSITIVE_SMALL,NEGATIVE_BIG,POSITIVE_BIG
