@@ -6,6 +6,12 @@
     -fx-border-radius: 50;
 }
 
+.BoardPane {
+    -fx-background-image: url("../com.KUAlchemists/images/Board.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
 .mypane{
    -fx-background-image: url("../com.KUAlchemists/images/InventoryStorage(2).jpg");
     -fx-background-repeat: stretch;
@@ -20,4 +26,11 @@
     height: 262px;
     overflow: auto;
     overflow-x: hidden;
+}
+
+.redATextField {
+    -fx-text-fill: rgba(142, 6, 6, 1);
+}
+.blueATextField {
+    -fx-text-fill: #3a7caf;
 }
