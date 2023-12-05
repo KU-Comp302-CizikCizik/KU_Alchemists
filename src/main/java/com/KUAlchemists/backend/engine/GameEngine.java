@@ -1,8 +1,5 @@
 package com.KUAlchemists.backend.engine;
 
-import com.KUAlchemists.backend.enums.Gamestate;
-import com.KUAlchemists.backend.managers.SceneManager;
-import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 
 import java.util.ArrayList;
@@ -10,7 +7,7 @@ import java.util.ArrayList;
 public class GameEngine {
 
     // singleton instance
-    public static GameEngine Instance;
+    public static GameEngine INSTANCE;
 
     // player list
     private static final ArrayList<Player> playerList = new ArrayList<>();
@@ -21,16 +18,12 @@ public class GameEngine {
     // current player index
     private static int currentPlayerIndex = 0;
 
-    private static final Board board = Board.getInstance();
 
     /**
      * Constructor for GameEngine
      */
     private GameEngine(){
-        Player player1 = new Player();
-        Player player2 = new Player();
-        playerList.add(player1);
-        playerList.add(player2);
+
     }
 
     /**
@@ -38,19 +31,12 @@ public class GameEngine {
      * @return the singleton instance of GameEngine
      */
     public static GameEngine getInstance(){
-        if(Instance == null){
-            Instance = new GameEngine();
+        if(INSTANCE == null){
+            INSTANCE = new GameEngine();
         }
-        return Instance;
+        return INSTANCE;
     }
 
-    /**
-     * Update the game state
-     * @param gamestate the game state to be updated
-     */
-    public void updateGameState(Gamestate gamestate){
-        SceneManager.getInstance().changeScene(gamestate);
-    }
 
     /**
      * Add a player to the player list
