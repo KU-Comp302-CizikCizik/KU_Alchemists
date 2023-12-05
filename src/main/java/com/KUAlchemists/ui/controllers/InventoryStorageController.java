@@ -7,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-import java.awt.*;
 import java.util.List;
 
 public class InventoryStorageController {
