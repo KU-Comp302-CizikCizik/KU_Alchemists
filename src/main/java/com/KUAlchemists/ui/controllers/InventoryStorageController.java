@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.IngredientStorageHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,17 +8,18 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryStorageController {
     @FXML
     private GridPane cardContainer;
 
-    private final IngredientStorageHandler ingredientStorageHandler = new IngredientStorageHandler();
 
     @FXML
     private void initialize() {
-        List<String> cards = ingredientStorageHandler.handleGetIngredientList();
+
+        List<String> cards = IngredientStorageHandler.getInstance().handleGetIngredientList(GameEngine.getInstance().getCurrentPlayer());
         int column = 0;
         int row = 0;
         try {

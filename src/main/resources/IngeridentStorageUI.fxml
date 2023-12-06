@@ -10,9 +10,9 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="mypane" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.InventoryStorageController">
    <children>
-      <Text fill="#f5dc6a" layoutX="35.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" wrappingWidth="301.888916015625" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="23.6025390625">
+      <Text fill="#f5dc6a" layoutX="35.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Storage" wrappingWidth="301.888916015625" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="23.6025390625">
          <font>
-            <Font name="Bookman Old Style" size="62.0" />
+            <Font name="Bookman Old Style" size="40.0" />
          </font>
       </Text>
       <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="28.0" layoutY="118.0" prefHeight="262.0" prefWidth="440.0" style="-fx-background-color: #12232bd9; -fx-border-color: #12232bd9;" styleClass="scroll" stylesheets="@CSS/style.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="118.0">

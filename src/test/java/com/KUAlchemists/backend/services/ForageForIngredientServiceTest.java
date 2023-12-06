@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.services;
 
+
 import com.KUAlchemists.backend.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,8 @@ class ForageForIngredientServiceTest {
         Board.getInstance().createEmptyStoragesForPlayer(player); // Ensure storage is created for the player
         Board.getInstance().getIngredientStorages().put(player, ingredientStorage); // Explicitly add the storage
 
-        service = new ForageForIngredientService(player);
+
+        service = new ForageForIngredientService();
     }
 
     @Test
@@ -42,8 +44,8 @@ class ForageForIngredientServiceTest {
         //when(deck.drawIngredient()).thenReturn(mockedIngredient);
 
         // Act
-        service.forageForIngredient();
-        String name = ingredientStorage.getIngredientsList().get(0).getName();
+        service.forageForIngredient(player);
+        String name = Board.getInstance().getIngredientStorage(player).getIngredientsList().get(0).getName();
         if (name.equals("Frostleaf") ||
             name.equals("Moonstone") ||
             name.equals("Dragon's Breath") ||

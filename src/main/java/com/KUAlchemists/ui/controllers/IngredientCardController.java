@@ -37,8 +37,7 @@ public class IngredientCardController {
     @FXML
     void sellButtonActivated(ActionEvent event) {
         //TO-DO: sell button should be implemented
-        IngredientStorageHandler ingredientStorageHandler= new IngredientStorageHandler();
-        ingredientStorageHandler.handleTransmuteIngredient(ingredient);
+        IngredientStorageHandler.getInstance().handleTransmuteIngredient(ingredient);
 
         //TO-DO: refresh the ingredient storage or close the window
 

@@ -5,6 +5,9 @@ import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.models.Alchemical;
 import com.KUAlchemists.backend.models.Ingredient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Handles the business logic for publishing and endorsing theories in the game.
  */
@@ -34,15 +37,9 @@ public class PublicationService {
         Aspect blueAspect = Aspect.fromString(predictedBlueAspectString);
 
         Alchemical predictedAlchemical = new Alchemical(redAspect, greenAspect, blueAspect);
-
         Ingredient ingredient = ingredientService.findIngredientByName(ingredientName);
-
-
-
-
         // Create a new theory with the found ingredient and alchemical
         Theory theory = new Theory(ingredient, predictedAlchemical);
-
 
         if (!theory.isPublished() && player.getGold() >= 1) { // Check if the theory is not already published and the player has enough gold
             playerService.updatePlayerGold(player.getName(), player.getGold()-1);
@@ -59,5 +56,21 @@ public class PublicationService {
         }
         return false;
     }
+
+    public String getPublishedTheoriesInfo(Player player){
+        List<Theory> publishedTheories = player.getPublishedTheories();
+        String info = "";
+        for (int i = 0; i < publishedTheories.size(); i++) {
+            info += publishedTheories.get(i).getIngredient().getName() +
+                    " " + publishedTheories.get(i).getPredictedAlchemical().getRedAspect().toString() +
+                    " " + publishedTheories.get(i).getPredictedAlchemical().getGreenAspect().toString() +
+                    " " + publishedTheories.get(i).getPredictedAlchemical().getBlueAspect().toString() +
+                    "\n";
+        }
+        return info;
+    }
+
+
+
 }
 
