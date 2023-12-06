@@ -34,13 +34,7 @@ public class Deck {
                 int value = Integer.parseInt(parts[1]);
                 String description = parts[2];
                 IngredientType type = IngredientType.valueOf(parts[3]);
-                Aspect redAspect = Aspect.valueOf(parts[4]);
-                Aspect greenAspect = Aspect.valueOf(parts[5]);
-                Aspect blueeAspect = Aspect.valueOf(parts[6]);
-                // Assuming that Alchemical can be derived from the name or other properties
-                Alchemical alchemical = new Alchemical(redAspect, greenAspect, blueeAspect);
                 Ingredient ingredient = new Ingredient(name, value, description, type);
-                ingredient.setAlchemical(alchemical);
                 ingredientsList.add(ingredient);
             }
         } catch (IOException e) {

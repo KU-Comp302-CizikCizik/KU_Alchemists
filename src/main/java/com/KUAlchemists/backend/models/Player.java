@@ -10,10 +10,9 @@ public class Player {
     private int sicknessLevel;
     private int reputation;
     private ArrayList<Theory> publishedTheories;
-    private DeductionBoard playersDeductionBoard;
+    private DeductionBoard deductionBoard;
 
     private String name;
-
 
 
     public Player(){
@@ -22,7 +21,7 @@ public class Player {
         this.sicknessLevel = 0;
         this.reputation = 0;
         this.publishedTheories = new ArrayList<>();
-        this.playersDeductionBoard = new DeductionBoard();
+        this.deductionBoard = new DeductionBoard();
     }
 
     public Player(String name){
@@ -31,7 +30,7 @@ public class Player {
         this.sicknessLevel = 0;
         this.reputation = 0;
         this.publishedTheories = new ArrayList<>();
-        this.playersDeductionBoard = new DeductionBoard();
+        this.deductionBoard = new DeductionBoard();
         this.name = name;
     }
 
@@ -75,12 +74,12 @@ public class Player {
         this.publishedTheories = (ArrayList<Theory>) publishedTheories;
     }
 
-    public DeductionBoard getPlayersDeductionBoard() {
-        return playersDeductionBoard;
+    public DeductionBoard getDeductionBoard() {
+        return deductionBoard;
     }
 
-    public void setPlayersDeductionBoard(DeductionBoard playersDeductionBoard) {
-        this.playersDeductionBoard = playersDeductionBoard;
+    public void setDeductionBoard(DeductionBoard deductionBoard) {
+        this.deductionBoard = deductionBoard;
     }
 
     public int getSickness_level() {

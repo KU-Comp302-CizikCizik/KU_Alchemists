@@ -1,12 +1,13 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Potion;
 import com.KUAlchemists.backend.observer.PotionBrewingObserver;
 import com.KUAlchemists.backend.services.DeductionBoardService;
 
+import java.util.HashMap;
+
 public class DeductionBoardHandler implements PotionBrewingObserver {
-
-
 
 
     private static DeductionBoardHandler instance;
@@ -17,21 +18,31 @@ public class DeductionBoardHandler implements PotionBrewingObserver {
     }
 
     public static DeductionBoardHandler getInstance() {
+        if (instance == null) {
+            instance = new DeductionBoardHandler();
+        }
         return instance;
     }
 
 
     @Override
     public void onPotionBrewingPerformed(Potion potion) {
-        String potionEffect = potion.getPotionEffect().toString();
-        String ingredient1name = potion.getIngredient1().getName();
-        String ingredient2name = potion.getIngredient2().getName();
-        String ingredientCode = ingredient1name + "_" + ingredient2name;
-        //give the potion effect as string, png file name
-        //ingredient1_name, png file name
-        //ingredient2_name, png file name
-        //ingredient1-name_ingredient2_name
+        String potionEffect = deductionBoardService.getPotionEffectString(potion);
+        String ingredientCode = deductionBoardService.getIngredientCode(potion);
+        GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().addMarkedIngredient(potionEffect, ingredientCode);
 
+    }
 
+    public void markAlchemical(String alchemicalName){
+        GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().addMarkedAlchemy(alchemicalName);
+
+    }
+
+    public void unmarkAlhemical(String alcemicalName){
+        GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().removeMarkedAlchemy(alcemicalName);
+    }
+
+    public HashMap<String, String> getMarkedIngredients(){
+        return GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().getMarkedIngredients();
     }
 }
