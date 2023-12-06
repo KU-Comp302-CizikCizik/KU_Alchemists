@@ -4,9 +4,17 @@ import com.KUAlchemists.backend.services.HelpScreenService;
 
 public class HelpScreenHandler {
 
+    public static HelpScreenHandler INSTANCE;
     private HelpScreenService service;
 
-    public HelpScreenHandler() {
+    public static HelpScreenHandler getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new HelpScreenHandler();
+        }
+        return INSTANCE;
+    }
+
+    private HelpScreenHandler() {
         this.service = new HelpScreenService();
     }
 

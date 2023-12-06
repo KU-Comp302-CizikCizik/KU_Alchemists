@@ -72,20 +72,6 @@ public class SceneLoader {
 
     public void loadHelpScreen(){
 
-        String propFileName = "helpContent.txt";
-
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream(propFileName){
-             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-
-            // Create an instance of HelpScreenService with the reader
-            HelpScreenService helpScreenService = new HelpScreenService(reader);
-
-            // Use the service
-            System.out.println(helpScreenService.getHelpContent());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 }
