@@ -16,27 +16,25 @@ public class MenuController {
     @FXML
     private Button rulesButton;
 
-    private final MenuHandler menuHandler;
 
     public MenuController() {
 
-        menuHandler = new MenuHandler();
     }
     @FXML
     void openRules(ActionEvent event) {
-        menuHandler.openRules();
+        MenuHandler.getInstance().openRules();
         System.out.println("Rules");
 
     }
 
     @FXML
     void openSettings(ActionEvent event) {
-        menuHandler.openSettings();
+        MenuHandler.getInstance().openSettings();
     }
 
     @FXML
     void startGame(ActionEvent event) {
-        menuHandler.startGame();
+        MenuHandler.getInstance().startGame();
     }
 
 }
