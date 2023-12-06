@@ -25,8 +25,8 @@ public class PotionBrewingAreaHandler {
     public void brewPotion(String ingredient1Name, String ingredient2Name) {
 
         //search for ingredient1 and ingredient2 in player inventory
-        Ingredient ingredient1 = IngredientStorageHandler.getInstance().handleGetIngredientByName(GameEngine.getInstance().getCurrentPlayer(),ingredient1Name);
-        Ingredient ingredient2 = IngredientStorageHandler.getInstance().handleGetIngredientByName(GameEngine.getInstance().getCurrentPlayer(),ingredient2Name);
+        Ingredient ingredient1 = IngredientStorageHandler.getInstance().handleGetIngredientByName(ingredient1Name);
+        Ingredient ingredient2 = IngredientStorageHandler.getInstance().handleGetIngredientByName(ingredient2Name);
 
         //brew the potion following the rules
         Potion potion = potionBrewingService.brewPotion(ingredient1,ingredient2);

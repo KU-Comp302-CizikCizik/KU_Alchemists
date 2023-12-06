@@ -37,7 +37,7 @@ class ForageForIngredientServiceTest {
 
         // Manually add the IngredientStorage to the Board's map for this player
         Board.getInstance().createEmptyStoragesForPlayer(player); // Ensure storage is created for the player
-        Board.getInstance().getIngredientStorages().put(player, ingredientStorage); // Explicitly add the storage
+        //Board.getInstance().getIngredientStorages().put(player, ingredientStorage); // Explicitly add the storage
 
         service = new ForageForIngredientService();
     }
@@ -49,8 +49,8 @@ class ForageForIngredientServiceTest {
         //when(deck.drawIngredient()).thenReturn(mockedIngredient);
 
         // Act
-        service.forageForIngredient(GameEngine.getInstance().getCurrentPlayer());
-        String name = ingredientStorage.getIngredientsList().get(0).getName();
+        service.forageForIngredient(player);
+        String name = Board.getInstance().getIngredientStorage(player).getIngredientsList().get(0).getName();
         if (name.equals("Frostleaf") ||
             name.equals("Moonstone") ||
             name.equals("Dragon's Breath") ||

@@ -27,8 +27,9 @@ public class IngredientStorageHandler {
     }
 
     public void handleRemoveIngredient(String ingredientName) {
+        Player player = GameEngine.getInstance().getCurrentPlayer();
         try {
-            service.removeIngredientFromStorage(GameEngine.getInstance().getCurrentPlayer(),ingredientName);
+            service.removeIngredientFromStorage(player,ingredientName);
             // Update UI with the ingredient details
         } catch (IllegalArgumentException e) {
             // Update UI with error message
@@ -36,15 +37,17 @@ public class IngredientStorageHandler {
     }
 
     public void handleAddIngredient(String ingredientName){
+        Player player = GameEngine.getInstance().getCurrentPlayer();
         try {
-            service.addIngredientToStorage(ingredientName);
+            service.addIngredientToStorage(player, ingredientName);
             // Update UI with the ingredient details
         } catch (IllegalArgumentException e) {
             // Update UI with error message
         }
     }
 
-    public Ingredient handleGetIngredientByName(Player player, String name){
+    public Ingredient handleGetIngredientByName(String name){
+        Player player = GameEngine.getInstance().getCurrentPlayer();
         try {
             return service.getIngredientByName(player,name);
             // Update UI with the ingredient details
@@ -55,8 +58,9 @@ public class IngredientStorageHandler {
     }
 
     public String handleGetIngredientDescription(String ingredientName) {
+        Player player = GameEngine.getInstance().getCurrentPlayer();
         try {
-            return service.getIngredientDescription(ingredientName);
+            return service.getIngredientDescription(player, ingredientName);
             // Update UI with the ingredient details
         } catch (IllegalArgumentException e) {
             return "Ingredient not found";
@@ -65,10 +69,10 @@ public class IngredientStorageHandler {
 
     }
 
-    public ArrayList<String> handleGetIngredientList() {
+    public ArrayList<String> handleGetIngredientList(Player player) {
         try {
             // Update UI with the ingredient list
-            return service.getIngredientsNameList();
+            return service.getIngredientsNameList(player);
         } catch (IllegalArgumentException e) {
             return null;
             // Update UI with error message
