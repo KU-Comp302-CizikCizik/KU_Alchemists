@@ -16,6 +16,7 @@ class PublicationHandlerTest {
     void setUp() {
         publicationService = mock(PublicationService.class);
         publicationHandler = new PublicationHandler(publicationService);
+
     }
 
     @Test

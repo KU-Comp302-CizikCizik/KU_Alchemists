@@ -15,6 +15,8 @@ public class Player {
 
     private String name;
 
+
+
     public Player(){
         this.playerInventory = new Inventory(this);
         this.gold = 0;

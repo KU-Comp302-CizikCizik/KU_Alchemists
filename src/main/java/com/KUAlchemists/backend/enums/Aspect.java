@@ -24,7 +24,6 @@ public enum Aspect {
 
     /**
      * Parses a string to find the corresponding Aspect enum constant.
-     *
      * @param str The string representation of the aspect, e.g., "POSITIVE_BIG".
      * @return The corresponding Aspect enum constant.
      * @throws IllegalArgumentException if the string does not match any Aspect.
