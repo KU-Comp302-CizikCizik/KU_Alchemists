@@ -2,12 +2,14 @@ package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.models.*;
 
+import java.util.ArrayList;
+
 public class BuyArtifactService {
 
     private ArtifactShop artifactShop;
 
-    public BuyArtifactService(ArtifactShop artifactShop) {
-        this.artifactShop = artifactShop;
+    public BuyArtifactService() {
+        this.artifactShop = new ArtifactShop();
     }
 
     /**

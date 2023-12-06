@@ -141,6 +141,8 @@ public class SceneLoader {
     }
 
     public void loadBuyArtifact(){
+        loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
+        /**
         root = UILoader.loadFXML(UIConstants.BUYARTIFACT_UI_FXML);
         Scene oldScene = MainApplicationUI.stage.getScene();
         MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
@@ -148,6 +150,7 @@ public class SceneLoader {
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
+            **/
     }
 
 
