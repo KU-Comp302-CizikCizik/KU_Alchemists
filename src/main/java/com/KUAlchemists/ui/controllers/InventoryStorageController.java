@@ -19,12 +19,16 @@ public class InventoryStorageController {
     @FXML
     private void initialize() {
         //error burda
-        //List<String> cards = ingredientStorageHandler.handleGetIngredientList();
+        List<String> cards = ingredientStorageHandler.handleGetIngredientList();
+        /*
+        ingredientstorageı test etmek için
         List<String> cards = new ArrayList<>();
         cards.add("mushroom");
         cards.add("mushroom");
         cards.add("frog");
         cards.add("frog");
+                */
+
         int column = 0;
         int row = 0;
         try {
