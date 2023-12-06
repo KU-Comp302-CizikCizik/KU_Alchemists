@@ -1,6 +1,6 @@
 package com.KUAlchemists.ui;
 
-import com.KUAlchemists.ui.controllers.UseArtifactController;
+import com.KUAlchemists.ui.controllers.BuyArtifactController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,16 +12,17 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class testUseArtifact extends Application {
+public class testBuyArtifact extends Application {
 
 
     public static void main(String[] args) {
-        Application.launch(UseArtifactUI.class);
+        Application.launch(BuyArtifactUI.class);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load properties from config.properties
+
         Properties prop = new Properties();
         InputStream inputStream = null;
         String propFileName = "config.properties";
@@ -33,9 +34,9 @@ public class testUseArtifact extends Application {
         }
 
         // Load the FXML file
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("UseArtifactUI.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("BuyArtifactUI.fxml"));
         VBox cardBox = fxmlLoader.load();
-        UseArtifactController controller = fxmlLoader.getController();
+        BuyArtifactController controller = fxmlLoader.getController();
 //        controller.setIngredientCard("mushroom-ingredient.jpg");
 
         fxmlLoader.setRoot(new BorderPane());
