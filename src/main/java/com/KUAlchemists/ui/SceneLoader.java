@@ -81,4 +81,13 @@ public class SceneLoader {
 
     }
 
+    public void loadBoard() {
+        root = UILoader.loadFXML(UIConstants.BOARD_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.GAME_WINDOW_WIDTH, UIConstants.GAME_WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.show();
+
+    }
 }
