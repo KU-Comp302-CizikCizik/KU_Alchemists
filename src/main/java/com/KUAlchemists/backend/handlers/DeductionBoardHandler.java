@@ -6,6 +6,7 @@ import com.KUAlchemists.backend.observer.PotionBrewingObserver;
 import com.KUAlchemists.backend.services.DeductionBoardService;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class DeductionBoardHandler implements PotionBrewingObserver {
 
@@ -44,5 +45,9 @@ public class DeductionBoardHandler implements PotionBrewingObserver {
 
     public HashMap<String, String> getMarkedIngredients(){
         return GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().getMarkedIngredients();
+    }
+
+    public List<String> getMarkedAlchemicals(){
+        return GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().getMarkedAlchemicals();
     }
 }

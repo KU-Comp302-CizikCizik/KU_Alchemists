@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class DeductionBoard {
 
@@ -38,5 +39,9 @@ public class DeductionBoard {
 
     public void removeMarkedAlchemy(String alchemicalName) {
         markedAlchemicals.remove(alchemicalName);
+    }
+
+    public List<String> getMarkedAlchemicals() {
+        return markedAlchemicals;
     }
 }
