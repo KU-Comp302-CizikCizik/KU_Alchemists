@@ -4,6 +4,7 @@ package com.KUAlchemists.backend.enums;
  * This enum represents the different states of the game.
  */
 public enum Gamestate {
+    HELP,
 
     LOGIN,
     MENU,
@@ -16,5 +17,6 @@ public enum Gamestate {
     DEBUNK,
     GAME_LOG,
     ENDGAME;
+
 
 }

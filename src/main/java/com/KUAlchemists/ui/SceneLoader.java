@@ -33,7 +33,14 @@ public class SceneLoader {
         MainApplicationUI.stage.show();
 
     }
-
+public void loadHelpScreen(){
+    root = UILoader.loadFXML(UIConstants.HELP_SCREEN_FXML);
+    Scene oldScene = MainApplicationUI.stage.getScene();
+    MainApplicationUI.scene = new Scene(root, UIConstants.GAME_WINDOW_WIDTH_HELP_SCREEN, UIConstants.GAME_WINDOW_HEIGHT_HELP_SCREEN);
+    MainApplicationUI.stage = (Stage) oldScene.getWindow();
+    MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+    MainApplicationUI.stage.show();
+}
 
 
     public void loadLogin() {

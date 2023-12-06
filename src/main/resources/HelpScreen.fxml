@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="453.0" style="-fx-background-color: #300900;" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HelpScreenController">
+   <children>
+      <ImageView fitHeight="453.0" fitWidth="594.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/table_of_alchemist,_messy,_drawing_style.png" />
+         </image>
+      </ImageView>
+      <Button id="back_button" fx:id="back_button" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back_button_clicled" prefHeight="23.0" prefWidth="37.0" style="-fx-background-color: #300900;" text="&lt;--" textFill="WHITE" />
+      <ScrollPane layoutX="61.0" layoutY="42.0" prefHeight="343.0" prefWidth="334.0" style="-fx-background-color: #300900;">
+         <content>
+            <VBox prefHeight="344.0" prefWidth="421.0" style="-fx-background-color: #300900;">
+               <children>
+                  <Text fill="#eeeeee" strokeType="OUTSIDE" strokeWidth="0.0" text="Deduction Board:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="You can use deduction board for the mark you guesses and see the alchemy of the certain combinations" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Forage Ingredient:" wrappingWidth="130.400390625">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="You can get a ingredient card by clicking to the forage ingredient" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Publication Track:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#f5f5f5" strokeType="OUTSIDE" strokeWidth="0.0" text="You can create, endorse or debunk a theory" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Potion Brewing:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="You can create a potion by mixing two potions" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pause/Resume:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="You can pause or resume game from here" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Store:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="You can see you ingredients from here" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Buy Artifact:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="You can use artifact from here" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sell Potion:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="You can sell potion from here" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</fx:root>

@@ -28,6 +28,8 @@ public class SceneManager {
 
     public void changeScene(Gamestate to) {
         switch (to) {
+            case HELP:
+                sceneLoader.loadHelpScreen();
             case DEDUCTION:
                 sceneLoader.loadDeductionBoard();
             case LOGIN:

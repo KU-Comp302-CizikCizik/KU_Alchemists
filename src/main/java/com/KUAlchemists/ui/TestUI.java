@@ -29,11 +29,11 @@ public class TestUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Properties prop = new Properties();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("deductionboard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("HelpScreen.fxml"));
 
        // DeductionBoardController.setProperties(prop);
         primaryStage.setTitle("KU Alchemists");
-        primaryStage.setScene(new Scene(root, 966, 807));
+        primaryStage.setScene(new Scene(root, 453, 453));
         primaryStage.show();
     }
 }
