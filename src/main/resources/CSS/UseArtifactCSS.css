@@ -1,0 +1,31 @@
+
+.artifact_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/card_background.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.artifact_photo_frame {
+    -fx-background-size: cover;
+    -fx-background-repeat: stretch;
+}
+
+.use_button{
+    -fx-fill: #db9e42;
+}
+
+#elixir_of_insight_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/elixir_of_insight.png");
+}
+#compass_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/compass_artifact.png");
+}
+#bargain_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/money_purse.png");
+}
+
+#body{
+    -fx-background-image: url("../com.KUAlchemists/images/use_artifact_background.PNG");
+    -fx-background-size: cover;
+    -fx-background-repeat: stretch;
+}
