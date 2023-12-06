@@ -2,7 +2,6 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -16,6 +15,8 @@ public class Board {
     private static final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
     //private static final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
     //private static final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
+
+    private static final Deck deck = Deck.getInstance();
 
     private Board (){
         // create empty storages for players // if we have 2 players, otherwise we need to change this
@@ -39,6 +40,22 @@ public class Board {
     public static IngredientStorage getIngredientStorage(Player player){
         return ingredientStorages.get(player);
     }
+
+    public static IngredientStorage getIngredientStorage(String playerName){
+        return ingredientStorages.get(GameEngine.getInstance().getPlayer(playerName));
+    }
+
+    public static HashMap<Player, IngredientStorage> getIngredientStorages(){
+        return ingredientStorages;
+    }
+
+    public static Deck getDeck(){
+        return deck;
+    }
+
+
+
+
 
 
 
