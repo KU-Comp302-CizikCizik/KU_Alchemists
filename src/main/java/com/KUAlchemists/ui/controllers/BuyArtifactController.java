@@ -32,6 +32,7 @@ public class BuyArtifactController {
 
 
     public void useArtifacts(){
+
         selectedArtifacts.clear();
         if(is_eoi_selected)
             selectedArtifacts.add("elixir_of_insight");
