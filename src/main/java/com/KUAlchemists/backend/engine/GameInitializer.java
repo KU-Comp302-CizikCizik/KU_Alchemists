@@ -38,7 +38,7 @@ public class GameInitializer {
         Player player2 = new Player();
         GameEngine.getInstance().addPlayer(player1);
         GameEngine.getInstance().addPlayer(player2);
-
+        GameEngine.getInstance().setCurrentPlayer(player1);
     }
 
     private void initPlayerAssets() {
