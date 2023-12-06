@@ -11,8 +11,8 @@ public class BuyArtifactHandler {
 
     private final BuyArtifactService buyArtifactService;
 
-    public BuyArtifactHandler(BuyArtifactService buyArtifactService) {
-        this.buyArtifactService = buyArtifactService;
+    public BuyArtifactHandler() {
+        this.buyArtifactService = new BuyArtifactService();
     }
 
     /**
