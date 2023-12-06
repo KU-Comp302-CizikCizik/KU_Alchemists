@@ -4,7 +4,7 @@ import com.KUAlchemists.backend.models.*;
 import com.KUAlchemists.backend.enums.Aspect;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -12,12 +12,14 @@ class PublicationServiceTest {
 
     private PublicationService publicationService;
     private IngredientService ingredientService; // Mocked dependency
+    private PlayerService playerService;
+
     private Player player; // Mocked dependency
 
     @BeforeEach
     void setUp() {
         ingredientService = mock(IngredientService.class);
-        publicationService = new PublicationService(ingredientService);
+        publicationService = new PublicationService(ingredientService, playerService);
         player = mock(Player.class);
     }
 
