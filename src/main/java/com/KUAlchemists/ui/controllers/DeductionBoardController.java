@@ -333,6 +333,7 @@ public class DeductionBoardController {
 
     @FXML
     private void initialize() {
+        /*
         DeductionBoardHandler handler = new DeductionBoardHandler();
         HashMap<String,String> circleList = handler.getCircleList();
 
@@ -345,6 +346,8 @@ public class DeductionBoardController {
         for (String alchemy : alchemyList) {
             updateAlchemyByName(alchemy);
         }
+
+         */
 
     }
 
@@ -391,7 +394,7 @@ public class DeductionBoardController {
     void setCircle(MouseEvent event) {
 
        /* System.out.println("a");
-        Image image = new Image(getClass().getClassLoader().getResourceAsStream("com.KUAlchemists/images/alchemy/green_minus.png"));
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream("com.KUAlchemists/images/alchemy/PARALYSIS.png"));
         circle_1.setImage(image);*/
     }
 }
