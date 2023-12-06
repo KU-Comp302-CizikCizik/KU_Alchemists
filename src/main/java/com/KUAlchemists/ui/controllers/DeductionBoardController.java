@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -295,32 +296,30 @@ public class DeductionBoardController {
     @FXML
     private ImageView scorpion_feather;
 
+    private ArrayList<ImageView> alchemies;
+
+    public DeductionBoardController(){
+
+    }
+
     @FXML
     void alchemyClicked(MouseEvent event) {
-       ArrayList<ImageView> alchemies= new ArrayList<ImageView>();
-       alchemies.add(alchemy_1_1);alchemies.add(alchemy_1_2);alchemies.add(alchemy_1_3);alchemies.add(alchemy_1_4);alchemies.add(alchemy_1_5);alchemies.add(alchemy_1_6);alchemies.add(alchemy_1_7);alchemies.add(alchemy_1_8);
-        alchemies.add(alchemy_2_1);alchemies.add(alchemy_2_2);alchemies.add(alchemy_2_3);alchemies.add(alchemy_2_4);alchemies.add(alchemy_2_5);alchemies.add(alchemy_2_6);alchemies.add(alchemy_2_7);alchemies.add(alchemy_2_8);
-        alchemies.add(alchemy_3_1);alchemies.add(alchemy_3_2);alchemies.add(alchemy_3_3);alchemies.add(alchemy_3_4);alchemies.add(alchemy_3_5);alchemies.add(alchemy_3_6);alchemies.add(alchemy_3_7);alchemies.add(alchemy_3_8);
-        alchemies.add(alchemy_4_1);alchemies.add(alchemy_4_2);alchemies.add(alchemy_4_3);alchemies.add(alchemy_4_4);alchemies.add(alchemy_4_5);alchemies.add(alchemy_4_6);alchemies.add(alchemy_4_7);alchemies.add(alchemy_4_8);
-        alchemies.add(alchemy_5_1);alchemies.add(alchemy_5_2);alchemies.add(alchemy_5_3);alchemies.add(alchemy_5_4);alchemies.add(alchemy_5_5);alchemies.add(alchemy_5_6);alchemies.add(alchemy_5_7);alchemies.add(alchemy_5_8);
-        alchemies.add(alchemy_6_1);alchemies.add(alchemy_6_2);alchemies.add(alchemy_6_3);alchemies.add(alchemy_6_4);alchemies.add(alchemy_6_5);alchemies.add(alchemy_6_6);alchemies.add(alchemy_6_7);alchemies.add(alchemy_6_8);
-        alchemies.add(alchemy_7_1);alchemies.add(alchemy_7_2);alchemies.add(alchemy_7_3);alchemies.add(alchemy_7_4);alchemies.add(alchemy_7_5);alchemies.add(alchemy_7_6);alchemies.add(alchemy_7_7);alchemies.add(alchemy_7_8);
-        alchemies.add(alchemy_8_1);alchemies.add(alchemy_8_2);alchemies.add(alchemy_8_3);alchemies.add(alchemy_8_4);alchemies.add(alchemy_8_5);alchemies.add(alchemy_8_6);alchemies.add(alchemy_8_7);alchemies.add(alchemy_8_8);
-
-
 
         String alchemy_id = new String(event.toString());
-        //toString bilgisinden alchemy nin column_row unu buluoruz
         String alchemy_column=alchemy_id.substring(alchemy_id.indexOf("alchemy")+8,alchemy_id.indexOf("alchemy")+9);
         String alchemy_row=alchemy_id.substring(alchemy_id.indexOf("alchemy")+10,alchemy_id.indexOf("alchemy")+11);
         String alchemy_made="alchemy_"+alchemy_column+"_"+alchemy_row;
-        System.out.println(alchemy_made);
-        //then we gonna find the corresponding alchemy via loop
         for (int i = 0; i < 63; i++) {
 
             if(alchemies.get(i).getId().equals(alchemy_made)){
-                Glow selectGlow = new Glow(1.7f);
-                alchemies.get(i).setEffect(selectGlow);
+                if(alchemies.get(i).getEffect() == null){
+                    Glow selectGlow = new Glow(1.7f);
+                    alchemies.get(i).setEffect(selectGlow);
+                }
+                else{
+                    alchemies.get(i).setEffect(null);
+                }
+                DeductionBoardHandler.getInstance().markAlchemical(alchemy_made);
             }
         }
 
@@ -333,21 +332,26 @@ public class DeductionBoardController {
 
     @FXML
     private void initialize() {
-        /*
-        DeductionBoardHandler handler = new DeductionBoardHandler();
-        HashMap<String,String> circleList = handler.getCircleList();
+        alchemies = new ArrayList<ImageView>();
+        alchemies.add(alchemy_1_1);alchemies.add(alchemy_1_2);alchemies.add(alchemy_1_3);alchemies.add(alchemy_1_4);alchemies.add(alchemy_1_5);alchemies.add(alchemy_1_6);alchemies.add(alchemy_1_7);alchemies.add(alchemy_1_8);
+        alchemies.add(alchemy_2_1);alchemies.add(alchemy_2_2);alchemies.add(alchemy_2_3);alchemies.add(alchemy_2_4);alchemies.add(alchemy_2_5);alchemies.add(alchemy_2_6);alchemies.add(alchemy_2_7);alchemies.add(alchemy_2_8);
+        alchemies.add(alchemy_3_1);alchemies.add(alchemy_3_2);alchemies.add(alchemy_3_3);alchemies.add(alchemy_3_4);alchemies.add(alchemy_3_5);alchemies.add(alchemy_3_6);alchemies.add(alchemy_3_7);alchemies.add(alchemy_3_8);
+        alchemies.add(alchemy_4_1);alchemies.add(alchemy_4_2);alchemies.add(alchemy_4_3);alchemies.add(alchemy_4_4);alchemies.add(alchemy_4_5);alchemies.add(alchemy_4_6);alchemies.add(alchemy_4_7);alchemies.add(alchemy_4_8);
+        alchemies.add(alchemy_5_1);alchemies.add(alchemy_5_2);alchemies.add(alchemy_5_3);alchemies.add(alchemy_5_4);alchemies.add(alchemy_5_5);alchemies.add(alchemy_5_6);alchemies.add(alchemy_5_7);alchemies.add(alchemy_5_8);
+        alchemies.add(alchemy_6_1);alchemies.add(alchemy_6_2);alchemies.add(alchemy_6_3);alchemies.add(alchemy_6_4);alchemies.add(alchemy_6_5);alchemies.add(alchemy_6_6);alchemies.add(alchemy_6_7);alchemies.add(alchemy_6_8);
+        alchemies.add(alchemy_7_1);alchemies.add(alchemy_7_2);alchemies.add(alchemy_7_3);alchemies.add(alchemy_7_4);alchemies.add(alchemy_7_5);alchemies.add(alchemy_7_6);alchemies.add(alchemy_7_7);alchemies.add(alchemy_7_8);
+        alchemies.add(alchemy_8_1);alchemies.add(alchemy_8_2);alchemies.add(alchemy_8_3);alchemies.add(alchemy_8_4);alchemies.add(alchemy_8_5);alchemies.add(alchemy_8_6);alchemies.add(alchemy_8_7);alchemies.add(alchemy_8_8);
 
-        //loop through the circleList
-        for (String key : circleList.keySet()) {
-            updateImageByName(key, circleList.get(key));
+        ArrayList<String> markedAlchemicals = DeductionBoardHandler.getInstance().getMarkedAlchemicals();
+        HashMap<String, String> markedIngredients = DeductionBoardHandler.getInstance().getMarkedIngredients();
+
+        for(String key: markedIngredients.keySet()){
+            updateImageByName(key, markedIngredients.get(key));
         }
 
-        List<String> alchemyList = handler.getAlchemyList();
-        for (String alchemy : alchemyList) {
+        for (String alchemy : markedAlchemicals) {
             updateAlchemyByName(alchemy);
         }
-
-         */
 
     }
 

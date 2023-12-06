@@ -47,7 +47,7 @@ public class DeductionBoardHandler implements PotionBrewingObserver {
         return GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().getMarkedIngredients();
     }
 
-    public List<String> getMarkedAlchemicals() {
+    public ArrayList<String> getMarkedAlchemicals() {
         return GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().getMarkedAlchemicals();
 
     }
