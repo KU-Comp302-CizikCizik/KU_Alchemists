@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.engine;
 
 import com.KUAlchemists.backend.exceptions.GameInitializationException;
+import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.managers.StateManager;
 import com.KUAlchemists.backend.models.Player;
@@ -26,18 +27,43 @@ public class GameInitializer {
     private void initGame() {
         initStateObservers();
         initGameObjects();
+        initPlayerAssets();
+        initAlchemicalOfIngredients();
+        initDeductionBoard();
     }
+
 
     private void initGameObjects() {
         Player player1 = new Player();
         Player player2 = new Player();
         GameEngine.getInstance().addPlayer(player1);
         GameEngine.getInstance().addPlayer(player2);
+        GameEngine.getInstance().setCurrentPlayer(player1);
+    }
+
+    private void initPlayerAssets() {
+        for(Player player : GameEngine.getInstance().getPlayerList()){
+            player.setGold(10);
+            ForageForIngredientHandler.getInstance().forageForIngredient(player);
+            ForageForIngredientHandler.getInstance().forageForIngredient(player);
+        }
 
     }
 
+
     private void initStateObservers() {
         StateManager.getInstance().registerStateObserver(SceneManager.getInstance());
+    }
+
+
+    private void initAlchemicalOfIngredients() {
+
+
+
+    }
+
+
+    private void initDeductionBoard(){
 
 
     }

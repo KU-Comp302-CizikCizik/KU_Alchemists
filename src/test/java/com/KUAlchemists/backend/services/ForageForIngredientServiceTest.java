@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.services;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Ingredient;
@@ -35,10 +36,10 @@ class ForageForIngredientServiceTest {
         player = new Player(playerName);
 
         // Manually add the IngredientStorage to the Board's map for this player
-        Board.createEmptyStoragesForPlayer(player); // Ensure storage is created for the player
-        Board.getIngredientStorages().put(player, ingredientStorage); // Explicitly add the storage
+        Board.getInstance().createEmptyStoragesForPlayer(player); // Ensure storage is created for the player
+        //Board.getInstance().getIngredientStorages().put(player, ingredientStorage); // Explicitly add the storage
 
-        service = new ForageForIngredientService(player);
+        service = new ForageForIngredientService();
     }
 
     @Test
@@ -48,8 +49,8 @@ class ForageForIngredientServiceTest {
         //when(deck.drawIngredient()).thenReturn(mockedIngredient);
 
         // Act
-        service.forageForIngredient();
-        String name = ingredientStorage.getIngredientsList().get(0).getName();
+        service.forageForIngredient(player);
+        String name = Board.getInstance().getIngredientStorage(player).getIngredientsList().get(0).getName();
         if (name.equals("Frostleaf") ||
             name.equals("Moonstone") ||
             name.equals("Dragon's Breath") ||

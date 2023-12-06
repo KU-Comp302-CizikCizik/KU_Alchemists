@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.services.PotionBrewingService;
 import com.KUAlchemists.backend.models.Potion;
@@ -22,21 +24,24 @@ public class PotionBrewingAreaHandler {
      */
     public void brewPotion(String ingredient1Name, String ingredient2Name) {
 
-        //TO:DO better way to handle this instead of strings ??
-
         //search for ingredient1 and ingredient2 in player inventory
-        Ingredient ingredient1 = GameEngine.getCurrentPlayer().getPlayerInventory().getIngredientWithName(ingredient1Name);
-        Ingredient ingredient2 = GameEngine.getCurrentPlayer().getPlayerInventory().getIngredientWithName(ingredient2Name);
+        Ingredient ingredient1 = IngredientStorageHandler.getInstance().handleGetIngredientByName(ingredient1Name);
+        Ingredient ingredient2 = IngredientStorageHandler.getInstance().handleGetIngredientByName(ingredient2Name);
 
         //brew the potion following the rules
         Potion potion = potionBrewingService.brewPotion(ingredient1,ingredient2);
 
         //add the potion to the player inventory
-        GameEngine.getCurrentPlayer().getPlayerInventory().addPotion(potion);
+        PotionStorageHandler.getInstance().handleAddPotion(potion);
 
         //remove the ingredients from the player inventory
-        GameEngine.getCurrentPlayer().getPlayerInventory().removeIngredient(ingredient1);
-        GameEngine.getCurrentPlayer().getPlayerInventory().removeIngredient(ingredient2);
+        IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient1Name);
+        IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient2Name);
+
+        //add the ingredients back to the deck
+        Deck.getInstance().addIngredient(ingredient1);
+        Deck.getInstance().addIngredient(ingredient2);
+
 
     }
 

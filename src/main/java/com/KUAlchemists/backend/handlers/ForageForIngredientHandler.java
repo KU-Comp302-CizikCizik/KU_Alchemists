@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.ForageForIngredientService;
 
 /**
@@ -8,13 +9,25 @@ import com.KUAlchemists.backend.services.ForageForIngredientService;
  */
 public class ForageForIngredientHandler {
 
+        public static ForageForIngredientHandler INSTANCE;
+
+        public static ForageForIngredientHandler getInstance(){
+                if(INSTANCE == null){
+                        INSTANCE = new ForageForIngredientHandler();
+                }
+                return INSTANCE;
+        }
         private final ForageForIngredientService forageForIngredientService;
-        public ForageForIngredientHandler() {
-                forageForIngredientService = new ForageForIngredientService(GameEngine.getCurrentPlayer());
+        private ForageForIngredientHandler() {
+                forageForIngredientService = new ForageForIngredientService();
         }
 
         public void forageForIngredient() {
-                forageForIngredientService.forageForIngredient();
+                forageForIngredientService.forageForIngredient(GameEngine.getInstance().getCurrentPlayer());
+        }
+
+        public void forageForIngredient(Player player) {
+                forageForIngredientService.forageForIngredient(player);
         }
 
 

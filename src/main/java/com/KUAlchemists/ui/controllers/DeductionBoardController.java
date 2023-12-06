@@ -1,12 +1,17 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
+import com.KUAlchemists.backend.models.DeductionBoard;
 import javafx.fxml.FXML;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class DeductionBoardController {
 
@@ -199,96 +204,97 @@ public class DeductionBoardController {
 
     @FXML
     private ImageView alchemy_8_7;
-
-    @FXML
-    private ImageView circle_1;
-
-    @FXML
-    private ImageView circle_10;
-
-    @FXML
-    private ImageView circle_11;
-
-    @FXML
-    private ImageView circle_12;
-
-    @FXML
-    private ImageView circle_13;
-
-    @FXML
-    private ImageView circle_14;
-
-    @FXML
-    private ImageView circle_15;
-
-    @FXML
-    private ImageView circle_16;
-
-    @FXML
-    private ImageView circle_17;
-
-    @FXML
-    private ImageView circle_18;
-
-    @FXML
-    private ImageView circle_19;
-
-    @FXML
-    private ImageView circle_2;
-
-    @FXML
-    private ImageView circle_20;
-
-    @FXML
-    private ImageView circle_21;
-
-    @FXML
-    private ImageView circle_22;
-
-    @FXML
-    private ImageView circle_23;
-
-    @FXML
-    private ImageView circle_24;
-
-    @FXML
-    private ImageView circle_25;
-
-    @FXML
-    private ImageView circle_26;
-
-    @FXML
-    private ImageView circle_27;
-
-    @FXML
-    private ImageView circle_28;
-
-    @FXML
-    private ImageView circle_3;
-
-    @FXML
-    private ImageView circle_4;
-
-    @FXML
-    private ImageView circle_5;
-
-    @FXML
-    private ImageView circle_6;
-
-    @FXML
-    private ImageView circle_7;
-
-    @FXML
-    private ImageView circle_8;
-
-    @FXML
-    private ImageView circle_9;
-
     @FXML
     private ImageView alchemy_5_1;
 
     @FXML
     private ImageView alchemy_8_8;
+
+
+    @FXML
+    private ImageView birdfeet_feather;
+
+    @FXML
+    private ImageView birdfeet_flower;
+
+    @FXML
+    private ImageView birdfeet_root;
+
+    @FXML
+    private ImageView birdfeet_scorpion;
+
+    @FXML
+    private ImageView flower_feather;
+
+    @FXML
+    private ImageView flower_root;
+
+    @FXML
+    private ImageView flower_scorpion;
+
+    @FXML
+    private ImageView frog_birdfeet;
+
+    @FXML
+    private ImageView frog_feather;
+
+    @FXML
+    private ImageView frog_flower;
+
+    @FXML
+    private ImageView frog_root;
+
+    @FXML
+    private ImageView frog_scorpion;
+
+    @FXML
+    private ImageView mushroom_birdfeet;
+
+    @FXML
+    private ImageView mushroom_feather;
+
+    @FXML
+    private ImageView mushroom_flower;
+
+    @FXML
+    private ImageView mushroom_frog;
+
+    @FXML
+    private ImageView mushroom_plant;
+
+    @FXML
+    private ImageView mushroom_root;
+
+    @FXML
+    private ImageView mushroom_scorpion;
+
+    @FXML
+    private ImageView plant_birdfeet;
+
+    @FXML
+    private ImageView plant_feather;
+
+    @FXML
+    private ImageView plant_flower;
+
+    @FXML
+    private ImageView plant_frog;
+
+    @FXML
+    private ImageView plant_root;
+
+    @FXML
+    private ImageView plant_scorpion;
+
+    @FXML
+    private ImageView root_feather;
+
+    @FXML
+    private ImageView root_scorpion;
+
+    @FXML
+    private ImageView scorpion_feather;
+
     @FXML
     void alchemyClicked(MouseEvent event) {
        ArrayList<ImageView> alchemies= new ArrayList<ImageView>();
@@ -300,14 +306,6 @@ public class DeductionBoardController {
         alchemies.add(alchemy_6_1);alchemies.add(alchemy_6_2);alchemies.add(alchemy_6_3);alchemies.add(alchemy_6_4);alchemies.add(alchemy_6_5);alchemies.add(alchemy_6_6);alchemies.add(alchemy_6_7);alchemies.add(alchemy_6_8);
         alchemies.add(alchemy_7_1);alchemies.add(alchemy_7_2);alchemies.add(alchemy_7_3);alchemies.add(alchemy_7_4);alchemies.add(alchemy_7_5);alchemies.add(alchemy_7_6);alchemies.add(alchemy_7_7);alchemies.add(alchemy_7_8);
         alchemies.add(alchemy_8_1);alchemies.add(alchemy_8_2);alchemies.add(alchemy_8_3);alchemies.add(alchemy_8_4);alchemies.add(alchemy_8_5);alchemies.add(alchemy_8_6);alchemies.add(alchemy_8_7);alchemies.add(alchemy_8_8);
-
-
-
-
-
-
-
-
 
 
 
@@ -327,11 +325,70 @@ public class DeductionBoardController {
         }
 
     }
+
+    private void addEffect(ImageView imageView) {
+        Glow selectGlow = new Glow(1.7f);
+        imageView.setEffect(selectGlow);
+    }
+
+    @FXML
+    private void initialize() {
+        DeductionBoardHandler handler = new DeductionBoardHandler();
+        HashMap<String,String> circleList = handler.getCircleList();
+
+        //loop through the circleList
+        for (String key : circleList.keySet()) {
+            updateImageByName(key, circleList.get(key));
+        }
+
+        List<String> alchemyList = handler.getAlchemyList();
+        for (String alchemy : alchemyList) {
+            updateAlchemyByName(alchemy);
+        }
+
+    }
+
+    private void updateAlchemyByName(String alchemy) {
+        try {
+            // Use reflection to get the ImageView field by name
+            Field field = getClass().getDeclaredField(alchemy);
+            field.setAccessible(true);
+            ImageView targetImageView = (ImageView) field.get(this);
+
+            addEffect(targetImageView);
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            // Handle exceptions, e.g., ImageView not found
+            e.printStackTrace();
+        }
+    }
+
+    public void updateImageByName(String imageName, String targetImageViewName) {
+        try {
+            // Use reflection to get the ImageView field by name
+            Field field = getClass().getDeclaredField(targetImageViewName);
+            field.setAccessible(true);
+            ImageView targetImageView = (ImageView) field.get(this);
+
+            // Assuming your image files have a common extension like ".png" or ".jpg"
+            String imagePath = "com.KUAlchemists/images/alchemy/" + imageName + ".png";
+            // Load the image using the class loader to ensure it works regardless of the build type
+
+            try {
+                Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+                // Set the image to the ImageView
+                targetImageView.setImage(image);
+            }catch (Exception e){
+                System.err.println(e.getMessage());
+            }
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            // Handle exceptions, e.g., ImageView not found
+            e.printStackTrace();
+        }
+    }
     @FXML
     void setCircle(MouseEvent event) {
-
-
-
 
        /* System.out.println("a");
         Image image = new Image(getClass().getClassLoader().getResourceAsStream("com.KUAlchemists/images/alchemy/green_minus.png"));

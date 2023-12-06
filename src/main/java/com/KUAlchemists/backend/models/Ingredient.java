@@ -11,7 +11,7 @@ public class Ingredient {
     private final String name;  // name of the ingredient
     private  int value;  // value in gold
     private  String description; // description of the ingredient
-    private  IngredientType type; //herb, mineral, mushroom
+    private IngredientType type; //herb, mineral, mushroom
     private Alchemical alchemical; // alchemical of the ingredient
 
     public Ingredient(String name, int value, String description, IngredientType type) {
