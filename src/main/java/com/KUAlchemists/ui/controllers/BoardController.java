@@ -81,6 +81,7 @@ public class BoardController {
 
     @FXML
     void deductionBoardPopUp(ActionEvent event) {
+
         SceneLoader.getInstance().loadDeductionBoard();
     }
 
