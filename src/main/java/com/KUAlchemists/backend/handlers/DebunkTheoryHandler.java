@@ -18,7 +18,7 @@ public class DebunkTheoryHandler {
      * @return A string message indicating the result of the debunking attempt.
      */
     public String handleDebunkRequest(String theoryId) {
-        String playerName = GameEngine.getCurrentPlayer().getName(); // Assuming GameEngine can provide the current player
+        String playerName = GameEngine.getInstance().getCurrentPlayer().getName(); // Assuming GameEngine can provide the current player
         boolean success = debunkTheoryService.debunkTheory(playerName, theoryId);
 
         if (success) {

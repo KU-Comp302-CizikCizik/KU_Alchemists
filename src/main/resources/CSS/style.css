@@ -28,9 +28,29 @@
     overflow-x: hidden;
 }
 
+
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.text-area *.text {
+    -fx-text-alignment: center;
+
 .redATextField {
     -fx-text-fill: rgba(142, 6, 6, 1);
 }
 .blueATextField {
     -fx-text-fill: #3a7caf;
+
 }

@@ -40,8 +40,21 @@ public class SceneLoader {
         MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
         MainApplicationUI.stage = (Stage) oldScene.getWindow();
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
     }
+
+    public void loadDeductionBoard() {
+        root = UILoader.loadFXML(UIConstants.DEDUCTIONBOARD_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.GAME_WINDOW_WIDTH_DEDUCTION_BOARD, UIConstants.GAME_WINDOW_HEIGHT_DEDUCTION_BOARD);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+
+    }
+
 
     public void loadLogin() {
         root = UILoader.loadFXMLFirstTime(UIConstants.LOGINPAGE_UI_FXML);
@@ -70,6 +83,7 @@ public class SceneLoader {
         LoginController.setProperties(prop);
         MainApplicationUI.stage.setTitle(UIConstants.GAME_TITLE);
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
 
     }
@@ -129,4 +143,14 @@ public class SceneLoader {
         dialog.show();
     }
 
+    public void loadBoard() {
+        root = UILoader.loadFXML(UIConstants.BOARD_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.GAME_WINDOW_WIDTH, UIConstants.GAME_WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+
+    }
 }
