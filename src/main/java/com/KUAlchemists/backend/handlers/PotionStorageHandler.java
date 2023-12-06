@@ -15,6 +15,10 @@ public class PotionStorageHandler {
     }
 
 
+    /**
+     * Get the singleton instance of PotionStorageHandler
+     * @return the singleton instance of PotionStorageHandler
+     */
     public static PotionStorageHandler getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new PotionStorageHandler();
@@ -22,6 +26,10 @@ public class PotionStorageHandler {
         return INSTANCE;
     }
 
+    /**
+     * Remove a potion from the potion storage
+     * @param potion the potion to be removed
+     */
     public void handleRemovePotion(Potion potion) {
         try {
             potionStorageService.removePotionFromStorage(potion);
@@ -31,13 +39,17 @@ public class PotionStorageHandler {
         }
     }
 
+    /**
+     * Add a potion to the potion storage
+     * @param potion the potion to be added
+     */
     public void handleAddPotion(Potion potion){
         try {
             potionStorageService.addPotionToStorage(potion);
             // Update UI with the potion details
         } catch (IllegalArgumentException e) {
             // Update UI with error message
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Handle Add Potion Error: " + e.getMessage());
         }
     }
 

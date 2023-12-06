@@ -19,7 +19,7 @@ public class Board {
     private static final Deck deck = Deck.getInstance();
 
     private Board (){
-        // create empty storages for players // if we have 2 players, otherwise we need to change this
+        // create empty storages for players
         for(Player player: GameEngine.getInstance().getPlayerList()){
             createEmptyStoragesForPlayer(player);
         }
