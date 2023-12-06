@@ -19,5 +19,9 @@ public class PublicationHandler {
         }
     }
 
+    public String handleGetPublishedTheoriesInfo(){
+        return publicationService.getPublishedTheoriesInfo(GameEngine.getInstance().getCurrentPlayer());
+    }
+
     // Other handler methods...
 }
