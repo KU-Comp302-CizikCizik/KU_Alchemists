@@ -333,6 +333,7 @@ public class DeductionBoardController {
 
     @FXML
     private void initialize() {
+        /*
         DeductionBoardHandler handler = new DeductionBoardHandler();
         HashMap<String,String> circleList = handler.getCircleList();
 
@@ -345,6 +346,8 @@ public class DeductionBoardController {
         for (String alchemy : alchemyList) {
             updateAlchemyByName(alchemy);
         }
+
+         */
 
     }
 
