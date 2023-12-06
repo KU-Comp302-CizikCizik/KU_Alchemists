@@ -33,7 +33,7 @@ public class TestUI extends Application {
 
        // DeductionBoardController.setProperties(prop);
         primaryStage.setTitle("KU Alchemists");
-        primaryStage.setScene(new Scene(root, 1080, 720));
+        primaryStage.setScene(new Scene(root, 966, 807));
         primaryStage.show();
     }
 }

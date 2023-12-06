@@ -10,4 +10,6 @@ public class UIConstants {
     public static final int WINDOW_HEIGHT = 400;
     public static final int GAME_WINDOW_WIDTH = 1270;
     public static final int GAME_WINDOW_HEIGHT = 720;
+    public static final int GAME_WINDOW_WIDTH_DEDUCTION_BOARD = 906;
+    public static final int GAME_WINDOW_HEIGHT_DEDUCTION_BOARD = 807;
 }
