@@ -315,11 +315,12 @@ public class DeductionBoardController {
                 if(alchemies.get(i).getEffect() == null){
                     Glow selectGlow = new Glow(1.7f);
                     alchemies.get(i).setEffect(selectGlow);
+                    DeductionBoardHandler.getInstance().markAlchemical(alchemy_made);
                 }
                 else{
+                    DeductionBoardHandler.getInstance().unmarkAlhemical(alchemy_made);
                     alchemies.get(i).setEffect(null);
                 }
-                DeductionBoardHandler.getInstance().markAlchemical(alchemy_made);
             }
         }
 
