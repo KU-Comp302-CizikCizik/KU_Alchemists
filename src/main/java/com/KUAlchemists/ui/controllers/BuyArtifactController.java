@@ -1,20 +1,16 @@
 package com.KUAlchemists.ui.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.effect.Bloom;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-
-public class UseArtifactController {
+public class BuyArtifactController {
 
     private boolean is_eoi_selected = false;
     private boolean is_pc_selected = false;
@@ -31,7 +27,7 @@ public class UseArtifactController {
     public Text useButton;
 
     private ArrayList<String> allArtifacts = new ArrayList<String>();
-    private ArrayList<String> usedArtifacts = new ArrayList<String>();
+    private ArrayList<String> boughtArtifacts = new ArrayList<String>();
     private ArrayList<String> selectedArtifacts = new ArrayList<String>();
 
 
@@ -85,7 +81,6 @@ public class UseArtifactController {
             is_pc_selected = false;
             handleMouseEntered_pc();
         }
-
     }
 
     public void handleMouseEntered_hb(){

@@ -1,19 +1,17 @@
 package com.KUAlchemists.ui;
 
-import com.KUAlchemists.ui.controllers.UseArtifactController;
+import com.KUAlchemists.ui.controllers.BuyArtifactController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.text.CharacterIterator;
 import java.util.Properties;
 
-public class UseArtifactUI extends Application {
+public class BuyArtifactUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -29,11 +27,11 @@ public class UseArtifactUI extends Application {
         }
 
         // Load the FXML file
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("UseArtifactUI.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("BuyArtifactUI.fxml"));
         Parent parent = fxmlLoader.load();
 
         // Get the controller from the FXMLLoader
-        UseArtifactController controller = fxmlLoader.getController();
+        BuyArtifactController controller = fxmlLoader.getController();
         // Set the properties
 
         // Initialize the stage
