@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Player {
 
-    private Inventory playerInventory;
     private int gold;
     private String status;
     private int sicknessLevel;
@@ -16,7 +15,6 @@ public class Player {
     private String name;
 
     public Player(){
-        this.playerInventory = new Inventory(this);
         this.gold = 0;
         this.status = "Healthy"; // Default status
         this.sicknessLevel = 0;
@@ -26,7 +24,6 @@ public class Player {
     }
 
     public Player(String name){
-        this.playerInventory = new Inventory(this);
         this.gold = 0;
         this.status = "Healthy"; // Default status
         this.sicknessLevel = 0;
@@ -34,14 +31,6 @@ public class Player {
         this.publishedTheories = new ArrayList<>();
         this.playersDeductionBoard = new DeductionBoard();
         this.name = name;
-    }
-    // Getters and Setters
-    public Inventory getPlayerInventory() {
-        return playerInventory;
-    }
-
-    public void setPlayerInventory(Inventory playerInventory) {
-        this.playerInventory = playerInventory;
     }
 
     public int getGold() {

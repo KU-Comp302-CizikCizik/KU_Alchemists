@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.services;
 
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.IngredientType;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Ingredient;
@@ -35,7 +36,7 @@ public class IngredientStorageServiceTest {
             when(board.getIngredientStorage(player)).thenReturn(ingredientStorage);
             ingredientStorage = mock(IngredientStorage.class);
             when(board.getIngredientStorage(player)).thenReturn(ingredientStorage);
-            ingredientStorageService = new IngredientStorageService(player);
+            ingredientStorageService = new IngredientStorageService();
         }
 
     }
@@ -48,7 +49,7 @@ public class IngredientStorageServiceTest {
         when(ingredientStorage.getIngredientsList()).thenReturn(new ArrayList<>(Arrays.asList(ingredient)));
 
         // Execute method
-        ingredientStorageService.removeIngredientFromStorage("Salt");
+        ingredientStorageService.removeIngredientFromStorage(GameEngine.getInstance().getCurrentPlayer(),"Salt");
 
         // Verify behavior
         verify(ingredientStorage, times(1)).removeIngredient(ingredient);
@@ -73,6 +74,6 @@ public class IngredientStorageServiceTest {
 
         // Execute and assert
         ArrayList<String> expectedList = new ArrayList<>(Arrays.asList("Herb", "Salt"));
-        assertEquals(expectedList, ingredientStorageService.getIngredientsList());
+        assertEquals(expectedList, ingredientStorageService.getIngredientsNameList());
     }
 }

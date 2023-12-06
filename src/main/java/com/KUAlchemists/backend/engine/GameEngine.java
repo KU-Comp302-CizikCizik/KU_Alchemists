@@ -7,11 +7,10 @@ import java.util.ArrayList;
 public class GameEngine {
 
     // singleton instance
-    public static GameEngine INSTANCE;
+    private static GameEngine INSTANCE;
 
     // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
-
 
 
 
@@ -45,14 +44,14 @@ public class GameEngine {
      * Add a player to the player list
      * @param player the player to be added
      */
-    public static void addPlayer(Player player){
+    public void addPlayer(Player player){
         playerList.add(player);
     }
     /**
     * Remove a player from the player list
     * @param player the player to be removed
     */
-    public static void removePlayer(Player player){
+    public void removePlayer(Player player){
         playerList.remove(player);
     }
 
@@ -61,7 +60,7 @@ public class GameEngine {
      * @return playerList
      */
 
-    public static ArrayList<Player> getPlayerList() {
+    public ArrayList<Player> getPlayerList() {
         return playerList;
     }
 
@@ -69,7 +68,7 @@ public class GameEngine {
      * Get the current player
      * @return the current player
      */
-    public static Player getCurrentPlayer() {
+    public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
@@ -77,7 +76,7 @@ public class GameEngine {
      * Set the current player
      * @param currentPlayer the player to be set as current player
      */
-    public static void setCurrentPlayer(Player currentPlayer) {
+    public void setCurrentPlayer(Player currentPlayer) {
         GameEngine.currentPlayer = currentPlayer;
     }
 
@@ -85,7 +84,7 @@ public class GameEngine {
      * Get the current player index
      * @return the current player index
      */
-    public static int getCurrentPlayerIndex() {
+    public int getCurrentPlayerIndex() {
         return currentPlayerIndex;
     }
 
@@ -93,7 +92,7 @@ public class GameEngine {
      * Set the current player index
      * @param currentPlayerIndex the index to be set as current player index
      */
-    public static void setCurrentPlayerIndex(int currentPlayerIndex) {
+    public void setCurrentPlayerIndex(int currentPlayerIndex) {
         GameEngine.currentPlayerIndex = currentPlayerIndex;
     }
 
@@ -101,17 +100,17 @@ public class GameEngine {
      * Get the next player
      * @return the next player
      */
-    public static void nextPlayer(){
+    public void nextPlayer(){
         currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
         currentPlayer = playerList.get(currentPlayerIndex);
         //TODO: update Board UI with new currentPlayer
     }
 
-    public static Player getPlayer(int index){
+    public Player getPlayer(int index){
         return playerList.get(index);
     }
 
-    public static Player getPlayer(String name){
+    public Player getPlayer(String name){
         for (Player player : playerList) {
             if (name.equals(player.getName())) {
                 return player;
