@@ -4,7 +4,6 @@ import com.KUAlchemists.backend.models.*;
 import com.KUAlchemists.backend.enums.Aspect;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -12,24 +11,25 @@ class PublicationServiceTest {
 
     private PublicationService publicationService;
     private IngredientService ingredientService; // Mocked dependency
+    private PlayerService playerService; // Mocked dependency
     private Player player; // Mocked dependency
+    private Ingredient ingredient; // Mocked dependency
 
     @BeforeEach
     void setUp() {
         ingredientService = mock(IngredientService.class);
-        publicationService = new PublicationService(ingredientService);
+        playerService = mock(PlayerService.class);
+        publicationService = new PublicationService(ingredientService, playerService);
         player = mock(Player.class);
+        ingredient = mock(Ingredient.class);
+
+        when(player.getName()).thenReturn("PlayerName");
     }
 
     @Test
     void publishTheorySuccess() {
         // Arrange
         String ingredientName = "Wolfsbane";
-        Aspect redAspect = Aspect.POSITIVE_BIG; // Mocked or created Aspect enum values
-        Aspect greenAspect = Aspect.NEGATIVE_SMALL;
-        Aspect blueAspect = Aspect.POSITIVE_SMALL;
-        Alchemical alchemical = new Alchemical(redAspect, greenAspect, blueAspect); // Create an Alchemical instance
-        Ingredient ingredient = new Ingredient(ingredientName, alchemical); // Include the Alchemical in the Ingredient constructor
         when(ingredientService.findIngredientByName(ingredientName)).thenReturn(ingredient);
         when(player.getGold()).thenReturn(5);
 
@@ -38,14 +38,15 @@ class PublicationServiceTest {
 
         // Assert
         assertTrue(result);
-        verify(player).setGold(4); // Check if gold was decremented
-        verify(player).setReputation(1); // Check if reputation was incremented
+        verify(playerService).updatePlayerGold("PlayerName", 4);
+        verify(playerService).updatePlayerReputation("PlayerName", 1);
     }
 
     @Test
     void publishTheoryFailure_NotEnoughGold() {
         // Arrange
         String ingredientName = "Wolfsbane";
+        when(ingredientService.findIngredientByName(ingredientName)).thenReturn(ingredient);
         when(player.getGold()).thenReturn(0); // Player does not have enough gold
 
         // Act
@@ -53,8 +54,10 @@ class PublicationServiceTest {
 
         // Assert
         assertFalse(result);
-        verify(player, never()).setReputation(anyInt()); // Reputation should not be changed
+        verify(playerService, never()).updatePlayerGold(anyString(), anyInt());
+        verify(playerService, never()).updatePlayerReputation(anyString(), anyInt());
     }
 
     // Additional tests for edge cases and failure scenarios...
 }
+
