@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryStorageController {
@@ -17,6 +18,7 @@ public class InventoryStorageController {
 
     @FXML
     private void initialize() {
+
         List<String> cards = IngredientStorageHandler.getInstance().handleGetIngredientList(GameEngine.getInstance().getCurrentPlayer());
         int column = 0;
         int row = 0;
