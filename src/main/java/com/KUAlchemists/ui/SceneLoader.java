@@ -14,8 +14,22 @@ import java.util.Properties;
 
 public class SceneLoader {
 
+
+    private static SceneLoader INSTANCE;
+
     private Parent root;
 
+
+    private SceneLoader(){
+
+    }
+
+    public static SceneLoader getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new SceneLoader();
+        }
+        return INSTANCE;
+    }
     public void loadMenu() {
         root = UILoader.loadFXML(UIConstants.MENU_UI_FXML);
         Scene oldScene = MainApplicationUI.stage.getScene();
@@ -66,4 +80,5 @@ public class SceneLoader {
         MainApplicationUI.stage.show();
 
     }
+
 }
