@@ -22,6 +22,7 @@ public class testBuyArtifact extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load properties from config.properties
+
         Properties prop = new Properties();
         InputStream inputStream = null;
         String propFileName = "config.properties";
