@@ -12,6 +12,8 @@ public class Player {
     private ArrayList<Theory> publishedTheories;
     private DeductionBoard deductionBoard;
 
+
+
     private String name;
 
 
