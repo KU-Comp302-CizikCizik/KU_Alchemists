@@ -5,30 +5,33 @@ import java.util.List;
 
 public class Player {
 
-    private Inventory playerInventory;
     private int gold;
     private String status;
     private int sicknessLevel;
     private int reputation;
     private ArrayList<Theory> publishedTheories;
-    private DeductionBoard playersDeductionBoard;
+    private DeductionBoard deductionBoard;
+
+    private String name;
+
 
     public Player(){
-        this.playerInventory = new Inventory(this);
         this.gold = 0;
         this.status = "Healthy"; // Default status
         this.sicknessLevel = 0;
         this.reputation = 0;
         this.publishedTheories = new ArrayList<>();
-        this.playersDeductionBoard = new DeductionBoard();
-    }
-    // Getters and Setters
-    public Inventory getPlayerInventory() {
-        return playerInventory;
+        this.deductionBoard = new DeductionBoard();
     }
 
-    public void setPlayerInventory(Inventory playerInventory) {
-        this.playerInventory = playerInventory;
+    public Player(String name){
+        this.gold = 0;
+        this.status = "Healthy"; // Default status
+        this.sicknessLevel = 0;
+        this.reputation = 0;
+        this.publishedTheories = new ArrayList<>();
+        this.deductionBoard = new DeductionBoard();
+        this.name = name;
     }
 
     public int getGold() {
@@ -71,12 +74,12 @@ public class Player {
         this.publishedTheories = (ArrayList<Theory>) publishedTheories;
     }
 
-    public DeductionBoard getPlayersDeductionBoard() {
-        return playersDeductionBoard;
+    public DeductionBoard getDeductionBoard() {
+        return deductionBoard;
     }
 
-    public void setPlayersDeductionBoard(DeductionBoard playersDeductionBoard) {
-        this.playersDeductionBoard = playersDeductionBoard;
+    public void setDeductionBoard(DeductionBoard deductionBoard) {
+        this.deductionBoard = deductionBoard;
     }
 
     public int getSickness_level() {
@@ -85,5 +88,9 @@ public class Player {
 
     public void setPublishedTheories(ArrayList<Theory> publishedTheories) {
         this.publishedTheories = publishedTheories;
+    }
+
+    public String getName() {
+        return name;
     }
 }

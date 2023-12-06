@@ -1,15 +1,15 @@
 package com.KUAlchemists.backend.managers;
 
 import com.KUAlchemists.backend.enums.Gamestate;
+import com.KUAlchemists.backend.observer.GameStateObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.scene.Parent;
 
-public class SceneManager {
+public class SceneManager implements GameStateObserver {
 
     // Singleton
     private static SceneManager Instance;
-
-    private SceneLoader sceneLoader;
+    private Gamestate currentState = Gamestate.LOGIN;
 
     private Parent root;
 
@@ -23,23 +23,33 @@ public class SceneManager {
         return Instance;
     }
     private SceneManager() {
-        sceneLoader = new SceneLoader();
+
     }
 
-    public void changeScene(Gamestate to) {
+    @Override
+    public void onGameStateChange(Gamestate to) {
+        if(currentState == to){
+            return;
+        }
+        currentState = to;
+
         switch (to) {
             case LOGIN:
-                sceneLoader.loadLogin();
+                SceneLoader.getInstance().loadLogin();
                 break;
             case MENU:
-                sceneLoader.loadMenu();
+                SceneLoader.getInstance().loadMenu();
+                break;
+            case BOARD:
+                SceneLoader.getInstance().loadBoard();
+                break;
+            case DEDUCTION:
+                SceneLoader.getInstance().loadDeductionBoard();
                 break;
             default:
                 break;
+
         }
-
     }
-
-
 
 }

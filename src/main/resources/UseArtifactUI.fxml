@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="body" prefHeight="650.0" prefWidth="900.0" stylesheets="@CSS/UseArtifactCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.UseArtifactController">
+   <children>
+      <Pane id="elixir_of_insight" fx:id="elixir_of_insight_con" layoutX="138.0" layoutY="115.0" onMouseClicked="#handleMouseClicked_eoi" onMouseEntered="#handleMouseEntered_eoi" onMouseExited="#handleMouseExited_eoi" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/UseArtifactCSS.css">
+         <children>
+            <Pane id="elixir_of_insight_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/UseArtifactCSS.css" />
+            <Text layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="elixir of insight" textAlignment="CENTER" wrappingWidth="171.9830722808838">
+               <font>
+                  <Font name="Snell Roundhand" size="23.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="open your eyes and see the best three cards in of the ingredient deck and rearrange them in any order" textAlignment="JUSTIFY" wrappingWidth="180.0">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="75.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" textAlignment="JUSTIFY" wrappingWidth="114.98307228088379">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane id="philosophers_compass" fx:id="philosophers_compass_con" layoutX="350.0" layoutY="115.0" onMouseClicked="#handleMouseClicked_pc" onMouseEntered="#handleMouseEntered_pc" onMouseExited="#handleMouseExited_pc" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/UseArtifactCSS.css">
+         <children>
+            <Pane id="compass_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/UseArtifactCSS.css" />
+            <Text layoutX="5.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="philosopher's compass" textAlignment="CENTER" wrappingWidth="189.9830722808838">
+               <font>
+                  <Font name="Snell Roundhand" size="23.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="get the compass, and change their faiths. change two alchemy markers postion on the deduction board" textAlignment="JUSTIFY" wrappingWidth="180.0">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="53.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it every round, do not loose your positoin when you make them loose..." textAlignment="JUSTIFY" wrappingWidth="141.9830722808838">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Pane>
+      <Pane id="hard_bargain" fx:id="hard_bargain_con" layoutX="568.0" layoutY="115.0" onMouseClicked="#handleMouseClicked_hb" onMouseEntered="#handleMouseEntered_hb" onMouseExited="#handleMouseExited_hb" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/UseArtifactCSS.css">
+         <children>
+            <Pane id="bargain_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/UseArtifactCSS.css" />
+            <Text layoutX="5.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hard bargain" textAlignment="CENTER" wrappingWidth="189.9830722808838">
+               <font>
+                  <Font name="Snell Roundhand" size="23.0" />
+               </font>
+            </Text>
+            <Text layoutX="7.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you are the hardest bargainer, get your money purse,  buy what you want with 20% discount" textAlignment="JUSTIFY" wrappingWidth="189.9830722808838">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="75.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" textAlignment="JUSTIFY" wrappingWidth="114.98307228088379">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Pane>
+      <Text id="use_button" fx:id="useButton" layoutX="724.0" layoutY="597.0" onMouseClicked="#handleMouseClickedUseButton" onMouseEntered="#handleMouseEnteredUseButton" onMouseExited="#handleMouseExitedUseButton" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="use_button" text="Use" textAlignment="CENTER" wrappingWidth="103.98307228088379">
+         <font>
+            <Font name="Bradley Hand Bold" size="62.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

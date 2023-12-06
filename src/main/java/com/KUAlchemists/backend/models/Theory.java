@@ -7,8 +7,11 @@ public class Theory {
     private Alchemical predictedAlchemical; // The predicted alchemical properties of the ingredient
     private boolean isPublished; // Indicates if the theory has been published
     private boolean isEndorsed; // Indicates if the theory has been endorsed by other players
+    private boolean isDebunked; // Indicates if the theory has been debunked.
     private int reputationAward; // The reputation points awarded for publishing this theory
     private List<Player> endorsers; // List of players who have endorsed this theory
+
+    private String theoryID; // UI connection
 
 
     // Constructor
@@ -17,6 +20,7 @@ public class Theory {
         this.predictedAlchemical = predictedAlchemical;
         this.isPublished = false;
         this.isEndorsed = false;
+        this.isDebunked = false;
         //this.reputationAward = 0;
     }
     public Theory() {
@@ -37,6 +41,10 @@ public class Theory {
 
     public boolean isEndorsed() {
         return isEndorsed;
+    }
+
+    public boolean isDebunked() {
+        return isDebunked;
     }
 
     public int getReputationAward() {
@@ -64,11 +72,24 @@ public class Theory {
         this.isEndorsed = isEndorsed;
     }
 
+    public void setDebunked(boolean isDebunked) {
+        this.isDebunked = isDebunked;
+    }
+
     public void setReputationAward(int reputationAward) {
         this.reputationAward = reputationAward;
     }
 
     public void setEndorsers(List<Player> endorsers) {
         this.endorsers = endorsers;
+    }
+
+    public String getId() {
+        return theoryID;
+    }
+
+    // Setter for the theory ID
+    public void setId(String id) {
+        this.theoryID = theoryID;
     }
 }
