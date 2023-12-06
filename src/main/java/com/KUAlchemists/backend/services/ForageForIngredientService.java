@@ -6,14 +6,12 @@ import com.KUAlchemists.backend.models.Player;
 
 public class ForageForIngredientService {
 
-    private final Player player;
     private final Deck deck = Deck.getInstance();
-    //private final Board board = Board.getInstance();
-    public ForageForIngredientService(Player player) {
-        this.player = player;
+    public ForageForIngredientService( ) {
+
     }
 
-    public void forageForIngredient() {
-        Board.getIngredientStorage(player).addIngredient(deck.drawIngredient());
+    public void forageForIngredient(Player player){
+        Board.getInstance().getIngredientStorage(player).addIngredient(deck.drawIngredient());
     }
 }

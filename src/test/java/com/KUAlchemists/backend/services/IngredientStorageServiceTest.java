@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.services;
 
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.IngredientType;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Ingredient;
@@ -24,55 +25,41 @@ public class IngredientStorageServiceTest {
     private IngredientStorage ingredientStorage;
     private Player player;
 
-    private Board board;
 
     @BeforeEach
     void setUp() {
-        player = mock(Player.class);
-        try (MockedStatic<Board> boardMockedStatic = Mockito.mockStatic(Board.class)) {
-            board = mock(Board.class);
-            boardMockedStatic.when(Board::getInstance).thenReturn(board);
-            when(board.getIngredientStorage(player)).thenReturn(ingredientStorage);
-            ingredientStorage = mock(IngredientStorage.class);
-            when(board.getIngredientStorage(player)).thenReturn(ingredientStorage);
-            ingredientStorageService = new IngredientStorageService(player);
-        }
+        player = new Player();
+        ingredientStorage = new IngredientStorage();
+        ingredientStorageService = new IngredientStorageService();
+        Board.getInstance().createEmptyStoragesForPlayer(player);
+        Board.getInstance().getIngredientStorages().put(player, ingredientStorage);
+        ingredientStorageService.addIngredientToStorage(player,"Salt");
 
     }
 
     @Test
-
     void testRemoveIngredientFromStorage() {
-        // Setup mock data
-        Ingredient ingredient = new Ingredient("Salt", 0, "A common ingredient...", IngredientType.HERB);
-        when(ingredientStorage.getIngredientsList()).thenReturn(new ArrayList<>(Arrays.asList(ingredient)));
+        // Assume that 'Salt' is already added to the player's storage
+        assertTrue(ingredientStorageService.getIngredientsNameList(player).contains("Salt"));
 
-        // Execute method
-        ingredientStorageService.removeIngredientFromStorage("Salt");
+        // Act - Remove 'Salt' from the storage
+        ingredientStorageService.removeIngredientFromStorage(player, "Salt");
 
-        // Verify behavior
-        verify(ingredientStorage, times(1)).removeIngredient(ingredient);
+        // Assert - 'Salt' should no longer be in the storage
+        assertFalse(ingredientStorageService.getIngredientsNameList(player).contains("Salt"));
     }
+
 
     @Test
     void testGetIngredientDescription() {
         // Setup mock data
-        String description = "A magical herb...";
-        Ingredient ingredient = new Ingredient("Herb", 0, description, IngredientType.HERB);
-        when(ingredientStorage.getIngredient("Herb")).thenReturn(ingredient);
-
-        // Execute and assert
-        assertEquals(description, ingredientStorageService.getIngredientDescription("Herb"));
+        String description = "A common ingredient...";
+        assertEquals(description, ingredientStorageService.getIngredientDescription(player,"Salt"));
     }
 
     @Test
     void testGetIngredientsList() {
-        // Setup mock data
-        ArrayList<Ingredient> mockIngredients = new ArrayList<>(Arrays.asList(new Ingredient("Herb", 0, "A common ingredient...", IngredientType.HERB),new Ingredient("Salt", 0, "A common ingredient...", IngredientType.HERB)));
-        when(ingredientStorage.getIngredientsList()).thenReturn(mockIngredients);
-
-        // Execute and assert
-        ArrayList<String> expectedList = new ArrayList<>(Arrays.asList("Herb", "Salt"));
-        assertEquals(expectedList, ingredientStorageService.getIngredientsList());
+        ArrayList<String> expectedList = new ArrayList<>(Arrays.asList("Salt"));
+        assertEquals(expectedList, ingredientStorageService.getIngredientsNameList(player));
     }
 }
