@@ -334,7 +334,7 @@ public class DeductionBoardController {
 
 
        /* System.out.println("a");
-        Image image = new Image(getClass().getClassLoader().getResourceAsStream("com.KUAlchemists/images/alchemy/green_minus.png"));
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream("com.KUAlchemists/images/alchemy/PARALYSIS.png"));
         circle_1.setImage(image);*/
     }
 }
