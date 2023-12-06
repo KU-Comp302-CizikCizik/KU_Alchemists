@@ -1,8 +1,10 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.BoardHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -73,37 +75,39 @@ public class BoardController {
 
     @FXML
     void debunkPopUp(ActionEvent event) {
-        boardhandler.openDebunkPopUp();
+
+        System.out.println("not implemented Yet");
     }
 
     @FXML
     void deductionBoardPopUp(ActionEvent event) {
-        boardhandler.openDeductionBoardPopUp();
+        SceneLoader.getInstance().loadDeductionBoard();
     }
 
     @FXML
     void ingredientStoragePopUp(ActionEvent event) {
-        boardhandler.openIngredientStoragePopUp();
+        SceneLoader.getInstance().loadIngredientStorage();
+
     }
 
     @FXML
     void potionBrewingPopUp(ActionEvent event) {
-        boardhandler.openPotionBrewingPopUp();
+        SceneLoader.getInstance().loadPotionBrewing();
     }
 
     @FXML
     void publicationTrackPopUp(ActionEvent event) {
-        boardhandler.openPublicationTrackPopUp();
+        SceneLoader.getInstance().loadPublicationTrack();
     }
 
     @FXML
     void publishTheoryPopUp(ActionEvent event) {
-        boardhandler.openPublishTheoryPopUp();
+        System.out.println("not implemented Yet");
     }
 
     @FXML
     void buyArtifactPopUp(ActionEvent event) {
-        boardhandler.openBuyArtifactPopUp();
+        SceneLoader.getInstance().loadBuyArtifact();
     }
 
     @FXML
@@ -114,22 +118,23 @@ public class BoardController {
 
     @FXML
     void useArtifactPopUp(ActionEvent event) {
-        boardhandler.openUseArtifacy();
+        SceneLoader.getInstance().loadUseArtifact();
     }
 
     @FXML
     void pausePopUp(ActionEvent event) {
-        boardhandler.openPausePopUp();
+        SceneLoader.getInstance().loadPause();
     }
 
     @FXML
     void helpPopUp(ActionEvent event) {
-        boardhandler.openHelpPopUp();
+        SceneLoader.getInstance().loadHelp();
     }
 
     @FXML
     void sellPotionPopUp(ActionEvent event) {
-        boardhandler.openSellPotion();
+
+        System.out.println("not implemented Yet");
     }
     @FXML
     public void changeRound() {

@@ -3,8 +3,12 @@ package com.KUAlchemists.ui;
 import com.KUAlchemists.ui.controllers.LoginController;
 import com.KUAlchemists.ui.utils.UIConstants;
 import com.KUAlchemists.ui.utils.UILoader;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -68,6 +72,61 @@ public class SceneLoader {
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.show();
 
+    }
+    public void loadIngredientStorage(){
+        loadPopUp(UIConstants.INGREDIENTSTORAGE_UI_FXML);
+    }
+
+
+    public void loadPublicationTrack(){
+        System.out.println("loadPublicationTrack");
+    }
+
+    public void loadDeductionBoard(){
+        System.out.println("loadDeductionBoard");
+    }
+
+    public void loadPotionBrewing(){
+        System.out.println("loadPotionBrewing");
+    }
+
+    public void loadBuyArtifact(){
+        System.out.println("loadBuyArtifact");
+    }
+
+    public void loadUseArtifact(){
+        System.out.println("loadUseArtifact");
+    }
+
+    public void loadHelp(){
+        //loadPopUp(UIConstants.HELP_UI_FXML);
+        System.out.println("loadHelp");
+    }
+
+    public void loadPause(){
+        //loadPopUp(UIConstants.PAUSE_UI_FXML);
+        System.out.println("loadPause");
+    }
+
+
+    public void loadPopUp(String fxml_path) {
+        Dialog<Void> dialog = new Dialog<>();
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UILoader.class.getClassLoader().getResource(fxml_path));
+            dialog.getDialogPane().setContent(loader.load());
+            dialog.setResizable(false);
+            dialog.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        Node closeButton = dialog.getDialogPane().lookupButton(ButtonType.CLOSE);
+        closeButton.managedProperty().bind(closeButton.visibleProperty());
+        closeButton.setVisible(false);
+        dialog.show();
     }
 
 }
