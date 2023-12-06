@@ -41,7 +41,7 @@ public class DeductionBoard {
         markedAlchemicals.remove(alchemicalName);
     }
 
-    public List<String> getMarkedAlchemicals() {
+    public ArrayList<String> getMarkedAlchemicals() {
         return markedAlchemicals;
     }
 }
