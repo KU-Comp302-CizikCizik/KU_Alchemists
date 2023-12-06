@@ -25,6 +25,7 @@ public class UseArtifactController {
     }
     public void handleMouseClicked_eoi(){
         elixir_of_insight_con.setEffect(glowEffectSelected);
+
     }
 
     public void handleMouseEntered_pc(){
