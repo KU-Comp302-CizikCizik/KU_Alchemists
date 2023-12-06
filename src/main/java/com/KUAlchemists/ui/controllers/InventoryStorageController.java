@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryStorageController {
@@ -17,7 +18,13 @@ public class InventoryStorageController {
 
     @FXML
     private void initialize() {
-        List<String> cards = ingredientStorageHandler.handleGetIngredientList();
+        //error burda
+        //List<String> cards = ingredientStorageHandler.handleGetIngredientList();
+        List<String> cards = new ArrayList<>();
+        cards.add("mushroom");
+        cards.add("mushroom");
+        cards.add("frog");
+        cards.add("frog");
         int column = 0;
         int row = 0;
         try {
