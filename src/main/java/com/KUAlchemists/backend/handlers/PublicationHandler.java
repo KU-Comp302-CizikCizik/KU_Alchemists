@@ -11,7 +11,7 @@ public class PublicationHandler {
     }
 
     public String handlePublishRequest(String ingredientName, String predictedRedAspectString, String predictedGreenAspectString, String predictedBlueAspectString) {
-        boolean success = publicationService.publishTheory(GameEngine.getCurrentPlayer(), ingredientName, predictedRedAspectString,predictedGreenAspectString, predictedBlueAspectString);
+        boolean success = publicationService.publishTheory(GameEngine.getInstance().getCurrentPlayer(), ingredientName, predictedRedAspectString,predictedGreenAspectString, predictedBlueAspectString);
         if (success) {
             return "Theory published successfully!";
         } else {

@@ -87,5 +87,11 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Pane>
+      <Text id="use_button" fx:id="useButton" layoutX="724.0" layoutY="597.0" onMouseClicked="#handleMouseClickedUseButton" onMouseEntered="#handleMouseEnteredUseButton" onMouseExited="#handleMouseExitedUseButton" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="use_button" text="Use" textAlignment="CENTER" wrappingWidth="103.98307228088379">
+         <font>
+            <Font name="Bradley Hand Bold" size="62.0" />
+         </font>
+      </Text>
+
    </children>
 </AnchorPane>
