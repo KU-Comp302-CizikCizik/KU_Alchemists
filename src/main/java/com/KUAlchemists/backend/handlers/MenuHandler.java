@@ -8,7 +8,7 @@ import com.KUAlchemists.backend.services.MenuService;
 public class MenuHandler {
 
 
-    private static MenuHandler INSTANCE;
+    private static MenuHandler instance;
 
 
     private MenuService menuService;
@@ -18,10 +18,10 @@ public class MenuHandler {
     }
 
     public static MenuHandler getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new MenuHandler();
+        if (instance == null) {
+            instance = new MenuHandler();
         }
-        return INSTANCE;
+        return instance;
     }
 
     public void openRules() {

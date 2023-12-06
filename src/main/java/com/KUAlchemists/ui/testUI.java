@@ -1,48 +1,39 @@
 package com.KUAlchemists.ui;
-
-import com.KUAlchemists.ui.controllers.IngredientCardController;
+import com.KUAlchemists.ui.controllers.DeductionBoardController;
+import com.KUAlchemists.ui.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import com.KUAlchemists.ui.controllers.LoginController;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import java.util.Properties;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class testUI extends Application {
 
+public class TestUI extends Application {
 
-    public static void main(String[] args) {
-        Application.launch(IngredientStorageUI.class);
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Load properties from config.properties
         Properties prop = new Properties();
-        InputStream inputStream = null;
-        String propFileName = "config.properties";
-        inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
-        if (inputStream != null) {
-            prop.load(inputStream);
-        } else {
-            throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
-        }
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("deductionboard.fxml"));
 
-        // Load the FXML file
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("IngredientCardUI.fxml"));
-        VBox cardBox = fxmlLoader.load();
-        IngredientCardController controller = fxmlLoader.getController();
-        controller.setIngredientCard("mushroom-ingredient.jpg");
-
-        fxmlLoader.setRoot(new BorderPane());
-
-        // Initialize the stage
+       // DeductionBoardController.setProperties(prop);
         primaryStage.setTitle("KU Alchemists");
-        primaryStage.setScene(new Scene(cardBox, 320, 240));
+        primaryStage.setScene(new Scene(root, 966, 807));
         primaryStage.show();
     }
 }

@@ -1,6 +1,9 @@
 package com.KUAlchemists.ui.utils;
 
 public class UIConstants {
+
+    private UIConstants() {
+    }
     public static final String DEDUCTIONBOARD_FXML="Deductionboard.fxml";
     public static final String GAME_TITLE = "KU Alchemists";
     public static final String LOGINPAGE_UI_FXML = "LoginPageUI.fxml";
