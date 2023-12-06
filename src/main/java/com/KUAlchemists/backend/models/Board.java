@@ -14,7 +14,8 @@ public class Board {
 
     private static final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
     //private static final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
-    //private static final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
+
+    private static final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
 
     private static final Deck deck = Deck.getInstance();
 
@@ -33,7 +34,7 @@ public class Board {
     public static void createEmptyStoragesForPlayer(Player player){
         ingredientStorages.put(player, new IngredientStorage());
         //potionStorages.put(player, new PotionStorage());
-        //artifactStorages.put(player, new ArtifactStorage());
+        artifactStorages.put(player, new ArtifactStorage());
     }
 
 
@@ -48,6 +49,15 @@ public class Board {
     public static HashMap<Player, IngredientStorage> getIngredientStorages(){
         return ingredientStorages;
     }
+
+    public static ArtifactStorage getArtifactStorage(Player player){
+        return artifactStorages.get(player);
+    }
+
+    public static void initializePlayer(Player player) {
+        artifactStorages.put(player, new ArtifactStorage());
+    }
+
 
     public static Deck getDeck(){
         return deck;

@@ -1,19 +1,13 @@
 package com.KUAlchemists.backend.services;
 
-import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.models.Deck;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.IngredientStorage;
-import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
 
 class ForageForIngredientServiceTest {
 
@@ -35,8 +29,8 @@ class ForageForIngredientServiceTest {
         player = new Player(playerName);
 
         // Manually add the IngredientStorage to the Board's map for this player
-        Board.createEmptyStoragesForPlayer(player); // Ensure storage is created for the player
-        Board.getIngredientStorages().put(player, ingredientStorage); // Explicitly add the storage
+        Board.getInstance().createEmptyStoragesForPlayer(player); // Ensure storage is created for the player
+        Board.getInstance().getIngredientStorages().put(player, ingredientStorage); // Explicitly add the storage
 
         service = new ForageForIngredientService(player);
     }

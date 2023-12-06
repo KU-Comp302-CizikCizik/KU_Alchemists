@@ -13,6 +13,8 @@ public class Player {
     private ArrayList<Theory> publishedTheories;
     private DeductionBoard playersDeductionBoard;
 
+
+
     private String name;
 
 
