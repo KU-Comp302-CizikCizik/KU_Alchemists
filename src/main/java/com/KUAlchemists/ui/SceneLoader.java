@@ -94,7 +94,7 @@ public class SceneLoader {
     }
 
     public void loadBuyArtifact(){
-        System.out.println("loadBuyArtifact");
+        loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
     }
 
     public void loadUseArtifact(){
@@ -102,8 +102,7 @@ public class SceneLoader {
     }
 
     public void loadHelp(){
-        //loadPopUp(UIConstants.HELP_UI_FXML);
-        System.out.println("loadHelp");
+        loadPopUp(UIConstants.HELP_UI_FXML);
     }
 
     public void loadPause(){
