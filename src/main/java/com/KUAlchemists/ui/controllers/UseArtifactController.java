@@ -97,7 +97,9 @@ public class UseArtifactController {
             hard_bargain_con.setEffect(dropShadowEffect);
     }
     public void handleMouseClicked_hb(){
+
         if(!is_hb_selected){
+
             is_hb_selected = true;
             hard_bargain_con.setEffect(glowEffectSelected);
         }
