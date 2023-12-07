@@ -17,8 +17,11 @@ public class BoardHandler {
         return INSTANCE;
     }
 
-    public void forageIngredientPopUp() {
+    public String forageIngredient() {
         System.out.println("Forage ingredient button pressed");
+
+        //this method should return drawen ingredient
+        return "birdfeet";
     }
     public void endTheRound() {
         GameEngine.getInstance().nextPlayer();
