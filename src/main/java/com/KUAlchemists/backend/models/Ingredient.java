@@ -7,13 +7,20 @@ import com.KUAlchemists.backend.enums.IngredientType;
  * alchemical that defines its properties for gameplay, such as potion crafting.
  */
 public class Ingredient {
-
     private final String name;  // name of the ingredient
     private  int value;  // value in gold
     private  String description; // description of the ingredient
     private IngredientType type; //herb, mineral, mushroom
     private Alchemical alchemical; // alchemical of the ingredient
 
+    /**
+     * Constructor for Ingredient
+     *
+     * @param name        The name of the ingredient.
+     * @param value       The value of the ingredient.
+     * @param description The description of the ingredient.
+     * @param type        The type of the ingredient.
+     */
     public Ingredient(String name, int value, String description, IngredientType type) {
         this.name = name;
         this.value = value;
@@ -21,6 +28,10 @@ public class Ingredient {
         this.type = type;
     }
 
+    /**
+     * Constructor for Ingredient
+     *
+     */
     public Ingredient() {
         this.name = "";
         this.value = 0;
@@ -28,6 +39,12 @@ public class Ingredient {
         this.type = IngredientType.NONE;
     }
 
+    /**
+     * Constructor for Ingredient
+     *
+     * @param name        The name of the ingredient.
+     * @param alchemical  The alchemical of the ingredient.
+     */
     public Ingredient(String name, Alchemical alchemical) {
         this.name = name;
         this.alchemical = alchemical;
@@ -67,6 +84,9 @@ public class Ingredient {
         this.alchemical = alchemical;
     }
 
+    /**
+     * @return the name
+     */
     public String getName() {
         return name;
     }
