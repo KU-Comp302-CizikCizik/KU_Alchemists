@@ -44,8 +44,13 @@ public class Deck {
 
     public Ingredient drawIngredient(){
         Random rand = new Random();
-        int index = rand.nextInt(ingredientsList.size());
-        return ingredientsList.remove(index);
+        if (!ingredientsList.isEmpty()) {
+            int index = rand.nextInt(ingredientsList.size());
+            return ingredientsList.remove(index);
+        }
+        else {
+            throw new RuntimeException("Deck is empty");
+        }
     }
 
     public void addIngredient(Ingredient ingredient){

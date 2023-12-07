@@ -13,8 +13,14 @@ public class ForageForIngredientService {
     }
 
     public String forageForIngredient(Player player){
-        Ingredient ingredient = deck.drawIngredient();
-        Board.getInstance().getIngredientStorage(player).addIngredient(ingredient);
+        Ingredient ingredient;
+        try {
+             ingredient = deck.drawIngredient();
+            Board.getInstance().getIngredientStorage(player).addIngredient(ingredient);
+        }
+        catch (RuntimeException e){
+            return "ERROR! Deck is empty";
+        }
         return ingredient.getName().toLowerCase();
     }
 }
