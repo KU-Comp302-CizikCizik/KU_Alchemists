@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.BoardHandler;
+import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
@@ -112,7 +113,7 @@ public class BoardController {
 
     @FXML
     void forageIngredientPopUp(ActionEvent event) {
-        String ingredient = BoardHandler.getInstance().forageIngredient();
+        String ingredient = ForageForIngredientHandler.getInstance().forageForIngredient();
         String message = "You have foraged " + ingredient + "!";
         SceneLoader.getInstance().loadForageIngredient(message, ingredient+"-ingredient.jpg");
     }
