@@ -84,4 +84,13 @@ public class PotionBrewingService {
         return (aspect1.isPositive() && aspect2.isPositive());
     }
 
+    /**
+     * getPotionCode
+     * @param potion
+     */
+    public String getPotionCode(Potion potion) {
+        String potionEffect = potion.getPotionEffect().toString();
+        String potionCode = potionEffect + "_POTION";
+        return potionCode;
+    }
 }
