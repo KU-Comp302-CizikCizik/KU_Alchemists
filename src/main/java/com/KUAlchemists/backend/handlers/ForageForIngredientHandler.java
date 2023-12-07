@@ -27,8 +27,8 @@ public class ForageForIngredientHandler {
                 return "birdfeet";
         }
 
-        public void forageForIngredient(Player player) {
-                forageForIngredientService.forageForIngredient(player);
+        public String forageForIngredient(Player player) {
+                return forageForIngredientService.forageForIngredient(player);
         }
 
 
