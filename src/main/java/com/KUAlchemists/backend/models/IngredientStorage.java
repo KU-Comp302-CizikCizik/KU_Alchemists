@@ -25,7 +25,7 @@ public class IngredientStorage {
         for (Ingredient ingredient : ingredientsList) {
             if (ingredientName.equals(ingredient.getName())) {
                 ingredientsList.remove(ingredient);
-                break;
+                return;
             }
         }
     }

@@ -61,7 +61,7 @@ public class IngredientStorageService {
             if (ingredient.getName().equals(ingredientName)) {
                 ingredientStorage.removeIngredient(ingredient);
                 player.setGold(player.getGold() + 1); //
-
+                return;
             }
         }
     }
