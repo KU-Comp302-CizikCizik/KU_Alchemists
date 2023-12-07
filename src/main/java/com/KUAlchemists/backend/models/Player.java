@@ -12,18 +12,14 @@ public class Player {
     private ArrayList<Theory> publishedTheories;
     private DeductionBoard deductionBoard;
 
+    private int actionPoints;
 
 
     private String name;
 
 
     public Player(){
-        this.gold = 0;
-        this.status = "Healthy"; // Default status
-        this.sicknessLevel = 0;
-        this.reputation = 0;
-        this.publishedTheories = new ArrayList<>();
-        this.deductionBoard = new DeductionBoard();
+        this("");
     }
 
     public Player(String name){
@@ -34,6 +30,7 @@ public class Player {
         this.publishedTheories = new ArrayList<>();
         this.deductionBoard = new DeductionBoard();
         this.name = name;
+        this.actionPoints = 3;
     }
 
     public int getGold() {
@@ -94,5 +91,14 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public void deduceActionPoints(int actionPoints) {
+        this.actionPoints -= actionPoints;
+
+    }
+
+    public Integer getActionPoints() {
+        return actionPoints;
     }
 }

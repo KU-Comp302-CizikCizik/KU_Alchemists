@@ -9,6 +9,7 @@ import com.KUAlchemists.backend.services.ForageForIngredientService;
  */
 public class ForageForIngredientHandler {
 
+        private int ForageForIngredientActionCost = 1;
         public static ForageForIngredientHandler INSTANCE;
 
         public static ForageForIngredientHandler getInstance(){
@@ -23,7 +24,12 @@ public class ForageForIngredientHandler {
         }
 
         public String forageForIngredient() {
-                return forageForIngredientService.forageForIngredient(GameEngine.getInstance().getCurrentPlayer());
+                if(GameEngine.getInstance().getCurrentPlayer().getActionPoints() < ForageForIngredientActionCost){
+                        return null;
+                }
+                String str =  forageForIngredientService.forageForIngredient(GameEngine.getInstance().getCurrentPlayer());
+                GameEngine.getInstance().getCurrentPlayer().deduceActionPoints(ForageForIngredientActionCost);
+                return str;
         }
 
         public String forageForIngredient(Player player) {

@@ -187,4 +187,27 @@ public class SceneLoader {
         closeButton.setVisible(false);
         dialog.show();
     }
+
+    public void loadGenericPopUp(String message) {
+        Dialog<Void> dialog = new Dialog<>();
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UILoader.class.getClassLoader().getResource(UIConstants.GENERIC_FXML));
+            dialog.getDialogPane().setContent(loader.load());
+            dialog.setResizable(false);
+            GenericWindowController controller = loader.getController();
+            controller.setTextField(message);
+            dialog.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        Node closeButton = dialog.getDialogPane().lookupButton(ButtonType.CLOSE);
+        closeButton.managedProperty().bind(closeButton.visibleProperty());
+        closeButton.setVisible(false);
+        dialog.show();
+
+    }
 }

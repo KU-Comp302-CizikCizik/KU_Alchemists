@@ -1,6 +1,8 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.IngredientStorageHandler;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -42,11 +44,11 @@ public class IngredientCardController {
 
     @FXML
     void sellButtonActivated(ActionEvent event) {
-        //TO-DO: sell button should be implemented
         IngredientStorageHandler.getInstance().handleTransmuteIngredient(ingredient);
+        closeWindow();
 
         //TO-DO: refresh the ingredient storage or close the window
-        closeWindow();
+
     }
 
     private void closeWindow() {
