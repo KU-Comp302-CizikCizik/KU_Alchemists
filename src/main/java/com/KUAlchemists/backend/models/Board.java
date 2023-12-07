@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -11,12 +12,9 @@ import java.util.HashMap;
 public class Board {
 
     private static Board Instance;
-
     private static final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
     private static final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
     private static final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
-
-
     private static final Deck deck = Deck.getInstance();
 
     private Board (){
@@ -25,6 +23,7 @@ public class Board {
             createEmptyStoragesForPlayer(player);
         }
     }
+
     public static Board getInstance(){
         if(Instance == null){
             Instance = new Board();
@@ -38,7 +37,6 @@ public class Board {
         artifactStorages.put(player, new ArtifactStorage());
 
     }
-
 
     public IngredientStorage getIngredientStorage(Player player){
         return ingredientStorages.get(player);
@@ -64,7 +62,6 @@ public class Board {
         return deck;
     }
 
-
     public void addPotionToStorage(Potion potion){
         potionStorages.get(GameEngine.getInstance().getCurrentPlayer()).addPotion(potion);
     }
@@ -72,5 +69,6 @@ public class Board {
     public void addPotionToStorage(Player player, Potion potion){
         potionStorages.get(player).addPotion(potion);
     }
+    
 }
 

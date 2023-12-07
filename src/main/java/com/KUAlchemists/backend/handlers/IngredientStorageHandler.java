@@ -7,14 +7,25 @@ import com.KUAlchemists.backend.services.IngredientStorageService;
 
 import java.util.ArrayList;
 
+/**
+ * This class is responsible for handling the ingredient storage.
+ */
 public class IngredientStorageHandler {
 
-
+    /**
+     * The singleton instance of IngredientStorageHandler.
+     */
     private static IngredientStorageHandler INSTANCE;
-
+    /**
+     * The service for handling the ingredient storage.
+     */
     private IngredientStorageService service;
 
-
+    /**
+     * Gets the singleton instance of IngredientStorageHandler.
+     *
+     * @return The singleton instance of IngredientStorageHandler.
+     */
     public static IngredientStorageHandler getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new IngredientStorageHandler();
@@ -22,10 +33,18 @@ public class IngredientStorageHandler {
         return INSTANCE;
     }
 
+    /**
+     * Constructor for IngredientStorageHandler
+     */
     private IngredientStorageHandler() {
         this.service = new IngredientStorageService();
     }
 
+    /**
+     * Removes an ingredient from the player's storage.
+     *
+     * @param ingredientName The name of the ingredient to be removed.
+     */
     public void handleRemoveIngredient(String ingredientName) {
         Player player = GameEngine.getInstance().getCurrentPlayer();
         try {
@@ -36,16 +55,12 @@ public class IngredientStorageHandler {
         }
     }
 
-    public void handleAddIngredient(String ingredientName){
-        Player player = GameEngine.getInstance().getCurrentPlayer();
-        try {
-            service.addIngredientToStorage(player, ingredientName);
-            // Update UI with the ingredient details
-        } catch (IllegalArgumentException e) {
-            // Update UI with error message
-        }
-    }
-
+    /**
+     * Gets the ingredient by name.
+     *
+     * @param name The name of the ingredient.
+     * @return The ingredient.
+     */
     public Ingredient handleGetIngredientByName(String name){
         Player player = GameEngine.getInstance().getCurrentPlayer();
         try {
@@ -57,6 +72,12 @@ public class IngredientStorageHandler {
         }
     }
 
+    /**
+     * Gets the description of an ingredient.
+     *
+     * @param ingredientName The name of the ingredient.
+     * @return The description of the ingredient.
+     */
     public String handleGetIngredientDescription(String ingredientName) {
         Player player = GameEngine.getInstance().getCurrentPlayer();
         try {
@@ -69,6 +90,11 @@ public class IngredientStorageHandler {
 
     }
 
+    /**
+     * Gets the ingredients in the player's storage.
+     *
+     * @return The ingredients in the player's storage.
+     */
     public ArrayList<String> handleGetIngredientList(Player player) {
         try {
             // Update UI with the ingredient list
@@ -79,6 +105,10 @@ public class IngredientStorageHandler {
         }
     }
 
+    /**
+     * Transmutes an ingredient into gold.
+     * @param ingredientName
+     */
     public void handleTransmuteIngredient(String ingredientName) {
         try {
             service.transmuteIngredient(ingredientName);
