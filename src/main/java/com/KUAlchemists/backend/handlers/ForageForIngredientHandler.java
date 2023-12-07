@@ -23,8 +23,7 @@ public class ForageForIngredientHandler {
         }
 
         public String forageForIngredient() {
-                forageForIngredientService.forageForIngredient(GameEngine.getInstance().getCurrentPlayer());
-                return "birdfeet";
+                return forageForIngredientService.forageForIngredient(GameEngine.getInstance().getCurrentPlayer());
         }
 
         public String forageForIngredient(Player player) {
