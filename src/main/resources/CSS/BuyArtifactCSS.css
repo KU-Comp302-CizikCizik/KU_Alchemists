@@ -13,6 +13,10 @@
 .use_button{
     -fx-fill: #db9e42;
 }
+.price_section{
+    -fx-fill: #FFD700;
+    -fx-font-size: 20px;
+}
 
 
 #elixir_of_insight_photo_frame{
@@ -26,7 +30,7 @@
 }
 
 #body{
-    -fx-background-image: url("../com.KUAlchemists/images/use_artifact_background.PNG");
+    -fx-background-image: url("../com.KUAlchemists/images/buy_artifact_background.PNG");
     -fx-background-size: cover;
     -fx-background-repeat: stretch;
 }

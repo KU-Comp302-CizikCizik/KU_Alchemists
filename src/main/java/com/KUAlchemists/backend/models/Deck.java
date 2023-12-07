@@ -1,6 +1,5 @@
 package com.KUAlchemists.backend.models;
 
-import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.IngredientType;
 
 import java.io.BufferedReader;
@@ -8,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Deck {
@@ -34,13 +34,7 @@ public class Deck {
                 int value = Integer.parseInt(parts[1]);
                 String description = parts[2];
                 IngredientType type = IngredientType.valueOf(parts[3]);
-                Aspect redAspect = Aspect.valueOf(parts[4]);
-                Aspect greenAspect = Aspect.valueOf(parts[5]);
-                Aspect blueeAspect = Aspect.valueOf(parts[6]);
-                // Assuming that Alchemical can be derived from the name or other properties
-                Alchemical alchemical = new Alchemical(redAspect, greenAspect, blueeAspect);
                 Ingredient ingredient = new Ingredient(name, value, description, type);
-                ingredient.setAlchemical(alchemical);
                 ingredientsList.add(ingredient);
             }
         } catch (IOException e) {
@@ -69,5 +63,26 @@ public class Deck {
 
     public void setIngredientList(ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList = ingredientsList;
+    }
+
+    public ArrayList<Ingredient> peekTopThreeIngredients() {
+        ArrayList<Ingredient> topIngredients = new ArrayList<>();
+        int count = Math.min(3, ingredientsList.size());
+        for (int i = 0; i < count; i++) {
+            topIngredients.add(ingredientsList.get(i));
+        }
+        return topIngredients;
+    }
+
+    public void rearrangeTopThreeIngredients(List<Ingredient> rearrangedIngredients) {
+        // Ensure the rearranged list has exactly 3 elements and is a permutation of the top 3 ingredients
+        if (rearrangedIngredients.size() == 3 && ingredientsList.containsAll(rearrangedIngredients)) {
+            // Remove the top three ingredients
+            ingredientsList.subList(0, 3).clear();
+            // Add the rearranged ingredients back to the top of the deck
+            for (int i = 2; i >= 0; i--) {
+                ingredientsList.add(0, rearrangedIngredients.get(i));
+            }
+        }
     }
 }

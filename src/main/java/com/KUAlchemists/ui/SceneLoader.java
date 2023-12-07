@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class SceneLoader {
@@ -86,6 +87,62 @@ public void loadHelpScreen(){
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.show();
 
+    }
+
+    public void loadDeductionBoard(){
+        loadPopUp(UIConstants.DEDUCTIONBOARD_FXML);
+    }
+    public void loadHelp(){
+        //loadPopUp(UIConstants.HELP_UI_FXML);
+        System.out.println("loadHelp");
+    }
+
+    public void loadPause(){
+        //loadPopUp(UIConstants.PAUSE_UI_FXML);
+        System.out.println("loadPause");
+    }
+
+
+    public void loadPopUp(String fxml_path) {
+        Dialog<Void> dialog = new Dialog<>();
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UILoader.class.getClassLoader().getResource(fxml_path));
+            dialog.getDialogPane().setContent(loader.load());
+            dialog.setResizable(false);
+            dialog.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        Node closeButton = dialog.getDialogPane().lookupButton(ButtonType.CLOSE);
+        closeButton.managedProperty().bind(closeButton.visibleProperty());
+        closeButton.setVisible(false);
+        dialog.show();
+    }
+
+    public void loadBoard() {
+        root = UILoader.loadFXML(UIConstants.BOARD_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.GAME_WINDOW_WIDTH, UIConstants.GAME_WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+
+    }
+
+    public void loadBuyArtifact(){
+        loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
+    }
+
+    public void loadUseArtifact(){
+        loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
+    }
+    public void loadPotionBrewing(){
+        loadPopUp(UIConstants.POTIONBREW_UI_FXML);
     }
 
 }

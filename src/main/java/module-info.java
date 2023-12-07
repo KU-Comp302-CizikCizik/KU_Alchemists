@@ -8,5 +8,4 @@ module com.KUAlchemists{
     exports com.KUAlchemists.ui.controllers;
     opens com.KUAlchemists.ui.controllers;
     exports com.KUAlchemists;
-
 }
