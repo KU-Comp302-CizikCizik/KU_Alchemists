@@ -1,0 +1,43 @@
+#body{
+    -fx-background-image: url("../com.KUAlchemists/images/potion_brew_background.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.ingredient{
+    -fx-background-color: "#f5dc6a";
+    -fx-border-style: solid;
+    /*visibility: hidden;*/
+}
+
+.ingredient_photo{
+    -fx-background-color: "#582918";
+    -fx-pref-height: 60;
+    -fx-pref-width: 60;
+}
+
+.slot{
+    -fx-background-color: #db9e42;
+    -fx-pref-height: 60;
+    -fx-pref-width: 60;
+}
+
+.potion{
+    -fx-background-color: #b6651d;
+    -fx-pref-height: 60;
+    -fx-pref-width: 60;
+}
+
+.potion_pane{
+    -fx-background-color: "#f5dc6a";
+    -fx-border-style: solid;
+}
+
+.ingredient_name{
+
+}
+
+#brew_button{
+    -fx-fill: "#ffd700";
+    -fx-font-size: 40px;
+}
