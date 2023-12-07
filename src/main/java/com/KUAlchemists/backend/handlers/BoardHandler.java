@@ -17,7 +17,7 @@ public class BoardHandler {
         return INSTANCE;
     }
 
-    public void forageIngredientPopUp() {
+    public String forageIngredient() {
         System.out.println("Forage ingredient button pressed");
 
         //this method should return drawen ingredient

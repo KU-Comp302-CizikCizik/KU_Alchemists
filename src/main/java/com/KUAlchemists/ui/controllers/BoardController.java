@@ -112,7 +112,7 @@ public class BoardController {
 
     @FXML
     void forageIngredientPopUp(ActionEvent event) {
-        String ingredient = boardhandler.forageIngredientPopUp();
+        String ingredient = BoardHandler.getInstance().forageIngredient();
         String message = "You have foraged " + ingredient + "!";
         SceneLoader.getInstance().loadForageIngredient(message, ingredient+"-ingredient.jpg");
     }
