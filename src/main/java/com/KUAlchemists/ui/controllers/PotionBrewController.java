@@ -58,7 +58,8 @@ public class PotionBrewController {
 
     public void actionPerformed(){
         selectIngredients();//Prepares selected ingredients
-        String  potion  = potionBrewingAreaHandler.brewPotion(selectedIngredients.get(0),selectedIngredients.get(1));//Brews the potion
+        //String  potion  = potionBrewingAreaHandler.brewPotion(selectedIngredients.get(0),selectedIngredients.get(1));//Brews the potion
+        String potion = "/alchemy/HEALING";
         //----Your Code Here Kardes-----
 
         //----Do not touch below this line kardes-----
@@ -78,7 +79,10 @@ public class PotionBrewController {
     @FXML
     private void initialize(){
         potionBrewingAreaHandler = new PotionBrewingAreaHandler();
-        ArrayList<String> ingredientList = potionBrewingAreaHandler.getIngredientList();
+        //ArrayList<String> ingredientList = potionBrewingAreaHandler.getIngredientList();
+        ArrayList<String> ingredientList = new ArrayList<String>();
+        ingredientList.add("mushroom");
+        ingredientList.add("flower");
         ingredientMap =  new HashMap<ImageView, String>();
         for(int i = 0; i < ingredientList.size(); i++){
 
