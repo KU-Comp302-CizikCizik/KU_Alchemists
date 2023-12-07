@@ -118,6 +118,7 @@ public class BoardController {
 
     @FXML
     void useArtifactPopUp(ActionEvent event) {
+
         SceneLoader.getInstance().loadUseArtifact();
     }
 

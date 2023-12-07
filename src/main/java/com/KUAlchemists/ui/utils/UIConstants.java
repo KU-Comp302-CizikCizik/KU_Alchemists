@@ -2,6 +2,8 @@ package com.KUAlchemists.ui.utils;
 
 public class UIConstants {
 
+    public static final String HELP_UI_FXML = "HelpScreen.fxml";
+
     private UIConstants() {
     }
     public static final String DEDUCTIONBOARD_FXML="Deductionboard.fxml";

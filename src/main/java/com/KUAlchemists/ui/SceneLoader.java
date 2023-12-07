@@ -90,8 +90,7 @@ public class SceneLoader {
         loadPopUp(UIConstants.DEDUCTIONBOARD_FXML);
     }
     public void loadHelp(){
-        //loadPopUp(UIConstants.HELP_UI_FXML);
-        System.out.println("loadHelp");
+        loadPopUp(UIConstants.HELP_UI_FXML);
     }
 
     public void loadPause(){
@@ -136,6 +135,7 @@ public class SceneLoader {
     }
 
     public void loadUseArtifact(){
+
         loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
     }
     public void loadPotionBrewing(){
