@@ -93,4 +93,8 @@ public class PotionBrewingService {
         String potionCode = potionEffect + "_POTION";
         return potionCode;
     }
+
+    public String getFormattedName(String ingredientName) {
+        return ingredientName.substring(0, 1).toUpperCase() + ingredientName.substring(1);
+    }
 }

@@ -374,7 +374,17 @@ public class DeductionBoardController {
     public void updateImageByName(String imageName, String targetImageViewName) {
         try {
             // Use reflection to get the ImageView field by name
-            Field field = getClass().getDeclaredField(targetImageViewName);
+            Field field;
+            try{
+                field = getClass().getDeclaredField(targetImageViewName);
+            }
+            catch (Exception e){
+                String[] parts = targetImageViewName.split("_");
+                targetImageViewName = parts[1] + "_" + parts[0];
+                field = getClass().getDeclaredField(targetImageViewName);
+
+            }
+
             field.setAccessible(true);
             ImageView targetImageView = (ImageView) field.get(this);
 

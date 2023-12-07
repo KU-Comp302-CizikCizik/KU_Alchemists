@@ -40,7 +40,6 @@ public class PotionBrewController {
     @FXML
     private ImageView potion_1;
 
-    private PotionBrewingAreaHandler potionBrewingAreaHandler;
     public Pane ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, slot1, slot2, potion;
     boolean isIngredient1Selected = false, isIngredient2Selected = false, isIngredient3Selected = false, isIngredient4Selected = false, isIngredient5Selected = false;
     public Text brewButton;
@@ -57,13 +56,10 @@ public class PotionBrewController {
     private HashMap<ImageView, String> ingredientMap;
 
     public void actionPerformed(){
-        selectIngredients();//Prepares selected ingredients
-        //String  potion  = potionBrewingAreaHandler.brewPotion(selectedIngredients.get(0),selectedIngredients.get(1));//Brews the potion
-        String potion = "/alchemy/HEALING";
-        //----Your Code Here Kardes-----
+        selectIngredients();
+        String  potion  = PotionBrewingAreaHandler.getInstance().brewPotion(selectedIngredients.get(0),selectedIngredients.get(1));
 
-        //----Do not touch below this line kardes-----
-        String imagePath = "com.KUAlchemists/images/" + potion + ".png";
+        String imagePath = "com.KUAlchemists/images/potions/" + potion + ".png";
         // Load the image using the class loader to ensure it works regardless of the build type
 
         try {
@@ -78,10 +74,7 @@ public class PotionBrewController {
 
     @FXML
     private void initialize(){
-        //ArrayList<String> ingredientList = potionBrewingAreaHandler.getIngredientList();
-        ArrayList<String> ingredientList = new ArrayList<String>();
-        ingredientList.add("mushroom");
-        ingredientList.add("flower");
+        ArrayList<String> ingredientList = PotionBrewingAreaHandler.getInstance().getIngredientList();
         ingredientMap =  new HashMap<ImageView, String>();
         for(int i = 0; i < ingredientList.size(); i++){
 
@@ -115,26 +108,6 @@ public class PotionBrewController {
         }
 
     }
-    public void prepareUI(ArrayList<String> list){
-        ingredient1.setVisible(false);
-        ingredient2.setVisible(false);
-        ingredient3.setVisible(false);
-        ingredient4.setVisible(false);
-        ingredient5.setVisible(false);
-
-        uiIngredientList.add(ingredient1);
-        uiIngredientList.add(ingredient2);
-        uiIngredientList.add(ingredient3);
-        uiIngredientList.add(ingredient4);
-        uiIngredientList.add(ingredient5);
-        if(!list.isEmpty()){
-            for(int i  = 0; i < list.size(); i++){
-                uiIngredientList.get(i).setVisible(true);
-            }
-        }
-    }
-
-
 
     public void hmEnteredIngredient1(){
         if(!isIngredient1Selected){
@@ -260,6 +233,7 @@ public class PotionBrewController {
         brewButton.setFill(Color.web("#ffd700"));
     }
     public void hmClickedBrewButton(){
+        if(numOfSelected != 2) return;
         actionPerformed();
     }
 

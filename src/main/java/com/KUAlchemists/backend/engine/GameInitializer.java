@@ -1,12 +1,16 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.exceptions.GameInitializationException;
 import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.managers.StateManager;
-import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.*;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class GameInitializer {
 
@@ -30,9 +34,8 @@ public class GameInitializer {
         initStateObservers();
         initEventObservers();
         initGameObjects();
-        initPlayerAssets();
         initAlchemicalOfIngredients();
-        initDeductionBoard();
+        initPlayerAssets();
     }
 
     private void initEventObservers() {
@@ -64,14 +67,31 @@ public class GameInitializer {
 
 
     private void initAlchemicalOfIngredients() {
+        ArrayList<Alchemical> possibleAlchemicals = new ArrayList<>();
 
 
+        //RED = POSITIVE_BIG, GREEN = POSITIVE_BIG, BLUE = POSITIVE_BIG
+        possibleAlchemicals.add(new Alchemical(Aspect.POSITIVE_BIG,Aspect.POSITIVE_BIG,Aspect.POSITIVE_BIG));
+        possibleAlchemicals.add(new Alchemical(Aspect.NEGATIVE_SMALL,Aspect.POSITIVE_SMALL,Aspect.NEGATIVE_BIG));
+        possibleAlchemicals.add(new Alchemical(Aspect.POSITIVE_BIG,Aspect.POSITIVE_SMALL,Aspect.NEGATIVE_SMALL));
+        possibleAlchemicals.add(new Alchemical(Aspect.NEGATIVE_SMALL,Aspect.POSITIVE_BIG,Aspect.POSITIVE_SMALL));
+        possibleAlchemicals.add(new Alchemical(Aspect.POSITIVE_SMALL,Aspect.NEGATIVE_SMALL,Aspect.POSITIVE_BIG));
+        possibleAlchemicals.add(new Alchemical(Aspect.NEGATIVE_BIG,Aspect.NEGATIVE_BIG,Aspect.NEGATIVE_BIG));
+        possibleAlchemicals.add(new Alchemical(Aspect.NEGATIVE_BIG,Aspect.NEGATIVE_SMALL,Aspect.POSITIVE_SMALL));
+        possibleAlchemicals.add(new Alchemical(Aspect.POSITIVE_SMALL,Aspect.NEGATIVE_BIG,Aspect.NEGATIVE_SMALL));
 
-    }
+        ArrayList<Ingredient> ingredientsList = Board.getInstance().getDeck().getInstance().getIngredientsList();
+        Random rand = new Random();
 
+        int length = possibleAlchemicals.size();
+        for(int i =0;i<ingredientsList.size();i++){
+            int index = rand.nextInt(length);
+            ingredientsList.get(i).setAlchemical(possibleAlchemicals.get(index));
+            possibleAlchemicals.remove(index);
+            length--;
+        }
 
-    private void initDeductionBoard(){
-
+        Board.getInstance().getDeck().getInstance().setIngredientList(ingredientsList);
 
     }
 
