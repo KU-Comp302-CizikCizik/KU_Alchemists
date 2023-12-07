@@ -21,16 +21,7 @@ public class IngredientStorageService {
     }
 
     public void removeIngredientFromStorage(Player player, String ingredientName) {
-        IngredientStorage ingredientStorage = Board.getInstance().getIngredientStorage(player);
-        ArrayList<Ingredient> ingredientsList = ingredientStorage.getIngredientsList();
-        Iterator<Ingredient> iterator = ingredientsList.iterator();
-
-        while (iterator.hasNext()) {
-            Ingredient ingredient = iterator.next();
-            if (ingredient.getName().equals(ingredientName)) {
-                iterator.remove();  // Safe removal
-            }
-        }
+        Board.getInstance().getIngredientStorage(player).removeIngredientByName(ingredientName);
     }
 
 
@@ -82,9 +73,8 @@ public class IngredientStorageService {
     }
 
     public void addIngredientToStorage(Player player,String ingredientName) {
-        IngredientStorage ingredientStorage = Board.getInstance().getIngredientStorage(player);
         Ingredient ingredient = new Ingredient(ingredientName, 0, "A common ingredient...", IngredientType.HERB);
-        ingredientStorage.addIngredient(ingredient);
+        Board.getInstance().getIngredientStorage(player).addIngredient(ingredient);
 
     }
 }
