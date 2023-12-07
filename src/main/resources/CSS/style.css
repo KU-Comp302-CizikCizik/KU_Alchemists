@@ -46,11 +46,10 @@
 
 .text-area *.text {
     -fx-text-alignment: center;
-
+}
 .redATextField {
     -fx-text-fill: rgba(142, 6, 6, 1);
 }
 .blueATextField {
     -fx-text-fill: #3a7caf;
-}
 }

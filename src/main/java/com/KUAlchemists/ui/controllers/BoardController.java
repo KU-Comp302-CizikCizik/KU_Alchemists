@@ -92,8 +92,7 @@ public class BoardController {
     }
 
     @FXML
-    void potionBrewingPopUp(ActionEvent event) {
-        SceneLoader.getInstance().loadPotionBrewing();
+    void potionBrewingPopUp(ActionEvent event) {SceneLoader.getInstance().loadPotionBrewing();
     }
 
     @FXML
