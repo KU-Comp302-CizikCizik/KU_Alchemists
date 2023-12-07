@@ -14,6 +14,7 @@ public class UseArtifactService {
 
     public UseArtifactService() {
         this.deck = Deck.getInstance();
+        this.playerService = new PlayerService();
     }
 
     public void useElixirOfInsight(Player player, List<String> rearrangedTopThree) {

@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.UseArtifactHandler;
 import javafx.fxml.FXML;
 import javafx.scene.effect.Bloom;
 import javafx.scene.effect.DropShadow;
@@ -23,6 +24,8 @@ public class UseArtifactController {
     private final Effect glowEffect = new Glow(0.4);
     private final Effect glowEffectSelected = new Glow(0.6);
     private final Effect dropShadowEffect = new DropShadow();
+
+    private UseArtifactHandler useArtifactHandler = UseArtifactHandler.getInstance();
 
     @FXML
     public Pane elixir_of_insight_con;
@@ -117,7 +120,12 @@ public class UseArtifactController {
         useButton.setFill(Color.web("#b6651d"));
         useArtifacts();
         handleMouseEnteredUseButton();
-        System.out.println(selectedArtifacts);
+        ArrayList <String> topThree = useArtifactHandler.handlePeekTopThree();
+        for (String artifact : topThree){
+            System.out.println(artifact);
+        }
+        // TODO: rearrangement screen opens
+        useArtifactHandler.useElixirOfInsight(topThree);
     }
 
 }
