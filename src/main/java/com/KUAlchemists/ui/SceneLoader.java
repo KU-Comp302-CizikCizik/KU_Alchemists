@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class SceneLoader {
@@ -141,6 +142,9 @@ public class SceneLoader {
 
     public void loadUseArtifact(){
         loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
+    }
+    public void loadPotionBrew(){
+        loadPopUp(UIConstants.POTIONBREW_UI_FXML);
     }
 
 
