@@ -58,7 +58,7 @@
          <children>
             <Pane id="ingredient3_photo" layoutY="3.0" prefHeight="69.0" prefWidth="67.0" styleClass="ingredient_photo" stylesheets="@CSS/BuyArtifactCSS.css">
                <children>
-                  <ImageView fx:id="ingredient_image3" fitHeight="60.0" fitWidth="60.0" layoutX="8.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ingredient_image3" fitHeight="60.0" fitWidth="60.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
                </children></Pane>
             <Text layoutX="60.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Name" wrappingWidth="170.21630859375">
                <font>
@@ -81,7 +81,7 @@
          <children>
             <Pane id="ingredient4_photo" layoutY="3.0" prefHeight="69.0" prefWidth="67.0" styleClass="ingredient_photo" stylesheets="@CSS/BuyArtifactCSS.css">
                <children>
-                  <ImageView fx:id="ingredient_image4" fitHeight="60.0" fitWidth="60.0" layoutX="4.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ingredient_image4" fitHeight="60.0" fitWidth="60.0" layoutX="2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
                </children></Pane>
             <Text layoutX="60.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Name" wrappingWidth="170.21630859375">
                <font>
