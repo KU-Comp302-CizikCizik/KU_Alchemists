@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui;
 
+import com.KUAlchemists.ui.controllers.GenericWindowController;
 import com.KUAlchemists.ui.controllers.LoginController;
 import com.KUAlchemists.ui.utils.UIConstants;
 import com.KUAlchemists.ui.utils.UILoader;
@@ -7,8 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -25,7 +28,7 @@ public class SceneLoader {
     private Parent root;
 
 
-    private SceneLoader(){
+    private SceneLoader() {
 
     }
 
@@ -35,6 +38,7 @@ public class SceneLoader {
         }
         return INSTANCE;
     }
+
     public void loadMenu() {
         root = UILoader.loadFXML(UIConstants.MENU_UI_FXML);
         Scene oldScene = MainApplicationUI.stage.getScene();
@@ -77,25 +81,42 @@ public class SceneLoader {
         MainApplicationUI.stage.show();
 
     }
-    public void loadIngredientStorage(){
+
+    public void loadIngredientStorage() {
         loadPopUp(UIConstants.INGREDIENTSTORAGE_UI_FXML);
     }
 
 
-    public void loadPublicationTrack(){
+    public void loadPublicationTrack() {
         System.out.println("loadPublicationTrack");
     }
 
-    public void loadDeductionBoard(){
+    public void loadDeductionBoard() {
         loadPopUp(UIConstants.DEDUCTIONBOARD_FXML);
     }
-    public void loadHelp(){
+
+    public void loadHelp() {
         loadPopUp(UIConstants.HELP_UI_FXML);
     }
 
-    public void loadPause(){
-        //loadPopUp(UIConstants.PAUSE_UI_FXML);
-        System.out.println("loadPause");
+    public void loadPause() {
+        Dialog<Void> dialog = new Dialog<>();
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UILoader.class.getClassLoader().getResource(UIConstants.Pause_UI_FXML));
+            dialog.getDialogPane().setContent(loader.load());
+            dialog.setResizable(false);
+            dialog.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        Node closeButton = dialog.getDialogPane().lookupButton(ButtonType.CLOSE);
+        closeButton.managedProperty().bind(closeButton.visibleProperty());
+        closeButton.setVisible(false);
+        dialog.show();
     }
 
 
