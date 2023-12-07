@@ -5,8 +5,10 @@ import com.KUAlchemists.backend.handlers.IngredientStorageHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,14 @@ import java.util.List;
 public class InventoryStorageController {
     @FXML
     private GridPane cardContainer;
+
+    @FXML
+    private AnchorPane anchorPane;
+    Stage stage;
+
+    public static InventoryStorageController getInstance() {
+        return new InventoryStorageController();
+    }
 
 
     @FXML

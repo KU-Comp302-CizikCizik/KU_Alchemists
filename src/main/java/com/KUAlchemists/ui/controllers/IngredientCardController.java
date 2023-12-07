@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.util.Stack;
 
 public class IngredientCardController {
 
@@ -14,6 +17,9 @@ public class IngredientCardController {
 
 
     private String ingredient;
+
+    private Stage stage;
+
 
     @FXML
     public void setIngredientCard(String ingredientName) {
@@ -40,7 +46,12 @@ public class IngredientCardController {
         IngredientStorageHandler.getInstance().handleTransmuteIngredient(ingredient);
 
         //TO-DO: refresh the ingredient storage or close the window
+        closeWindow();
+    }
 
+    private void closeWindow() {
+        stage = (Stage) ingredientImage.getScene().getWindow();
+        stage.close();
     }
 
     public String getIngredientName() {

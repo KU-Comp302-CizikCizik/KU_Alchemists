@@ -34,7 +34,7 @@ public class Board {
 
     public void createEmptyStoragesForPlayer(Player player){
         ingredientStorages.put(player, new IngredientStorage());
-        //potionStorages.put(player, new PotionStorage());
+        potionStorages.put(player, new PotionStorage());
         artifactStorages.put(player, new ArtifactStorage());
 
     }

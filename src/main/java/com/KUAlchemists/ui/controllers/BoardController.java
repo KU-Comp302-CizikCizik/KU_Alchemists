@@ -72,7 +72,6 @@ public class BoardController {
     @FXML
     private TextField alchemist1ActionPointTextField;
     
-    private BoardHandler boardhandler;
 
     @FXML
     void debunkPopUp(ActionEvent event) {
@@ -121,6 +120,7 @@ public class BoardController {
 
     @FXML
     void useArtifactPopUp(ActionEvent event) {
+
         SceneLoader.getInstance().loadUseArtifact();
     }
 
@@ -144,6 +144,7 @@ public class BoardController {
         Image currentAvatarImg = currentAvatarImage.getImage();
         currentAvatarImage.setImage(nextAvatarImage.getImage());
         nextAvatarImage.setImage(currentAvatarImg);
+
     }
 
     @FXML
@@ -181,11 +182,13 @@ public class BoardController {
 
     @FXML
     public void endTheRound() {
-        boardhandler.endTheRound();
+        BoardHandler.getInstance().endTheRound();
+        changeRound();
+
     }
 
     public BoardController() {
-        boardhandler = new BoardHandler();
+
     }
     
     @FXML

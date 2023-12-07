@@ -21,6 +21,15 @@ public class IngredientStorage {
         ingredientsList.remove(ingredient);
     }
 
+    public void removeIngredientByName(String ingredientName){
+        for (Ingredient ingredient : ingredientsList) {
+            if (ingredientName.equals(ingredient.getName())) {
+                ingredientsList.remove(ingredient);
+                break;
+            }
+        }
+    }
+
     public ArrayList<Ingredient> getIngredientsList(){
         return ingredientsList;
     }

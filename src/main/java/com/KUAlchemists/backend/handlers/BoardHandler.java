@@ -4,7 +4,20 @@ import com.KUAlchemists.backend.engine.GameEngine;
 
 public class BoardHandler {
 
-    public String forageIngredientPopUp() {
+
+    private static BoardHandler INSTANCE = null;
+
+    private BoardHandler() {
+    }
+
+    public static BoardHandler getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new BoardHandler();
+        }
+        return INSTANCE;
+    }
+
+    public void forageIngredientPopUp() {
         System.out.println("Forage ingredient button pressed");
 
         //this method should return drawen ingredient
@@ -12,6 +25,5 @@ public class BoardHandler {
     }
     public void endTheRound() {
         GameEngine.getInstance().nextPlayer();
-        System.out.println(GameEngine.getInstance().getCurrentPlayerIndex());
     }
 }

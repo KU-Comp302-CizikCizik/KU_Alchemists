@@ -60,6 +60,10 @@ public class Deck {
         return names;
     }
 
+    public ArrayList<Ingredient> getIngredientsList(){
+        return ingredientsList;
+    }
+
 
     public void setIngredientList(ArrayList<Ingredient> ingredientsList) {
         this.ingredientsList = ingredientsList;

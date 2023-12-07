@@ -2,10 +2,14 @@ package com.KUAlchemists.ui.utils;
 
 public class UIConstants {
 
-    public static final String FORAGEINGREDIENT_UI_FXML = "GenericWindow.fxml";
 
     private UIConstants() {
     }
+  
+    public static final String FORAGEINGREDIENT_UI_FXML = "GenericWindow.fxml";
+    public static final String HELP_UI_FXML = "HelpScreen.fxml";
+    public static final String GENERIC_FXML = "GenericWindow.fxml";
+    public static String Pause_UI_FXML = "PauseUI.fxml";
     public static final String DEDUCTIONBOARD_FXML="Deductionboard.fxml";
     public static final String GAME_TITLE = "KU Alchemists";
     public static final String LOGINPAGE_UI_FXML = "LoginPageUI.fxml";
