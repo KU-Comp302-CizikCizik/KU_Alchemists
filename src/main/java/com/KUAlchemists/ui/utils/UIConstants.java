@@ -3,7 +3,6 @@ package com.KUAlchemists.ui.utils;
 public class UIConstants {
 
     public static final String HELP_UI_FXML = "HelpScreen.fxml";
-    public static final String BUYARTIFACT_UI_FXML = "";
 
     private UIConstants() {
     }

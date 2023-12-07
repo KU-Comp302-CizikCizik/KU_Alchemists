@@ -93,14 +93,6 @@ public class SceneLoader {
         System.out.println("loadPotionBrewing");
     }
 
-    public void loadBuyArtifact(){
-        System.out.println("loadPotionBrewing");
-    }
-
-    public void loadUseArtifact(){
-        System.out.println("loadUseArtifact");
-    }
-
     public void loadHelp(){
         loadPopUp(UIConstants.HELP_UI_FXML);
     }
@@ -147,6 +139,7 @@ public class SceneLoader {
     }
 
     public void loadUseArtifact(){
+
         loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
     }
 
