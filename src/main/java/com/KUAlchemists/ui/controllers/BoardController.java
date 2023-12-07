@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.models.Ingredient;
@@ -114,8 +115,15 @@ public class BoardController {
     @FXML
     void forageIngredientPopUp(ActionEvent event) {
         String ingredient = ForageForIngredientHandler.getInstance().forageForIngredient();
-        String message = "You have foraged " + ingredient + "!";
-        SceneLoader.getInstance().loadForageIngredient(message, ingredient+"-ingredient.jpg");
+        if(ingredient == null){
+            SceneLoader.getInstance().loadGenericPopUp("No enough action points");
+        }
+        else{
+            String message = "You have foraged " + ingredient + "!";
+            setActionPoint(GameEngine.getInstance().getCurrentPlayerIndex()+1,GameEngine.getInstance().getCurrentPlayer().getActionPoints());
+            SceneLoader.getInstance().loadForageIngredient(message, ingredient+"-ingredient.jpg");
+        }
+
     }
 
 
