@@ -93,7 +93,7 @@ public class PotionBrewController {
             }
 
 
-            String imagePath = "com.KUAlchemists/images/" + ingredientList.get(i) + "-ingredient.jpg";
+            String imagePath = "com.KUAlchemists/images/" + ingredientList.get(i) + "-ingredient-square.png";
             // Load the image using the class loader to ensure it works regardless of the build type
 
             try {
