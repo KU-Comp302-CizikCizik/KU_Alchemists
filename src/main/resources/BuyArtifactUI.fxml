@@ -7,29 +7,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="body" prefHeight="650.0" prefWidth="900.0" stylesheets="@CSS/BuyArtifactCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BuyArtifactController">
+<AnchorPane id="body" prefHeight="650.0" prefWidth="900.0" stylesheets="@CSS/BuyArtifactCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BuyArtifactController">
     <children>
         <Pane id="elixir_of_insight" fx:id="elixir_of_insight_con" layoutX="138.0" layoutY="115.0" onMouseClicked="#handleMouseClicked_eoi" onMouseEntered="#handleMouseEntered_eoi" onMouseExited="#handleMouseExited_eoi" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/BuyArtifactCSS.css">
             <children>
                 <Pane id="elixir_of_insight_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/BuyArtifactCSS.css" />
                 <Text layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="elixir of insight" textAlignment="CENTER" wrappingWidth="171.9830722808838">
                     <font>
-                        <Font name="Snell Roundhand" size="23.0" />
+                        <Font name="Book Antiqua" size="17.0" />
                     </font>
                 </Text>
                 <Text layoutX="10.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="open your eyes and see the best three cards in of the ingredient deck and rearrange them in any order" textAlignment="JUSTIFY" wrappingWidth="180.0">
                     <font>
-                        <Font name="Snell Roundhand" size="17.0" />
+                        <Font name="Book Antiqua" size="15.0" />
                     </font>
                 </Text>
-                <Text layoutX="75.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" textAlignment="JUSTIFY" wrappingWidth="114.98307228088379">
+                <Text layoutX="75.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" wrappingWidth="114.98307228088379">
                     <font>
-                        <Font name="Snell Roundhand" size="17.0" />
+                        <Font name="Book Antiqua" size="16.0" />
                     </font>
                 </Text>
             <Text id="eoi_price_seciton" layoutX="10.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price_section" text="3 Golds" wrappingWidth="59.45199966430664">
                <font>
-                  <Font name="Snell Roundhand" size="13.0" />
+                  <Font name="Book Antiqua" size="13.0" />
                </font>
             </Text>
             </children>
@@ -45,22 +45,22 @@
                 <Pane id="compass_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/BuyArtifactCSS.css" />
                 <Text layoutX="5.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="philosopher's compass" textAlignment="CENTER" wrappingWidth="189.9830722808838">
                     <font>
-                        <Font name="Snell Roundhand" size="23.0" />
+                        <Font name="Book Antiqua" size="17.0" />
                     </font>
                 </Text>
-                <Text layoutX="10.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="get the compass, and change their faiths. change two alchemy markers postion on the deduction board" textAlignment="JUSTIFY" wrappingWidth="180.0">
+                <Text layoutX="10.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="get the compass, and change their faiths. change two alchemy markers postion on the deduction board" wrappingWidth="180.0">
                     <font>
-                        <Font name="Snell Roundhand" size="17.0" />
+                        <Font name="Book Antiqua" size="15.0" />
                     </font>
                 </Text>
-                <Text layoutX="66.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it every round, do not loose your positoin when you make them loose..." textAlignment="JUSTIFY" wrappingWidth="128.9830722808838">
+                <Text layoutX="66.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it every round, do not loose your positoin when you make them loose..." wrappingWidth="128.9830722808838">
                     <font>
-                        <Font name="Snell Roundhand" size="17.0" />
+                        <Font name="Book Antiqua" size="15.0" />
                     </font>
                 </Text>
             <Text id="pc_price_seciton" layoutX="5.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price_section" text="20 Golds" wrappingWidth="67.45199966430664">
                <font>
-                  <Font name="Snell Roundhand" size="13.0" />
+                  <Font name="Book Antiqua" size="13.0" />
                </font>
             </Text>
             </children>
@@ -76,22 +76,22 @@
                 <Pane id="bargain_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/BuyArtifactCSS.css" />
                 <Text layoutX="5.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hard bargain" textAlignment="CENTER" wrappingWidth="189.9830722808838">
                     <font>
-                        <Font name="Snell Roundhand" size="23.0" />
+                        <Font name="Book Antiqua" size="17.0" />
                     </font>
                 </Text>
-                <Text layoutX="7.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you are the hardest bargainer, get your money purse,  buy what you want with 20% discount" textAlignment="JUSTIFY" wrappingWidth="189.9830722808838">
+                <Text layoutX="7.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you are the hardest bargainer, get your money purse,  buy what you want with 20% discount" wrappingWidth="189.9830722808838">
                     <font>
-                        <Font name="Snell Roundhand" size="17.0" />
+                        <Font name="Book Antiqua" size="15.0" />
                     </font>
                 </Text>
-                <Text layoutX="75.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" textAlignment="JUSTIFY" wrappingWidth="114.98307228088379">
+                <Text layoutX="80.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" wrappingWidth="114.98307228088379">
                     <font>
-                        <Font name="Snell Roundhand" size="17.0" />
+                        <Font name="Book Antiqua" size="15.0" />
                     </font>
                 </Text>
             <Text id="hb_price_seciton" layoutX="6.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price_section" text="2 Golds" wrappingWidth="59.45199966430664">
                <font>
-                  <Font name="Snell Roundhand" size="13.0" />
+                  <Font name="Book Antiqua" size="13.0" />
                </font>
             </Text>
             </children>
@@ -104,7 +104,7 @@
         </Pane>
         <Text id="use_button" fx:id="useButton" layoutX="732.0" layoutY="589.0" onMouseClicked="#handleMouseClickedUseButton" onMouseEntered="#handleMouseEnteredUseButton" onMouseExited="#handleMouseExitedUseButton" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="use_button" text="Buy" textAlignment="CENTER" wrappingWidth="128.9830722808838">
             <font>
-                <Font name="Bradley Hand Bold" size="62.0" />
+                <Font name="Book Antiqua" size="62.0" />
             </font>
         </Text>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
