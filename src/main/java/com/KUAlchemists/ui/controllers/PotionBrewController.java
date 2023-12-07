@@ -78,7 +78,6 @@ public class PotionBrewController {
 
     @FXML
     private void initialize(){
-        potionBrewingAreaHandler = new PotionBrewingAreaHandler();
         //ArrayList<String> ingredientList = potionBrewingAreaHandler.getIngredientList();
         ArrayList<String> ingredientList = new ArrayList<String>();
         ingredientList.add("mushroom");
