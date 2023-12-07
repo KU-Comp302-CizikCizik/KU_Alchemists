@@ -93,11 +93,6 @@ public class SceneLoader {
         System.out.println("loadPotionBrewing");
     }
 
-
-    public void loadUseArtifact(){
-        System.out.println("loadUseArtifact");
-    }
-
     public void loadHelp(){
         //loadPopUp(UIConstants.HELP_UI_FXML);
         System.out.println("loadHelp");
@@ -142,15 +137,10 @@ public class SceneLoader {
 
     public void loadBuyArtifact(){
         loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
-        /**
-        root = UILoader.loadFXML(UIConstants.BUYARTIFACT_UI_FXML);
-        Scene oldScene = MainApplicationUI.stage.getScene();
-        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
-        MainApplicationUI.stage = (Stage) oldScene.getWindow();
-        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
-        MainApplicationUI.stage.centerOnScreen();
-        MainApplicationUI.stage.show();
-            **/
+    }
+
+    public void loadUseArtifact(){
+        loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
     }
 
 
