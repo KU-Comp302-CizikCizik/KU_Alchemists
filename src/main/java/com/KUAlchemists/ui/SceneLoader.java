@@ -94,7 +94,7 @@ public class SceneLoader {
     }
 
     public void loadBuyArtifact(){
-        loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
+        System.out.println("loadPotionBrewing");
     }
 
     public void loadUseArtifact(){
@@ -141,4 +141,14 @@ public class SceneLoader {
         MainApplicationUI.stage.show();
 
     }
+
+    public void loadBuyArtifact(){
+        loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
+    }
+
+    public void loadUseArtifact(){
+        loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
+    }
+
+
 }

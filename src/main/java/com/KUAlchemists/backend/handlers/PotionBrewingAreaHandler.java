@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Ingredient;
@@ -30,6 +31,8 @@ public class PotionBrewingAreaHandler {
 
         //brew the potion following the rules
         Potion potion = potionBrewingService.brewPotion(ingredient1,ingredient2);
+        //notify the observers
+        EventManager.getInstance().onPotionBrewingActionPerformed(potion);
 
         //add the potion to the player inventory
         PotionStorageHandler.getInstance().handleAddPotion(potion);

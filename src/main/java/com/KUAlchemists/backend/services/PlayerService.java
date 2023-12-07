@@ -1,16 +1,23 @@
 package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.exceptions.PlayerNotFoundException;
+import com.KUAlchemists.backend.models.Deck;
+import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class PlayerService {
 
     private List<Player> players; // This should be replaced with your data access mechanism.
+    private Deck deck;
 
+    public PlayerService() {
+        this.deck = Deck.getInstance();
+    }
     public PlayerService(List<Player> players) {
         this.players = players;
     }
@@ -73,6 +80,31 @@ public class PlayerService {
         }
     }
 
-    // Additional methods to handle other player operations...
+    /**
+     * Allows a player to rearrange the top three ingredients of the deck based on a list of names.
+     *
+     * @param player       The name of the player who is rearranging the ingredients.
+     * @param ingredientNames   The names of the ingredients in the new order.
+     * @return The rearranged list of ingredients, or null if the operation was not successful.
+     */
+    public List<Ingredient> nameToIngredient(Player player, List<String> ingredientNames) {
+        // Retrieve the top three ingredients from the deck.
+        List<Ingredient> topThreeIngredients = deck.peekTopThreeIngredients();
+        // Convert the list of ingredient names into actual Ingredient objects.
+        List<Ingredient> playerChosenOrder = ingredientNames.stream()
+                .map(name -> findIngredientByName(topThreeIngredients, name))
+                .collect(Collectors.toList());
+        // Apply the rearrangement to the deck.
+        deck.rearrangeTopThreeIngredients(playerChosenOrder);
+        return playerChosenOrder;
+    }
+
+    // Helper method to find an Ingredient by name from a list of Ingredients.
+    private Ingredient findIngredientByName(List<Ingredient> ingredients, String name) {
+        return ingredients.stream()
+                .filter(ingredient -> ingredient.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
 
 }

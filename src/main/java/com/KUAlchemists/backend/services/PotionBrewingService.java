@@ -17,7 +17,7 @@ public class PotionBrewingService {
         //determine the potion effect
         PotionEffect potionEffect = determinePotionEffect(alchemical1, alchemical2);
 
-        return new Potion(potionEffect);
+        return new Potion(potionEffect,ingredient1,ingredient2);
     }
 
 
@@ -43,9 +43,9 @@ public class PotionBrewingService {
         if (canAspectsCombineForPotion(redAspect1, redAspect2)) {
             return areAspectsBothPositive(redAspect1, redAspect2) ? PotionEffect.HEALING : PotionEffect.POISON;
         } else if (canAspectsCombineForPotion(blueAspect1, blueAspect2)) {
-            return areAspectsBothPositive(blueAspect1, blueAspect2) ? PotionEffect.SPEED : PotionEffect.PARALYSIS;
+            return areAspectsBothPositive(blueAspect1, blueAspect2) ? PotionEffect.WISDOM : PotionEffect.INSANITY;
         } else if (canAspectsCombineForPotion(greenAspect1, greenAspect2)) {
-            return areAspectsBothPositive(greenAspect1, greenAspect2) ? PotionEffect.WISDOM : PotionEffect.INSANITY;
+            return areAspectsBothPositive(greenAspect1, greenAspect2) ? PotionEffect.SPEED : PotionEffect.PARALYSIS;
         }
 
         return PotionEffect.NEUTRAL;

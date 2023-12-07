@@ -1,21 +1,17 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.handlers.UseArtifactHandler;
+import com.KUAlchemists.backend.handlers.BuyArtifactHandler;
 import javafx.fxml.FXML;
-import javafx.scene.effect.Bloom;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-
-public class UseArtifactController {
+public class BuyArtifactController {
 
     private boolean is_eoi_selected = false;
     private boolean is_pc_selected = false;
@@ -25,7 +21,7 @@ public class UseArtifactController {
     private final Effect glowEffectSelected = new Glow(0.6);
     private final Effect dropShadowEffect = new DropShadow();
 
-    private UseArtifactHandler useArtifactHandler = UseArtifactHandler.getInstance();
+    private BuyArtifactHandler buyArtifactHandler;
 
     @FXML
     public Pane elixir_of_insight_con;
@@ -34,11 +30,12 @@ public class UseArtifactController {
     public Text useButton;
 
     private ArrayList<String> allArtifacts = new ArrayList<String>();
-    private ArrayList<String> usedArtifacts = new ArrayList<String>();
+    private ArrayList<String> boughtArtifacts = new ArrayList<String>();
     private ArrayList<String> selectedArtifacts = new ArrayList<String>();
 
 
     public void useArtifacts(){
+
         selectedArtifacts.clear();
         if(is_eoi_selected)
             selectedArtifacts.add("elixir_of_insight");
@@ -88,7 +85,6 @@ public class UseArtifactController {
             is_pc_selected = false;
             handleMouseEntered_pc();
         }
-
     }
 
     public void handleMouseEntered_hb(){
@@ -100,7 +96,9 @@ public class UseArtifactController {
             hard_bargain_con.setEffect(dropShadowEffect);
     }
     public void handleMouseClicked_hb(){
+
         if(!is_hb_selected){
+
             is_hb_selected = true;
             hard_bargain_con.setEffect(glowEffectSelected);
         }
@@ -120,12 +118,11 @@ public class UseArtifactController {
         useButton.setFill(Color.web("#b6651d"));
         useArtifacts();
         handleMouseEnteredUseButton();
-        ArrayList <String> topThree = useArtifactHandler.handlePeekTopThree();
-        for (String artifact : topThree){
-            System.out.println(artifact);
+        buyArtifactHandler = new BuyArtifactHandler();
+        for (int i = 0; i < selectedArtifacts.size(); i++) {
+            buyArtifactHandler.handleBuyArtifactRequest(selectedArtifacts.get(i));
         }
-        // TODO: rearrangement screen opens
-        useArtifactHandler.useElixirOfInsight(topThree);
+
     }
 
 }
