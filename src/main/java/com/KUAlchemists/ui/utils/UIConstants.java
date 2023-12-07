@@ -2,6 +2,8 @@ package com.KUAlchemists.ui.utils;
 
 public class UIConstants {
 
+    public static final String FORAGEINGREDIENT_UI_FXML = "GenericWindow.fxml";
+
     private UIConstants() {
     }
     public static final String DEDUCTIONBOARD_FXML="Deductionboard.fxml";

@@ -4,8 +4,11 @@ import com.KUAlchemists.backend.engine.GameEngine;
 
 public class BoardHandler {
 
-    public void forageIngredientPopUp() {
+    public String forageIngredientPopUp() {
         System.out.println("Forage ingredient button pressed");
+
+        //this method should return drawen ingredient
+        return "birdfeet";
     }
     public void endTheRound() {
         GameEngine.getInstance().nextPlayer();
