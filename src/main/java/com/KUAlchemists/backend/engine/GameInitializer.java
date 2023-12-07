@@ -85,7 +85,7 @@ public class GameInitializer {
 
         int length = possibleAlchemicals.size();
         for(int i =0;i<ingredientsList.size();i++){
-            int index = rand.nextInt(0,length);
+            int index = rand.nextInt(length);
             ingredientsList.get(i).setAlchemical(possibleAlchemicals.get(index));
             possibleAlchemicals.remove(index);
             length--;
