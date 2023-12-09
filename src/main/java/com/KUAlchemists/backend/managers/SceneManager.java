@@ -43,9 +43,6 @@ public class SceneManager implements GameStateObserver {
             case BOARD:
                 SceneLoader.getInstance().loadBoard();
                 break;
-            case DEDUCTION:
-                SceneLoader.getInstance().loadDeductionBoard();
-                break;
             default:
                 break;
 

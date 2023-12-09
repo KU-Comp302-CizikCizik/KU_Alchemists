@@ -5,7 +5,7 @@ public class UIConstants {
 
     private UIConstants() {
     }
-  
+    public static final String PUBLICATIONTRACK_UI_FXML = "PublicationTrackUI.fxml";
     public static final String FORAGEINGREDIENT_UI_FXML = "GenericWindow.fxml";
     public static final String HELP_UI_FXML = "HelpScreen.fxml";
     public static final String GENERIC_FXML = "GenericWindow.fxml";

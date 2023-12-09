@@ -14,7 +14,7 @@
          <children>
               <ImageView id="mushroom_feather" fitHeight="461.0" fitWidth="964.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                      <Image url="@com.KUAlchemists/images/deductionboard.png" />
+                      <Image url="@com.KUAlchemists/images/DeductionBoard/deductionboard.png" />
                   </image>
               </ImageView>
             <ImageView id="mushroom" fx:id="mushroom_feather" fitHeight="50.0" fitWidth="50.0" layoutX="467.0" layoutY="14.0" onMouseClicked="#setCircle" pickOnBounds="true" preserveRatio="true" />
