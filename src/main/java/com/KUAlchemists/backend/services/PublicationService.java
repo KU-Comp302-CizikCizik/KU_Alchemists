@@ -1,10 +1,7 @@
 package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.enums.Aspect;
-import com.KUAlchemists.backend.models.Alchemical;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.models.Theory;
+import com.KUAlchemists.backend.models.*;
 
 import java.util.List;
 
@@ -12,15 +9,7 @@ import java.util.List;
  * Handles the business logic for publishing and endorsing theories in the game.
  */
 public class PublicationService {
-
-
-    private final IngredientService ingredientService;
-
-    private final PlayerService playerService;
-
     public PublicationService() {
-        this.ingredientService = new IngredientService();
-        this.playerService = new PlayerService();
     }
     /**
      * Publishes a theory if the player decides to do so.
@@ -37,19 +26,17 @@ public class PublicationService {
         Aspect blueAspect = Aspect.fromString(predictedBlueAspectString);
 
         Alchemical predictedAlchemical = new Alchemical(redAspect, greenAspect, blueAspect);
-        Ingredient ingredient = ingredientService.findIngredientByName(ingredientName);
+        Ingredient ingredient = Board.getInstance().getIngredientStorage(player).getIngredient(ingredientName);
         // Create a new theory with the found ingredient and alchemical
         Theory theory = new Theory(ingredient, predictedAlchemical);
 
         if (!theory.isPublished() && player.getGold() >= 1) { // Check if the theory is not already published and the player has enough gold
-            playerService.updatePlayerGold(player.getName(), player.getGold()-1);
-
-
-
+            player.setGold(player.getGold()-1); // Decrement gold
             theory.setPublished(true); // Set the theory as published
-            playerService.updatePlayerReputation(player.getName(), player.getReputation()+1);
-            // Increment the player's reputation
-            playerService.addPublishedTheory(player.getName(), theory);
+
+            player.setReputation(player.getReputation()+1);// Increment the player's reputation
+            player.getPublishedTheories().add(theory); // add published theory to player's publishedTheories list.
+            Board.getInstance().getPublishedTheoriesList().add(theory);
 
             // Additional logic to update the game state if necessary
             return true;

@@ -1,7 +1,8 @@
 package com.KUAlchemists.backend.handlers;
 
-import com.KUAlchemists.backend.services.DebunkTheoryService;
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.services.DebunkTheoryService;
 
 public class DebunkTheoryHandler {
 
@@ -27,8 +28,8 @@ public class DebunkTheoryHandler {
      * @return A string message indicating the result of the debunking attempt.
      */
     public String handleDebunkRequest(String theoryId) {
-        String playerName = GameEngine.getInstance().getCurrentPlayer().getName(); // Assuming GameEngine can provide the current player
-        boolean success = debunkTheoryService.debunkTheory(playerName, theoryId);
+        Player player = GameEngine.getInstance().getCurrentPlayer(); //GameEngine provides the current player
+        boolean success = debunkTheoryService.debunkTheory(player, theoryId);
 
         if (success) {
             return "Theory debunked successfully! Reputation increased.";

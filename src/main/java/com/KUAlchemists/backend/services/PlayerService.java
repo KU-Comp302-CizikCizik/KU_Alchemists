@@ -4,7 +4,6 @@ import com.KUAlchemists.backend.exceptions.PlayerNotFoundException;
 import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.models.Theory;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,37 +32,9 @@ public class PlayerService {
                 .orElse(null);
     }
 
-    /**
-     * Updates the player's gold amount.
-     *
-     * @param playerName The name of the player.
-     * @param gold The new amount of gold.
-     */
-    public void updatePlayerGold(String playerName, int gold) {
-        Player player = findPlayerByName(playerName);
-        if (player != null) {
-            player.setGold(gold);
-        } else {
-            // Handle the case where the player is not found
-            throw new PlayerNotFoundException("Player with name " + playerName + " not found");
-        }
-    }
 
-    /**
-     * Adds a published theory to the player's list of published theories.
-     *
-     * @param playerName The name of the player.
-     * @param theory The theory to be added.
-     */
-    public void addPublishedTheory(String playerName, Theory theory) {
-        Player player = findPlayerByName(playerName);
-        if (player != null) {
-            player.getPublishedTheories().add(theory);
-        } else {
-            // Handle the case where the player is not found
-            throw new PlayerNotFoundException("Player with name " + playerName + " not found");
-        }
-    }
+
+
 
 
     public void updatePlayerReputation(String playerName, int reputationChange) {
@@ -98,7 +69,7 @@ public class PlayerService {
     }
 
     // Helper method to find an Ingredient by name from a list of Ingredients.
-    private Ingredient findIngredientByName(List<Ingredient> ingredients, String name) {
+    public Ingredient findIngredientByName(List<Ingredient> ingredients, String name) {
         return ingredients.stream()
                 .filter(ingredient -> ingredient.getName().equalsIgnoreCase(name))
                 .findFirst()

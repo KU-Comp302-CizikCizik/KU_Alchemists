@@ -4,6 +4,7 @@ import com.KUAlchemists.backend.engine.GameEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Singleton Board Class
@@ -15,6 +16,7 @@ public class Board {
     private static final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
     private static final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
     private static final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
+    private static final List<Theory> publishedTheoriesList = new ArrayList<>();
     private static final Deck deck = Deck.getInstance();
 
     private Board (){
@@ -69,6 +71,9 @@ public class Board {
     public void addPotionToStorage(Player player, Potion potion){
         potionStorages.get(player).addPotion(potion);
     }
-    
+
+    public static List<Theory> getPublishedTheoriesList() {
+        return publishedTheoriesList;
+    }
 }
 
