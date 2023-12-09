@@ -158,8 +158,10 @@ public class SceneLoader {
     }
 
     public void loadUseArtifact(){
-
         loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
+    }
+    public void loadElixirOfInsight(){
+        loadPopUp(UIConstants.ELIXIR_OF_INSIGHT);
     }
     public void loadPotionBrewing(){
         loadPopUp(UIConstants.POTIONBREW_UI_FXML);

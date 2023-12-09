@@ -1,11 +1,9 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.UseArtifactHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
-import javafx.scene.effect.Bloom;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
-import javafx.scene.effect.Glow;
+import javafx.scene.effect.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -21,9 +19,15 @@ public class UseArtifactController {
     private boolean is_pc_selected = false;
     private boolean is_hb_selected = false;
 
+    public static final String ELIXIR_OF_INSIGHT = "elixir_of_insight";
+    public static final String PHILOSOPHERS_COMPASS = "philosophers_compass";
+    public static final String HARD_BARGAIN = "hard_bargain";
+
     private final Effect glowEffect = new Glow(0.4);
     private final Effect glowEffectSelected = new Glow(0.6);
     private final Effect dropShadowEffect = new DropShadow();
+    private final Effect boxBlurEffect = new BoxBlur(5, 5, 2);
+
 
     private UseArtifactHandler useArtifactHandler = UseArtifactHandler.getInstance();
 
@@ -34,18 +38,72 @@ public class UseArtifactController {
     public Text useButton;
 
     private ArrayList<String> allArtifacts = new ArrayList<String>();
-    private ArrayList<String> usedArtifacts = new ArrayList<String>();
+    private ArrayList<String> boughtArtifacts = new ArrayList<String>();
     private ArrayList<String> selectedArtifacts = new ArrayList<String>();
 
 
     public void useArtifacts(){
+        updateSelectedArtifacts();
+        for(String artifact: selectedArtifacts) {
+            if (artifact.equals(ELIXIR_OF_INSIGHT)){
+                SceneLoader.getInstance().loadElixirOfInsight();
+            }
+        }
+
+
+        boughtArtifacts = (ArrayList<String>) useArtifactHandler.getBoughtArtifacts();
+        unselectArtifacts();
+        setArtifactDisability();
+    }
+
+    public void initialize(){
+        boughtArtifacts = (ArrayList<String>) useArtifactHandler.getBoughtArtifacts();
+        setArtifactDisability();
+    }
+
+    public void setArtifactDisability(){
+        elixir_of_insight_con.setEffect(boxBlurEffect);
+        elixir_of_insight_con.setDisable(true);
+        philosophers_compass_con.setEffect(boxBlurEffect);
+        philosophers_compass_con.setDisable(true);
+        hard_bargain_con.setEffect(boxBlurEffect);
+        hard_bargain_con.setDisable(true);
+        for(String artifact : boughtArtifacts){
+            switch (artifact){
+                case ELIXIR_OF_INSIGHT:
+                    elixir_of_insight_con.setEffect(dropShadowEffect);
+                    elixir_of_insight_con.setDisable(false);
+                    break;
+                case PHILOSOPHERS_COMPASS:
+                    philosophers_compass_con.setEffect(dropShadowEffect);
+                    philosophers_compass_con.setDisable(false);
+                    break;
+                case HARD_BARGAIN:
+                    hard_bargain_con.setEffect(dropShadowEffect);
+                    hard_bargain_con.setDisable(false);
+                    break;
+            }
+        }
+    }
+
+    public void updateSelectedArtifacts(){
         selectedArtifacts.clear();
         if(is_eoi_selected)
-            selectedArtifacts.add("elixir_of_insight");
+            selectedArtifacts.add(ELIXIR_OF_INSIGHT);
+        elixir_of_insight_con.setEffect(dropShadowEffect);
         if(is_pc_selected)
-            selectedArtifacts.add("philosopher's_compass");
+            selectedArtifacts.add(PHILOSOPHERS_COMPASS);
+        elixir_of_insight_con.setEffect(dropShadowEffect);
         if(is_hb_selected)
-            selectedArtifacts.add("hard_bargain");
+            selectedArtifacts.add(HARD_BARGAIN);
+        elixir_of_insight_con.setEffect(dropShadowEffect);
+    }
+
+    public void unselectArtifacts(){
+        is_eoi_selected=false;
+        is_hb_selected = false;
+        is_pc_selected = false;
+        updateSelectedArtifacts();
     }
 
     public ArrayList<String> getSelectedArtifacts(){
@@ -120,12 +178,7 @@ public class UseArtifactController {
         useButton.setFill(Color.web("#b6651d"));
         useArtifacts();
         handleMouseEnteredUseButton();
-        ArrayList <String> topThree = useArtifactHandler.handlePeekTopThree();
-        for (String artifact : topThree){
-            System.out.println(artifact);
-        }
-        // TODO: rearrangement screen opens
-        useArtifactHandler.useElixirOfInsight(topThree);
+
     }
 
 }
