@@ -34,6 +34,8 @@ public class SceneManager implements GameStateObserver {
         currentState = to;
 
         switch (to) {
+            case PUBLICATION:
+                SceneLoader.getInstance().loadPublicationTrack();
             case LOGIN:
                 SceneLoader.getInstance().loadLogin();
                 break;
