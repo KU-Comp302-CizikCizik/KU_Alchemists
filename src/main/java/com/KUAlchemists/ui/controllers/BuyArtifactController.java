@@ -2,6 +2,7 @@ package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.BuyArtifactHandler;
 import javafx.fxml.FXML;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
@@ -17,11 +18,17 @@ public class BuyArtifactController {
     private boolean is_pc_selected = false;
     private boolean is_hb_selected = false;
 
+    public static final String ELIXIR_OF_INSIGHT = "elixir_of_insight";
+    public static final String PHILOSOPHERS_COMPASS = "philosophers_compass";
+    public static final String HARD_BARGAIN = "hard_bargain";
+
     private final Effect glowEffect = new Glow(0.4);
     private final Effect glowEffectSelected = new Glow(0.6);
     private final Effect dropShadowEffect = new DropShadow();
+    private final Effect boxBlurEffect = new BoxBlur(5, 5, 2);
 
-    private BuyArtifactHandler buyArtifactHandler;
+    private final BuyArtifactHandler buyArtifactHandler = new BuyArtifactHandler();
+
 
     @FXML
     public Pane elixir_of_insight_con;
@@ -34,19 +41,60 @@ public class BuyArtifactController {
     private ArrayList<String> selectedArtifacts = new ArrayList<String>();
 
 
-    public void useArtifacts(){
-
-        selectedArtifacts.clear();
-        if(is_eoi_selected)
-            selectedArtifacts.add("elixir_of_insight");
-        if(is_pc_selected)
-            selectedArtifacts.add("philosopher's_compass");
-        if(is_hb_selected)
-            selectedArtifacts.add("hard_bargain");
+    /**
+     * Calls the handler and tries to buy all selected artifacts.
+     */
+    public void buyArtifacts(){
+        updateSelectedArtifacts();
+        for(String artifact: selectedArtifacts) {
+            buyArtifactHandler.handleBuyArtifactRequest(artifact);
+        }
+        boughtArtifacts = (ArrayList<String>) buyArtifactHandler.getBoughtArtifacts();
+        unselectArtifacts();
+        setArtifactDisability();
     }
 
-    public ArrayList<String> getSelectedArtifacts(){
-        return selectedArtifacts;
+    public void initialize(){
+        boughtArtifacts = (ArrayList<String>) buyArtifactHandler.getBoughtArtifacts();
+        setArtifactDisability();
+    }
+
+    public void setArtifactDisability(){
+        for(String artifact : boughtArtifacts){
+            switch (artifact){
+                case ELIXIR_OF_INSIGHT:
+                    elixir_of_insight_con.setEffect(boxBlurEffect);
+                    elixir_of_insight_con.setDisable(true);
+                    break;
+                case PHILOSOPHERS_COMPASS:
+                    philosophers_compass_con.setEffect(boxBlurEffect);
+                    philosophers_compass_con.setDisable(true);
+                    break;
+                case HARD_BARGAIN:
+                    hard_bargain_con.setEffect(boxBlurEffect);
+                    hard_bargain_con.setDisable(true);
+                    break;
+            }
+        }
+    }
+
+    public void updateSelectedArtifacts(){
+        selectedArtifacts.clear();
+        if(is_eoi_selected)
+            selectedArtifacts.add(ELIXIR_OF_INSIGHT);
+        elixir_of_insight_con.setEffect(dropShadowEffect);
+        if(is_pc_selected)
+            selectedArtifacts.add(PHILOSOPHERS_COMPASS);
+        elixir_of_insight_con.setEffect(dropShadowEffect);
+        if(is_hb_selected)
+            selectedArtifacts.add(HARD_BARGAIN);
+        elixir_of_insight_con.setEffect(dropShadowEffect);
+    }
+    public void unselectArtifacts(){
+        is_eoi_selected=false;
+        is_hb_selected = false;
+        is_pc_selected = false;
+        updateSelectedArtifacts();
     }
 
     public void handleMouseEntered_eoi(){
@@ -116,13 +164,8 @@ public class BuyArtifactController {
     }
     public void handleMouseClickedUseButton(){
         useButton.setFill(Color.web("#b6651d"));
-        useArtifacts();
+        buyArtifacts();
         handleMouseEnteredUseButton();
-        buyArtifactHandler = new BuyArtifactHandler();
-        for (int i = 0; i < selectedArtifacts.size(); i++) {
-            buyArtifactHandler.handleBuyArtifactRequest(selectedArtifacts.get(i));
-        }
-
     }
 
 }
