@@ -3,6 +3,8 @@ package com.KUAlchemists.backend.services;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 
+
+// Debunk Theory daha tam olarak bitmedi aspect alması gerekiyor.!
 public class DebunkTheoryService {
 
     private final TheoryService theoryService;
