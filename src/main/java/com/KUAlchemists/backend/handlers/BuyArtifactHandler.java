@@ -56,6 +56,7 @@ public class BuyArtifactHandler {
      * Sends a list of bought artifact(s)
      * @return ArrayList <String>
      */
+    //bu method değişebilir mahmutla kontakta kal!!!!!!!!!!!!!!!!!!!
     public List<String> getBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
         List<String> boughtArtifacts = new ArrayList<>();
         boughtArtifacts.add("philosophers_compass"); //Test case, can be deleted
