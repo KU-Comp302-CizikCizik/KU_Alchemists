@@ -11,9 +11,21 @@ public class BuyArtifactHandler {
 
     private final BuyArtifactService buyArtifactService;
 
+    private static BuyArtifactHandler INSTANCE;
+
     public BuyArtifactHandler() {
         this.buyArtifactService = new BuyArtifactService();
     }
+
+
+
+    public static BuyArtifactHandler getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new BuyArtifactHandler();
+        }
+        return INSTANCE;
+    }
+
 
     /**
      * Handles a request to buy an artifact.
