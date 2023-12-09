@@ -46,7 +46,7 @@ public class BuyArtifactHandler {
      */
     //EXTREMELY IMPORTANT NOTE: I turned this method to static, you make it normal later. Because the BuyArtifactController cannot initialize this handler object as getInstance() method is not initialized yet.
     //Whenever you write the method in this class, ONLY write this code in the controller: private BuyArtifactHandler buyArtifactHandler = BuyArtifactHandler.getInstance();
-    public static List<String> getBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
+    public List<String> getBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
         List<String> boughtArtifacts = new ArrayList<>();
         boughtArtifacts.add("philosophers_compass"); //Test case, can be deleted
         boughtArtifacts.add("hard_bargain");

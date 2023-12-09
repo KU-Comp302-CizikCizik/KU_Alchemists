@@ -1,7 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.BuyArtifactHandler;
-import com.KUAlchemists.backend.handlers.UseArtifactHandler;
 import javafx.fxml.FXML;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
@@ -28,7 +27,8 @@ public class BuyArtifactController {
     private final Effect dropShadowEffect = new DropShadow();
     private final Effect boxBlurEffect = new BoxBlur(5, 5, 2);
 
-    private BuyArtifactHandler buyArtifactHandler;
+    private final BuyArtifactHandler buyArtifactHandler = new BuyArtifactHandler();
+
 
     @FXML
     public Pane elixir_of_insight_con;
@@ -45,10 +45,12 @@ public class BuyArtifactController {
      * Calls the handler and tries to buy all selected artifacts.
      */
     public void buyArtifacts(){
-        for(String artifact: getSelectedArtifacts()) {
-//            buyArtifactHandler.handleBuyArtifactRequest(artifact); uncomment
+        updateSelectedArtifacts();
+        for(String artifact: selectedArtifacts) {
+            buyArtifactHandler.handleBuyArtifactRequest(artifact);
         }
         boughtArtifacts = (ArrayList<String>) buyArtifactHandler.getBoughtArtifacts();
+        unselectArtifacts();
         setArtifactDisability();
     }
 
@@ -76,7 +78,7 @@ public class BuyArtifactController {
         }
     }
 
-    public ArrayList<String> getSelectedArtifacts(){
+    public void updateSelectedArtifacts(){
         selectedArtifacts.clear();
         if(is_eoi_selected)
             selectedArtifacts.add(ELIXIR_OF_INSIGHT);
@@ -87,7 +89,12 @@ public class BuyArtifactController {
         if(is_hb_selected)
             selectedArtifacts.add(HARD_BARGAIN);
         elixir_of_insight_con.setEffect(dropShadowEffect);
-        return selectedArtifacts;
+    }
+    public void unselectArtifacts(){
+        is_eoi_selected=false;
+        is_hb_selected = false;
+        is_pc_selected = false;
+        updateSelectedArtifacts();
     }
 
     public void handleMouseEntered_eoi(){
@@ -159,11 +166,6 @@ public class BuyArtifactController {
         useButton.setFill(Color.web("#b6651d"));
         buyArtifacts();
         handleMouseEnteredUseButton();
-        buyArtifactHandler = new BuyArtifactHandler();
-        for (int i = 0; i < selectedArtifacts.size(); i++) {
-            buyArtifactHandler.handleBuyArtifactRequest(selectedArtifacts.get(i));
-        }
-
     }
 
 }
