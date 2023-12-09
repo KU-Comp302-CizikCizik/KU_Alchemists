@@ -6,16 +6,9 @@ import com.KUAlchemists.backend.models.Theory;
 public class DebunkTheoryService {
 
     private final TheoryService theoryService;
-
-    private final PlayerService playerService;
-
     public DebunkTheoryService() {
         this.theoryService = new TheoryService();
-        this.playerService = new PlayerService();
-
-
     }
-
     /**
      * Attempts to debunk a theory.
      *
@@ -25,15 +18,12 @@ public class DebunkTheoryService {
      */
     public boolean debunkTheory(Player player, String theoryId) {
         Theory theory = theoryService.findTheoryById(theoryId);
+        //Players can debunk their own theory. More actions will be added.
         if (theory == null || theory.isDebunked()) {
             // Theory not found or already debunked; cannot proceed with debunking
             return false;
         }
-
         else {
-
-
-
             if (!theory.isDebunked()) {
                 theory.setDebunked(true); // Mark the theory as debunked
                 player.setReputation(player.getReputation()+2);// Increase player's reputation
