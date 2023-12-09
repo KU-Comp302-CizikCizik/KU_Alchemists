@@ -3,8 +3,8 @@ package com.KUAlchemists.backend.handlers;
 import com.KUAlchemists.backend.services.PublicationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class PublicationHandlerTest {
@@ -15,7 +15,7 @@ class PublicationHandlerTest {
     @BeforeEach
     void setUp() {
         publicationService = mock(PublicationService.class);
-        publicationHandler = new PublicationHandler(publicationService);
+        publicationHandler = new PublicationHandler();
 
     }
 

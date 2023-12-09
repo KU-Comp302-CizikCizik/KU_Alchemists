@@ -12,15 +12,13 @@ import java.util.stream.Collectors;
 
 public class PlayerService {
 
-    private List<Player> players; // This should be replaced with your data access mechanism.
+    private List<Player> players;
     private Deck deck;
 
     public PlayerService() {
         this.deck = Deck.getInstance();
     }
-    public PlayerService(List<Player> players) {
-        this.players = players;
-    }
+
 
     /**
      * Finds a player by their name.

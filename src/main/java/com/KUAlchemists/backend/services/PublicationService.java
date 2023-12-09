@@ -1,11 +1,11 @@
 package com.KUAlchemists.backend.services;
-import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.models.Theory;
+
 import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.models.Alchemical;
 import com.KUAlchemists.backend.models.Ingredient;
+import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.Theory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,9 +18,9 @@ public class PublicationService {
 
     private final PlayerService playerService;
 
-    public PublicationService(IngredientService ingredientService, PlayerService playerService) {
-        this.ingredientService = ingredientService;
-        this.playerService = playerService;
+    public PublicationService() {
+        this.ingredientService = new IngredientService();
+        this.playerService = new PlayerService();
     }
     /**
      * Publishes a theory if the player decides to do so.

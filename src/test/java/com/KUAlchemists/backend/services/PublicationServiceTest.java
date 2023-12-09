@@ -23,7 +23,7 @@ class PublicationServiceTest {
     void setUp() {
         ingredientService = mock(IngredientService.class);
         playerService = mock(PlayerService.class);
-        publicationService = new PublicationService(ingredientService, playerService);
+        publicationService = new PublicationService();
         player = mock(Player.class);
         ingredient = mock(Ingredient.class);
 

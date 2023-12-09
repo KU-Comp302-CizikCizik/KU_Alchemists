@@ -28,7 +28,7 @@ class DebunkTheoryServiceTest {
         theory = mock(Theory.class);
 
         List<Theory> theories = Arrays.asList(theory);
-        debunkTheoryService = new DebunkTheoryService(theoryService, playerService, theories);
+        debunkTheoryService = new DebunkTheoryService();
     }
 
     @Test

@@ -7,8 +7,17 @@ public class DebunkTheoryHandler {
 
     private final DebunkTheoryService debunkTheoryService;
 
-    public DebunkTheoryHandler(DebunkTheoryService debunkTheoryService) {
-        this.debunkTheoryService = debunkTheoryService;
+    private static DebunkTheoryHandler INSTANCE;
+
+    public DebunkTheoryHandler() {
+        this.debunkTheoryService = new DebunkTheoryService();
+    }
+
+    public static DebunkTheoryHandler getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new DebunkTheoryHandler();
+        }
+        return INSTANCE;
     }
 
     /**

@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UseArtifactHandler {
-    private UseArtifactService useArtifactService;
+    private final UseArtifactService useArtifactService;
     private static UseArtifactHandler INSTANCE;
-    private UseArtifactHandler(UseArtifactService useArtifactService) {
-        this.useArtifactService = useArtifactService;
+    private UseArtifactHandler() {
+        this.useArtifactService = new UseArtifactService();
     }
 
     public static UseArtifactHandler getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new UseArtifactHandler(new UseArtifactService());
+            INSTANCE = new UseArtifactHandler();
         }
         return INSTANCE;
     }
