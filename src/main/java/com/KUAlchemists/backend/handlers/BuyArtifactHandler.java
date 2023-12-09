@@ -4,6 +4,9 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.BuyArtifactService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class is responsible for handling buy artifact requests.
  */
@@ -35,4 +38,24 @@ public class BuyArtifactHandler {
             return "Failed to purchase artifact. Not enough gold or artifact not found.";
         }
     }
+
+
+    /**
+     * Sends a list of bought artifact(s)
+     * @return ArrayList <String>
+     */
+    //EXTREMELY IMPORTANT NOTE: I turned this method to static, you make it normal later. Because the BuyArtifactController cannot initialize this handler object as getInstance() method is not initialized yet.
+    //Whenever you write the method in this class, ONLY write this code in the controller: private BuyArtifactHandler buyArtifactHandler = BuyArtifactHandler.getInstance();
+    public static List<String> getBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
+        List<String> boughtArtifacts = new ArrayList<>();
+        boughtArtifacts.add("philosophers_compass"); //Test case, can be deleted
+        boughtArtifacts.add("hard_bargain");
+        //You add which artifacts are bought here.
+        //elixir_of_insight
+        //philosophers_compass
+        //hard_bargain
+        //Make sure you send these 3
+        return boughtArtifacts;
+    }
+
 }
