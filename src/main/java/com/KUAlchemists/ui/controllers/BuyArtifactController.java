@@ -29,6 +29,7 @@ public class BuyArtifactController {
     private final BuyArtifactHandler buyArtifactHandler = BuyArtifactHandler.getInstance();
 
 
+
     @FXML
     public Pane elixir_of_insight_con;
     public Pane philosophers_compass_con;
@@ -76,6 +77,7 @@ public class BuyArtifactController {
             }
         }
     }
+
 
     public void updateSelectedArtifacts(){
         selectedArtifacts.clear();
