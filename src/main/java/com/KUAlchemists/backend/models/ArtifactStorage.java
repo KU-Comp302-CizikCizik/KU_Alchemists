@@ -48,4 +48,8 @@ public class ArtifactStorage {
     public List<Artifact> getUsedArtifacts() {
         return this.usedArtifactsList;
     }
+
+    public List<Artifact> getArtifactList() {
+        return this.artifactsList;
+    }
 }

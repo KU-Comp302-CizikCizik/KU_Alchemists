@@ -49,6 +49,7 @@ public class BuyArtifactController {
         for(String artifact: selectedArtifacts) {
             buyArtifactHandler.handleBuyArtifactRequest(artifact);
         }
+
         boughtArtifacts = (ArrayList<String>) buyArtifactHandler.handleBoughtArtifacts();
         unselectArtifacts();
         setArtifactDisability();

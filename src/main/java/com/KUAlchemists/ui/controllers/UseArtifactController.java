@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.BuyArtifactHandler;
 import com.KUAlchemists.backend.handlers.UseArtifactHandler;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
@@ -47,18 +48,21 @@ public class UseArtifactController {
         updateSelectedArtifacts();
         for(String artifact: selectedArtifacts) {
             if (artifact.equals(ELIXIR_OF_INSIGHT)){
+                useArtifactHandler.handleRemoveArtifact(ELIXIR_OF_INSIGHT);
                 SceneLoader.getInstance().loadElixirOfInsight();
             }
         }
 
-
-        boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleUsedArtifacts();
+        //Alperen burası
+        boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleStorageArtifact();
         unselectArtifacts();
         setArtifactDisability();
     }
 
     public void initialize(){
-        boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleUsedArtifacts();
+        boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleStorageArtifact();
+        BuyArtifactHandler buyArtifactHandler = new BuyArtifactHandler();
+        System.out.println(boughtArtifacts);
         setArtifactDisability();
     }
 

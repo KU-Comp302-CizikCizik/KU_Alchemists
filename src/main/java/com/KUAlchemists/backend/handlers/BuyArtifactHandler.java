@@ -35,18 +35,14 @@ public class BuyArtifactHandler {
      * @param artifactName The name of the artifact to buy.
      * @return A string message indicating the result of the transaction.
      */
-    public boolean handleBuyArtifactRequest(String artifactName) {
+    public void handleBuyArtifactRequest(String artifactName) {
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
-        boolean success = buyArtifactService.buyArtifact(currentPlayer, artifactName);
-        return success;
+        buyArtifactService.buyArtifact(currentPlayer, artifactName);
     }
-
-
     /**
      * Sends a list of bought artifact(s)
      * @return ArrayList <String>
      */
-
 
     public List<String> handleGetArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
 

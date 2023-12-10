@@ -12,6 +12,7 @@ public class UseArtifactService {
 
     private ArtifactStorage artifactStorage;
 
+
     public UseArtifactService() {
         this.deck = Deck.getInstance();
         this.playerService = new PlayerService();
@@ -40,5 +41,19 @@ public class UseArtifactService {
         }
         return artifacts;
     }
+
+    public void removeArtifactfromStorage(String name){
+
+        artifactStorage.removeArtifact(artifactStorage.getArtifact(name));
+    }
+    public ArrayList<String> getStorageArtifacts(Player player){
+        ArrayList<String> artifacts = new ArrayList<>();
+        ArtifactStorage storage = Board.getInstance().getArtifactStorage(player);
+        for(Artifact a : storage.getArtifactsList()){
+            artifacts.add(a.getName());
+        }
+        return artifacts;
+    }
+
 
 }

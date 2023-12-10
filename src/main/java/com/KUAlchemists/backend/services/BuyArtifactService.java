@@ -19,23 +19,22 @@ public class BuyArtifactService {
      * @param artifactName The name of the artifact to buy.
      * @return true if the artifact was successfully bought; otherwise, false.
      */
-    public boolean buyArtifact(Player player, String artifactName) {
+    public void buyArtifact(Player player, String artifactName) {
         Artifact artifact = artifactShop.getArtifact(artifactName);
-        if (artifact == null) {
-            return false; // Artifact not found in the shop
-        }
 
         int artifactCost = artifact.getCost();
         if (player.getGold() >= artifactCost) {
             player.setGold(player.getGold() - artifactCost);
-            // Assuming Board class has a method to get the player's artifact storage
+
             ArtifactStorage storage = Board.getInstance().getArtifactStorage(player);
             storage.addArtifact(artifact);
             artifactShop.removeArtifactFromSale(artifact); // Remove the artifact from the shop
 
-            return true;
-        } else {
-            return false; // Not enough gold to buy the artifact
+            // Artifact storage çalışyor mu diye test ettim. Çalışıyor.
+
+//            for(Artifact a : storage.getArtifactsList()){
+//                System.out.println(a.getName());
+//            }
         }
     }
 
@@ -51,6 +50,11 @@ public class BuyArtifactService {
         for(Artifact a : artifactShop.getBoughtArtifacts()){
             artifacts.add(a.getName());
         }
+        // method çalışıyor
+//        for(String b : artifacts) {
+//            System.out.println(b);
+//        }
+
         return artifacts;
     }
 }
