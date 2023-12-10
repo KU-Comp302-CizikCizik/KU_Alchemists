@@ -27,7 +27,7 @@ public class SceneManager implements GameStateObserver {
     }
 
     @Override
-    public void onGameStateChange(Gamestate to) {
+    public void onGameStateChanged(Gamestate to) {
         if(currentState == to){
             return;
         }
