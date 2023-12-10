@@ -12,9 +12,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.SortedMap;
 
 public class ElixirOfInsightController {
 
@@ -215,7 +212,7 @@ public class ElixirOfInsightController {
         handleOrderButtonClick();
     }
 
-    private class Slot{
+    private static class Slot{
         private String name;
         private String photoName;
         private String photoAddress;
@@ -272,7 +269,7 @@ public class ElixirOfInsightController {
         public static void decreaseNumOfSelected(){
             numOfSelected--;
         }
-        public static int getNumOfSelected(){
+        public int getNumOfSelected(){
             return numOfSelected;
         }
         public static void setNumOfSelected(int newNum){
