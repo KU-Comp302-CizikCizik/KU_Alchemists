@@ -12,6 +12,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.SortedMap;
 
 public class ElixirOfInsightController {
 
@@ -38,17 +41,18 @@ public class ElixirOfInsightController {
     public Text ingredient2_name;
     public Text ingredient3_name;
     public ArrayList<Pane> paneList = new ArrayList<Pane>();
-    private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+    private ArrayList<Slot> slots = new ArrayList<Slot>();
+
+
     private ArrayList<ImageView> ingredientImages = new ArrayList<ImageView>();
     private ArrayList<Text> ingredientNames = new ArrayList<Text>();
-    private javafx.scene.control.Button closeButton;
 
     private ArrayList<String> orderedIngredients = new ArrayList<String>();
 
     public void handleOrderButtonClick(){
         ArrayList<String> newTopTree = new ArrayList<String>();
-        for(Ingredient ingredient: ingredients){
-            newTopTree.add(ingredient.getName());
+        for(Slot slot: slots){
+            newTopTree.add(slot.getName());
         }
         useArtifactHandler.useElixirOfInsight(newTopTree);
         for(Pane pane: paneList){
@@ -61,7 +65,7 @@ public class ElixirOfInsightController {
     public void initialize(){
         ArrayList <String> topThree = useArtifactHandler.handlePeekTopThree();
         for (String artifact : topThree){
-            ingredients.add(new Ingredient(artifact));
+            slots.add(new Slot(artifact));
         }
         paneList.add(ingredient1_pane);
         paneList.add(ingredient2_pane);
@@ -75,51 +79,51 @@ public class ElixirOfInsightController {
         ingredientNames.add(ingredient2_name);
         ingredientNames.add(ingredient3_name);
 
-        updateIngredients();
+        updateSlots();
     }
 
     public boolean checkSwap(){
-        if(Ingredient.numOfSelected == 2){
-            Ingredient.setNumOfSelected(0);
+        if(Slot.numOfSelected == 2){
+            Slot.setNumOfSelected(0);
             return true;
         } return false;
     }
 
     public void swap(){
         if(checkSwap()){
-            Ingredient ingredient1 = new Ingredient("");
-            Ingredient ingredient2 = new Ingredient("");
+            Slot slot1 = new Slot("");
+            Slot slot2 = new Slot("");
             int i = 0;
-            for(; i < ingredients.size(); i++){
-                if(ingredients.get(i).isSelected()){
-                    ingredient1 = ingredients.get(i);
+            for(; i < slots.size(); i++){
+                if(slots.get(i).isSelected()){
+                    slot1 = slots.get(i);
                     break;
                 }
             }
             int k = i+1;
-            for (; k < ingredients.size(); k++){
-                if(ingredients.get(k).isSelected()){
-                    ingredient2 = ingredients.get(k);
+            for (; k < slots.size(); k++){
+                if(slots.get(k).isSelected()){
+                    slot2 = slots.get(k);
                     break;
                 }
             }
             for(Pane pane: paneList){
                 pane.setEffect(dropShadowEffect);
             }
-            for(Ingredient ingredient: ingredients){
-                ingredient.setSelected(false);
+            for(Slot slot: slots){
+                slot.setSelected(false);
             }
 
-            ingredients.set(i, ingredient2);
-            ingredients.set(k, ingredient1);
-            updateIngredients();
+            slots.set(i, slot2);
+            slots.set(k, slot1);
+            updateSlots();
         }
     }
 
-    public void updateIngredients(){
-        for(int i = 0; i < ingredients.size(); i++){
-            String photoUrl = ingredients.get(i).getPhotoAddress();
-            String name = ingredients.get(i).getName();
+    public void updateSlots(){
+        for(int i = 0; i < slots.size(); i++){
+            String photoUrl = slots.get(i).getPhotoAddress();
+            String name = slots.get(i).getName();
             try {
                 Image image = new Image(getClass().getClassLoader().getResourceAsStream(photoUrl));
                 ingredientImages.get(i).setImage(image);
@@ -131,50 +135,51 @@ public class ElixirOfInsightController {
         }
     }
 
+
     public void ingredient1MouseEntered(){
-        if(!ingredients.get(FIRST).isSelected){
+        if(!slots.get(FIRST).isSelected){
             paneList.get(FIRST).setEffect(glowEffect);
         }
     }
     public void ingredient1MouseExited(MouseEvent mouseEvent) {
-        if(!ingredients.get(FIRST).isSelected()){
+        if(!slots.get(FIRST).isSelected()){
             paneList.get(FIRST).setEffect(dropShadowEffect);
         }
     }
 
     public void ingredient1MouseClicked(MouseEvent mouseEvent) {
-        if(!ingredients.get(FIRST).isSelected()){
-            ingredients.get(FIRST).setSelected(true);
+        if(!slots.get(FIRST).isSelected()){
+            slots.get(FIRST).setSelected(true);
             paneList.get(FIRST).setEffect(glowEffectSelected);
-            Ingredient.increaseNumOfSelected();
+            Slot.increaseNumOfSelected();
         }else{
-            ingredients.get(FIRST).setSelected(false);
+            slots.get(FIRST).setSelected(false);
             ingredient1MouseEntered();
-            Ingredient.decreaseNumOfSelected();
+            Slot.decreaseNumOfSelected();
         }
         swap();
     }
 
 
     public void ingredient2MouseEntered() {
-        if(!ingredients.get(SECOND).isSelected){
+        if(!slots.get(SECOND).isSelected){
             paneList.get(SECOND).setEffect(glowEffect);
         }
     }
     public void ingredient2MouseExited(MouseEvent mouseEvent) {
-        if(!ingredients.get(SECOND).isSelected()){
+        if(!slots.get(SECOND).isSelected()){
             paneList.get(SECOND).setEffect(dropShadowEffect);
         }
     }
 
     public void ingredient2MouseClicked(MouseEvent mouseEvent) {
-        if(!ingredients.get(SECOND).isSelected()){
-            ingredients.get(SECOND).setSelected(true);
+        if(!slots.get(SECOND).isSelected()){
+            slots.get(SECOND).setSelected(true);
             paneList.get(SECOND).setEffect(glowEffectSelected);
-            Ingredient.increaseNumOfSelected();
+            Slot.increaseNumOfSelected();
         }else{
-            ingredients.get(SECOND).setSelected(false);
-            Ingredient.decreaseNumOfSelected();
+            slots.get(SECOND).setSelected(false);
+            Slot.decreaseNumOfSelected();
             ingredient2MouseEntered();
         }
         swap();
@@ -182,23 +187,23 @@ public class ElixirOfInsightController {
 
 
     public void ingredient3MouseEntered() {
-        if(!ingredients.get(THIRD).isSelected){
+        if(!slots.get(THIRD).isSelected){
             paneList.get(THIRD).setEffect(glowEffect);
         }
     }
     public void ingredient3MouseExited(MouseEvent mouseEvent) {
-        if(!ingredients.get(THIRD).isSelected()){
+        if(!slots.get(THIRD).isSelected()){
             paneList.get(THIRD).setEffect(dropShadowEffect);
         }
     }
     public void ingredient3MouseClicked(MouseEvent mouseEvent) {
-        if(!ingredients.get(THIRD).isSelected()){
-            ingredients.get(THIRD).setSelected(true);
+        if(!slots.get(THIRD).isSelected()){
+            slots.get(THIRD).setSelected(true);
             paneList.get(THIRD).setEffect(glowEffectSelected);
-            Ingredient.increaseNumOfSelected();
+            Slot.increaseNumOfSelected();
         }else{
-            ingredients.get(THIRD).setSelected(false);
-            Ingredient.decreaseNumOfSelected();
+            slots.get(THIRD).setSelected(false);
+            Slot.decreaseNumOfSelected();
             ingredient3MouseEntered();
         }
         swap();
@@ -210,7 +215,7 @@ public class ElixirOfInsightController {
         handleOrderButtonClick();
     }
 
-    private class Ingredient{
+    private class Slot{
         private String name;
         private String photoName;
         private String photoAddress;
@@ -222,7 +227,7 @@ public class ElixirOfInsightController {
          *
          * Aga ui controllerda domain model olamaz.
          */
-        public Ingredient(String name) {
+        public Slot(String name) {
             this.name = name;
             this.photoName = name.toLowerCase()+"-ingredient.jpg";
             this.photoAddress = "com.KUAlchemists/images/" + photoName;

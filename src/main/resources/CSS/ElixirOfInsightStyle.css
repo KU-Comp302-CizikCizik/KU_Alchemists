@@ -1,3 +1,8 @@
+Text{
+    -fx-font-family: "Times New Roman";
+    -fx-font-style: italic;
+}
+
 .anchor-pane{
     -fx-background-image: url("../com.KUAlchemists/images/use_artifact_background.PNG");
     -fx-background-size: cover;
