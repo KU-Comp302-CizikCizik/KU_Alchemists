@@ -19,7 +19,6 @@ public class UseArtifactHandler {
         }
         return INSTANCE;
     }
-
     // when use elixir of insight button clicked this handler method will be called
     public ArrayList<String> handlePeekTopThree(){
         return useArtifactService.peekTopThree();
@@ -30,24 +29,10 @@ public class UseArtifactHandler {
         useArtifactService.useElixirOfInsight(GameEngine.getInstance().getCurrentPlayer(), arrangedTopThree);
     }
 
+    //new:: returns used artifacts list.
+    public List<String> handleUsedArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
 
+        return useArtifactService.getUsedArtifacts();
 
-    /**
-     * Sends a list of bought artifact(s)
-     * @return ArrayList <String>
-     */
-    public List<String> getBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
-        List<String> boughtArtifacts = new ArrayList<>();
-        boughtArtifacts.add("elixir_of_insight"); //Test case, can be deleted
-        //You add which artifacts are bought here.
-        //elixir_of_insight
-        //philosophers_compass
-        //hard_bargain
-        //Make sure you send these 3
-        return boughtArtifacts;
     }
-
-
-
-
 }

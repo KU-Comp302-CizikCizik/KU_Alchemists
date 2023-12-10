@@ -1,8 +1,6 @@
 package com.KUAlchemists.backend.services;
 
-import com.KUAlchemists.backend.models.Deck;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +10,14 @@ public class UseArtifactService {
 
     private PlayerService playerService;
 
+    private ArtifactStorage artifactStorage;
+
     public UseArtifactService() {
         this.deck = Deck.getInstance();
         this.playerService = new PlayerService();
+        this.artifactStorage = new ArtifactStorage();
     }
-
+    //this method puts rearranged cards to the top of the deck also deletes the used artifact from players storage.
     public void useElixirOfInsight(Player player, List<String> rearrangedTopThree) {
         List<Ingredient> rearrangedTopThreeIngredients = playerService.nameToIngredient(player, rearrangedTopThree);
         deck.rearrangeTopThreeIngredients(rearrangedTopThreeIngredients);
@@ -31,4 +32,13 @@ public class UseArtifactService {
         }
         return topThreeIngredientsNames;
     }
+
+    public ArrayList<String> getUsedArtifacts(){
+        ArrayList<String> artifacts = new ArrayList<>();
+        for(Artifact a : artifactStorage.getUsedArtifacts()){
+            artifacts.add(a.getName());
+        }
+        return artifacts;
+    }
+
 }

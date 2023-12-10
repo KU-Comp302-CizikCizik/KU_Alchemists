@@ -3,13 +3,14 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.handlers.UseArtifactHandler;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
-import javafx.scene.effect.*;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.Glow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -51,13 +52,13 @@ public class UseArtifactController {
         }
 
 
-        boughtArtifacts = (ArrayList<String>) useArtifactHandler.getBoughtArtifacts();
+        boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleUsedArtifacts();
         unselectArtifacts();
         setArtifactDisability();
     }
 
     public void initialize(){
-        boughtArtifacts = (ArrayList<String>) useArtifactHandler.getBoughtArtifacts();
+        boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleUsedArtifacts();
         setArtifactDisability();
     }
 
