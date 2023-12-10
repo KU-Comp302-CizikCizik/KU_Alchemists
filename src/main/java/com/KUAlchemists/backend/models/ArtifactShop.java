@@ -9,10 +9,12 @@ import java.util.List;
 
 public class ArtifactShop {
 
-    private List<Artifact> artifactsForSale;
+    private ArrayList<Artifact> artifactsForSale;
+    private List<Artifact> boughtArtifacts;
 
     public ArtifactShop() {
         this.artifactsForSale = new ArrayList<>();
+        this.boughtArtifacts = new ArrayList<>();
         loadArtifactsFromResources(); // Load artifacts when the shop is created
     }
 
@@ -36,7 +38,7 @@ public class ArtifactShop {
     }
 
     public List<Artifact> getArtifactsForSale() {
-        return new ArrayList<>(artifactsForSale);
+        return this.artifactsForSale;
     }
 
     // Method to get an Artifact without removing it from the shop
@@ -49,7 +51,12 @@ public class ArtifactShop {
         return null; // Artifact not found
     }
 
+    public List<Artifact> getBoughtArtifacts() {
+        return this.boughtArtifacts;
+    }
+
     public void removeArtifactFromSale(Artifact artifact) {
         artifactsForSale.remove(artifact);
+        this.boughtArtifacts.add(artifact);
     }
 }

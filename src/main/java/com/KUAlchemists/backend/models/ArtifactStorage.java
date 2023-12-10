@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Manages the collection of artifacts available in the game.
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 public class ArtifactStorage {
 
     private ArrayList<Artifact> artifactsList = new ArrayList<>();
+
+    private ArrayList<Artifact> usedArtifactsList = new ArrayList<>();
 
     public ArtifactStorage() {
     }
@@ -18,6 +21,7 @@ public class ArtifactStorage {
 
     public void removeArtifact(Artifact artifact) {
         artifactsList.remove(artifact);
+        this.usedArtifactsList.add(artifact);
     }
 
     public ArrayList<Artifact> getArtifactsList() {
@@ -40,5 +44,12 @@ public class ArtifactStorage {
             total += artifact.getVictoryPoints();
         }
         return total;
+    }
+    public List<Artifact> getUsedArtifacts() {
+        return this.usedArtifactsList;
+    }
+
+    public List<Artifact> getArtifactList() {
+        return this.artifactsList;
     }
 }
