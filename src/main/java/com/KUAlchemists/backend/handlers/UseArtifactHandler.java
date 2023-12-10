@@ -20,7 +20,7 @@ public class UseArtifactHandler {
         return INSTANCE;
     }
 
-    // when use elixir of insight butto clicked this handler method will be called
+    // when use elixir of insight button clicked this handler method will be called
     public ArrayList<String> handlePeekTopThree(){
         return useArtifactService.peekTopThree();
     }

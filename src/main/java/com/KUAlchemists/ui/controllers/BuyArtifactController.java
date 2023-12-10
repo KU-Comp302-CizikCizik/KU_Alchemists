@@ -48,13 +48,13 @@ public class BuyArtifactController {
         for(String artifact: selectedArtifacts) {
             buyArtifactHandler.handleBuyArtifactRequest(artifact);
         }
-        boughtArtifacts = (ArrayList<String>) buyArtifactHandler.getBoughtArtifacts();
+        boughtArtifacts = (ArrayList<String>) buyArtifactHandler.handleBoughtArtifacts();
         unselectArtifacts();
         setArtifactDisability();
     }
 
     public void initialize(){
-        boughtArtifacts = (ArrayList<String>) buyArtifactHandler.getBoughtArtifacts();
+        boughtArtifacts = (ArrayList<String>) buyArtifactHandler.handleBoughtArtifacts();
         setArtifactDisability();
     }
 

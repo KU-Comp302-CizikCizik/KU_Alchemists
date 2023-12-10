@@ -32,9 +32,25 @@ public class BuyArtifactService {
             ArtifactStorage storage = Board.getInstance().getArtifactStorage(player);
             storage.addArtifact(artifact);
             artifactShop.removeArtifactFromSale(artifact); // Remove the artifact from the shop
+
             return true;
         } else {
             return false; // Not enough gold to buy the artifact
         }
+    }
+
+    public ArrayList<String> getArtifacts(){
+        ArrayList<String> artifacts = new ArrayList<>();
+        for(Artifact a : artifactShop.getArtifactsForSale()){
+            artifacts.add(a.getName());
+        }
+        return artifacts;
+    }
+    public ArrayList<String> getBoughtArtifacts(){
+        ArrayList<String> artifacts = new ArrayList<>();
+        for(Artifact a : artifactShop.getBoughtArtifacts()){
+            artifacts.add(a.getName());
+        }
+        return artifacts;
     }
 }

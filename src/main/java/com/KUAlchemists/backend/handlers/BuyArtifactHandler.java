@@ -4,7 +4,6 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.BuyArtifactService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,19 +35,10 @@ public class BuyArtifactHandler {
      * @param artifactName The name of the artifact to buy.
      * @return A string message indicating the result of the transaction.
      */
-    public String handleBuyArtifactRequest(String artifactName) {
+    public boolean handleBuyArtifactRequest(String artifactName) {
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
-        if (currentPlayer == null) {
-            return "No current player available to buy an artifact.";
-        }
-
         boolean success = buyArtifactService.buyArtifact(currentPlayer, artifactName);
-
-        if (success) {
-            return "Artifact purchased successfully!";
-        } else {
-            return "Failed to purchase artifact. Not enough gold or artifact not found.";
-        }
+        return success;
     }
 
 
@@ -57,16 +47,14 @@ public class BuyArtifactHandler {
      * @return ArrayList <String>
      */
     //bu method değişebilir mahmutla kontakta kal!!!!!!!!!!!!!!!!!!!
-    public List<String> getBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
-        List<String> boughtArtifacts = new ArrayList<>();
-        boughtArtifacts.add("philosophers_compass"); //Test case, can be deleted
-        boughtArtifacts.add("hard_bargain");
-        //You add which artifacts are bought here.
-        //elixir_of_insight
-        //philosophers_compass
-        //hard_bargain
-        //Make sure you send these 3
-        return boughtArtifacts;
+    public List<String> handleGetArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
+
+        return buyArtifactService.getArtifacts() ;
     }
+    public List<String> handleBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
+
+        return buyArtifactService.getBoughtArtifacts();
+    }
+
 
 }

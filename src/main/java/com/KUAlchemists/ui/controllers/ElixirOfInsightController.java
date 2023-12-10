@@ -8,14 +8,10 @@ import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ElixirOfInsightController {
 
@@ -23,7 +19,7 @@ public class ElixirOfInsightController {
     private final Effect glowEffectSelected = new Glow(0.6);
     private final Effect dropShadowEffect = new DropShadow();
     private final Effect boxBlurEffect = new BoxBlur(5, 5, 2);
-    private UseArtifactHandler useArtifactHandler = UseArtifactHandler.getInstance();
+    private final UseArtifactHandler useArtifactHandler = UseArtifactHandler.getInstance();
 
     private final int FIRST = 0;
     private final int SECOND = 1;
@@ -221,6 +217,11 @@ public class ElixirOfInsightController {
         private boolean isSelected;
         private static int numOfSelected;
 
+
+        /**
+         *
+         * Aga ui controllerda domain model olamaz.
+         */
         public Ingredient(String name) {
             this.name = name;
             this.photoName = name.toLowerCase()+"-ingredient.jpg";
