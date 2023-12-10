@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.managers;
 
 import com.KUAlchemists.backend.enums.Gamestate;
 import com.KUAlchemists.backend.observer.GameStateObserver;
+import com.KUAlchemists.backend.subjects.GameStateData;
 
 import java.util.ArrayList;
 
@@ -10,10 +11,12 @@ public class StateManager {
     // Singleton
     private static StateManager Instance;
 
+    private GameStateData gameStateData;
 
-    private static ArrayList<GameStateObserver> gameStateObserverArrayList = new ArrayList<>();
-
-
+    /**
+     * Get the instance of the class.
+     * @return the instance of the class
+     */
     public static StateManager getInstance() {
         if (Instance == null) {
             Instance = new StateManager();
@@ -21,8 +24,11 @@ public class StateManager {
         return Instance;
     }
 
+    /**
+     * Constructor for the class.
+     */
     private StateManager(){
-
+        gameStateData = new GameStateData();
     }
 
     /**
@@ -30,22 +36,24 @@ public class StateManager {
      * @param gamestate the game state to be updated
      */
     public void updateGameState(Gamestate gamestate){
-        notifyStateObservers(gamestate);
-    }
-
-    public void notifyStateObservers(Gamestate gamestate){
-        for(GameStateObserver gameStateObserver : gameStateObserverArrayList){
-            gameStateObserver.onGameStateChange(gamestate);
-        }
+        gameStateData.onGameStateChanged(gamestate);
     }
 
 
+    /**
+     * Register a game state observer
+     * @param gameStateObserver the observer to be registered
+     */
     public void registerStateObserver(GameStateObserver gameStateObserver){
-        gameStateObserverArrayList.add(gameStateObserver);
+        gameStateData.registerObserver(gameStateObserver);
     }
 
-    public void unregisterStateObserver(GameStateObserver gameStateObserver){
-        gameStateObserverArrayList.remove(gameStateObserver);
+    /**
+     * Remove a game state observer
+     * @param gameStateObserver the observer to be removed
+     */
+    public void removeStateObserver(GameStateObserver gameStateObserver){
+        gameStateData.removeObserver(gameStateObserver);
     }
 
 
