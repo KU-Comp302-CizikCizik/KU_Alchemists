@@ -17,34 +17,34 @@
                       <Image url="@com.KUAlchemists/images/DeductionBoard/deductionboard.png" />
                   </image>
               </ImageView>
-            <ImageView id="mushroom" fx:id="mushroom_feather" fitHeight="50.0" fitWidth="50.0" layoutX="467.0" layoutY="14.0" onMouseClicked="#setCircle" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="mushroom" fx:id="mushroom_scorpion" fitHeight="50.0" fitWidth="50.0" layoutX="422.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="plant" fx:id="plant_feather" fitHeight="50.0" fitWidth="50.0" layoutX="491.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="mushroom" fx:id="mushroom_root" fitHeight="50.0" fitWidth="50.0" layoutX="392.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="plant" fx:id="plant_scorpion" fitHeight="50.0" fitWidth="50.0" layoutX="459.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="frog" fx:id="frog_feather" fitHeight="50.0" fitWidth="50.0" layoutX="529.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="mushroom" fx:id="mushroom_flower" fitHeight="50.0" fitWidth="50.0" layoutX="361.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="plant" fx:id="plant_root" fitHeight="50.0" fitWidth="50.0" layoutX="430.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="frog" fx:id="frog_scorpion" fitHeight="50.0" fitWidth="50.0" layoutX="491.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="birdfeet" fx:id="birdfeet_feather" fitHeight="50.0" fitWidth="50.0" layoutX="551.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="mushroom" fx:id="mushroom_birdfeet" fitHeight="50.0" fitWidth="50.0" layoutX="331.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="plant" fx:id="plant_flower" fitHeight="50.0" fitWidth="50.0" layoutX="391.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="frog" fx:id="frog_root" fitHeight="50.0" fitWidth="50.0" layoutX="460.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="birdfeet" fx:id="birdfeet_scorpion" fitHeight="50.0" fitWidth="50.0" layoutX="528.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="circle_15" fx:id="flower_feather" fitHeight="50.0" fitWidth="50.0" layoutX="601.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="mushroom" fx:id="mushroom_frog" fitHeight="50.0" fitWidth="50.0" layoutX="292.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="plant" fx:id="plant_birdfeet" fitHeight="50.0" fitWidth="50.0" layoutX="356.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="frog" fx:id="frog_flower" fitHeight="50.0" fitWidth="50.0" layoutX="427.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="circle_19" fx:id="birdfeet_root" fitHeight="50.0" fitWidth="50.0" layoutX="494.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="circle_20" fx:id="flower_scorpion" fitHeight="50.0" fitWidth="50.0" layoutX="563.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="circle_21" fx:id="root_feather" fitHeight="50.0" fitWidth="50.0" layoutX="630.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="mushroom" fx:id="mushroom_plant" fitHeight="50.0" fitWidth="50.0" layoutX="265.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="plant" fx:id="plant_frog" fitHeight="50.0" fitWidth="50.0" layoutX="335.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="frog" fx:id="frog_birdfeet" fitHeight="50.0" fitWidth="50.0" layoutX="395.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="circle_25" fx:id="birdfeet_flower" fitHeight="50.0" fitWidth="50.0" layoutX="463.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="circle_26" fx:id="flower_root" fitHeight="50.0" fitWidth="50.0" layoutX="528.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="circle_27" fx:id="root_scorpion" fitHeight="50.0" fitWidth="50.0" layoutX="593.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView id="circle_28" fx:id="scorpion_feather" fitHeight="50.0" fitWidth="50.0" layoutX="660.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_feather" fitHeight="56.0" fitWidth="69.0" layoutX="458.0" layoutY="8.0" onMouseClicked="#setCircle" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_scorpion" fitHeight="56.0" fitWidth="58.0" layoutX="425.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_feather" fitHeight="56.0" fitWidth="58.0" layoutX="491.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_root" fitHeight="54.0" fitWidth="73.0" layoutX="388.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_scorpion" fitHeight="56.0" fitWidth="58.0" layoutX="459.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_feather" fitHeight="56.0" fitWidth="73.0" layoutX="525.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_flower" fitHeight="58.0" fitWidth="60.0" layoutX="357.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_root" fitHeight="58.0" fitWidth="60.0" layoutX="420.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_scorpion" fitHeight="64.0" fitWidth="58.0" layoutX="490.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="birdfeet" fx:id="birdfeet_feather" fitHeight="58.0" fitWidth="60.0" layoutX="556.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_birdfeet" fitHeight="64.0" fitWidth="56.0" layoutX="328.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_flower" fitHeight="65.0" fitWidth="59.0" layoutX="391.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_root" fitHeight="56.0" fitWidth="63.0" layoutX="454.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="birdfeet" fx:id="birdfeet_scorpion" fitHeight="56.0" fitWidth="58.0" layoutX="525.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_15" fx:id="flower_feather" fitHeight="58.0" fitWidth="58.0" layoutX="586.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_frog" fitHeight="58.0" fitWidth="60.0" layoutX="292.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_birdfeet" fitHeight="56.0" fitWidth="65.0" layoutX="356.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_flower" fitHeight="56.0" fitWidth="55.0" layoutX="427.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_19" fx:id="birdfeet_root" fitHeight="58.0" fitWidth="69.0" layoutX="489.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_20" fx:id="flower_scorpion" fitHeight="59.0" fitWidth="60.0" layoutX="557.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_21" fx:id="root_feather" fitHeight="56.0" fitWidth="73.0" layoutX="624.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_plant" fitHeight="56.0" fitWidth="60.0" layoutX="257.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_frog" fitHeight="56.0" fitWidth="63.0" layoutX="322.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_birdfeet" fitHeight="62.0" fitWidth="68.0" layoutX="389.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_25" fx:id="birdfeet_flower" fitHeight="56.0" fitWidth="56.0" layoutX="457.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_26" fx:id="flower_root" fitHeight="56.0" fitWidth="65.0" layoutX="519.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_27" fx:id="root_scorpion" fitHeight="72.0" fitWidth="58.0" layoutX="587.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_28" fx:id="scorpion_feather" fitHeight="56.0" fitWidth="56.0" layoutX="658.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="345.0" prefWidth="979.0" style="-fx-background-color: #300900;">

@@ -114,7 +114,7 @@ public class DeductionBoardController {
     private ImageView alchemy_4_8;
 
     @FXML
-    private ImageView alchemy_5_;
+    private ImageView alchemy_5_1;
 
     @FXML
     private ImageView alchemy_5_2;
@@ -205,8 +205,7 @@ public class DeductionBoardController {
 
     @FXML
     private ImageView alchemy_8_7;
-    @FXML
-    private ImageView alchemy_5_1;
+
 
     @FXML
     private ImageView alchemy_8_8;
@@ -309,7 +308,7 @@ public class DeductionBoardController {
         String alchemy_column=alchemy_id.substring(alchemy_id.indexOf("alchemy")+8,alchemy_id.indexOf("alchemy")+9);
         String alchemy_row=alchemy_id.substring(alchemy_id.indexOf("alchemy")+10,alchemy_id.indexOf("alchemy")+11);
         String alchemy_made="alchemy_"+alchemy_column+"_"+alchemy_row;
-        for (int i = 0; i < 63; i++) {
+        for (int i = 0; i < 64; i++) {
 
             if(alchemies.get(i).getId().equals(alchemy_made)){
                 if(alchemies.get(i).getEffect() == null){
