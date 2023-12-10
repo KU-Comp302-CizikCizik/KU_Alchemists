@@ -27,7 +27,8 @@ public class BuyArtifactController {
     private final Effect dropShadowEffect = new DropShadow();
     private final Effect boxBlurEffect = new BoxBlur(5, 5, 2);
 
-    private final BuyArtifactHandler buyArtifactHandler = new BuyArtifactHandler();
+    private final BuyArtifactHandler buyArtifactHandler = BuyArtifactHandler.getInstance();
+
 
 
     @FXML
@@ -77,6 +78,7 @@ public class BuyArtifactController {
             }
         }
     }
+
 
     public void updateSelectedArtifacts(){
         selectedArtifacts.clear();

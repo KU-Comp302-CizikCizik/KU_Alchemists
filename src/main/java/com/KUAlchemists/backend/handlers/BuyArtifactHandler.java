@@ -14,9 +14,21 @@ public class BuyArtifactHandler {
 
     private final BuyArtifactService buyArtifactService;
 
+    private static BuyArtifactHandler INSTANCE;
+
     public BuyArtifactHandler() {
         this.buyArtifactService = new BuyArtifactService();
     }
+
+
+
+    public static BuyArtifactHandler getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new BuyArtifactHandler();
+        }
+        return INSTANCE;
+    }
+
 
     /**
      * Handles a request to buy an artifact.
@@ -44,6 +56,9 @@ public class BuyArtifactHandler {
      * Sends a list of bought artifact(s)
      * @return ArrayList <String>
      */
+
+    //bu method değişebilir mahmutla kontakta kal!!!!!!!!!!!!!!!!!!!
+
     public List<String> getBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
         List<String> boughtArtifacts = new ArrayList<>();
         boughtArtifacts.add("philosophers_compass"); //Test case, can be deleted
