@@ -2,6 +2,7 @@ package com.KUAlchemists.ui.utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class UILoader {
      */
     public static Parent loadFXMLFirstTime(String fxml_path){
         loader = new FXMLLoader();
-        loader.setRoot(new BorderPane());
+        loader.setRoot(new AnchorPane());
 
         loader.setLocation(UILoader.class.getClassLoader().getResource(fxml_path));
         try {

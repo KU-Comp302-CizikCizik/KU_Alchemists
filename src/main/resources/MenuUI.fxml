@@ -6,24 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #130c1c;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.MenuController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #061016;" styleClass="menu-Background" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.MenuController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="250.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/craiyon_120359_draw_a_game_start_screen_which_is_about_alchemist.png" />
+            <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
          </image>
       </ImageView>
-      <Button fx:id="startButton" layoutX="46.0" layoutY="102.0" mnemonicParsing="false" onAction="#startGame" prefHeight="29.0" prefWidth="149.0" style="-fx-background-color: #fccb58;" text="Start Game">
+      <Button fx:id="startButton" layoutX="65.0" layoutY="231.0" mnemonicParsing="false" onAction="#startGame" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" text="Start Game">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="settingButton" layoutX="46.0" layoutY="152.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="29.0" prefWidth="149.0" style="-fx-background-color: #fccb58;" text="Settings">
+      <Button fx:id="settingButton" layoutX="65.0" layoutY="308.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" text="Settings">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="rulesButton" layoutX="46.0" layoutY="200.0" mnemonicParsing="false" onAction="#openRules" prefHeight="29.0" prefWidth="149.0" style="-fx-background-color: #fccb58;" text="Rules">
+      <Button fx:id="rulesButton" layoutX="64.0" layoutY="382.0" mnemonicParsing="false" onAction="#openRules" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" text="Rules">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font>

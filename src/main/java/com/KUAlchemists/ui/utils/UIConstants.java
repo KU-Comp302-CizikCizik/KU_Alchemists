@@ -20,8 +20,8 @@ public class UIConstants {
     public static final String ELIXIR_OF_INSIGHT = "ElixirOfInsightUI.fxml";
 
     public static final String POTIONBREW_UI_FXML = "PotionBrewUI.fxml";
-    public static final int WINDOW_WIDTH = 600;
-    public static final int WINDOW_HEIGHT = 400;
+    public static final int WINDOW_WIDTH = 1080;
+    public static final int WINDOW_HEIGHT = 720;
     public static final int ARTIFACTS_WINDOW_WIDTH = 700;
     public static final int ARTIFACTS_WINDOW_HEIGHT = 650;
 
