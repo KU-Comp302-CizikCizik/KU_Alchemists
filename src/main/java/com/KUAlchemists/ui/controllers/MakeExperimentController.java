@@ -36,8 +36,10 @@ public class MakeExperimentController {
 
 
     private void experiencePotion(String person){
-        ingredient1Name = PotionBrewingAreaHandler.getInstance().getIngredientsToBeBrewed().get(0);
-        ingredient2Name = PotionBrewingAreaHandler.getInstance().getIngredientsToBeBrewed().get(1);
+        ingredient1Name = MakeExperimentHandler.getInstance().getIngredientsToBeBrewed().get(0);
+        ingredient2Name = MakeExperimentHandler.getInstance().getIngredientsToBeBrewed().get(1);
+
+        System.out.println(ingredient1Name + ingredient2Name);
 
         potionName  = PotionBrewingAreaHandler.getInstance().brewPotion(ingredient1Name, ingredient2Name);
 

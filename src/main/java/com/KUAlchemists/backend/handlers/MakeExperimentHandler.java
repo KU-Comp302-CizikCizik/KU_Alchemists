@@ -1,5 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
+import java.util.ArrayList;
+
 public class MakeExperimentHandler {
 
     private static MakeExperimentHandler INSTANCE;
@@ -7,6 +9,10 @@ public class MakeExperimentHandler {
         if(INSTANCE == null)
             INSTANCE = new MakeExperimentHandler();
         return INSTANCE;
+    }
+
+    public ArrayList<String> getIngredientsToBeBrewed(){
+        return PotionBrewingAreaHandler.getInstance().getIngredientsToBeBrewed();
     }
 
     public void makeExperience(String tester, String potionName, String potionType) {
