@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.MakeExperimentHandler;
 import com.KUAlchemists.backend.handlers.PotionBrewingAreaHandler;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
@@ -27,20 +28,25 @@ public class MakeExperimentController {
     private String finalMessage;
 
     private String potionName;
-    private static ArrayList<String> positivePotions = new ArrayList<>();
-    private static ArrayList<String> negativePotions = new ArrayList<>();
+    private String potionType;
+    private ArrayList<String> positivePotions = new ArrayList<>();
+    private ArrayList<String> negativePotions = new ArrayList<>();
+    private String ingredient1Name;
+    private String ingredient2Name;
 
 
     private void experiencePotion(String person){
+        ingredient1Name = PotionBrewingAreaHandler.getInstance().getIngredientsToBeBrewed().get(0);
+        ingredient2Name = PotionBrewingAreaHandler.getInstance().getIngredientsToBeBrewed().get(1);
 
-        potionName  = PotionBrewingAreaHandler.getInstance().brewPotion(PotionBrewController.ing1,PotionBrewController.ing2);
-
+        potionName  = PotionBrewingAreaHandler.getInstance().brewPotion(ingredient1Name, ingredient2Name);
 
         String subPronounce = (person.equals(MASTER))? " You" : " Your student";
         String pronounce = (person.equals(MASTER))? " Are":" Is";
 
         if(positivePotions.contains(potionName)){
             finalMessage = "Wow! As"+subPronounce.toLowerCase()+pronounce.toLowerCase()+" feeling much better, it turns out to be a POSITIVE potion! Which means you can use it to heal yourself, congratulations.";
+            potionType = "positive";
         } else if (negativePotions.contains(potionName)) {
             finalMessage = "Omg!"+pronounce+subPronounce.toLowerCase()+" okay?"+subPronounce+pronounce.toLowerCase() +" looking like got poisoned. That means the potion is NEGATIVE and venomous.";
             if(person.equals(STUDENT)){
@@ -48,10 +54,14 @@ public class MakeExperimentController {
             }else{
                 finalMessage+=" Be careful next time, try not to be poisoned.";
             }
+            potionType = "negative";
         } else{
             finalMessage = "Well, I would like to say"+subPronounce.toLowerCase()+pronounce.toLowerCase()+" turning green, but nah! There is no change, the potion is NEUTRAL.";
+            potionType = "neutral";
         }
         finalizeUIElements();
+        MakeExperimentHandler.getInstance().makeExperience(person, potionName, potionType);
+        System.out.println(potionName);
     }
 
     private void finalizeUIElements(){

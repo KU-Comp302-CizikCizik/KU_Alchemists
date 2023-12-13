@@ -56,14 +56,11 @@ public class PotionBrewController {
 
     private HashMap<ImageView, String> ingredientMap;
 
-    public static String ing1;
-    public static String ing2;
 
     public void actionPerformed(){
         disableElements();
         selectIngredients();
-        ing1 = selectedIngredients.get(0);
-        ing2 = selectedIngredients.get(1);
+        PotionBrewingAreaHandler.getInstance().setIngredientsToBeBrewed(selectedIngredients.get(0), selectedIngredients.get(1));
         SceneLoader.getInstance().loadMakeExperiment();
 
 
