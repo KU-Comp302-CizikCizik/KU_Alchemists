@@ -33,6 +33,9 @@ public class MakeExperimentController {
 
     private void experiencePotion(String person){
 
+        potionName  = PotionBrewingAreaHandler.getInstance().brewPotion(PotionBrewController.ing1,PotionBrewController.ing2);
+
+
         String subPronounce = (person.equals(MASTER))? " You" : " Your student";
         String pronounce = (person.equals(MASTER))? " Are":" Is";
 
@@ -73,7 +76,6 @@ public class MakeExperimentController {
     }
 
     public void initialize(){
-        potionName  = PotionBrewingAreaHandler.getInstance().brewPotion(PotionBrewController.ing1,PotionBrewController.ing2);
         System.out.println(potionName);//for debug
 
         positivePotions.add("HEALING_POTION");
