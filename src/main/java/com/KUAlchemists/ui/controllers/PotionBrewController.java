@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.PotionBrewingAreaHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
@@ -55,25 +56,33 @@ public class PotionBrewController {
 
     private HashMap<ImageView, String> ingredientMap;
 
-    public void actionPerformed(){
-        selectIngredients();
-        String  potion  = PotionBrewingAreaHandler.getInstance().brewPotion(selectedIngredients.get(0),selectedIngredients.get(1));
 
-        String imagePath = "com.KUAlchemists/images/potions/" + potion + ".png";
+    public void actionPerformed(){
+        disableElements();
+        selectIngredients();
+        PotionBrewingAreaHandler.getInstance().setIngredientsToBeBrewed(selectedIngredients.get(0), selectedIngredients.get(1));
+        SceneLoader.getInstance().loadMakeExperiment();
+
+
+//        String imagePath = "com.KUAlchemists/images/potions/" + potion + ".png";
         // Load the image using the class loader to ensure it works regardless of the build type
 
-        try {
-            Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
-            // Set the image to the ImageView
-            potion_1.setImage(image);
-
-        }catch (Exception e){
-            System.err.println(e.getMessage());
-        }
+//        try {
+//            Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+//            // Set the image to the ImageView
+//            potion_1.setImage(image);
+//
+//        }catch (Exception e){
+//            System.err.println(e.getMessage());
+//        }
     }
 
     @FXML
     private void initialize(){
+        //Temporarely disabled
+        potion.setDisable(true);
+        potion.setVisible(false);
+
         ArrayList<String> ingredientList = PotionBrewingAreaHandler.getInstance().getIngredientList();
         ingredientMap =  new HashMap<ImageView, String>();
         for(int i = 0; i < ingredientList.size(); i++){
@@ -107,6 +116,21 @@ public class PotionBrewController {
             }
         }
 
+    }
+
+    private void disableElements(){
+        if(isIngredient1Selected){
+            ingredient1.setVisible(false);
+        }if(isIngredient2Selected){
+            ingredient2.setVisible(false);
+        }if(isIngredient3Selected){
+            ingredient3.setVisible(false);
+        }if(isIngredient4Selected){
+            ingredient4.setVisible(false);
+        }if(isIngredient5Selected){
+            ingredient5.setVisible(false);
+        }
+        numOfSelected = 0;
     }
 
     public void hmEnteredIngredient1(){
@@ -239,19 +263,25 @@ public class PotionBrewController {
 
     public void selectIngredients(){
         selectedIngredients.clear();
-        if(isIngredient1Selected)
+        if(isIngredient1Selected) {
             selectedIngredients.add(ingredientMap.get(ingredient_image1));
-        if(isIngredient2Selected)
+            isIngredient1Selected = false;
+        }
+        if(isIngredient2Selected) {
             selectedIngredients.add(ingredientMap.get(ingredient_image2));
-        if(isIngredient3Selected)
+            isIngredient2Selected = false;
+        }
+        if(isIngredient3Selected) {
             selectedIngredients.add(ingredientMap.get(ingredient_image3));
-        if(isIngredient4Selected)
+            isIngredient3Selected = false;
+        }
+        if(isIngredient4Selected) {
             selectedIngredients.add(ingredientMap.get(ingredient_image4));
-        if(isIngredient5Selected)
+            isIngredient4Selected = false;
+        }
+        if(isIngredient5Selected) {
             selectedIngredients.add(ingredientMap.get(ingredient_image5));
+            isIngredient5Selected = false;
+        }
     }
-
-
-
-
 }

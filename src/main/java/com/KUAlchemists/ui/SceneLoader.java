@@ -166,6 +166,12 @@ public class SceneLoader {
     public void loadPotionBrewing(){
         loadPopUp(UIConstants.POTIONBREW_UI_FXML);
     }
+    public void loadMakeExperiment(){
+        loadPopUp(UIConstants.MAKE_EXPERIMENT_UI_FXML);
+    }
+    public void loadExperienceResult(){
+        loadPopUp(UIConstants.EXPERIENCE_RESULT_UI_FXML);
+    }
 
 
     public void loadForageIngredient(String message, String ingredientImage) {

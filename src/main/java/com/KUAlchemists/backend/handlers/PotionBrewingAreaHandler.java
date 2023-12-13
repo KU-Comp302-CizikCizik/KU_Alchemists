@@ -16,6 +16,8 @@ public class PotionBrewingAreaHandler {
 
     private static PotionBrewingAreaHandler INSTANCE;
 
+    private ArrayList<String> ingredientsToBeBrewed;
+
 
     public static PotionBrewingAreaHandler getInstance() {
         if (INSTANCE == null) {
@@ -77,6 +79,16 @@ public class PotionBrewingAreaHandler {
             ingredientNames.set(i,name);
         }
         return ingredientNames;
+    }
+
+    public void setIngredientsToBeBrewed(String ingredient1, String ingredient2){
+        ingredientsToBeBrewed = new ArrayList<>();
+        ingredientsToBeBrewed.add(ingredient1);
+        ingredientsToBeBrewed.add(ingredient2);
+    }
+
+    public ArrayList<String> getIngredientsToBeBrewed(){
+        return ingredientsToBeBrewed;
     }
 
 
