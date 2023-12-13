@@ -74,6 +74,7 @@ public class MakeExperimentController {
 
     public void initialize(){
         potionName  = PotionBrewingAreaHandler.getInstance().brewPotion(PotionBrewController.ing1,PotionBrewController.ing2);
+        System.out.println(potionName);//for debug
 
         positivePotions.add("HEALING_POTION");
         positivePotions.add("SPEED_POTION");

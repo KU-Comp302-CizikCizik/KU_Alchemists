@@ -16,7 +16,7 @@
             <Text fx:id="masterText" layoutX="476.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test on yourself" wrappingWidth="164.21630859375" />
          </children>
       </Pane>
-      <Pane id="student-image-pane" fx:id="studentPane" layoutX="571.0" layoutY="176.0" onMouseClicked="#studentMouseClicked" onMouseEntered="#studentMouseEntered" onMouseExited="#studentMouseExited" prefHeight="420.0" prefWidth="295.0" styleClass="person-image-pane" stylesheets="@CSS/MakeExperimentStyle.css">
+      <Pane id="student-image-pane" fx:id="studentPane" layoutX="567.0" layoutY="177.0" onMouseClicked="#studentMouseClicked" onMouseEntered="#studentMouseEntered" onMouseExited="#studentMouseExited" prefHeight="420.0" prefWidth="295.0" styleClass="person-image-pane" stylesheets="@CSS/MakeExperimentStyle.css">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
@@ -29,17 +29,17 @@
             </Pane>
          </children>
       </Pane>
-      <Pane id="red-potion" fx:id="redPotionPane" layoutX="501.0" layoutY="372.0" prefHeight="221.0" prefWidth="113.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
+      <Pane id="red-potion" fx:id="redPotionPane" layoutX="541.0" layoutY="402.0" prefHeight="161.0" prefWidth="87.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
          <effect>
             <Glow level="1.0" />
          </effect>
       </Pane>
-      <Pane id="green-potion" fx:id="greenPotionPane" layoutX="507.0" layoutY="422.0" prefHeight="182.0" prefWidth="155.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
+      <Pane id="green-potion" fx:id="greenPotionPane" layoutX="539.0" layoutY="419.0" prefHeight="151.0" prefWidth="155.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
          <effect>
             <Glow level="1.0" />
          </effect>
       </Pane>
-      <Pane id="gray-potion" fx:id="grayPotionPane" layoutX="509.0" layoutY="415.0" prefHeight="182.0" prefWidth="98.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
+      <Pane id="gray-potion" fx:id="grayPotionPane" layoutX="546.0" layoutY="422.0" prefHeight="137.0" prefWidth="98.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
          <effect>
             <Glow level="1.0" />
          </effect>
