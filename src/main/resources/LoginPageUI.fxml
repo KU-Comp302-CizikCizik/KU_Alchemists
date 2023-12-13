@@ -1,43 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root type ="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.LoginController">
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a6a6a6;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="407.0" fitWidth="365.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/craiyon_122852_an_alchemist_who_is_surrounded_by_potions.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </left>
-   <center>
-      <AnchorPane prefHeight="411.0" prefWidth="284.0" style="-fx-background-color: #1b1109;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="6.0" layoutY="123.0" prefHeight="23.0" prefWidth="100.0" text="Alchemists Name" textFill="#e8e851">
-               <font>
-                  <Font name="Book Antiqua" size="12.0" />
-               </font></Label>
-            <Label layoutX="17.0" layoutY="172.0" prefHeight="23.0" prefWidth="70.0" text="Password" textFill="#e8e851">
-               <font>
-                  <Font name="Book Antiqua" size="12.0" />
-               </font></Label>
-            <PasswordField fx:id="passwordTextField" layoutX="105.0" layoutY="171.0" prefHeight="25.0" prefWidth="134.0" />
-            <TextField fx:id="userNameTextField" layoutX="104.0" layoutY="122.0" prefHeight="26.0" prefWidth="133.0" />
-            <Button fx:id="loginButton" onAction="#loginButtonOnAction" layoutX="173.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #1b1109;" text="Login " textFill="#e8e851" />
-            <Label fx:id="loginMessageLabel" text="" />
-         </children>
-      </AnchorPane>
-   </center>
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="loginBackground" stylesheets="@CSS/style.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.LoginController">
+   <children>
+      <Label layoutX="510.0" layoutY="221.0" prefHeight="31.0" prefWidth="207.0" text="Alchemists Name" textFill="#f5dc6a">
+         <font>
+            <Font name="Book Antiqua" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="587.0" layoutY="265.0" prefHeight="31.0" prefWidth="111.0" text="Password" textFill="#f5dc6a">
+         <font>
+            <Font name="Book Antiqua" size="24.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passwordTextField" layoutX="735.0" layoutY="269.0" opacity="0.8" prefHeight="25.0" prefWidth="300.0" />
+      <TextField fx:id="userNameTextField" layoutX="735.0" layoutY="225.0" opacity="0.8" prefHeight="26.0" prefWidth="300.0" />
+      <Button fx:id="loginButton" layoutX="888.0" layoutY="329.0" mnemonicParsing="false" onAction="#loginButtonOnAction" opacity="0.71" prefHeight="36.0" prefWidth="135.0" style="-fx-background-color: #B38B55;" text="Login " textFill="#f5dc6a">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></Button>
+      <Label fx:id="loginMessageLabel" layoutX="10.0" layoutY="10.0" text="" />
+   </children>
 </fx:root>
