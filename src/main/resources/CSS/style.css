@@ -55,3 +55,10 @@
 .blueATextField {
     -fx-text-fill: #3a7caf;
 }
+
+.debunk{
+    -fx-background-image: url("../com.KUAlchemists/images/Debunk/DebunkUI.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
