@@ -61,7 +61,6 @@ public class MakeExperimentController {
         }
         finalizeUIElements();
         MakeExperimentHandler.getInstance().makeExperience(person, potionName, potionType);
-        System.out.println(potionName);
     }
 
     private void finalizeUIElements(){
