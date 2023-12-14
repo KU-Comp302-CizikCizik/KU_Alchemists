@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 public class IngredientCard_PublishController {
     @FXML
 
-    private String ingredient;
+    public static String ingredient;
     @FXML
     private Button bttn;
 
@@ -36,7 +36,7 @@ public class IngredientCard_PublishController {
     @FXML
     public void selected(ActionEvent event) {
         System.out.println(ingredient);
-        SceneLoader.getInstance().loadPublicationTrack();
+        SceneLoader.getInstance().loadPublishAlchemyPart();
 
 
 

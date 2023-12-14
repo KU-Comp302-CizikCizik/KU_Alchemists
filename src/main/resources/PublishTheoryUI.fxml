@@ -17,7 +17,7 @@
             <Image url="@com.KUAlchemists/images/PublicationTrack/alc.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="box" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="593.0">
+      <GridPane fx:id="box" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="593.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="552.0" minWidth="10.0" prefWidth="297.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="543.0" minWidth="0.0" prefWidth="297.0" />
@@ -28,9 +28,9 @@
             <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Text fill="WHITE" layoutX="61.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a Ingredient" wrappingWidth="400.0">
+      <Text fill="YELLOW" layoutX="130.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a Ingredient" wrappingWidth="305.0">
          <font>
-            <Font size="36.0" />
+            <Font name="Colonna MT" size="36.0" />
          </font>
       </Text>
    </children>

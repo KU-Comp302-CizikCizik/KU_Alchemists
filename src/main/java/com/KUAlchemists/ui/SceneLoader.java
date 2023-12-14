@@ -156,7 +156,9 @@ public class SceneLoader {
     public void loadBuyArtifact(){
         loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
     }
-
+    public void loadPublishAlchemyPart(){
+        loadPopUp(UIConstants.PUBLISH_THEORY_ALCHEMY_FXML);
+    }
     public void loadUseArtifact(){
         loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
     }
