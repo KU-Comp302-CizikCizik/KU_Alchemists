@@ -169,6 +169,9 @@ public class SceneLoader {
     public void loadMakeExperiment(){
         loadPopUp(UIConstants.MAKE_EXPERIMENT_UI_FXML);
     }
+    public void loadPublishTheory(){
+        loadPopUp(UIConstants.PUBLISH_THEORY_UI_FXML);
+    }
     public void loadExperienceResult(){
         loadPopUp(UIConstants.EXPERIENCE_RESULT_UI_FXML);
     }
