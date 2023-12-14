@@ -53,8 +53,8 @@ public class UseArtifactController {
             }
         }
 
-        //Alperen burası
-        boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleStorageArtifact();
+        //handleUsedArtifact used Artifacts listesini gönderir.
+        boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleUsedArtifacts();
         unselectArtifacts();
         setArtifactDisability();
     }

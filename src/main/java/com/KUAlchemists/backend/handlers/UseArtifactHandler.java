@@ -33,13 +33,14 @@ public class UseArtifactHandler {
     }
 
     //new:: returns used artifacts list.
-    public List<String> handleUsedArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
+    public List<String> handleUsedArtifacts(){
 
         return useArtifactService.getUsedArtifacts();
 
     }
     public void handleRemoveArtifact(String name){
-        useArtifactService.removeArtifactfromStorage(name);
+        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        useArtifactService.removeArtifactFromStorage(name, currentPlayer);
     }
     public List <String> handleStorageArtifact(){
         //return buyArtifactService.getBoughtArtifacts();
