@@ -21,115 +21,33 @@
                <image>
                   <Image url="@../../../../../Desktop/Resim1.png" />
                </image></ImageView>
-            <ImageView id="mushroom" fx:id="mushroom_scorpion" fitHeight="43.0" fitWidth="47.0" layoutX="339.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="plant" fx:id="plant_feather" fitHeight="46.0" fitWidth="47.0" layoutX="388.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="mushroom" fx:id="mushroom_root" fitHeight="50.0" fitWidth="43.0" layoutX="307.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="plant" fx:id="plant_scorpion" fitHeight="45.0" fitWidth="41.0" layoutX="364.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="frog" fx:id="frog_feather" fitHeight="44.0" fitWidth="46.0" layoutX="412.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="mushroom" fx:id="mushroom_flower" fitHeight="56.0" fitWidth="44.0" layoutX="284.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="plant" fx:id="plant_root" fitHeight="56.0" fitWidth="45.0" layoutX="335.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="frog" fx:id="frog_scorpion" fitHeight="41.0" fitWidth="45.0" layoutX="390.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/POISON.png" />
-               </image></ImageView>
-            <ImageView id="birdfeet" fx:id="birdfeet_feather" fitHeight="49.0" fitWidth="44.0" layoutX="443.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="plant" fx:id="plant_flower" fitHeight="49.0" fitWidth="54.0" layoutX="305.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="frog" fx:id="frog_root" fitHeight="47.0" fitWidth="46.0" layoutX="362.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="birdfeet" fx:id="birdfeet_scorpion" fitHeight="47.0" fitWidth="53.0" layoutX="417.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="circle_15" fx:id="flower_feather" fitHeight="56.0" fitWidth="47.0" layoutX="467.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/WISDOM.png" />
-               </image></ImageView>
-            <ImageView id="mushroom" fx:id="mushroom_frog" fitHeight="46.0" fitWidth="45.0" layoutX="232.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/SPEED.png" />
-               </image></ImageView>
-            <ImageView id="plant" fx:id="plant_birdfeet" fitHeight="43.0" fitWidth="48.0" layoutX="283.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/POISON.png" />
-               </image></ImageView>
-            <ImageView id="frog" fx:id="frog_flower" fitHeight="43.0" fitWidth="48.0" layoutX="337.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/INSANITY.png" />
-               </image></ImageView>
-            <ImageView id="circle_19" fx:id="birdfeet_root" fitHeight="49.0" fitWidth="45.0" layoutX="387.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/SPEED.png" />
-               </image></ImageView>
-            <ImageView id="circle_20" fx:id="flower_scorpion" fitHeight="43.0" fitWidth="45.0" layoutX="442.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/POISON.png" />
-               </image></ImageView>
-            <ImageView id="circle_21" fx:id="root_feather" fitHeight="43.0" fitWidth="41.0" layoutX="494.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/HEALING.png" />
-               </image></ImageView>
-            <ImageView id="mushroom" fx:id="mushroom_plant" fitHeight="47.0" fitWidth="45.0" layoutX="206.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/SPEED.png" />
-               </image></ImageView>
-            <ImageView id="plant" fx:id="plant_frog" fitHeight="72.0" fitWidth="45.0" layoutX="255.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/INSANITY.png" />
-               </image></ImageView>
-            <ImageView id="frog" fx:id="frog_birdfeet" fitHeight="47.0" fitWidth="45.0" layoutX="313.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/SPEED.png" />
-               </image></ImageView>
-            <ImageView id="circle_25" fx:id="birdfeet_flower" fitHeight="47.0" fitWidth="45.0" layoutX="365.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/PARALYSIS.png" />
-               </image></ImageView>
-            <ImageView id="circle_26" fx:id="flower_root" fitHeight="46.0" fitWidth="56.0" layoutX="411.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/HEALING.png" />
-               </image></ImageView>
-            <ImageView id="circle_27" fx:id="root_scorpion" fitHeight="49.0" fitWidth="45.0" layoutX="468.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/HEALING.png" />
-               </image></ImageView>
-            <ImageView id="circle_28" fx:id="scorpion_feather" fitHeight="49.0" fitWidth="45.0" layoutX="520.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/INSANITY.png" />
-               </image></ImageView>
-            <ImageView id="mushroom" fx:id="mushroom_birdfeet" fitHeight="45.0" fitWidth="44.0" layoutX="256.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/SPEED.png" />
-               </image>
-            </ImageView>
+            <ImageView id="mushroom" fx:id="mushroom_scorpion" fitHeight="43.0" fitWidth="47.0" layoutX="339.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_feather" fitHeight="46.0" fitWidth="47.0" layoutX="388.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_root" fitHeight="50.0" fitWidth="43.0" layoutX="307.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_scorpion" fitHeight="45.0" fitWidth="41.0" layoutX="364.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_feather" fitHeight="44.0" fitWidth="46.0" layoutX="412.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_flower" fitHeight="56.0" fitWidth="44.0" layoutX="284.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_root" fitHeight="56.0" fitWidth="45.0" layoutX="335.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_scorpion" fitHeight="41.0" fitWidth="45.0" layoutX="390.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="birdfeet" fx:id="birdfeet_feather" fitHeight="49.0" fitWidth="44.0" layoutX="443.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_flower" fitHeight="49.0" fitWidth="54.0" layoutX="305.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_root" fitHeight="47.0" fitWidth="46.0" layoutX="362.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="birdfeet" fx:id="birdfeet_scorpion" fitHeight="47.0" fitWidth="53.0" layoutX="417.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_15" fx:id="flower_feather" fitHeight="56.0" fitWidth="47.0" layoutX="467.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_frog" fitHeight="46.0" fitWidth="45.0" layoutX="232.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_birdfeet" fitHeight="43.0" fitWidth="48.0" layoutX="283.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_flower" fitHeight="43.0" fitWidth="48.0" layoutX="337.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_19" fx:id="birdfeet_root" fitHeight="49.0" fitWidth="45.0" layoutX="387.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_20" fx:id="flower_scorpion" fitHeight="43.0" fitWidth="45.0" layoutX="442.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_21" fx:id="root_feather" fitHeight="43.0" fitWidth="41.0" layoutX="494.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_plant" fitHeight="47.0" fitWidth="45.0" layoutX="206.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_frog" fitHeight="72.0" fitWidth="45.0" layoutX="255.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_birdfeet" fitHeight="47.0" fitWidth="45.0" layoutX="313.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_25" fx:id="birdfeet_flower" fitHeight="47.0" fitWidth="45.0" layoutX="365.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_26" fx:id="flower_root" fitHeight="46.0" fitWidth="56.0" layoutX="411.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_27" fx:id="root_scorpion" fitHeight="49.0" fitWidth="45.0" layoutX="468.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_28" fx:id="scorpion_feather" fitHeight="49.0" fitWidth="45.0" layoutX="520.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_birdfeet" fitHeight="45.0" fitWidth="44.0" layoutX="256.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="342.0" prefWidth="760.0" style="-fx-background-color: #300900;">
