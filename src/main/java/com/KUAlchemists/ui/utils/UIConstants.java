@@ -20,6 +20,7 @@ public class UIConstants {
     public static final String ELIXIR_OF_INSIGHT = "ElixirOfInsightUI.fxml";
     public static final String MAKE_EXPERIMENT_UI_FXML = "MakeExperimentUI.fxml";
     public static final String EXPERIENCE_RESULT_UI_FXML = "ExperienceResultUI.fxml";
+    public static final String PUBLISH_THEORY_UI_FXML = "PublishTheoryUI.fxml";
 
     public static final String POTIONBREW_UI_FXML = "PotionBrewUI.fxml";
     public static final int WINDOW_WIDTH = 1080;
