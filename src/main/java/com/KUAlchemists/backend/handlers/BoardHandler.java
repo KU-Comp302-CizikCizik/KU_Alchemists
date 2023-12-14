@@ -17,7 +17,7 @@ public class BoardHandler {
         return INSTANCE;
     }
 
-    public void endTheRound() {
-        GameEngine.getInstance().nextPlayer();
+    public void endTheTour() {
+        GameEngine.getInstance().nextTour();
     }
 }

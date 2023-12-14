@@ -3,11 +3,9 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
-import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -191,7 +189,7 @@ public class BoardController {
 
     @FXML
     public void endTheRound() {
-        BoardHandler.getInstance().endTheRound();
+        BoardHandler.getInstance().endTheTour();
         changeRound();
 
     }

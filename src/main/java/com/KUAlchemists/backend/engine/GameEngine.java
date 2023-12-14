@@ -1,6 +1,10 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.Gamestate;
+import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.common.enums.GameRound;
+import com.KUAlchemists.common.enums.GameTour;
 
 import java.util.ArrayList;
 
@@ -12,7 +16,8 @@ public class GameEngine {
     // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
 
-
+    private GameRound currentRound;
+    private GameTour currentTour;
 
     // current player
     private static Player currentPlayer;
@@ -25,7 +30,8 @@ public class GameEngine {
      * Constructor for GameEngine
      */
     private GameEngine(){
-
+        currentRound = GameRound.FIRST_ROUND;
+        currentTour = GameTour.FIRST_TOUR;
     }
 
     /**
@@ -105,10 +111,7 @@ public class GameEngine {
         currentPlayer = playerList.get(currentPlayerIndex);
         //TODO: update Board UI with new currentPlayer
     }
-
-    public Player getPlayer(int index){
-        return playerList.get(index);
-    }
+    
 
     public Player getPlayer(String name){
         for (Player player : playerList) {
@@ -117,6 +120,25 @@ public class GameEngine {
             }
         }
         return null;
+    }
+
+    public void nextTour() {
+        if (currentTour == GameTour.THIRD_TOUR) {
+            nextRound();
+            return;
+        }
+        currentTour = GameTour.getNextTour(currentTour);
+        nextPlayer();
+
+    }
+
+    public void nextRound(){
+        if(currentRound == GameRound.THIRD_ROUND){
+            SceneManager.getInstance().onGameStateChanged(Gamestate.ENDGAME);
+            return;
+        }
+        currentRound = GameRound.getNextRound(currentRound);
+        //avaliable actions updated in the Board UI
     }
 
 }
