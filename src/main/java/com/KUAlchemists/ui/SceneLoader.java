@@ -172,6 +172,9 @@ public class SceneLoader {
     public void loadExperienceResult(){
         loadPopUp(UIConstants.EXPERIENCE_RESULT_UI_FXML);
     }
+    public void loadSellPotion(){
+        loadPopUp(UIConstants.SELL_POTION_UI_FXML);
+    }
 
 
     public void loadForageIngredient(String message, String ingredientImage) {

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="501.0" prefWidth="900.0" styleClass="body" stylesheets="@CSS/SellPotionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.SellPotionController">
+   <children>
+      <ImageView fx:id="adventurerImageView" fitHeight="400.0" fitWidth="300.0" layoutX="568.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" styleClass="adventurer-image-view">
+         <image>
+            <Image url="@com.KUAlchemists/images/adventurer/adventurer-photo-1.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="dialogText" layoutX="48.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Some Text" textOrigin="TOP" wrappingWidth="491.21630859375" />
+      <Text fx:id="button" layoutX="450.0" layoutY="435.0" onMouseClicked="#buttonClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button" text="Button" wrappingWidth="107.5" />
+      <Pane fx:id="pane1" layoutX="42.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane2" layoutX="164.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane3" layoutX="282.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane4" layoutX="396.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane5" layoutX="514.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane6" layoutX="632.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane7" layoutX="750.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane8" layoutX="42.0" layoutY="251.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane9" layoutX="164.0" layoutY="251.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane10" layoutX="282.0" layoutY="251.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane11" layoutX="396.0" layoutY="251.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane12" layoutX="514.0" layoutY="251.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane13" layoutX="632.0" layoutY="251.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="pane14" layoutX="750.0" layoutY="251.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
+               </image>
+            </ImageView>
+            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

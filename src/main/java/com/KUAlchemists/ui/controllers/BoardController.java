@@ -146,7 +146,7 @@ public class BoardController {
     @FXML
     void sellPotionPopUp(ActionEvent event) {
 
-        System.out.println("not implemented Yet");
+        SceneLoader.getInstance().loadSellPotion();
     }
     @FXML
     public void changeRound() {
