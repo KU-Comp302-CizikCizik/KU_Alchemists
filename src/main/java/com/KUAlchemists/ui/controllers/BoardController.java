@@ -77,8 +77,8 @@ public class BoardController {
 
     @FXML
     void debunkPopUp(ActionEvent event) {
+        SceneLoader.getInstance().loadDebunk();
 
-        System.out.println("not implemented Yet");
     }
 
     @FXML

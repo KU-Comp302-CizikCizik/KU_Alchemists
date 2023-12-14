@@ -3,6 +3,8 @@ package com.KUAlchemists.ui.utils;
 public class UIConstants {
 
 
+    public static final String DEBUNK_UI_FXML = "DebunkUI.fxml";
+
     private UIConstants() {
     }
     public static final String PUBLICATIONTRACK_UI_FXML = "PublicationTrackUI.fxml";
