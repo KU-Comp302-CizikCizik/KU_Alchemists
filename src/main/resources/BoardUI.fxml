@@ -39,37 +39,37 @@
          <left>
             <VBox maxHeight="200.0" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Avatar 2">
+                  <TextField editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Avatar 2">
                      <font>
                         <Font name="Book Antiqua" size="48.0" />
                      </font>
                   </TextField>
-                  <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Gold:">
+                  <TextField editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Gold:">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="alchemist2GoldTextField" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
+                  <TextField fx:id="alchemist2GoldTextField" editable="false" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Reputation">
+                  <TextField editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Reputation">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="alchemist2ReputationTextField" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
+                  <TextField fx:id="alchemist2ReputationTextField" editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Action Point">
+                  <TextField editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Action Point">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="alchemist2ActionPointTextField" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
+                  <TextField fx:id="alchemist2ActionPointTextField" editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
@@ -83,37 +83,37 @@
          <right>
             <VBox maxHeight="200.0" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" text="Avatar 1">
+                  <TextField alignment="CENTER_RIGHT" editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" text="Avatar 1">
                      <font>
                         <Font name="Book Antiqua" size="48.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Gold:">
+                  <TextField alignment="CENTER_RIGHT" editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Gold:">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="alchemist1GoldTextField" alignment="CENTER_RIGHT" maxHeight="200.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
+                  <TextField fx:id="alchemist1GoldTextField" alignment="CENTER_RIGHT" editable="false" maxHeight="200.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Reputation">
+                  <TextField alignment="CENTER_RIGHT" editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Reputation">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="alchemist1ReputationTextField" alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
+                  <TextField fx:id="alchemist1ReputationTextField" alignment="CENTER_RIGHT" editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="300.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Action Points">
+                  <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="89.0" prefWidth="300.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Action Points">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="alchemist1ActionPointTextField" alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
+                  <TextField fx:id="alchemist1ActionPointTextField" alignment="CENTER_RIGHT" editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
                      <font>
                         <Font name="Book Antiqua" size="24.0" />
                      </font>
@@ -144,7 +144,7 @@
                         <Image url="@com.KUAlchemists/images/blue-alchemist.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="debunkButton" mnemonicParsing="false" onAction="#debunkPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0; -fx-opacity: 0.5;" text="Debunk" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="340.0">
+                  <Button fx:id="debunkButton" mnemonicParsing="false" onAction="#debunkPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0;" text="Debunk" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="340.0">
                      <font>
                         <Font name="Book Antiqua" size="10.0" />
                      </font>
