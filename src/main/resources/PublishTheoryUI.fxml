@@ -17,7 +17,7 @@
             <Image url="@com.KUAlchemists/images/PublicationTrack/alc.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="box" layoutY="29.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="593.0">
+      <GridPane fx:id="box" layoutX="117.0" layoutY="90.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="332.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="552.0" minWidth="10.0" prefWidth="297.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="543.0" minWidth="0.0" prefWidth="297.0" />
