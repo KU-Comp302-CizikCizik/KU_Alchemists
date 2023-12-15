@@ -103,7 +103,7 @@ public class BoardController {
 
     @FXML
     void publishTheoryPopUp(ActionEvent event) {
-        System.out.println("not implemented Yet");
+        SceneLoader.getInstance().loadPublishTheory();
     }
 
     @FXML

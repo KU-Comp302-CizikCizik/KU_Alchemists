@@ -156,7 +156,9 @@ public class SceneLoader {
     public void loadBuyArtifact(){
         loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
     }
-
+    public void loadPublishAlchemyPart(){
+        loadPopUp(UIConstants.PUBLISH_THEORY_ALCHEMY_FXML);
+    }
     public void loadUseArtifact(){
         loadPopUp(UIConstants.USEARTIFACT_UI_FXML);
     }
@@ -168,6 +170,9 @@ public class SceneLoader {
     }
     public void loadMakeExperiment(){
         loadPopUp(UIConstants.MAKE_EXPERIMENT_UI_FXML);
+    }
+    public void loadPublishTheory(){
+        loadPopUp(UIConstants.PUBLISH_THEORY_UI_FXML);
     }
     public void loadExperienceResult(){
         loadPopUp(UIConstants.EXPERIENCE_RESULT_UI_FXML);

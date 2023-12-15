@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.PublishTheoryAlchemySelectController">
+   <children>
+      <AnchorPane prefHeight="541.0" prefWidth="538.0">
+         <children>
+            <ImageView fitHeight="541.0" fitWidth="541.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/PublicationTrack/palch.png" />
+               </image>
+            </ImageView>
+            <Text fill="YELLOW" layoutX="124.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select an alchemy to make a theory" wrappingWidth="291.0">
+               <font>
+                  <Font name="Colonna MT" size="36.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="alchemy_2" fitHeight="55.0" fitWidth="54.0" layoutX="124.0" layoutY="176.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="alchemy_6" fitHeight="55.0" fitWidth="54.0" layoutX="380.0" layoutY="86.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="alchemy_7" fitHeight="55.0" fitWidth="54.0" layoutX="366.0" layoutY="176.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="alchemy_4" fitHeight="55.0" fitWidth="54.0" layoutX="182.0" layoutY="14.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="alchemy_5" fitHeight="55.0" fitWidth="54.0" layoutX="312.0" layoutY="15.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="alchemy_8" fitHeight="55.0" fitWidth="54.0" layoutX="312.0" layoutY="243.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="alchemy_1" fitHeight="55.0" fitWidth="54.0" layoutX="182.0" layoutY="244.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="alchemy_3" fitHeight="55.0" fitWidth="54.0" layoutX="116.0" layoutY="86.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
