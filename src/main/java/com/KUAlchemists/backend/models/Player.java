@@ -55,6 +55,7 @@ public class Player {
 
     public void setSicknessLevel(int sicknessLevel) {
         this.sicknessLevel = sicknessLevel;
+        if(this.sicknessLevel < 0)this.sicknessLevel = 0;
     }
 
     public int getReputation() {

@@ -80,6 +80,10 @@ public class GameEngine {
         GameEngine.currentPlayer = currentPlayer;
     }
 
+    public void updateCurrentPlayer(Player player){
+        playerList.set(currentPlayerIndex, player);
+        currentPlayer = player;
+    }
     /**
      * Get the current player index
      * @return the current player index
