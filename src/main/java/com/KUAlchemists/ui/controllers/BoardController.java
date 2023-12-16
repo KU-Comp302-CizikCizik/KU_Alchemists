@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+
 public class BoardController {
     @FXML
     private TextField alchemist1GoldTextField;
@@ -189,8 +191,13 @@ public class BoardController {
 
     @FXML
     public void endTheRound() {
-        BoardHandler.getInstance().endTheTour();
-        changeRound();
+        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
+        System.out.println(round_tour_info);
+        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
+        //use for updating the UI
+        //round_tour_info[0] = round
+        //round_tour_info[1] = tour
+        changeRound(); // we may create another method with more comprehensive name for the task, updating round & tour, string of buttons, etc.
 
     }
 

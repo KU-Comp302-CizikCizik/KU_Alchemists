@@ -3,8 +3,8 @@ package com.KUAlchemists.backend.engine;
 import com.KUAlchemists.backend.enums.Gamestate;
 import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.common.enums.GameRound;
-import com.KUAlchemists.common.enums.GameTour;
+import com.KUAlchemists.backend.enums.GameRound;
+import com.KUAlchemists.backend.enums.GameTour;
 
 import java.util.ArrayList;
 
@@ -109,7 +109,6 @@ public class GameEngine {
     public void nextPlayer(){
         currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
         currentPlayer = playerList.get(currentPlayerIndex);
-        //TODO: update Board UI with new currentPlayer
     }
     
 
@@ -122,23 +121,41 @@ public class GameEngine {
         return null;
     }
 
-    public void nextTour() {
+    /**
+     * Proceed with the next tour
+     * @return the next tour
+     */
+    public ArrayList<Integer> nextTour() {
+        ArrayList<Integer> round_tour_info = new ArrayList<>();
+        round_tour_info.add(currentRound.getRound());
+        round_tour_info.add(currentTour.getTour());
+        nextPlayer();
+        //if it is not the first player, do not proceed, all player should play their turns/tours
+        if(GameEngine.getInstance().getCurrentPlayerIndex() != 0)return round_tour_info;
+
         if (currentTour == GameTour.THIRD_TOUR) {
             nextRound();
-            return;
+            currentTour = GameTour.FIRST_TOUR;
         }
-        currentTour = GameTour.getNextTour(currentTour);
-        nextPlayer();
+        else{
+            currentTour = GameTour.getNextTour(currentTour);
+        }
+        round_tour_info.set(0,currentRound.getRound());
+        round_tour_info.set(1,currentTour.getTour());
+        return round_tour_info;
 
     }
 
+    /**
+     * Proceed with the next round
+     */
     public void nextRound(){
         if(currentRound == GameRound.THIRD_ROUND){
             SceneManager.getInstance().onGameStateChanged(Gamestate.ENDGAME);
+            System.out.println("Game Ended // GAMEOVER SCREEN");
             return;
         }
         currentRound = GameRound.getNextRound(currentRound);
-        //avaliable actions updated in the Board UI
     }
 
 }

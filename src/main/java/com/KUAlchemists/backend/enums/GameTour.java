@@ -1,4 +1,4 @@
-package com.KUAlchemists.common.enums;
+package com.KUAlchemists.backend.enums;
 
 public enum GameTour {
 
