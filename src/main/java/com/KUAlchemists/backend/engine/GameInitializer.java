@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.engine;
 
 import com.KUAlchemists.backend.enums.Aspect;
+import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.exceptions.GameInitializationException;
 import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
@@ -15,6 +16,7 @@ import java.util.Random;
 public class GameInitializer {
 
     private static boolean isGameInitialized = false;
+    private GameRound gameRound;
 
     public GameInitializer() {
         if (!isGameInitialized) {
@@ -31,6 +33,7 @@ public class GameInitializer {
     }
 
     private void initGame() {
+        gameRound = GameRound.FIRST_ROUND;
         initStateObservers();
         initEventObservers();
         initGameObjects();

@@ -1,6 +1,10 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.Gamestate;
+import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.enums.GameRound;
+import com.KUAlchemists.backend.enums.GameTour;
 
 import java.util.ArrayList;
 
@@ -12,7 +16,8 @@ public class GameEngine {
     // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
 
-
+    private GameRound currentRound;
+    private GameTour currentTour;
 
     // current player
     private static Player currentPlayer;
@@ -25,7 +30,8 @@ public class GameEngine {
      * Constructor for GameEngine
      */
     private GameEngine(){
-
+        currentRound = GameRound.FIRST_ROUND;
+        currentTour = GameTour.FIRST_TOUR;
     }
 
     /**
@@ -103,12 +109,8 @@ public class GameEngine {
     public void nextPlayer(){
         currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
         currentPlayer = playerList.get(currentPlayerIndex);
-        //TODO: update Board UI with new currentPlayer
     }
-
-    public Player getPlayer(int index){
-        return playerList.get(index);
-    }
+    
 
     public Player getPlayer(String name){
         for (Player player : playerList) {
@@ -117,6 +119,43 @@ public class GameEngine {
             }
         }
         return null;
+    }
+
+    /**
+     * Proceed with the next tour
+     * @return the next tour
+     */
+    public ArrayList<Integer> nextTour() {
+        ArrayList<Integer> round_tour_info = new ArrayList<>();
+        round_tour_info.add(currentRound.getRound());
+        round_tour_info.add(currentTour.getTour());
+        nextPlayer();
+        //if it is not the first player, do not proceed, all player should play their turns/tours
+        if(GameEngine.getInstance().getCurrentPlayerIndex() != 0)return round_tour_info;
+
+        if (currentTour == GameTour.THIRD_TOUR) {
+            nextRound();
+            currentTour = GameTour.FIRST_TOUR;
+        }
+        else{
+            currentTour = GameTour.getNextTour(currentTour);
+        }
+        round_tour_info.set(0,currentRound.getRound());
+        round_tour_info.set(1,currentTour.getTour());
+        return round_tour_info;
+
+    }
+
+    /**
+     * Proceed with the next round
+     */
+    public void nextRound(){
+        if(currentRound == GameRound.THIRD_ROUND){
+            SceneManager.getInstance().onGameStateChanged(Gamestate.ENDGAME);
+            System.out.println("Game Ended // GAMEOVER SCREEN");
+            return;
+        }
+        currentRound = GameRound.getNextRound(currentRound);
     }
 
 }

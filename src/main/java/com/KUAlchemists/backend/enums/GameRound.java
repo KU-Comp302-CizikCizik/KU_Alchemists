@@ -1,13 +1,40 @@
 package com.KUAlchemists.backend.enums;
-/**
- * This enum represents the different rounds of the game. Depending on the round, different actions are available.
- */
+
 public enum GameRound {
 
-    FIRST_ROUND,
-    SECOND_ROUND,
-    THIRD_ROUND,
-    SCOREBOARD;
+    FIRST_ROUND(1),
+    SECOND_ROUND(2),
+    THIRD_ROUND(3),
 
-    public static GameRound gameRound = FIRST_ROUND;
+    GAMEOVER_ROUND(-1);
+
+    /*  Constructor for GameRound enum
+        @param round: the round number
+    */
+    public final int round;
+    /*  Constructor for GameRound enum
+        @param round: the round number
+    */
+    GameRound(int round) {
+        this.round = round;
+    }
+
+    /*  Getter for round
+        @return round: the round number
+    */
+    public int getRound() {
+        return round;
+    }
+
+
+    public static GameRound getNextRound (GameRound currentRound){
+        switch(currentRound){
+            case FIRST_ROUND:
+                return SECOND_ROUND;
+            case SECOND_ROUND:
+                return THIRD_ROUND;
+            default:
+                return null;
+        }
+    }
 }
