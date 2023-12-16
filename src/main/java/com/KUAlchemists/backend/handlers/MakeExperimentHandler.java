@@ -49,13 +49,13 @@ public class MakeExperimentHandler {
         else if (tester.equalsIgnoreCase("student")){
             if(potionType.equalsIgnoreCase("negative")){
                 master.setGold(master.getGold()-1);
+                System.out.println("Master's gold: "+GameEngine.getInstance().getCurrentPlayer().getGold());
             }
-            System.out.println("Master's gold: "+GameEngine.getInstance().getCurrentPlayer().getGold());
         }
         else{
             System.out.println("Invalid tester name.");
         }
-        GameEngine.getInstance().updateCurrentPlayer(master);
+        GameEngine.getInstance().setCurrentPlayer(master);
 
     }
 

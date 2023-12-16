@@ -18,7 +18,7 @@ public class GameEngine {
     private static Player currentPlayer;
 
     // current player index
-    private static int currentPlayerIndex = 0;
+    private int currentPlayerIndex = 0;
 
 
     /**
@@ -74,16 +74,13 @@ public class GameEngine {
 
     /**
      * Set the current player
-     * @param currentPlayer the player to be set as current player
+     * @param player the player to be set as current player
      */
-    public void setCurrentPlayer(Player currentPlayer) {
-        GameEngine.currentPlayer = currentPlayer;
+    public void setCurrentPlayer(Player player) {
+        playerList.set(currentPlayerIndex, player);
+        GameEngine.currentPlayer = player;
     }
 
-    public void updateCurrentPlayer(Player player){
-        playerList.set(currentPlayerIndex, player);
-        currentPlayer = player;
-    }
     /**
      * Get the current player index
      * @return the current player index
@@ -97,7 +94,7 @@ public class GameEngine {
      * @param currentPlayerIndex the index to be set as current player index
      */
     public void setCurrentPlayerIndex(int currentPlayerIndex) {
-        GameEngine.currentPlayerIndex = currentPlayerIndex;
+        currentPlayerIndex = currentPlayerIndex;
     }
 
     /**
