@@ -177,7 +177,7 @@ public class SceneLoader {
     public void loadExperienceResult(){
         loadPopUp(UIConstants.EXPERIENCE_RESULT_UI_FXML);
     }
-
+    public void loadDebunk() { loadPopUp(UIConstants.DEBUNK_UI_FXML); }
 
     public void loadForageIngredient(String message, String ingredientImage) {
         Dialog<Void> dialog = new Dialog<>();
