@@ -64,3 +64,10 @@
     -fx-opacity: 0.5;
 }
 
+.debunk{
+    -fx-background-image: url("../com.KUAlchemists/images/Debunk/DebunkUI.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
