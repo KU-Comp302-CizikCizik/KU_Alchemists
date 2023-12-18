@@ -13,6 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -140,6 +141,26 @@ public class SceneLoader {
         closeButton.setVisible(false);
         dialog.show();
     }
+    public void loadPopUpUndecorated(String fxml_path) {
+        Dialog<Void> dialog = new Dialog<>();
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UILoader.class.getClassLoader().getResource(fxml_path));
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.getDialogPane().setContent(loader.load());
+            dialog.setResizable(false);
+            dialog.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        Node closeButton = dialog.getDialogPane().lookupButton(ButtonType.CLOSE);
+        closeButton.managedProperty().bind(closeButton.visibleProperty());
+        closeButton.setVisible(false);
+        dialog.show();
+    }
 
 
     public void loadBoard() {
@@ -174,6 +195,9 @@ public class SceneLoader {
     }
     public void loadSellPotion(){
         loadPopUp(UIConstants.SELL_POTION_UI_FXML);
+    }
+    public void loadPriceOfferSellPotion(){
+        loadPopUpUndecorated(UIConstants.PRICE_OFFER_SELL_POTION_UI_FXML);
     }
 
 

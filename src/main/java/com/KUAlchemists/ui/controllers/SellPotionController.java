@@ -1,6 +1,8 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.SellPotionHandler;
+import com.KUAlchemists.ui.SceneLoader;
+import javafx.application.Platform;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
@@ -10,12 +12,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SellPotionController {
+public class SellPotionController{
 
     private final Effect glowEffect = new Glow(0.4);
     private final Effect glowEffectSelected = new Glow(0.6);
@@ -124,8 +127,39 @@ public class SellPotionController {
                 scenerioIndex++;
                 SellPotionHandler.getInstance().handleSkipDialog();
                 break;
+            case 5:
+                if(SellPotionHandler.getInstance().getStatus() == null) {
+                    if (PotionSlot.getSelectedPotion(potionSlots) != null) {
+                        //                    sleep(5000);
+                        SellPotionHandler.getInstance().setPotionToBeSelled(PotionSlot.getSelectedPotion(potionSlots));
+                        SceneLoader.getInstance().loadPriceOfferSellPotion();
+
+                        //                    while (SellPotionHandler.getInstance().getStatus() == null) {
+                        //                        this.sleepy(250);
+                        //                    }
+                    }
+                }else{
+                    if (SellPotionHandler.getInstance().getStatus().equals("bad")) {
+                        scenerio.runScene5(potionSlots);
+                    } else if (SellPotionHandler.getInstance().getStatus().equals("good")) {
+                        scenerio.runScene6(potionSlots);
+                    }
+                    SellPotionHandler.getInstance().setStatusNull();
+                }
+//                final Stage stage = (Stage) button.getScene().getWindow();
+//                stage.close();
         }
     }
+
+
+//    public void loadFinalScene(){
+//        if(SellPotionHandler.getInstance().getStatus().equals("bad")){
+//            scenerio.runScene5();
+//        }else if(SellPotionHandler.getInstance().getStatus().equals("good")){
+//            scenerio.runScene6();
+//        }
+//        SellPotionHandler.getInstance().setStatusNull();
+//    }
 
     public void mouseEntered(MouseEvent mouseEvent) {
         PotionSlot relevantSlot = null;
@@ -154,9 +188,11 @@ public class SellPotionController {
         }
     }
 
+
     private void debug(String message){
         System.out.println(message);
     }
+
 
 
     private class Scenerio{
@@ -216,16 +252,22 @@ public class SellPotionController {
             }
 
         }
-        public void runScene5(){
+        public void runScene5(ArrayList<PotionSlot> potionSlots){
+            for(PotionSlot slot: potionSlots){
+                slot.hide();
+            }
             getDialogText().setText(scene5Dialog);
-            getButton().setText(null);
+            getButton().setText("");
             getButton().setVisible(false);
             getButton().setDisable(true);
             getAdventurerImageView().setImage(getImage(SCENE_5_ADV_PHOTO_NAME));
         }
-        public void runScene6(){
+        public void runScene6(ArrayList<PotionSlot> potionSlots){
+            for(PotionSlot slot: potionSlots){
+                slot.hide();
+            }
             getDialogText().setText(scene6Dialog);
-            getButton().setText(null);
+            getButton().setText("");
             getButton().setVisible(false);
             getButton().setDisable(true);
             getAdventurerImageView().setImage(getImage(SCENE_6_ADV_PHOTO_NAME));
@@ -266,7 +308,7 @@ public class SellPotionController {
 
         public PotionSlot(Pane mainPane, String potionName, String potionType) {
             this.mainPane = mainPane;
-            this.potionName = potionName + " potion";
+            this.potionName = potionName;
             this.potionType = "Type: "+potionType;
             this.isSelected = false;
             setPotionImage(potionName);
@@ -284,6 +326,24 @@ public class SellPotionController {
         }
         private void hide(){
             getMainPane().setVisible(false);
+        }
+        private static String[] getSelectedPotion(ArrayList<PotionSlot> potionSlots){
+            for(PotionSlot slot: potionSlots){
+                if(slot.isSelected == true){
+                    return new String[]{slot.potionName, slot.potionType};
+                }
+            }
+            return null;
+        }
+
+        private String capitalizeWords(String oldString){
+            String[] words = oldString.replace("_", " ").toLowerCase().split(" ");
+            String newString = "";
+            for(String word: words){
+                word = word.substring(0,1).toUpperCase() + word.substring(1);
+                newString+=word+" ";
+            }
+            return newString.substring(0, newString.length()-1);
         }
         private void select(){
             this.isSelected = true;
@@ -314,7 +374,10 @@ public class SellPotionController {
         }
 
         public String getPotionName() {
-            return potionName;
+            return capitalizeWords(this.potionName);
+        }
+        public String getPotionRawName(){
+            return this.potionName;
         }
 
         public void setPotionName(String potionName) {

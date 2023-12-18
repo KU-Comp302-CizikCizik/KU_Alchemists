@@ -18,7 +18,34 @@ Text{
 }
 Pane{
     visibility: hidden;
+    -fx-background-image: url("../com.KUAlchemists/images/text-background.png");
+    -fx-background-size: cover;
 }
+
+.price-offer{
+    -fx-background-color: #F5DC6A;
+}
+.potion-section{
+    visibility: visible;
+    -fx-background-image: none;
+}
+
+Button{
+    -fx-background-color: #AB6E3C;
+    -fx-text-fill: #000000;
+}
+Button:hover{
+    -fx-background-color: #723B1C;
+    -fx-text-fill: #FFD700;
+}
+Button:pressed{
+    -fx-background-color: #3E301F;
+}
+
+#sell-potion-name, #sell-potion-type, #sell-potion-offered-price{
+    -fx-text-alignment: left;
+}
+
 
 .button{
     -fx-text-alignment: center;
@@ -30,4 +57,13 @@ Pane{
 .potion-name, .potion-type{
     -fx-text-alignment: center;
     -fx-font-size: 30px;
+}
+.potion-name{
+    -fx-font-size: 27px;
+}
+#cancel-button{
+    -fx-background-color: #b80111;
+}
+#cancel-button:hover{
+    -fx-background-color: #7c0000;
 }

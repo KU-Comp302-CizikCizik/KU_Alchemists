@@ -7,38 +7,38 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="501.0" prefWidth="900.0" styleClass="body" stylesheets="@CSS/SellPotionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.SellPotionController">
+<AnchorPane fx:id="anchorPane" prefHeight="501.0" prefWidth="900.0" styleClass="body" stylesheets="@CSS/SellPotionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.SellPotionController">
    <children>
       <ImageView fx:id="adventurerImageView" fitHeight="400.0" fitWidth="300.0" layoutX="568.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" styleClass="adventurer-image-view">
          <image>
             <Image url="@com.KUAlchemists/images/adventurer/adventurer-photo-1.png" />
          </image>
       </ImageView>
-      <Text fx:id="dialogText" layoutX="48.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Some Text" textOrigin="TOP" wrappingWidth="491.21630859375" />
-      <Text fx:id="button" layoutX="450.0" layoutY="435.0" onMouseClicked="#buttonClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button" text="Button" wrappingWidth="107.5" />
-      <Pane fx:id="pane1" layoutX="42.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+      <Text fx:id="dialogText" layoutX="48.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dialog-text" text="Some Text" textOrigin="TOP" wrappingWidth="491.21630859375" />
+      <Text fx:id="button" layoutX="282.0" layoutY="451.0" onMouseClicked="#buttonClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button" text="Button" wrappingWidth="107.5" />
+      <Pane fx:id="pane1" layoutX="42.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0" styleClass="potion-slot">
          <children>
-            <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="149.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
          </effect>
       </Pane>
-      <Pane fx:id="pane2" layoutX="164.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0">
+      <Pane fx:id="pane2" layoutX="164.0" layoutY="103.0" onMouseClicked="#mouseClicked" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" prefHeight="125.0" prefWidth="108.0" styleClass="potion-slot">
          <children>
             <ImageView fitHeight="60.0" fitWidth="66.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -51,8 +51,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutX="2.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -65,8 +65,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -79,8 +79,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -93,8 +93,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -107,8 +107,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -121,8 +121,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutX="2.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutX="2.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -135,8 +135,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -149,8 +149,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -163,8 +163,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -177,8 +177,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -191,8 +191,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
@@ -205,8 +205,8 @@
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
             </ImageView>
-            <Text layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
-            <Text layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
+            <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
+            <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />
          </children>
          <effect>
             <DropShadow />
