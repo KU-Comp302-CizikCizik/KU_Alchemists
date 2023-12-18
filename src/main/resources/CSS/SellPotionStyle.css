@@ -24,6 +24,7 @@ Pane{
 
 .price-offer{
     -fx-background-color: #F5DC6A;
+    visibility: hidden;
 }
 .potion-section{
     visibility: visible;

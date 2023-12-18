@@ -141,7 +141,7 @@ public class SceneLoader {
         closeButton.setVisible(false);
         dialog.show();
     }
-    public void loadPopUpUndecorated(String fxml_path) {
+    public void loadPopUpUndecorated(String fxml_path) { //This opens a popup without close, or any other buttons on th top.
         Dialog<Void> dialog = new Dialog<>();
 
         try {
@@ -196,9 +196,7 @@ public class SceneLoader {
     public void loadSellPotion(){
         loadPopUp(UIConstants.SELL_POTION_UI_FXML);
     }
-    public void loadPriceOfferSellPotion(){
-        loadPopUpUndecorated(UIConstants.PRICE_OFFER_SELL_POTION_UI_FXML);
-    }
+
 
 
     public void loadForageIngredient(String message, String ingredientImage) {

@@ -3,6 +3,9 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.handlers.SellPotionHandler;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
@@ -10,6 +13,7 @@ import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -32,6 +36,34 @@ public class SellPotionController{
     public Text button;
     public Pane pane1, pane2, pane3, pane4, pane5, pane6, pane7, pane8, pane9, pane10, pane11, pane12, pane13, pane14;
     public ImageView imageView;
+    @FXML
+    private Button button1;
+
+    @FXML
+    private Button button2;
+
+    @FXML
+    private Button button3;
+
+    @FXML
+    private Button cancelButton;
+
+    @FXML
+    private AnchorPane offerPriceAnchorPane;
+
+    @FXML
+    private ImageView potionImage;
+
+    @FXML
+    private Text potionName;
+
+    @FXML
+    private Text potionType;
+
+    @FXML
+    private Text recommendedPrice;
+
+
     public ArrayList<Pane> paneList;
 
 
@@ -44,6 +76,9 @@ public class SellPotionController{
     private ArrayList<String> negativePotions = new ArrayList<>();
 
     private boolean isAnySelected;
+    private String[] potion;
+    private String recomPrice;
+
 
     public void initialize(){
         scenerioIndex = 1;
@@ -123,26 +158,40 @@ public class SellPotionController{
                 scenerioIndex++;
                 break;
             case 4:
-                scenerio.runScene4(potionSlots);
+                scenerio.runScene4(potionSlots, offerPriceAnchorPane);
                 scenerioIndex++;
                 SellPotionHandler.getInstance().handleSkipDialog();
                 break;
             case 5:
-                if(SellPotionHandler.getInstance().getStatus() == null) {
+                if(SellPotionHandler.getInstance().getStatus() == null || SellPotionHandler.getInstance().getStatus() == "cancel") {
                     if (PotionSlot.getSelectedPotion(potionSlots) != null) {
-                        //                    sleep(5000);
                         SellPotionHandler.getInstance().setPotionToBeSelled(PotionSlot.getSelectedPotion(potionSlots));
-                        SceneLoader.getInstance().loadPriceOfferSellPotion();
+                        potion = SellPotionHandler.getInstance().getPotionToBeSelled();
 
-                        //                    while (SellPotionHandler.getInstance().getStatus() == null) {
-                        //                        this.sleepy(250);
-                        //                    }
+                        recomPrice = (potion[1].equals("Type: neutral"))?"2 Golds":"1 Gold";
+                        recomPrice = (potion[1].equals("Type: positive"))? "3 Golds" : recomPrice;
+                        System.out.println(potion[1]);
+
+                        String imagePath = "com.KUAlchemists/images/potions/" + potion[0] + ".png";
+                        potionName.setText(capitalizeWords(potion[0]));
+                        potionType.setText(potion[1]);
+                        recommendedPrice.setText("Recommended: "+recomPrice);
+
+
+                        // Load the image using the class loader to ensure it works regardless of the build type
+                        try {
+                            Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+                            potionImage.setImage(image);
+                        }catch (Exception e){
+                            System.err.println(e.getMessage());
+                        }
+                        scenerio.runSceneOfferPrice(offerPriceAnchorPane);
                     }
                 }else{
                     if (SellPotionHandler.getInstance().getStatus().equals("bad")) {
-                        scenerio.runScene5(potionSlots);
+                        scenerio.runScene5(potionSlots, offerPriceAnchorPane);
                     } else if (SellPotionHandler.getInstance().getStatus().equals("good")) {
-                        scenerio.runScene6(potionSlots);
+                        scenerio.runScene6(potionSlots, offerPriceAnchorPane);
                     }
                     SellPotionHandler.getInstance().setStatusNull();
                 }
@@ -188,6 +237,47 @@ public class SellPotionController{
         }
     }
 
+    @FXML
+    void sellPotionButton(ActionEvent event) {
+        if (event.getSource() == button1) {
+            sellThePotion(1);
+        }
+        else if (event.getSource() == button2){
+            sellThePotion(2);
+        } else if (event.getSource() == button3) {
+            sellThePotion(3);
+        } else if (event.getSource() == cancelButton) {
+            SellPotionHandler.getInstance().setStatusCancelled();
+            scenerioIndex = 4;
+        }
+        buttonClicked();
+    }
+
+    private void sellThePotion(int price){
+        if(potion[1].equals("Type: negative") && price > 1){
+            SellPotionHandler.getInstance().setStatusBad();
+        }else if(potion[1].equals("Type: neutral") && price > 2){
+            SellPotionHandler.getInstance().setStatusBad();
+        }else{
+            SellPotionHandler.getInstance().setStatusGood();
+        }
+        SellPotionHandler.getInstance().handleSellPotion(potion[0], price);
+    }
+
+    private void closePopup(){
+        final Stage stage = (Stage) button1.getScene().getWindow();
+        stage.close();
+    }
+    private String capitalizeWords(String oldString){
+        String[] words = oldString.replace("_", " ").toLowerCase().split(" ");
+        String newString = "";
+        for(String word: words){
+            word = word.substring(0,1).toUpperCase() + word.substring(1);
+            newString+=word+" ";
+        }
+        return newString.substring(0, newString.length()-1);
+    }
+
 
     private void debug(String message){
         System.out.println(message);
@@ -198,6 +288,8 @@ public class SellPotionController{
     private class Scenerio{
         private ImageView adventurerImageView;
         private Text dialogText, button;
+
+        private AnchorPane offerPriceAnchorPane;
 
         private String scene1Dialog = "Hello, I am el-Sistam, the famous adventurer here." +
                 " I frequently come here to bu some potions from alchemists, and make them rich.";
@@ -243,34 +335,45 @@ public class SellPotionController{
             getButton().setText(scene3Button);
             getAdventurerImageView().setImage(getImage(SCENE_3_ADV_PHOTO_NAME));
         }
-        public void runScene4(ArrayList<PotionSlot> potionSlots){
+        public void runScene4(ArrayList<PotionSlot> potionSlots, AnchorPane anchorPane){
             getDialogText().setText(null);
             getButton().setText(scene4Button);
+            anchorPane.setVisible(false);
+            getButton().setVisible(true);
+
             getAdventurerImageView().setImage(getImage(null));
             for(PotionSlot slot : potionSlots){
                 slot.show();
             }
 
         }
-        public void runScene5(ArrayList<PotionSlot> potionSlots){
+        public void runScene5(ArrayList<PotionSlot> potionSlots, AnchorPane anchorPane){
             for(PotionSlot slot: potionSlots){
                 slot.hide();
             }
             getDialogText().setText(scene5Dialog);
-            getButton().setText("");
             getButton().setVisible(false);
-            getButton().setDisable(true);
+            anchorPane.setVisible(false);
             getAdventurerImageView().setImage(getImage(SCENE_5_ADV_PHOTO_NAME));
         }
-        public void runScene6(ArrayList<PotionSlot> potionSlots){
+        public void runScene6(ArrayList<PotionSlot> potionSlots, AnchorPane anchorPane){
             for(PotionSlot slot: potionSlots){
                 slot.hide();
             }
             getDialogText().setText(scene6Dialog);
-            getButton().setText("");
             getButton().setVisible(false);
-            getButton().setDisable(true);
+            anchorPane.setVisible(false);
             getAdventurerImageView().setImage(getImage(SCENE_6_ADV_PHOTO_NAME));
+        }
+
+        public void runSceneOfferPrice(AnchorPane anchorPane){
+            for(PotionSlot slot: potionSlots){
+                slot.hide();
+            }
+            getDialogText().setText("");
+            getButton().setVisible(false);
+            anchorPane.setVisible(true);
+            getAdventurerImageView().setImage(null);
         }
 
         public ImageView getAdventurerImageView() {

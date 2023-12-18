@@ -32,6 +32,7 @@ public class SellPotionHandler {
 
     public void handleSellPotion(String potionName, int price){
         System.out.println("The potion: "+potionName+" is sold for "+price+" gold(s)");
+        System.out.println("The status is "+getStatus());
     }
 
     public boolean handleIsSkipDialog(){
