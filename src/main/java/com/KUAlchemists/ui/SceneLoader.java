@@ -153,6 +153,10 @@ public class SceneLoader {
 
     }
 
+    public void loadFinalScore(){
+        loadGenericPopUp("Temporary fianl score window");
+    }
+
     public void loadBuyArtifact(){
         loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
     }

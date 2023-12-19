@@ -25,6 +25,7 @@ public class BoardHandler {
      * @see GameEngine#nextTour()
      */
     public ArrayList<Integer> endTheTour() {
+        //TODO: reset action points in backend
         return GameEngine.getInstance().nextTour();
     }
 }

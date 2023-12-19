@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #8E8B9C;" styleClass="BoardPane" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BoardController">
    <children>
@@ -33,15 +34,25 @@
                      <font>
                         <Font name="Book Antiqua" size="18.0" />
                      </font></Button>
+                  <Text fx:id="tourTitle" layoutX="304.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overThink" text="Tour 1">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="roundTitle" layoutX="694.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overThink" text="Round 1">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </top>
          <left>
-            <VBox maxHeight="200.0" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <VBox maxHeight="200.0" prefHeight="200.0" prefWidth="300.0" stylesheets="@CSS/style.css" BorderPane.alignment="CENTER">
                <children>
-                  <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Avatar 2">
+                  <TextField editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" stylesheets="@CSS/style.css" text="Avatar 2">
                      <font>
-                        <Font name="Book Antiqua" size="48.0" />
+                        <Font size="48.0" />
                      </font>
                   </TextField>
                   <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Gold:">
@@ -159,7 +170,7 @@
                         <Font name="Book Antiqua" size="10.0" />
                      </font>
                   </Button>
-                  <Button fx:id="endRoundButton" layoutX="999.0" layoutY="121.0" mnemonicParsing="false" onAction="#endTheRound" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #EFA22E;" text="End The Round" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="20.0">
+                  <Button fx:id="endRoundButton" layoutX="999.0" layoutY="121.0" mnemonicParsing="false" onAction="#endTheRound" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #EFA22E;" text="End The Tour" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="20.0">
                      <font>
                         <Font size="9.0" />
                      </font>
