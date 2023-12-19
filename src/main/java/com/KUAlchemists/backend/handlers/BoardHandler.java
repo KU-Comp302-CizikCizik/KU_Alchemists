@@ -26,6 +26,9 @@ public class BoardHandler {
      */
     public ArrayList<Integer> endTheTour() {
         //TODO: reset action points in backend
-        return GameEngine.getInstance().nextTour();
+        ArrayList<Integer> result = GameEngine.getInstance().nextTour();
+        //if it is final tour, then end the round return -1 -1
+
+        return result;
     }
 }

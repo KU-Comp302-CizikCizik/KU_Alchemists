@@ -45,7 +45,7 @@ public class BoardController {
 
     @FXML
     private Button helpButton;
-    
+
     @FXML
     private Button endRoundButton;
 
@@ -81,7 +81,7 @@ public class BoardController {
     private Button pauseButton;
     @FXML
     private TextField alchemist2ActionPointTextField;
-    
+
     @FXML
     private TextField alchemist1ActionPointTextField;
 
@@ -91,8 +91,9 @@ public class BoardController {
     @FXML
     private Text tourTitle;
 
-    private Integer currentRound;
-    
+    private int currentRound;
+    private int currentTour;
+
 
     @FXML
     void debunkPopUp(ActionEvent event) {
@@ -168,10 +169,45 @@ public class BoardController {
     }
     @FXML
     public void changeRound() {
+        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
+        Integer round = round_tour_info.get(0);
+        Integer tour = round_tour_info.get(1);
+        currentRound = round;
+        currentTour = tour;
+
+        roundTitle.setText("Round " + round.toString());
+        tourTitle.setText("Tour " + tour.toString());
+        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
+        //use for updating the UI
+        //round_tour_info[0] = round
+        //round_tour_info[1] = tour
+
+        //load the round when round is changed
+        if (round == 3) {
+            loadRound3();
+        } else if (round == 2) {
+            lodRound2();
+        } else if (round == 1) {
+            loadRound1();
+        }
+
+        if(tour == 3) {
+            endRoundButton.setText("End The Round");
+            endRoundButton.setEffect(new DropShadow(30, Color.WHITE));
+        }else {
+            endRoundButton.setText("End The Tour");
+            endRoundButton.setEffect(null);
+        }
+
+        //check whether the tour is last
+
+        changeAvatars();
+    }
+
+    private void changeAvatars() {
         Image currentAvatarImg = currentAvatarImage.getImage();
         currentAvatarImage.setImage(nextAvatarImage.getImage());
         nextAvatarImage.setImage(currentAvatarImg);
-
     }
 
     @FXML
@@ -195,7 +231,7 @@ public class BoardController {
             throw new IllegalArgumentException("Invalid player number");
         }
     }
-    
+
     @FXML
     public void setActionPoint(Integer player, Integer actionPoint) {
         if (player == 1) {
@@ -209,44 +245,12 @@ public class BoardController {
 
     @FXML
     public void endTheRound() {
-        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
-        Integer round = round_tour_info.get(0);
-        Integer tour = round_tour_info.get(1);
-        roundTitle.setText("Round " + round.toString());
-        tourTitle.setText("Tour " + tour.toString());
-        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
-        //use for updating the UI
-        //round_tour_info[0] = round
-        //round_tour_info[1] = tour
-
-        //load the round when round is changed
-        if(round != currentRound) {
-            if (round == 3) {
-                currentRound = 3;
-                loadRound3();
-            } else if (round == 2) {
-                currentRound = 2;
-                lodRound2();
-            } else if (round == 1) {
-                currentRound = 1;
-                loadRound1();
-            }
+        //check whether final round or not
+        if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == 1) {
+          SceneLoader.getInstance().loadFinalScore();
+        }else{
+            changeRound();
         }
-
-        //check whether the tour is last
-        if(tour == 3){
-            endRoundButton.setText("End The Round");
-            endRoundButton.setEffect(new DropShadow(30, Color.WHITE));
-        } else if (tour == 1) {
-            if(round == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == 0){
-                SceneLoader.getInstance().loadFinalScore();
-            }
-            endRoundButton.setText("End The Tour");
-            endRoundButton.setEffect(null);
-        }
-
-        changeRound(); // we may create another method with more comprehensive name for the task, updating round & tour, string of buttons, etc.
-
     }
     private void disableButtons(Button button) {
         button.setDisable(true);
@@ -260,6 +264,9 @@ public class BoardController {
     }
 
     private void activateButtons(Button button) {
+        if(!button.isDisable()){
+            return;
+        }
         button.setDisable(false);
 
         Timeline timeline = new Timeline();
@@ -275,12 +282,12 @@ public class BoardController {
             button.setOpacity(1.0);
         });
 
-        KeyFrame startGlow = new KeyFrame(Duration.seconds(1.5), e -> {
+        KeyFrame startGlow = new KeyFrame(Duration.seconds(1.1), e -> {
             // Set the final opacity (1.0 for fully opaque)
             button.setEffect(new Glow(0.3));
         });
 
-        KeyFrame endGlow = new KeyFrame(Duration.seconds(2.5), e -> {
+        KeyFrame endGlow = new KeyFrame(Duration.seconds(2), e -> {
             // Set the final opacity (1.0 for fully opaque)
             button.setEffect(null);
         });
@@ -303,7 +310,7 @@ public class BoardController {
     public BoardController() {
         currentRound = -1;
     }
-    
+
     @FXML
     public void initialize() {
         alchemist1GoldTextField.setText("10");
