@@ -1,5 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.services.SellPotionService;
 import com.KUAlchemists.ui.controllers.SellPotionController;
 
 import java.util.ArrayList;
@@ -7,10 +9,16 @@ import java.util.ArrayList;
 public class SellPotionHandler {
 
     private static SellPotionHandler INSTANCE;
+
+    private SellPotionService service;
     private boolean skipDialog = false;
     private String potionName;
     private String potionType;
     private String stage = null; //can only be null, selled, cancelled;
+
+    private SellPotionHandler(){
+        this.service = new SellPotionService();
+    }
 
     public static SellPotionHandler getInstance(){
         if(INSTANCE == null)
@@ -18,16 +26,8 @@ public class SellPotionHandler {
         return INSTANCE;
     }
 
-    public ArrayList<String> handlerUsersPotions(){
-        ArrayList<String> potions = new ArrayList<String>();
-        potions.add("HEALING_POTION");
-        potions.add("SPEED_POTION");
-        potions.add("WISDOM_POTION");
-        potions.add("INSANITY_POTION");
-        potions.add("PARALYSIS_POTION");
-        potions.add("POISON_POTION");
-        potions.add("NEUTRAL_POTION");
-        return potions;
+    public ArrayList<String> handleGetPlayersPotions(){
+        return service.getPlayersPotions(GameEngine.getInstance().getCurrentPlayer());
     }
 
     public void handleSellPotion(String potionName, int price){

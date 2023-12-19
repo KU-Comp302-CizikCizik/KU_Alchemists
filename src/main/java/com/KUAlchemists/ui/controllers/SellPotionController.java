@@ -82,7 +82,10 @@ public class SellPotionController{
 
     public void initialize(){
         scenerioIndex = 1;
-        usersPotions = SellPotionHandler.getInstance().handlerUsersPotions();
+        usersPotions = SellPotionHandler.getInstance().handleGetPlayersPotions();
+        for (String potion: usersPotions){
+            System.out.println(potion);
+        }
         paneList = new ArrayList<Pane>();
         paneList.add(pane1);paneList.add(pane2);paneList.add(pane3);paneList.add(pane4);paneList.add(pane5);
         paneList.add(pane6);paneList.add(pane7);paneList.add(pane8);paneList.add(pane9);paneList.add(pane10);
@@ -497,7 +500,7 @@ public class SellPotionController{
             refreshPane();
         }
         private Image getImage(String imageName){
-            String imagePath = "com.KUAlchemists/images/potions/" + imageName.toUpperCase() + ".png";
+            String imagePath = "com.KUAlchemists/images/potions/" + imageName.toUpperCase() + "_POTION.png";
             // Load the image using the class loader to ensure it works regardless of the build type
             try {
                 Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
