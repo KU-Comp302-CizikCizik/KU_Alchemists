@@ -65,9 +65,8 @@ public class PotionBrewingAreaHandler {
         //get potionCode for UI
         String potionCode = potionBrewingService.getPotionCode(potion);
 
-        //notify the observers such as DeductionBoard, NEUTRAL potions should not be notified
-        if(potion.getPotionEffect() != PotionEffect.NEUTRAL)
-            EventManager.getInstance().onPotionBrewingActionPerformed(potion);
+        //notify the observers such as DeductionBoard
+        EventManager.getInstance().onPotionBrewingActionPerformed(potion);
 
         return potionCode;
     }

@@ -3,15 +3,15 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
-import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.util.ArrayList;
 
 public class BoardController {
     @FXML
@@ -77,8 +77,7 @@ public class BoardController {
 
     @FXML
     void debunkPopUp(ActionEvent event) {
-
-        System.out.println("not implemented Yet");
+        SceneLoader.getInstance().loadDebunk();
     }
 
     @FXML
@@ -104,7 +103,7 @@ public class BoardController {
 
     @FXML
     void publishTheoryPopUp(ActionEvent event) {
-        System.out.println("not implemented Yet");
+        SceneLoader.getInstance().loadPublishTheory();
     }
 
     @FXML
@@ -191,8 +190,13 @@ public class BoardController {
 
     @FXML
     public void endTheRound() {
-        BoardHandler.getInstance().endTheRound();
-        changeRound();
+        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
+        System.out.println(round_tour_info);
+        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
+        //use for updating the UI
+        //round_tour_info[0] = round
+        //round_tour_info[1] = tour
+        changeRound(); // we may create another method with more comprehensive name for the task, updating round & tour, string of buttons, etc.
 
     }
 

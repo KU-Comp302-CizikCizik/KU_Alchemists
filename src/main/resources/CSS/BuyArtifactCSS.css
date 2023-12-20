@@ -1,6 +1,6 @@
 
 .artifact_frame{
-    -fx-background-image: url("../com.KUAlchemists/images/card_background.jpg");
+    -fx-background-image: url("../com.KUAlchemists/images/IngredientStorage/card_background.jpg");
     -fx-background-size: cover;
     -fx-background-position: center;
 }

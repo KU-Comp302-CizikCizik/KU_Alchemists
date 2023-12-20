@@ -42,11 +42,16 @@ public class UseArtifactService {
         return artifacts;
     }
 
-    public void removeArtifactfromStorage(String name){
+    public void removeArtifactFromStorage(String name, Player currentPlayer) {
+        ArtifactStorage storage = Board.getInstance().getArtifactStorage(currentPlayer);
+        storage.removeArtifact(artifactStorage.getArtifact(name));
 
-        artifactStorage.removeArtifact(artifactStorage.getArtifact(name));
+//        for(Artifact a : storage.getArtifactsList()){
+//               System.out.println(a.getName());
+//        }
     }
-    public ArrayList<String> getStorageArtifacts(Player player){
+
+        public ArrayList<String> getStorageArtifacts(Player player){
         ArrayList<String> artifacts = new ArrayList<>();
         ArtifactStorage storage = Board.getInstance().getArtifactStorage(player);
         for(Artifact a : storage.getArtifactsList()){

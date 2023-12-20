@@ -39,4 +39,23 @@ public class DebunkTheoryHandler {
     }
 
     // Other handler methods...
+    public String checkAspect(String Aspect) {
+        //It takes the aspect as "blue" or "green" or "red" and returns the sign
+        // as "bluePlus.png" or "blueMinus.png" or "greenPlus.png" or "greenMinus.png" or "redPlus.png" or "redMinus.png"
+        if (Aspect.equals("blue")) {
+            return "blueMinus.png";
+        } else if (Aspect.equals("green")) {
+            return "greenPlus.png";
+        } else if (Aspect.equals("red")) {
+            return "redPlus.png";
+        }
+        return "None";
+    }
+
+
+    public String getTheory() {
+        //Before "Debunk button clicked" backend should know the clicked theory name
+        //they should save it in a variable and return it here as "mushroom" , "scorpions", "birdfeet"
+        return "mushroom";
+    }
 }

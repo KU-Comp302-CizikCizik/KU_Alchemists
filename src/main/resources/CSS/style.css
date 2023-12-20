@@ -12,11 +12,11 @@
     -fx-background-size: contain;
     -fx-background-position: center center;
 }
-.mypane{
-   -fx-background-image: url("../com.KUAlchemists/images/InventoryStorage(2).jpg");
+.ingredientStrogeBackground{
+   -fx-background-image: url("../com.KUAlchemists/images/IngredientStorage/IngredientInventoryBackground.png");
     -fx-background-repeat: stretch;
     -fx-background-size: contain;
-    -fx-background-position: right bottom;
+    -fx-background-position: LEFT CENTER;
     -fx-background-color: rgba(19,35,43);
 }
 
@@ -55,3 +55,19 @@
 .blueATextField {
     -fx-text-fill: #3a7caf;
 }
+
+.loginBackground {
+    -fx-background-image: url("../com.KUAlchemists/images/Login/LoginBackground.png");
+}
+
+.opac {
+    -fx-opacity: 0.5;
+}
+
+.debunk{
+    -fx-background-image: url("../com.KUAlchemists/images/Debunk/DebunkUI.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
