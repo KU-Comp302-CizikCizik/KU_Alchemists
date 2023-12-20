@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class MakeExperimentHandler {
 
     private static MakeExperimentHandler INSTANCE;
+
+    private MakeExperimentHandler(){
+    }
     public static MakeExperimentHandler getInstance(){
         if(INSTANCE == null)
             INSTANCE = new MakeExperimentHandler();

@@ -19,12 +19,12 @@ public class IngredientCard_PublishController {
     public void setCard(String ingredientName) {
         System.out.println("girdi");
         // Assuming your image files have a common extension like ".png" or ".jpg"
-        String imagePath = "com.KUAlchemists/images/" + ingredientName + ".png";
+        String imagePath = "/com.KUAlchemists/images/" + ingredientName + ".png";
         // Load the image using the class loader to ensure it works regardless of the build type
 
         try {
             ingredient=ingredientName;
-            Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+            Image image = new Image(getClass().getResourceAsStream(imagePath));
             // Set the image to the ImageView
             ing_image.setImage(image);
             System.out.println("başardı");
