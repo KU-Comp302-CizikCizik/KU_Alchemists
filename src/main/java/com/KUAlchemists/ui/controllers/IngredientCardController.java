@@ -28,11 +28,11 @@ public class IngredientCardController {
         ingredient = ingredientName;
 
         // Assuming your image files have a common extension like ".png" or ".jpg"
-        String imagePath = "com.KUAlchemists/images/" + ingredientName + "-ingredient.jpg";
+        String imagePath = "/com.KUAlchemists/images/" + ingredientName + "-ingredient.jpg";
         // Load the image using the class loader to ensure it works regardless of the build type
 
         try {
-            Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+            Image image = new Image(getClass().getResourceAsStream(imagePath));
             // Set the image to the ImageView
             ingredientImage.setImage(image);
         }catch (Exception e){

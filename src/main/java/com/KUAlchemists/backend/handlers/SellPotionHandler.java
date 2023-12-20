@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class SellPotionHandler {
 
     private static SellPotionHandler INSTANCE;
-
     private SellPotionService service;
     private boolean skipDialog = false;
     private String potionName;
@@ -25,23 +24,21 @@ public class SellPotionHandler {
             INSTANCE = new SellPotionHandler();
         return INSTANCE;
     }
-
     public ArrayList<String> handleGetPlayersPotions(){
         return service.getPlayersPotions(GameEngine.getInstance().getCurrentPlayer());
     }
-
     public void handleSellPotion(String potionName, int price){
-        System.out.println("The potion: "+potionName+" is sold for "+price+" gold(s)");
-        System.out.println("The status is "+getStatus());
+        service.sellPotion(GameEngine.getInstance().getCurrentPlayer(), potionName, price);
     }
-
+    public String handleGetPotionType(String potionName) {
+        return service.getPotionType(potionName, GameEngine.getInstance().getCurrentPlayer());
+    }
     public boolean handleIsSkipDialog(){
         return skipDialog;
     }
     public void handleSkipDialog(){
         skipDialog = true;
     }
-
     public void setPotionToBeSelled(String[] potion){
         this.potionName = potion[0];
         this.potionType = potion[1];
@@ -49,7 +46,6 @@ public class SellPotionHandler {
     public String[] getPotionToBeSelled(){
         return new String[]{potionName, potionType};
     }
-
     public void setStatusGood(){
         stage = "good";
     }
@@ -65,6 +61,7 @@ public class SellPotionHandler {
     public String getStatus(){
         return stage;
     }
+
 
 
 

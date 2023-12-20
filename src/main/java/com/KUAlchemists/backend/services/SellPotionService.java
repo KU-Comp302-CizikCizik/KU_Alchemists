@@ -17,7 +17,28 @@ public class SellPotionService {
         for(int i = 0; i < p.getPotionsList().size(); i++){
             potions.add(p.getPotionsList().get(i).getPotionEffect().toString());
         }
-        potions.add("HEALING");
         return potions;
     }
+
+    public String getPotionType(String potionName, Player player) {
+        PotionStorage p = Board.getInstance().getPotionStorage(player);
+        for (int i = 0; i < p.getPotionsList().size(); i++) {
+            if (p.getPotionsList().get(i).getPotionEffect().toString().equals(potionName)) {
+                return p.getPotionsList().get(i).getPotionType().toString();
+            }
+        }
+        return "Error";
+    }
+
+    public void sellPotion(Player player, String potionName, int price){
+        PotionStorage p = Board.getInstance().getPotionStorage(player);
+        for(int i = 0; i < p.getPotionsList().size(); i++){
+            if(p.getPotionsList().get(i).getPotionEffect().toString().equals(potionName)){
+                p.removePotion(p.getPotionsList().get(i));
+                player.addGold(price);
+                break;
+            }
+        }
+    }
+
 }

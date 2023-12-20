@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.models;
 
 
 import com.KUAlchemists.backend.enums.PotionEffect;
+import com.KUAlchemists.backend.enums.PotionType;
 
 public class Potion {
 
@@ -9,6 +10,8 @@ public class Potion {
      * PotionEffect
      */
     private PotionEffect potionEffect;
+
+    private PotionType potionType;
 
 
     private Ingredient ingredient1;
@@ -22,6 +25,7 @@ public class Potion {
         this.potionEffect = potionEffect;
         this.ingredient1 = ingredient1;
         this.ingredient2 = ingredient2;
+        setPotionType();
     }
 
     /**
@@ -44,5 +48,19 @@ public class Potion {
      */
     public Ingredient getIngredient2() {
         return ingredient2;
+    }
+
+    public void setPotionType() {
+        if (potionEffect == PotionEffect.HEALING || potionEffect == PotionEffect.SPEED || potionEffect == PotionEffect.WISDOM) {
+            potionType = PotionType.POSITIVE;
+        } else if (potionEffect == PotionEffect.POISON || potionEffect == PotionEffect.PARALYSIS || potionEffect == PotionEffect.INSANITY) {
+            potionType = PotionType.NEGATIVE;
+        } else {
+            potionType = PotionType.NEUTRAL;
+        }
+    }
+
+    public PotionType getPotionType() {
+        return potionType;
     }
 }

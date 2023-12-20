@@ -101,4 +101,8 @@ public class Player {
     public Integer getActionPoints() {
         return actionPoints;
     }
+
+    public void addGold(int price) {
+        this.gold += price;
+    }
 }
