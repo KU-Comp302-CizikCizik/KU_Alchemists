@@ -56,7 +56,6 @@ public class GameInitializer {
 
     private void initPlayerAssets() {
         for(Player player : GameEngine.getInstance().getPlayerList()){
-            player.setGold(10);
             ForageForIngredientHandler.getInstance().forageForIngredient(player);
             ForageForIngredientHandler.getInstance().forageForIngredient(player);
         }

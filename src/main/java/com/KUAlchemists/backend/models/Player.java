@@ -23,7 +23,7 @@ public class Player implements Subject {
     }
 
     public Player(String name){
-        this.gold = 0;
+        this.gold = 20;
         this.status = "Healthy"; // Default status
         this.sicknessLevel = 0;
         this.reputation = 0;
