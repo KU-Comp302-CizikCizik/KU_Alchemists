@@ -31,7 +31,6 @@ public class DeductionBoardHandler implements PotionBrewingObserver {
         String potionEffect = deductionBoardService.getPotionEffectString(potion);
         String ingredientCode = deductionBoardService.getIngredientCode(potion);
         GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().addMarkedIngredient(potionEffect, ingredientCode);
-
     }
 
     public void markAlchemical(String alchemicalName) {

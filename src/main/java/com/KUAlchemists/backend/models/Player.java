@@ -1,9 +1,13 @@
 package com.KUAlchemists.backend.models;
 
+import com.KUAlchemists.backend.observer.Observer;
+import com.KUAlchemists.backend.observer.PlayerObserver;
+import com.KUAlchemists.backend.subjects.Subject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Subject {
 
     private int gold;
     private String status;
@@ -11,13 +15,9 @@ public class Player {
     private int reputation;
     private ArrayList<Theory> publishedTheories;
     private DeductionBoard deductionBoard;
-
     private int actionPoints;
-
-
     private String name;
-
-
+    private List<PlayerObserver> observers;
     public Player(){
         this("");
     }
@@ -31,6 +31,7 @@ public class Player {
         this.deductionBoard = new DeductionBoard();
         this.name = name;
         this.actionPoints = 3;
+        observers = new ArrayList<>();
     }
 
     public int getGold() {
@@ -39,6 +40,7 @@ public class Player {
 
     public void setGold(int gold) {
         this.gold = gold;
+        notifyObservers();
     }
 
     public String getStatus() {
@@ -63,6 +65,7 @@ public class Player {
 
     public void setReputation(int reputation) {
         this.reputation = reputation;
+        notifyObservers();
     }
 
     public List<Theory> getPublishedTheories() {
@@ -72,7 +75,6 @@ public class Player {
     public void setPublishedTheories(List<Theory> publishedTheories) {
         this.publishedTheories = (ArrayList<Theory>) publishedTheories;
     }
-
     public DeductionBoard getDeductionBoard() {
         return deductionBoard;
     }
@@ -88,17 +90,38 @@ public class Player {
     public void setPublishedTheories(ArrayList<Theory> publishedTheories) {
         this.publishedTheories = publishedTheories;
     }
-
     public String getName() {
         return name;
     }
 
     public void deduceActionPoints(int actionPoints) {
         this.actionPoints -= actionPoints;
+        notifyObservers();
 
     }
-
     public Integer getActionPoints() {
         return actionPoints;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add((PlayerObserver) observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove((PlayerObserver) observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(Observer observer : observers){
+            ((PlayerObserver) observer).onPlayerStatusChanged(status);
+            ((PlayerObserver) observer).onPlayerSicknessLevelChanged(sicknessLevel);
+            ((PlayerObserver) observer).onPlayerReputationChanged(reputation);
+            ((PlayerObserver) observer).onPlayerGoldChanged(gold);
+            ((PlayerObserver) observer).onPlayerActionPointsChanged(actionPoints);
+            ((PlayerObserver) observer).onPlayerNameChanged(name);
+        }
     }
 }
