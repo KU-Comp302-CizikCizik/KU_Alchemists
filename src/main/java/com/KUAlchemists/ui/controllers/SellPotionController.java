@@ -277,12 +277,12 @@ public class SellPotionController{
         private String scene2Dialog = "I have heard that you have some potions, would you like to sell me some?";
         private String scene3Dialog = "Before we go on, think twice! Since i cannot know what is the type of the potion" +
                 " you ar selling me, i have to drink and test it. I trust you when i buy it, but if you lie, it may not" +
-                " end well for you. You will lose some reputation in this ares.\nAgain, i am el-Sistam," +
-                " the famous adventurer here, i have that power!";
+                " end well for you. You will lose some reputation in this area.\nI am el-Sista'm," +
+                " I have that power!";
         private String scene5Dialog = "You lied! You lost some reputation points. I will be around here since you may" +
                 " have some potions. I might buy some more even if you lost my trust";
         private String scene6Dialog = "What a great sale, here is your money. " +
-                "I will be arround since you have potions to sale. I may buy some more, and make you even richer";
+                "I will be around since you have potions to sale. I may buy some more, and make you even richer";
 
         private String scene1Button = "Continue";
         private String scene2Button = "Yes";
