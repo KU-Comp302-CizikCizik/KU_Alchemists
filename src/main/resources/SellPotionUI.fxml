@@ -163,6 +163,7 @@
                <image>
                   <Image url="@com.KUAlchemists/images/potions/HEALING_POTION.png" />
                </image>
+
             </ImageView>
             <Text layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-name" text="Potion Name" wrappingWidth="108.0" />
             <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="potion-type" text="type" wrappingWidth="108.0" />

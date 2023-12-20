@@ -325,7 +325,6 @@ public class SellPotionController{
             for(PotionSlot slot : potionSlots){
                 slot.show();
             }
-
         }
         public void runScene5(ArrayList<PotionSlot> potionSlots, AnchorPane anchorPane){
             for(PotionSlot slot: potionSlots){
