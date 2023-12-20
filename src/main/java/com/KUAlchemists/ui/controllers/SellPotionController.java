@@ -63,18 +63,11 @@ public class SellPotionController{
     @FXML
     private Text recommendedPrice;
 
-
     public ArrayList<Pane> paneList;
-
-
     private ArrayList<String> usersPotions;
     private ArrayList<PotionSlot> potionSlots = new ArrayList<>();
     private Scenerio scenerio;
     private int scenerioIndex;
-
-    private ArrayList<String> positivePotions = new ArrayList<>();
-    private ArrayList<String> negativePotions = new ArrayList<>();
-
     private boolean isAnySelected;
     private String[] potion;
     private String recomPrice;
@@ -82,23 +75,17 @@ public class SellPotionController{
 
     public void initialize(){
         scenerioIndex = 1;
-        usersPotions = SellPotionHandler.getInstance().handlerUsersPotions();
+        usersPotions = SellPotionHandler.getInstance().handleGetPlayersPotions();
+        for (String potion: usersPotions){
+            System.out.println(potion);
+        }
         paneList = new ArrayList<Pane>();
         paneList.add(pane1);paneList.add(pane2);paneList.add(pane3);paneList.add(pane4);paneList.add(pane5);
         paneList.add(pane6);paneList.add(pane7);paneList.add(pane8);paneList.add(pane9);paneList.add(pane10);
         paneList.add(pane11);paneList.add(pane12);paneList.add(pane13);paneList.add(pane14);
 
-        positivePotions.add("HEALING_POTION");
-        positivePotions.add("SPEED_POTION");
-        positivePotions.add("WISDOM_POTION");
-
-        negativePotions.add("INSANITY_POTION");
-        negativePotions.add("PARALYSIS_POTION");
-        negativePotions.add("POISON_POTION");
-
         for(int i = 0; i < usersPotions.size(); i++){
             String potionName = usersPotions.get(i);
-
             PotionSlot slot = new PotionSlot(paneList.get(i), potionName, learnPotionType(potionName));
             potionSlots.add(slot);
         }
@@ -109,14 +96,7 @@ public class SellPotionController{
     }
 
     public String learnPotionType(String potionName){
-        String type;
-        if(positivePotions.contains(potionName))
-            type = "positive";
-        else if(negativePotions.contains(potionName))
-            type = "negative";
-        else
-            type = "neutral";
-        return type;
+        return SellPotionHandler.getInstance().handleGetPotionType(potionName).toLowerCase();
     }
 
     public void mouseClicked(MouseEvent mouseEvent) {
@@ -172,7 +152,7 @@ public class SellPotionController{
                         recomPrice = (potion[1].equals("Type: positive"))? "3 Golds" : recomPrice;
                         System.out.println(potion[1]);
 
-                        String imagePath = "com.KUAlchemists/images/potions/" + potion[0] + ".png";
+                        String imagePath = "/com.KUAlchemists/images/potions/" + potion[0] + "_POTION.png";
                         potionName.setText(capitalizeWords(potion[0]));
                         potionType.setText(potion[1]);
                         recommendedPrice.setText("Recommended: "+recomPrice);
@@ -180,7 +160,7 @@ public class SellPotionController{
 
                         // Load the image using the class loader to ensure it works regardless of the build type
                         try {
-                            Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+                            Image image = new Image(getClass().getResourceAsStream(imagePath));
                             potionImage.setImage(image);
                         }catch (Exception e){
                             System.err.println(e.getMessage());
@@ -389,10 +369,10 @@ public class SellPotionController{
         }
 
         private Image getImage(String imageName){
-            String imagePath = "com.KUAlchemists/images/adventurer/" + imageName+".png";
+            String imagePath = "/com.KUAlchemists/images/adventurer/" + imageName+".png";
             // Load the image using the class loader to ensure it works regardless of the build type
             try {
-                Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+                Image image = new Image(getClass().getResourceAsStream(imagePath));
                 return image;
             }catch (Exception e){
                 System.err.println(e.getMessage());
@@ -497,10 +477,10 @@ public class SellPotionController{
             refreshPane();
         }
         private Image getImage(String imageName){
-            String imagePath = "com.KUAlchemists/images/potions/" + imageName.toUpperCase() + ".png";
+            String imagePath = "/com.KUAlchemists/images/potions/" + imageName.toUpperCase() + "_POTION.png";
             // Load the image using the class loader to ensure it works regardless of the build type
             try {
-                Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+                Image image = new Image(getClass().getResourceAsStream(imagePath));
                 return image;
             }catch (Exception e){
                 System.err.println(e.getMessage());
