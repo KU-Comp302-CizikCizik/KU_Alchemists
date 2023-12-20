@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="501.0" prefWidth="900.0" styleClass="body" stylesheets="@CSS/SellPotionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.SellPotionController">
    <children>
-      <ImageView fx:id="adventurerImageView" fitHeight="400.0" fitWidth="300.0" layoutX="568.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" styleClass="adventurer-image-view">
+      <ImageView fx:id="adventurerImageView" fitHeight="397.0" fitWidth="375.0" layoutX="519.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" styleClass="adventurer-image-view">
          <image>
             <Image url="@com.KUAlchemists/images/adventurer/adventurer-photo-1.png" />
          </image>
