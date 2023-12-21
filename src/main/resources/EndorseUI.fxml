@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="520.0" prefWidth="520.0" styleClass="endorse-Background" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.EndorseController">
+   <children>
+      <ImageView fx:id="theory" fitHeight="188.0" fitWidth="141.0" layoutX="98.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/frog-ingredient.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="alchemy" fitHeight="55.0" fitWidth="74.0" layoutX="127.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="seal1" fitHeight="72.0" fitWidth="128.0" layoutX="292.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="seal2" fitHeight="72.0" fitWidth="128.0" layoutX="292.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="seal3" fitHeight="72.0" fitWidth="128.0" layoutX="292.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
