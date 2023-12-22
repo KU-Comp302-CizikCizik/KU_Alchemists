@@ -78,3 +78,12 @@
     -fx-background-position: center center;
 }
 
+@font-face {
+    font-family: "Caligruf";
+    src: url("caligruf-font/Caligruf-BWvDV.ttf");
+}
+
+.caligruf {
+    -fx-font-family: "Caligruf";
+}
+

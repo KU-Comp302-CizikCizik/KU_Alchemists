@@ -2,7 +2,6 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -91,13 +90,10 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </ImageView>
-      <Text fx:id="endorseButton" fill="#d8a979" layoutX="420.0" layoutY="489.0" onMouseClicked="#endorseClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Endorse">
+      <Text fill="#9e5f38" layoutX="410.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caligruf" text="Endorse">
          <font>
-            <Font name="Caligruf" size="43.0" />
+            <Font size="44.0" />
          </font>
-         <effect>
-            <Glow />
-         </effect>
       </Text>
    </children>
 </AnchorPane>
