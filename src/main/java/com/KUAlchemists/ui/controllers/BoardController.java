@@ -212,14 +212,12 @@ public class BoardController implements PlayerObserver {
         player1.registerObserver(this);
         Player player2 = GameEngine.getInstance().getPlayer(1);
         player2.registerObserver(this);
-
         setGold(1, player1.getGold());
         setGold(2, player2.getGold());
         setReputation(1, player1.getReputation());
         setReputation(2, player2.getReputation());
         setActionPoint(1, player1.getActionPoints());
         setActionPoint(2, player2.getActionPoints());
-
     }
 
     @Override
@@ -234,7 +232,10 @@ public class BoardController implements PlayerObserver {
 
     @Override
     public void onPlayerReputationChanged(int reputation) {
-
+        Platform.runLater(() -> {
+            // Assume playerIndex is available to determine which player's gold changed
+            setReputation(GameEngine.getInstance().getCurrentPlayerIndex()+1, reputation);
+        });
     }
 
     @Override
