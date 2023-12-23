@@ -32,21 +32,6 @@ public class SceneManager implements GameStateObserver {
             return;
         }
         currentState = to;
-
-        switch (to) {
-            case LOGIN:
-                SceneLoader.getInstance().loadLogin();
-                break;
-            case MENU:
-                SceneLoader.getInstance().loadMenu();
-                break;
-            case BOARD:
-                SceneLoader.getInstance().loadBoard();
-                break;
-            default:
-                break;
-
-        }
     }
 
 }

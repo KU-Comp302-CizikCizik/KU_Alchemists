@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.LoginHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -47,8 +48,17 @@ public class LoginController {
     public void loginButtonOnAction(ActionEvent event) {
         String username = userNameTextField.getText();
         String password = passwordTextField.getText();
-        String loginResult = LoginHandler.getInstance().login(username, password);
-        loginMessageLabel.setText(loginResult);
+        boolean loginResult = LoginHandler.getInstance().login(username, password);
+        String loginMessage;
+        if(loginResult){
+            loginMessage = "Login successful!";
+            SceneLoader.getInstance().loadMenu();
+        }
+        else{
+            loginMessage = "Login failed!"; // bi pop-up cakiver buraya emo
+        }
+
+        loginMessageLabel.setText(loginMessage);
     }
 
 

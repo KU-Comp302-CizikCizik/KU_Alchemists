@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.engine;
 
 import com.KUAlchemists.backend.enums.Gamestate;
 import com.KUAlchemists.backend.managers.SceneManager;
+import com.KUAlchemists.backend.managers.StateManager;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.enums.GameTour;
@@ -151,7 +152,7 @@ public class GameEngine {
      */
     public void nextRound(){
         if(currentRound == GameRound.THIRD_ROUND){
-            SceneManager.getInstance().onGameStateChanged(Gamestate.ENDGAME);
+            StateManager.getInstance().updateGameState(Gamestate.ENDGAME);
             System.out.println("Game Ended // GAMEOVER SCREEN");
             return;
         }
