@@ -107,6 +107,11 @@ public class BoardController {
     }
 
     @FXML
+    void endorsePopUp(ActionEvent event) {
+        SceneLoader.getInstance().loadEndorse();
+    }
+
+    @FXML
     void ingredientStoragePopUp(ActionEvent event) {
         SceneLoader.getInstance().loadIngredientStorage();
 

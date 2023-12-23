@@ -175,6 +175,11 @@
                         <Font size="9.0" />
                      </font>
                   </Button>
+                  <Button fx:id="endorseButton" layoutX="829.0" layoutY="14.0" mnemonicParsing="false" onAction="#endorsePopUp" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: ecd0b0; -fx-opacity: 0.5;" text="tempEndorse Button">
+                     <font>
+                        <Font name="Book Antiqua" size="10.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </bottom>

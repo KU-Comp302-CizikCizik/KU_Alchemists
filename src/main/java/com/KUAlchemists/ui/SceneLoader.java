@@ -228,4 +228,8 @@ public class SceneLoader {
         dialog.show();
 
     }
+
+    public void loadEndorse() {
+        loadPopUp(UIConstants.ENDORSE_UI_FXML);
+    }
 }
