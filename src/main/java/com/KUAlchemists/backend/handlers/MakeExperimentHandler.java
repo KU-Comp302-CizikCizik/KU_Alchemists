@@ -40,11 +40,11 @@ public class MakeExperimentHandler {
                     master.setSicknessLevel(0);
                     System.out.println("You are sick for 3 times, you lose all your gold to heal yourself.");
                 }
+                System.out.println("Master's sickness level: "+GameEngine.getInstance().getCurrentPlayer().getSicknessLevel());
             }
             else if (potionType.equalsIgnoreCase("positive") && potionName.split("_")[0].equalsIgnoreCase("HEALING")){
                 master.setSicknessLevel(master.getSicknessLevel()-1);
             }
-            System.out.println("Master's sickness level: "+GameEngine.getInstance().getCurrentPlayer().getSicknessLevel());
         }
         else if (tester.equalsIgnoreCase("student")){
             if(potionType.equalsIgnoreCase("negative")){
