@@ -7,6 +7,9 @@ public enum Gamestate {
 
     LOGIN,
     MENU,
+    SINGLEPLAYER,
+    MULTIPLAYER,
+
     BOARD,
     DASHBOARD,
     INVENTORY,
