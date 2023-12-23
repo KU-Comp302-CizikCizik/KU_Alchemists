@@ -79,6 +79,10 @@ public class GameEngine {
         return currentPlayer;
     }
 
+    public Player getPlayer(int index){
+        return playerList.get(index);
+    }
+
     /**
      * Set the current player
      * @param player the player to be set as current player

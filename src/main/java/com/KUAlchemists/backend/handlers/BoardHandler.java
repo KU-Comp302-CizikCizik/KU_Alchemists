@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.observer.PlayerObserver;
 
 import java.util.ArrayList;
 
@@ -30,5 +32,24 @@ public class BoardHandler {
         //if it is final tour, then end the round return -1 -1
 
         return result;
+    }
+
+    public void registerPlayerObserver(PlayerObserver playerObserver) {
+        Player player1 = GameEngine.getInstance().getPlayer(0);
+        player1.registerObserver(playerObserver);
+        Player player2 = GameEngine.getInstance().getPlayer(1);
+        player2.registerObserver(playerObserver);
+    }
+
+    public Integer getPlayerGold(int playerIndex) {
+        return GameEngine.getInstance().getPlayer(playerIndex).getGold();
+    }
+
+    public Integer getPlayerReputation(int playerIndex) {
+        return GameEngine.getInstance().getPlayer(playerIndex).getReputation();
+    }
+
+    public Integer getPlayerActionPoints(int playerIndex) {
+        return GameEngine.getInstance().getPlayer(playerIndex).getActionPoints();
     }
 }
