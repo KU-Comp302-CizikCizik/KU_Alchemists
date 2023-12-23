@@ -3,6 +3,7 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
+import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
@@ -208,16 +209,13 @@ public class BoardController implements PlayerObserver {
     
     @FXML
     public void initialize() {
-        Player player1 = GameEngine.getInstance().getPlayer(0);
-        player1.registerObserver(this);
-        Player player2 = GameEngine.getInstance().getPlayer(1);
-        player2.registerObserver(this);
-        setGold(1, player1.getGold());
-        setGold(2, player2.getGold());
-        setReputation(1, player1.getReputation());
-        setReputation(2, player2.getReputation());
-        setActionPoint(1, player1.getActionPoints());
-        setActionPoint(2, player2.getActionPoints());
+        BoardHandler.getInstance().registerPlayerObserver(this);
+        setGold(1, BoardHandler.getInstance().getPlayerGold(0));
+        setGold(2, BoardHandler.getInstance().getPlayerGold(1));
+        setReputation(1, BoardHandler.getInstance().getPlayerReputation(0));
+        setReputation(2, BoardHandler.getInstance().getPlayerReputation(1));
+        setActionPoint(1, BoardHandler.getInstance().getPlayerActionPoints(0));
+        setActionPoint(2, BoardHandler.getInstance().getPlayerActionPoints(1));
     }
 
     @Override
