@@ -1,9 +1,13 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.backend.models.Theory;
+import com.KUAlchemists.backend.observer.PublicationTrackObserver;
+
 import java.util.ArrayList;
 
-public class EndorseHandler {
+public class EndorseHandler implements PublicationTrackObserver {
 
+    private Theory selectedTheory;
     private static EndorseHandler instance;
     public static EndorseHandler getInstance() {
         if (instance == null) {
@@ -42,6 +46,11 @@ public class EndorseHandler {
     }
 
     public String getTheory() {
-        return "birdfeet";
+        return selectedTheory.getIngredient().getName().toLowerCase();
+    }
+
+    @Override
+    public void onTheorySelected(Theory theory) {
+        this.selectedTheory = theory;
     }
 }

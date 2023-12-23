@@ -51,4 +51,14 @@ public class PublicationTrackService {
         }
         return info.toString();
     }
+
+    public Theory getTheoryByName(String theoryName) {
+        List<Theory> publishedTheories = Board.getInstance().getPublishedTheoriesList();
+        for (Theory theory : publishedTheories) {
+            if (theory.getIngredient().getName().equals(theoryName)) {
+                return theory;
+            }
+        }
+        return null;
+    }
 }
