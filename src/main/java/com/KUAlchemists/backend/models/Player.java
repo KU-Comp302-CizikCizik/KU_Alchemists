@@ -39,7 +39,8 @@ public class Player {
         this.deductionBoard = new DeductionBoard();
         this.name = name;
         this.actionPoints = 3;
-        this.seal = PlayerSeal.getRandomSeal(); //random seal for indicating the player's color on endorsement
+        this.seal = PlayerSeal.RED;
+        //this.seal = PlayerSeal.getRandomSeal(); //random seal for indicating the player's color on endorsement
         this.theorySeals = TheorySeal.getSeals(); //default seals
     }
 
@@ -127,5 +128,9 @@ public class Player {
 
     public ArrayList<TheorySeal> getTheorySeals(){
         return theorySeals;
+    }
+
+    public void removeTheorySeal(TheorySeal seal) {
+        this.theorySeals.remove(seal);
     }
 }

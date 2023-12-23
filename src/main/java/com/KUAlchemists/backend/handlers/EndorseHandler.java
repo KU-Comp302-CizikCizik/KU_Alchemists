@@ -38,12 +38,13 @@ public class EndorseHandler implements PublicationTrackObserver {
     }
 
     public ArrayList<String> getEndorsedSeals() {
-        //for testing purposes
-        //
+        //for testing
+
         selectedTheory = new Theory();
         ArrayList<Player> temp = new ArrayList<>();
         temp.add(GameEngine.getInstance().getCurrentPlayer());
         selectedTheory.setEndorsers(temp);
+
         //
         ArrayList<String> playerSeals =  selectedTheory.getEndorsers()
                 .stream().map(player -> player.getPlayerSeal().getSealString())
@@ -52,10 +53,12 @@ public class EndorseHandler implements PublicationTrackObserver {
         return playerSeals;
     }
 
-    public void saveEndorsedSeal(String name) {
-        //save to database
-        String endorsedSeal = name;
-        System.out.println("Endorsed seal: " + endorsedSeal);
+    public void saveEndorsedSeal(String sealName) {
+        //the format SealGS SealSS SealRQ SealBQ SealGQ
+        TheorySeal seal = TheorySeal.getSealByName(sealName);
+        GameEngine.getInstance().getCurrentPlayer().removeTheorySeal(seal);
+        //selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer());
+        System.out.println("Endorsed seal " + sealName + " for theory " + selectedTheory.getIngredient().getName());
 
     }
 

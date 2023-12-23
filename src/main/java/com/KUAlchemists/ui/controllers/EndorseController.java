@@ -162,7 +162,7 @@ public class EndorseController {
         if(endorsedSeals.size()<3){
             sealSlots.pop().setImage(selectedSeal.getImage());
             try {
-                EndorseHandler.getInstance().saveEndorsedSeal(getClass().getDeclaredField(selectedSeal.getId()).getName());
+                EndorseHandler.getInstance().saveEndorsedSeal(getClass().getDeclaredField(selectedSeal.getId()).getName().split("Seal")[1]);
             } catch (NoSuchFieldException e) {
                 throw new RuntimeException(e);
             }

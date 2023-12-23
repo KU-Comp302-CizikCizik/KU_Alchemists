@@ -86,4 +86,7 @@ public class Theory {
     }
 
 
+    public void addEndorser(Player currentPlayer) {
+        endorsers.add(currentPlayer);
+    }
 }

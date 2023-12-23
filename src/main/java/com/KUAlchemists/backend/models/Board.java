@@ -75,5 +75,9 @@ public class Board {
     public List<Theory> getPublishedTheoriesList() {
         return publishedTheoriesList;
     }
+
+    public void addTheoryToPublishedList(Theory theory){
+        publishedTheoriesList.add(theory);
+    }
 }
 
