@@ -46,7 +46,8 @@ public class EndorseHandler implements PublicationTrackObserver {
     }
 
     public String getTheory() {
-        return selectedTheory.getIngredient().getName().toLowerCase();
+        //return selectedTheory.getIngredient().getName().toLowerCase();
+        return "frog";
     }
 
     @Override

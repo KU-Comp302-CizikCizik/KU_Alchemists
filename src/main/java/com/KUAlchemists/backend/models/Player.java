@@ -1,5 +1,7 @@
 package com.KUAlchemists.backend.models;
 
+import com.KUAlchemists.backend.enums.PlayerSeal;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Player {
 
     private int actionPoints;
 
+    private PlayerSeal seal;
 
     private String name;
 
@@ -31,6 +34,7 @@ public class Player {
         this.deductionBoard = new DeductionBoard();
         this.name = name;
         this.actionPoints = 3;
+        this.seal = PlayerSeal.getRandomSeal();
     }
 
     public int getGold() {
@@ -101,5 +105,13 @@ public class Player {
 
     public Integer getActionPoints() {
         return actionPoints;
+    }
+
+    public void setSeal(PlayerSeal seal){
+        this.seal = seal;
+    }
+
+    public PlayerSeal getSeal(){
+        return seal;
     }
 }
