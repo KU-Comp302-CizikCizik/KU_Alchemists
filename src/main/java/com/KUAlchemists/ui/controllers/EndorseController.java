@@ -69,16 +69,8 @@ public class EndorseController {
         sealSlots.add(seal2);
         sealSlots.add(seal1);
 
-        int player = GameEngine.getInstance().getCurrentPlayerIndex();
-        if (player == 0) {
-            setSeals("red");
-        } else if (player == 1) {
-            setSeals("blue");
-        } else if (player == 2) {
-            setSeals("green");
-        } else if (player == 3) {
-            setSeals("yellow");
-        }
+        String playerSeal = EndorseHandler.getInstance().getPlayerSeal();
+        setSeals(playerSeal);
         disactiveNotOwnedSeals();
         setEndorsedSeals();
     }

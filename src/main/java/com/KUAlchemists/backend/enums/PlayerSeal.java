@@ -34,13 +34,7 @@ public enum PlayerSeal {
         this.sealColor = sealColor;
     }
 
-    /**
-     * Get the seal color
-     * @return the seal color
-     */
-    public String getSealColor() {
-        return sealColor;
-    }
+
 
     /**
      * Get a random seal
@@ -54,6 +48,11 @@ public enum PlayerSeal {
     }
 
 
-
-
+    /**
+     * Get the seal color
+     * @return the seal color
+     */
+    public String getSealString() {
+        return sealColor;
+    }
 }

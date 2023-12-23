@@ -1,9 +1,14 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.PublicationTrackObserver;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class EndorseHandler implements PublicationTrackObserver {
 
@@ -21,12 +26,12 @@ public class EndorseHandler implements PublicationTrackObserver {
     }
 
     public ArrayList<String> getSeals() {
-        ArrayList<String> seals = new ArrayList<>();
-        seals.add("GS"); //gold star
-        seals.add("SS"); //silver star
-        seals.add("RQ"); //red question
-        seals.add("BQ"); //blue question
-        return seals;
+        ArrayList<String> seals =  GameEngine.getInstance().getCurrentPlayer().getTheorySeals()
+                .stream()
+                .map(TheorySeal::getSealString)
+                .collect(Collectors.toCollection(ArrayList::new));
+        Set<String> set = new HashSet<>(seals);
+        return new ArrayList<>(set);
     }
 
     public ArrayList<String> getEndorsedSeals() {
@@ -53,5 +58,9 @@ public class EndorseHandler implements PublicationTrackObserver {
     @Override
     public void onTheorySelected(Theory theory) {
         this.selectedTheory = theory;
+    }
+
+    public String getPlayerSeal() {
+        return GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
     }
 }

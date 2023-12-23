@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.PlayerSeal;
+import com.KUAlchemists.backend.enums.TheorySeal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,11 @@ public class Player {
 
     private int actionPoints;
 
+    //To indicate its color on endorse UI, each player has only one, and it is randomly assigned
     private PlayerSeal seal;
+
+    //To indicate the seal of the theory, each player has multiple, they put seals on theories
+    private ArrayList<TheorySeal> theorySeals;
 
     private String name;
 
@@ -34,7 +39,8 @@ public class Player {
         this.deductionBoard = new DeductionBoard();
         this.name = name;
         this.actionPoints = 3;
-        this.seal = PlayerSeal.getRandomSeal();
+        this.seal = PlayerSeal.getRandomSeal(); //random seal for indicating the player's color on endorsement
+        this.theorySeals = TheorySeal.getSeals(); //default seals
     }
 
     public int getGold() {
@@ -107,11 +113,19 @@ public class Player {
         return actionPoints;
     }
 
-    public void setSeal(PlayerSeal seal){
+    public void setPlayerSeal(PlayerSeal seal){
         this.seal = seal;
     }
 
-    public PlayerSeal getSeal(){
+    public PlayerSeal getPlayerSeal(){
         return seal;
+    }
+
+    public void setTheorySeals(ArrayList<TheorySeal> theorySeals){
+        this.theorySeals = theorySeals;
+    }
+
+    public ArrayList<TheorySeal> getTheorySeals(){
+        return theorySeals;
     }
 }
