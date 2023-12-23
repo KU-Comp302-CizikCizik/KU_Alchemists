@@ -19,6 +19,9 @@ public class UIConstants {
     public static final String MENU_UI_FXML = "MenuUI.fxml";
     public static final String BOARD_UI_FXML = "BoardUI.fxml";
     public static final String BUYARTIFACT_UI_FXML = "BuyArtifactUI.fxml";
+
+    public static final String ONLINE_OFFLINE_UI_FXML = "OnlineOfflineUI.fxml";
+    public static final String PLAYER_NUMBER_SELECT_UI_FXML = "PlayerNumberSelectUI.fxml";
     public static final String USEARTIFACT_UI_FXML = "UseArtifactUI.fxml";
     public static final String ELIXIR_OF_INSIGHT = "ElixirOfInsightUI.fxml";
     public static final String MAKE_EXPERIMENT_UI_FXML = "MakeExperimentUI.fxml";

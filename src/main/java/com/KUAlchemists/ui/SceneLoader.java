@@ -38,7 +38,15 @@ public class SceneLoader {
         }
         return INSTANCE;
     }
-
+    public void loadOnlineOffline() {
+        root = UILoader.loadFXML(UIConstants.ONLINE_OFFLINE_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+    }
     public void loadMenu() {
         root = UILoader.loadFXML(UIConstants.MENU_UI_FXML);
         Scene oldScene = MainApplicationUI.stage.getScene();
@@ -48,6 +56,7 @@ public class SceneLoader {
         MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
     }
+
 
 
     public void loadLogin() {
