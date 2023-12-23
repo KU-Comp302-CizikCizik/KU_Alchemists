@@ -15,7 +15,7 @@
       </TextArea>
       <ImageView fx:id="notifacationImage" fitHeight="150.0" fitWidth="150.0" layoutX="155.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="115.66666666666669" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="154.173708597819" AnchorPane.topAnchor="21.0">
          <image>
-            <Image url="@com.KUAlchemists/images/bell.png" />
+            <Image url="@com.KUAlchemists/images/sadAlchemist.png" />
          </image>
       </ImageView>
    </children>
