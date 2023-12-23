@@ -38,12 +38,11 @@ public class LoginHandler {
      * @return A message indicating whether the login was successful or not.
      * @see LoginService#validateUser(String, String)
      */
-    public String login(String username, String password) {
+    public boolean login(String username, String password) {
         if (loginService.validateUser(username, password)) {
-            StateManager.getInstance().updateGameState(Gamestate.MENU);
-            return "Login successful!";
+            return true;
         } else {
-            return "Invalid username or password.";
+            return false;
         }
     }
 }

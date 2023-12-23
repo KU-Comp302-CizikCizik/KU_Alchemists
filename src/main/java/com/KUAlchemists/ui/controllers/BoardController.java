@@ -8,13 +8,21 @@ import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
+import javafx.util.Duration;
 import java.util.ArrayList;
 
 public class BoardController implements PlayerObserver {
@@ -41,6 +49,9 @@ public class BoardController implements PlayerObserver {
 
     @FXML
     private Button helpButton;
+
+    @FXML
+    private Button endRoundButton;
 
 
     @FXML
@@ -74,10 +85,19 @@ public class BoardController implements PlayerObserver {
     private Button pauseButton;
     @FXML
     private TextField alchemist2ActionPointTextField;
-    
+
     @FXML
     private TextField alchemist1ActionPointTextField;
-    
+
+    @FXML
+    private Text roundTitle;
+
+    @FXML
+    private Text tourTitle;
+
+    private int currentRound;
+    private int currentTour;
+
 
     @FXML
     void debunkPopUp(ActionEvent event) {
@@ -88,6 +108,11 @@ public class BoardController implements PlayerObserver {
     void deductionBoardPopUp(ActionEvent event) {
 
         SceneLoader.getInstance().loadDeductionBoard();
+    }
+
+    @FXML
+    void endorsePopUp(ActionEvent event) {
+        SceneLoader.getInstance().loadEndorse();
     }
 
     @FXML
@@ -152,10 +177,45 @@ public class BoardController implements PlayerObserver {
     }
     @FXML
     public void changeRound() {
+        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
+        Integer round = round_tour_info.get(0);
+        Integer tour = round_tour_info.get(1);
+        currentRound = round;
+        currentTour = tour;
+
+        roundTitle.setText("Round " + round.toString());
+        tourTitle.setText("Tour " + tour.toString());
+        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
+        //use for updating the UI
+        //round_tour_info[0] = round
+        //round_tour_info[1] = tour
+
+        //load the round when round is changed
+        if (round == 3) {
+            loadRound3();
+        } else if (round == 2) {
+            lodRound2();
+        } else if (round == 1) {
+            loadRound1();
+        }
+
+        if(tour == 3) {
+            endRoundButton.setText("End The Round");
+            endRoundButton.setEffect(new DropShadow(30, Color.WHITE));
+        }else {
+            endRoundButton.setText("End The Tour");
+            endRoundButton.setEffect(null);
+        }
+
+        //check whether the tour is last
+
+        changeAvatars();
+    }
+
+    private void changeAvatars() {
         Image currentAvatarImg = currentAvatarImage.getImage();
         currentAvatarImage.setImage(nextAvatarImage.getImage());
         nextAvatarImage.setImage(currentAvatarImg);
-
     }
 
     @FXML
@@ -179,7 +239,7 @@ public class BoardController implements PlayerObserver {
             throw new IllegalArgumentException("Invalid player number");
         }
     }
-    
+
     @FXML
     public void setActionPoint(Integer player, Integer actionPoint) {
         if (player == 1) {
@@ -193,20 +253,72 @@ public class BoardController implements PlayerObserver {
 
     @FXML
     public void endTheRound() {
-        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
-        System.out.println(round_tour_info);
-        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
-        //use for updating the UI
-        //round_tour_info[0] = round
-        //round_tour_info[1] = tour
-        changeRound(); // we may create another method with more comprehensive name for the task, updating round & tour, string of buttons, etc.
+        //check whether final round or not
+        if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == 1) {
+          SceneLoader.getInstance().loadFinalScore();
+        }else{
+            changeRound();
+        }
+    }
+    private void disableButtons(Button button) {
+        button.setDisable(true);
+        button.setOpacity(0.5);
+    }
 
+    private void loadRound1() {
+        disableButtons(sellPotionButton);
+        disableButtons(publishTheoryButton);
+        disableButtons(debunkButton);
+    }
+
+    private void activateButtons(Button button) {
+        if(!button.isDisable()){
+            return;
+        }
+        button.setDisable(false);
+
+        Timeline timeline = new Timeline();
+
+        // KeyFrame defines the values at specific points in time
+        KeyFrame startFrame = new KeyFrame(Duration.ZERO, e -> {
+            // Set the initial opacity (0.0 for completely transparent)
+            button.setOpacity(0.5);
+        });
+
+        KeyFrame endFrame = new KeyFrame(Duration.seconds(1), e -> {
+            // Set the final opacity (1.0 for fully opaque)
+            button.setOpacity(1.0);
+        });
+
+        KeyFrame startGlow = new KeyFrame(Duration.seconds(1.1), e -> {
+            // Set the final opacity (1.0 for fully opaque)
+            button.setEffect(new Glow(0.3));
+        });
+
+        KeyFrame endGlow = new KeyFrame(Duration.seconds(2), e -> {
+            // Set the final opacity (1.0 for fully opaque)
+            button.setEffect(null);
+        });
+
+        // Add the KeyFrames to the Timeline
+        timeline.getKeyFrames().addAll(startFrame, endFrame,startGlow,endGlow);
+        timeline.play();
+    }
+
+    private void lodRound2() {
+        activateButtons(sellPotionButton);
+        activateButtons(publishTheoryButton);
+
+    }
+
+    private void loadRound3() {
+        activateButtons(debunkButton);
     }
 
     public BoardController() {
-
+        currentRound = -1;
     }
-    
+
     @FXML
     public void initialize() {
         BoardHandler.getInstance().registerPlayerObserver(this);

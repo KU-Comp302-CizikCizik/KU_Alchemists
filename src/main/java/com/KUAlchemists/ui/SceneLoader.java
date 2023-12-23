@@ -153,6 +153,10 @@ public class SceneLoader {
 
     }
 
+    public void loadFinalScore(){
+        loadGenericPopUp("Temporary fianl score window");
+    }
+
     public void loadBuyArtifact(){
         loadPopUp(UIConstants.BUYARTIFACT_UI_FXML);
     }
@@ -223,5 +227,9 @@ public class SceneLoader {
         closeButton.setVisible(false);
         dialog.show();
 
+    }
+
+    public void loadEndorse() {
+        loadPopUp(UIConstants.ENDORSE_UI_FXML);
     }
 }
