@@ -34,12 +34,12 @@
                      <font>
                         <Font name="Book Antiqua" size="18.0" />
                      </font></Button>
-                  <Text fx:id="tourTitle" layoutX="304.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overThink" text="Tour 1">
+                  <Text fx:id="tourTitle" layoutX="304.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caligruf" text="Tour 1">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text fx:id="roundTitle" layoutX="694.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="overThink" text="Round 1">
+                  <Text fx:id="roundTitle" layoutX="694.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caligruf" text="Round 1">
                      <font>
                         <Font size="36.0" />
                      </font>
