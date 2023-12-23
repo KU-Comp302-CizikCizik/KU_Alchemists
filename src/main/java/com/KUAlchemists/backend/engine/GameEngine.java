@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.engine;
 
 import com.KUAlchemists.backend.enums.Gamestate;
 import com.KUAlchemists.backend.managers.SceneManager;
+import com.KUAlchemists.backend.managers.StateManager;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.enums.GameTour;
@@ -23,7 +24,7 @@ public class GameEngine {
     private static Player currentPlayer;
 
     // current player index
-    private static int currentPlayerIndex = 0;
+    private int currentPlayerIndex = 0;
 
 
     /**
@@ -78,12 +79,17 @@ public class GameEngine {
         return currentPlayer;
     }
 
+    public Player getPlayer(int index){
+        return playerList.get(index);
+    }
+
     /**
      * Set the current player
-     * @param currentPlayer the player to be set as current player
+     * @param player the player to be set as current player
      */
-    public void setCurrentPlayer(Player currentPlayer) {
-        GameEngine.currentPlayer = currentPlayer;
+    public void setCurrentPlayer(Player player) {
+        playerList.set(currentPlayerIndex, player);
+        GameEngine.currentPlayer = player;
     }
 
     /**
@@ -99,7 +105,7 @@ public class GameEngine {
      * @param currentPlayerIndex the index to be set as current player index
      */
     public void setCurrentPlayerIndex(int currentPlayerIndex) {
-        GameEngine.currentPlayerIndex = currentPlayerIndex;
+        currentPlayerIndex = currentPlayerIndex;
     }
 
     /**
@@ -151,7 +157,7 @@ public class GameEngine {
      */
     public void nextRound(){
         if(currentRound == GameRound.THIRD_ROUND){
-            SceneManager.getInstance().onGameStateChanged(Gamestate.ENDGAME);
+            StateManager.getInstance().updateGameState(Gamestate.ENDGAME);
             System.out.println("Game Ended // GAMEOVER SCREEN");
             return;
         }

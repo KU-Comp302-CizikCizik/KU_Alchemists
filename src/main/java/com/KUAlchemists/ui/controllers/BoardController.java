@@ -3,17 +3,29 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
+import javafx.application.Platform;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
+import javafx.util.Duration;
 import java.util.ArrayList;
 
-public class BoardController {
+public class BoardController implements PlayerObserver {
     @FXML
     private TextField alchemist1GoldTextField;
 
@@ -37,6 +49,9 @@ public class BoardController {
 
     @FXML
     private Button helpButton;
+
+    @FXML
+    private Button endRoundButton;
 
 
     @FXML
@@ -70,10 +85,19 @@ public class BoardController {
     private Button pauseButton;
     @FXML
     private TextField alchemist2ActionPointTextField;
-    
+
     @FXML
     private TextField alchemist1ActionPointTextField;
-    
+
+    @FXML
+    private Text roundTitle;
+
+    @FXML
+    private Text tourTitle;
+
+    private int currentRound;
+    private int currentTour;
+
 
     @FXML
     void debunkPopUp(ActionEvent event) {
@@ -84,6 +108,11 @@ public class BoardController {
     void deductionBoardPopUp(ActionEvent event) {
 
         SceneLoader.getInstance().loadDeductionBoard();
+    }
+
+    @FXML
+    void endorsePopUp(ActionEvent event) {
+        SceneLoader.getInstance().loadEndorse();
     }
 
     @FXML
@@ -119,7 +148,6 @@ public class BoardController {
         }
         else{
             String message = "You have foraged " + ingredient + "!";
-            setActionPoint(GameEngine.getInstance().getCurrentPlayerIndex()+1,GameEngine.getInstance().getCurrentPlayer().getActionPoints());
             SceneLoader.getInstance().loadForageIngredient(message, ingredient+"-ingredient.jpg");
         }
 
@@ -149,10 +177,45 @@ public class BoardController {
     }
     @FXML
     public void changeRound() {
+        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
+        Integer round = round_tour_info.get(0);
+        Integer tour = round_tour_info.get(1);
+        currentRound = round;
+        currentTour = tour;
+
+        roundTitle.setText("Round " + round.toString());
+        tourTitle.setText("Tour " + tour.toString());
+        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
+        //use for updating the UI
+        //round_tour_info[0] = round
+        //round_tour_info[1] = tour
+
+        //load the round when round is changed
+        if (round == 3) {
+            loadRound3();
+        } else if (round == 2) {
+            lodRound2();
+        } else if (round == 1) {
+            loadRound1();
+        }
+
+        if(tour == 3) {
+            endRoundButton.setText("End The Round");
+            endRoundButton.setEffect(new DropShadow(30, Color.WHITE));
+        }else {
+            endRoundButton.setText("End The Tour");
+            endRoundButton.setEffect(null);
+        }
+
+        //check whether the tour is last
+
+        changeAvatars();
+    }
+
+    private void changeAvatars() {
         Image currentAvatarImg = currentAvatarImage.getImage();
         currentAvatarImage.setImage(nextAvatarImage.getImage());
         nextAvatarImage.setImage(currentAvatarImg);
-
     }
 
     @FXML
@@ -176,7 +239,7 @@ public class BoardController {
             throw new IllegalArgumentException("Invalid player number");
         }
     }
-    
+
     @FXML
     public void setActionPoint(Integer player, Integer actionPoint) {
         if (player == 1) {
@@ -190,27 +253,120 @@ public class BoardController {
 
     @FXML
     public void endTheRound() {
-        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
-        System.out.println(round_tour_info);
-        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
-        //use for updating the UI
-        //round_tour_info[0] = round
-        //round_tour_info[1] = tour
-        changeRound(); // we may create another method with more comprehensive name for the task, updating round & tour, string of buttons, etc.
+        //check whether final round or not
+        if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == 1) {
+          SceneLoader.getInstance().loadFinalScore();
+        }else{
+            changeRound();
+        }
+    }
+    private void disableButtons(Button button) {
+        button.setDisable(true);
+        button.setOpacity(0.5);
+    }
 
+    private void loadRound1() {
+        disableButtons(sellPotionButton);
+        disableButtons(publishTheoryButton);
+        disableButtons(debunkButton);
+    }
+
+    private void activateButtons(Button button) {
+        if(!button.isDisable()){
+            return;
+        }
+        button.setDisable(false);
+
+        Timeline timeline = new Timeline();
+
+        // KeyFrame defines the values at specific points in time
+        KeyFrame startFrame = new KeyFrame(Duration.ZERO, e -> {
+            // Set the initial opacity (0.0 for completely transparent)
+            button.setOpacity(0.5);
+        });
+
+        KeyFrame endFrame = new KeyFrame(Duration.seconds(1), e -> {
+            // Set the final opacity (1.0 for fully opaque)
+            button.setOpacity(1.0);
+        });
+
+        KeyFrame startGlow = new KeyFrame(Duration.seconds(1.1), e -> {
+            // Set the final opacity (1.0 for fully opaque)
+            button.setEffect(new Glow(0.3));
+        });
+
+        KeyFrame endGlow = new KeyFrame(Duration.seconds(2), e -> {
+            // Set the final opacity (1.0 for fully opaque)
+            button.setEffect(null);
+        });
+
+        // Add the KeyFrames to the Timeline
+        timeline.getKeyFrames().addAll(startFrame, endFrame,startGlow,endGlow);
+        timeline.play();
+    }
+
+    private void lodRound2() {
+        activateButtons(sellPotionButton);
+        activateButtons(publishTheoryButton);
+
+    }
+
+    private void loadRound3() {
+        activateButtons(debunkButton);
     }
 
     public BoardController() {
-
+        currentRound = -1;
     }
-    
+
     @FXML
     public void initialize() {
-        alchemist1GoldTextField.setText("10");
-        alchemist1ReputationTextField.setText("0");
-        alchemist2GoldTextField.setText("10");
-        alchemist2ReputationTextField.setText("0");
-        alchemist1ActionPointTextField.setText("3");
-        alchemist2ActionPointTextField.setText("3");
+        BoardHandler.getInstance().registerPlayerObserver(this);
+        setGold(1, BoardHandler.getInstance().getPlayerGold(0));
+        setGold(2, BoardHandler.getInstance().getPlayerGold(1));
+        setReputation(1, BoardHandler.getInstance().getPlayerReputation(0));
+        setReputation(2, BoardHandler.getInstance().getPlayerReputation(1));
+        setActionPoint(1, BoardHandler.getInstance().getPlayerActionPoints(0));
+        setActionPoint(2, BoardHandler.getInstance().getPlayerActionPoints(1));
+    }
+
+    @Override
+    public void onPlayerStatusChanged(String status) {
+
+    }
+
+    @Override
+    public void onPlayerSicknessLevelChanged(int sicknessLevel) {
+
+    }
+
+    @Override
+    public void onPlayerReputationChanged(int reputation) {
+        Platform.runLater(() -> {
+            // Assume playerIndex is available to determine which player's gold changed
+            setReputation(GameEngine.getInstance().getCurrentPlayerIndex()+1, reputation);
+        });
+    }
+
+    @Override
+    public void onPlayerGoldChanged(int newGold) {
+        Platform.runLater(() -> {
+            // Assume playerIndex is available to determine which player's gold changed
+            setGold(GameEngine.getInstance().getCurrentPlayerIndex()+1, newGold);
+        });
+    }
+
+    @Override
+    public void onPlayerActionPointsChanged(int actionPoints) {
+        Platform.runLater(() -> {
+            // Assume playerIndex is available to determine which player's gold changed
+            setActionPoint(GameEngine.getInstance().getCurrentPlayerIndex()+1, actionPoints);
+        });
+
+    }
+
+    @Override
+    public void onPlayerNameChanged(String name) {
+
     }
 }

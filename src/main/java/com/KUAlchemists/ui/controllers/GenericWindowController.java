@@ -21,9 +21,9 @@ public class GenericWindowController {
 
     @FXML
     public void setImage(String imageFile) {
-        String imagePath = "com.KUAlchemists/images/" + imageFile;
+        String imagePath = "/com.KUAlchemists/images/" + imageFile;
         try {
-            Image newImage = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+            Image newImage = new Image(getClass().getResourceAsStream(imagePath));
             // Set the image to the ImageView
             notifacationImage.setImage(newImage);
         }catch (Exception e){
