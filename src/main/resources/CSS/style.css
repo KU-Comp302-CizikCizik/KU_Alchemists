@@ -20,6 +20,13 @@
     -fx-background-color: rgba(19,35,43);
 }
 
+.endorse-Background{
+    -fx-background-image: url("../com.KUAlchemists/images/Endorse/endorse-background.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
 .scroll {
     width:100%;
     max-width: 800px;
@@ -69,5 +76,14 @@
     -fx-background-repeat: stretch;
     -fx-background-size: contain;
     -fx-background-position: center center;
+}
+
+@font-face {
+    font-family: "Caligruf";
+    src: url("caligruf-font/Caligruf-BWvDV.ttf");
+}
+
+.caligruf {
+    -fx-font-family: "Caligruf";
 }
 
