@@ -144,8 +144,8 @@ public class SellPotionController{
                 break;
             case 5:
                 if(SellPotionHandler.getInstance().getStatus() == null || SellPotionHandler.getInstance().getStatus() == "cancel") {
-                    if (PotionSlot.getSelectedPotion(potionSlots) != null) {
-                        SellPotionHandler.getInstance().setPotionToBeSelled(PotionSlot.getSelectedPotion(potionSlots));
+                    if (getSelectedPotion(potionSlots) != null) {
+                        SellPotionHandler.getInstance().setPotionToBeSelled(getSelectedPotion(potionSlots));
                         potion = SellPotionHandler.getInstance().getPotionToBeSelled();
 
                         recomPrice = (potion[1].equals("Type: neutral"))?"2 Golds":"1 Gold";
@@ -261,6 +261,15 @@ public class SellPotionController{
 
     private void debug(String message){
         System.out.println(message);
+    }
+
+    private String[] getSelectedPotion(ArrayList<PotionSlot> potionSlots){
+        for(PotionSlot slot: potionSlots){
+            if(slot.isSelected == true){
+                return new String[]{slot.potionName, slot.potionType};
+            }
+        }
+        return null;
     }
 
 
@@ -409,14 +418,7 @@ public class SellPotionController{
         private void hide(){
             getMainPane().setVisible(false);
         }
-        private static String[] getSelectedPotion(ArrayList<PotionSlot> potionSlots){
-            for(PotionSlot slot: potionSlots){
-                if(slot.isSelected == true){
-                    return new String[]{slot.potionName, slot.potionType};
-                }
-            }
-            return null;
-        }
+
 
         private String capitalizeWords(String oldString){
             String[] words = oldString.replace("_", " ").toLowerCase().split(" ");
