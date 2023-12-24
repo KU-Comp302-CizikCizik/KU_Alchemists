@@ -17,9 +17,13 @@ public class GameModeHandler {
 
     /*
     * This method is called when a player wants to set the game mode.
-    * @param gameMode the game mode to be set (0 for single player, 1 for multiplayer)
+    * @param gameMode the game mode to be set (0 for two players, 1 for three players, 2 for four players)
      */
     public void setGameMode(Integer gameMode) {
         gameModeService.setGameMode(gameMode);
+    }
+
+    public Integer getGameMode() {
+        return gameModeService.getGameMode();
     }
 }
