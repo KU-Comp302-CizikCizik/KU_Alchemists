@@ -49,6 +49,7 @@ private boolean p=false;
                 Glow selectGlow = new Glow(1.7f);
                 pictures.get(i).setEffect(selectGlow);
                 //backende gidicekn bilgi
+                //Aga burda resmi alıp backendde tutması lazım. Sonra ana oyun board'ında bu resimler, sergileyecek
                 System.out.print("geldi");
                 System.out.print(pictures.get(i).getImage());
                 if(p){
