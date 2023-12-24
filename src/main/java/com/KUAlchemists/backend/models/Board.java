@@ -79,5 +79,16 @@ public class Board {
     public void addTheoryToPublishedList(Theory theory){
         publishedTheoriesList.add(theory);
     }
+
+    public void updateTheTheory(Theory selectedTheory) {
+        //There is only one theory for each ingredient
+        for(int i =0;i <publishedTheoriesList.size(); i++){
+            Theory theory = publishedTheoriesList.get(i);
+            if(theory.getIngredient().getName() == selectedTheory.getIngredient().getName()){
+                publishedTheoriesList.set(i,selectedTheory); //update the theory
+                return;
+            }
+        }
+    }
 }
 

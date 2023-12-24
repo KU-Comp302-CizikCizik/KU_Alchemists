@@ -77,13 +77,10 @@ public class Player {
         this.reputation = reputation;
     }
 
-    public List<Theory> getPublishedTheories() {
+    public ArrayList<Theory> getPublishedTheories() {
         return publishedTheories;
     }
 
-    public void setPublishedTheories(List<Theory> publishedTheories) {
-        this.publishedTheories = (ArrayList<Theory>) publishedTheories;
-    }
 
     public DeductionBoard getDeductionBoard() {
         return deductionBoard;

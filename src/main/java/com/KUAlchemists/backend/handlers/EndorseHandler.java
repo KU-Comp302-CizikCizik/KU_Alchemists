@@ -3,10 +3,12 @@ package com.KUAlchemists.backend.handlers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
+import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.PublicationTrackObserver;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -57,14 +59,13 @@ public class EndorseHandler implements PublicationTrackObserver {
         //the format SealGS SealSS SealRQ SealBQ SealGQ
         TheorySeal seal = TheorySeal.getSealByName(sealName);
         GameEngine.getInstance().getCurrentPlayer().removeTheorySeal(seal);
-        //selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer());
-        System.out.println("Endorsed seal " + sealName + " for theory " + selectedTheory.getIngredient().getName());
-
+        selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer());
+        Board.getInstance().updateTheTheory(selectedTheory);
     }
 
     public String getTheory() {
-        //return selectedTheory.getIngredient().getName().toLowerCase();
-        return "frog";
+        System.out.println("Publish Theory is not implemented, will throw an error");
+        return selectedTheory.getIngredient().getName().toLowerCase();
     }
 
     @Override
