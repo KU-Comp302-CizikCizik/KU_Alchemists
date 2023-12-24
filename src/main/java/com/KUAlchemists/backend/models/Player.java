@@ -104,6 +104,10 @@ public class Player implements Subject {
         return actionPoints;
     }
 
+
+    public void addGold(int price) {
+        this.gold += price;
+    }
     @Override
     public void registerObserver(Observer observer) {
         observers.add((PlayerObserver) observer);

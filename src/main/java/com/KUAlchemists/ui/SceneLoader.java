@@ -13,6 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -149,6 +150,26 @@ public class SceneLoader {
         closeButton.setVisible(false);
         dialog.show();
     }
+    public void loadPopUpUndecorated(String fxml_path) { //This opens a popup without close, or any other buttons on th top.
+        Dialog<Void> dialog = new Dialog<>();
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UILoader.class.getClassLoader().getResource(fxml_path));
+            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.getDialogPane().setContent(loader.load());
+            dialog.setResizable(false);
+            dialog.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        Node closeButton = dialog.getDialogPane().lookupButton(ButtonType.CLOSE);
+        closeButton.managedProperty().bind(closeButton.visibleProperty());
+        closeButton.setVisible(false);
+        dialog.show();
+    }
 
 
     public void loadBoard() {
@@ -190,7 +211,13 @@ public class SceneLoader {
     public void loadExperienceResult(){
         loadPopUp(UIConstants.EXPERIENCE_RESULT_UI_FXML);
     }
+
+    public void loadSellPotion(){
+        loadPopUp(UIConstants.SELL_POTION_UI_FXML);
+    }
+
     public void loadDebunk() { loadPopUp(UIConstants.DEBUNK_UI_FXML); }
+
 
     public void loadForageIngredient(String message, String ingredientImage) {
         Dialog<Void> dialog = new Dialog<>();
