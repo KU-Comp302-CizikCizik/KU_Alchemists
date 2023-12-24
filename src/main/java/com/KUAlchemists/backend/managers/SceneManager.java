@@ -33,6 +33,7 @@ public class SceneManager implements GameStateObserver {
         }
         currentState = to;
 
+
         switch (to) {
             case LOGIN:
                 SceneLoader.getInstance().loadLogin();
@@ -43,10 +44,12 @@ public class SceneManager implements GameStateObserver {
             case BOARD:
                 SceneLoader.getInstance().loadBoard();
                 break;
+
             default:
                 break;
 
         }
+
     }
 
 }

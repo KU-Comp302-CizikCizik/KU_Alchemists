@@ -388,11 +388,11 @@ public class DeductionBoardController {
             ImageView targetImageView = (ImageView) field.get(this);
 
             // Assuming your image files have a common extension like ".png" or ".jpg"
-            String imagePath = "com.KUAlchemists/images/alchemy/" + imageName + ".png";
+            String imagePath = "/com.KUAlchemists/images/alchemy/" + imageName + ".png";
             // Load the image using the class loader to ensure it works regardless of the build type
 
             try {
-                Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+                Image image = new Image(getClass().getResourceAsStream(imagePath));
                 // Set the image to the ImageView
                 targetImageView.setImage(image);
             }catch (Exception e){
