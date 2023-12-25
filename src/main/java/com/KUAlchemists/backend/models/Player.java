@@ -56,6 +56,7 @@ public class Player implements Subject {
 
     public void setGold(int gold) {
         this.gold = gold;
+        System.out.println("Player's gold: "+this.gold);
         notifyObservers();
     }
 
@@ -181,5 +182,9 @@ public class Player implements Subject {
 
     public int getScore() {
         return score;
+    }
+
+    public void setName(String player1) {
+        this.name = player1;
     }
 }

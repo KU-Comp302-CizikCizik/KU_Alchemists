@@ -46,19 +46,13 @@ public class ScoringHandler {
      * Handler for getting the ranking of the players.
      * @see ScoringService#getRanking(ArrayList)
      * @return ranking of the players (Index of the players in the player list)
+     * For example: if the player list is [player1, player2, player3]
+     * and the ranking is [player2, player1, player3] then the method will return [1, 0, 2]
      */
     public ArrayList<Integer> handleGetRanking(){
         ArrayList<Player> players = GameEngine.getInstance().getPlayerList();
-        ArrayList<Integer> ranking = new ArrayList<>();
-        ArrayList<Player> rankingList = scoringService.getRanking(players);
-        for (int i = 0; i < rankingList.size(); i++) {
-            ranking.add(GameEngine.getInstance().getPlayerIndex(rankingList.get(i)));
-        }
-        return ranking;
+        ArrayList<Integer> rankingList = scoringService.getRanking(players);
+        return rankingList;
     }
-
-
-
-
 
 }
