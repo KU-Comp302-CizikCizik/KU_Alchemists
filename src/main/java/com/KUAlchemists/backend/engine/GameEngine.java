@@ -164,4 +164,8 @@ public class GameEngine {
         currentRound = GameRound.getNextRound(currentRound);
     }
 
+    public Integer getPlayerIndex(Player player){
+        return playerList.indexOf(player);
+    }
+
 }

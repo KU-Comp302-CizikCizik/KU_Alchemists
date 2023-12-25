@@ -39,4 +39,25 @@ public class ScoringService {
         return winnerIndex;
     }
 
+    public ArrayList<Player> getRanking(ArrayList<Player> players) {
+        ArrayList<Player> ranking = new ArrayList<>();
+        for (int i = 0; i < players.size(); i++) {
+            int score = calculateScore(players.get(i));
+            players.get(i).setScore(score);
+        }
+        while (players.size() > 0) {
+            int maxScore = 0;
+            int maxIndex = 0;
+            for (int i = 0; i < players.size(); i++) {
+                if (players.get(i).getScore() > maxScore) {
+                    maxScore = players.get(i).getScore();
+                    maxIndex = i;
+                }
+            }
+            ranking.add(players.get(maxIndex));
+            players.remove(maxIndex);
+        }
+        return ranking;
+    }
+
 }

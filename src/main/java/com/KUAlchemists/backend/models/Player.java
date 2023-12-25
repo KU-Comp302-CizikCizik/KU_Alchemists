@@ -17,6 +17,8 @@ public class Player implements Subject {
     private DeductionBoard deductionBoard;
     private int actionPoints;
     private String name;
+
+    private int score;
     private List<PlayerObserver> observers;
     public Player(){
         this("");
@@ -124,5 +126,13 @@ public class Player implements Subject {
             ((PlayerObserver) observer).onPlayerActionPointsChanged(actionPoints);
             ((PlayerObserver) observer).onPlayerNameChanged(name);
         }
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
     }
 }
