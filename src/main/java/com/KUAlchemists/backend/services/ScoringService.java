@@ -3,6 +3,9 @@ package com.KUAlchemists.backend.services;
 import com.KUAlchemists.backend.models.Player;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 
 public class ScoringService {
 
@@ -15,6 +18,7 @@ public class ScoringService {
         player.setGold(player.getGold() - player.getGold() % 3); // remove the gold that is not divisible by 3
         score += goldScore;
         score += player.getReputation() * 10; // 1 reputation = 10 score
+        player.setScore(score);
         return score;
     }
 
@@ -39,25 +43,32 @@ public class ScoringService {
         return winnerIndex;
     }
 
-    public ArrayList<Player> getRanking(ArrayList<Player> players) {
-        ArrayList<Player> ranking = new ArrayList<>();
+    // TODO: implement this method
+    // getRanking method should return the ranking of the players
+    // The ranking of the players is the index of the players in the player list
+    // It uses the calculateScore method to calculate the score of the players
+    // If the players scores are equal it will check the gold of the players
+    // If the gold of the players are equal it will return -1
+
+public ArrayList<Integer> getRanking(ArrayList<Player> players) {
+        ArrayList<Integer> rankingList = new ArrayList<>();
+        HashMap<Integer, Integer> scoreMap = new HashMap<>();
         for (int i = 0; i < players.size(); i++) {
             int score = calculateScore(players.get(i));
-            players.get(i).setScore(score);
+            score += players.get(i).getGold();
+            scoreMap.put(i, score);
         }
-        while (players.size() > 0) {
-            int maxScore = 0;
-            int maxIndex = 0;
-            for (int i = 0; i < players.size(); i++) {
-                if (players.get(i).getScore() > maxScore) {
-                    maxScore = players.get(i).getScore();
-                    maxIndex = i;
+        ArrayList<Integer> scoreList = new ArrayList<>(scoreMap.values());
+        Collections.sort(scoreList, Collections.reverseOrder());
+        for (int i = 0; i < scoreList.size(); i++) {
+            for (int j = 0; j < players.size(); j++) {
+                if (scoreMap.get(j) == scoreList.get(i)) {
+                    rankingList.add(j);
                 }
             }
-            ranking.add(players.get(maxIndex));
-            players.remove(maxIndex);
         }
-        return ranking;
+        return rankingList;
     }
+
 
 }
