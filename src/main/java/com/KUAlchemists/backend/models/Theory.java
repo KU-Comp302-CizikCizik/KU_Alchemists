@@ -12,7 +12,6 @@ public class Theory {
 
     private String theoryID; // UI connection
 
-
     // Constructor
     public Theory(Ingredient ingredient, Alchemical predictedAlchemical) {
         this.ingredient = ingredient;
