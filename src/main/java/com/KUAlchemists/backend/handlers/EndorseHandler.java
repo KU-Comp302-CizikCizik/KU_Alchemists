@@ -1,24 +1,25 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
-import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.PublicationTrackObserver;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class EndorseHandler implements PublicationTrackObserver {
 
-    private Theory selectedTheory;
-    private static EndorseHandler instance;
+
+    private Theory selectedTheory; //the theory that the player wants to endorse
+    private static EndorseHandler instance; //singleton instance
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return instance
+     */
     public static EndorseHandler getInstance() {
         if (instance == null) {
             instance = new EndorseHandler();
@@ -26,28 +27,33 @@ public class EndorseHandler implements PublicationTrackObserver {
         return instance;
      }
 
-    EndorseHandler() {
+    /**
+     * Constructor
+     */
+    private EndorseHandler() {
 
     }
 
-    public ArrayList<String> getSeals() {
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return seals
+     */
+    public ArrayList<String> getPlayerTheorySeals() {
         ArrayList<String> theorySeals =  GameEngine.getInstance().getCurrentPlayer().getTheorySeals()
                 .stream()
                 .map(TheorySeal::getSealString)
                 .collect(Collectors.toCollection(ArrayList::new));
+        //remove duplicates
         Set<String> set = new HashSet<>(theorySeals);
-        return new ArrayList<>(set);
+        ArrayList<String> seals = new ArrayList<>(set);
+        return seals;
     }
 
-    public ArrayList<String> getEndorsedSeals() {
-        //for testing
-
-        selectedTheory = new Theory();
-        ArrayList<Player> temp = new ArrayList<>();
-        temp.add(GameEngine.getInstance().getCurrentPlayer());
-        selectedTheory.setEndorsers(temp);
-
-        //
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return playerSeals
+     */
+    public ArrayList<String> getEndorsedTheorySeals() {
         ArrayList<String> playerSeals =  selectedTheory.getEndorsers()
                 .stream().map(player -> player.getPlayerSeal().getSealString())
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -55,25 +61,42 @@ public class EndorseHandler implements PublicationTrackObserver {
         return playerSeals;
     }
 
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @param sealName
+     */
     public void saveEndorsedSeal(String sealName) {
         //the format SealGS SealSS SealRQ SealBQ SealGQ
         TheorySeal seal = TheorySeal.getSealByName(sealName);
         GameEngine.getInstance().getCurrentPlayer().removeTheorySeal(seal);
         selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer());
-        Board.getInstance().updateTheTheory(selectedTheory);
+        Board.getInstance().updateTheTheory(selectedTheory); //TO-DO: Can the two theories that shared the same ingredient be published?
     }
 
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return theory
+     */
     public String getTheory() {
-        System.out.println("Publish Theory is not implemented, will throw an error");
-        return selectedTheory.getIngredient().getName().toLowerCase();
+        String theory = selectedTheory.getIngredient().getName().toLowerCase();
+        return theory;
     }
 
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @param theory
+     */
     @Override
     public void onTheorySelected(Theory theory) {
         this.selectedTheory = theory;
     }
 
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return playerSeal
+     */
     public String getPlayerSeal() {
-        return GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
+        String playerSeal = GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
+        return playerSeal;
     }
 }

@@ -1,6 +1,5 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.EndorseHandler;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
@@ -60,8 +59,8 @@ public class EndorseController {
 
     @FXML
     private void initialize() {
-        currentSeals = EndorseHandler.getInstance().getSeals();
-        endorsedSeals = EndorseHandler.getInstance().getEndorsedSeals();
+        currentSeals = EndorseHandler.getInstance().getPlayerTheorySeals();
+        endorsedSeals = EndorseHandler.getInstance().getEndorsedTheorySeals();
         String theory = EndorseHandler.getInstance().getTheory();
 
         setTheoryImage(theory);
