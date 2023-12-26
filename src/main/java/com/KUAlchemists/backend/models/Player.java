@@ -137,7 +137,7 @@ public class Player implements Subject {
 
     public void removeTheorySeal(TheorySeal seal) {
         this.theorySeals.remove(seal);
-
+    }
 
     public void addGold(int price) {
         this.gold += price;
