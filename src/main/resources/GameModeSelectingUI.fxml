@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.OnlineOfflineController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.GameModeSelectingController">
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="1080.0">
          <children>
@@ -17,20 +17,20 @@
                   <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
                </image>
             </ImageView>
-            <Button fx:id="online" layoutX="56.0" layoutY="279.0" mnemonicParsing="false" onAction="#online_b" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="Online">
+            <Button fx:id="online" layoutX="65.0" layoutY="279.0" mnemonicParsing="false" onAction="#online_b" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="Online">
                <opaqueInsets>
                   <Insets bottom="20.0" />
                </opaqueInsets>
                <font>
-                  <Font name="Franklin Gothic Book" size="18.0" />
+                  <Font name="Colonna MT" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="offline" layoutX="56.0" layoutY="360.0" mnemonicParsing="false" onAction="#offline_b" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="Offline ">
+            <Button fx:id="offline" layoutX="65.0" layoutY="360.0" mnemonicParsing="false" onAction="#offline_b" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="Offline ">
                <opaqueInsets>
                   <Insets bottom="20.0" />
                </opaqueInsets>
                <font>
-                  <Font name="Franklin Gothic Book" size="18.0" />
+                  <Font name="Colonna MT" size="18.0" />
                </font>
             </Button>
          </children>

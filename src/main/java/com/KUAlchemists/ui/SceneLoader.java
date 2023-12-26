@@ -8,16 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Properties;
 
 public class SceneLoader {
@@ -38,7 +35,7 @@ public class SceneLoader {
         }
         return INSTANCE;
     }
-    public void loadOnlineOffline() {
+    public void loadGameMode() {
         root = UILoader.loadFXML(UIConstants.ONLINE_OFFLINE_UI_FXML);
         Scene oldScene = MainApplicationUI.stage.getScene();
         MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
@@ -55,6 +52,18 @@ public class SceneLoader {
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
+    }
+
+
+    public void loadNumberOfPlayersScreen(){
+        root = UILoader.loadFXML(UIConstants.NUMBER_OF_PLAYERS_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+
     }
 
 

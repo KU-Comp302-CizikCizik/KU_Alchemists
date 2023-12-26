@@ -46,6 +46,12 @@ public class GameEngine {
         return INSTANCE;
     }
 
+    /**
+     * Initialize the game
+     */
+    public void initializeGame(String gameMode) {
+        GameInitializer gameInitializer = new GameInitializer();
+    }
 
     /**
      * Add a player to the player list

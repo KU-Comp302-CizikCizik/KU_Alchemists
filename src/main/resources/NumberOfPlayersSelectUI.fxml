@@ -20,22 +20,22 @@
             <Insets bottom="20.0" />
          </opaqueInsets>
          <font>
-            <Font name="Franklin Gothic Book" size="18.0" />
+            <Font name="Book Antiqua" size="18.0" />
          </font>
       </Button>
       <Button fx:id="four_player" layoutX="49.0" layoutY="474.0" mnemonicParsing="false" onAction="#four_p" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="4 Player">
          <font>
-            <Font size="18.0" />
+            <Font name="Book Antiqua" size="18.0" />
          </font>
       </Button>
       <Button layoutX="49.0" layoutY="402.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="3 Player">
          <font>
-            <Font size="18.0" />
+            <Font name="Book Antiqua" size="18.0" />
          </font>
       </Button>
       <Button fx:id="two_player" layoutX="49.0" layoutY="334.0" mnemonicParsing="false" onAction="#two_p" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="2 Player">
          <font>
-            <Font size="18.0" />
+            <Font name="Book Antiqua" size="18.0" />
          </font>
       </Button>
    </children>
