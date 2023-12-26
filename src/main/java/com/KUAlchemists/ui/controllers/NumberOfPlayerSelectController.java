@@ -28,6 +28,6 @@ public class NumberOfPlayerSelectController {
         Button clickedButton = (Button) event.getSource();
         String numberOfPlayers = (String) clickedButton.getUserData();
         NumberOfPlayerSelectHandler.getInstance().setNumberOfPlayers(numberOfPlayers);
-        SceneLoader.getInstance().loadBoard();
+        SceneLoader.getInstance().loadAvatarSelectScreen();
     }
 }

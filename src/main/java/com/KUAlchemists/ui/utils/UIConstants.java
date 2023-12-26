@@ -5,6 +5,7 @@ public class UIConstants {
 
     public static final String ENDORSE_UI_FXML = "EndorseUI.fxml";
     public static final String NUMBER_OF_PLAYERS_UI_FXML = "NumberOfPlayersSelectUI.fxml";
+    public static final String AVATAR_SELECT_UI_FXML = "AvatarSelectUI.fxml";
 
     private UIConstants() {
     }

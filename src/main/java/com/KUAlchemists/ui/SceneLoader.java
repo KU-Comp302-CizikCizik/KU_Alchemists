@@ -35,36 +35,6 @@ public class SceneLoader {
         }
         return INSTANCE;
     }
-    public void loadGameMode() {
-        root = UILoader.loadFXML(UIConstants.ONLINE_OFFLINE_UI_FXML);
-        Scene oldScene = MainApplicationUI.stage.getScene();
-        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
-        MainApplicationUI.stage = (Stage) oldScene.getWindow();
-        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
-        MainApplicationUI.stage.centerOnScreen();
-        MainApplicationUI.stage.show();
-    }
-    public void loadMenu() {
-        root = UILoader.loadFXML(UIConstants.MENU_UI_FXML);
-        Scene oldScene = MainApplicationUI.stage.getScene();
-        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
-        MainApplicationUI.stage = (Stage) oldScene.getWindow();
-        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
-        MainApplicationUI.stage.centerOnScreen();
-        MainApplicationUI.stage.show();
-    }
-
-
-    public void loadNumberOfPlayersScreen(){
-        root = UILoader.loadFXML(UIConstants.NUMBER_OF_PLAYERS_UI_FXML);
-        Scene oldScene = MainApplicationUI.stage.getScene();
-        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
-        MainApplicationUI.stage = (Stage) oldScene.getWindow();
-        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
-        MainApplicationUI.stage.centerOnScreen();
-        MainApplicationUI.stage.show();
-
-    }
 
 
 
@@ -98,6 +68,50 @@ public class SceneLoader {
         MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
 
+    }
+
+    public void loadGameMode() {
+        root = UILoader.loadFXML(UIConstants.ONLINE_OFFLINE_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+    }
+
+
+
+    public void loadNumberOfPlayersScreen(){
+        root = UILoader.loadFXML(UIConstants.NUMBER_OF_PLAYERS_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+
+    }
+
+    public void loadAvatarSelectScreen(){
+        root = UILoader.loadFXML(UIConstants.AVATAR_SELECT_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+
+    }
+
+    public void loadMenu() {
+        root = UILoader.loadFXML(UIConstants.MENU_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
     }
 
     public void loadIngredientStorage() {
