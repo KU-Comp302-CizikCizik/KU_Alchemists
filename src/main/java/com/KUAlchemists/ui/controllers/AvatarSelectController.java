@@ -8,8 +8,8 @@ import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
-public class ChooseImageController {
-private boolean p=false;
+public class AvatarSelectController {
+    private boolean p=false;
     @FXML
     private ImageView image_1;
 

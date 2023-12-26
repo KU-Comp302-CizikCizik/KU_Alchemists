@@ -163,7 +163,7 @@ public class SceneLoader {
     }
 
     public void loadFinalScore(){
-        loadGenericPopUp("Temporary fianl score window");
+        loadGenericPopUp("Temporary final score window");
     }
 
     public void loadBuyArtifact(){
