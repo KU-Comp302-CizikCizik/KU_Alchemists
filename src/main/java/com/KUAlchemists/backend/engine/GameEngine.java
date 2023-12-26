@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.Gamestate;
 import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.managers.StateManager;
@@ -16,6 +17,8 @@ public class GameEngine {
 
     // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
+
+    private ApplicationMode mode; // OFFLINE or ONLINE
 
     private GameRound currentRound;
     private GameTour currentTour;
@@ -163,5 +166,26 @@ public class GameEngine {
         }
         currentRound = GameRound.getNextRound(currentRound);
     }
+
+    // application mode methods
+
+    /**
+     * Get the application mode
+     * @return the application mode
+     */
+    public ApplicationMode getApplicationMode() {
+        return mode;
+    }
+
+    /**
+     * Set the application mode
+     * @param mode the application mode to be set
+     */
+
+    public void setApplicationMode(ApplicationMode mode) {
+        this.mode = mode;
+    }
+
+
 
 }
