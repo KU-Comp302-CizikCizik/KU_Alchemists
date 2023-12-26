@@ -3,13 +3,11 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.handlers.PublicationTrackHandler;
 import com.KUAlchemists.backend.handlers.PublishTheoryHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import java.util.ArrayList;
 import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.ArrayList; // import the ArrayList class
 public class PublishTheoryAlchemySelectController {
 
     @FXML
@@ -107,14 +105,14 @@ public class PublishTheoryAlchemySelectController {
         System.out.println( IngredientCard_PublishController.ingredient);
         String id=event.toString().substring(34,event.toString().indexOf(","));
         System.out.println(dict.get(id).get(1));
-       String red=dict.get(id).get(1).toString();
+        String red=dict.get(id).get(1).toString();
         String green=dict.get(id).get(0).toString();
         String blue=dict.get(id).get(2).toString();
 
 
        PublishTheoryHandler pbt= new PublishTheoryHandler();
 
-        System.out.println( pbt.handlePublishTheoryRequest(IngredientCard_PublishController.ingredient,red,green,blue));
+        //System.out.println( pbt.handlePublishTheoryRequest(red,green,blue));
         PublicationTrackHandler pth = new PublicationTrackHandler();
         /*System.out.println( pth.handleGetAllPublishedTheoriesInfo());
         System.out.println( pth.handleGetPlayerPublishedTheoriesInfo());*/

@@ -7,6 +7,8 @@ public class PublishTheoryHandler {
 
     private static PublishTheoryHandler INSTANCE;
 
+    private String selectedIngredientName;
+
     public PublishTheoryHandler() {
         this.publishTheoryService = new PublishTheoryService();
     }
@@ -17,13 +19,21 @@ public class PublishTheoryHandler {
         }
         return INSTANCE;
     }
+    public void setSelectedIngredientName(String selectedIngredientName) {
+        this.selectedIngredientName = selectedIngredientName;
+    }
 
-    public String handlePublishTheoryRequest(String ingredientName,
+    public String getSelectedIngredientName() {
+        return selectedIngredientName;
+    }
+
+
+    public String handlePublishTheoryRequest(
                                              String predictedRedAspectString,
                                              String predictedGreenAspectString,
                                              String predictedBlueAspectString) {
         boolean success = publishTheoryService.publishTheory(
-                ingredientName,
+                selectedIngredientName,
                 predictedRedAspectString,
                 predictedGreenAspectString,
                 predictedBlueAspectString);

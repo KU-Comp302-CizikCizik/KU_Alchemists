@@ -15,16 +15,13 @@ public class Theory {
 
 
     // Constructor
-    public Theory(Ingredient ingredient, Alchemical predictedAlchemical) {
+    public Theory(Ingredient ingredient, Alchemical predictedAlchemical) { // ingredient stringden oluşması gerekiyor alchemy içinde ıynı bok geçerli.
         this.ingredient = ingredient;
         this.predictedAlchemical = predictedAlchemical;
         this.isPublished = false;
         this.isEndorsed = false;
         this.isDebunked = false;
         //this.reputationAward = 0;
-    }
-    public Theory() {
-
     }
     // Getters
     public Ingredient getIngredient() {
