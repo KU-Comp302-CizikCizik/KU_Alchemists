@@ -12,7 +12,7 @@
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="1080.0">
          <children>
-            <ImageView fitHeight="720.0" fitWidth="1080.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
                </image>
