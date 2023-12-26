@@ -1,5 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.backend.enums.GameMode;
+
 public class NumberOfPlayerSelectHandler {
 
 
@@ -18,6 +20,8 @@ public class NumberOfPlayerSelectHandler {
 
     public void setNumberOfPlayers(String numberOfPlayers){
         //String format: "1", "2", "3", "4"
+        System.out.println("Number of players: " + numberOfPlayers);
+        System.out.println("Game mode: " + GameMode.getGameModeByString(numberOfPlayers) + " player mode");
 
     }
 

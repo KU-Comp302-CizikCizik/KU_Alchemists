@@ -13,11 +13,6 @@
             <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
          </image>
       </ImageView>
-      <Button fx:id="one_player" layoutX="49.0" layoutY="200.0" mnemonicParsing="false" onAction="#onPlayerSelect" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="1 Player">
-         <font>
-            <Font name="Book Antiqua" size="18.0" />
-         </font>
-      </Button>
       <Button fx:id="two_player" layoutX="49.0" layoutY="270.0" mnemonicParsing="false" onAction="#onPlayerSelect" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" text="2 Player">
          <font>
             <Font name="Book Antiqua" size="18.0" />

@@ -10,9 +10,6 @@ public class NumberOfPlayerSelectController {
     private Button four_player;
 
     @FXML
-    private Button one_player;
-
-    @FXML
     private Button three_player;
 
     @FXML
@@ -20,7 +17,6 @@ public class NumberOfPlayerSelectController {
 
     @FXML
     public void initialize() {
-        one_player.setUserData("1");
         two_player.setUserData("2");
         three_player.setUserData("3");
         four_player.setUserData("4");
