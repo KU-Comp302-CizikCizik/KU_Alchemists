@@ -11,7 +11,7 @@ public enum GameMode {
         this.value = value;
     }
 
-    public int getNumberOfPlayer(){
+    public int getNumberOfPlayers(){
         return value;
     }
 
@@ -27,7 +27,6 @@ public enum GameMode {
         }
         throw new EnumConstantNotPresentException(GameMode.class, numberOfPlayers);
     }
-
 
 
 }

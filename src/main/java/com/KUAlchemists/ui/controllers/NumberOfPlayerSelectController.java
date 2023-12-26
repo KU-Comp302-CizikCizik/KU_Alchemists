@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.handlers.NumberOfPlayerSelectHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,5 +28,6 @@ public class NumberOfPlayerSelectController {
         Button clickedButton = (Button) event.getSource();
         String numberOfPlayers = (String) clickedButton.getUserData();
         NumberOfPlayerSelectHandler.getInstance().setNumberOfPlayers(numberOfPlayers);
+        SceneLoader.getInstance().loadBoard();
     }
 }

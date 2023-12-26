@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.Gamestate;
 import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.managers.StateManager;
@@ -49,8 +50,9 @@ public class GameEngine {
     /**
      * Initialize the game
      */
-    public void initializeGame(String gameMode) {
-        GameInitializer gameInitializer = new GameInitializer();
+    public void initializeGame(GameMode gameMode) {
+        GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
+        System.out.println("Game Initialized");
     }
 
     /**
