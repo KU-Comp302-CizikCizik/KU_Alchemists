@@ -16,6 +16,7 @@ public class PublishTheoryService {
      * @param predictedBlueAspectString Predicted blue aspect.
      * @return True if the theory is successfully published, false otherwise.
      */
+    // önce string depolanacak sonrasında alchemy gelip theory oluşturacak!
     public boolean publishTheory(String ingredientName,
                                  String predictedRedAspectString,
                                  String predictedGreenAspectString,
@@ -28,7 +29,8 @@ public class PublishTheoryService {
 
         Ingredient ingredient = Board.getInstance().getIngredientStorage(player).getIngredient(ingredientName);
 
-        Theory theory = new Theory(ingredient, predictedAlchemical);
+        Theory theory = new Theory(ingredient, predictedAlchemical); // ingredient ve predicted alchemical aynıysa tekrar oluşturmaya izin verme.
+
         if (!theory.isPublished() && player.getGold() >= 1) {
             player.setGold(player.getGold() - 1);
             theory.setPublished(true);

@@ -82,10 +82,10 @@ public class DebunkController {
         }
         String checkedAspect = DebunkTheoryHandler.getInstance().checkAspect(selectedAspect);
 
-        String imagePath = "com.KUAlchemists/images/alchemy/" + checkedAspect;
+        String imagePath = "/com.KUAlchemists/images/alchemy/" + checkedAspect;
         Image  newImage = null;
         try {
-            newImage = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+            newImage = new Image(getClass().getResourceAsStream(imagePath));
             // Set the image to the ImageView
         }catch (Exception e){
             System.err.println(e.getMessage());
@@ -109,9 +109,9 @@ public class DebunkController {
         setIngredient(theory);
     }
     public void setIngredient(String ingredientName){
-        String imagePath = "com.KUAlchemists/images/" + ingredientName + "-ingredient.jpg";
+        String imagePath = "/com.KUAlchemists/images/" + ingredientName + "-ingredient.jpg";
         try {
-            Image newImage = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+            Image newImage = new Image(getClass().getResourceAsStream(imagePath));
             // Set the image to the ImageView
             ingredient.setImage(newImage);
         }catch (Exception e){

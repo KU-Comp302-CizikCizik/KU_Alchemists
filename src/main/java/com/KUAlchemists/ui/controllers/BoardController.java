@@ -3,7 +3,11 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
+import javafx.application.Platform;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -21,7 +25,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import java.util.ArrayList;
 
-public class BoardController {
+public class BoardController implements PlayerObserver {
     @FXML
     private TextField alchemist1GoldTextField;
 
@@ -144,7 +148,6 @@ public class BoardController {
         }
         else{
             String message = "You have foraged " + ingredient + "!";
-            setActionPoint(GameEngine.getInstance().getCurrentPlayerIndex()+1,GameEngine.getInstance().getCurrentPlayer().getActionPoints());
             SceneLoader.getInstance().loadForageIngredient(message, ingredient+"-ingredient.jpg");
         }
 
@@ -170,7 +173,7 @@ public class BoardController {
     @FXML
     void sellPotionPopUp(ActionEvent event) {
 
-        System.out.println("not implemented Yet");
+        SceneLoader.getInstance().loadSellPotion();
     }
     @FXML
     public void changeRound() {
@@ -318,11 +321,52 @@ public class BoardController {
 
     @FXML
     public void initialize() {
-        alchemist1GoldTextField.setText("10");
-        alchemist1ReputationTextField.setText("0");
-        alchemist2GoldTextField.setText("10");
-        alchemist2ReputationTextField.setText("0");
-        alchemist1ActionPointTextField.setText("3");
-        alchemist2ActionPointTextField.setText("3");
+        BoardHandler.getInstance().registerPlayerObserver(this);
+        setGold(1, BoardHandler.getInstance().getPlayerGold(0));
+        setGold(2, BoardHandler.getInstance().getPlayerGold(1));
+        setReputation(1, BoardHandler.getInstance().getPlayerReputation(0));
+        setReputation(2, BoardHandler.getInstance().getPlayerReputation(1));
+        setActionPoint(1, BoardHandler.getInstance().getPlayerActionPoints(0));
+        setActionPoint(2, BoardHandler.getInstance().getPlayerActionPoints(1));
+    }
+
+    @Override
+    public void onPlayerStatusChanged(String status) {
+
+    }
+
+    @Override
+    public void onPlayerSicknessLevelChanged(int sicknessLevel) {
+
+    }
+
+    @Override
+    public void onPlayerReputationChanged(int reputation) {
+        Platform.runLater(() -> {
+            // Assume playerIndex is available to determine which player's gold changed
+            setReputation(GameEngine.getInstance().getCurrentPlayerIndex()+1, reputation);
+        });
+    }
+
+    @Override
+    public void onPlayerGoldChanged(int newGold) {
+        Platform.runLater(() -> {
+            // Assume playerIndex is available to determine which player's gold changed
+            setGold(GameEngine.getInstance().getCurrentPlayerIndex()+1, newGold);
+        });
+    }
+
+    @Override
+    public void onPlayerActionPointsChanged(int actionPoints) {
+        Platform.runLater(() -> {
+            // Assume playerIndex is available to determine which player's gold changed
+            setActionPoint(GameEngine.getInstance().getCurrentPlayerIndex()+1, actionPoints);
+        });
+
+    }
+
+    @Override
+    public void onPlayerNameChanged(String name) {
+
     }
 }

@@ -122,7 +122,7 @@ public class ElixirOfInsightController {
             String photoUrl = slots.get(i).getPhotoAddress();
             String name = slots.get(i).getName();
             try {
-                Image image = new Image(getClass().getClassLoader().getResourceAsStream(photoUrl));
+                Image image = new Image(getClass().getResourceAsStream(photoUrl));
                 ingredientImages.get(i).setImage(image);
                 ingredientNames.get(i).setText(name);
             }
@@ -227,7 +227,7 @@ public class ElixirOfInsightController {
         public Slot(String name) {
             this.name = name;
             this.photoName = name.toLowerCase()+"-ingredient.jpg";
-            this.photoAddress = "com.KUAlchemists/images/" + photoName;
+            this.photoAddress = "/com.KUAlchemists/images/" + photoName;
             this.isSelected = false;
         }
 

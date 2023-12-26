@@ -68,6 +68,10 @@ public class Board {
         potionStorages.get(GameEngine.getInstance().getCurrentPlayer()).addPotion(potion);
     }
 
+    public PotionStorage getPotionStorage(Player player){
+        return potionStorages.get(player);
+    }
+
     public void addPotionToStorage(Player player, Potion potion){
         potionStorages.get(player).addPotion(potion);
     }

@@ -34,7 +34,6 @@ public class IngredientCardController {
         // Load the image using the class loader to ensure it works regardless of the build type
         try {
             Image image = new Image(getClass().getResourceAsStream(imagePath));
-           // Image image = new Image(new File(imagePath2).toURI().toString());
             // Set the image to the ImageView
             ingredientImage.setImage(image);
         }catch (Exception e){
