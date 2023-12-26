@@ -29,7 +29,7 @@ public class TestUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Properties prop = new Properties();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("GameModeSelectingUI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("NumberOfPlayersSelectUI.fxml"));
 
         // DeductionBoardController.setProperties(prop);
         primaryStage.setTitle("KU Alchemists");

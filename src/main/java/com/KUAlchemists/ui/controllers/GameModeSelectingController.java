@@ -19,7 +19,7 @@ public class GameModeSelectingController {
 
     @FXML
     void online_b(ActionEvent event) {
-
+        //SceneLoader.getInstance().loadHostGameInitScreen();
     }
 
 }
