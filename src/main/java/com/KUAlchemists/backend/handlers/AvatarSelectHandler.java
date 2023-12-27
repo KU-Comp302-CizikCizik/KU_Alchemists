@@ -39,9 +39,6 @@ public class AvatarSelectHandler {
      */
     public void handleSetAvatar(String avatar,int currentPlayerIndex) {
         avatarSelectService.setAvatar(GameEngine.getInstance().getPlayer(currentPlayerIndex), avatar);
-        System.out.println("Player avatar" + GameEngine.getInstance().getPlayer(currentPlayerIndex).getAvatar());
-        System.out.println("Avatar selected" + avatar);
-        System.out.println("");
     }
 
 }
