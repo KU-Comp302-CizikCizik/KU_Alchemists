@@ -27,6 +27,8 @@ public class GameEngine {
     // current player index
     private int currentPlayerIndex = 0;
 
+    private GameMode currentGameMode;
+
 
     /**
      * Constructor for GameEngine
@@ -51,6 +53,7 @@ public class GameEngine {
      * Initialize the game
      */
     public void initializeGame(GameMode gameMode) {
+        this.currentGameMode = gameMode;
         GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
         System.out.println("Game Initialized");
     }
@@ -170,6 +173,11 @@ public class GameEngine {
             return;
         }
         currentRound = GameRound.getNextRound(currentRound);
+    }
+
+
+    public GameMode getCurrentGameMode() {
+        return currentGameMode;
     }
 
 }

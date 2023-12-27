@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.services;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
 
 /**
@@ -19,5 +20,6 @@ public class AvatarSelectService {
      */
     public void setAvatar(Player player, String avatar) {
         player.setAvatar(avatar);
+
     }
 }

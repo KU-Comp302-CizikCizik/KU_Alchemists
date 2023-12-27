@@ -13,30 +13,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AvatarSelectController {
-    private boolean p=false;
     @FXML
-    private ImageView image_1;
+    private ImageView avatar_1;
 
     @FXML
-    private ImageView image_2;
+    private ImageView avatar_2;
 
     @FXML
-    private ImageView image_3;
+    private ImageView avatar_3;
 
     @FXML
-    private ImageView image_4;
+    private ImageView avatar_4;
 
     @FXML
-    private ImageView image_5;
+    private ImageView avatar_5;
 
     @FXML
-    private ImageView image_6;
+    private ImageView avatar_6;
 
     @FXML
-    private ImageView image_7;
+    private ImageView avatar_7;
 
     @FXML
-    private ImageView image_8;
+    private ImageView avatar_8;
 
     @FXML
     private Text txt;
@@ -46,7 +45,7 @@ public class AvatarSelectController {
 
     @FXML
     void initialize() {
-        pictures = new ArrayList<>(Arrays.asList(image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8));
+        pictures = new ArrayList<>(Arrays.asList(avatar_1, avatar_2, avatar_3, avatar_4, avatar_5, avatar_6, avatar_7, avatar_8));
         txt.setText("Player 1 Your turn:");
     }
     @FXML
@@ -56,10 +55,8 @@ public class AvatarSelectController {
         for (ImageView image : pictures) {
             if (image.equals(clickedImage)) {
                 image.setEffect(selectGlow);
-                AvatarSelectHandler.getInstance().handleSetAvatar(image.getId());
-                int numberOfPlayers = GameEngine.getInstance().getPlayerList().size();
-                System.out.println("Current player: " + currentPlayer);
-                System.out.println("Number of players: " + numberOfPlayers);
+                AvatarSelectHandler.getInstance().handleSetAvatar(image.getId(),currentPlayer);
+                int numberOfPlayers = GameEngine.getInstance().getCurrentGameMode().getNumberOfPlayers();
                 if (currentPlayer < numberOfPlayers) {
                     currentPlayer++;
                     resetSelectionUI(image);
@@ -70,7 +67,6 @@ public class AvatarSelectController {
                     SceneLoader.getInstance().loadBoard();
                 }
 
-               // p = !p; // Toggle player turn
             } else {
                 image.setEffect(null); // Remove glow from other images
             }
@@ -88,9 +84,16 @@ public class AvatarSelectController {
 
     @FXML
     void glow(MouseEvent event) {
-
-
+        ImageView clickedImage = (ImageView) event.getSource();
+        Glow selectGlow = new Glow(1.4f);
+        clickedImage.setEffect(selectGlow);
 
     }
+
+    @FXML void unglow(MouseEvent event) {
+        ImageView clickedImage = (ImageView) event.getSource();
+        clickedImage.setEffect(null);
+    }
+
 
 }
