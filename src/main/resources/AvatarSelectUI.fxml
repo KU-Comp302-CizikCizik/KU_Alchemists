@@ -54,9 +54,9 @@
             <Image url="@com.KUAlchemists/images/profile_p/avatar_2.png" />
          </image>
       </ImageView>
-      <Text fx:id="txt" fill="WHITE" layoutX="305.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="2.0" stroke="BLACK" wrappingWidth="468.744140625">
+      <Text fx:id="txt" fill="WHITE" layoutX="250.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="2.0" stroke="BLACK">
          <font>
-            <Font name="Colonna MT" size="64.0" />
+            <Font name="Colonna MT" size="48.0" />
          </font>
       </Text>
       <Button fx:id="startGameButton" text="Start Game" onAction="#loadBoard" disable="true" layoutX="436.5" layoutY="660.0" prefWidth="227.0" prefHeight="53.0" style="-fx-background-color: #0073e6; -fx-text-fill: white; -fx-font-size: 20px; -fx-background-radius: 15px; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 15px;" />

@@ -55,7 +55,7 @@ public class AvatarSelectController {
         for (ImageView image : pictures) {
             image.setUserData(false); // Initially, no image is selected
         }
-        txt.setText("Player 1 Your turn:");
+        txt.setText("Player 1 Your turn!");
     }
 
     @FXML
@@ -63,6 +63,8 @@ public class AvatarSelectController {
         ImageView clickedImage = (ImageView) event.getSource();
         // Check if this image is already selected
         if ((Boolean) clickedImage.getUserData()) {
+            // display error message
+            txt.setText("This avatar is already selected!");
             return; // Ignore click if the image is already selected
         }
         Glow selectGlow = new Glow(1.7f);
@@ -79,10 +81,10 @@ public class AvatarSelectController {
         if (currentPlayer < numberOfPlayers) {
             currentPlayer++;
             resetSelectionUI();
-            txt.setText("Player " + currentPlayer + " Your turn:");
+            txt.setText("Player " + currentPlayer + " Your turn!");
         } else {
-            System.out.println("All players have selected");
             // All players have selected, proceed to the main game
+            txt.setText("You can start the game now!");
             startGameButton.setDisable(false); // Enable the Start Game button
 
        }
