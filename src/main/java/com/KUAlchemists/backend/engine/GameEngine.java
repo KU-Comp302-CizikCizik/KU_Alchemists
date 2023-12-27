@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.Gamestate;
 import com.KUAlchemists.backend.managers.SceneManager;
 import com.KUAlchemists.backend.managers.StateManager;
@@ -26,6 +27,8 @@ public class GameEngine {
     // current player index
     private int currentPlayerIndex = 0;
 
+    private GameMode currentGameMode;
+
 
     /**
      * Constructor for GameEngine
@@ -46,6 +49,14 @@ public class GameEngine {
         return INSTANCE;
     }
 
+    /**
+     * Initialize the game
+     */
+    public void initializeGame(GameMode gameMode) {
+        this.currentGameMode = gameMode;
+        GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
+        System.out.println("Game Initialized");
+    }
 
     /**
      * Add a player to the player list
@@ -162,6 +173,11 @@ public class GameEngine {
             return;
         }
         currentRound = GameRound.getNextRound(currentRound);
+    }
+
+
+    public GameMode getCurrentGameMode() {
+        return currentGameMode;
     }
 
 }

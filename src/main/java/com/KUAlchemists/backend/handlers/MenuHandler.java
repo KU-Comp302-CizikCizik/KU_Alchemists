@@ -33,7 +33,5 @@ public class MenuHandler {
 
     public void startGame() {
         menuService.startGame();
-        SceneLoader.getInstance().loadBoard();
-        StateManager.getInstance().updateGameState(Gamestate.BOARD);
     }
 }

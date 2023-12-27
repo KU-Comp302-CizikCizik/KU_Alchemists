@@ -27,6 +27,8 @@ public class Player implements Subject {
 
     private String name;
     private List<PlayerObserver> observers;
+
+    private String avatar; // this is the avatar of the player that will be displayed on the board
     public Player(){
         this("");
     }
@@ -164,5 +166,13 @@ public class Player implements Subject {
             ((PlayerObserver) observer).onPlayerNameChanged(name);
         }
 
+    }
+
+    public void setAvatar(String avatar){
+        this.avatar = avatar;
+    }
+
+    public String getAvatar(){
+        return avatar;
     }
 }
