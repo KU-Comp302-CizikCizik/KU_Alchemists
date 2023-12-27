@@ -31,7 +31,7 @@ public class HelpScreenService {
             String line;
             // read the txt file line by line
             while ((line = reader.readLine()) != null) {
-                helpContent += line;
+                helpContent += "\n"+line;
             }
         } catch (IOException e) {
             e.printStackTrace();
