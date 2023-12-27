@@ -1,15 +1,13 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.PublicationTrackHandler;
 import com.KUAlchemists.backend.services.PublicationTrackService;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
-import com.KUAlchemists.backend.handlers.PublicationTrackHandler;
-
-import java.util.List;
 
 public class PublicationTrackController {
     private  PublicationTrackService publicationService;
-    private PublicationTrackHandler publicationhandler;
+    private PublicationTrackHandler publicationhandler = PublicationTrackHandler.getInstance();
 
     @FXML
     private VBox v_box_1;
