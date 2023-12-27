@@ -3,7 +3,9 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.AvatarSelectHandler;
 import com.KUAlchemists.ui.SceneLoader;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -39,45 +41,56 @@ public class AvatarSelectController {
 
     @FXML
     private Text txt;
-    private ArrayList<ImageView> pictures;
+    @FXML
+    private Button startGameButton;
 
+
+    private ArrayList<ImageView> pictures;
+    private ArrayList<ImageView> selectedImages = new ArrayList<>(); // List of selected images
     private int currentPlayer = 1; // Player 1 is the first player to select avatar
 
     @FXML
     void initialize() {
         pictures = new ArrayList<>(Arrays.asList(avatar_1, avatar_2, avatar_3, avatar_4, avatar_5, avatar_6, avatar_7, avatar_8));
+        for (ImageView image : pictures) {
+            image.setUserData(false); // Initially, no image is selected
+        }
         txt.setText("Player 1 Your turn:");
     }
+
     @FXML
     void clicked(MouseEvent event) {
         ImageView clickedImage = (ImageView) event.getSource();
-        Glow selectGlow = new Glow(1.7f);
-        for (ImageView image : pictures) {
-            if (image.equals(clickedImage)) {
-                image.setEffect(selectGlow);
-                AvatarSelectHandler.getInstance().handleSetAvatar(image.getId(),currentPlayer);
-                int numberOfPlayers = GameEngine.getInstance().getCurrentGameMode().getNumberOfPlayers();
-                if (currentPlayer < numberOfPlayers) {
-                    currentPlayer++;
-                    resetSelectionUI(image);
-                    txt.setText("Player " + currentPlayer + " Your turn:");
-                } else {
-                    System.out.println("All players have selected");
-                    // All players have selected, proceed to the main game
-                    SceneLoader.getInstance().loadBoard();
-                }
-
-            } else {
-                image.setEffect(null); // Remove glow from other images
-            }
+        // Check if this image is already selected
+        if ((Boolean) clickedImage.getUserData()) {
+            return; // Ignore click if the image is already selected
         }
+        Glow selectGlow = new Glow(1.7f);
+
+        clickedImage.setEffect(selectGlow);
+        clickedImage.setUserData(true); // Mark this image as selected
+        selectedImages.add(clickedImage); // Add to the list of selected images
+        AvatarSelectHandler.getInstance().handleSetAvatar(clickedImage.getId(),currentPlayer-1); // for indexing -1
+        int numberOfPlayers = GameEngine.getInstance().getCurrentGameMode().getNumberOfPlayers();
+
+
+        if (currentPlayer < numberOfPlayers) {
+            currentPlayer++;
+            resetSelectionUI();
+            txt.setText("Player " + currentPlayer + " Your turn:");
+        } else {
+            System.out.println("All players have selected");
+            // All players have selected, proceed to the main game
+            startGameButton.setDisable(false); // Enable the Start Game button
+
+       }
     }
 
-
-    private void resetSelectionUI(ImageView selectedImage){
+    private void resetSelectionUI() {
         for (ImageView image : pictures) {
-            if (!image.equals(selectedImage)) {
-                image.setEffect(null); // Remove glow from all images except the selected one
+            // Only reset images that are not in the selectedImages list
+            if (!selectedImages.contains(image)) {
+                image.setEffect(null);
             }
         }
     }
@@ -88,6 +101,13 @@ public class AvatarSelectController {
         Glow selectGlow = new Glow(1.4f);
         clickedImage.setEffect(selectGlow);
 
+        // Your implementation for glow effect on hover (if needed)
+    }
+
+    @FXML
+    void loadBoard(ActionEvent event) {
+        // Logic to load the game board
+        SceneLoader.getInstance().loadBoard();
     }
 
     @FXML void unglow(MouseEvent event) {
