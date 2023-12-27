@@ -59,7 +59,6 @@
             <Font name="Colonna MT" size="64.0" />
          </font>
       </Text>
-      <Button fx:id="startGameButton" text="Start Game" onAction="#loadBoard" disable="true" />
-
+      <Button fx:id="startGameButton" text="Start Game" onAction="#loadBoard" disable="true" layoutX="436.5" layoutY="660.0" prefWidth="200.0" prefHeight="50.0" style="-fx-background-color: #0073e6; -fx-text-fill: white; -fx-font-size: 20px; -fx-background-radius: 15px; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 15px;" />
    </children>
 </AnchorPane>
