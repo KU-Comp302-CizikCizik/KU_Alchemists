@@ -1,5 +1,8 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.handlers.AvatarSelectHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
@@ -7,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AvatarSelectController {
     private boolean p=false;
@@ -37,30 +41,48 @@ public class AvatarSelectController {
     @FXML
     private Text txt;
     private ArrayList<ImageView> pictures;
+
+    private int currentPlayer = 1; // Player 1 is the first player to select avatar
+
+    @FXML
+    void initialize() {
+        pictures = new ArrayList<>(Arrays.asList(image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8));
+        txt.setText("Player 1 Your turn:");
+    }
     @FXML
     void clicked(MouseEvent event) {
-        pictures = new ArrayList<ImageView>();
-        pictures.add(image_1);pictures.add(image_2);pictures.add(image_3);pictures.add(image_4);pictures.add(image_5);pictures.add(image_6);pictures.add(image_7);pictures.add(image_8);
-        String ima=event.toString().substring( event.toString().indexOf("image"), event.toString().indexOf("id=")+10);
-        System.out.print(ima+"\n");
-        for (int i = 0; i < 8; i++) {
-
-            if(pictures.get(i).getId().equals(ima)){
-                Glow selectGlow = new Glow(1.7f);
-                pictures.get(i).setEffect(selectGlow);
-                //backende gidicekn bilgi
-                //Aga burda resmi alıp backendde tutması lazım. Sonra ana oyun board'ında bu resimler, sergileyecek
-                System.out.print("geldi");
-                System.out.print(pictures.get(i).getImage());
-                if(p){
-                    txt.setText("Player 2 Your turn:");
-
-                }
-                else{
-                    //ana oyuna geçer
+        ImageView clickedImage = (ImageView) event.getSource();
+        Glow selectGlow = new Glow(1.7f);
+        for (ImageView image : pictures) {
+            if (image.equals(clickedImage)) {
+                image.setEffect(selectGlow);
+                AvatarSelectHandler.getInstance().handleSetAvatar(image.getId());
+                int numberOfPlayers = GameEngine.getInstance().getPlayerList().size();
+                System.out.println("Current player: " + currentPlayer);
+                System.out.println("Number of players: " + numberOfPlayers);
+                if (currentPlayer < numberOfPlayers) {
+                    currentPlayer++;
+                    resetSelectionUI(image);
+                    txt.setText("Player " + currentPlayer + " Your turn:");
+                } else {
+                    System.out.println("All players have selected");
+                    // All players have selected, proceed to the main game
+                    SceneLoader.getInstance().loadBoard();
                 }
 
+               // p = !p; // Toggle player turn
+            } else {
+                image.setEffect(null); // Remove glow from other images
+            }
+        }
     }
+
+
+    private void resetSelectionUI(ImageView selectedImage){
+        for (ImageView image : pictures) {
+            if (!image.equals(selectedImage)) {
+                image.setEffect(null); // Remove glow from all images except the selected one
+            }
         }
     }
 
