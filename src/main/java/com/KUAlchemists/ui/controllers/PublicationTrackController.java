@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 
 public class PublicationTrackController {
     private  PublicationTrackService publicationService;
-    private PublicationTrackHandler publicationhandler = PublicationTrackHandler.getInstance();
+    private final PublicationTrackHandler publicationhandler = PublicationTrackHandler.getInstance();
 
     @FXML
     private VBox v_box_1;
@@ -18,8 +18,8 @@ public class PublicationTrackController {
     private void initialize() {
 
 
-     /*   String info= publicationhandler.handleGetPublishedTheoriesInfo();
-        System.out.println(info);*/
+        String info= publicationhandler.handleGetAllPublishedTheoriesInfo();
+        System.out.println(info);
     }
 
 

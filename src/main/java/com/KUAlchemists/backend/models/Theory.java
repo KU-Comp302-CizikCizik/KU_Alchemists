@@ -87,7 +87,7 @@ public class Theory {
 
     // Setter for the theory ID
     public void setId(String id) {
-        this.theoryID = theoryID;
+        this.theoryID = id;
     }
 
 

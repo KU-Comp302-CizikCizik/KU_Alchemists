@@ -27,7 +27,8 @@ public class PublishTheoryService {
         Aspect blueAspect = Aspect.fromString(predictedBlueAspectString);
         Alchemical predictedAlchemical = new Alchemical(redAspect, greenAspect, blueAspect);
 
-        Ingredient ingredient = Board.getInstance().getIngredientStorage(player).getIngredient(ingredientName);
+        //Ingredient ingredient = Board.getInstance().getIngredientStorage(player).getIngredient(ingredientName);
+        Ingredient ingredient = new Ingredient(ingredientName);
 
         Theory theory = new Theory(ingredient, predictedAlchemical); // ingredient ve predicted alchemical aynıysa tekrar oluşturmaya izin verme.
 
@@ -37,6 +38,10 @@ public class PublishTheoryService {
             player.setReputation(player.getReputation() + 1);
             player.getPublishedTheories().add(theory);
             Board.getInstance().getPublishedTheoriesList().add(theory);
+
+
+            System.out.println(theory.getIngredient().getName());
+
             return true;
         }
         return false;
