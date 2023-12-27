@@ -37,8 +37,9 @@ public class PublishTheoryHandler {
                 predictedRedAspectString,
                 predictedGreenAspectString,
                 predictedBlueAspectString);
+
         if (success) {
-            return "Theory published successfully!";
+            return selectedIngredientName + " " + predictedRedAspectString + predictedGreenAspectString+ predictedBlueAspectString ;
         } else {
             return "Failed to publish theory.";
         }

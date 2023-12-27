@@ -1,14 +1,16 @@
 package com.KUAlchemists.ui.controllers;
+
+import com.KUAlchemists.backend.handlers.PublishTheoryHandler;
 import com.KUAlchemists.ui.SceneLoader;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 public class IngredientCard_PublishController {
     @FXML
-
-    public static String ingredient;
+    // Bunu static'ten çıkardım
+    public String ingredient;
     @FXML
     private Button bttn;
 
@@ -29,16 +31,17 @@ public class IngredientCard_PublishController {
             ing_image.setImage(image);
             System.out.println("başardı");
         } catch (Exception e) {
-            System.out.println("başaraöado");
+            System.out.println("başaramadı");
             System.err.println(e.getMessage());
         }
     }
     @FXML
     public void selected(ActionEvent event) {
         System.out.println(ingredient);
+
+        //Aşkım buraya şunu koyuyorum bana lazım olacak.
+        PublishTheoryHandler.getInstance().setSelectedIngredientName(ingredient);
+
         SceneLoader.getInstance().loadPublishAlchemyPart();
-
-
-
     }
 }
