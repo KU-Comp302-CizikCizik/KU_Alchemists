@@ -2,12 +2,17 @@ package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.services.PublishTheoryService;
 
+import java.util.List;
+
 public class PublishTheoryHandler {
     private final PublishTheoryService publishTheoryService;
-
     private static PublishTheoryHandler INSTANCE;
-
     private String selectedIngredientName;
+    private String predictedRedAspectString;  // New: Predicted red aspect
+    private String predictedGreenAspectString;  // New: Predicted green aspect
+    private String predictedBlueAspectString;  // New: Predicted blue aspect
+    private List<String> selectedTheorySeals;
+
 
     public PublishTheoryHandler() {
         this.publishTheoryService = new PublishTheoryService();
@@ -27,16 +32,33 @@ public class PublishTheoryHandler {
         return selectedIngredientName;
     }
 
+    // New Setter for predicted red aspect
+    public void setPredictedRedAspectString(String predictedRedAspectString) {
+        this.predictedRedAspectString = predictedRedAspectString;
+    }
 
-    public String handlePublishTheoryRequest(
-                                             String predictedRedAspectString,
-                                             String predictedGreenAspectString,
-                                             String predictedBlueAspectString) {
+    // New Setter for predicted green aspect
+    public void setPredictedGreenAspectString(String predictedGreenAspectString) {
+        this.predictedGreenAspectString = predictedGreenAspectString;
+    }
+
+    // New Setter for predicted blue aspect
+    public void setPredictedBlueAspectString(String predictedBlueAspectString) {
+        this.predictedBlueAspectString = predictedBlueAspectString;
+    }
+    // New Setter for selectedTheorySeals represented as strings
+    public void setSelectedTheorySeals(List<String> selectedTheorySeals) {
+        this.selectedTheorySeals = selectedTheorySeals;
+    }
+
+
+    public String handlePublishTheoryRequest() {
         boolean success = publishTheoryService.publishTheory(
                 selectedIngredientName,
                 predictedRedAspectString,
                 predictedGreenAspectString,
-                predictedBlueAspectString);
+                predictedBlueAspectString,
+                selectedTheorySeals);
 
         if (success) {
             return selectedIngredientName + " " + predictedRedAspectString + predictedGreenAspectString+ predictedBlueAspectString ;

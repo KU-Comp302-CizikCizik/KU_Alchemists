@@ -5,9 +5,7 @@ import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class PublishTheoryService {
@@ -27,7 +25,8 @@ public class PublishTheoryService {
     public boolean publishTheory(String ingredientName,
                                  String predictedRedAspectString,
                                  String predictedGreenAspectString,
-                                 String predictedBlueAspectString) {
+                                 String predictedBlueAspectString,
+                                 List<String> theorySeals) {
         Player player = GameEngine.getInstance().getCurrentPlayer();
         Aspect redAspect = Aspect.fromString(predictedRedAspectString);
         Aspect greenAspect = Aspect.fromString(predictedGreenAspectString);
@@ -37,9 +36,18 @@ public class PublishTheoryService {
         //Ingredient ingredient = Board.getInstance().getIngredientStorage(player).getIngredient(ingredientName);
         Ingredient ingredient = new Ingredient(ingredientName);
 
-        Theory theory = new Theory(ingredient, predictedAlchemical); // ingredient ve predicted alchemical aynıysa tekrar oluşturmaya izin verme.
+        List<TheorySeal> seals = theorySeals.stream()
+                .map(TheorySeal::getSealByName) // Assuming you have a method to convert string to TheorySeal
+                .collect(Collectors.toList());
 
-        if (!theory.isPublished() && player.getGold() >= 1) {
+        Theory theory = new Theory(ingredient, predictedAlchemical, seals);
+
+
+        // This method checks if a theory with the same ingredient name already exists
+        boolean theoryExists = Board.getInstance().getPublishedTheoriesList().stream()
+                .anyMatch(existingTheory -> existingTheory.getIngredient().getName().equals(ingredientName));
+
+        if (!theoryExists && player.getGold() >= 1) {
             player.setGold(player.getGold() - 1);
             theory.setPublished(true);
             player.setReputation(player.getReputation() + 1);
@@ -54,56 +62,8 @@ public class PublishTheoryService {
         return false;
     }
 
-    /**
-     * This method retrieves the seals of the player.
-     *
-     * @return List of seal strings.
-     */
-    public ArrayList<String> getPlayerTheorySeals() {
-        ArrayList<String> theorySeals = GameEngine.getInstance().getCurrentPlayer().getTheorySeals()
-                .stream()
-                .map(TheorySeal::getSealString)
-                .collect(Collectors.toCollection(ArrayList::new));
-        // Remove duplicates
-        Set<String> set = new HashSet<>(theorySeals);
-        return new ArrayList<>(set);
-    }
 
-    /**
-     * This method retrieves the seals of the endorsed theory.
-     *
-     * @return List of seal strings.
-     */
-    public ArrayList<String> getEndorsedTheorySeals(Theory theory) {
-        ArrayList<String> playerSeals = theory.getEndorsers()
-                .stream()
-                .map(player -> player.getPlayerSeal().getSealString())
-                .collect(Collectors.toCollection(ArrayList::new));
-
-        return playerSeals;
-    }
-    /**
-     * This method saves the endorsed seal for the theory.
-     *
-     * @param sealName The name of the seal to be saved.
-     */
-    public void saveEndorsedSeal(Theory theory, String sealName) {
-        // The format SealGS SealSS SealRQ SealBQ SealGQ
-        TheorySeal seal = TheorySeal.getSealByName(sealName);
-        GameEngine.getInstance().getCurrentPlayer().removeTheorySeal(seal);
-        theory.addEndorser(GameEngine.getInstance().getCurrentPlayer());
-        Board.getInstance().updateTheTheory(theory);
-    }
-
-    /**
-     * This method retrieves the theory name.
-     *
-     * @return The name of the theory.
-     */
-    public String getTheoryName(Theory theory) {
-        return theory.getIngredient().getName().toLowerCase();
-    }
-
+    // Burası daha kullanıma hazır değil
     /**
      * This method retrieves the player's seal.
      *
