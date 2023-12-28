@@ -1,6 +1,5 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.handlers.PublishTheoryHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -107,22 +106,22 @@ public class PublishTheoryAlchemySelectController {
         String green = dict.get(id).get(0).toString();
         String blue = dict.get(id).get(2).toString();
 
-
-        // Get the existing instance of PublishTheoryHandler
-        PublishTheoryHandler pbt = PublishTheoryHandler.getInstance();
-
-        // Call the handlePublishTheoryRequest method
-        String result = pbt.handlePublishTheoryRequest(red, green, blue);
-
-        // Handle the result accordingly
-        if ("Failed to publish theory.".equals(result)) {
-            // Handle failure
-            System.out.println(result);
-        } else {
-            // Handle success
-            System.out.println("Theory published successfully for ingredient: " + result);
-
-        }
+            //Arda endorse eklendiği için bu kısıma bir el atılması gerekecek. Konuşuruz.
+//        // Get the existing instance of PublishTheoryHandler
+//        PublishTheoryHandler pbt = PublishTheoryHandler.getInstance();
+//
+//        // Call the handlePublishTheoryRequest method
+//        String result = pbt.handlePublishTheoryRequest(red, green, blue);
+//
+//        // Handle the result accordingly
+//        if ("Failed to publish theory.".equals(result)) {
+//            // Handle failure
+//            System.out.println(result);
+//        } else {
+//            // Handle success
+//            System.out.println("Theory published successfully for ingredient: " + result);
+//
+//        }
     }
 
 }

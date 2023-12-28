@@ -1,5 +1,8 @@
 package com.KUAlchemists.backend.models;
 
+import com.KUAlchemists.backend.enums.PlayerSeal;
+import com.KUAlchemists.backend.enums.TheorySeal;
+
 import java.util.List;
 
 public class Theory {
@@ -9,8 +12,9 @@ public class Theory {
     private boolean isDebunked; // Indicates if the theory has been debunked.
     private int reputationAward; // The reputation points awarded for publishing this theory
     private List<Player> endorsers; // List of players who have endorsed this theory
-
     private String theoryID; // UI connection
+    private List<TheorySeal> theorySeals;  // New: Theory seals associated with the theory
+    private PlayerSeal playerSeal;        // New: Player seal indicating the endorsing player
 
     // Constructor
     public Theory(Ingredient ingredient, Alchemical predictedAlchemical) { // ingredient stringden oluşması gerekiyor alchemy içinde ıynı bok geçerli.
@@ -19,6 +23,15 @@ public class Theory {
         this.isPublished = false;
         this.isDebunked = false;
         //this.reputationAward = 0;
+    }
+    public Theory(Ingredient ingredient, Alchemical predictedAlchemical, List<TheorySeal> theorySeals) {
+        this.ingredient = ingredient;
+        this.predictedAlchemical = predictedAlchemical;
+        this.isPublished = false;
+        this.isDebunked = false;
+        this.theorySeals = theorySeals;
+
+        // Set other properties as needed
     }
     // Getters
     public Ingredient getIngredient() {
