@@ -5,6 +5,7 @@ import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
@@ -258,6 +259,8 @@ public class BoardController implements PlayerObserver {
           SceneLoader.getInstance().loadFinalScore();
         }else{
             changeRound();
+            // send data to server, or if the player is host send data to other clients.
+            NetworkHandler.getInstance().handleSendData();
         }
     }
     private void disableButtons(Button button) {

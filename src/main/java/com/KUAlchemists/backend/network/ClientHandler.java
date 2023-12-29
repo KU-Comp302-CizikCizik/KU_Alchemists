@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 
 public class ClientHandler implements Runnable {
     private Socket clientSocket;
@@ -24,10 +25,10 @@ public class ClientHandler implements Runnable {
     public void run() {
         try {
             while (clientSocket.isConnected()) {
-                Object message = inputStream.readObject();
-                System.out.println("Received message from client: " + message);
-                // Handle the message, e.g. broadcast to other clients, process commands, etc.
-                server.broadcast(message);
+                Object data = inputStream.readObject();
+                // Handle the message, broadcast to other clients
+                GameUpdateHandler.getInstance().handleUpdateGame((List<State>) data);
+                server.broadcast(data);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

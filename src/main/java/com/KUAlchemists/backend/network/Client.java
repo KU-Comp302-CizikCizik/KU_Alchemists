@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
+import com.KUAlchemists.backend.network.State;
 
 public class Client {
 
@@ -66,9 +67,7 @@ public class Client {
             try {
                 while (!socket.isClosed()) {
                     Object data = receive();
-                    if (data instanceof Player) {
-                        handleReceivedMessage((Player) data);
-                    }
+                    handleReceivedMessage((List<State>) data);
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
@@ -77,10 +76,8 @@ public class Client {
     }
 
     // Implement how you want to handle the received message
-    private void handleReceivedMessage(Player message) {
-        System.out.println("New message from server: " + message.getName());
+    private void handleReceivedMessage(List<State> states) {
         // Update game state, UI, etc., based on the received message
-
-
+        GameUpdateHandler.getInstance().handleUpdateGame(states);
     }
 }

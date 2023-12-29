@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
+import com.KUAlchemists.backend.network.PlayerState;
 import com.KUAlchemists.backend.observer.Observer;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.backend.subjects.Subject;
@@ -20,6 +21,8 @@ public class Player implements Subject, Serializable {
     private ArrayList<Theory> publishedTheories;
     private DeductionBoard deductionBoard;
     private int actionPoints;
+
+    private int id = 0;
 
     //To indicate its color on endorse UI, each player has only one, and it is randomly assigned
     private PlayerSeal seal;
@@ -47,6 +50,7 @@ public class Player implements Subject, Serializable {
         this.seal = PlayerSeal.getRandomSeal(); //random seal for indicating the player's color on endorsement
         this.theorySeals = TheorySeal.getSeals(); //default seals
         observers = new ArrayList<>();
+        this.id++;
 
     }
 
@@ -176,5 +180,17 @@ public class Player implements Subject, Serializable {
 
     public String getAvatar(){
         return avatar;
+    }
+
+    public PlayerState getState(){
+        return new PlayerState(id, gold);
+    }
+
+    public void updateState(PlayerState state){
+        setGold(state.getGold());
+    }
+
+    public int getId() {
+        return id;
     }
 }

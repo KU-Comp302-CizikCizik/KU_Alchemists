@@ -18,6 +18,7 @@ public class GameEngine {
     // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
 
+    private String userType;
     private GameRound currentRound;
     private GameTour currentTour;
 
@@ -180,4 +181,11 @@ public class GameEngine {
         return currentGameMode;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String type){
+        userType = type;
+    }
 }
