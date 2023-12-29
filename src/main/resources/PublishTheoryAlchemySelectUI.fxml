@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +18,7 @@
                   <Image url="@com.KUAlchemists/images/PublicationTrack/palch.png" />
                </image>
             </ImageView>
-            <Text fill="YELLOW" layoutX="124.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select an alchemy to make a theory" wrappingWidth="291.0">
+            <Text fx:id="txt" fill="YELLOW" layoutX="53.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select and alchemy and Seal" wrappingWidth="430.0">
                <font>
                   <Font name="Colonna MT" size="36.0" />
                </font>
@@ -60,6 +62,58 @@
                <image>
                   <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
                </image>
+            </ImageView>
+            <ImageView fx:id="SealRQ" fitHeight="82.0" fitWidth="78.0" layoutX="236.0" layoutY="342.0" onMouseClicked="#sealClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/Endorse/redSealRQ.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="SealBQ" fitHeight="82.0" fitWidth="78.0" layoutX="300.0" layoutY="342.0" onMouseClicked="#sealClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/Endorse/redSealBQ.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="SealSS" fitHeight="82.0" fitWidth="78.0" layoutX="170.0" layoutY="342.0" onMouseClicked="#sealClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/Endorse/redSealSS.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="SealGQ" fitHeight="83.0" fitWidth="78.0" layoutX="368.0" layoutY="342.0" onMouseClicked="#sealClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/Endorse/redSealGQ.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="SealGS" fitHeight="82.0" fitWidth="78.0" layoutX="104.0" layoutY="342.0" onMouseClicked="#sealClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/Endorse/redSealGS.png" />
+               </image>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
             </ImageView>
          </children>
       </AnchorPane>

@@ -1,52 +1,140 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.PublishTheoryHandler;
 import javafx.fxml.FXML;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.List;
+import javafx.scene.text.Text;
 public class PublishTheoryAlchemySelectController {
+    public String blue;
+    public String red;
+    public String green;
+    public String seal;
+
+    public boolean lock2=true;
+    public boolean lock=true;
+    @FXML
+    private ImageView SealBQ;
 
     @FXML
-    private ImageView blue_big_n;
+    private ImageView SealGQ;
 
     @FXML
-    private ImageView blue_big_p;
+    private ImageView SealGS;
+    @FXML
+    private Text txt;
 
     @FXML
-    private ImageView blue_small_n;
+    private ImageView SealRQ;
 
     @FXML
-    private ImageView blue_small_p;
+    private ImageView SealSS;
 
     @FXML
-    private ImageView green_big_n;
+    private ImageView alchemy_1;
 
     @FXML
-    private ImageView green_big_p;
+    private ImageView alchemy_2;
 
     @FXML
-    private ImageView green_small_n;
+    private ImageView alchemy_3;
 
     @FXML
-    private ImageView green_small_p;
+    private ImageView alchemy_4;
 
     @FXML
-    private ImageView red_big_n;
+    private ImageView alchemy_5;
 
     @FXML
-    private ImageView red_big_p;
+    private ImageView alchemy_6;
 
     @FXML
-    private ImageView red_small_n;
+    private ImageView alchemy_7;
 
     @FXML
-    private ImageView red_small_p;
+    private ImageView alchemy_8;
+    @FXML
+    void sealClicked(MouseEvent event) {
+        if(lock) {
+            String seal = event.toString().substring(34, event.toString().indexOf(","));
+
+            Glow selectGlow = new Glow(1.7f);
+            ImageView clickedImage = (ImageView) event.getSource();
+            clickedImage.setEffect(selectGlow);
+            lock=false;
+            List<String> seals= new ArrayList<>();
+            seals.add(seal.substring(seal.length() - 2));
+            this.seal=seal.substring(seal.length() - 2);
+            if(!lock2){
+               String ing= PublishTheoryHandler.getInstance().getSelectedIngredientName();
+
+                PublishTheoryHandler pbt = PublishTheoryHandler.getInstance();
+                pbt.setSelectedIngredientName(PublishTheoryHandler.getInstance().getSelectedIngredientName());
+               pbt.setSelectedTheorySeals(seals);
+               pbt.setPredictedRedAspectString(red);pbt.setPredictedGreenAspectString(green);pbt.setPredictedBlueAspectString(blue);
+
+
+
+//
+//        // Call the handlePublishTheoryRequest method
+       String result = pbt.handlePublishTheoryRequest();
+                System.out.println("geşldi");
+//        // Handle the result accordingly
+        if ("Failed to publish theory.".equals(result)) {
+//            // Handle failure
+           System.out.println(result);
+       } else {
+//            // Handle success
+           System.out.println("Theory published successfully for ingredient: " + result);
+            txt.setText("You succesfully published the theory");
+//
+       }
+
+            }
+        }
+        else {
+
+        }
+
+    }
+
+
+    @FXML void unglow(MouseEvent event) {
+        ImageView clickedImage = (ImageView) event.getSource();
+        clickedImage.setEffect(null);
+    }
+
+    @FXML
+    void glow(MouseEvent event) {
+        ImageView clickedImage = (ImageView) event.getSource();
+        Glow selectGlow = new Glow(1.4f);
+        clickedImage.setEffect(selectGlow);
+
+        // Your implementation for glow effect on hover (if needed)
+    }
 
     @FXML
     void alchemyClicked(MouseEvent event) {
+        ArrayList<ImageView> alchemies_photo = new ArrayList<ImageView>();
+        //alchemies_photo.add(alchemy_1); alchemies_photo.add(alchemy_2);alchemies_photo.add(alchemy_3);alchemies_photo.add(alchemy_4);alchemies_photo.add(alchemy_5);alchemies_photo.add(alchemy_6);alchemies_photo.add(alchemy_7);alchemies_photo.add(alchemy_8);
+        //String str= event.toString().substring(34, event.toString().indexOf(","));
+        //System.out.println(str.charAt(str.length() - 1)-49);
+
+       if(lock2){
+
+           ImageView clickedImage = (ImageView) event.getSource();
+           Glow selectGlow = new Glow(1.4f);
+           clickedImage.setEffect(selectGlow);
+
+           lock2=false;
+
+
         //order is green red blue
         ArrayList<String> alchemy_1 = new ArrayList<String>();
         alchemy_1.add("POSITIVE_BIG");
@@ -101,17 +189,55 @@ public class PublishTheoryAlchemySelectController {
 
 
         String id = event.toString().substring(34, event.toString().indexOf(","));
+        System.out.println(id);
         System.out.println(dict.get(id).get(1));
-        String red = dict.get(id).get(1).toString();
-        String green = dict.get(id).get(0).toString();
-        String blue = dict.get(id).get(2).toString();
+        PublishTheoryHandler.getInstance().setPredictedRedAspectString( dict.get(id).get(1).toString());
+        this.red=dict.get(id).get(0).toString();
 
-            //Arda endorse eklendiği için bu kısıma bir el atılması gerekecek. Konuşuruz.
-//        // Get the existing instance of PublishTheoryHandler
-//        PublishTheoryHandler pbt = PublishTheoryHandler.getInstance();
+        this.green=dict.get(id).get(1).toString();
+        this.blue=dict.get(id).get(2).toString();
+           PublishTheoryHandler.getInstance().setPredictedGreenAspectString( dict.get(id).get(0).toString());
+           PublishTheoryHandler.getInstance().setPredictedBlueAspectString( dict.get(id).get(2).toString());
+           if(!lock){
+               String ing= PublishTheoryHandler.getInstance().getSelectedIngredientName();
+               List<String> seals= new ArrayList<>();
+
+
+               seals.add(this.seal.substring(seal.length() - 2));
+               PublishTheoryHandler pbt = PublishTheoryHandler.getInstance();
+               pbt.setSelectedIngredientName(PublishTheoryHandler.getInstance().getSelectedIngredientName());
+               pbt.setSelectedTheorySeals(seals);
+               pbt.setPredictedRedAspectString(red);pbt.setPredictedGreenAspectString(green);pbt.setPredictedBlueAspectString(blue);
+
+
+
 //
 //        // Call the handlePublishTheoryRequest method
-//        String result = pbt.handlePublishTheoryRequest(red, green, blue);
+               String result = pbt.handlePublishTheoryRequest();
+
+//        // Handle the result accordingly
+               if ("Failed to publish theory.".equals(result)) {
+//            // Handle failure
+                   System.out.println(result);
+               } else {
+//            // Handle success
+                   txt.setText("You succesfully published the theory");
+
+                   System.out.println("Theory published successfully for ingredient: " + result);
+//
+               }
+
+           }
+       }
+       else{
+
+
+           //Arda endorse eklendiği için bu kısıma bir el atılması gerekecek. Konuşuruz.
+//        // Get the existing instance of PublishTheoryHandler
+ //      PublishTheoryHandler pbt = PublishTheoryHandler.getInstance();
+//
+//        // Call the handlePublishTheoryRequest method
+//      String result = pbt.handlePublishTheoryRequest(red, green, blue);
 //
 //        // Handle the result accordingly
 //        if ("Failed to publish theory.".equals(result)) {
@@ -122,6 +248,7 @@ public class PublishTheoryAlchemySelectController {
 //            System.out.println("Theory published successfully for ingredient: " + result);
 //
 //        }
+    }
     }
 
 }
