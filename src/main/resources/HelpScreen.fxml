@@ -17,11 +17,11 @@
         </ImageView>
       <ScrollPane layoutX="54.0" layoutY="47.0" opacity="0.81" prefHeight="350.0" prefWidth="356.0" style="-fx-background-color: #774342;" styleClass="transparent" stylesheets="@CSS/style.css" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="47.0">
          <content>
-            <TextFlow fx:id="text_flow" prefHeight="595.0" prefWidth="601.0" style="-fx-background-color: #261615;" styleClass="transparent" stylesheets="@CSS/style.css">
+            <TextFlow fx:id="text_flow" prefHeight="595.0" prefWidth="601.0" style="-fx-background-color: #261615;" styleClass="aprilla" stylesheets="@CSS/style.css">
                <children>
-                  <Text fx:id="text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caligruf" text="import javafx.scene.text.Text;import javafx.scene.text.Text;import javafx.scene.text.Text;import javafx.scene.text.Text;" wrappingWidth="347.689453125">
+                  <Text fx:id="text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sevillana" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." wrappingWidth="347.689453125">
                      <font>
-                        <Font size="26.0" />
+                        <Font size="22.0" />
                      </font></Text>
                </children>
             </TextFlow>

@@ -3,6 +3,11 @@
     src: url("caligruf-font/Caligruf-BWvDV.ttf");
 }
 
+@font-face {
+    -fx-font-family: "Sevillana";
+    src: url("Sevillana/Sevillana-Regular.ttf");
+}
+
 .transparent {
     -fx-background-color: rgba(0,0,0,0);
 }
@@ -85,5 +90,9 @@
 
 .caligruf {
     -fx-font-family: "Caligruf";
+}
+
+.sevillana {
+    -fx-font-family: "Sevillana";
 }
 
