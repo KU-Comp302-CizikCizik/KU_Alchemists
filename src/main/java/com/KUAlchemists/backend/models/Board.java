@@ -13,11 +13,11 @@ import java.util.List;
 public class Board {
 
     private static Board Instance;
-    private static final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
-    private static final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
-    private static final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
-    private static final List<Theory> publishedTheoriesList = new ArrayList<>();
-    private static final Deck deck = Deck.getInstance();
+    private final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
+    private final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
+    private final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
+    private final List<Theory> publishedTheoriesList = new ArrayList<>();
+    private final Deck deck = Deck.getInstance();
 
     private Board (){
         // create empty storages for players
@@ -52,11 +52,11 @@ public class Board {
         return ingredientStorages;
     }
 
-    public static ArtifactStorage getArtifactStorage(Player player){
+    public ArtifactStorage getArtifactStorage(Player player){
         return artifactStorages.get(player);
     }
 
-    public static void initializePlayer(Player player) {
+    public void initializePlayer(Player player) {
         artifactStorages.put(player, new ArtifactStorage());
     }
 
@@ -76,8 +76,23 @@ public class Board {
         potionStorages.get(player).addPotion(potion);
     }
 
-    public static List<Theory> getPublishedTheoriesList() {
+    public List<Theory> getPublishedTheoriesList() {
         return publishedTheoriesList;
+    }
+
+    public void addTheoryToPublishedList(Theory theory){
+        publishedTheoriesList.add(theory);
+    }
+
+    public void updateTheTheory(Theory selectedTheory) {
+        //There is only one theory for each ingredient
+        for(int i =0;i <publishedTheoriesList.size(); i++){
+            Theory theory = publishedTheoriesList.get(i);
+            if(theory.getIngredient().getName() == selectedTheory.getIngredient().getName()){
+                publishedTheoriesList.set(i,selectedTheory); //update the theory
+                return;
+            }
+        }
     }
 }
 

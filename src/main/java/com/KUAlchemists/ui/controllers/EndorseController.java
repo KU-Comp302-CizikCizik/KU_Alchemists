@@ -1,6 +1,5 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.EndorseHandler;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
@@ -60,8 +59,8 @@ public class EndorseController {
 
     @FXML
     private void initialize() {
-        currentSeals = EndorseHandler.getInstance().getSeals();
-        endorsedSeals = EndorseHandler.getInstance().getEndorsedSeals();
+        currentSeals = EndorseHandler.getInstance().getPlayerTheorySeals();
+        endorsedSeals = EndorseHandler.getInstance().getEndorsedTheorySeals();
         String theory = EndorseHandler.getInstance().getTheory();
 
         setTheoryImage(theory);
@@ -69,16 +68,8 @@ public class EndorseController {
         sealSlots.add(seal2);
         sealSlots.add(seal1);
 
-        int player = GameEngine.getInstance().getCurrentPlayerIndex();
-        if (player == 0) {
-            setSeals("red");
-        } else if (player == 1) {
-            setSeals("blue");
-        } else if (player == 2) {
-            setSeals("green");
-        } else if (player == 3) {
-            setSeals("yellow");
-        }
+        String playerSeal = EndorseHandler.getInstance().getPlayerSeal();
+        setSeals(playerSeal);
         disactiveNotOwnedSeals();
         setEndorsedSeals();
     }
@@ -170,7 +161,7 @@ public class EndorseController {
         if(endorsedSeals.size()<3){
             sealSlots.pop().setImage(selectedSeal.getImage());
             try {
-                EndorseHandler.getInstance().saveEndorsedSeal(getClass().getDeclaredField(selectedSeal.getId()).getName());
+                EndorseHandler.getInstance().saveEndorsedSeal(getClass().getDeclaredField(selectedSeal.getId()).getName().split("Seal")[1]);
             } catch (NoSuchFieldException e) {
                 throw new RuntimeException(e);
             }

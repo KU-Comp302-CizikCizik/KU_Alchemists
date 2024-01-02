@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.engine;
 
 import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.GameRound;
+import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.exceptions.GameInitializationException;
 import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
@@ -17,10 +18,13 @@ public class GameInitializer {
 
     private static boolean isGameInitialized = false;
     private GameRound gameRound;
+    private int numberOfPlayers;
 
-    public GameInitializer() {
+    public GameInitializer(int numberOfPlayers) {
         if (!isGameInitialized) {
             isGameInitialized = true;
+            this.numberOfPlayers = numberOfPlayers;
+
             initGame();
         }
         else{
@@ -43,15 +47,16 @@ public class GameInitializer {
 
     private void initEventObservers() {
         EventManager.getInstance().registerPotionBrewingObserver(DeductionBoardHandler.getInstance());
+
     }
 
 
     private void initGameObjects() {
-        Player player1 = new Player();
-        Player player2 = new Player();
-        GameEngine.getInstance().addPlayer(player1);
-        GameEngine.getInstance().addPlayer(player2);
-        GameEngine.getInstance().setCurrentPlayer(player1);
+        for (int i = 0; i < numberOfPlayers; i++) {
+            Player player = new Player();
+            GameEngine.getInstance().addPlayer(player);
+        }
+        GameEngine.getInstance().setCurrentPlayer(GameEngine.getInstance().getPlayerList().get(0));
     }
 
     private void initPlayerAssets() {
