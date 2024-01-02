@@ -29,6 +29,7 @@ public class PublicationTrackController {
         String player_info=publicationhandler.handleGetPlayerPublishedTheoriesInfo();
         System.out.println(info);
         String[] lines=info.split("\n");
+        String[] lines2=player_info.split("\n");
         System.out.println(lines.length);
         try{
 
@@ -54,6 +55,37 @@ public class PublicationTrackController {
             GridPane.setMargin(cardBox, new Insets(1,1,1,1));
         }
     }
+        catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        try{
+
+            column = 0;
+            row = 0;
+
+            for(int i = 0; i <lines2.length; i++) {
+
+                String[] everything=lines2[i].split(" ");
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("TheoryCardUI.fxml"));
+
+                VBox cardBox = fxmlLoader.load();
+
+                TheoryCardController controller = fxmlLoader.getController();
+                controller.setAlchemy(everything[1],everything[2],everything[3]);
+                controller.setIngredient(everything[0]);
+
+                if (column == 4) {
+                    column = 0;
+                    row++;
+                }
+
+                player_box.add(cardBox, column++, row);
+
+                GridPane.setMargin(cardBox, new Insets(1,1,1,1));
+            }
+        }
         catch (Exception e) {
             System.err.println(e.getMessage());
         }
