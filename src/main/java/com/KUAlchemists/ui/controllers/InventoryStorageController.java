@@ -50,7 +50,5 @@ public class InventoryStorageController {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-
-
     }
 }

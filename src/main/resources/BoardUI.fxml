@@ -1,214 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #8E8B9C;" styleClass="BoardPane" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BoardController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #8E8B9C;" styleClass="BoardPane" stylesheets="@CSS/BoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BoardController">
    <children>
-      <BorderPane layoutX="-14.0" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <AnchorPane prefHeight="129.0" prefWidth="1082.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fx:id="nextAvatarImage" fitHeight="150.0" fitWidth="200.0" layoutX="440.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="440.0" AnchorPane.topAnchor="10.0">
-                     <image>
-                        <Image url="@com.KUAlchemists/images/red-alchemist.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-                  <Button fx:id="pauseButton" layoutX="880.0" layoutY="14.0" mnemonicParsing="false" onAction="#pausePopUp" prefHeight="57.0" prefWidth="185.0" style="-fx-background-color: ecd0b0;" text="Pause" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
-                     <font>
-                        <Font name="Book Antiqua" size="18.0" />
-                     </font></Button>
-                  <Button fx:id="helpButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#helpPopUp" prefHeight="57.0" prefWidth="185.0" style="-fx-background-color: ecd0b0;" text="Help" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
-                     <font>
-                        <Font name="Book Antiqua" size="18.0" />
-                     </font></Button>
-                  <Text fx:id="tourTitle" layoutX="304.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caligruf" text="Tour 1">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="roundTitle" layoutX="694.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caligruf" text="Round 1">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-         </top>
-         <left>
-            <VBox maxHeight="200.0" prefHeight="200.0" prefWidth="300.0" stylesheets="@CSS/style.css" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField editable="false" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" stylesheets="@CSS/style.css" text="Avatar 2">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Gold:">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="alchemist2GoldTextField" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Reputation">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="alchemist2ReputationTextField" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="Action Point">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="alchemist2ActionPointTextField" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="redATextField" text="9999">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-               </children>
-               <BorderPane.margin>
-                  <Insets left="10.0" />
-               </BorderPane.margin>
-            </VBox>
-         </left>
-         <right>
-            <VBox maxHeight="200.0" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" text="Avatar 1">
-                     <font>
-                        <Font name="Book Antiqua" size="48.0" />
-                     </font>
-                  </TextField>
-                  <TextField alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Gold:">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="alchemist1GoldTextField" alignment="CENTER_RIGHT" maxHeight="200.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Reputation">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="alchemist1ReputationTextField" alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="89.0" prefWidth="300.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="Action Points">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="alchemist1ActionPointTextField" alignment="CENTER_RIGHT" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="blueATextField" stylesheets="@CSS/style.css" text="9999">
-                     <font>
-                        <Font name="Book Antiqua" size="24.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
-         </right>
-         <bottom>
-            <AnchorPane prefHeight="158.0" prefWidth="1081.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="deductionBoardButton" mnemonicParsing="false" onAction="#deductionBoardPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0;" text="Deduction Board" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="340.0">
-                     <font>
-                        <Font name="Book Antiqua" size="10.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="publicationTrackButton" mnemonicParsing="false" onAction="#publicationTrackPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0;" text="Publication Track" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="230.0">
-                     <font>
-                        <Font name="Book Antiqua" size="10.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="publishTheoryButton" mnemonicParsing="false" onAction="#publishTheoryPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: #ecd0b0; -fx-opacity: 0.5;" text="Publish Theory" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0">
-                     <font>
-                        <Font name="Book Antiqua" size="10.0" />
-                     </font>
-                  </Button>
-                  <ImageView fx:id="currentAvatarImage" fitHeight="150.0" fitWidth="200.0" layoutX="440.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="440.0">
-                     <image>
-                        <Image url="@com.KUAlchemists/images/blue-alchemist.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="debunkButton" mnemonicParsing="false" onAction="#debunkPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0; -fx-opacity: 0.5;" text="Debunk" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="340.0">
-                     <font>
-                        <Font name="Book Antiqua" size="10.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="potionBrewingButton" mnemonicParsing="false" onAction="#potionBrewingPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0;" text="Potion Brewing" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="230.0">
-                     <font>
-                        <Font name="Book Antiqua" size="10.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="sellPotionButton" layoutX="905.0" layoutY="60.0" mnemonicParsing="false" onAction="#sellPotionPopUp" prefHeight="57.0" prefWidth="100.0" style="-fx-background-color: ecd0b0; -fx-opacity: 0.5;" text="Sell Potion" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="120.0">
-                     <font>
-                        <Font name="Book Antiqua" size="10.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="endRoundButton" layoutX="999.0" layoutY="121.0" mnemonicParsing="false" onAction="#endTheRound" prefHeight="49.0" prefWidth="49.0" style="-fx-background-color: #EFA22E;" text="End The Tour" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="20.0">
-                     <font>
-                        <Font size="9.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="endorseButton" layoutX="829.0" layoutY="14.0" mnemonicParsing="false" onAction="#endorsePopUp" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: ecd0b0; -fx-opacity: 0.5;" text="tempEndorse Button">
-                     <font>
-                        <Font name="Book Antiqua" size="10.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </bottom>
-         <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="forageIngredientButton" layoutX="107.0" layoutY="94.0" mnemonicParsing="false" onAction="#forageIngredientPopUp" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: ecd0b0;" text="Forage Ingredient">
-                     <font>
-                        <Font name="Book Antiqua" size="8.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="buyArtifactButton" layoutX="247.0" layoutY="94.0" mnemonicParsing="false" onAction="#buyArtifactPopUp" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: ecd0b0;" text="Buy Artifact">
-                     <font>
-                        <Font name="Book Antiqua" size="8.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="ingredientStorageButton" layoutX="107.0" layoutY="239.0" mnemonicParsing="false" onAction="#ingredientStoragePopUp" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: ecd0b0;" text="Ingredient Storage" AnchorPane.bottomAnchor="89.0" AnchorPane.rightAnchor="273.0">
-                     <font>
-                        <Font name="Book Antiqua" size="8.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="useArtifactButton" layoutX="247.0" layoutY="239.0" mnemonicParsing="false" onAction="#useArtifactPopUp" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: ecd0b0;" text="Use Artifact" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="247.0">
-                     <font>
-                        <Font name="Book Antiqua" size="10.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </center>
-      </BorderPane>
+      <AnchorPane fx:id="avatar4Pane" layoutX="422.0" layoutY="22.0" prefHeight="88.0" prefWidth="200.0" />
+      <Button fx:id="publishTheoryButton" layoutX="26.0" layoutY="600.0" mnemonicParsing="false" onAction="#publishTheoryClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Publish Theory" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="166.0" layoutY="600.0" mnemonicParsing="false" onAction="#publicationTrackClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Publication Track" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Button layoutX="324.0" layoutY="600.0" mnemonicParsing="false" onAction="#deductionBoardClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Deduction Board" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Button layoutX="665.0" layoutY="600.0" mnemonicParsing="false" onAction="#potionBrewingClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Potion Brewing" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Button fx:id="sellPotionButton" layoutX="818.0" layoutY="600.0" mnemonicParsing="false" onAction="#sellPotionClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text=" Sell Potion" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
+      <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#helpButtonClicked" prefHeight="28.0" prefWidth="32.0" styleClass="HelpBackground" />
+      <Button layoutX="1044.0" layoutY="8.0" mnemonicParsing="false" onAction="#pauseButtonClicked" prefHeight="28.0" prefWidth="32.0" styleClass="PauseBackground" />
+      <Button layoutX="384.0" layoutY="195.0" mnemonicParsing="false" onAction="#forageIngredientClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Forage Ingredient" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </Button>
+      <Button layoutX="386.0" layoutY="362.0" mnemonicParsing="false" onAction="#ingredientStorageClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="IngredientStorage" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="531.0" layoutY="197.0" mnemonicParsing="false" onAction="#buyArtifactClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text=" Buy Artifact" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="522.0" layoutY="362.0" mnemonicParsing="false" onAction="#useArtifactClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Use Artifact" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <AnchorPane fx:id="avatar2Pane" layoutX="26.0" layoutY="281.0" prefHeight="88.0" prefWidth="200.0" />
+      <AnchorPane fx:id="avatar1Pane" layoutX="454.0" layoutY="556.0" prefHeight="88.0" prefWidth="200.0" />
+      <AnchorPane fx:id="avatar3Pane" layoutX="824.0" layoutY="300.0" prefHeight="88.0" prefWidth="200.0" />
+      <Button fx:id="endRoundButton" layoutX="1027.0" layoutY="662.0" mnemonicParsing="false" onAction="#endRoundButtonClicked" prefHeight="54.0" prefWidth="56.0" styleClass="continueRoundButton" />
+      <Text fx:id="tourTitle" fill="#fffefd" layoutX="694.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sevilla" text="Tour 1" wrappingWidth="105.32926208745653">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <Text fx:id="roundTitle" fill="WHITE" layoutX="249.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sevilla" text="Round 1" wrappingWidth="132.06695955008627">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
    </children>
 </AnchorPane>
