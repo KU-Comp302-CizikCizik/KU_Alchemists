@@ -47,7 +47,7 @@ public class LoginController {
         String password = passwordTextField.getText();
         Boolean loginResult = LoginHandler.getInstance().login(username, password);
         if (loginResult) {
-            loginMessageLabel.setText("Login Successful!");
+            loginMessageLabel.setText("Login Successful! ");
             SceneLoader.getInstance().loadMenu();
         } else {
             SceneLoader.getInstance().loadGenericPopUp("Wrong username or password!");
