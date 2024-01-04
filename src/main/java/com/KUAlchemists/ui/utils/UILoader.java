@@ -40,4 +40,9 @@ public class UILoader {
             throw new RuntimeException(e);
         }
     }
+
+
+    public static FXMLLoader getLoader() {
+        return loader;
+    }
 }

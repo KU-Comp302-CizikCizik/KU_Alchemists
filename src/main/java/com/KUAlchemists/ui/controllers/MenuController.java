@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 
+import java.awt.event.KeyEvent;
+
 public class MenuController {
     @FXML
     private Button startButton;
