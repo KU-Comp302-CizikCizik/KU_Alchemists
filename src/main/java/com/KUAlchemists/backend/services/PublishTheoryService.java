@@ -15,13 +15,31 @@ public class PublishTheoryService {
 
     /**
      * Publishes a new theory.
+     *
      * @param ingredientName Name of the ingredient in the theory.
      * @param predictedRedAspectString Predicted red aspect.
      * @param predictedGreenAspectString Predicted green aspect.
      * @param predictedBlueAspectString Predicted blue aspect.
+     * @param theorySeals List of theory seals in string format.
      * @return True if the theory is successfully published, false otherwise.
+     *
+     * Requires:
+     * - `ingredientName` must not be null or empty.
+     * - `predictedRedAspectString`, `predictedGreenAspectString`, and `predictedBlueAspectString` must correspond to valid aspects.
+     * - `theorySeals` should not be null and must contain valid seal names.
+     * - The player must have at least 1 gold.
+     * - A theory with the same ingredient name should not already exist.
+     *
+     * Modifies:
+     * - The player's gold, reputation, and list of published theories.
+     * - The global list of published theories.
+     *
+     * Effects:
+     * - If all requirements are met, publishes a new theory and returns true.
+     * - Decreases player's gold by 1 and increases reputation by 1.
+     * - Adds the new theory to the player's and the global list of published theories.
+     * - If requirements are not met, no changes are made and returns false.
      */
-    // önce string depolanacak sonrasında alchemy gelip theory oluşturacak!
     public boolean publishTheory(String ingredientName,
                                  String predictedRedAspectString,
                                  String predictedGreenAspectString,

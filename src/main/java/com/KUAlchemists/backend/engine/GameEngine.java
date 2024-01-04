@@ -1,12 +1,11 @@
 package com.KUAlchemists.backend.engine;
 
 import com.KUAlchemists.backend.enums.GameMode;
-import com.KUAlchemists.backend.enums.Gamestate;
-import com.KUAlchemists.backend.managers.SceneManager;
-import com.KUAlchemists.backend.managers.StateManager;
-import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.enums.GameTour;
+import com.KUAlchemists.backend.enums.Gamestate;
+import com.KUAlchemists.backend.managers.StateManager;
+import com.KUAlchemists.backend.models.Player;
 
 import java.util.ArrayList;
 
@@ -33,7 +32,7 @@ public class GameEngine {
     /**
      * Constructor for GameEngine
      */
-    private GameEngine(){
+    protected GameEngine(){
         currentRound = GameRound.FIRST_ROUND;
         currentTour = GameTour.FIRST_TOUR;
     }
@@ -178,6 +177,11 @@ public class GameEngine {
 
     public GameMode getCurrentGameMode() {
         return currentGameMode;
+    }
+
+    // Package-private method for testing
+    public static void setInstanceForTest(GameEngine instance) {
+        INSTANCE = instance;
     }
 
 }

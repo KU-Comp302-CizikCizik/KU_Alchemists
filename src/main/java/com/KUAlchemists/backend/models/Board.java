@@ -19,7 +19,7 @@ public class Board {
     private final List<Theory> publishedTheoriesList = new ArrayList<>();
     private final Deck deck = Deck.getInstance();
 
-    private Board (){
+    protected Board(){
         // create empty storages for players
         for(Player player: GameEngine.getInstance().getPlayerList()){
             createEmptyStoragesForPlayer(player);
@@ -93,6 +93,9 @@ public class Board {
                 return;
             }
         }
+    }
+    public static void setInstanceForTest(Board instance) {
+        Instance = instance;
     }
 }
 
