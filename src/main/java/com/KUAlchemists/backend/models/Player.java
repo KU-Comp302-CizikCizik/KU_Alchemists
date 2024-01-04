@@ -1,9 +1,15 @@
 package com.KUAlchemists.backend.models;
 
+import com.KUAlchemists.backend.enums.PlayerSeal;
+import com.KUAlchemists.backend.enums.TheorySeal;
+import com.KUAlchemists.backend.observer.Observer;
+import com.KUAlchemists.backend.observer.PlayerObserver;
+import com.KUAlchemists.backend.subjects.Subject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Subject {
 
     private int gold;
     private String status;
@@ -11,19 +17,24 @@ public class Player {
     private int reputation;
     private ArrayList<Theory> publishedTheories;
     private DeductionBoard deductionBoard;
-
     private int actionPoints;
 
+    //To indicate its color on endorse UI, each player has only one, and it is randomly assigned
+    private PlayerSeal seal;
+  
+    //To indicate the seal of the theory, each player has multiple, they put seals on theories
+    private ArrayList<TheorySeal> theorySeals;
 
     private String name;
+    private List<PlayerObserver> observers;
 
-
+    private String avatar; // this is the avatar of the player that will be displayed on the board
     public Player(){
         this("");
     }
 
     public Player(String name){
-        this.gold = 0;
+        this.gold = 20;
         this.status = "Healthy"; // Default status
         this.sicknessLevel = 0;
         this.reputation = 0;
@@ -31,6 +42,10 @@ public class Player {
         this.deductionBoard = new DeductionBoard();
         this.name = name;
         this.actionPoints = 3;
+        this.seal = PlayerSeal.getRandomSeal(); //random seal for indicating the player's color on endorsement
+        this.theorySeals = TheorySeal.getSeals(); //default seals
+        observers = new ArrayList<>();
+
     }
 
     public int getGold() {
@@ -39,6 +54,7 @@ public class Player {
 
     public void setGold(int gold) {
         this.gold = gold;
+        notifyObservers();
     }
 
     public String getStatus() {
@@ -64,11 +80,13 @@ public class Player {
 
     public void setReputation(int reputation) {
         this.reputation = reputation;
+        notifyObservers();
     }
 
-    public List<Theory> getPublishedTheories() {
+    public ArrayList<Theory> getPublishedTheories() {
         return publishedTheories;
     }
+
 
     public void setPublishedTheories(List<Theory> publishedTheories) {
         this.publishedTheories = (ArrayList<Theory>) publishedTheories;
@@ -89,17 +107,72 @@ public class Player {
     public void setPublishedTheories(ArrayList<Theory> publishedTheories) {
         this.publishedTheories = publishedTheories;
     }
-
     public String getName() {
         return name;
     }
 
     public void deduceActionPoints(int actionPoints) {
         this.actionPoints -= actionPoints;
+        notifyObservers();
+
+    }
+    public Integer getActionPoints() {
+        return actionPoints;
+    }
+
+
+    public void setPlayerSeal(PlayerSeal seal){
+        this.seal = seal;
+    }
+
+    public PlayerSeal getPlayerSeal(){
+        return seal;
+    }
+
+    public void setTheorySeals(ArrayList<TheorySeal> theorySeals){
+        this.theorySeals = theorySeals;
+    }
+
+    public ArrayList<TheorySeal> getTheorySeals(){
+        return theorySeals;
+    }
+
+    public void removeTheorySeal(TheorySeal seal) {
+        this.theorySeals.remove(seal);
+    }
+
+    public void addGold(int price) {
+        this.gold += price;
+    }
+      
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add((PlayerObserver) observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove((PlayerObserver) observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(Observer observer : observers){
+            ((PlayerObserver) observer).onPlayerStatusChanged(status);
+            ((PlayerObserver) observer).onPlayerSicknessLevelChanged(sicknessLevel);
+            ((PlayerObserver) observer).onPlayerReputationChanged(reputation);
+            ((PlayerObserver) observer).onPlayerGoldChanged(gold);
+            ((PlayerObserver) observer).onPlayerActionPointsChanged(actionPoints);
+            ((PlayerObserver) observer).onPlayerNameChanged(name);
+        }
 
     }
 
-    public Integer getActionPoints() {
-        return actionPoints;
+    public void setAvatar(String avatar){
+        this.avatar = avatar;
+    }
+
+    public String getAvatar(){
+        return avatar;
     }
 }

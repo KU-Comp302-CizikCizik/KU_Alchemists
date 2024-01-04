@@ -1,9 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
-import com.KUAlchemists.backend.enums.PotionEffect;
 import com.KUAlchemists.backend.managers.EventManager;
-import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.services.PotionBrewingService;
@@ -49,7 +47,7 @@ public class PotionBrewingAreaHandler {
         //brew the potion following the rules
         Potion potion = potionBrewingService.brewPotion(ingredient1,ingredient2);
         //notify the observers
-        EventManager.getInstance().onPotionBrewingActionPerformed(potion);
+        EventManager.getInstance().onPotionBrewingPerformed(potion);
 
         //add the potion to the player inventory
         PotionStorageHandler.getInstance().handleAddPotion(potion);
@@ -66,7 +64,7 @@ public class PotionBrewingAreaHandler {
         String potionCode = potionBrewingService.getPotionCode(potion);
 
         //notify the observers such as DeductionBoard
-        EventManager.getInstance().onPotionBrewingActionPerformed(potion);
+        EventManager.getInstance().onPotionBrewingPerformed(potion);
 
         return potionCode;
     }

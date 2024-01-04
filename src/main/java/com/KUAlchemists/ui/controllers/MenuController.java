@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.MenuHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -36,7 +37,7 @@ public class MenuController {
 
     @FXML
     void startGame(ActionEvent event) {
-        MenuHandler.getInstance().startGame();
+        SceneLoader.getInstance().loadGameMode();
     }
 
 }
