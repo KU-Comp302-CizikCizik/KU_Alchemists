@@ -2,10 +2,7 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.IngredientType;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -40,7 +37,7 @@ public class Deck {
         try {
             InputStream is = getClass().getClassLoader().getResourceAsStream(path);
             if (is == null) {
-                throw new IOException("File not found");
+                throw new FileNotFoundException("File not found");
             }
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
@@ -53,8 +50,8 @@ public class Deck {
                 Ingredient ingredient = new Ingredient(name, value, description, type);
                 ingredientsList.add(ingredient);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
     }
 
