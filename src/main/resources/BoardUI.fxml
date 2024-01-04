@@ -10,27 +10,27 @@
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #8E8B9C;" styleClass="BoardPane" stylesheets="@CSS/BoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BoardController">
    <children>
       <AnchorPane fx:id="avatar4Pane" layoutX="422.0" layoutY="22.0" prefHeight="88.0" prefWidth="200.0" />
-      <Button fx:id="publishTheoryButton" layoutX="26.0" layoutY="600.0" mnemonicParsing="false" onAction="#publishTheoryClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Publish Theory" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+      <Button fx:id="publishTheoryButton" layoutX="26.0" layoutY="600.0" mnemonicParsing="false" onAction="#publishTheoryClicked" onMouseEntered="#mouseEnteredPublishTheory" onMouseExited="#mouseExitedublishTheory" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Publish Theory" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="166.0" layoutY="600.0" mnemonicParsing="false" onAction="#publicationTrackClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Publication Track" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+      <Button fx:id="publicationTrackButton" layoutX="166.0" layoutY="600.0" mnemonicParsing="false" onAction="#publicationTrackClicked" onMouseEntered="#mouseEnteredPublicationTrack" onMouseExited="#mouseExitedPublicationTrack" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Publication Track" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
          <font>
             <Font size="32.0" />
          </font>
       </Button>
-      <Button layoutX="324.0" layoutY="600.0" mnemonicParsing="false" onAction="#deductionBoardClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Deduction Board" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+      <Button fx:id="deductionBoardButton" layoutX="324.0" layoutY="600.0" mnemonicParsing="false" onAction="#deductionBoardClicked" onMouseEntered="#mouseEnteredDeductionBoard" onMouseExited="#mouseExitedDeductionBoard" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Deduction Board" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
          <font>
             <Font size="32.0" />
          </font>
       </Button>
-      <Button layoutX="665.0" layoutY="600.0" mnemonicParsing="false" onAction="#potionBrewingClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Potion Brewing" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+      <Button fx:id="potionBewingButton" layoutX="665.0" layoutY="600.0" mnemonicParsing="false" onAction="#potionBrewingClicked" onMouseEntered="#mouseEnteredPotionBrewing" onMouseExited="#mouseExitedPotionBrewing" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text="Potion Brewing" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
          <font>
             <Font size="32.0" />
          </font>
       </Button>
-      <Button fx:id="sellPotionButton" layoutX="818.0" layoutY="600.0" mnemonicParsing="false" onAction="#sellPotionClicked" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text=" Sell Potion" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
+      <Button fx:id="sellPotionButton" layoutX="818.0" layoutY="600.0" mnemonicParsing="false" onAction="#sellPotionClicked" onMouseEntered="#mouseEnteredSellPotion" onMouseExited="#mouseExitedSellPotion" prefHeight="90.0" prefWidth="120.0" styleClass="ButtonBackground" text=" Sell Potion" textAlignment="CENTER" textFill="#fdc352" wrapText="true">
          <font>
             <Font size="32.0" />
          </font>
@@ -45,7 +45,7 @@
             <Cursor fx:constant="NONE" />
          </cursor>
       </Button>
-      <Button layoutX="386.0" layoutY="362.0" mnemonicParsing="false" onAction="#ingredientStorageClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="IngredientStorage" textAlignment="CENTER" wrapText="true">
+      <Button layoutX="386.0" layoutY="362.0" mnemonicParsing="false" onAction="#ingredientStorageClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Ingredient Storage" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -64,7 +64,7 @@
       <AnchorPane fx:id="avatar1Pane" layoutX="454.0" layoutY="556.0" prefHeight="88.0" prefWidth="200.0" />
       <AnchorPane fx:id="avatar3Pane" layoutX="824.0" layoutY="300.0" prefHeight="88.0" prefWidth="200.0" />
       <Button fx:id="endRoundButton" layoutX="1027.0" layoutY="662.0" mnemonicParsing="false" onAction="#endRoundButtonClicked" prefHeight="54.0" prefWidth="56.0" styleClass="continueRoundButton" />
-      <Text fx:id="tourTitle" fill="#fffefd" layoutX="694.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Tour 1" wrappingWidth="105.32926208745653">
+      <Text fx:id="tourTitle" fill="#fffefd" layoutX="697.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Tour 1" wrappingWidth="120.0">
          <font>
             <Font size="36.0" />
          </font>
@@ -72,7 +72,7 @@
             <DropShadow />
          </effect>
       </Text>
-      <Text fx:id="roundTitle" fill="WHITE" layoutX="249.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Round 1" wrappingWidth="132.06695955008627">
+      <Text fx:id="roundTitle" fill="WHITE" layoutX="246.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Round 1" wrappingWidth="156.06695955008627">
          <font>
             <Font size="36.0" />
          </font>

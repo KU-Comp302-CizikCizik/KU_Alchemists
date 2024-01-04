@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -57,6 +58,16 @@ public class BoardController  implements PlayerObserver {
     private Button publishTheoryButton;
     @FXML
     private Button sellPotionButton;
+
+    @FXML
+    private Button deductionBoardButton;
+
+    @FXML
+    private Button potionBewingButton;
+
+    @FXML
+    private Button publicationTrackButton;
+
 
     private Integer currentRound;
     private Integer currentTour;;
@@ -382,4 +393,65 @@ public class BoardController  implements PlayerObserver {
 
     }
 
+
+
+    @FXML
+    void mouseEnteredDeductionBoard(MouseEvent event) {
+        deductionBoardButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseEnteredPotionBrewing(MouseEvent event) {
+        potionBewingButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseEnteredPublicationTrack(MouseEvent event) {
+        publicationTrackButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseEnteredPublishTheory(MouseEvent event) {
+        publishTheoryButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseEnteredSellPotion(MouseEvent event) {
+        sellPotionButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseExitedPotionBrewing(MouseEvent event) {
+        potionBewingButton.setEffect(null);
+
+    }
+
+    @FXML
+    void mouseExitedPublicationTrack(MouseEvent event) {
+        publicationTrackButton.setEffect(null);
+
+    }
+
+    @FXML
+    void mouseExitedSellPotion(MouseEvent event) {
+        sellPotionButton.setEffect(null);
+
+    }
+
+    @FXML
+    void mouseExitedublishTheory(MouseEvent event) {
+        publishTheoryButton.setEffect(null);
+
+    }
+
+
+    @FXML
+    void mouseExitedDeductionBoard(MouseEvent event) {
+        deductionBoardButton.setEffect(null);
+    }
 }
