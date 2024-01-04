@@ -42,6 +42,23 @@ class PotionBrewingServiceTest {
     }
 
     @Test
+    public void testPoisonEffect(){
+        Ingredient ingredient1 = createIngredient(Aspect.NEGATIVE_BIG, Aspect.POSITIVE_BIG, Aspect.POSITIVE_BIG);
+        Ingredient ingredient2 = createIngredient(Aspect.NEGATIVE_SMALL, Aspect.POSITIVE_BIG, Aspect.POSITIVE_BIG);
+        Potion potion = service.brewPotion(ingredient1,ingredient2);
+        assertEquals(PotionEffect.POISON, potion.getPotionEffect());
+    }
+
+    @Test
+    public void testWisdomEffect(){
+        Ingredient ingredient1 = createIngredient(Aspect.POSITIVE_BIG, Aspect.POSITIVE_BIG, Aspect.POSITIVE_BIG);
+        Ingredient ingredient2 = createIngredient(Aspect.NEGATIVE_SMALL, Aspect.POSITIVE_BIG, Aspect.POSITIVE_SMALL);
+        Potion potion = service.brewPotion(ingredient1,ingredient2);
+        assertEquals(PotionEffect.POISON, potion.getPotionEffect());
+    }
+
+
+    @Test
     public void testInsanityEffect(){
         Ingredient ingredient1 = createIngredient(Aspect.POSITIVE_BIG, Aspect.NEGATIVE_BIG, Aspect.NEGATIVE_BIG);
         Ingredient ingredient2 = createIngredient(Aspect.POSITIVE_BIG, Aspect.NEGATIVE_BIG, Aspect.NEGATIVE_SMALL);
@@ -56,6 +73,14 @@ class PotionBrewingServiceTest {
         Ingredient ingredient2 = createIngredient(Aspect.POSITIVE_BIG, Aspect.POSITIVE_BIG, Aspect.NEGATIVE_SMALL);
         Potion potion = service.brewPotion(ingredient1,ingredient2);
         assertEquals(PotionEffect.SPEED, potion.getPotionEffect());
+    }
+
+    @Test
+    public void testParalysisEffect(){
+        Ingredient ingredient1 = createIngredient(Aspect.POSITIVE_BIG, Aspect.NEGATIVE_BIG, Aspect.POSITIVE_SMALL);
+        Ingredient ingredient2 = createIngredient(Aspect.POSITIVE_BIG, Aspect.NEGATIVE_SMALL, Aspect.NEGATIVE_SMALL);
+        Potion potion = service.brewPotion(ingredient1,ingredient2);
+        assertEquals(PotionEffect.PARALYSIS, potion.getPotionEffect());
     }
 
 
