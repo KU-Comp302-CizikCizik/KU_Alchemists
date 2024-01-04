@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.LoginHandler;
+import com.KUAlchemists.ui.MainApplicationUI;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
