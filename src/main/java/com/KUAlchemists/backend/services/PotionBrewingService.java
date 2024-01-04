@@ -26,6 +26,8 @@ public class PotionBrewingService {
      * @param alchemical1, alchemical2
      */
     public PotionEffect determinePotionEffect(Alchemical alchemical1, Alchemical alchemical2){
+        //REQUIRES: alchemical1 and alchemical2 are not null, have valid red,green and blue aspects
+        //EFFECTS: returns the potion effect based on the combination of given two alchemicals
 
         //For red aspect
         Aspect redAspect1 = alchemical1.getRedAspect();
