@@ -15,14 +15,13 @@ public class PublishTheoryService {
 
     /**
      * Publishes a new theory.
-     * @param ingredientName Name of the ingredient in the theory.
+     * @param rawIngredientName Name of the ingredient in the theory.
      * @param predictedRedAspectString Predicted red aspect.
      * @param predictedGreenAspectString Predicted green aspect.
      * @param predictedBlueAspectString Predicted blue aspect.
      * @return True if the theory is successfully published, false otherwise.
      */
-    // önce string depolanacak sonrasında alchemy gelip theory oluşturacak!
-    public boolean publishTheory(String ingredientName,
+    public boolean publishTheory(String rawIngredientName,
                                  String predictedRedAspectString,
                                  String predictedGreenAspectString,
                                  String predictedBlueAspectString,
@@ -32,8 +31,7 @@ public class PublishTheoryService {
         Aspect greenAspect = Aspect.fromString(predictedGreenAspectString);
         Aspect blueAspect = Aspect.fromString(predictedBlueAspectString);
         Alchemical predictedAlchemical = new Alchemical(redAspect, greenAspect, blueAspect);
-
-        //Ingredient ingredient = Board.getInstance().getIngredientStorage(player).getIngredient(ingredientName);
+        String ingredientName = rawIngredientName.split("-")[0];
         Ingredient ingredient = new Ingredient(ingredientName);
 
         List<TheorySeal> seals = theorySeals.stream()
@@ -47,29 +45,18 @@ public class PublishTheoryService {
         boolean theoryExists = Board.getInstance().getPublishedTheoriesList().stream()
                 .anyMatch(existingTheory -> existingTheory.getIngredient().getName().equals(ingredientName));
 
-        if (!theoryExists && player.getGold() >= 1) {
+        boolean hasTheorySeal = player.getTheorySeals().contains(seals.get(0));
+
+        if (!theoryExists && player.getGold() >= 1 & hasTheorySeal) {
             player.setGold(player.getGold() - 1);
             theory.setPublished(true);
             player.setReputation(player.getReputation() + 1);
             player.getPublishedTheories().add(theory);
             Board.getInstance().getPublishedTheoriesList().add(theory);
-
-
-            System.out.println(theory.getIngredient().getName());
-
+            player.getTheorySeals().remove(seals.get(0));
             return true;
         }
         return false;
     }
 
-
-    // Burası daha kullanıma hazır değil
-    /**
-     * This method retrieves the player's seal.
-     *
-     * @return The player's seal string.
-     */
-    public String getPlayerSeal() {
-        return GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
-    }
 }

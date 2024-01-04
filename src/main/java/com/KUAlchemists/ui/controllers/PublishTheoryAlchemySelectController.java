@@ -71,6 +71,7 @@ public class PublishTheoryAlchemySelectController {
             List<String> seals= new ArrayList<>();
             seals.add(seal.substring(seal.length() - 2));
             this.seal=seal.substring(seal.length() - 2);
+
             if(!lock2){
                String ing= PublishTheoryHandler.getInstance().getSelectedIngredientName();
 
@@ -79,22 +80,13 @@ public class PublishTheoryAlchemySelectController {
                pbt.setSelectedTheorySeals(seals);
                pbt.setPredictedRedAspectString(red);pbt.setPredictedGreenAspectString(green);pbt.setPredictedBlueAspectString(blue);
 
-
-
-//
-//        // Call the handlePublishTheoryRequest method
-       String result = pbt.handlePublishTheoryRequest();
-                System.out.println("geşldi");
-//        // Handle the result accordingly
-        if ("Failed to publish theory.".equals(result)) {
-//            // Handle failure
-           System.out.println(result);
-       } else {
-//            // Handle success
-           System.out.println("Theory published successfully for ingredient: " + result);
-            txt.setText("You succesfully published the theory");
-//
-       }
+               String result = pbt.handlePublishTheoryRequest();
+                if ("Failed to publish theory.".equals(result)) {
+                }
+                else {
+                   System.out.println("Theory published successfully for ingredient: " + result);
+                   txt.setText("You succesfully published the theory");
+               }
 
             }
         }
@@ -122,9 +114,6 @@ public class PublishTheoryAlchemySelectController {
     @FXML
     void alchemyClicked(MouseEvent event) {
         ArrayList<ImageView> alchemies_photo = new ArrayList<ImageView>();
-        //alchemies_photo.add(alchemy_1); alchemies_photo.add(alchemy_2);alchemies_photo.add(alchemy_3);alchemies_photo.add(alchemy_4);alchemies_photo.add(alchemy_5);alchemies_photo.add(alchemy_6);alchemies_photo.add(alchemy_7);alchemies_photo.add(alchemy_8);
-        //String str= event.toString().substring(34, event.toString().indexOf(","));
-        //System.out.println(str.charAt(str.length() - 1)-49);
 
        if(lock2){
 
@@ -209,28 +198,18 @@ public class PublishTheoryAlchemySelectController {
                pbt.setSelectedTheorySeals(seals);
                pbt.setPredictedRedAspectString(red);pbt.setPredictedGreenAspectString(green);pbt.setPredictedBlueAspectString(blue);
 
-
-
-//
-//        // Call the handlePublishTheoryRequest method
                String result = pbt.handlePublishTheoryRequest();
 
-//        // Handle the result accordingly
                if ("Failed to publish theory.".equals(result)) {
-//            // Handle failure
                    System.out.println(result);
                } else {
-//            // Handle success
                    txt.setText("You succesfully published the theory");
-
                    System.out.println("Theory published successfully for ingredient: " + result);
-//
                }
 
            }
        }
        else{
-
 
            //Arda endorse eklendiği için bu kısıma bir el atılması gerekecek. Konuşuruz.
 //        // Get the existing instance of PublishTheoryHandler
