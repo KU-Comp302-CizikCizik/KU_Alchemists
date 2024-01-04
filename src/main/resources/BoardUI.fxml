@@ -64,7 +64,7 @@
       <AnchorPane fx:id="avatar1Pane" layoutX="454.0" layoutY="556.0" prefHeight="88.0" prefWidth="200.0" />
       <AnchorPane fx:id="avatar3Pane" layoutX="824.0" layoutY="300.0" prefHeight="88.0" prefWidth="200.0" />
       <Button fx:id="endRoundButton" layoutX="1027.0" layoutY="662.0" mnemonicParsing="false" onAction="#endRoundButtonClicked" prefHeight="54.0" prefWidth="56.0" styleClass="continueRoundButton" />
-      <Text fx:id="tourTitle" fill="#fffefd" layoutX="694.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sevilla" text="Tour 1" wrappingWidth="105.32926208745653">
+      <Text fx:id="tourTitle" fill="#fffefd" layoutX="694.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Tour 1" wrappingWidth="105.32926208745653">
          <font>
             <Font size="36.0" />
          </font>
@@ -72,7 +72,7 @@
             <DropShadow />
          </effect>
       </Text>
-      <Text fx:id="roundTitle" fill="WHITE" layoutX="249.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sevilla" text="Round 1" wrappingWidth="132.06695955008627">
+      <Text fx:id="roundTitle" fill="WHITE" layoutX="249.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Round 1" wrappingWidth="132.06695955008627">
          <font>
             <Font size="36.0" />
          </font>

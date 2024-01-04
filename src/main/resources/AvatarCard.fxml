@@ -17,8 +17,8 @@
             <Image url="@com.KUAlchemists/images/profile_p/avatar_3.png" />
          </image>
       </ImageView>
-      <Text fx:id="goldPoint" layoutX="153.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sevilla" text="999" />
-      <Text fx:id="reputationPoint" layoutX="153.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sevilla" text="999" />
-      <Text fx:id="actionPoint" layoutX="152.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sevilla" text="999" />
+      <Text fx:id="goldPoint" layoutX="153.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="999" />
+      <Text fx:id="reputationPoint" layoutX="153.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="999" />
+      <Text fx:id="actionPoint" layoutX="152.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="999" />
    </children>
 </AnchorPane>
