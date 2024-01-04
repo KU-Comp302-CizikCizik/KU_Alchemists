@@ -1,7 +1,10 @@
 package com.KUAlchemists.backend.enums;
 
 public enum Aspect {
-    POSITIVE_BIG, NEGATIVE_BIG, POSITIVE_SMALL, NEGATIVE_SMALL;
+    POSITIVE_BIG,
+    NEGATIVE_BIG,
+    POSITIVE_SMALL,
+    NEGATIVE_SMALL;
 
     // Methods to determine the properties of the aspects
     public boolean isPositive() {

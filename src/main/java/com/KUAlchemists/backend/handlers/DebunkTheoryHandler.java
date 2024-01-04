@@ -2,13 +2,17 @@ package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.Theory;
+import com.KUAlchemists.backend.observer.PublicationTrackObserver;
 import com.KUAlchemists.backend.services.DebunkTheoryService;
 
-public class DebunkTheoryHandler {
+public class DebunkTheoryHandler implements PublicationTrackObserver {
 
     private final DebunkTheoryService debunkTheoryService;
 
     private static DebunkTheoryHandler INSTANCE;
+
+    private Theory selectedTheory; //the theory that the player wants to debunk
 
     public DebunkTheoryHandler() {
         this.debunkTheoryService = new DebunkTheoryService();
@@ -57,5 +61,10 @@ public class DebunkTheoryHandler {
         //Before "Debunk button clicked" backend should know the clicked theory name
         //they should save it in a variable and return it here as "mushroom" , "scorpions", "birdfeet"
         return "mushroom";
+    }
+
+    @Override
+    public void onTheorySelected(Theory theory) {
+        selectedTheory = theory;
     }
 }

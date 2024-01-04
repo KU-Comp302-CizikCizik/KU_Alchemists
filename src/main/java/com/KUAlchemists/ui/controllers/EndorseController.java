@@ -63,7 +63,8 @@ public class EndorseController {
         playerAvailableSeals = EndorseHandler.getInstance().getPlayerAvailableTheorySeals();
 
         playerSeals = EndorseHandler.getInstance().getEndorsedPlayerSeals();
-        String theory = EndorseHandler.getInstance().getTheory();
+        String theory = EndorseHandler.getInstance().getTheoryString();
+        String alchemicalName = EndorseHandler.getInstance().getAlchemicalName();
 
         setTheoryImage(theory);
         sealSlots.add(seal3);
@@ -74,6 +75,19 @@ public class EndorseController {
         setSeals(playerSeal);
         disactiveNotOwnedSeals();
         setEndorsersSeals();
+        setAlchemy(alchemicalName);
+    }
+
+    private void setAlchemy(String alchemicalName) {
+        String imagePath = "/com.KUAlchemists/images/alchemy/" + alchemicalName;
+        try {
+            Image newImage = new Image(getClass().getResourceAsStream(imagePath));
+            // Set the image to the ImageView
+            alchemy.setImage(newImage);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+
     }
 
     private void setTheoryImage(String theory) {
@@ -139,9 +153,9 @@ public class EndorseController {
     }
 
     private Image getImage(String s) {
-        String imagePath = "com.KUAlchemists/images/Endorse/" + s + ".png";
+        String imagePath = "/com.KUAlchemists/images/Endorse/" + s + ".png";
         try {
-            Image newImage = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+            Image newImage = new Image(getClass().getResourceAsStream(imagePath));
             // Set the image to the ImageView
             return newImage;
         }catch (Exception e){

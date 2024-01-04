@@ -1,7 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
-import com.KUAlchemists.backend.enums.PlayerSeal;
+import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Theory;
@@ -79,7 +79,7 @@ public class EndorseHandler implements PublicationTrackObserver {
      * This method is called when the player clicks on the endorse button
      * @return theory
      */
-    public String getTheory() {
+    public String getTheoryString() {
         String theory = selectedTheory.getIngredient().getName().toLowerCase();
         return theory;
     }
@@ -107,5 +107,39 @@ public class EndorseHandler implements PublicationTrackObserver {
                 .map(player -> player.getPlayerSeal().getSealString())
                 .collect(Collectors.toCollection(ArrayList::new));
         return playerSeals;
+    }
+
+    public String getAlchemicalName() {
+        String result = "PATLADI";
+        Aspect red = selectedTheory.getIngredient().getAlchemical().getRedAspect();
+        Aspect green = selectedTheory.getIngredient().getAlchemical().getGreenAspect();
+        Aspect blue = selectedTheory.getIngredient().getAlchemical().getBlueAspect();
+        if(red == Aspect.POSITIVE_BIG && green == Aspect.POSITIVE_BIG && blue == Aspect.POSITIVE_BIG) {
+            return "alchemy1.png";
+        }
+        if(red == Aspect.POSITIVE_SMALL && green == Aspect.NEGATIVE_SMALL && blue == Aspect.NEGATIVE_BIG) {
+            return "alchemy2.png";
+        }
+        if(red == Aspect.POSITIVE_SMALL && green == Aspect.POSITIVE_BIG && blue == Aspect.NEGATIVE_SMALL) {
+            return "alchemy3.png";
+        }
+        if(red == Aspect.POSITIVE_BIG && green == Aspect.NEGATIVE_SMALL && blue == Aspect.POSITIVE_SMALL) {
+            return "alchemy4.png";
+        }
+        if(red == Aspect.NEGATIVE_SMALL && green == Aspect.POSITIVE_SMALL && blue == Aspect.POSITIVE_BIG) {
+            return "alchemy5.png";
+        }
+        if(red == Aspect.NEGATIVE_BIG && green == Aspect.NEGATIVE_BIG && blue == Aspect.NEGATIVE_BIG) {
+            return "alchemy6.png";
+        }
+        if(red == Aspect.NEGATIVE_SMALL && green == Aspect.NEGATIVE_BIG && blue == Aspect.POSITIVE_SMALL) {
+            return "alchemy7.png";
+        }
+        if(red == Aspect.NEGATIVE_BIG && green == Aspect.POSITIVE_SMALL && blue == Aspect.NEGATIVE_SMALL) {
+            return "alchemy8.png";
+        }
+
+        return result;
+
     }
 }

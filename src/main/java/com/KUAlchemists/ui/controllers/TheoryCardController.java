@@ -135,7 +135,10 @@ public class TheoryCardController {
 
     @FXML
     public void debunkClicked(){
-
+        PublicationTrackHandler.getInstance().selectTheoryToDebunk(ingredientName);
+        Stage stage = (Stage)ingredient_image.getScene().getWindow();
+        stage.close();
+        SceneLoader.getInstance().loadDebunk();
     }
 
 }

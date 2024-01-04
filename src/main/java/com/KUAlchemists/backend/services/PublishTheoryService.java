@@ -33,6 +33,7 @@ public class PublishTheoryService {
         Alchemical predictedAlchemical = new Alchemical(redAspect, greenAspect, blueAspect);
         String ingredientName = rawIngredientName.split("-")[0];
         Ingredient ingredient = new Ingredient(ingredientName);
+        ingredient.setAlchemical(predictedAlchemical);
 
         List<TheorySeal> seals = theorySeals.stream()
                 .map(TheorySeal::getSealByName) // Assuming you have a method to convert string to TheorySeal

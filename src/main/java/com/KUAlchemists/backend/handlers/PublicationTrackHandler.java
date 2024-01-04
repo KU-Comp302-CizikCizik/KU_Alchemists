@@ -35,5 +35,10 @@ public class PublicationTrackHandler {
         EventManager.getInstance().onTheorySelectedPerformed(theory);
     }
 
+    public void selectTheoryToDebunk(String ingredientName){
+        Theory theory = publicationTrackService.getTheoryByIngredientName(ingredientName);
+        EventManager.getInstance().onTheorySelectedPerformed(theory);
+    }
+
     // Other methods as needed...
 }
