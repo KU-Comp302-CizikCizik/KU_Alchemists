@@ -28,6 +28,7 @@ public class PotionBrewingService {
     public PotionEffect determinePotionEffect(Alchemical alchemical1, Alchemical alchemical2){
         //REQUIRES: alchemical1 and alchemical2 are not null, have valid red,green and blue aspects
         //EFFECTS: returns the potion effect based on the combination of given two alchemicals
+        // e.g. if the combination of two alchemicals is positive big red and positive small red, then the potion effect is healing
 
         //For red aspect
         Aspect redAspect1 = alchemical1.getRedAspect();
