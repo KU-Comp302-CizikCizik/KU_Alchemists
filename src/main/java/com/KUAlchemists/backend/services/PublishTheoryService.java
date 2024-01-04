@@ -40,7 +40,6 @@ public class PublishTheoryService {
 
         Theory theory = new Theory(ingredient, predictedAlchemical, seals);
 
-
         // This method checks if a theory with the same ingredient name already exists
         boolean theoryExists = Board.getInstance().getPublishedTheoriesList().stream()
                 .anyMatch(existingTheory -> existingTheory.getIngredient().getName().equals(ingredientName));
@@ -48,6 +47,7 @@ public class PublishTheoryService {
         boolean hasTheorySeal = player.getTheorySeals().contains(seals.get(0));
 
         if (!theoryExists && player.getGold() >= 1 & hasTheorySeal) {
+            theory.addEndorser(player);
             player.setGold(player.getGold() - 1);
             theory.setPublished(true);
             player.setReputation(player.getReputation() + 1);

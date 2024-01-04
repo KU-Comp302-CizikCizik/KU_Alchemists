@@ -5,6 +5,7 @@ import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.exceptions.GameInitializationException;
 import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
+import com.KUAlchemists.backend.handlers.EndorseHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.managers.SceneManager;
@@ -47,6 +48,7 @@ public class GameInitializer {
 
     private void initEventObservers() {
         EventManager.getInstance().registerPotionBrewingObserver(DeductionBoardHandler.getInstance());
+        EventManager.getInstance().registerPublicationTrackObserver(EndorseHandler.getInstance());
 
     }
 

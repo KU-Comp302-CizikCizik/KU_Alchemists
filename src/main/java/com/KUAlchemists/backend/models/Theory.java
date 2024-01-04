@@ -3,6 +3,7 @@ package com.KUAlchemists.backend.models;
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Theory {
@@ -16,21 +17,13 @@ public class Theory {
     private List<TheorySeal> theorySeals;  // New: Theory seals associated with the theory
     private PlayerSeal playerSeal;        // New: Player seal indicating the endorsing player
 
-    // Constructor
-    public Theory(Ingredient ingredient, Alchemical predictedAlchemical) { // ingredient stringden oluşması gerekiyor alchemy içinde ıynı bok geçerli.
-        this.ingredient = ingredient;
-        this.predictedAlchemical = predictedAlchemical;
-        this.isPublished = false;
-        this.isDebunked = false;
-        //this.reputationAward = 0;
-    }
     public Theory(Ingredient ingredient, Alchemical predictedAlchemical, List<TheorySeal> theorySeals) {
         this.ingredient = ingredient;
         this.predictedAlchemical = predictedAlchemical;
         this.isPublished = false;
         this.isDebunked = false;
         this.theorySeals = theorySeals;
-
+        endorsers = new ArrayList<>();
         // Set other properties as needed
     }
     // Getters
