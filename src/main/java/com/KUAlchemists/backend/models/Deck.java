@@ -14,7 +14,7 @@ public class Deck {
     private static Deck instance;
     private ArrayList<Ingredient> ingredientsList = new ArrayList<>();
     private Deck() {
-        loadIngredientsFromResources();
+        loadIngredientsFromResources("ingredients.csv");
     }
 
     public static Deck getInstance() {
@@ -24,9 +24,25 @@ public class Deck {
         return instance;
     }
 
-    private void loadIngredientsFromResources() {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream("ingredients.csv");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+    /**
+     * loadIngredientsFromResources
+     * Requires:
+     * - The "ingredients.csv" file must exist in the resources.
+     * - The CSV file should be in the format: name,value,description,type
+     * Modifies:
+     * - Modifies the `ingredientsList` by adding new Ingredient objects.
+     * Effects:
+     * - Reads the "ingredients.csv" file and loads ingredients into `ingredientsList`.
+     * - Handles IOException by printing the stack trace.
+     */
+
+    public void loadIngredientsFromResources(String path) {
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream(path);
+            if (is == null) {
+                throw new IOException("File not found");
+            }
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -41,6 +57,8 @@ public class Deck {
             e.printStackTrace();
         }
     }
+
+
 
     public Ingredient drawIngredient(){
         Random rand = new Random();
