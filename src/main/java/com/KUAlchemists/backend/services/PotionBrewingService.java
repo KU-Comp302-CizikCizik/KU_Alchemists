@@ -25,7 +25,7 @@ public class PotionBrewingService {
      * determinePotionEffect
      * @param alchemical1, alchemical2
      */
-    private PotionEffect determinePotionEffect(Alchemical alchemical1, Alchemical alchemical2){
+    public PotionEffect determinePotionEffect(Alchemical alchemical1, Alchemical alchemical2){
 
         //For red aspect
         Aspect redAspect1 = alchemical1.getRedAspect();
