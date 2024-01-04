@@ -4,6 +4,7 @@ import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Theory {
@@ -90,5 +91,9 @@ public class Theory {
 
     public void addEndorser(Player currentPlayer) {
         endorsers.add(currentPlayer);
+    }
+
+    public ArrayList<TheorySeal> getTheorySeals() {
+        return (ArrayList<TheorySeal>) theorySeals;
     }
 }

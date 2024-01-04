@@ -50,8 +50,9 @@ public class EndorseController {
 
     private ImageView selectedSeal;
 
-    ArrayList<String> currentSeals;
-    ArrayList<String> endorsedSeals;
+    ArrayList<String> playerAvailableSeals;
+
+    ArrayList<String> playerSeals;
 
     Stack<ImageView> sealSlots = new Stack<>();
     private ImageView selectedSeal1;
@@ -59,8 +60,9 @@ public class EndorseController {
 
     @FXML
     private void initialize() {
-        currentSeals = EndorseHandler.getInstance().getPlayerTheorySeals();
-        endorsedSeals = EndorseHandler.getInstance().getEndorsedTheorySeals();
+        playerAvailableSeals = EndorseHandler.getInstance().getPlayerAvailableTheorySeals();
+
+        playerSeals = EndorseHandler.getInstance().getEndorsedPlayerSeals();
         String theory = EndorseHandler.getInstance().getTheory();
 
         setTheoryImage(theory);
@@ -71,7 +73,7 @@ public class EndorseController {
         String playerSeal = EndorseHandler.getInstance().getPlayerSeal();
         setSeals(playerSeal);
         disactiveNotOwnedSeals();
-        setEndorsedSeals();
+        setEndorsersSeals();
     }
 
     private void setTheoryImage(String theory) {
@@ -85,42 +87,43 @@ public class EndorseController {
         }
     }
 
-    private void setEndorsedSeals() {
-        if(endorsedSeals.contains("red")) {
+    private void setEndorsersSeals() {
+
+        if(playerSeals.contains("red")) {
             sealSlots.pop().setImage(getImage("redSecretSeal"));
         }
 
-        if(endorsedSeals.contains("blue")) {
+        if(playerSeals.contains("blue")) {
             sealSlots.pop().setImage(getImage("blueSecretSeal"));
         }
 
-        if(endorsedSeals.contains("green")) {
+        if(playerSeals.contains("green")) {
             sealSlots.pop().setImage(getImage("greenSecretSeal"));
         }
     }
 
     private void disactiveNotOwnedSeals() {
-        if(!currentSeals.contains("GS")) {
+        if(!playerAvailableSeals.contains("GS")) {
             SealGS.setDisable(true);
             SealGS.setEffect(new GaussianBlur(4));
         }
 
-        if(!currentSeals.contains("SS")) {
+        if(!playerAvailableSeals.contains("SS")) {
             SealSS.setDisable(true);
             SealSS.setEffect(new GaussianBlur(4));
         }
 
-        if(!currentSeals.contains("RQ")) {
+        if(!playerAvailableSeals.contains("RQ")) {
             SealRQ.setDisable(true);
             SealRQ.setEffect(new GaussianBlur(4));
         }
 
-        if(!currentSeals.contains("BQ")) {
+        if(!playerAvailableSeals.contains("BQ")) {
             SealBQ.setDisable(true);
             SealBQ.setEffect(new GaussianBlur(4));
         }
 
-        if(!currentSeals.contains("GQ")) {
+        if(!playerAvailableSeals.contains("GQ")) {
             SealGQ.setDisable(true);
             SealGQ.setEffect(new GaussianBlur(4));
         }
@@ -158,7 +161,7 @@ public class EndorseController {
 
     @FXML
     void endorseClicked(MouseEvent event) {
-        if(endorsedSeals.size()<3){
+        if(playerSeals.size()<3){
             sealSlots.pop().setImage(selectedSeal.getImage());
             try {
                 EndorseHandler.getInstance().saveEndorsedSeal(getClass().getDeclaredField(selectedSeal.getId()).getName().split("Seal")[1]);

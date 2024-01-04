@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Theory;
@@ -38,7 +39,7 @@ public class EndorseHandler implements PublicationTrackObserver {
      * This method is called when the player clicks on the endorse button
      * @return seals
      */
-    public ArrayList<String> getPlayerTheorySeals() {
+    public ArrayList<String> getPlayerAvailableTheorySeals() {
         ArrayList<String> theorySeals =  GameEngine.getInstance().getCurrentPlayer().getTheorySeals()
                 .stream()
                 .map(TheorySeal::getSealString)
@@ -54,11 +55,12 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @return playerSeals
      */
     public ArrayList<String> getEndorsedTheorySeals() {
-        ArrayList<String> playerSeals =  selectedTheory.getEndorsers()
-                .stream().map(player -> player.getPlayerSeal().getSealString())
-                .collect(Collectors.toCollection(ArrayList::new));
-
-        return playerSeals;
+        ArrayList<TheorySeal> theorySeals = selectedTheory.getTheorySeals();
+        ArrayList<String> result = new ArrayList<>();
+        for (TheorySeal theorySeal : theorySeals){
+            result.add(theorySeal.getSealString());
+        }
+        return result;
     }
 
     /**
@@ -98,5 +100,12 @@ public class EndorseHandler implements PublicationTrackObserver {
     public String getPlayerSeal() {
         String playerSeal = GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
         return playerSeal;
+    }
+
+    public ArrayList<String> getEndorsedPlayerSeals() {
+        ArrayList<String> playerSeals = selectedTheory.getEndorsers().stream()
+                .map(player -> player.getPlayerSeal().getSealString())
+                .collect(Collectors.toCollection(ArrayList::new));
+        return playerSeals;
     }
 }
