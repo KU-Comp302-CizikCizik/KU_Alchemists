@@ -27,10 +27,9 @@ public class LoginService {
      * @see UserRepository#getUserPassword(String)
      */
     public boolean validateUser(String username, String password) {
-        //String storedPassword = userRepository.getUserPassword(username);
+        String storedPassword = userRepository.getUserPassword(username);
         // Here you would compare the hashed password, the following is a placeholder
-        return true;
-
+        return storedPassword != null && storedPassword.equals(password);
 
     }
 
