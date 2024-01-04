@@ -47,12 +47,12 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="r" text="Endorse">
+                              <Button mnemonicParsing="false" onAction="#endorseClicked" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="r" text="Endorse">
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" text="Debunk" />
+                              <Button mnemonicParsing="false" onAction="#debunkClicked" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" text="Debunk" />
                            </children>
                         </VBox>
                      </children>

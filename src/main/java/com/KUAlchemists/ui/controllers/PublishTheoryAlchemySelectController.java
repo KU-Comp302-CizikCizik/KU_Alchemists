@@ -12,13 +12,13 @@ import java.util.Hashtable;
 import java.util.List;
 import javafx.scene.text.Text;
 public class PublishTheoryAlchemySelectController {
-    public String blue;
-    public String red;
-    public String green;
-    public String seal;
+    private String blue;
+    private String red;
+    private String green;
+    private String seal;
 
-    public boolean lock2=true;
-    public boolean lock=true;
+    private boolean lock2;
+    private boolean lock;
     @FXML
     private ImageView SealBQ;
 
@@ -59,6 +59,13 @@ public class PublishTheoryAlchemySelectController {
 
     @FXML
     private ImageView alchemy_8;
+
+
+    @FXML
+    void initialize(){
+        lock = true;
+        lock2 = true;
+    }
     @FXML
     void sealClicked(MouseEvent event) {
         if(lock) {

@@ -24,9 +24,8 @@ public class TheoryCardController {
 
     }
     public void setIngredient(String txt) {
-        String imagePath = "/com.KUAlchemists/images/" + txt + ".png";
+        String imagePath = "/com.KUAlchemists/images/" + txt + "-ingredient-square.png";
         // Load the image using the class loader to ensure it works regardless of the build type
-
 
 
             Image image = new Image(getClass().getResourceAsStream(imagePath));
