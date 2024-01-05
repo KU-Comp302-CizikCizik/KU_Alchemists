@@ -3,11 +3,9 @@ package com.KUAlchemists.backend.services;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.TheorySeal;
-import com.KUAlchemists.backend.models.Alchemical;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.models.Theory;
+import com.KUAlchemists.backend.models.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -40,7 +38,9 @@ public class DebunkTheoryService {
             //deduce one reputation point from each player that has debunked the theory
             GameEngine.getInstance().getCurrentPlayer().deduceReputationPoints(-2);
             //remove the theory from the published theories
-            GameEngine.getInstance().getCurrentPlayer().getPublishedTheories().remove(selectedTheory);
+            HashMap<Player, TheorySeal> playerTheorySealsMap = selectedTheory.getPlayerTheorySealsMap();
+            ArrayList<Player> authors = new ArrayList<>(playerTheorySealsMap.keySet());
+            authors.get(0).getPublishedTheories().remove(selectedTheory);
             //punish players who have endorsed the theory
             punishPlayers(selectedTheory,aspect);
 
