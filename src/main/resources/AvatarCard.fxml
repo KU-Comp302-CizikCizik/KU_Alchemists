@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="133.0" prefWidth="200.0" styleClass="transparent" stylesheets="@CSS/BoardStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.AvatarCardController">
+   <children>
+      <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="2.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/Board/AvatarCardBackground.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatarImage" fitHeight="104.0" fitWidth="106.0" layoutX="10.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_3.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="goldPoint" layoutX="153.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="999" />
+      <Text fx:id="reputationPoint" layoutX="153.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="999" />
+      <Text fx:id="actionPoint" layoutX="152.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="999" />
+   </children>
+</AnchorPane>

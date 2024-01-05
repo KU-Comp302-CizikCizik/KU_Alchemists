@@ -20,12 +20,6 @@
     -fx-border-radius: 50;
 }
 
-.BoardPane {
-    -fx-background-image: url("../com.KUAlchemists/images/Board.jpg");
-    -fx-background-repeat: stretch;
-    -fx-background-size: contain;
-    -fx-background-position: center center;
-}
 .ingredientStrogeBackground{
    -fx-background-image: url("../com.KUAlchemists/images/IngredientStorage/IngredientInventoryBackground.png");
     -fx-background-repeat: stretch;

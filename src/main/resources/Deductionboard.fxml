@@ -84,7 +84,7 @@
                      <children>
                         <ImageView id="alchemy_1_3" fx:id="alchemy_1_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -166,7 +166,7 @@
                      <children>
                         <ImageView id="alchemy_2_3" fx:id="alchemy_2_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -242,7 +242,7 @@
                      <children>
                         <ImageView id="alchemy_3_3" fx:id="alchemy_3_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -318,7 +318,7 @@
                      <children>
                         <ImageView id="alchemy_4_3" fx:id="alchemy_4_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -394,7 +394,7 @@
                      <children>
                         <ImageView id="alchemy_5_3" fx:id="alchemy_5_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -470,7 +470,7 @@
                      <children>
                         <ImageView id="alchemy_6_3" fx:id="alchemy_6_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -546,7 +546,7 @@
                      <children>
                         <ImageView id="alchemy_7_3" fx:id="alchemy_7_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -622,7 +622,7 @@
                      <children>
                         <ImageView id="alchemy_8_3" fx:id="alchemy_8_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                            </image>
                         </ImageView>
                      </children>

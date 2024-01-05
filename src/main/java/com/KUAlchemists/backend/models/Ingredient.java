@@ -42,6 +42,17 @@ public class Ingredient {
     /**
      * Constructor for Ingredient
      *
+     */
+    public Ingredient(String name) {
+        this.name = name;
+        this.value = 0;
+        this.description = "";
+        this.type = IngredientType.NONE;
+    }
+
+    /**
+     * Constructor for Ingredient
+     *
      * @param name        The name of the ingredient.
      * @param alchemical  The alchemical of the ingredient.
      */
