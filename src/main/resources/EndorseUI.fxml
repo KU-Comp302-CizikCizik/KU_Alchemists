@@ -87,7 +87,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </ImageView>
-      <Text fx:id="EndorseText" fill="#9e5f38" layoutX="410.0" layoutY="480.0" onMouseClicked="#endorseClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caligruf" text="Endorse">
+      <Text fx:id="EndorseText" fill="#9e5f38" layoutX="410.0" layoutY="480.0" onMouseClicked="#endorseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="caligruf" text="Endorse">
          <font>
             <Font size="44.0" />
          </font>

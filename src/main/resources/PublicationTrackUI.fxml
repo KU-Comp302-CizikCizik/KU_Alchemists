@@ -44,7 +44,7 @@
             </VBox>
             <VBox id="v_box_2" fx:id="v_box_2" prefHeight="362.0" prefWidth="912.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
                <children>
-                  <Text fill="#f5dc6a" strokeType="OUTSIDE" strokeWidth="0.0" text="Other Players' Theories">
+                  <Text fill="#f5dc6a" strokeType="OUTSIDE" strokeWidth="0.0" text="All Published Theories">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

@@ -223,4 +223,14 @@ public class EndorseController {
         select(SealGQ);
     }
 
+    @FXML
+    void onMouseEntered(MouseEvent event){
+        EndorseText.setEffect(new Glow(0.7));
+    }
+
+    @FXML
+    void onMouseExited(MouseEvent event){
+        EndorseText.setEffect(null);
+    }
+
 }
