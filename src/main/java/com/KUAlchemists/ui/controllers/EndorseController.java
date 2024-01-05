@@ -120,6 +120,10 @@ public class EndorseController {
         if(playerSeals.contains("green")) {
             sealSlots.pop().setImage(getImage("greenSecretSeal"));
         }
+
+        if(playerSeals.contains("yellow")){
+            sealSlots.pop().setImage(getImage("yellowSecretSeal"));
+        }
     }
 
     private void disactiveNotOwnedSeals() {
