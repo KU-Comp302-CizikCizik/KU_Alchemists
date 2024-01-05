@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.effect.Effect;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,6 +30,17 @@ public class DebunkController {
 
     private String selectedAspect;
 
+
+    @FXML
+    public void initialize() {
+        String  ingredient = DebunkTheoryHandler.getInstance().getTheory();
+        setIngredient(ingredient);
+        if(DebunkTheoryHandler.getInstance().isCurrentPlayerAuthor()) {
+            debunkButton.setDisable(true);
+            debunkButton.setEffect(new GaussianBlur(4));
+        }
+    }
+
     @FXML
     void blueAspectClicked(MouseEvent event) {
         if (blueAspect.getEffect() != null) {
@@ -44,7 +56,7 @@ public class DebunkController {
 
 
     private void setEffect(ImageView aspect) {
-        Effect glow = new Glow(0.4);
+        Effect glow = new Glow(0.8);
         aspect.setEffect(glow);
     }
 
@@ -103,11 +115,7 @@ public class DebunkController {
         debunkButton.setDisable(true);
     }
 
-    @FXML
-    public void initialize() {
-        String  theory = DebunkTheoryHandler.getInstance().getTheory();
-        setIngredient(theory);
-    }
+
     public void setIngredient(String ingredientName){
         String imagePath = "/com.KUAlchemists/images/" + ingredientName + "-ingredient.jpg";
         try {
@@ -117,6 +125,14 @@ public class DebunkController {
         }catch (Exception e){
             System.err.println(e.getMessage());
         }
+    }
+    @FXML
+    public void debunkButtononMouseExited(MouseEvent event){
+        debunkButton.setEffect(null);
+    }
+    @FXML
+    public void debunkButtononMouseEntered(MouseEvent event){
+        debunkButton.setEffect(new Glow(0.8));
     }
 
 

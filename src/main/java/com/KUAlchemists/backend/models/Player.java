@@ -72,6 +72,7 @@ public class Player implements Subject {
     public void setSicknessLevel(int sicknessLevel) {
         this.sicknessLevel = sicknessLevel;
         if(this.sicknessLevel < 0)this.sicknessLevel = 0;
+        notifyObservers();
     }
 
     public int getReputation() {
@@ -88,20 +89,8 @@ public class Player implements Subject {
     }
 
 
-    public void setPublishedTheories(List<Theory> publishedTheories) {
-        this.publishedTheories = (ArrayList<Theory>) publishedTheories;
-    }
-
     public DeductionBoard getDeductionBoard() {
         return deductionBoard;
-    }
-
-    public void setDeductionBoard(DeductionBoard deductionBoard) {
-        this.deductionBoard = deductionBoard;
-    }
-
-    public int getSickness_level() {
-        return sicknessLevel;
     }
 
     public void setPublishedTheories(ArrayList<Theory> publishedTheories) {
@@ -131,6 +120,7 @@ public class Player implements Subject {
 
     public void setTheorySeals(ArrayList<TheorySeal> theorySeals){
         this.theorySeals = theorySeals;
+        notifyObservers();
     }
 
     public ArrayList<TheorySeal> getTheorySeals(){
@@ -143,6 +133,7 @@ public class Player implements Subject {
 
     public void addGold(int price) {
         this.gold += price;
+        notifyObservers();
     }
       
     @Override
@@ -174,5 +165,11 @@ public class Player implements Subject {
 
     public String getAvatar(){
         return avatar;
+    }
+
+
+    public void deduceReputationPoints(int cost){
+        this.reputation -= cost;
+        notifyObservers();
     }
 }

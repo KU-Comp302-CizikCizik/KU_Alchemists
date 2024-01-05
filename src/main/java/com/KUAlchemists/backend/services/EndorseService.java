@@ -3,7 +3,6 @@ package com.KUAlchemists.backend.services;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.TheorySeal;
-import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Theory;
 
 import java.util.ArrayList;

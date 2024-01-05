@@ -5,6 +5,7 @@ import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,7 +40,6 @@ public class PublishTheoryService {
                 .map(TheorySeal::getSealByName) // Assuming you have a method to convert string to TheorySeal
                 .collect(Collectors.toList());
 
-        Theory theory = new Theory(ingredient, predictedAlchemical, seals);
 
         // This method checks if a theory with the same ingredient name already exists
         boolean theoryExists = Board.getInstance().getPublishedTheoriesList().stream()
@@ -48,7 +48,9 @@ public class PublishTheoryService {
         boolean hasTheorySeal = player.getTheorySeals().contains(seals.get(0));
 
         if (!theoryExists && player.getGold() >= 1 & hasTheorySeal) {
-            theory.addEndorser(player);
+            HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
+            playerTheorySealsMap.put(player, seals.get(0));
+            Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
             player.setGold(player.getGold() - 1);
             theory.setPublished(true);
             player.setReputation(player.getReputation() + 1);

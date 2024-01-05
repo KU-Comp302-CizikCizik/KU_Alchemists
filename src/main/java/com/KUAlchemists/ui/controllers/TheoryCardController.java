@@ -63,7 +63,7 @@ public class TheoryCardController {
 
         }
         else if(green.equals(ps)&&blue.equals(ns)&&red.equals(pb)){
-            String imagePath = "/com.KUAlchemists/images/alchemy/alcehmy3.png";
+            String imagePath = "/com.KUAlchemists/images/alchemy/alchemy3.png";
             // Load the image using the class loader to ensure it works regardless of the build type
 
 

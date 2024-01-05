@@ -68,7 +68,7 @@ public class EndorseHandler implements PublicationTrackObserver {
     public void saveEndorsedSeal(String sealName) {
         TheorySeal seal = TheorySeal.getSealByName(sealName);
         GameEngine.getInstance().getCurrentPlayer().removeTheorySeal(seal);
-        selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer());
+        selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer(),seal);
         Board.getInstance().updateTheTheory(selectedTheory);
     }
 

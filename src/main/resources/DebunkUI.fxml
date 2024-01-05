@@ -34,7 +34,7 @@
             <Image url="@com.KUAlchemists/images/alchemy/GREEN.png" />
          </image>
       </ImageView>
-      <Button fx:id="debunkButton" layoutX="546.0" layoutY="331.0" mnemonicParsing="false" onAction="#debunkButtonClicked" opacity="0.62" style="-fx-background-color: #2D5F6E;" text="Debunk" textFill="WHITE">
+      <Button fx:id="debunkButton" onMouseExited="#debunkButtononMouseExited" onMouseEntered="#debunkButtononMouseEntered" layoutX="546.0" layoutY="331.0" mnemonicParsing="false" onAction="#debunkButtonClicked" opacity="0.62" style="-fx-background-color: #2D5F6E;" text="Debunk" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
