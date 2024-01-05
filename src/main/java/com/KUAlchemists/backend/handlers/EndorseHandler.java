@@ -6,6 +6,7 @@ import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.PublicationTrackObserver;
+import com.KUAlchemists.backend.services.EndorseService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,6 +18,9 @@ public class EndorseHandler implements PublicationTrackObserver {
 
     private Theory selectedTheory; //the theory that the player wants to endorse
     private static EndorseHandler instance; //singleton instance
+
+
+    private EndorseService endorseService;
     /**
      * This method is called when the player clicks on the endorse button
      * @return instance
@@ -32,6 +36,7 @@ public class EndorseHandler implements PublicationTrackObserver {
      * Constructor
      */
     private EndorseHandler() {
+        endorseService = new EndorseService();
 
     }
 
@@ -40,14 +45,7 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @return seals
      */
     public ArrayList<String> getPlayerAvailableTheorySeals() {
-        ArrayList<String> theorySeals =  GameEngine.getInstance().getCurrentPlayer().getTheorySeals()
-                .stream()
-                .map(TheorySeal::getSealString)
-                .collect(Collectors.toCollection(ArrayList::new));
-        //remove duplicates
-        Set<String> set = new HashSet<>(theorySeals);
-        ArrayList<String> seals = new ArrayList<>(set);
-        return seals;
+        return endorseService.getPlayerAvailableTheorySeals();
     }
 
     /**
@@ -55,12 +53,7 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @return playerSeals
      */
     public ArrayList<String> getEndorsedTheorySeals() {
-        ArrayList<TheorySeal> theorySeals = selectedTheory.getTheorySeals();
-        ArrayList<String> result = new ArrayList<>();
-        for (TheorySeal theorySeal : theorySeals){
-            result.add(theorySeal.getSealString());
-        }
-        return result;
+        return endorseService.getEndorsedTheorySeals();
     }
 
     /**
@@ -68,11 +61,10 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @param sealName
      */
     public void saveEndorsedSeal(String sealName) {
-        //the format SealGS SealSS SealRQ SealBQ SealGQ
         TheorySeal seal = TheorySeal.getSealByName(sealName);
         GameEngine.getInstance().getCurrentPlayer().removeTheorySeal(seal);
         selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer());
-        Board.getInstance().updateTheTheory(selectedTheory); //TO-DO: Can the two theories that shared the same ingredient be published?
+        Board.getInstance().updateTheTheory(selectedTheory);
     }
 
     /**
@@ -80,8 +72,7 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @return theory
      */
     public String getTheoryString() {
-        String theory = selectedTheory.getIngredient().getName().toLowerCase();
-        return theory;
+        return endorseService.getTheoryString();
     }
 
     /**
@@ -91,6 +82,7 @@ public class EndorseHandler implements PublicationTrackObserver {
     @Override
     public void onTheorySelected(Theory theory) {
         this.selectedTheory = theory;
+        endorseService.setSelectedTheory(theory);
     }
 
     /**
@@ -98,48 +90,22 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @return playerSeal
      */
     public String getPlayerSeal() {
-        String playerSeal = GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
-        return playerSeal;
+        return endorseService.getPlayerSeal();
     }
 
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return playerSeals
+     */
     public ArrayList<String> getEndorsedPlayerSeals() {
-        ArrayList<String> playerSeals = selectedTheory.getEndorsers().stream()
-                .map(player -> player.getPlayerSeal().getSealString())
-                .collect(Collectors.toCollection(ArrayList::new));
-        return playerSeals;
+        return endorseService.getEndorsedPlayerSeals();
     }
 
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return reputation
+     */
     public String getAlchemicalName() {
-        String result = "PATLADI";
-        Aspect red = selectedTheory.getIngredient().getAlchemical().getRedAspect();
-        Aspect green = selectedTheory.getIngredient().getAlchemical().getGreenAspect();
-        Aspect blue = selectedTheory.getIngredient().getAlchemical().getBlueAspect();
-        if(red == Aspect.POSITIVE_BIG && green == Aspect.POSITIVE_BIG && blue == Aspect.POSITIVE_BIG) {
-            return "alchemy1.png";
-        }
-        if(red == Aspect.POSITIVE_SMALL && green == Aspect.NEGATIVE_SMALL && blue == Aspect.NEGATIVE_BIG) {
-            return "alchemy2.png";
-        }
-        if(red == Aspect.POSITIVE_SMALL && green == Aspect.POSITIVE_BIG && blue == Aspect.NEGATIVE_SMALL) {
-            return "alchemy3.png";
-        }
-        if(red == Aspect.POSITIVE_BIG && green == Aspect.NEGATIVE_SMALL && blue == Aspect.POSITIVE_SMALL) {
-            return "alchemy4.png";
-        }
-        if(red == Aspect.NEGATIVE_SMALL && green == Aspect.POSITIVE_SMALL && blue == Aspect.POSITIVE_BIG) {
-            return "alchemy5.png";
-        }
-        if(red == Aspect.NEGATIVE_BIG && green == Aspect.NEGATIVE_BIG && blue == Aspect.NEGATIVE_BIG) {
-            return "alchemy6.png";
-        }
-        if(red == Aspect.NEGATIVE_SMALL && green == Aspect.NEGATIVE_BIG && blue == Aspect.POSITIVE_SMALL) {
-            return "alchemy7.png";
-        }
-        if(red == Aspect.NEGATIVE_BIG && green == Aspect.POSITIVE_SMALL && blue == Aspect.NEGATIVE_SMALL) {
-            return "alchemy8.png";
-        }
-
-        return result;
-
+        return endorseService.getAlchemicalName();
     }
 }
