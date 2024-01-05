@@ -91,7 +91,6 @@ public class PublishTheoryAlchemySelectController {
                 if ("Failed to publish theory.".equals(result)) {
                 }
                 else {
-                   System.out.println("Theory published successfully for ingredient: " + result);
                    txt.setText("You succesfully published the theory");
                }
 
@@ -185,8 +184,6 @@ public class PublishTheoryAlchemySelectController {
 
 
         String id = event.toString().substring(34, event.toString().indexOf(","));
-        System.out.println(id);
-        System.out.println(dict.get(id).get(1));
         PublishTheoryHandler.getInstance().setPredictedRedAspectString( dict.get(id).get(1).toString());
         this.red=dict.get(id).get(0).toString();
 
@@ -208,32 +205,15 @@ public class PublishTheoryAlchemySelectController {
                String result = pbt.handlePublishTheoryRequest();
 
                if ("Failed to publish theory.".equals(result)) {
-                   System.out.println(result);
                } else {
                    txt.setText("You succesfully published the theory");
-                   System.out.println("Theory published successfully for ingredient: " + result);
                }
 
            }
        }
        else{
 
-           //Arda endorse eklendiği için bu kısıma bir el atılması gerekecek. Konuşuruz.
-//        // Get the existing instance of PublishTheoryHandler
- //      PublishTheoryHandler pbt = PublishTheoryHandler.getInstance();
-//
-//        // Call the handlePublishTheoryRequest method
-//      String result = pbt.handlePublishTheoryRequest(red, green, blue);
-//
-//        // Handle the result accordingly
-//        if ("Failed to publish theory.".equals(result)) {
-//            // Handle failure
-//            System.out.println(result);
-//        } else {
-//            // Handle success
-//            System.out.println("Theory published successfully for ingredient: " + result);
-//
-//        }
+
     }
     }
 

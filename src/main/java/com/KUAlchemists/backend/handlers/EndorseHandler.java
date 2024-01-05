@@ -56,6 +56,11 @@ public class EndorseHandler implements PublicationTrackObserver {
         return endorseService.getEndorsedTheorySeals();
     }
 
+
+    public boolean isCurrentPlayerAuthor(){
+        return GameEngine.getInstance().getCurrentPlayer().getPublishedTheories().contains(selectedTheory);
+    }
+
     /**
      * This method is called when the player clicks on the endorse button
      * @param sealName

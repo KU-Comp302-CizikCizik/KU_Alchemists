@@ -50,7 +50,6 @@ public class PublicationTrackController {
         }
     }
         catch (Exception e) {
-            System.out.println("Error in PublicationTrackController");
             System.err.println(e.getMessage());
         }
 

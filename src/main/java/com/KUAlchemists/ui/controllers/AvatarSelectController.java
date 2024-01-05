@@ -72,8 +72,6 @@ public class AvatarSelectController {
         clickedImage.setEffect(selectGlow);
         clickedImage.setUserData(true); // Mark this image as selected
         selectedImages.add(clickedImage); // Add to the list of selected images
-        System.out.println("Avatar selected: " + clickedImage.getId());
-        System.out.println("Current player: " + currentPlayer);
         AvatarSelectHandler.getInstance().handleSetAvatar(clickedImage.getId(),currentPlayer-1); // for indexing -1
         int numberOfPlayers = GameEngine.getInstance().getCurrentGameMode().getNumberOfPlayers();
 

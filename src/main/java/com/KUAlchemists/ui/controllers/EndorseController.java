@@ -18,9 +18,9 @@ public class EndorseController {
     @FXML
     private ImageView alchemy;
 
-    @FXML
-    private Text endorseButton;
 
+    @FXML
+    private Text EndorseText;
     @FXML
     private ImageView seal1;
 
@@ -57,11 +57,12 @@ public class EndorseController {
     Stack<ImageView> sealSlots = new Stack<>();
     private ImageView selectedSeal1;
 
+    private boolean isPlayerAuthor;
 
     @FXML
     private void initialize() {
         playerAvailableSeals = EndorseHandler.getInstance().getPlayerAvailableTheorySeals();
-
+        isPlayerAuthor = EndorseHandler.getInstance().isCurrentPlayerAuthor();
         playerSeals = EndorseHandler.getInstance().getEndorsedPlayerSeals();
         String theory = EndorseHandler.getInstance().getTheoryString();
         String alchemicalName = EndorseHandler.getInstance().getAlchemicalName();
@@ -76,6 +77,11 @@ public class EndorseController {
         disactiveNotOwnedSeals();
         setEndorsersSeals();
         setAlchemy(alchemicalName);
+        if(isPlayerAuthor){
+            EndorseText.setDisable(true);
+            EndorseText.setEffect(new GaussianBlur(4));
+        }
+
     }
 
     private void setAlchemy(String alchemicalName) {
