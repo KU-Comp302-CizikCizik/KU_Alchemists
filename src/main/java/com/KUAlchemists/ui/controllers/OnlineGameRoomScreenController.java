@@ -49,6 +49,7 @@ public class OnlineGameRoomScreenController {
             NetworkHandler.getInstance().handleConnect(ipAddress, 7777);
             // default port: 7777, we should decide, do we request port info from user?
         });
+        NetworkHandler.getInstance().handleSendDataToServer();
         SceneLoader.getInstance().loadWaitingRoomScreen();
     }
 }

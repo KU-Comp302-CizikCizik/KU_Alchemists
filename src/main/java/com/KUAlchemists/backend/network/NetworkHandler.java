@@ -6,7 +6,10 @@ public class NetworkHandler {
     private static NetworkHandler instance;
     private NetworkService service;
 
-    private NetworkHandler(){}
+    private NetworkHandler()
+    {
+        this.service = NetworkService.getInstance();
+    }
 
     public static NetworkHandler getInstance(){
         if (instance == null){
