@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
 public class IngredientCard_PublishController {
     @FXML
     // Bunu static'ten çıkardım
@@ -36,6 +38,8 @@ public class IngredientCard_PublishController {
     public void selected(ActionEvent event) {
 
         PublishTheoryHandler.getInstance().setSelectedIngredientName(ingredient);
+        Stage stage = (Stage)ing_image.getScene().getWindow();
+        stage.close();
 
         SceneLoader.getInstance().loadPublishAlchemyPart();
     }

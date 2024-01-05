@@ -30,7 +30,6 @@ public class PublicationTrackController {
         String playerPublishedTheoriesInfo=publicationhandler.handleGetPlayerPublishedTheoriesInfo();
         String[] lines=allPublishedTheoriesInfo.split("\n");
         String[] lines2=playerPublishedTheoriesInfo.split("\n");
-        System.out.println(lines);
         try{
 
         for(int i = 0; i <lines.length; i++) {
