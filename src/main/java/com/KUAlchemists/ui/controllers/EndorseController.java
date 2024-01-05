@@ -18,9 +18,9 @@ public class EndorseController {
     @FXML
     private ImageView alchemy;
 
-    @FXML
-    private Text endorseButton;
 
+    @FXML
+    private Text EndorseText;
     @FXML
     private ImageView seal1;
 
@@ -50,18 +50,22 @@ public class EndorseController {
 
     private ImageView selectedSeal;
 
-    ArrayList<String> currentSeals;
-    ArrayList<String> endorsedSeals;
+    ArrayList<String> playerAvailableSeals;
+
+    ArrayList<String> playerSeals;
 
     Stack<ImageView> sealSlots = new Stack<>();
     private ImageView selectedSeal1;
 
+    private boolean isPlayerAuthor;
 
     @FXML
     private void initialize() {
-        currentSeals = EndorseHandler.getInstance().getPlayerTheorySeals();
-        endorsedSeals = EndorseHandler.getInstance().getEndorsedTheorySeals();
-        String theory = EndorseHandler.getInstance().getTheory();
+        playerAvailableSeals = EndorseHandler.getInstance().getPlayerAvailableTheorySeals();
+        isPlayerAuthor = EndorseHandler.getInstance().isCurrentPlayerAuthor();
+        playerSeals = EndorseHandler.getInstance().getEndorsedPlayerSeals();
+        String theory = EndorseHandler.getInstance().getTheoryString();
+        String alchemicalName = EndorseHandler.getInstance().getAlchemicalName();
 
         setTheoryImage(theory);
         sealSlots.add(seal3);
@@ -71,7 +75,25 @@ public class EndorseController {
         String playerSeal = EndorseHandler.getInstance().getPlayerSeal();
         setSeals(playerSeal);
         disactiveNotOwnedSeals();
-        setEndorsedSeals();
+        setEndorsersSeals();
+        setAlchemy(alchemicalName);
+        if(isPlayerAuthor){
+            EndorseText.setDisable(true);
+            EndorseText.setEffect(new GaussianBlur(4));
+        }
+
+    }
+
+    private void setAlchemy(String alchemicalName) {
+        String imagePath = "/com.KUAlchemists/images/alchemy/" + alchemicalName;
+        try {
+            Image newImage = new Image(getClass().getResourceAsStream(imagePath));
+            // Set the image to the ImageView
+            alchemy.setImage(newImage);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+
     }
 
     private void setTheoryImage(String theory) {
@@ -85,42 +107,47 @@ public class EndorseController {
         }
     }
 
-    private void setEndorsedSeals() {
-        if(endorsedSeals.contains("red")) {
+    private void setEndorsersSeals() {
+
+        if(playerSeals.contains("red")) {
             sealSlots.pop().setImage(getImage("redSecretSeal"));
         }
 
-        if(endorsedSeals.contains("blue")) {
+        if(playerSeals.contains("blue")) {
             sealSlots.pop().setImage(getImage("blueSecretSeal"));
         }
 
-        if(endorsedSeals.contains("green")) {
+        if(playerSeals.contains("green")) {
             sealSlots.pop().setImage(getImage("greenSecretSeal"));
+        }
+
+        if(playerSeals.contains("yellow")){
+            sealSlots.pop().setImage(getImage("yellowSecretSeal"));
         }
     }
 
     private void disactiveNotOwnedSeals() {
-        if(!currentSeals.contains("GS")) {
+        if(!playerAvailableSeals.contains("GS")) {
             SealGS.setDisable(true);
             SealGS.setEffect(new GaussianBlur(4));
         }
 
-        if(!currentSeals.contains("SS")) {
+        if(!playerAvailableSeals.contains("SS")) {
             SealSS.setDisable(true);
             SealSS.setEffect(new GaussianBlur(4));
         }
 
-        if(!currentSeals.contains("RQ")) {
+        if(!playerAvailableSeals.contains("RQ")) {
             SealRQ.setDisable(true);
             SealRQ.setEffect(new GaussianBlur(4));
         }
 
-        if(!currentSeals.contains("BQ")) {
+        if(!playerAvailableSeals.contains("BQ")) {
             SealBQ.setDisable(true);
             SealBQ.setEffect(new GaussianBlur(4));
         }
 
-        if(!currentSeals.contains("GQ")) {
+        if(!playerAvailableSeals.contains("GQ")) {
             SealGQ.setDisable(true);
             SealGQ.setEffect(new GaussianBlur(4));
         }
@@ -136,9 +163,9 @@ public class EndorseController {
     }
 
     private Image getImage(String s) {
-        String imagePath = "com.KUAlchemists/images/Endorse/" + s + ".png";
+        String imagePath = "/com.KUAlchemists/images/Endorse/" + s + ".png";
         try {
-            Image newImage = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
+            Image newImage = new Image(getClass().getResourceAsStream(imagePath));
             // Set the image to the ImageView
             return newImage;
         }catch (Exception e){
@@ -158,7 +185,7 @@ public class EndorseController {
 
     @FXML
     void endorseClicked(MouseEvent event) {
-        if(endorsedSeals.size()<3){
+        if(playerSeals.size()<3){
             sealSlots.pop().setImage(selectedSeal.getImage());
             try {
                 EndorseHandler.getInstance().saveEndorsedSeal(getClass().getDeclaredField(selectedSeal.getId()).getName().split("Seal")[1]);
@@ -194,6 +221,16 @@ public class EndorseController {
     @FXML
     void seal5Clicked(MouseEvent event) {
         select(SealGQ);
+    }
+
+    @FXML
+    void onMouseEntered(MouseEvent event){
+        EndorseText.setEffect(new Glow(0.7));
+    }
+
+    @FXML
+    void onMouseExited(MouseEvent event){
+        EndorseText.setEffect(null);
     }
 
 }

@@ -55,7 +55,6 @@ public class GameEngine {
     public void initializeGame(GameMode gameMode) {
         this.currentGameMode = gameMode;
         GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
-        System.out.println("Game Initialized");
     }
 
     /**

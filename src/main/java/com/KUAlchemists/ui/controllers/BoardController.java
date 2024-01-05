@@ -191,13 +191,13 @@ public class BoardController implements PlayerObserver {
         //round_tour_info[1] = tour
 
         //load the round when round is changed
-        if (round == 3) {
-            loadRound3();
-        } else if (round == 2) {
-            lodRound2();
-        } else if (round == 1) {
-            loadRound1();
-        }
+//        if (round == 3) {
+//            loadRound3();
+//        } else if (round == 2) {
+//            lodRound2();
+//        } else if (round == 1) {
+//            loadRound1();
+//        }
 
         if(tour == 3) {
             endRoundButton.setText("End The Round");

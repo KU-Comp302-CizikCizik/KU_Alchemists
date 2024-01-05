@@ -20,6 +20,7 @@ public enum TheorySeal {
     }
 
 
+
     public String getSealString() {
         return seal;
     }

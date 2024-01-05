@@ -4,6 +4,7 @@ package com.KUAlchemists.backend.managers;
 import com.KUAlchemists.backend.models.Potion;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.PotionBrewingObserver;
+import com.KUAlchemists.backend.observer.PublicationTrackObserver;
 import com.KUAlchemists.backend.subjects.PotionBrewingData;
 import com.KUAlchemists.backend.subjects.PublicationTrackData;
 
@@ -70,18 +71,18 @@ public class EventManager {
 
     /**
      * This method is used to notify the observers when a theory is selected.
-     * @param potionBrewingObserver
+     * @param publicationTrackObserver
      */
-    public void registerPublicationTrackObserver(PotionBrewingObserver potionBrewingObserver){
-        publicationTrackData.registerObserver(potionBrewingObserver);
+    public void registerPublicationTrackObserver(PublicationTrackObserver publicationTrackObserver){
+        publicationTrackData.registerObserver(publicationTrackObserver);
     }
 
     /**
      * This method is used to remove an observer.
-     * @param potionBrewingObserver
+     * @param publicationTrackObserver
      */
-    public void removePublicationTrackObserver(PotionBrewingObserver potionBrewingObserver){
-        publicationTrackData.removeObserver(potionBrewingObserver);
+    public void removePublicationTrackObserver(PublicationTrackObserver publicationTrackObserver){
+        publicationTrackData.removeObserver(publicationTrackObserver);
     }
 
     /**

@@ -143,7 +143,6 @@ public class SceneLoader {
 
     public void loadPublicationTrack() {
         loadPopUp(UIConstants.PUBLICATIONTRACK_UI_FXML);
-        System.out.println("loadPublicationTrack");
     }
 
     public void loadDeductionBoard() {
