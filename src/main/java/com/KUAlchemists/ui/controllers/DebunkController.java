@@ -4,6 +4,7 @@ import com.KUAlchemists.backend.handlers.DebunkTheoryHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.effect.Glow;
@@ -37,8 +38,9 @@ public class DebunkController {
         setIngredient(ingredient);
         if(DebunkTheoryHandler.getInstance().isCurrentPlayerAuthor()) {
             debunkButton.setDisable(true);
-            debunkButton.setEffect(new GaussianBlur(4));
+            debunkButton.setEffect(new GaussianBlur(2));
         }
+        debunkButton.setOpacity(1f);
     }
 
     @FXML
@@ -56,8 +58,10 @@ public class DebunkController {
 
 
     private void setEffect(ImageView aspect) {
-        Effect glow = new Glow(0.8);
+        Effect glow = new Glow(0.4);
+        Effect dropShadow = new DropShadow(20, javafx.scene.paint.Color.WHITE);
         aspect.setEffect(glow);
+        aspect.setEffect(dropShadow);
     }
 
     @FXML

@@ -66,7 +66,6 @@ public class DebunkTheoryService {
             }
 
         }
-        System.out.println("punishPlayers");
     }
 
     private TheorySeal getCorrespondingSeal(String assertedAspectString) {

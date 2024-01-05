@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 public class IngredientCard_PublishController {
     @FXML
-    // Bunu static'ten çıkardım
     public String ingredient;
     @FXML
     private Button bttn;
