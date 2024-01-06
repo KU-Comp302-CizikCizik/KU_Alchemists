@@ -34,6 +34,8 @@ public class UIConstants {
     public static final String PUBLISH_THEORY_UI_FXML = "PublishTheoryUI.fxml";
 
     public static final String POTIONBREW_UI_FXML = "PotionBrewUI.fxml";
+
+    public static final String FINAL_SCORING_UI_FXML = "FinalScoringUI.fxml";
     public static final int WINDOW_WIDTH = 1080;
     public static final int WINDOW_HEIGHT = 720;
     public static final int ARTIFACTS_WINDOW_WIDTH = 700;

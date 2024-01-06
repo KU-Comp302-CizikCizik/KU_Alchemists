@@ -94,5 +94,9 @@ public class Board {
             }
         }
     }
+
+    public HashMap<Player, ArtifactStorage> getArtifactStorages() {
+        return artifactStorages;
+    }
 }
 
