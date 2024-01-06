@@ -175,8 +175,13 @@ public class GameEngine {
     }
 
 
+    public Integer getPlayerIndex(Player player) {
+        return playerList.indexOf(player);
+    }
+
     public GameMode getCurrentGameMode() {
         return currentGameMode;
+
     }
 
 }
