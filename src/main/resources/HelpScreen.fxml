@@ -14,9 +14,9 @@
                 <Image url="@com.KUAlchemists/images/table_of_alchemist,_messy,_drawing_style.png" />
             </image>
         </ImageView>
-      <ScrollPane layoutX="54.0" layoutY="47.0" prefHeight="350.0" prefWidth="356.0" style="-fx-background-color: #774342;">
+      <ScrollPane layoutX="54.0" layoutY="47.0" opacity="0.7" prefHeight="350.0" prefWidth="356.0" style="-fx-background-color: #774342;">
          <content>
-            <TextFlow fx:id="text_flow" prefHeight="349.0" prefWidth="355.0" style="-fx-background-color: #261615;">
+            <TextFlow fx:id="text_flow" prefHeight="349.0" prefWidth="355.0" style="-fx-background-color: #261615;" styleClass="sofia" stylesheets="@CSS/style.css">
                <children>
                   <Text fx:id="text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="import javafx.scene.text.Text;import javafx.scene.text.Text;import javafx.scene.text.Text;import javafx.scene.text.Text;" wrappingWidth="347.689453125" />
                </children>

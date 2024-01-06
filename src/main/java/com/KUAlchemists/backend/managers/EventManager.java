@@ -2,8 +2,11 @@ package com.KUAlchemists.backend.managers;
 
 
 import com.KUAlchemists.backend.models.Potion;
+import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.PotionBrewingObserver;
+import com.KUAlchemists.backend.observer.PublicationTrackObserver;
 import com.KUAlchemists.backend.subjects.PotionBrewingData;
+import com.KUAlchemists.backend.subjects.PublicationTrackData;
 
 public class EventManager {
 
@@ -11,6 +14,8 @@ public class EventManager {
     private static EventManager instance;
 
     private PotionBrewingData potionBrewingData;
+
+    private PublicationTrackData publicationTrackData;
 
     /**
      * This method is used to get the instance of the class.
@@ -28,6 +33,7 @@ public class EventManager {
      */
     private EventManager() {
         potionBrewingData = new PotionBrewingData();
+        publicationTrackData = new PublicationTrackData();
     }
 
     /**
@@ -42,7 +48,7 @@ public class EventManager {
      * This method is used to notify the observers when a potion is brewed.
      * @param potion
      */
-    public void onPotionBrewingActionPerformed(Potion potion){
+    public void onPotionBrewingPerformed(Potion potion){
         notifyPotionBrewingObservers(potion);
     }
 
@@ -60,6 +66,39 @@ public class EventManager {
      */
     public void removePotionBrewingObserver(PotionBrewingObserver potionBrewingObserver){
         potionBrewingData.removeObserver(potionBrewingObserver);
+    }
+
+
+    /**
+     * This method is used to notify the observers when a theory is selected.
+     * @param publicationTrackObserver
+     */
+    public void registerPublicationTrackObserver(PublicationTrackObserver publicationTrackObserver){
+        publicationTrackData.registerObserver(publicationTrackObserver);
+    }
+
+    /**
+     * This method is used to remove an observer.
+     * @param publicationTrackObserver
+     */
+    public void removePublicationTrackObserver(PublicationTrackObserver publicationTrackObserver){
+        publicationTrackData.removeObserver(publicationTrackObserver);
+    }
+
+    /**
+     * This method is used to notify the observers when a theory is selected.
+     * @param theory
+     */
+    private void notifyPublicationTrackObservers(Theory theory){
+        publicationTrackData.onTheorySelectedPerformed(theory);
+    }
+
+    /**
+     * This method is used to notify the observers when a theory is selected.
+     * @param theory
+     */
+    public void onTheorySelectedPerformed(Theory theory){
+        notifyPublicationTrackObservers(theory);
     }
 
 

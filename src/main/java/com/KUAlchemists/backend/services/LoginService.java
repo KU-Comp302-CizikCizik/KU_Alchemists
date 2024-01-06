@@ -30,6 +30,7 @@ public class LoginService {
         String storedPassword = userRepository.getUserPassword(username);
         // Here you would compare the hashed password, the following is a placeholder
         return storedPassword != null && storedPassword.equals(password);
+
     }
 
     /**

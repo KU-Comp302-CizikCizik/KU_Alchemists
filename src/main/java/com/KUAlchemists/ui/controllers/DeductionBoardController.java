@@ -407,8 +407,5 @@ public class DeductionBoardController {
     @FXML
     void setCircle(MouseEvent event) {
 
-       /* System.out.println("a");
-        Image image = new Image(getClass().getClassLoader().getResourceAsStream("com.KUAlchemists/images/alchemy/PARALYSIS.png"));
-        circle_1.setImage(image);*/
     }
 }

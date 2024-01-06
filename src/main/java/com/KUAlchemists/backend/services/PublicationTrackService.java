@@ -36,7 +36,7 @@ public class PublicationTrackService {
      * Gets information about all published theories in the game.
      * @return A formatted string containing information about all published theories.
      */
-    public String getAllPublishedTheoriesInfo() {
+    public String getAllPublishedTheoriesInfo() { // burada bir sıkıntı var. veya theory ekleme kısmında bir sıkıntı var.
         List<Theory> publishedTheories = Board.getInstance().getPublishedTheoriesList();
         StringBuilder info = new StringBuilder();
         for (Theory theory : publishedTheories) {
@@ -51,4 +51,15 @@ public class PublicationTrackService {
         }
         return info.toString();
     }
+
+    public Theory getTheoryByIngredientName(String ingredientName) {
+        List<Theory> publishedTheories = Board.getInstance().getPublishedTheoriesList();
+        for (Theory theory : publishedTheories) {
+            if (theory.getIngredient().getName().equals(ingredientName)) {
+                return theory;
+            }
+        }
+        return null;
+    }
+
 }

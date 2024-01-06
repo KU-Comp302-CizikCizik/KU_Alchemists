@@ -1,7 +1,10 @@
 package com.KUAlchemists.backend.enums;
 
 public enum Aspect {
-    POSITIVE_BIG, NEGATIVE_BIG, POSITIVE_SMALL, NEGATIVE_SMALL;
+    POSITIVE_BIG,
+    NEGATIVE_BIG,
+    POSITIVE_SMALL,
+    NEGATIVE_SMALL;
 
     // Methods to determine the properties of the aspects
     public boolean isPositive() {
@@ -21,7 +24,6 @@ public enum Aspect {
     }
 
 
-
     /**
      * Parses a string to find the corresponding Aspect enum constant.
      * @param str The string representation of the aspect, e.g., "POSITIVE_BIG".
@@ -36,5 +38,7 @@ public enum Aspect {
         }
         throw new IllegalArgumentException("No constant with text " + str + " found in Aspect enum");
     }
+
+
 
 }
