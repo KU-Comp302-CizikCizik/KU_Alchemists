@@ -1,64 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Button?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1073.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.AvatarSelectController">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1080.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="720.0" fitWidth="1080.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_1" fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="232.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow"  pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_1" fitHeight="197.0" fitWidth="167.0" layoutX="243.0" layoutY="196.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/profile_p/avatar_1.png" />
+            <Image url="@com.KUAlchemists/images/profile_p/Adsız%20tasarım%20(2).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_5" fitHeight="150.0" fitWidth="200.0" layoutX="214.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow"  pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_5" fitHeight="195.0" fitWidth="185.0" layoutX="243.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/profile_p/avatar_5.png" />
+            <Image url="@com.KUAlchemists/images/profile_p/Adsız%20tasarım%20(6).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_7" fitHeight="150.0" fitWidth="200.0" layoutX="537.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow"  pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_7" fitHeight="197.0" fitWidth="176.0" layoutX="716.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/profile_p/avatar_7.png" />
+            <Image url="@com.KUAlchemists/images/profile_p/Adsız%20tasarım%20(9).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_8" fitHeight="150.0" fitWidth="200.0" layoutX="700.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow"  pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_8" fitHeight="197.0" fitWidth="158.0" layoutX="400.0" layoutY="197.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/profile_p/avatar_8.png" />
+            <Image url="@com.KUAlchemists/images/profile_p/Adsız%20tasarım%20(8).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_3" fitHeight="150.0" fitWidth="200.0" layoutX="539.0" layoutY="232.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow"  pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_3" fitHeight="195.0" fitWidth="174.0" layoutX="557.0" layoutY="197.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/profile_p/avatar_3.png" />
+            <Image url="@com.KUAlchemists/images/profile_p/Adsız%20tasarım%20(4).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_6" fitHeight="150.0" fitWidth="200.0" layoutX="378.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow"  onMouseExited="#unglow"  pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_6" fitHeight="214.0" fitWidth="156.0" layoutX="401.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/profile_p/avatar_6.png" />
+            <Image url="@com.KUAlchemists/images/profile_p/Adsız%20tasarım%20(7).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_4" fitHeight="150.0" fitWidth="200.0" layoutX="699.0" layoutY="232.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_4" fitHeight="197.0" fitWidth="158.0" layoutX="712.0" layoutY="197.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/profile_p/avatar_4.png" />
+            <Image url="@com.KUAlchemists/images/profile_p/Adsız%20tasarım%20(5).png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_2" fitHeight="150.0" fitWidth="200.0" layoutX="378.0" layoutY="232.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_2" fitHeight="197.0" fitWidth="166.0" layoutX="558.0" layoutY="392.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@com.KUAlchemists/images/profile_p/avatar_2.png" />
+            <Image url="@com.KUAlchemists/images/profile_p/Adsız%20tasarım%20(3).png" />
          </image>
       </ImageView>
-      <Text fx:id="txt" fill="WHITE" layoutX="250.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="2.0" stroke="BLACK">
+      <Text fx:id="txt" fill="WHITE" layoutX="250.0" layoutY="81.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0">
          <font>
             <Font name="Colonna MT" size="48.0" />
          </font>
       </Text>
-      <Button fx:id="startGameButton" text="Start Game" onAction="#loadBoard" disable="true" layoutX="436.5" layoutY="660.0" prefWidth="227.0" prefHeight="53.0" style="-fx-background-color: #0073e6; -fx-text-fill: white; -fx-font-size: 20px; -fx-background-radius: 15px; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 15px;" />
+      <Button fx:id="startGameButton" disable="true" layoutX="436.5" layoutY="660.0" onAction="#loadBoard" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #0073e6; -fx-text-fill: white; -fx-font-size: 20px; -fx-background-radius: 15px; -fx-border-color: black; -fx-border-width: 2px; -fx-border-radius: 15px;" text="Start Game" />
    </children>
 </AnchorPane>

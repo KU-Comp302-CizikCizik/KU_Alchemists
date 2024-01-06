@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="228.0" style="-fx-background-color: #12232bd9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.TheoryCardController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: #12232bd9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.TheoryCardController">
    <children>
-      <HBox prefHeight="29.0" prefWidth="254.0">
+      <HBox prefHeight="21.0" prefWidth="221.0">
          <children>
             <Text fx:id="player_txt" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Players Name">
                <font>
@@ -25,7 +25,7 @@
       </HBox>
       <HBox prefHeight="114.0" prefWidth="209.0">
          <children>
-            <ImageView fx:id="ingredient_image" fitHeight="114.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ingredient_image" fitHeight="89.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@com.KUAlchemists/images/frog-ingredient-square.png" />
                </image>
@@ -39,7 +39,7 @@
                      <children>
                         <VBox prefHeight="100.0" prefWidth="153.0">
                            <children>
-                              <ImageView fx:id="alchemy" fitHeight="46.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="alchemy" fitHeight="44.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
                                  </image>
@@ -47,12 +47,12 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Button mnemonicParsing="false" onAction="#endorseClicked" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="r" text="Endorse">
+                              <Button mnemonicParsing="false" onAction="#endorseClicked" prefHeight="20.0" prefWidth="82.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="r" text="Endorse">
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#debunkClicked" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" text="Debunk" />
+                              <Button mnemonicParsing="false" onAction="#debunkClicked" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" text="Debunk" />
                            </children>
                         </VBox>
                      </children>
