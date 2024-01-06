@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class PublishTheoryService {
 
+
     public PublishTheoryService() {
     }
 
@@ -32,6 +33,7 @@ public class PublishTheoryService {
         Aspect greenAspect = Aspect.fromString(predictedGreenAspectString);
         Aspect blueAspect = Aspect.fromString(predictedBlueAspectString);
         Alchemical predictedAlchemical = new Alchemical(redAspect, greenAspect, blueAspect);
+
 
         //Ingredient ingredient = Board.getInstance().getIngredientStorage(player).getIngredient(ingredientName);
         Ingredient ingredient = new Ingredient(ingredientName);
@@ -71,5 +73,8 @@ public class PublishTheoryService {
      */
     public String getPlayerSeal() {
         return GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
+    }
+    public Number getPlayerAction() {
+        return GameEngine.getInstance().getCurrentPlayer().getActionPoints();
     }
 }
