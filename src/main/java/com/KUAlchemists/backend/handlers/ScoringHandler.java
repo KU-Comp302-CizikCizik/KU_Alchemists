@@ -24,15 +24,6 @@ public class ScoringHandler {
     }
 
     /**
-     * Handler for getting the winner of the game.
-     * @see ScoringService#getWinner(ArrayList)
-     * @return index of the winner player or -1 if there is a draw
-     */
-    public Integer handleGetWinner() {
-        ArrayList <Player> players = GameEngine.getInstance().getPlayerList();
-        return scoringService.getWinner(players);
-    }
-    /**
      * Handler for getting score of a player.
      * @see ScoringService#calculateScore(Player)
      * @param playerIndex
@@ -56,9 +47,8 @@ public class ScoringHandler {
         return ranking;
     }
 
-    public String handleDraw(){
-        //return scoringService.isThereADraw(GameEngine.getInstance().getPlayerList());
-        return "draw";
+    public int handleDraw(){
+        return scoringService.isThereADraw(GameEngine.getInstance().getPlayerList());
     }
 
 

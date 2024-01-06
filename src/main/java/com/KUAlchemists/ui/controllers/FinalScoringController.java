@@ -105,7 +105,6 @@ public class FinalScoringController {
             int score = ScoringHandler.getInstance().handleGetScores(rankingList.get(i));
             userSlots[i].getFinalPoint().setText("Final Point: " + String.valueOf(score));
             userSlots[i].getAlchemistName().setText("Alchemist Name: " + playerPosition.get(i));
-
             userSlots[i].getUserMainSlot().setVisible(true);
             String imagePath = "/com.KUAlchemists/images/adventurer/" + "adventurer-photo-"+(i+1)+ ".png";
             // Load the image using the class loader to ensure it works regardless of the build type
@@ -116,9 +115,9 @@ public class FinalScoringController {
                 System.err.println(e.getMessage());
             }
         }
-        String draw = ScoringHandler.getInstance().handleDraw();
-        if (!(draw.equals("no draw"))){
-            drawMessage.setText(draw);
+        int draw = ScoringHandler.getInstance().handleDraw();
+        if (draw == 1){
+            drawMessage.setText("There is a draw!");
             drawMessage.setVisible(true);
         }
 
