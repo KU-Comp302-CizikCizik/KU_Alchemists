@@ -26,6 +26,8 @@ public class Player implements Subject {
     private ArrayList<TheorySeal> theorySeals;
 
     private String name;
+
+    private int score;
     private List<PlayerObserver> observers;
 
     private String avatar; // this is the avatar of the player that will be displayed on the board
@@ -171,5 +173,13 @@ public class Player implements Subject {
     public void deduceReputationPoints(int cost){
         this.reputation -= cost;
         notifyObservers();
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
     }
 }
