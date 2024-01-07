@@ -23,15 +23,27 @@ public class Deck {
 
     /**
      * loadIngredientsFromResources
+     *
      * Requires:
-     * - The "ingredients.csv" file must exist in the resources.
-     * - The CSV file should be in the format: name,value,description,type
+     * - A CSV file specified by the `path` parameter must exist in the resources.
+     * - The CSV file should be formatted with data in the order: name, value, description, type.
+     *   Each line in the file represents one ingredient.
+     *
      * Modifies:
-     * - Modifies the `ingredientsList` by adding new Ingredient objects.
+     * - Modifies the `ingredientsList` in the `Deck` class by adding new `Ingredient` objects.
+     *   Each line in the CSV file corresponds to one `Ingredient` object.
+     *
      * Effects:
-     * - Reads the "ingredients.csv" file and loads ingredients into `ingredientsList`.
-     * - Handles IOException by printing the stack trace.
+     * - Reads the CSV file specified by the `path` parameter.
+     * - For each line in the file, creates a new `Ingredient` object with the parsed data and adds it to `ingredientsList`.
+     * - Handles FileNotFoundException by not adding any ingredients to the list if the file is missing.
+     * - Handles incomplete data by partially filling the `ingredientsList` based on the correctly formatted lines in the CSV file.
+     * - In case of invalid data format in the CSV file, the method results in an empty `ingredientsList`.
+     * - Handles IOException by printing the stack trace, which occurs if there are issues in reading the file.
+     * - In cases of empty files or files with invalid data format, the `ingredientsList` remains or becomes empty.
+     *
      */
+
 
     public void loadIngredientsFromResources(String path) {
         try {
