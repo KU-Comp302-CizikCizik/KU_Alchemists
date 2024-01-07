@@ -55,4 +55,7 @@ public enum PlayerSeal {
     public String getSealString() {
         return sealColor;
     }
+
+
+
 }

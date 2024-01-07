@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="body" stylesheets="@CSS/FinalScoringStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.FinalScoringController">
+   <children>
+      <Pane fx:id="userMainSlot1" layoutX="89.0" layoutY="28.0" prefHeight="110.0" prefWidth="522.0" styleClass="slot">
+         <children>
+            <ImageView fx:id="userImagePane1" fitHeight="100.0" fitWidth="100.0" layoutX="60.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="avatar-image" />
+            <Text layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="number-order" text="1" />
+            <Text fx:id="alchemistName1" layoutX="172.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="player-name" text="Alchemist Name:" wrappingWidth="328.30000019073486" />
+            <Text fx:id="finalPoint1" layoutX="172.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="final-point" text="Final Point:" wrappingWidth="328.30000019073486" />
+            <Text fx:id="additional1" layoutX="172.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="additional-slot" text="Aditional Note:" wrappingWidth="328.30000019073486" />
+         </children>
+      </Pane>
+      <Pane fx:id="userMainSlot2" layoutX="89.0" layoutY="138.0" prefHeight="110.0" prefWidth="522.0" styleClass="slot">
+         <children>
+            <ImageView fx:id="userImagePane2" fitHeight="100.0" fitWidth="100.0" layoutX="60.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="avatar-image" />
+            <Text layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="number-order" text="2" />
+            <Text fx:id="alchemistName2" layoutX="172.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="player-name" text="Alchemist Name:" wrappingWidth="328.30000019073486" />
+            <Text fx:id="finalPoint2" layoutX="172.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="final-point" text="Final Point:" wrappingWidth="328.30000019073486" />
+            <Text fx:id="additional2" layoutX="172.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="additional-slot" text="Aditional Note:" wrappingWidth="328.30000019073486" />
+         </children>
+      </Pane>
+      <Pane fx:id="userMainSlot3" layoutX="89.0" layoutY="248.0" prefHeight="110.0" prefWidth="522.0" styleClass="slot">
+         <children>
+            <ImageView fx:id="userImagePane3" fitHeight="100.0" fitWidth="100.0" layoutX="60.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="avatar-image" />
+            <Text layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="number-order" text="3" />
+            <Text fx:id="alchemistName3" layoutX="172.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="player-name" text="Alchemist Name:" wrappingWidth="328.30000019073486" />
+            <Text fx:id="finalPoint3" layoutX="172.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="final-point" text="Final Point:" wrappingWidth="328.30000019073486" />
+            <Text fx:id="additional3" layoutX="172.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="additional-slot" text="Aditional Note:" wrappingWidth="328.30000019073486" />
+         </children>
+      </Pane>
+      <Pane fx:id="userMainSlot4" layoutX="89.0" layoutY="358.0" prefHeight="110.0" prefWidth="522.0" styleClass="slot">
+         <children>
+            <ImageView fx:id="userImagePane4" fitHeight="100.0" fitWidth="100.0" layoutX="60.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="avatar-image" />
+            <Text layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="number-order" text="4" />
+            <Text fx:id="alchemistName4" layoutX="172.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="player-name" text="Alchemist Name:" wrappingWidth="328.30000019073486" />
+            <Text fx:id="finalPoint4" layoutX="172.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="final-point" text="Final Point:" wrappingWidth="328.30000019073486" />
+            <Text fx:id="additional4" layoutX="172.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="additional-slot" text="Aditional Note:" wrappingWidth="328.30000019073486" />
+         </children>
+      </Pane>
+   </children>
+   <Text fx:id="drawMessage" layoutX="89.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="draw-message" text="Draw Status: TBD" />
+</AnchorPane>

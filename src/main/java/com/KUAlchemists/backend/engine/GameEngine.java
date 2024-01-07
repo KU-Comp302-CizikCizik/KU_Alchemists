@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.GameRound;
 import com.KUAlchemists.backend.enums.GameTour;
@@ -17,6 +18,9 @@ public class GameEngine {
     // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
 
+    private ApplicationMode mode; // OFFLINE or ONLINE
+
+    private String userType;
     private GameRound currentRound;
     private GameTour currentTour;
 
@@ -54,7 +58,6 @@ public class GameEngine {
     public void initializeGame(GameMode gameMode) {
         this.currentGameMode = gameMode;
         GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
-        System.out.println("Game Initialized");
     }
 
     /**
@@ -174,14 +177,49 @@ public class GameEngine {
         currentRound = GameRound.getNextRound(currentRound);
     }
 
+    // application mode methods
+
+    /**
+     * Get the application mode
+     * @return the application mode
+     */
+    public ApplicationMode getApplicationMode() {
+        return mode;
+    }
+
+    /**
+     * Set the application mode
+     * @param mode the application mode to be set
+     */
+
+    public void setApplicationMode(ApplicationMode mode) {
+        this.mode = mode;
+    }
+
+
+
+    public Integer getPlayerIndex(Player player) {
+        return playerList.indexOf(player);
+    }
 
     public GameMode getCurrentGameMode() {
         return currentGameMode;
+
     }
 
+<<<<<<< HEAD
     // Package-private method for testing
     public static void setInstanceForTest(GameEngine instance) {
         INSTANCE = instance;
     }
 
+=======
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String type){
+        userType = type;
+    }
+>>>>>>> ba80be16d939e4385a1a3787e75bb9d32a747963
 }

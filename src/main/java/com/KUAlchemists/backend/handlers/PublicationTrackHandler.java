@@ -30,10 +30,14 @@ public class PublicationTrackHandler {
     }
 
     //Call this method when you click the endorse button on the theory which gives the information to the EndorseHandler
-    public void selectTheoryToEndorse(String theoryName){
-        Theory theory = publicationTrackService.getTheoryByName(theoryName);
+    public void selectTheoryToEndorse(String ingredientName){
+        Theory theory = publicationTrackService.getTheoryByIngredientName(ingredientName);
         EventManager.getInstance().onTheorySelectedPerformed(theory);
+    }
 
+    public void selectTheoryToDebunk(String ingredientName){
+        Theory theory = publicationTrackService.getTheoryByIngredientName(ingredientName);
+        EventManager.getInstance().onTheorySelectedPerformed(theory);
     }
 
     // Other methods as needed...

@@ -61,7 +61,7 @@ public class PublishTheoryHandler {
                 selectedTheorySeals);
 
         if (success) {
-            return selectedIngredientName + " " + predictedRedAspectString + predictedGreenAspectString+ predictedBlueAspectString ;
+            return selectedIngredientName + " " + predictedRedAspectString + predictedGreenAspectString + predictedBlueAspectString ;
         } else {
             return "Failed to publish theory.";
         }

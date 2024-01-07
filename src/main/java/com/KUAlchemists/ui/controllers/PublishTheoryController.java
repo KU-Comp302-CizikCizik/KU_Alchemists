@@ -15,6 +15,9 @@ public class PublishTheoryController {
 
     @FXML
     private GridPane box;
+    public boolean validateIngredient(String ingredient, String ing2){
+        return ing2.equals(ingredient);
+    }
 
     @FXML
     private void initialize() {
@@ -32,27 +35,19 @@ public class PublishTheoryController {
             ingredients.add("root-ingredient-square");
             ingredients.add("scorpion-ingredient-square");
 
-            System.out.println("done");
             for(int i = 0; i < ingredients.size(); i++) {
-                System.out.println("done");
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("IngredientCard_PublishUI.fxml"));
-                System.out.println("done");
-                VBox cardBox = fxmlLoader.load();
-                System.out.println("done");
-                IngredientCard_PublishController controller = fxmlLoader.getController();
-                System.out.println("done");
+               FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("IngredientCard_PublishUI.fxml"));
+               VBox cardBox = fxmlLoader.load();
+               IngredientCard_PublishController controller = fxmlLoader.getController();
                 controller.setCard(ingredients.get(i));
-                System.out.println("done");
 
                 //TO-DO: row colum should be checked
                 if (column == 4) {
                     column = 0;
                     row++;
                 }
-                System.out.println("done");
-                box.add(cardBox, column++, row);
-                System.out.println("done");
-                GridPane.setMargin(cardBox, new Insets(2,2,2,2));
+               box.add(cardBox, column++, row);
+               GridPane.setMargin(cardBox, new Insets(2,2,2,2));
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
