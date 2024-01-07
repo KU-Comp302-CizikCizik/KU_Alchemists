@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -57,7 +56,7 @@ class PublishTheoryServiceTest {
         when(mockBoard.getPublishedTheoriesList()).thenReturn(new ArrayList<>()); // No existing theories
 
         // Use valid Aspect enum values
-        boolean result = service.publishTheory("Ingredient", "POSITIVE_BIG", "NEGATIVE_SMALL", "POSITIVE_SMALL", List.of("Seal1"));
+        boolean result = service.publishTheory("Mushroom", "POSITIVE_BIG", "NEGATIVE_SMALL", "POSITIVE_SMALL", List.of("SS"));
         assertTrue(result, "Theory should be published successfully");
 
         // Verify interactions and state changes
@@ -71,7 +70,7 @@ class PublishTheoryServiceTest {
         when(mockPlayer.getGold()).thenReturn(0); // Player has no gold
 
         // Use valid Aspect enum values
-        boolean result = service.publishTheory("Ingredient", "NEGATIVE_BIG", "POSITIVE_SMALL", "NEGATIVE_SMALL", List.of("Seal1"));
+        boolean result = service.publishTheory("Ingredient", "NEGATIVE_BIG", "POSITIVE_SMALL", "NEGATIVE_SMALL", List.of("SS"));
         assertFalse(result, "Theory should not be published due to insufficient gold");
 
 
@@ -88,7 +87,7 @@ class PublishTheoryServiceTest {
         when(mockGameEngine.getCurrentPlayer()).thenReturn(mockPlayer);
         when(mockBoard.getPublishedTheoriesList()).thenReturn(existingTheories);
 
-        boolean result = service.publishTheory("Ingredient", "Aspect1", "Aspect2", "Aspect3", List.of("Seal1"));
+        boolean result = service.publishTheory("Ingredient", "NEGATIVE_BIG", "NEGATIVE_SMALL", "POSITIVE_BIG", List.of("GS"));
         assertFalse(result, "Theory should not be published due to duplicate");
 
         // Verify no additional theory is published
@@ -97,15 +96,17 @@ class PublishTheoryServiceTest {
     @Test
     void testPlayerGoldDecreaseOnPublishTheory() {
         when(mockPlayer.getGold()).thenReturn(2); // Player has enough gold
-        // Use valid Aspect enum values
-        service.publishTheory("Salt", "NEGATIVE_BIG", "POSITIVE_BIG", "NEGATIVE_SMALL", Arrays.asList("Seal1", "Seal2"));
+        List<Theory> publishedTheories = new ArrayList<>();
+        when(mockBoard.getPublishedTheoriesList()).thenReturn(publishedTheories); // No existing theories
+
+        service.publishTheory("Mushroom", "NEGATIVE_BIG", "POSITIVE_BIG", "NEGATIVE_SMALL", List.of("GQ"));
 
         verify(mockPlayer).setGold(1); // Check if player's gold is decremented
         verify(mockBoard).addTheoryToPublishedList(any(Theory.class)); // Verify theory is added
     }
     @Test
     void testPublishTheoryWithInvalidIngredientName() {
-        boolean result = service.publishTheory("", "POSITIVE_SMALL", "NEGATIVE_BIG", "POSITIVE_BIG", Arrays.asList("Seal1", "Seal2"));
+        boolean result = service.publishTheory("", "POSITIVE_SMALL", "NEGATIVE_BIG", "POSITIVE_BIG", List.of("GS"));
         assertFalse(result, "Theory should not be published with an invalid ingredient name");
 
         verify(mockBoard, never()).addTheoryToPublishedList(any(Theory.class)); // Ensure no theory is added to the board
