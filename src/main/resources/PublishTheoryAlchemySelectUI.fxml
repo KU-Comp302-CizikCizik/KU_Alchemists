@@ -60,7 +60,7 @@
             </ImageView>
             <ImageView fx:id="alchemy_3" fitHeight="55.0" fitWidth="54.0" layoutX="116.0" layoutY="86.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@com.KUAlchemists/images/alchemy/alcehmy3.png" />
+                  <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
                </image>
             </ImageView>
             <ImageView fx:id="SealRQ" fitHeight="82.0" fitWidth="78.0" layoutX="236.0" layoutY="342.0" onMouseClicked="#sealClicked" pickOnBounds="true" preserveRatio="true">

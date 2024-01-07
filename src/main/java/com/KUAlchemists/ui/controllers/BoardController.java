@@ -1,93 +1,53 @@
 package com.KUAlchemists.ui.controllers;
-
 import com.KUAlchemists.backend.engine.GameEngine;
+
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.network.NetworkHandler;
+
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.util.Duration;
+
+
+import java.awt.*;
+import java.io.IOException;
+import java.text.BreakIterator;
 import java.util.ArrayList;
 
-public class BoardController implements PlayerObserver {
-    @FXML
-    private TextField alchemist1GoldTextField;
+import static java.awt.Color.*;
+
+public class BoardController  implements PlayerObserver {
 
     @FXML
-    private TextField alchemist1ReputationTextField;
+    private AnchorPane avatar1Pane;
 
     @FXML
-    private TextField alchemist2GoldTextField;
+    private AnchorPane avatar2Pane;
 
     @FXML
-    private TextField alchemist2ReputationTextField;
+    private AnchorPane avatar3Pane;
 
     @FXML
-    private ImageView currentAvatarImage;
-
-    @FXML
-    private Button debunkButton;
-
-    @FXML
-    private Button deductionBoardButton;
-
-    @FXML
-    private Button helpButton;
-
-    @FXML
-    private Button endRoundButton;
-
-
-    @FXML
-    private Button ingredientStorageButton;
-
-    @FXML
-    private ImageView nextAvatarImage;
-
-    @FXML
-    private Button potionBrewingButton;
-
-    @FXML
-    private Button publicationTrackButton;
-
-    @FXML
-    private Button publishTheoryButton;
-
-    @FXML
-    private Button sellPotionButton;
-
-    @FXML
-    private Button useArtifactButton;
-
-    @FXML
-    private Button buyArtifactButton;
-
-    @FXML
-    private Button forageInrgedientButton;
-
-    @FXML
-    private Button pauseButton;
-    @FXML
-    private TextField alchemist2ActionPointTextField;
-
-    @FXML
-    private TextField alchemist1ActionPointTextField;
+    private AnchorPane avatar4Pane;
 
     @FXML
     private Text roundTitle;
@@ -95,53 +55,104 @@ public class BoardController implements PlayerObserver {
     @FXML
     private Text tourTitle;
 
-    private int currentRound;
-    private int currentTour;
+    @FXML
+    private Button endRoundButton;
+
+    @FXML
+    private Button publishTheoryButton;
+    @FXML
+    private Button sellPotionButton;
+
+    @FXML
+    private Button deductionBoardButton;
+
+    @FXML
+    private Button potionBewingButton;
+
+    @FXML
+    private Button publicationTrackButton;
+
+
+    private Integer currentRound;
+    private Integer currentTour;;
+
+    private ArrayList<AvatarCardController> playerControllers;
+
+    private ArrayList<Pane> cardBoxList;
+
 
 
     @FXML
-    void debunkPopUp(ActionEvent event) {
-        SceneLoader.getInstance().loadDebunk();
+    void initialize() {
+        //TO-DO: set the avatar cards
+        playerControllers = new ArrayList<>();
+        cardBoxList = new ArrayList<>();
+        BoardHandler.getInstance().registerPlayerObserver(this);
+        ArrayList<String> avatars = BoardHandler.getInstance().getAvatarStrings();
+
+        if(avatars.size() == 2){
+            setTwoPlayerGame(avatars);
+        }
+        else if(avatars.size() == 3){
+            setThreePlayerGame(avatars);
+        }
+        else if(avatars.size() == 4){
+            setFourPlayerGame(avatars);
+        }
+        else{
+            System.out.println("Error: Invalid number of players");
+        }
+    }
+
+
+    private Pane setAvatarCard(String avatarName, int playerIndex){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("AvatarCard.fxml"));
+        try {
+            Pane cardBox = fxmlLoader.load();
+            AvatarCardController controller = fxmlLoader.getController();
+            playerControllers.add(controller);
+            controller.setAvatarCardImage(avatarName);
+            controller.setActionPoint(BoardHandler.getInstance().getPlayerActionPoints(playerIndex));
+            controller.setGoldPoint(BoardHandler.getInstance().getPlayerGold(playerIndex));
+            controller.setReputationPoint(BoardHandler.getInstance().getPlayerReputation(playerIndex));
+
+            cardBoxList.add(cardBox);
+            return cardBox;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setTwoPlayerGame(ArrayList<String> avatars) {
+        avatar1Pane.getChildren().add(setAvatarCard(avatars.get(0), 0));
+        avatar4Pane.getChildren().add(setAvatarCard(avatars.get(1), 1));
+    }
+    private void setThreePlayerGame(ArrayList<String> avatars) {
+        avatar1Pane.getChildren().add(setAvatarCard(avatars.get(0), 0));
+        avatar2Pane.getChildren().add(setAvatarCard(avatars.get(1), 1));
+        avatar3Pane.getChildren().add(setAvatarCard(avatars.get(2), 2));
+    }
+
+    private void setFourPlayerGame(ArrayList<String> avatars) {
+        avatar1Pane.getChildren().add(setAvatarCard(avatars.get(0), 0));
+        avatar2Pane.getChildren().add(setAvatarCard(avatars.get(1), 1));
+        avatar4Pane.getChildren().add(setAvatarCard(avatars.get(2), 2));
+        avatar3Pane.getChildren().add(setAvatarCard(avatars.get(3), 3));
     }
 
     @FXML
-    void deductionBoardPopUp(ActionEvent event) {
+    void buyArtifactClicked(ActionEvent event) {
+        SceneLoader.getInstance().loadBuyArtifact();
 
+    }
+
+    @FXML
+    void deductionBoardClicked(ActionEvent event) {
         SceneLoader.getInstance().loadDeductionBoard();
     }
 
     @FXML
-    void endorsePopUp(ActionEvent event) {
-        SceneLoader.getInstance().loadEndorse();
-    }
-
-    @FXML
-    void ingredientStoragePopUp(ActionEvent event) {
-        SceneLoader.getInstance().loadIngredientStorage();
-
-    }
-
-    @FXML
-    void potionBrewingPopUp(ActionEvent event) {SceneLoader.getInstance().loadPotionBrewing();
-    }
-
-    @FXML
-    void publicationTrackPopUp(ActionEvent event) {
-        SceneLoader.getInstance().loadPublicationTrack();
-    }
-
-    @FXML
-    void publishTheoryPopUp(ActionEvent event) {
-        SceneLoader.getInstance().loadPublishTheory();
-    }
-
-    @FXML
-    void buyArtifactPopUp(ActionEvent event) {
-        SceneLoader.getInstance().loadBuyArtifact();
-    }
-
-    @FXML
-    void forageIngredientPopUp(ActionEvent event) {
+    void forageIngredientClicked(ActionEvent event) {
         String ingredient = ForageForIngredientHandler.getInstance().forageForIngredient();
         if(ingredient == null){
             SceneLoader.getInstance().loadGenericPopUp("No enough action points");
@@ -149,33 +160,59 @@ public class BoardController implements PlayerObserver {
         else{
             String message = "You have foraged " + ingredient + "!";
             SceneLoader.getInstance().loadForageIngredient(message, ingredient+"-ingredient.jpg");
-        }
-
-    }
-
+        }    }
 
     @FXML
-    void useArtifactPopUp(ActionEvent event) {
-
-        SceneLoader.getInstance().loadUseArtifact();
-    }
-
-    @FXML
-    void pausePopUp(ActionEvent event) {
-        SceneLoader.getInstance().loadPause();
-    }
-
-    @FXML
-    void helpPopUp(ActionEvent event) {
+    void helpButtonClicked(ActionEvent event) {
         SceneLoader.getInstance().loadHelp();
     }
 
     @FXML
-    void sellPotionPopUp(ActionEvent event) {
+    void ingredientStorageClicked(ActionEvent event) {
+        SceneLoader.getInstance().loadIngredientStorage();
+    }
 
+    @FXML
+    void pauseButtonClicked(ActionEvent event) {
+        SceneLoader.getInstance().loadPause();
+    }
+
+    @FXML
+    void potionBrewingClicked(ActionEvent event) {
+        SceneLoader.getInstance().loadPotionBrewing();
+    }
+
+    @FXML
+    void publicationTrackClicked(ActionEvent event) {
+        SceneLoader.getInstance().loadPublicationTrack();
+    }
+
+    @FXML
+    void publishTheoryClicked(ActionEvent event) {
+        SceneLoader.getInstance().loadPublishTheory();
+    }
+
+    @FXML
+    void sellPotionClicked(ActionEvent event) {
         SceneLoader.getInstance().loadSellPotion();
     }
+
     @FXML
+    void useArtifactClicked(ActionEvent event) {
+        SceneLoader.getInstance().loadUseArtifact();
+    }
+    @FXML
+    public void endRoundButtonClicked() {
+        //check whether final round or not
+        if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == GameEngine.getInstance().getPlayerList().size()-1) {
+            SceneLoader.getInstance().loadFinalScore();
+        }else{
+            changeRound();
+        }
+    }
+
+
+
     public void changeRound() {
         ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
         Integer round = round_tour_info.get(0);
@@ -191,19 +228,17 @@ public class BoardController implements PlayerObserver {
         //round_tour_info[1] = tour
 
         //load the round when round is changed
-        if (round == 3) {
-            loadRound3();
-        } else if (round == 2) {
-            lodRound2();
-        } else if (round == 1) {
-            loadRound1();
-        }
+//        if (round == 3) {
+//            loadRound3();
+//        } else if (round == 2) {
+//            lodRound2();
+//        } else if (round == 1) {
+//            loadRound1();
+//        }
 
         if(tour == 3) {
-            endRoundButton.setText("End The Round");
             endRoundButton.setEffect(new DropShadow(30, Color.WHITE));
         }else {
-            endRoundButton.setText("End The Tour");
             endRoundButton.setEffect(null);
         }
 
@@ -213,53 +248,65 @@ public class BoardController implements PlayerObserver {
     }
 
     private void changeAvatars() {
-        Image currentAvatarImg = currentAvatarImage.getImage();
-        currentAvatarImage.setImage(nextAvatarImage.getImage());
-        nextAvatarImage.setImage(currentAvatarImg);
+        int length = cardBoxList.size();
+        if(length== 4){
+            changeFourPlayerAvatars();
+        }else if(length == 3){
+            changeThreePlayerAvatars();
+        }else{
+            changeTwoPlayerAvatars();
+        }
+       }
+
+    private void clearPanes() {
+        avatar1Pane.getChildren().clear();
+        avatar2Pane.getChildren().clear();
+        avatar3Pane.getChildren().clear();
+        avatar4Pane.getChildren().clear();
     }
 
-    @FXML
-    public void setReputation(Integer player, Integer reputation) {
-        if (player == 1) {
-            alchemist1ReputationTextField.setText(Integer.toString(reputation));
-        } else if (player == 2) {
-            alchemist2ReputationTextField.setText(Integer.toString(reputation));
-        } else{
-            throw new IllegalArgumentException("Invalid player number");
-        }
+    private void changeFourPlayerAvatars() {
+        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+
+        clearPanes();
+
+        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
+        avatar3Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%4));
+        avatar4Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+2)%4));
+        avatar2Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+3)%4));
     }
 
-    @FXML
-    public void setGold(Integer player, Integer gold) {
-        if (player == 1) {
-            alchemist1GoldTextField.setText(Integer.toString(gold));
-        } else if (player == 2) {
-            alchemist2GoldTextField.setText(Integer.toString(gold));
-        } else{
-            throw new IllegalArgumentException("Invalid player number");
-        }
-    }
+    private void changeThreePlayerAvatars() {
+        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
 
-    @FXML
-    public void setActionPoint(Integer player, Integer actionPoint) {
-        if (player == 1) {
-            alchemist1ActionPointTextField.setText(Integer.toString(actionPoint));
-        } else if (player == 2) {
-            alchemist2ActionPointTextField.setText(Integer.toString(actionPoint));
-        } else{
-            throw new IllegalArgumentException("Invalid player number");
-        }
+        clearPanes();
+
+        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
+        avatar3Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%3));
+        avatar2Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+2)%3));
     }
 
     @FXML
     public void endTheRound() {
         //check whether final round or not
         if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == 1) {
-          SceneLoader.getInstance().loadFinalScore();
-        }else{
+            SceneLoader.getInstance().loadFinalScore();
+        } else {
             changeRound();
+            // send data to server, or if the player is host send data to other clients.
+            NetworkHandler.getInstance().handleSendData();
         }
     }
+
+    private void changeTwoPlayerAvatars() {
+        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+
+        clearPanes();
+
+        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
+        avatar4Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%2));
+    }
+
     private void disableButtons(Button button) {
         button.setDisable(true);
         button.setOpacity(0.5);
@@ -268,7 +315,6 @@ public class BoardController implements PlayerObserver {
     private void loadRound1() {
         disableButtons(sellPotionButton);
         disableButtons(publishTheoryButton);
-        disableButtons(debunkButton);
     }
 
     private void activateButtons(Button button) {
@@ -312,22 +358,12 @@ public class BoardController implements PlayerObserver {
     }
 
     private void loadRound3() {
-        activateButtons(debunkButton);
+        System.out.println("Debunk button activated");
+        //activateButtons(debunkButton);
     }
 
     public BoardController() {
         currentRound = -1;
-    }
-
-    @FXML
-    public void initialize() {
-        BoardHandler.getInstance().registerPlayerObserver(this);
-        setGold(1, BoardHandler.getInstance().getPlayerGold(0));
-        setGold(2, BoardHandler.getInstance().getPlayerGold(1));
-        setReputation(1, BoardHandler.getInstance().getPlayerReputation(0));
-        setReputation(2, BoardHandler.getInstance().getPlayerReputation(1));
-        setActionPoint(1, BoardHandler.getInstance().getPlayerActionPoints(0));
-        setActionPoint(2, BoardHandler.getInstance().getPlayerActionPoints(1));
     }
 
     @Override
@@ -344,7 +380,8 @@ public class BoardController implements PlayerObserver {
     public void onPlayerReputationChanged(int reputation) {
         Platform.runLater(() -> {
             // Assume playerIndex is available to determine which player's gold changed
-            setReputation(GameEngine.getInstance().getCurrentPlayerIndex()+1, reputation);
+            AvatarCardController controller = playerControllers.get(GameEngine.getInstance().getCurrentPlayerIndex());
+            controller.setReputationPoint(reputation);
         });
     }
 
@@ -352,7 +389,8 @@ public class BoardController implements PlayerObserver {
     public void onPlayerGoldChanged(int newGold) {
         Platform.runLater(() -> {
             // Assume playerIndex is available to determine which player's gold changed
-            setGold(GameEngine.getInstance().getCurrentPlayerIndex()+1, newGold);
+            AvatarCardController controller = playerControllers.get(GameEngine.getInstance().getCurrentPlayerIndex());
+            controller.setGoldPoint(newGold);
         });
     }
 
@@ -360,7 +398,8 @@ public class BoardController implements PlayerObserver {
     public void onPlayerActionPointsChanged(int actionPoints) {
         Platform.runLater(() -> {
             // Assume playerIndex is available to determine which player's gold changed
-            setActionPoint(GameEngine.getInstance().getCurrentPlayerIndex()+1, actionPoints);
+            AvatarCardController controller = playerControllers.get(GameEngine.getInstance().getCurrentPlayerIndex());
+            controller.setActionPoint(actionPoints);
         });
 
     }
@@ -368,5 +407,67 @@ public class BoardController implements PlayerObserver {
     @Override
     public void onPlayerNameChanged(String name) {
 
+    }
+
+
+
+    @FXML
+    void mouseEnteredDeductionBoard(MouseEvent event) {
+        deductionBoardButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseEnteredPotionBrewing(MouseEvent event) {
+        potionBewingButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseEnteredPublicationTrack(MouseEvent event) {
+        publicationTrackButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseEnteredPublishTheory(MouseEvent event) {
+        publishTheoryButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseEnteredSellPotion(MouseEvent event) {
+        sellPotionButton.setEffect(new Glow(0.8));
+
+    }
+
+    @FXML
+    void mouseExitedPotionBrewing(MouseEvent event) {
+        potionBewingButton.setEffect(null);
+
+    }
+
+    @FXML
+    void mouseExitedPublicationTrack(MouseEvent event) {
+        publicationTrackButton.setEffect(null);
+
+    }
+
+    @FXML
+    void mouseExitedSellPotion(MouseEvent event) {
+        sellPotionButton.setEffect(null);
+
+    }
+
+    @FXML
+    void mouseExitedublishTheory(MouseEvent event) {
+        publishTheoryButton.setEffect(null);
+
+    }
+
+
+    @FXML
+    void mouseExitedDeductionBoard(MouseEvent event) {
+        deductionBoardButton.setEffect(null);
     }
 }

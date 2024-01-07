@@ -1,9 +1,12 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.PublicationTrackHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class TheoryCardController {
 
@@ -19,15 +22,16 @@ public class TheoryCardController {
     private ImageView alchemy;
 
 
+    private String ingredientName;
+
     public void setPlayername(String txt) {
         player_txt.setText(txt);
 
     }
-    public void setIngredient(String txt) {
-        String imagePath = "/com.KUAlchemists/images/" + txt + ".png";
+    public void setIngredient(String ingredientName) {
+        String imagePath = "/com.KUAlchemists/images/" + ingredientName + "-ingredient-square.png";
         // Load the image using the class loader to ensure it works regardless of the build type
-
-
+        this.ingredientName = ingredientName;
 
             Image image = new Image(getClass().getResourceAsStream(imagePath));
         ingredient_image.setImage(image);
@@ -59,7 +63,7 @@ public class TheoryCardController {
 
         }
         else if(green.equals(ps)&&blue.equals(ns)&&red.equals(pb)){
-            String imagePath = "/com.KUAlchemists/images/alchemy/alcehmy3.png";
+            String imagePath = "/com.KUAlchemists/images/alchemy/alchemy3.png";
             // Load the image using the class loader to ensure it works regardless of the build type
 
 
@@ -119,6 +123,22 @@ public class TheoryCardController {
 
         }
 
+    }
+
+    @FXML
+    public void endorseClicked(){
+        PublicationTrackHandler.getInstance().selectTheoryToEndorse(ingredientName);
+        Stage stage = (Stage)ingredient_image.getScene().getWindow();
+        stage.close();
+        SceneLoader.getInstance().loadEndorse();
+    }
+
+    @FXML
+    public void debunkClicked(){
+        PublicationTrackHandler.getInstance().selectTheoryToDebunk(ingredientName);
+        Stage stage = (Stage)ingredient_image.getScene().getWindow();
+        stage.close();
+        SceneLoader.getInstance().loadDebunk();
     }
 
 }
