@@ -205,7 +205,7 @@ public class BoardController  implements PlayerObserver {
     public void endRoundButtonClicked() {
         //check whether final round or not
         if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == GameEngine.getInstance().getPlayerList().size()-1) {
-            SceneLoader.getInstance().loadFinalScore();
+            SceneLoader.getInstance().loadFinalScoring();
         }else{
             changeRound();
         }

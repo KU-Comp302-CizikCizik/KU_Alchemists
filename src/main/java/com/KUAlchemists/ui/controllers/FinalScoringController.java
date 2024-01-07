@@ -1,15 +1,18 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.handlers.FinalScoringHandler;
+import com.KUAlchemists.backend.handlers.ScoringHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+import java.util.ArrayList;
+
 public class FinalScoringController {
 
+    @FXML
+    public Text drawMessage;
     @FXML
     private Text additional1;
 
@@ -73,24 +76,37 @@ public class FinalScoringController {
     private UserSlot[] userSlots;
 
     public void initialize(){
+        drawMessage.setVisible(false);
         String userName = "";
         Image image1 = null;
+        ArrayList<Integer> rankingList = ScoringHandler.getInstance().handleGetRankingList(); // get the ranking of the players
+        // we have a ranking list of the players like [2, 1, 3]
+        // it means that the player 2 is the winner, player 1 is the second and player 3 is the third
+        // we can use this ranking list to get the player list in the order of the ranking
+        // we need to create another list that contains the player list in the order of the ranking
+        ArrayList<String> playerPosition = new ArrayList<>();
+        for(int i = 0; i < rankingList.size(); i++){
+            int playerIndex = rankingList.get(i);
+            String player = "player" + (playerIndex + 1); // player1, player2, player3, player4
+            playerPosition.add(player);
+        }
 
         UserSlot user1 = new UserSlot(userMainSlot1, userImagePane1, alchemistName1, finalPoint1, additional1);
         UserSlot user2 = new UserSlot(userMainSlot2, userImagePane2, alchemistName2, finalPoint2, additional2);
         UserSlot user3 = new UserSlot(userMainSlot3, userImagePane3, alchemistName3, finalPoint3, additional3);
         UserSlot user4 = new UserSlot(userMainSlot4, userImagePane4, alchemistName4, finalPoint4, additional4);
 
-
-        String[] playerPosition = FinalScoringHandler.getInstance().handlerGetPlayerFinalPosition();
         userSlots = new UserSlot[]{user1, user2, user3, user4};
         for(UserSlot userSlot: userSlots){
             userSlot.getUserMainSlot().setVisible(false);
         }
-        for(int i=0; i < playerPosition.length; i++){
-            userSlots[i].setUserName(playerPosition[i]);
+        for(int i=0; i < playerPosition.size(); i++){
+
+            int score = ScoringHandler.getInstance().handleGetScores(rankingList.get(i));
+            userSlots[i].getFinalPoint().setText("Final Point: " + String.valueOf(score));
+            userSlots[i].getAlchemistName().setText("Alchemist Name: " + playerPosition.get(i));
             userSlots[i].getUserMainSlot().setVisible(true);
-            String imagePath = "/com.KUAlchemists/images/adventurer/" + "adventurer-photo-"+i+ ".png";
+            String imagePath = "/com.KUAlchemists/images/adventurer/" + "adventurer-photo-"+(i+1)+ ".png";
             // Load the image using the class loader to ensure it works regardless of the build type
             try {
                 Image image = new Image(getClass().getResourceAsStream(imagePath));
@@ -99,6 +115,12 @@ public class FinalScoringController {
                 System.err.println(e.getMessage());
             }
         }
+        int draw = ScoringHandler.getInstance().handleDraw();
+        if (draw == 1){
+            drawMessage.setText("There is a draw!");
+            drawMessage.setVisible(true);
+        }
+
     }
 
 

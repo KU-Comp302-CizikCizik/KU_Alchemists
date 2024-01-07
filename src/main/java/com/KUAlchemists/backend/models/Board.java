@@ -97,6 +97,11 @@ public class Board {
         }
     }
 
+
+    public HashMap<Player, ArtifactStorage> getArtifactStorages() {
+        return artifactStorages;
+    }
+
     public void setPublishedTheoriesList(List<Theory> newList){
         this.publishedTheoriesList = newList;
         // TODO: notify observers

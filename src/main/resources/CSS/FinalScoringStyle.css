@@ -22,3 +22,10 @@ Text{
 .player-name, .final-point, .additional-slot{
     -fx-font-size: 40px;
 }
+
+.draw-message {
+    -fx-font-size: 40px; /* Larger font size */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-text-fill: #000000; /* Text color, change as needed */
+    /* Add more styling as needed */
+}
