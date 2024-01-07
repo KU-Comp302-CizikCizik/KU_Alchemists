@@ -44,7 +44,7 @@ public class NetworkService {
     }
 
     public void connectToServer(String ip, int port){
-        client = new Client(ip, 7777); // Use the same port as the server
+        client = new Client(ip, port);
         try {
             client.connect();
             client.listenForMessages(); // Start listening for messages from the server

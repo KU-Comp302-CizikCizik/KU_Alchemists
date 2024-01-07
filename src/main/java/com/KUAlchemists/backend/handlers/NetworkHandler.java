@@ -13,12 +13,9 @@ public class NetworkHandler {
     public static final String DEFAULT_IP = "localhost";
     public static final int DEFAULT_PORT = 7777;
 
-    private OnlineInitializationAdapter onlineInitializationAdapter;
-
     private NetworkHandler()
     {
         this.service = NetworkService.getInstance();
-        onlineInitializationAdapter = new OnlineInitializationAdapter(new OnlineGameInitializer());
     }
 
     public static NetworkHandler getInstance(){

@@ -26,7 +26,6 @@ public class Client {
         // Connect to the server
         socket = new Socket(serverAddress, serverPort);
         System.out.println("Connected to the server at " + serverAddress + ":" + serverPort);
-
         // Setup streams
         outputStream = new ObjectOutputStream(socket.getOutputStream());
         inputStream = new ObjectInputStream(socket.getInputStream());
