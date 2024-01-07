@@ -5,6 +5,10 @@ public class UIConstants {
 
     public static final String ENDORSE_UI_FXML = "EndorseUI.fxml";
     public static final String NUMBER_OF_PLAYERS_UI_FXML = "NumberOfPlayersSelectUI.fxml";
+    public static final String ONLINE_GAME_ROOM_UI_FXML = "OnlineGameRoomScreen.fxml";
+
+    public static final String AVAILABLE_ROOMS_UI_FXML = "AvailableRoomsUI.fxml";
+    public static final String WAITING_ROOM_UI_FXML = "WaitingRoomUI.fxml";
     public static final String AVATAR_SELECT_UI_FXML = "AvatarSelectUI.fxml";
 
     private UIConstants() {
@@ -25,6 +29,7 @@ public class UIConstants {
     public static final String BUYARTIFACT_UI_FXML = "BuyArtifactUI.fxml";
 
     public static final String ONLINE_OFFLINE_UI_FXML = "GameModeSelectingUI.fxml";
+
     public static final String PLAYER_NUMBER_SELECT_UI_FXML = "NumberOfPlayersSelectUI.fxml";
     public static final String USEARTIFACT_UI_FXML = "UseArtifactUI.fxml";
     public static final String ELIXIR_OF_INSIGHT = "ElixirOfInsightUI.fxml";
