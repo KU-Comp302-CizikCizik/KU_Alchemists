@@ -2,15 +2,12 @@ package com.KUAlchemists.backend.engine;
 
 import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.GameRound;
-import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.exceptions.GameInitializationException;
 import com.KUAlchemists.backend.handlers.DebunkTheoryHandler;
 import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
 import com.KUAlchemists.backend.handlers.EndorseHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
-import com.KUAlchemists.backend.managers.SceneManager;
-import com.KUAlchemists.backend.managers.StateManager;
 import com.KUAlchemists.backend.models.*;
 
 import java.util.ArrayList;
@@ -73,7 +70,7 @@ public class GameInitializer {
 
 
     private void initStateObservers() {
-        StateManager.getInstance().registerStateObserver(SceneManager.getInstance());
+
     }
 
 
