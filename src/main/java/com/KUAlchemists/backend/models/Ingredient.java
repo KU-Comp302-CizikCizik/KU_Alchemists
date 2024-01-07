@@ -33,10 +33,7 @@ public class Ingredient {
      *
      */
     public Ingredient() {
-        this.name = "";
-        this.value = 0;
-        this.description = "";
-        this.type = IngredientType.NONE;
+        this("", 0, "", IngredientType.NONE);
     }
 
     /**
@@ -44,10 +41,7 @@ public class Ingredient {
      *
      */
     public Ingredient(String name) {
-        this.name = name;
-        this.value = 0;
-        this.description = "";
-        this.type = IngredientType.NONE;
+        this(name, 0, "", IngredientType.NONE);
     }
 
     /**

@@ -7,12 +7,17 @@ import java.util.ArrayList;
  *
  */
 public class IngredientStorage {
-    //OVERVIEW: IngredientStorage is an immutable collection of ingredients that are available in the game.
+    //OVERVIEW: IngredientStorage is unbounded, immutable list of ingredients that are available in the game.
 
     /**
      * List of ingredients in the storage.
      */
+    //the rep
     private ArrayList<Ingredient> ingredientsList;
+
+
+    //The abstraction function is
+    //AF(c) = {c.ingredientList.get(i) | 0 <= i < c.ingredientList.size()}
 
     /**
      * Constructor for IngredientStorage
@@ -95,6 +100,15 @@ public class IngredientStorage {
             }
         }
         return null;
+    }
+
+    public boolean isIn(String name){
+        return getIngredient(name) != null;
+    }
+
+
+    public boolean repOk(){
+        return true;
     }
 
 
