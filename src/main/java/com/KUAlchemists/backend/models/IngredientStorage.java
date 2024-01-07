@@ -33,7 +33,7 @@ public class IngredientStorage {
         //Partial Procedure
         //@requires: ingredient != null
         //@modifies: this
-        //@effects: adds the ingredient to the storage
+        //@effects: adds the ingredient to the storage of this
         ingredientsList.add(ingredient);
     }
 
@@ -46,7 +46,7 @@ public class IngredientStorage {
         //Partial Procedure
         //@requires: ingredient != null
         //@modifies: this
-        //@effects: removes the ingredient from the storage
+        //@effects: removes the ingredient from the storage of this
         ingredientsList.remove(ingredient);
     }
 
@@ -59,7 +59,7 @@ public class IngredientStorage {
         //Partial procedure
         //@requires: ingredientName != null
         //@modifies: this
-        //@effects: removes the ingredient from the storage
+        //@effects: removes the ingredient associated with the given name from the storage of this
         for (Ingredient ingredient : ingredientsList) {
             if (ingredientName.equals(ingredient.getName())) {
                 ingredientsList.remove(ingredient);
