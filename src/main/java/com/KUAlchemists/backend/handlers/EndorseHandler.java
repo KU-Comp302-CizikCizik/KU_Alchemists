@@ -1,10 +1,12 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.PublicationTrackObserver;
+import com.KUAlchemists.backend.services.EndorseService;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,6 +18,9 @@ public class EndorseHandler implements PublicationTrackObserver {
 
     private Theory selectedTheory; //the theory that the player wants to endorse
     private static EndorseHandler instance; //singleton instance
+
+
+    private EndorseService endorseService;
     /**
      * This method is called when the player clicks on the endorse button
      * @return instance
@@ -31,6 +36,7 @@ public class EndorseHandler implements PublicationTrackObserver {
      * Constructor
      */
     private EndorseHandler() {
+        endorseService = new EndorseService();
 
     }
 
@@ -38,15 +44,8 @@ public class EndorseHandler implements PublicationTrackObserver {
      * This method is called when the player clicks on the endorse button
      * @return seals
      */
-    public ArrayList<String> getPlayerTheorySeals() {
-        ArrayList<String> theorySeals =  GameEngine.getInstance().getCurrentPlayer().getTheorySeals()
-                .stream()
-                .map(TheorySeal::getSealString)
-                .collect(Collectors.toCollection(ArrayList::new));
-        //remove duplicates
-        Set<String> set = new HashSet<>(theorySeals);
-        ArrayList<String> seals = new ArrayList<>(set);
-        return seals;
+    public ArrayList<String> getPlayerAvailableTheorySeals() {
+        return endorseService.getPlayerAvailableTheorySeals();
     }
 
     /**
@@ -54,11 +53,12 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @return playerSeals
      */
     public ArrayList<String> getEndorsedTheorySeals() {
-        ArrayList<String> playerSeals =  selectedTheory.getEndorsers()
-                .stream().map(player -> player.getPlayerSeal().getSealString())
-                .collect(Collectors.toCollection(ArrayList::new));
+        return endorseService.getEndorsedTheorySeals();
+    }
 
-        return playerSeals;
+
+    public boolean isCurrentPlayerAuthor(){
+        return GameEngine.getInstance().getCurrentPlayer().getPublishedTheories().contains(selectedTheory);
     }
 
     /**
@@ -66,20 +66,18 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @param sealName
      */
     public void saveEndorsedSeal(String sealName) {
-        //the format SealGS SealSS SealRQ SealBQ SealGQ
         TheorySeal seal = TheorySeal.getSealByName(sealName);
         GameEngine.getInstance().getCurrentPlayer().removeTheorySeal(seal);
-        selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer());
-        Board.getInstance().updateTheTheory(selectedTheory); //TO-DO: Can the two theories that shared the same ingredient be published?
+        selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer(),seal);
+        Board.getInstance().updateTheTheory(selectedTheory);
     }
 
     /**
      * This method is called when the player clicks on the endorse button
      * @return theory
      */
-    public String getTheory() {
-        String theory = selectedTheory.getIngredient().getName().toLowerCase();
-        return theory;
+    public String getTheoryString() {
+        return endorseService.getTheoryString();
     }
 
     /**
@@ -89,6 +87,7 @@ public class EndorseHandler implements PublicationTrackObserver {
     @Override
     public void onTheorySelected(Theory theory) {
         this.selectedTheory = theory;
+        endorseService.setSelectedTheory(theory);
     }
 
     /**
@@ -96,7 +95,22 @@ public class EndorseHandler implements PublicationTrackObserver {
      * @return playerSeal
      */
     public String getPlayerSeal() {
-        String playerSeal = GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
-        return playerSeal;
+        return endorseService.getPlayerSeal();
+    }
+
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return playerSeals
+     */
+    public ArrayList<String> getEndorsedPlayerSeals() {
+        return endorseService.getEndorsedPlayerSeals();
+    }
+
+    /**
+     * This method is called when the player clicks on the endorse button
+     * @return reputation
+     */
+    public String getAlchemicalName() {
+        return endorseService.getAlchemicalName();
     }
 }

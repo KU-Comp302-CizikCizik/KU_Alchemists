@@ -31,6 +31,8 @@ public class Player implements Subject, Serializable {
     private ArrayList<TheorySeal> theorySeals;
 
     private String name;
+
+    private int score;
     private List<PlayerObserver> observers;
 
     private String avatar; // this is the avatar of the player that will be displayed on the board
@@ -60,6 +62,7 @@ public class Player implements Subject, Serializable {
 
     public void setGold(int gold) {
         this.gold = gold;
+        System.out.println("Player's gold: "+this.gold);
         notifyObservers();
     }
 
@@ -78,6 +81,7 @@ public class Player implements Subject, Serializable {
     public void setSicknessLevel(int sicknessLevel) {
         this.sicknessLevel = sicknessLevel;
         if(this.sicknessLevel < 0)this.sicknessLevel = 0;
+        notifyObservers();
     }
 
     public int getReputation() {
@@ -94,20 +98,8 @@ public class Player implements Subject, Serializable {
     }
 
 
-    public void setPublishedTheories(List<Theory> publishedTheories) {
-        this.publishedTheories = (ArrayList<Theory>) publishedTheories;
-    }
-
     public DeductionBoard getDeductionBoard() {
         return deductionBoard;
-    }
-
-    public void setDeductionBoard(DeductionBoard deductionBoard) {
-        this.deductionBoard = deductionBoard;
-    }
-
-    public int getSickness_level() {
-        return sicknessLevel;
     }
 
     public void setPublishedTheories(ArrayList<Theory> publishedTheories) {
@@ -137,6 +129,7 @@ public class Player implements Subject, Serializable {
 
     public void setTheorySeals(ArrayList<TheorySeal> theorySeals){
         this.theorySeals = theorySeals;
+        notifyObservers();
     }
 
     public ArrayList<TheorySeal> getTheorySeals(){
@@ -149,6 +142,7 @@ public class Player implements Subject, Serializable {
 
     public void addGold(int price) {
         this.gold += price;
+        notifyObservers();
     }
       
     @Override
@@ -182,6 +176,7 @@ public class Player implements Subject, Serializable {
         return avatar;
     }
 
+
     public PlayerState getState(){
         return new PlayerState(id, gold);
     }
@@ -192,5 +187,22 @@ public class Player implements Subject, Serializable {
 
     public int getId() {
         return id;
+
+    public void deduceReputationPoints(int cost){
+        this.reputation -= cost;
+        notifyObservers();
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setName(String player1) {
+        this.name = player1;
+
     }
 }

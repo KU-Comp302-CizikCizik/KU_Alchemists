@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.IngredientStorageService;
@@ -118,5 +120,15 @@ public class IngredientStorageHandler {
         } catch (IllegalArgumentException e) {
             // Update UI with error message
         }
+    }
+
+    public ArrayList getAllIngredients() {
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        ArrayList<Player> players = GameEngine.getInstance().getPlayerList();
+        for(Player player: players){
+            ingredients.addAll(Board.getInstance().getIngredientStorage(player).getIngredientsList());
+        }
+        ingredients.addAll(Deck.getInstance().getIngredientsList());
+        return ingredients;
     }
 }

@@ -1,9 +1,6 @@
 package com.KUAlchemists.backend.enums;
 
-import com.KUAlchemists.backend.engine.GameEngine;
-
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public enum TheorySeal {
 
@@ -21,6 +18,7 @@ public enum TheorySeal {
     TheorySeal(String seal) {
         this.seal = seal;
     }
+
 
 
     public String getSealString() {
@@ -68,9 +66,4 @@ public enum TheorySeal {
                 }
         }
     }
-
-
-
-
-
 }

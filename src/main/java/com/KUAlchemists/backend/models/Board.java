@@ -77,16 +77,17 @@ public class Board {
         potionStorages.get(player).addPotion(potion);
     }
 
-    public List<Theory> getPublishedTheoriesList() {
+    public ArrayList<Theory> getPublishedTheoriesList() {
+        ArrayList<Theory> publishedTheoriesList = new ArrayList<>();
+        for (Player player : GameEngine.getInstance().getPlayerList()) {
+            publishedTheoriesList.addAll(player.getPublishedTheories());
+        }
         return publishedTheoriesList;
-    }
-
-    public void addTheoryToPublishedList(Theory theory){
-        publishedTheoriesList.add(theory);
     }
 
     public void updateTheTheory(Theory selectedTheory) {
         //There is only one theory for each ingredient
+        ArrayList<Theory> publishedTheoriesList = getPublishedTheoriesList();
         for(int i =0;i <publishedTheoriesList.size(); i++){
             Theory theory = publishedTheoriesList.get(i);
             if(theory.getIngredient().getName() == selectedTheory.getIngredient().getName()){

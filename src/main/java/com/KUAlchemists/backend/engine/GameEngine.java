@@ -56,7 +56,6 @@ public class GameEngine {
     public void initializeGame(GameMode gameMode) {
         this.currentGameMode = gameMode;
         GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
-        System.out.println("Game Initialized");
     }
 
     /**
@@ -177,8 +176,13 @@ public class GameEngine {
     }
 
 
+    public Integer getPlayerIndex(Player player) {
+        return playerList.indexOf(player);
+    }
+
     public GameMode getCurrentGameMode() {
         return currentGameMode;
+
     }
 
     public String getUserType() {

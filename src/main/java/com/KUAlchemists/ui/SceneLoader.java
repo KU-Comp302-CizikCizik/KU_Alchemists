@@ -4,12 +4,16 @@ import com.KUAlchemists.ui.controllers.GenericWindowController;
 import com.KUAlchemists.ui.controllers.LoginController;
 import com.KUAlchemists.ui.utils.UIConstants;
 import com.KUAlchemists.ui.utils.UILoader;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -36,11 +40,15 @@ public class SceneLoader {
         }
         return INSTANCE;
     }
+    public void setOnKeyPressedEventHandler(EventHandler<KeyEvent> eventHandler) {
+        MainApplicationUI.scene.setOnKeyPressed(eventHandler);
+    }
 
 
 
     public void loadLogin() {
         root = UILoader.loadFXMLFirstTime(UIConstants.LOGINPAGE_UI_FXML);
+
         MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
 
         // Load properties from config.properties
@@ -68,6 +76,19 @@ public class SceneLoader {
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
+
+        FXMLLoader loader = UILoader.getLoader();
+        setOnKeyPressedEventHandler(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case ENTER:
+                        LoginController loginController = loader.getController();
+                        loginController.loginButtonOnAction(null);
+                        break;
+                }
+            }
+        });
 
     }
 
@@ -148,7 +169,6 @@ public class SceneLoader {
 
     public void loadPublicationTrack() {
         loadPopUp(UIConstants.PUBLICATIONTRACK_UI_FXML);
-        System.out.println("loadPublicationTrack");
     }
 
     public void loadDeductionBoard() {
@@ -227,6 +247,7 @@ public class SceneLoader {
         MainApplicationUI.scene = new Scene(root, UIConstants.GAME_WINDOW_WIDTH, UIConstants.GAME_WINDOW_HEIGHT);
         MainApplicationUI.stage = (Stage) oldScene.getWindow();
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        setOnKeyPressedEventHandler(null);
         MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
 

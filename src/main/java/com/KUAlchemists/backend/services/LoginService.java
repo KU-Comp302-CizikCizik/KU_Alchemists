@@ -31,7 +31,6 @@ public class LoginService {
         // Here you would compare the hashed password, the following is a placeholder
         return storedPassword != null && storedPassword.equals(password);
 
-
     }
 
     /**
