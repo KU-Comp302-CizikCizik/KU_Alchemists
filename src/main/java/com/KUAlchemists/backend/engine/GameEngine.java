@@ -207,13 +207,13 @@ public class GameEngine {
 
     }
 
-<<<<<<< HEAD
+
     // Package-private method for testing
     public static void setInstanceForTest(GameEngine instance) {
         INSTANCE = instance;
     }
 
-=======
+
     public String getUserType() {
         return userType;
     }
@@ -221,5 +221,5 @@ public class GameEngine {
     public void setUserType(String type){
         userType = type;
     }
->>>>>>> ba80be16d939e4385a1a3787e75bb9d32a747963
+
 }

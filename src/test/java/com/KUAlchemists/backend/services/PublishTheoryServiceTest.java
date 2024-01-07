@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Aspect;
+import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -61,7 +63,7 @@ class PublishTheoryServiceTest {
 
         // Verify interactions and state changes
         verify(mockPlayer).setGold(anyInt()); // Check if the player's gold is decremented
-        verify(mockBoard).addTheoryToPublishedList(any(Theory.class)); // Check if the theory is added to the board
+        verify(mockBoard).updateTheTheory(any(Theory.class)); // Check if the theory is added to the board
     }
 
     @Test
@@ -75,41 +77,42 @@ class PublishTheoryServiceTest {
 
 
         // Verify no theory is published
-        verify(mockBoard, never()).addTheoryToPublishedList(any(Theory.class));
+        verify(mockBoard, never()).updateTheTheory(any(Theory.class));
     }
 
     @Test
     void testPublishTheoryFailureDueToDuplicate() {
-        Theory existingTheory = new Theory(new Ingredient("Ingredient"),  new Alchemical(Aspect.POSITIVE_BIG, Aspect.NEGATIVE_SMALL, Aspect.POSITIVE_SMALL), new ArrayList<>());
+        Theory existingTheory = new Theory(new Ingredient("Mushroom"),  new Alchemical(Aspect.POSITIVE_BIG, Aspect.NEGATIVE_SMALL, Aspect.POSITIVE_SMALL), new HashMap<Player, TheorySeal>());
         List<Theory> existingTheories = new ArrayList<>();
         existingTheories.add(existingTheory);
 
         when(mockGameEngine.getCurrentPlayer()).thenReturn(mockPlayer);
-        when(mockBoard.getPublishedTheoriesList()).thenReturn(existingTheories);
+        when(mockBoard.getPublishedTheoriesList()).thenReturn((ArrayList<Theory>) existingTheories);
 
         boolean result = service.publishTheory("Ingredient", "NEGATIVE_BIG", "NEGATIVE_SMALL", "POSITIVE_BIG", List.of("GS"));
         assertFalse(result, "Theory should not be published due to duplicate");
 
         // Verify no additional theory is published
-        verify(mockBoard, never()).addTheoryToPublishedList(any(Theory.class));
+        verify(mockBoard, never()).updateTheTheory(any(Theory.class));
     }
     @Test
     void testPlayerGoldDecreaseOnPublishTheory() {
-        when(mockPlayer.getGold()).thenReturn(2); // Player has enough gold
-        List<Theory> publishedTheories = new ArrayList<>();
-        when(mockBoard.getPublishedTheoriesList()).thenReturn(publishedTheories); // No existing theories
+        int initialGold = 2;
+        int costOfPublishing = 1; // Assuming the cost of publishing a theory is 1 gold
+        when(mockPlayer.getGold()).thenReturn(initialGold);
 
         service.publishTheory("Mushroom", "NEGATIVE_BIG", "POSITIVE_BIG", "NEGATIVE_SMALL", List.of("GQ"));
 
-        verify(mockPlayer).setGold(1); // Check if player's gold is decremented
-        verify(mockBoard).addTheoryToPublishedList(any(Theory.class)); // Verify theory is added
+        int expectedGoldAfterPublishing = initialGold - costOfPublishing;
+        verify(mockPlayer).setGold(expectedGoldAfterPublishing); // Verify the player's gold is decremented by the cost
     }
+
     @Test
     void testPublishTheoryWithInvalidIngredientName() {
         boolean result = service.publishTheory("", "POSITIVE_SMALL", "NEGATIVE_BIG", "POSITIVE_BIG", List.of("GS"));
         assertFalse(result, "Theory should not be published with an invalid ingredient name");
 
-        verify(mockBoard, never()).addTheoryToPublishedList(any(Theory.class)); // Ensure no theory is added to the board
+        verify(mockBoard, never()).updateTheTheory(any(Theory.class)); // Ensure no theory is added to the board
     }
 
 

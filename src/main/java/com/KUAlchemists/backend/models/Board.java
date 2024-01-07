@@ -96,11 +96,11 @@ public class Board {
             }
         }
     }
-<<<<<<< HEAD
+
     public static void setInstanceForTest(Board instance) {
         Instance = instance;
-=======
 
+    }
 
     public HashMap<Player, ArtifactStorage> getArtifactStorages() {
         return artifactStorages;
@@ -117,7 +117,7 @@ public class Board {
 
     public void updateState(BoardState state){
         setPublishedTheoriesList(state.getPublishedTheoriesList());
->>>>>>> ba80be16d939e4385a1a3787e75bb9d32a747963
+
     }
 }
 
