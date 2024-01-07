@@ -2,5 +2,5 @@ package com.KUAlchemists.backend.initializers;
 
 public interface OnlineInitializer {
 
-    void onlineInitialize();
+    void onlineInitialize(int port, String ipAddress);
 }

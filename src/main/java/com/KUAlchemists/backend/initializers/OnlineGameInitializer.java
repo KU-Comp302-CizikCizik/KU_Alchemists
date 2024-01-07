@@ -7,26 +7,27 @@ import com.KUAlchemists.backend.handlers.NetworkHandler;
 public class OnlineGameInitializer implements OnlineInitializer{
 
     @Override
-    public void onlineInitialize() {
+    public void onlineInitialize(int port, String ipAddress) {
         UserType userType = GameEngine.getInstance().getUserType();
 
         if(userType == UserType.HOST){
-            startServer();
+            startServer(port);
         }
         else if(userType == UserType.CLIENT){
-            connectServer();
+            connectServer(port, ipAddress);
         }
         else{
             System.err.println("Error: Invalid user type");
         }
     }
 
-    public void startServer(){
-        NetworkHandler.getInstance().handleStartServer(NetworkHandler.PORT);
+    public void startServer(int port){
+        NetworkHandler.getInstance().handleStartServer(port);
     }
 
-    public void connectServer(){
-        NetworkHandler.getInstance().handleConnect(NetworkHandler.IP,NetworkHandler.PORT);
+    public void connectServer(int port, String ipAddress){
+        NetworkHandler.getInstance().handleConnect(ipAddress, port);
+        NetworkHandler.getInstance().handleSendDataToServer();
 
     }
 

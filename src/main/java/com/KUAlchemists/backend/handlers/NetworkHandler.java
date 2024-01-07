@@ -1,19 +1,24 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.adapters.OnlineInitializationAdapter;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
+import com.KUAlchemists.backend.initializers.OnlineGameInitializer;
 import com.KUAlchemists.backend.services.NetworkService;
 
 public class NetworkHandler {
     private static NetworkHandler instance;
     private NetworkService service;
 
-    public static final String IP = "localhost";
-    public static final int PORT = 7777;
+    public static final String DEFAULT_IP = "localhost";
+    public static final int DEFAULT_PORT = 7777;
+
+    private OnlineInitializationAdapter onlineInitializationAdapter;
 
     private NetworkHandler()
     {
         this.service = NetworkService.getInstance();
+        onlineInitializationAdapter = new OnlineInitializationAdapter(new OnlineGameInitializer());
     }
 
     public static NetworkHandler getInstance(){
