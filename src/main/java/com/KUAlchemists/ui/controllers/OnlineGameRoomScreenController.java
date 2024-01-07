@@ -1,8 +1,9 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.adapters.OnlineInitializationAdapter;
+import com.KUAlchemists.backend.initializers.OnlineGameInitializer;
 import com.KUAlchemists.backend.network.Client;
-import com.KUAlchemists.backend.network.NetworkHandler;
+import com.KUAlchemists.backend.handlers.NetworkHandler;
 import com.KUAlchemists.backend.network.Server;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
@@ -10,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 
-import java.io.IOException;
 import java.util.Optional;
 
 public class OnlineGameRoomScreenController {
@@ -26,6 +26,13 @@ public class OnlineGameRoomScreenController {
 
     // Reference to the client, if this instance joins a server
     private Client client;
+
+    private OnlineInitializationAdapter onlineInitializationAdapter;
+
+    @FXML
+    void initialize() {
+        onlineInitializationAdapter = new OnlineInitializationAdapter(new OnlineGameInitializer());
+    }
 
     @FXML
     void createRoom(ActionEvent event) {

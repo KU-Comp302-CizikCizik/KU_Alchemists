@@ -1,9 +1,10 @@
-package com.KUAlchemists.backend.network;
+package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.ui.SceneLoader;
+import com.KUAlchemists.backend.network.Client;
+import com.KUAlchemists.backend.network.Server;
+import com.KUAlchemists.backend.network.State;
 
 import java.io.IOException;
 import java.util.ArrayList;
