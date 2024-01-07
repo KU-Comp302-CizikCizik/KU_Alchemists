@@ -22,9 +22,6 @@ public class Board {
 
     private Board (){
         // create empty storages for players
-        for(Player player: GameEngine.getInstance().getPlayerList()){
-            createEmptyStoragesForPlayer(player);
-        }
     }
 
     public static Board getInstance(){
@@ -38,7 +35,12 @@ public class Board {
         ingredientStorages.put(player, new IngredientStorage());
         potionStorages.put(player, new PotionStorage());
         artifactStorages.put(player, new ArtifactStorage());
+    }
 
+    public void createEmptyStoragesForAllPlayers(){
+        for(Player player: GameEngine.getInstance().getPlayerList()){
+            createEmptyStoragesForPlayer(player);
+        }
     }
 
     public IngredientStorage getIngredientStorage(Player player){

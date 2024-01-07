@@ -3,6 +3,8 @@ package com.KUAlchemists.backend.initializers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.GameMode;
+import com.KUAlchemists.backend.enums.GameRound;
+import com.KUAlchemists.backend.enums.GameTour;
 import com.KUAlchemists.backend.exceptions.GameInitializationException;
 import com.KUAlchemists.backend.handlers.DebunkTheoryHandler;
 import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
@@ -26,13 +28,15 @@ public class OfflineGameInitializer implements OfflineInitializer{
     public OfflineGameInitializer(GameMode gameMode){
         GameEngine.getInstance().setGameMode(gameMode);
         numberOfPlayers = gameMode.getNumberOfPlayers();
+        offlineInitialize();
 
     }
     @Override
     public void offlineInitialize() {
         if (!isOfflineGameInitialized) {
             isOfflineGameInitialized = true;
-
+            GameEngine.getInstance().setGameRound(GameRound.FIRST_ROUND);
+            GameEngine.getInstance().setGameTour(GameTour.FIRST_TOUR);
             initGame();
         }
         else{
@@ -49,10 +53,14 @@ public class OfflineGameInitializer implements OfflineInitializer{
         initStateObservers();
         initEventObservers();
         initAlchemicalOfIngredients();
-
         initGameObjects();
+        initBoardStorages();
         initPlayerAssets();
 
+    }
+
+    private void initBoardStorages() {
+        Board.getInstance().createEmptyStoragesForAllPlayers();
     }
 
 

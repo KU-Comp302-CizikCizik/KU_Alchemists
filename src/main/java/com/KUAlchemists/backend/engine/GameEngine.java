@@ -49,14 +49,6 @@ public class GameEngine {
     }
 
     /**
-     * Initialize the game
-     */
-    public void initializeGame(GameMode gameMode) {
-        this.currentGameMode = gameMode;
-        GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
-    }
-
-    /**
      * Add a player to the player list
      * @param player the player to be added
      */
@@ -214,4 +206,13 @@ public class GameEngine {
     public void setGameMode(GameMode gameMode) {
         currentGameMode = gameMode;
     }
+
+    public void setGameRound(GameRound gameRound) {
+        currentRound = gameRound;
+    }
+
+    public void setGameTour(GameTour gameTour) {
+        currentTour = gameTour;
+    }
+
 }
