@@ -7,17 +7,25 @@ import java.util.ArrayList;
  *
  */
 public class IngredientStorage {
-    //OVERVIEW: IngredientStorage is unbounded, immutable list of ingredients that are available in the game.
+    //OVERVIEW: IngredientStorage is bounded, immutable list of ingredients that are available in the game.
+    //          24 Ingredient Cards are available in the game.
 
     /**
      * List of ingredients in the storage.
      */
     //the rep
     private ArrayList<Ingredient> ingredientsList;
+    private int maxCapacity;
 
 
     //The abstraction function is
     //AF(c) = {c.ingredientList.get(i) | 0 <= i < c.ingredientList.size()}
+
+    // The rep invariant is
+    // RI(c) = (c.ingredientList != null) &&
+    //         (c.ingredientList.size() <= 24) &&
+    //         (c.ingredientList.get(i) != null | 0 <= i < c.ingredientList.size() &&
+    //         (c.ingredientList.get(i) != c.ingredientList.get(j) | 0 <= i < j < c.ingredientList.size())
 
     /**
      * Constructor for IngredientStorage
@@ -26,6 +34,7 @@ public class IngredientStorage {
     public IngredientStorage(){
         //@effects: creates an ingredientList
         ingredientsList = new ArrayList<Ingredient>();
+        maxCapacity = 24;
     }
 
     //methods
@@ -107,11 +116,25 @@ public class IngredientStorage {
     }
 
 
-    public boolean repOk(){
+    public boolean repOk() {
+        //check wheter list is null and size is less than 24
+        if (ingredientsList == null&&ingredientsList.size()<=maxCapacity) {
+            return false;
+        }
+        for (Ingredient ingredient : ingredientsList) {
+            //check whether ingredient is null
+            if (ingredient == null) {
+                return false;
+            } else {
+                for (Ingredient ingredient2 : ingredientsList) {
+                    //check whether ingredient object is duplicated
+                    if (ingredient != ingredient2) {
+                        return false;
+                    }
+                }
+            }
+        }
         return true;
     }
-
-
-
 }
 
