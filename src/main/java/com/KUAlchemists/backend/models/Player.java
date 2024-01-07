@@ -187,6 +187,7 @@ public class Player implements Subject, Serializable {
 
     public int getId() {
         return id;
+    }
 
     public void deduceReputationPoints(int cost){
         this.reputation -= cost;

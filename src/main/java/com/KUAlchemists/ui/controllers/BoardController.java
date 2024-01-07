@@ -290,12 +290,13 @@ public class BoardController  implements PlayerObserver {
     public void endTheRound() {
         //check whether final round or not
         if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == 1) {
-          SceneLoader.getInstance().loadFinalScore();
-        }else{
+            SceneLoader.getInstance().loadFinalScore();
+        } else {
             changeRound();
             // send data to server, or if the player is host send data to other clients.
             NetworkHandler.getInstance().handleSendData();
         }
+    }
 
     private void changeTwoPlayerAvatars() {
         Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
