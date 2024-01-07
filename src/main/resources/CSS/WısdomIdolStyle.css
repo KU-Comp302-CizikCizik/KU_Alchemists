@@ -1,0 +1,27 @@
+@font-face {
+    -fx-font-family: "Sofia";
+    src: url("Sofia/Sofia-Regular.ttf");
+}
+
+.wisdomIdolBackground{
+    -fx-background-image: url("../com.KUAlchemists/images/WısdomIdol/suprisedAlchemist.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.sofia{
+    -fx-font-family: "Sofia";
+}
+
+.ButtonBackground{
+    -fx-background-image: url("../com.KUAlchemists/images/Board/Button.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-font-family: "Sofia";
+}
+
+
