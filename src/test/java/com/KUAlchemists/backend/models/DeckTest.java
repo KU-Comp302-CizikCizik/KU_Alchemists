@@ -27,12 +27,9 @@ public class DeckTest {
         deck.loadIngredientsFromResources(path);
         ArrayList<Ingredient> ingredients = deck.getIngredientsList();
         Assertions.assertFalse(ingredients.isEmpty(), "Ingredients list should not be empty");
-        // Additional assertions can be added here to verify the contents of the ingredients list
-        // Example: verify first ingredient details
         Ingredient firstIngredient = ingredients.get(0);
         Assertions.assertEquals("Feather", firstIngredient.getName());
         Assertions.assertEquals(1, firstIngredient.getValue());
-        // Add more checks for other ingredients or properties
     }
 
      // TODO: Uncomment this test once the FileNotFoundException is handled
@@ -55,7 +52,6 @@ public class DeckTest {
 
     @Test
     public void testLoadIngredientsFromResources_EmptyFile() throws IOException {
-        // Set up the environment to point to an empty file
         String emptyFile = "empty.csv";
         deck.loadIngredientsFromResources(emptyFile);
         Assertions.assertTrue(deck.getIngredientsList().isEmpty(), "Ingredients list should be empty");
