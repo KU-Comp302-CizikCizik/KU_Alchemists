@@ -10,12 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.OnlineLobbyUIController">
    <children>
-      <ImageView fitHeight="738.0" fitWidth="1285.0" layoutX="-195.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="734.0" fitWidth="1417.0" layoutX="-195.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/DALL·E%202024-01-07%2002.01.49%20-%20A%20gothic-style%20comic%20illustration%20in%20a%20wide%20format%20(1080x720)%20of%20a%20medieval%20alchemy%20room%20where%20four%20diverse%20alchemists%20are%20engaged%20in%20conversation.%20Th.png" />
+            <Image url="@com.KUAlchemists/images/Menu/9e768761-620f-4cc3-ad4c-71eb3f98e83e.jpg" />
          </image>
       </ImageView>
       <VBox layoutX="95.0" layoutY="79.0" prefHeight="579.0" prefWidth="900.0" style="-fx-background-color: #12232bd9;">
