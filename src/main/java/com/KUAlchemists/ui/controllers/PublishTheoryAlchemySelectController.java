@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.PublishTheoryHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
@@ -59,6 +60,18 @@ public class PublishTheoryAlchemySelectController {
 
     @FXML
     private ImageView alchemy_8;
+    @FXML
+    void PublishClicked(ActionEvent event) {
+        PublishTheoryHandler pbt = PublishTheoryHandler.getInstance();
+
+        String result = pbt.handlePublishTheoryRequest();
+
+        if ("Failed to publish theory.".equals(result)) {
+            txt.setText("You couldnt published the thoery");
+        } else {
+            txt.setText("You succesfully published the theory");
+        }
+    }
 
 
     @FXML
@@ -87,12 +100,7 @@ public class PublishTheoryAlchemySelectController {
                pbt.setSelectedTheorySeals(seals);
                pbt.setPredictedRedAspectString(red);pbt.setPredictedGreenAspectString(green);pbt.setPredictedBlueAspectString(blue);
 
-               String result = pbt.handlePublishTheoryRequest();
-                if ("Failed to publish theory.".equals(result)) {
-                }
-                else {
-                   txt.setText("You succesfully published the theory");
-               }
+
 
             }
         }
@@ -202,12 +210,6 @@ public class PublishTheoryAlchemySelectController {
                pbt.setSelectedTheorySeals(seals);
                pbt.setPredictedRedAspectString(red);pbt.setPredictedGreenAspectString(green);pbt.setPredictedBlueAspectString(blue);
 
-               String result = pbt.handlePublishTheoryRequest();
-
-               if ("Failed to publish theory.".equals(result)) {
-               } else {
-                   txt.setText("You succesfully published the theory");
-               }
 
            }
        }
