@@ -16,7 +16,7 @@
             <Image url="@com.KUAlchemists/images/Board/Card.png" />
          </image>
       </ImageView>
-      <TextArea layoutX="39.0" layoutY="160.0" prefHeight="150.0" prefWidth="242.0" stylesheets="@CSS/style.css" text="Your theory has been debunked by someone, putting your reputation at risk. Fortunately, you possess a wizard idol artifact that can help you safeguard your reputation points." wrapText="true">
+      <TextArea editable="false" layoutX="39.0" layoutY="160.0" prefHeight="150.0" prefWidth="242.0" stylesheets="@CSS/style.css" text="Your theory has been debunked by someone, putting your reputation at risk. Fortunately, you possess a wizard idol artifact that can help you safeguard your reputation points." wrapText="true">
          <styleClass>
             <String fx:value="transparent" />
             <String fx:value="sofia" />

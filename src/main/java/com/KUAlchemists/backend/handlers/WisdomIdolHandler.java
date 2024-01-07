@@ -22,7 +22,10 @@ public class WisdomIdolHandler {
     }
 
     public String getDebunkIngredientName() {
-        return debunkIngredientName;
+
+        //for testing purposes I have used frog as the ingredient name
+        //it should return the ingredient name that is debunked
+        return "frog";
     }
 
     public void useWisdomIdol() {

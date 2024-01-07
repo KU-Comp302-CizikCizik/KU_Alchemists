@@ -312,4 +312,8 @@ public class SceneLoader {
     public void loadEndorse() {
         loadPopUp(UIConstants.ENDORSE_UI_FXML);
     }
+
+    public void loadWisdomIdol() {
+        loadPopUp(UIConstants.WISDOMIDOL_UI_FXML);
+    }
 }
