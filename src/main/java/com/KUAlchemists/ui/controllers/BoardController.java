@@ -3,6 +3,10 @@ import com.KUAlchemists.backend.engine.GameEngine;
 
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.network.NetworkHandler;
+
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
@@ -280,6 +284,18 @@ public class BoardController  implements PlayerObserver {
         avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
         avatar3Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%3));
         avatar2Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+2)%3));
+    }
+
+    @FXML
+    public void endTheRound() {
+        //check whether final round or not
+        if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == 1) {
+            SceneLoader.getInstance().loadFinalScore();
+        } else {
+            changeRound();
+            // send data to server, or if the player is host send data to other clients.
+            NetworkHandler.getInstance().handleSendData();
+        }
     }
 
     private void changeTwoPlayerAvatars() {
