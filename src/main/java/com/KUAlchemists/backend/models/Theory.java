@@ -1,5 +1,10 @@
 package com.KUAlchemists.backend.models;
 
+import com.KUAlchemists.backend.enums.PlayerSeal;
+import com.KUAlchemists.backend.enums.TheorySeal;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Theory {
@@ -8,17 +13,17 @@ public class Theory {
     private boolean isPublished; // Indicates if the theory has been published
     private boolean isDebunked; // Indicates if the theory has been debunked.
     private int reputationAward; // The reputation points awarded for publishing this theory
-    private List<Player> endorsers; // List of players who have endorsed this theory
-
     private String theoryID; // UI connection
+    private HashMap<Player,TheorySeal> playerTheorySealsMap;  // New: Theory seals associated with the theory
+    private PlayerSeal playerSeal;        // New: Player seal indicating the endorsing player
 
-    // Constructor
-    public Theory(Ingredient ingredient, Alchemical predictedAlchemical) { // ingredient stringden oluşması gerekiyor alchemy içinde ıynı bok geçerli.
+    public Theory(Ingredient ingredient, Alchemical predictedAlchemical, HashMap<Player,TheorySeal> playerTheorySealsMap) {
         this.ingredient = ingredient;
         this.predictedAlchemical = predictedAlchemical;
         this.isPublished = false;
         this.isDebunked = false;
-        //this.reputationAward = 0;
+        this.playerTheorySealsMap = playerTheorySealsMap;
+        // Set other properties as needed
     }
     // Getters
     public Ingredient getIngredient() {
@@ -42,9 +47,6 @@ public class Theory {
         return reputationAward;
     }
 
-    public List<Player> getEndorsers() {
-        return endorsers;
-    }
 
     // Setters
     public void setIngredient(Ingredient ingredient) {
@@ -68,9 +70,6 @@ public class Theory {
         this.reputationAward = reputationAward;
     }
 
-    public void setEndorsers(List<Player> endorsers) {
-        this.endorsers = endorsers;
-    }
 
     public String getId() {
         return theoryID;
@@ -78,11 +77,31 @@ public class Theory {
 
     // Setter for the theory ID
     public void setId(String id) {
-        this.theoryID = theoryID;
+        this.theoryID = id;
     }
 
 
-    public void addEndorser(Player currentPlayer) {
-        endorsers.add(currentPlayer);
+    public void addEndorser(Player currentPlayer, TheorySeal theorySeal) {
+        playerTheorySealsMap.put(currentPlayer,theorySeal);
+    }
+
+    public HashMap<Player,TheorySeal> getPlayerTheorySealsMap() {
+        return playerTheorySealsMap;
+    }
+
+    public ArrayList<TheorySeal> getTheorySeals() {
+        ArrayList<TheorySeal> theorySeals = new ArrayList<>();
+        for (Player player : playerTheorySealsMap.keySet()) {
+            theorySeals.add(playerTheorySealsMap.get(player));
+        }
+        return theorySeals;
+    }
+
+    public ArrayList<Player> getEndorsers() {
+        ArrayList<Player> endorsers = new ArrayList<>();
+        for (Player player : playerTheorySealsMap.keySet()) {
+            endorsers.add(player);
+        }
+        return endorsers;
     }
 }

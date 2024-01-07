@@ -52,13 +52,14 @@ public class PublicationTrackService {
         return info.toString();
     }
 
-    public Theory getTheoryByName(String theoryName) {
+    public Theory getTheoryByIngredientName(String ingredientName) {
         List<Theory> publishedTheories = Board.getInstance().getPublishedTheoriesList();
         for (Theory theory : publishedTheories) {
-            if (theory.getIngredient().getName().equals(theoryName)) {
+            if (theory.getIngredient().getName().equals(ingredientName)) {
                 return theory;
             }
         }
         return null;
     }
+
 }

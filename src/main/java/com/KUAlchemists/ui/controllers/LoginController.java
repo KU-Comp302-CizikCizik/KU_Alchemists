@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.LoginHandler;
+import com.KUAlchemists.ui.MainApplicationUI;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,14 +33,11 @@ public class LoginController {
      * The handler for login requests.
      * */
 
+
     /**
      * Constructor for LoginController.
      *
      */
-    public LoginController() {
-
-    }
-
 
     /**
      * This method is called when the login button is pressed.
@@ -48,18 +46,15 @@ public class LoginController {
     public void loginButtonOnAction(ActionEvent event) {
         String username = userNameTextField.getText();
         String password = passwordTextField.getText();
-        boolean loginResult = LoginHandler.getInstance().login(username, password);
-        String loginMessage;
-        if(loginResult){
-            loginMessage = "Login successful!";
+        Boolean loginResult = LoginHandler.getInstance().login(username, password);
+        if (loginResult) {
+            loginMessageLabel.setText("Login Successful! ");
             SceneLoader.getInstance().loadMenu();
+        } else {
+            SceneLoader.getInstance().loadGenericPopUp("Wrong username or password!");
         }
-        else{
-            loginMessage = "Login failed!"; // bi pop-up cakiver buraya emo
-        }
-
-        loginMessageLabel.setText(loginMessage);
     }
+
 
 
     /**

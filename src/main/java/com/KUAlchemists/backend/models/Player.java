@@ -2,15 +2,18 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
+import com.KUAlchemists.backend.network.PlayerState;
 import com.KUAlchemists.backend.observer.Observer;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.backend.subjects.Subject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements Subject {
+public class Player implements Subject, Serializable {
 
+    private static final long serialVersionUID = 1L;
     private int gold;
     private String status;
     private int sicknessLevel;
@@ -19,6 +22,8 @@ public class Player implements Subject {
     private DeductionBoard deductionBoard;
     private int actionPoints;
 
+    private int id = 0;
+
     //To indicate its color on endorse UI, each player has only one, and it is randomly assigned
     private PlayerSeal seal;
   
@@ -26,6 +31,8 @@ public class Player implements Subject {
     private ArrayList<TheorySeal> theorySeals;
 
     private String name;
+
+    private int score;
     private List<PlayerObserver> observers;
 
     private String avatar; // this is the avatar of the player that will be displayed on the board
@@ -45,6 +52,7 @@ public class Player implements Subject {
         this.seal = PlayerSeal.getRandomSeal(); //random seal for indicating the player's color on endorsement
         this.theorySeals = TheorySeal.getSeals(); //default seals
         observers = new ArrayList<>();
+        this.id++;
 
     }
 
@@ -54,6 +62,7 @@ public class Player implements Subject {
 
     public void setGold(int gold) {
         this.gold = gold;
+        System.out.println("Player's gold: "+this.gold);
         notifyObservers();
     }
 
@@ -72,6 +81,7 @@ public class Player implements Subject {
     public void setSicknessLevel(int sicknessLevel) {
         this.sicknessLevel = sicknessLevel;
         if(this.sicknessLevel < 0)this.sicknessLevel = 0;
+        notifyObservers();
     }
 
     public int getReputation() {
@@ -88,20 +98,8 @@ public class Player implements Subject {
     }
 
 
-    public void setPublishedTheories(List<Theory> publishedTheories) {
-        this.publishedTheories = (ArrayList<Theory>) publishedTheories;
-    }
-
     public DeductionBoard getDeductionBoard() {
         return deductionBoard;
-    }
-
-    public void setDeductionBoard(DeductionBoard deductionBoard) {
-        this.deductionBoard = deductionBoard;
-    }
-
-    public int getSickness_level() {
-        return sicknessLevel;
     }
 
     public void setPublishedTheories(ArrayList<Theory> publishedTheories) {
@@ -131,6 +129,7 @@ public class Player implements Subject {
 
     public void setTheorySeals(ArrayList<TheorySeal> theorySeals){
         this.theorySeals = theorySeals;
+        notifyObservers();
     }
 
     public ArrayList<TheorySeal> getTheorySeals(){
@@ -143,6 +142,7 @@ public class Player implements Subject {
 
     public void addGold(int price) {
         this.gold += price;
+        notifyObservers();
     }
       
     @Override
@@ -174,5 +174,36 @@ public class Player implements Subject {
 
     public String getAvatar(){
         return avatar;
+    }
+
+
+    public PlayerState getState(){
+        return new PlayerState(id, gold);
+    }
+
+    public void updateState(PlayerState state){
+        setGold(state.getGold());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void deduceReputationPoints(int cost){
+        this.reputation -= cost;
+        notifyObservers();
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setName(String player1) {
+        this.name = player1;
+
     }
 }

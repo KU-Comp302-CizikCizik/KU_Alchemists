@@ -62,7 +62,6 @@ public class UseArtifactController {
     public void initialize(){
         boughtArtifacts = (ArrayList<String>) useArtifactHandler.handleStorageArtifact();
         BuyArtifactHandler buyArtifactHandler = new BuyArtifactHandler();
-        System.out.println(boughtArtifacts);
         setArtifactDisability();
     }
 

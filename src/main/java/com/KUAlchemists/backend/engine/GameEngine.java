@@ -21,6 +21,7 @@ public class GameEngine {
 
     private ApplicationMode mode; // OFFLINE or ONLINE
 
+    private String userType;
     private GameRound currentRound;
     private GameTour currentTour;
 
@@ -58,7 +59,6 @@ public class GameEngine {
     public void initializeGame(GameMode gameMode) {
         this.currentGameMode = gameMode;
         GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
-        System.out.println("Game Initialized");
     }
 
     /**
@@ -199,8 +199,20 @@ public class GameEngine {
 
 
 
-    public GameMode getCurrentGameMode() {
-        return currentGameMode;
+    public Integer getPlayerIndex(Player player) {
+        return playerList.indexOf(player);
     }
 
+    public GameMode getCurrentGameMode() {
+        return currentGameMode;
+
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String type){
+        userType = type;
+    }
 }

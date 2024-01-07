@@ -52,4 +52,13 @@ public class BoardHandler {
     public Integer getPlayerActionPoints(int playerIndex) {
         return GameEngine.getInstance().getPlayer(playerIndex).getActionPoints();
     }
+
+
+    public ArrayList<String> getAvatarStrings(){
+        ArrayList<String> avatarStrings = new ArrayList<>();
+        for (Player player : GameEngine.getInstance().getPlayerList()) {
+            avatarStrings.add(player.getAvatar());
+        }
+        return avatarStrings;
+    }
 }
