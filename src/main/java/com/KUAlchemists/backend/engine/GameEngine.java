@@ -78,7 +78,7 @@ public class GameEngine {
 
     /**
      * Get the player list
-     * @return playerList
+     * @return playerLists
      */
 
     public ArrayList<Player> getPlayerList() {
@@ -105,6 +105,12 @@ public class GameEngine {
         playerList.set(currentPlayerIndex, player);
         GameEngine.currentPlayer = player;
     }
+    public void setCurrentPlayerforTest(Player player) {
+        GameEngine.currentPlayer = player;
+    }
+    /*
+    added for tsting debunk
+     */
 
     /**
      * Get the current player index
