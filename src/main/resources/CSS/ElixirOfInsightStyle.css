@@ -4,7 +4,7 @@ Text{
 }
 
 .anchor-pane{
-    -fx-background-image: url("../com.KUAlchemists/images/use_artifact_background.PNG");
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/use_artifact_background.PNG");
     -fx-background-size: cover;
     -fx-background-repeat: stretch;
 }
