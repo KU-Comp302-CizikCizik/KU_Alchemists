@@ -4,6 +4,8 @@ import com.KUAlchemists.backend.enums.*;
 import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.states.GameEngineState;
+import com.KUAlchemists.backend.states.State;
 
 import java.util.ArrayList;
 
@@ -29,6 +31,8 @@ public class GameEngine {
 
     private GameMode currentGameMode;
 
+
+    private State state;
 
     /**
      * Constructor for GameEngine
@@ -216,4 +220,7 @@ public class GameEngine {
         currentTour = gameTour;
     }
 
+    public State getState() {
+        return new GameEngineState(playerList);
+    }
 }

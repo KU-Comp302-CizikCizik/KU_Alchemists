@@ -3,7 +3,7 @@ package com.KUAlchemists.backend.models;
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.enums.UserType;
-import com.KUAlchemists.backend.network.PlayerState;
+import com.KUAlchemists.backend.states.PlayerState;
 import com.KUAlchemists.backend.observer.Observer;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.backend.subjects.Subject;
@@ -180,7 +180,7 @@ public class Player implements Subject, Serializable {
 
 
     public PlayerState getState(){
-        return new PlayerState(id, gold,userType);
+        return new PlayerState(id, gold,userType,this);
     }
 
     public void updateState(PlayerState state){

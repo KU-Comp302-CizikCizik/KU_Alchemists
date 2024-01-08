@@ -68,6 +68,7 @@ public class OnlineGameInitializer implements OnlineInitializer{
 
     private void initGameObjects() {
        Player player = new Player();
+       player.setPlayerID(0);
        GameEngine.getInstance().addPlayer(player);
        GameEngine.getInstance().setCurrentPlayer(player);
 

@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.network;
 
-import com.KUAlchemists.backend.network.State;
+import com.KUAlchemists.backend.handlers.NetworkHandler;
+import com.KUAlchemists.backend.states.GameEngineState;
+import com.KUAlchemists.backend.states.State;
 import java.util.List;
 
 public class GameUpdateHandler {
@@ -11,7 +13,7 @@ public class GameUpdateHandler {
 
     private GameUpdateHandler(){
         this.service = new GameUpdateService();
-        isClientIDInitializationDone = true;
+        isClientIDInitializationDone = false;
     }
 
     public static GameUpdateHandler getInstance(){
@@ -26,12 +28,17 @@ public class GameUpdateHandler {
      */
     public void handleUpdateGame(List<State> states){
         if(!isClientIDInitializationDone){
-            isClientIDInitializationDone = true;
-            service.initClientIDs(states);
+            initializeClientIDS(states);
         }
         else{
             service.update(states);
         }
 
+    }
+
+    private void initializeClientIDS(List<State> states){
+        isClientIDInitializationDone = true;
+        GameEngineState gameEngineState = (GameEngineState) service.initClientIDs(states);
+        if(gameEngineState != null) NetworkHandler.getInstance().handleSendData();
     }
 }

@@ -4,7 +4,8 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.network.Client;
 import com.KUAlchemists.backend.network.Server;
-import com.KUAlchemists.backend.network.State;
+import com.KUAlchemists.backend.states.GameEngineState;
+import com.KUAlchemists.backend.states.State;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,6 +73,7 @@ public class NetworkService {
         List<State> states = new ArrayList<>();
         states.add(Board.getInstance().getState());
         states.add(GameEngine.getInstance().getCurrentPlayer().getState());
+        states.add(GameEngine.getInstance().getState());
         return states;
     }
 

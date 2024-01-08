@@ -1,13 +1,12 @@
 package com.KUAlchemists.backend.network;
 
-import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.List;
-import com.KUAlchemists.backend.network.State;
+import com.KUAlchemists.backend.states.State;
 
 public class Client {
 
