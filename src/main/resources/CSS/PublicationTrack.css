@@ -4,7 +4,7 @@
 }
 
 .PublicationTrackBackground {
-        -fx-background-image: url("../com.KUAlchemists/images/PublicationTrack/theories.png");
+        -fx-background-image: url("../com.KUAlchemists/images/theories.png");
         -fx-background-repeat: stretch;
         -fx-background-size: contain;
         -fx-background-position: center center;

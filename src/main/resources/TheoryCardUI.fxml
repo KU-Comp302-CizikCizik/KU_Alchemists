@@ -6,59 +6,212 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Font?><?xml version="1.0" encoding="UTF-8"?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="175.0" styleClass="backgorundOpacity" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.TheoryCardController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="803.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.PublicationTrackController">
    <children>
-      <HBox prefHeight="84.0" prefWidth="165.0">
+      <ImageView fitHeight="810.0" fitWidth="1157.0" layoutX="-1.0" layoutY="-4.0">
+         <image>
+            <Image url="@com.KUAlchemists/images/theories.png" />
+         </image>
+      </ImageView>
+      <VBox id="v_box_big" layoutX="23.0" layoutY="23.0" prefHeight="766.0" prefWidth="1102.0">
          <children>
-            <ImageView fx:id="ingredient_image" fitHeight="80.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+            <VBox id="v_box_1" fx:id="v_box_1" prefHeight="350.0" prefWidth="1102.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
+               <children>
+                  <Text fill="#f5dc6a" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Theories">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <GridPane fx:id="player_box" prefHeight="263.0" prefWidth="912.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="330.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="300.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </GridPane>
+               </children>
+            </VBox>
+            <VBox id="v_box_2" fx:id="v_box_2" prefHeight="414.0" prefWidth="1102.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
+               <children>
+                  <Text fill="#f5dc6a" strokeType="OUTSIDE" strokeWidth="0.0" text="All Published Theories">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </Text>
+                  <GridPane fx:id="other_v_box" prefHeight="327.0" prefWidth="1102.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="330.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="164.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="163.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane><?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.geometry.Insets?>
+        <?import javafx.scene.image.Image?>
+        <?import javafx.scene.image.ImageView?>
+        <?import javafx.scene.layout.AnchorPane?>
+        <?import javafx.scene.layout.ColumnConstraints?>
+        <?import javafx.scene.layout.GridPane?>
+        <?import javafx.scene.layout.RowConstraints?>
+        <?import javafx.scene.layout.VBox?>
+        <?import javafx.scene.text.Font?>
+        <?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="803.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.PublicationTrackController">
+<children>
+   <ImageView fitHeight="810.0" fitWidth="1157.0" layoutX="-1.0" layoutY="-4.0">
+      <image>
+         <Image url="@com.KUAlchemists/images/theories.png" />
+      </image>
+   </ImageView>
+   <VBox id="v_box_big" layoutX="23.0" layoutY="23.0" prefHeight="766.0" prefWidth="1102.0">
+      <children>
+         <VBox id="v_box_1" fx:id="v_box_1" prefHeight="350.0" prefWidth="1102.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
+            <children>
+               <Text fill="#f5dc6a" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Theories">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+               </Text>
+               <GridPane fx:id="player_box" prefHeight="263.0" prefWidth="912.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="300.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="300.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="330.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="300.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </GridPane>
+            </children>
+         </VBox>
+         <VBox id="v_box_2" fx:id="v_box_2" prefHeight="414.0" prefWidth="1102.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
+            <children>
+               <Text fill="#f5dc6a" strokeType="OUTSIDE" strokeWidth="0.0" text="All Published Theories">
+                  <font>
+                     <Font name="System Bold" size="18.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets bottom="30.0" />
+                  </VBox.margin>
+               </Text>
+               <GridPane fx:id="other_v_box" prefHeight="327.0" prefWidth="1102.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="330.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="164.0" vgrow="SOMETIMES" />
+                     <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="163.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+               </GridPane>
+            </children>
+         </VBox>
+      </children>
+   </VBox>
+</children>
+</AnchorPane>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: #12232bd9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.TheoryCardController">
+   <children>
+      <HBox prefHeight="21.0" prefWidth="221.0">
+         <children>
+            <Text fx:id="player_txt" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Players Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox prefHeight="114.0" prefWidth="209.0">
+         <children>
+            <ImageView fx:id="ingredient_image" fitHeight="89.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@com.KUAlchemists/images/frog-ingredient-square.png" />
                </image>
                <HBox.margin>
-                  <Insets right="10.0" top="10.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
             </ImageView>
-            <VBox prefHeight="93.0" prefWidth="83.0">
+            <VBox prefHeight="137.0" prefWidth="185.0">
                <children>
-                  <VBox prefHeight="84.0" prefWidth="83.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="alchemy" fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="20.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <Button mnemonicParsing="false" onAction="#endorseClicked" prefHeight="17.0" prefWidth="59.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="sofia" stylesheets="@CSS/style.css" text="Endorse">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#debunkClicked" prefHeight="17.0" prefWidth="62.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" styleClass="sofia" text="Debunk">
-                           <font>
-                              <Font size="9.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Button>
+                        <VBox prefHeight="100.0" prefWidth="153.0">
+                           <children>
+                              <ImageView fx:id="alchemy" fitHeight="44.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#endorseClicked" prefHeight="20.0" prefWidth="82.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="r" text="Endorse">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#debunkClicked" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" text="Debunk" />
+                           </children>
+                        </VBox>
                      </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </VBox>
+                  </HBox>
                </children>
             </VBox>
          </children>
       </HBox>
    </children>
-   <padding>
-      <Insets left="10.0" top="10.0" />
-   </padding>
 </VBox>
