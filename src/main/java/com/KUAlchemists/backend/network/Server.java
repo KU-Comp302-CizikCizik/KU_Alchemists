@@ -5,11 +5,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Server {
     private int port;
     private Set<ClientHandler> clientHandlers = new HashSet<>();
     private ServerSocket serverSocket;
+
+    private static final AtomicInteger numberOfPlayers = new AtomicInteger(1);
 
     public Server(int port) {
         this.port = port;
@@ -42,4 +45,14 @@ public class Server {
         clientHandlers.remove(clientHandler);
         System.out.println("Client disconnected: " + clientHandler.getClientSocket().getInetAddress());
     }
+
+    public static int getNumberOfPlayers() {
+        return numberOfPlayers.get();
+    }
+
+    public static int incrementNumberOfPlayers() {
+        return numberOfPlayers.incrementAndGet();
+    }
+
+
 }

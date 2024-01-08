@@ -1,5 +1,6 @@
-package com.KUAlchemists.adapters;
+package com.KUAlchemists.backend.adapters;
 
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.NetworkHandler;
 import com.KUAlchemists.backend.initializers.OfflineInitializer;
 import com.KUAlchemists.backend.initializers.OnlineInitializer;
@@ -12,6 +13,8 @@ public class OnlineInitializationAdapter implements OfflineInitializer {
 
     private String ipAddress;
 
+    private UserType userType;
+
 
     public OnlineInitializationAdapter(OnlineInitializer onlineInitializer){
         this.onlineInitializer = onlineInitializer;
@@ -21,7 +24,7 @@ public class OnlineInitializationAdapter implements OfflineInitializer {
 
     @Override
     public void offlineInitialize() {
-        onlineInitializer.onlineInitialize(port,ipAddress);
+        onlineInitializer.onlineInitialize(port,ipAddress, userType);
     }
 
     public void setPort(int port) {
@@ -30,5 +33,9 @@ public class OnlineInitializationAdapter implements OfflineInitializer {
 
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 }

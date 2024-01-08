@@ -5,10 +5,7 @@ import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.*;
 import com.KUAlchemists.backend.managers.EventManager;
-import com.KUAlchemists.backend.models.Alchemical;
-import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,9 +13,13 @@ import java.util.Random;
 public class OnlineGameInitializer implements OnlineInitializer{
 
     @Override
-    public void onlineInitialize(int port, String ipAddress) {
-        UserType userType = GameEngine.getInstance().getUserType();
+    public void onlineInitialize(int port, String ipAddress, UserType userType) {
         initGame();
+        initNetwork(port, ipAddress,userType);
+
+    }
+
+    private void initNetwork(int port, String ipAddress, UserType userType) {
         if(userType == UserType.HOST){
             startServer(port);
         }
@@ -28,7 +29,6 @@ public class OnlineGameInitializer implements OnlineInitializer{
         else{
             System.err.println("Error: Invalid user type");
         }
-
     }
 
     private void initGame() {
@@ -42,10 +42,12 @@ public class OnlineGameInitializer implements OnlineInitializer{
 
 
     public void startServer(int port){
+        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.HOST);
         NetworkHandler.getInstance().handleStartServer(port);
     }
 
     public void connectServer(int port, String ipAddress){
+        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.CLIENT);
         NetworkHandler.getInstance().handleConnect(ipAddress, port);
         NetworkHandler.getInstance().handleSendDataToServer();
 

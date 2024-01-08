@@ -12,12 +12,12 @@ public class GameEngine {
     // singleton instance
     private static GameEngine INSTANCE;
 
+
     // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
 
     private ApplicationMode mode; // OFFLINE or ONLINE
 
-    private UserType userType;
     private GameRound currentRound;
     private GameTour currentTour;
 
@@ -48,6 +48,7 @@ public class GameEngine {
         }
         return INSTANCE;
     }
+
 
     /**
      * Add a player to the player list
@@ -194,11 +195,12 @@ public class GameEngine {
 
     }
 
-    public void setUserType(UserType type){
-        userType = type;
+    public void setUserTypeOfCurrentPlayer(UserType type){
+        currentPlayer.setUserType(type);
     }
 
     public UserType getUserType() {
+        UserType userType = currentPlayer.getUserType();
         return userType;
     }
 

@@ -53,4 +53,16 @@ public class GameUpdateService {
         }
         return null;
     }
+
+    public void initClientIDs(List<State> states) {
+
+        for (State s : states){
+            if (s instanceof PlayerState){
+                PlayerState playerState = (PlayerState) s;
+
+
+            }
+        }
+
+    }
 }

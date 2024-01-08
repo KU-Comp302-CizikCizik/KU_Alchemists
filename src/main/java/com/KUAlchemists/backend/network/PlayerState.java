@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.network;
 
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Player;
 
 import java.io.Serializable;
@@ -10,9 +11,12 @@ public class PlayerState extends State{
     private int gold;
     private int id;
 
-    public PlayerState(int id, int gold){
+    private UserType userType;
+
+    public PlayerState(int id, int gold, UserType userType){
         this.id = id;
         this.gold = gold;
+        this.userType = userType;
     }
 
     public int getGold(){

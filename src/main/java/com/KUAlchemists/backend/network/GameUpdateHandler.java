@@ -7,8 +7,11 @@ public class GameUpdateHandler {
     private static GameUpdateHandler instance;
     private GameUpdateService service;
 
+    private static boolean isClientIDInitializationDone;
+
     private GameUpdateHandler(){
         this.service = new GameUpdateService();
+        isClientIDInitializationDone = true;
     }
 
     public static GameUpdateHandler getInstance(){
@@ -22,6 +25,13 @@ public class GameUpdateHandler {
      * This method will be called when updated game came from server or client.
      */
     public void handleUpdateGame(List<State> states){
-        service.update(states);
+        if(!isClientIDInitializationDone){
+            isClientIDInitializationDone = true;
+            service.initClientIDs(states);
+        }
+        else{
+            service.update(states);
+        }
+
     }
 }

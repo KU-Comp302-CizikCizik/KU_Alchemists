@@ -1,11 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.adapters.OnlineInitializationAdapter;
 import com.KUAlchemists.backend.handlers.OnlineGameRoomHandler;
-import com.KUAlchemists.backend.initializers.OnlineGameInitializer;
-import com.KUAlchemists.backend.network.Client;
-import com.KUAlchemists.backend.handlers.NetworkHandler;
-import com.KUAlchemists.backend.network.Server;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
