@@ -1,74 +1,123 @@
 package com.KUAlchemists.backend.services;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.ArtifactStorage;
+import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 public class ScoringService {
+    private HashMap<Integer,Integer> scoreMap;
 
     public ScoringService() {
+        this.scoreMap = new HashMap<>();
     }
 
+    /**
+     * This method is used to calculate the score of a player.
+     * It calculates the score based on the gold, reputation and artifacts of the player.
+     * It also sets the score of the player.
+     * @param player
+     * @return
+     */
     public Integer calculateScore(Player player) {
         int score = 0;
         int goldScore = player.getGold() / 3; // 3 gold = 1 score
-        player.setGold(player.getGold() - player.getGold() % 3); // remove the gold that is not divisible by 3
+        player.setGold(player.getGold() - goldScore * 3); // remove the gold that is not divisible by 3
+        //int remainingGold = getRemainingGold(player);
         score += goldScore;
         score += player.getReputation() * 10; // 1 reputation = 10 score
+        score += artifactScore(player); // calculate artifact score
         player.setScore(score);
         return score;
     }
 
-    public Integer getWinner(ArrayList<Player> players) {
-        int winnerIndex = 0;
-        int winnerScore = 0;
-        for (int i = 0; i < players.size(); i++) {
-            int score = calculateScore(players.get(i));
-            if (score > winnerScore) {
-                winnerScore = score;
-                winnerIndex = i;
-            }
-            else if (score == winnerScore) {
-                if (players.get(i).getGold() > players.get(winnerIndex).getGold()) {
-                    winnerIndex = i;
-                }
-                else if (players.get(i).getGold() == players.get(winnerIndex).getGold()) {
-                    return -1; // draw
-                }
-            }
+    /**
+     * This method is used to calculate the score of all players.
+     */
+    public void calculateScoreOfAllPlayers(){
+        for (int i = 0; i < GameEngine.getInstance().getPlayerList().size(); i++){
+            int score = calculateScore(GameEngine.getInstance().getPlayer(i));
+            scoreMap.put(i,score);
         }
-        return winnerIndex;
     }
 
-    // TODO: implement this method
-    // getRanking method should return the ranking of the players
-    // The ranking of the players is the index of the players in the player list
-    // It uses the calculateScore method to calculate the score of the players
-    // If the players scores are equal it will check the gold of the players
-    // If the gold of the players are equal it will return -1
-
-public ArrayList<Integer> getRanking(ArrayList<Player> players) {
-        ArrayList<Integer> rankingList = new ArrayList<>();
-        HashMap<Integer, Integer> scoreMap = new HashMap<>();
+    /**
+     * This method is used to get ranking of the players.
+     * It returns a list of indices of the players in the player list.
+     * For example: if the player list is [player1, player2, player3]
+     * and the ranking is [player2, player1, player3]
+     * it will return [1, 0, 2]
+     * If there is a draw, it will check the remaining gold of the players.
+     * @param players
+     * @return
+     */
+    public ArrayList<Integer> getRanking(ArrayList<Player> players) {
+        calculateScoreOfAllPlayers(); // first calculate the scores
+        // Create a list of indices
+        List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < players.size(); i++) {
-            int score = calculateScore(players.get(i));
-            score += players.get(i).getGold();
-            scoreMap.put(i, score);
+            indices.add(i);
         }
-        ArrayList<Integer> scoreList = new ArrayList<>(scoreMap.values());
-        Collections.sort(scoreList, Collections.reverseOrder());
-        for (int i = 0; i < scoreList.size(); i++) {
+        // Sort the indices based on player scores and gold
+        Collections.sort(indices, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer index1, Integer index2) {
+                Player p1 = players.get(index1);
+                Player p2 = players.get(index2);
+
+                // Compare by score
+                int scoreCompare = Integer.compare(p2.getScore(), p1.getScore());
+                if (scoreCompare != 0) {
+                    return scoreCompare;
+                }
+
+                // If scores are equal, compare by remaining gold
+                return Integer.compare(p2.getGold(), p1.getGold());
+            }
+        });
+        return new ArrayList<>(indices);
+
+    }
+
+    /**
+     * This method is used to sell remaining artifacts,and calculate the artifact score of the player.
+     * @param player
+     */
+    public int artifactScore(Player player){
+        HashMap<Player, ArtifactStorage> storages = Board.getInstance().getArtifactStorages();
+        ArtifactStorage storage = storages.get(player);
+        int numberOfArtifacts = storage.getArtifactsTotalNumber();
+        int artifactScore = 0;
+        for(int i = 0; i < numberOfArtifacts; i++){
+            artifactScore += storage.getArtifactList().get(i).getVictoryPoints();
+            artifactScore += 2; // 2 point for each remaining artifact
+        }
+        return artifactScore;
+    }
+
+    public int getScore(Player player) {
+        return player.getScore();
+    }
+
+    /**
+     * This method is used to determine is there a draw or not.
+     * @param players
+     * @return
+     */
+    public int isThereADraw(ArrayList<Player> players) {
+        for (int i = 0; i < players.size(); i++) {
             for (int j = 0; j < players.size(); j++) {
-                if (scoreMap.get(j) == scoreList.get(i)) {
-                    rankingList.add(j);
+                if (i != j) {
+                    int score1 = players.get(i).getScore();
+                    int score2 = players.get(j).getScore();
+                    if (score1 == score2) {
+                        return 1;
+                    }
                 }
             }
         }
-        return rankingList;
+        return 0;
     }
-
-
 }

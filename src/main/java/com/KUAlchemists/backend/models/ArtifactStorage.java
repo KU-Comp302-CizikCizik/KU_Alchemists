@@ -52,4 +52,16 @@ public class ArtifactStorage {
     public List<Artifact> getArtifactList() {
         return this.artifactsList;
     }
+
+    /**
+     * Returns the total number of artifacts in the storage.
+     * @return
+     */
+    public int getArtifactsTotalNumber() {
+        int total = 0;
+        for (Artifact artifact : artifactsList) {
+            total += 1;
+        }
+        return total;
+    }
 }

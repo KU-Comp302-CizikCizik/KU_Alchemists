@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.network.BoardState;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ public class Board {
     private final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
     private final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
     private final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
+    private List<Theory> publishedTheoriesList = new ArrayList<>();
     private final Deck deck = Deck.getInstance();
 
     private Board (){
@@ -93,6 +95,24 @@ public class Board {
                 return;
             }
         }
+    }
+
+
+    public HashMap<Player, ArtifactStorage> getArtifactStorages() {
+        return artifactStorages;
+    }
+
+    public void setPublishedTheoriesList(List<Theory> newList){
+        this.publishedTheoriesList = newList;
+        // TODO: notify observers
+    }
+
+    public BoardState getState(){
+        return new BoardState(publishedTheoriesList);
+    }
+
+    public void updateState(BoardState state){
+        setPublishedTheoriesList(state.getPublishedTheoriesList());
     }
 }
 

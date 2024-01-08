@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class PublishTheoryService {
 
+
     public PublishTheoryService() {
     }
 
@@ -32,7 +33,13 @@ public class PublishTheoryService {
         Aspect greenAspect = Aspect.fromString(predictedGreenAspectString);
         Aspect blueAspect = Aspect.fromString(predictedBlueAspectString);
         Alchemical predictedAlchemical = new Alchemical(redAspect, greenAspect, blueAspect);
+
+
+
+        //Ingredient ingredient = Board.getInstance().getIngredientStorage(player).getIngredient(ingredientName);
+
         String ingredientName = rawIngredientName.split("-")[0];
+
         Ingredient ingredient = new Ingredient(ingredientName);
         ingredient.setAlchemical(predictedAlchemical);
 
@@ -60,6 +67,21 @@ public class PublishTheoryService {
             return true;
         }
         return false;
+    }
+
+
+
+    // Burası daha kullanıma hazır değil
+    /**
+     * This method retrieves the player's seal.
+     *
+     * @return The player's seal string.
+     */
+    public String getPlayerSeal() {
+        return GameEngine.getInstance().getCurrentPlayer().getPlayerSeal().getSealString();
+    }
+    public Number getPlayerAction() {
+        return GameEngine.getInstance().getCurrentPlayer().getActionPoints();
     }
 
 }

@@ -102,8 +102,15 @@ public class SceneLoader {
         MainApplicationUI.stage.show();
     }
 
-
-
+    public void loadOnlineGameRoomScreen() {
+        root = UILoader.loadFXML(UIConstants.ONLINE_GAME_ROOM_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+    }
     public void loadNumberOfPlayersScreen(){
         root = UILoader.loadFXML(UIConstants.NUMBER_OF_PLAYERS_UI_FXML);
         Scene oldScene = MainApplicationUI.stage.getScene();
@@ -112,7 +119,26 @@ public class SceneLoader {
         MainApplicationUI.stage.setScene(MainApplicationUI.scene);
         MainApplicationUI.stage.centerOnScreen();
         MainApplicationUI.stage.show();
+    }
 
+    public void loadWaitingRoomScreen(){
+        root = UILoader.loadFXML(UIConstants.WAITING_ROOM_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
+    }
+
+    public void loadAvailableRoomsScreen(){
+        root = UILoader.loadFXML(UIConstants.AVAILABLE_ROOMS_UI_FXML);
+        Scene oldScene = MainApplicationUI.stage.getScene();
+        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
+        MainApplicationUI.stage = (Stage) oldScene.getWindow();
+        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
+        MainApplicationUI.stage.centerOnScreen();
+        MainApplicationUI.stage.show();
     }
 
     public void loadAvatarSelectScreen(){
@@ -151,6 +177,10 @@ public class SceneLoader {
 
     public void loadHelp() {
         loadPopUp(UIConstants.HELP_UI_FXML);
+    }
+
+    public void loadFinalScoring() {
+        loadPopUp(UIConstants.FINAL_SCORING_UI_FXML);
     }
 
     public void loadPause() {
@@ -316,4 +346,5 @@ public class SceneLoader {
     public void loadWisdomIdol() {
         loadPopUp(UIConstants.WISDOMIDOL_UI_FXML);
     }
+
 }
