@@ -28,6 +28,10 @@
     -fx-background-color: rgba(19,35,43);
 }
 
+.backgorundOpacity{
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
 .endorse-Background{
     -fx-background-image: url("../com.KUAlchemists/images/Endorse/endorse-background.png");
     -fx-background-repeat: stretch;

@@ -45,7 +45,7 @@ public class PublicationTrackController {
                 row++;
             }
             other_v_box.add(cardBox, column++, row);
-            GridPane.setMargin(cardBox, new Insets(1,1,1,1));
+            GridPane.setMargin(cardBox, new Insets(1,10,1,1));
         }
     }
         catch (Exception e) {
@@ -76,7 +76,7 @@ public class PublicationTrackController {
 
                 player_box.add(cardBox, column++, row);
 
-                GridPane.setMargin(cardBox, new Insets(1,1,1,1));
+                GridPane.setMargin(cardBox, new Insets(1,10,1,1));
             }
         }
         catch (Exception e) {

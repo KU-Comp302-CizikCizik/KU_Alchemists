@@ -11,38 +11,43 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="663.0" prefWidth="946.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.PublicationTrackController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="803.0" prefWidth="1151.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.PublicationTrackController">
    <children>
-      <ImageView fitHeight="670.0" fitWidth="952.0" layoutX="-1.0" layoutY="-4.0">
+      <ImageView fitHeight="810.0" fitWidth="1157.0" layoutX="-1.0" layoutY="-4.0">
          <image>
             <Image url="@com.KUAlchemists/images/theories.png" />
          </image>
       </ImageView>
-      <VBox id="v_box_big" layoutX="23.0" layoutY="23.0" prefHeight="617.0" prefWidth="912.0">
+      <VBox id="v_box_big" layoutX="23.0" layoutY="23.0" prefHeight="766.0" prefWidth="1102.0">
          <children>
-            <VBox id="v_box_1" fx:id="v_box_1" prefHeight="257.0" prefWidth="410.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
+            <VBox id="v_box_1" fx:id="v_box_1" prefHeight="350.0" prefWidth="1102.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
                <children>
                   <Text fill="#f5dc6a" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Theories">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Text>
-                  <GridPane fx:id="player_box" prefHeight="221.0" prefWidth="912.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="270.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="270.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="270.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="270.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <GridPane fx:id="player_box" prefHeight="263.0" prefWidth="912.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="330.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="300.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </GridPane>
                </children>
             </VBox>
-            <VBox id="v_box_2" fx:id="v_box_2" prefHeight="362.0" prefWidth="912.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
+            <VBox id="v_box_2" fx:id="v_box_2" prefHeight="414.0" prefWidth="1102.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
                <children>
                   <Text fill="#f5dc6a" strokeType="OUTSIDE" strokeWidth="0.0" text="All Published Theories">
                      <font>
@@ -52,18 +57,17 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </Text>
-                  <GridPane fx:id="other_v_box" prefHeight="330.0" prefWidth="912.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="270.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="270.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="270.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="455.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <GridPane fx:id="other_v_box" prefHeight="327.0" prefWidth="1102.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="330.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="164.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="163.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                   </GridPane>
                </children>
             </VBox>

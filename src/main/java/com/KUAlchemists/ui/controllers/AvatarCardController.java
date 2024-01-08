@@ -34,7 +34,7 @@ public class AvatarCardController {
     @FXML
     public void setAvatarCardImage(String avatarCardName) {
         // Assuming your image files have a common extension like ".png" or ".jpg"
-        String imagePath = "/com.KUAlchemists/images/profile_p/" + avatarCardName + ".png";
+        String imagePath = "/com.KUAlchemists/images/profile_p/" + avatarCardName + "_circle.png";
         // Load the image using the class loader to ensure it works regardless of the build type
         try {
             Image image = new Image(getClass().getResourceAsStream(imagePath));

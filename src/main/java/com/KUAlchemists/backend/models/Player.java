@@ -62,7 +62,6 @@ public class Player implements Subject, Serializable {
 
     public void setGold(int gold) {
         this.gold = gold;
-        System.out.println("Player's gold: "+this.gold);
         notifyObservers();
     }
 

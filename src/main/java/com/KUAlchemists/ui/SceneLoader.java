@@ -179,6 +179,10 @@ public class SceneLoader {
         loadPopUp(UIConstants.HELP_UI_FXML);
     }
 
+    public void loadFinalScoring() {
+        loadPopUp(UIConstants.FINAL_SCORING_UI_FXML);
+    }
+
     public void loadPause() {
         Dialog<Void> dialog = new Dialog<>();
 
@@ -339,5 +343,8 @@ public class SceneLoader {
         loadPopUp(UIConstants.ENDORSE_UI_FXML);
     }
 
+    public void loadWisdomIdol() {
+        loadPopUp(UIConstants.WISDOMIDOL_UI_FXML);
+    }
 
 }

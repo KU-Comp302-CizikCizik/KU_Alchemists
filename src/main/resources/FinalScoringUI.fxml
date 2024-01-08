@@ -45,4 +45,5 @@
          </children>
       </Pane>
    </children>
+   <Text fx:id="drawMessage" layoutX="89.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="draw-message" text="Draw Status: TBD" />
 </AnchorPane>

@@ -15,6 +15,9 @@ public class PublishTheoryController {
 
     @FXML
     private GridPane box;
+    public boolean validateIngredient(String ingredient, String ing2){
+        return ing2.equals(ingredient);
+    }
 
     @FXML
     private void initialize() {
