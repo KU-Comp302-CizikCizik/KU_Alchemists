@@ -1,29 +1,40 @@
-package com.KUAlchemists.backend.engine;
+package com.KUAlchemists.backend.initializers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Aspect;
+import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.GameRound;
+import com.KUAlchemists.backend.enums.GameTour;
 import com.KUAlchemists.backend.exceptions.GameInitializationException;
 import com.KUAlchemists.backend.handlers.DebunkTheoryHandler;
 import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
 import com.KUAlchemists.backend.handlers.EndorseHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
-import com.KUAlchemists.backend.models.*;
+import com.KUAlchemists.backend.models.Alchemical;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Ingredient;
+import com.KUAlchemists.backend.models.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameInitializer {
+public class OfflineGameInitializer implements OfflineInitializer{
 
-    private static boolean isGameInitialized = false;
-    private GameRound gameRound;
     private int numberOfPlayers;
+    private static boolean isOfflineGameInitialized = false;
+    public OfflineGameInitializer(GameMode gameMode){
+        GameEngine.getInstance().setGameMode(gameMode);
+        numberOfPlayers = gameMode.getNumberOfPlayers();
+        offlineInitialize();
 
-    public GameInitializer(int numberOfPlayers) {
-        if (!isGameInitialized) {
-            isGameInitialized = true;
-            this.numberOfPlayers = numberOfPlayers;
-
+    }
+    @Override
+    public void offlineInitialize() {
+        if (!isOfflineGameInitialized) {
+            isOfflineGameInitialized = true;
+            GameEngine.getInstance().setGameRound(GameRound.FIRST_ROUND);
+            GameEngine.getInstance().setGameTour(GameTour.FIRST_TOUR);
             initGame();
         }
         else{
@@ -33,17 +44,23 @@ public class GameInitializer {
                 throw new RuntimeException(e);
             }
         }
+
     }
 
     private void initGame() {
-        gameRound = GameRound.FIRST_ROUND;
         initStateObservers();
         initEventObservers();
         initAlchemicalOfIngredients();
-
         initGameObjects();
+        initBoardStorages();
         initPlayerAssets();
+
     }
+
+    private void initBoardStorages() {
+        Board.getInstance().createEmptyStoragesForAllPlayers();
+    }
+
 
     private void initEventObservers() {
         EventManager.getInstance().registerPotionBrewingObserver(DeductionBoardHandler.getInstance());
@@ -71,7 +88,6 @@ public class GameInitializer {
 
 
     private void initStateObservers() {
-
     }
 
 
@@ -103,8 +119,6 @@ public class GameInitializer {
         Board.getInstance().getDeck().getInstance().setIngredientList(ingredientsList);
 
     }
-
-
 
 
 }

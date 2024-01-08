@@ -3,9 +3,7 @@ import com.KUAlchemists.backend.engine.GameEngine;
 
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
-import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.network.NetworkHandler;
+import com.KUAlchemists.backend.handlers.NetworkHandler;
 
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
@@ -13,13 +11,11 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
@@ -28,12 +24,8 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 
-import java.awt.*;
 import java.io.IOException;
-import java.text.BreakIterator;
 import java.util.ArrayList;
-
-import static java.awt.Color.*;
 
 public class BoardController  implements PlayerObserver {
 

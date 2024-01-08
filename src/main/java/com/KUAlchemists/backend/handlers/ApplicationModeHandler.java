@@ -1,7 +1,9 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.adapters.OnlineInitializationAdapter;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.ApplicationMode;
+import com.KUAlchemists.backend.initializers.OnlineGameInitializer;
 
 /**
  * This class is responsible for handling application mode requests.
@@ -13,6 +15,7 @@ public class ApplicationModeHandler {
      * The singleton instance of ApplicationModeHandler.
      */
     private static ApplicationModeHandler INSTANCE;
+
 
     /**
      * Gets the singleton instance of ApplicationModeHandler.
@@ -30,7 +33,7 @@ public class ApplicationModeHandler {
      * Constructor for ApplicationModeHandler
      */
     private ApplicationModeHandler() {
-        setApplicationMode(0);
+        setApplicationMode(ApplicationMode.OFFLINE);
     }
 
     /**
@@ -38,21 +41,8 @@ public class ApplicationModeHandler {
      *
      * @param mode The application mode.
      */
-    public void setApplicationMode(int mode) {
-        // Set the application mode
-        // if mode == 0, set OFFLINE
-        // if mode == 1, set ONLINE
-        switch (mode) {
-            case 0:
-                GameEngine.getInstance().setApplicationMode(ApplicationMode.OFFLINE);
-                break;
-            case 1:
-                GameEngine.getInstance().setApplicationMode(ApplicationMode.ONLINE);
-                break;
-            default:
-                GameEngine.getInstance().setApplicationMode(ApplicationMode.OFFLINE);
-                break;
-        }
+    public void setApplicationMode(ApplicationMode mode) {
+        GameEngine.getInstance().setApplicationMode(mode);
     }
 
     /**

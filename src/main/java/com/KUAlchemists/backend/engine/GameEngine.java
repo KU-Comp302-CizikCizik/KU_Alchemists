@@ -1,10 +1,9 @@
 package com.KUAlchemists.backend.engine;
 
+import com.KUAlchemists.backend.enums.*;
 import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.enums.GameRound;
-import com.KUAlchemists.backend.enums.GameTour;
 
 import java.util.ArrayList;
 
@@ -18,7 +17,7 @@ public class GameEngine {
 
     private ApplicationMode mode; // OFFLINE or ONLINE
 
-    private String userType;
+    private UserType userType;
     private GameRound currentRound;
     private GameTour currentTour;
 
@@ -48,14 +47,6 @@ public class GameEngine {
             INSTANCE = new GameEngine();
         }
         return INSTANCE;
-    }
-
-    /**
-     * Initialize the game
-     */
-    public void initializeGame(GameMode gameMode) {
-        this.currentGameMode = gameMode;
-        GameInitializer gameInitializer = new GameInitializer(gameMode.getNumberOfPlayers());
     }
 
     /**
@@ -203,11 +194,24 @@ public class GameEngine {
 
     }
 
-    public String getUserType() {
+    public void setUserType(UserType type){
+        userType = type;
+    }
+
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String type){
-        userType = type;
+    public void setGameMode(GameMode gameMode) {
+        currentGameMode = gameMode;
     }
+
+    public void setGameRound(GameRound gameRound) {
+        currentRound = gameRound;
+    }
+
+    public void setGameTour(GameTour gameTour) {
+        currentTour = gameTour;
+    }
+
 }
