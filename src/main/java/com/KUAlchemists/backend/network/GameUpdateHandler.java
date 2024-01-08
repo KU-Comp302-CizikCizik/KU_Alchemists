@@ -1,5 +1,7 @@
 package com.KUAlchemists.backend.network;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.NetworkHandler;
 import com.KUAlchemists.backend.states.GameEngineState;
 import com.KUAlchemists.backend.states.State;
@@ -27,10 +29,11 @@ public class GameUpdateHandler {
      * This method will be called when updated game came from server or client.
      */
     public void handleUpdateGame(List<State> states){
-        if(!isClientIDInitializationDone){
+        if(!isClientIDInitializationDone && GameEngine.getInstance().getUserType() == UserType.HOST){
             initializeClientIDS(states);
         }
         else{
+            isClientIDInitializationDone = true;
             service.update(states);
         }
 
@@ -38,7 +41,6 @@ public class GameUpdateHandler {
 
     private void initializeClientIDS(List<State> states){
         isClientIDInitializationDone = true;
-        GameEngineState gameEngineState = (GameEngineState) service.initClientIDs(states);
-        if(gameEngineState != null) NetworkHandler.getInstance().handleSendData();
+        service.initClientIDs(states);
     }
 }

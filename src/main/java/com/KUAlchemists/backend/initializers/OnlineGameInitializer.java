@@ -42,12 +42,10 @@ public class OnlineGameInitializer implements OnlineInitializer{
 
 
     public void startServer(int port){
-        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.HOST);
         NetworkHandler.getInstance().handleStartServer(port);
     }
 
     public void connectServer(int port, String ipAddress){
-        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.CLIENT);
         NetworkHandler.getInstance().handleConnect(ipAddress, port);
         NetworkHandler.getInstance().handleSendDataToServer();
 

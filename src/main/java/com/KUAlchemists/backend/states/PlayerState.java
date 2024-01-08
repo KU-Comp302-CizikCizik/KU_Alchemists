@@ -10,7 +10,6 @@ public class PlayerState extends State {
     private int gold;
     private int id;
     private UserType userType;
-
     private Player player;
 
     public PlayerState(int id, int gold, UserType userType, Player player){

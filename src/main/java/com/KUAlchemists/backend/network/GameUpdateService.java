@@ -29,19 +29,23 @@ public class GameUpdateService {
      * @param states
      */
     //This method crucial for establishing an unique communication channel with each client.
-    public State initClientIDs(List<State> states) {
-        for (State s : states){
+    public void initClientIDs(List<State> states) {
+        ArrayList<State> states1 = new ArrayList<>(states);
+        GameEngineState gameEngineState = null;
+        for (State s : states1){
             if (s instanceof PlayerState){
                 PlayerState playerState = (PlayerState) s;
-                UserType currentUserType = GameEngine.getInstance().getUserType();
-                if(currentUserType == UserType.CLIENT) return null;
                 Player player = playerState.getPlayer();
                 player.setPlayerID(Server.incrementNumberOfPlayers()-1);
                 GameEngine.getInstance().addPlayer(player);
-                GameEngineState gameEngineState = new GameEngineState(GameEngine.getInstance().getPlayerList());
-                return gameEngineState;
+                gameEngineState = new GameEngineState(GameEngine.getInstance().getPlayerList());
             }
         }
-            return null;
+
+        for (State s : states1){
+            if (s instanceof GameEngineState){
+                states.set(states1.indexOf(s), gameEngineState);
+            }
+        }
     }
 }

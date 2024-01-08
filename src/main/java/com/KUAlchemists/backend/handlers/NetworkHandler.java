@@ -26,13 +26,13 @@ public class NetworkHandler {
 
     public void handleConnect(String ip, int port){
         service.connectToServer(ip, port);
-        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.HOST);
+        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.CLIENT);
 
     }
 
     public void handleStartServer(int port){
         service.startServer(port);
-        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.CLIENT);
+        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.HOST);
     }
 
     /**

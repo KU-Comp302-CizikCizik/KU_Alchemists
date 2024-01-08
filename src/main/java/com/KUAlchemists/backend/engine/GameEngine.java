@@ -31,9 +31,6 @@ public class GameEngine {
 
     private GameMode currentGameMode;
 
-
-    private State state;
-
     /**
      * Constructor for GameEngine
      */
@@ -112,7 +109,7 @@ public class GameEngine {
      * @param currentPlayerIndex the index to be set as current player index
      */
     public void setCurrentPlayerIndex(int currentPlayerIndex) {
-        currentPlayerIndex = currentPlayerIndex;
+        this.currentPlayerIndex = currentPlayerIndex;
     }
 
     /**
@@ -222,5 +219,10 @@ public class GameEngine {
 
     public State getState() {
         return new GameEngineState(playerList);
+    }
+
+    public void setPlayerList(ArrayList<Player> playerArrayList) {
+        playerList.clear();
+        playerList.addAll(playerArrayList);
     }
 }

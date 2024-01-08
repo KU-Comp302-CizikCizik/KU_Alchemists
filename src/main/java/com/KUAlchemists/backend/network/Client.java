@@ -54,10 +54,6 @@ public class Client {
         System.out.println("Disconnected from the server.");
     }
 
-    // Example usage of the client to send a message
-    public void sendMessage(String text) throws IOException {
-        send(new Player(text));
-    }
 
     // Example method for receiving messages from the server
     public void listenForMessages() {
