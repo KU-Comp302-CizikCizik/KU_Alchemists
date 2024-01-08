@@ -17,7 +17,7 @@ public class GameEngineState extends State{
     }
 
     @Override
-    void update(StateUpdater stateUpdater) {
+    public void update(StateUpdater stateUpdater) {
         stateUpdater.updateGameEngine(this);
     }
 }

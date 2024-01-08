@@ -18,7 +18,7 @@ public class BoardState extends State {
     }
 
     @Override
-    void update(StateUpdater stateUpdater) {
+    public void update(StateUpdater stateUpdater) {
         stateUpdater.updateBoard(this);
     }
 }

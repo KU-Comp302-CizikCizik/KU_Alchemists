@@ -9,7 +9,6 @@ public class PlayerState extends State {
 
     private int gold;
     private int id;
-
     private UserType userType;
 
     private Player player;
@@ -34,7 +33,7 @@ public class PlayerState extends State {
     }
 
     @Override
-    void update(StateUpdater stateUpdater) {
+    public void update(StateUpdater stateUpdater) {
         stateUpdater.updatePlayer(this);
     }
 }

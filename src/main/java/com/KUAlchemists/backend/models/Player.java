@@ -183,10 +183,6 @@ public class Player implements Subject, Serializable {
         return new PlayerState(id, gold,userType,this);
     }
 
-    public void updateState(PlayerState state){
-        setGold(state.getGold());
-    }
-
     public int getId() {
         return id;
     }

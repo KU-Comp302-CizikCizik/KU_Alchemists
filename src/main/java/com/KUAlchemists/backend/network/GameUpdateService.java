@@ -4,10 +4,7 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.states.BoardState;
-import com.KUAlchemists.backend.states.GameEngineState;
-import com.KUAlchemists.backend.states.PlayerState;
-import com.KUAlchemists.backend.states.State;
+import com.KUAlchemists.backend.states.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,49 +12,16 @@ import java.util.List;
 public class GameUpdateService {
 
 
+    StateUpdater stateUpdater;
     public GameUpdateService(){
+        stateUpdater = new StateUpdater();
     }
 
 
     public void update(List<State> states){
         for (State s : states){
-            updateGame(s);
+            s.update(stateUpdater);
         }
-    }
-
-    public void updateGame(State state){
-        if (state instanceof PlayerState){
-            updatePlayer((PlayerState) state);
-        }
-        else if (state instanceof BoardState){
-            updateBoard((BoardState) state);
-        }
-
-    }
-
-    public void updatePlayer(PlayerState state){
-        // updates the player
-        int playerID = state.getId();
-        Player player = findPlayer(playerID);
-        player.updateState(state);
-    }
-
-    public void updateBoard(BoardState state){
-        // updates the board
-        Board.getInstance().updateState(state);
-    }
-
-    public Player findPlayer(int id) throws NullPointerException{
-        ArrayList<Player> players = GameEngine.getInstance().getPlayerList();
-        for (Player player : players){
-            if (player.getId() == id){
-                return player;
-            }
-            else {
-                throw new NullPointerException();
-            }
-        }
-        return null;
     }
 
     /**
@@ -66,7 +30,6 @@ public class GameUpdateService {
      */
     //This method crucial for establishing an unique communication channel with each client.
     public State initClientIDs(List<State> states) {
-
         for (State s : states){
             if (s instanceof PlayerState){
                 PlayerState playerState = (PlayerState) s;

@@ -4,5 +4,5 @@ import java.io.Serializable;
 
 public abstract class State implements Serializable {
 
-    abstract  void update(StateUpdater stateUpdater);
+    public abstract  void update(StateUpdater stateUpdater);
 }
