@@ -24,7 +24,7 @@ public class GameEngine {
     private GameTour currentTour;
 
     // current player
-    private static Player currentPlayer;
+    private Player currentPlayer;
 
     // current player index
     private int currentPlayerIndex = 0;
@@ -93,7 +93,7 @@ public class GameEngine {
      */
     public void setCurrentPlayer(Player player) {
         playerList.set(currentPlayerIndex, player);
-        GameEngine.currentPlayer = player;
+        currentPlayer = player;
     }
 
     /**
@@ -225,4 +225,5 @@ public class GameEngine {
         playerList.clear();
         playerList.addAll(playerArrayList);
     }
+
 }

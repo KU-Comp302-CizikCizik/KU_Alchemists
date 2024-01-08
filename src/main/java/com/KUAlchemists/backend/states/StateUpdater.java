@@ -29,41 +29,10 @@ public class StateUpdater {
 
     public void updateGameEngine(GameEngineState gameEngineState) {
         // updates the game engine
-        ArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
-        ArrayList<Player> existingPlayers = GameEngine.getInstance().getPlayerList();
-        ArrayList<Player> newPlayers = new ArrayList<>();
-        Player currentPlayer = null;
-
-        for(Player existingPlayer: existingPlayers){
-            for(Player player : playerArrayList){
-                if(player.getId() == currentPlayer.getId()){
-                    currentPlayer = existingPlayer;
-                }
-                else if(existingPlayer.getId() == player.getId()){
-                    newPlayers.add(player);
-                }
-                else {
-                    newPlayers.add(existingPlayer);
-                }
-            }
-        }
-
-        if(currentPlayer != null && currentPlayer != GameEngine.getInstance().getCurrentPlayer()){
-
-        }
-
-        else if(currentPlayer == null){
-            GameEngine.getInstance().setCurrentPlayer(newPlayers.get(0));
-        }
-        
-        for(Player player : playerArrayList){
-            if(player.getId() == currentPlayer.getId()){
-                currentPlayer = player;
-            }
-        }
-
-        GameEngine.getInstance().setPlayerList(newPlayers);
-        System.out.println("GameEngineState updated");
+        GameEngine.getInstance().setPlayerList(gameEngineState.getPlayerArrayList());
+        int currPlayerIndex = GameEngine.getInstance().getPlayerList().size()-1;
+        GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
+        GameEngine.getInstance().setCurrentPlayer(GameEngine.getInstance().getPlayer(currPlayerIndex));
     }
 
     public void updateBoard(BoardState boardState) {

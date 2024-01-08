@@ -28,10 +28,11 @@ public class GameUpdateService {
      * This method will be called only once when the game starts.
      * @param states
      */
-    //This method crucial for establishing an unique communication channel with each client.
+    //This method crucial for establishing an unique communication channel with each client. Keep it explicit before refactoring
     public void initClientIDs(List<State> states) {
         ArrayList<State> states1 = new ArrayList<>(states);
         GameEngineState gameEngineState = null;
+
         for (State s : states1){
             if (s instanceof PlayerState){
                 PlayerState playerState = (PlayerState) s;
