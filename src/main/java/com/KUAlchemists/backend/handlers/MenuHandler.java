@@ -1,10 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 
-import com.KUAlchemists.backend.enums.Gamestate;
-import com.KUAlchemists.backend.managers.StateManager;
 import com.KUAlchemists.backend.services.MenuService;
-import com.KUAlchemists.ui.SceneLoader;
 
 public class MenuHandler {
 
