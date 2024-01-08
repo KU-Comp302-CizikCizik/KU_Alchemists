@@ -51,7 +51,6 @@ public class OnlineGameRoomController {
         result.ifPresent(ipAddress -> {
             OnlineGameRoomHandler.getInstance().startAsClient(ipAddress,port);
         });
-        NetworkHandler.getInstance().handleSendDataToServer();
         SceneLoader.getInstance().loadWaitingRoomScreen();
     }
 }

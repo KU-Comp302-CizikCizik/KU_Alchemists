@@ -5,8 +5,6 @@ import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.*;
 import com.KUAlchemists.backend.managers.EventManager;
-import com.KUAlchemists.backend.managers.SceneManager;
-import com.KUAlchemists.backend.managers.StateManager;
 import com.KUAlchemists.backend.models.Alchemical;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Ingredient;
@@ -79,7 +77,6 @@ public class OnlineGameInitializer implements OnlineInitializer{
 
 
     private void initStateObservers() {
-        StateManager.getInstance().registerStateObserver(SceneManager.getInstance());
     }
 
 

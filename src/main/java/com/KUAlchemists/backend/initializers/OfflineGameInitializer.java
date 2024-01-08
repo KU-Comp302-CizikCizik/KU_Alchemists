@@ -11,8 +11,6 @@ import com.KUAlchemists.backend.handlers.DeductionBoardHandler;
 import com.KUAlchemists.backend.handlers.EndorseHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
-import com.KUAlchemists.backend.managers.SceneManager;
-import com.KUAlchemists.backend.managers.StateManager;
 import com.KUAlchemists.backend.models.Alchemical;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Ingredient;
@@ -90,7 +88,6 @@ public class OfflineGameInitializer implements OfflineInitializer{
 
 
     private void initStateObservers() {
-        StateManager.getInstance().registerStateObserver(SceneManager.getInstance());
     }
 
 
