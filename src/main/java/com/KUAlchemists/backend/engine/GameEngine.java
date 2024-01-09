@@ -222,8 +222,9 @@ public class GameEngine {
     }
 
     public void setPlayerList(ArrayList<Player> playerArrayList) {
+        ArrayList<Player> playerArrayList1 = new ArrayList<>(playerArrayList);
         playerList.clear();
-        playerList.addAll(playerArrayList);
+        playerList.addAll(playerArrayList1);
     }
 
 }

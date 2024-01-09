@@ -2,7 +2,6 @@ package com.KUAlchemists.backend.states;
 
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.states.State;
 
 public class PlayerState extends State {
     // player attributes
@@ -10,13 +9,11 @@ public class PlayerState extends State {
     private int gold;
     private int id;
     private UserType userType;
-    private Player player;
 
-    public PlayerState(int id, int gold, UserType userType, Player player){
+    public PlayerState(int id, int gold, UserType userType){
         this.id = id;
         this.gold = gold;
         this.userType = userType;
-        this.player = player;
     }
 
     public int getGold(){
@@ -25,10 +22,6 @@ public class PlayerState extends State {
 
     public int getId() {
         return id;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 
     @Override

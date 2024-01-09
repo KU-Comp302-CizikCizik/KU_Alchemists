@@ -1,5 +1,7 @@
 package com.KUAlchemists.backend.network;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.states.PlayerInitState;
 import com.KUAlchemists.backend.states.State;
 
 import java.io.IOException;
@@ -33,13 +35,14 @@ public class ClientHandler implements Runnable {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            server.removeClientHandler(this);
+            //server.removeClientHandler(this);
             closeConnections();
         }
     }
 
     public void send(Object message) throws IOException {
         System.out.println("Sending message to client: " + message);
+        System.out.println("Players : " + GameEngine.getInstance().getPlayerList());
         outputStream.writeObject(message);
         outputStream.flush();
 

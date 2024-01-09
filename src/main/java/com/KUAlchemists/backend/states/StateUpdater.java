@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.states;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 
@@ -29,8 +30,14 @@ public class StateUpdater {
 
     public void updateGameEngine(GameEngineState gameEngineState) {
         // updates the game engine
-        GameEngine.getInstance().setPlayerList(gameEngineState.getPlayerArrayList());
-        int currPlayerIndex = GameEngine.getInstance().getPlayerList().size()-1;
+        ArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
+        if(playerArrayList.size() == 0) return;
+
+        GameEngine.getInstance().setPlayerList(playerArrayList);
+        int currPlayerIndex = 0;
+        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT){
+            currPlayerIndex = GameEngine.getInstance().getPlayerList().size()-1;
+        }
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
         GameEngine.getInstance().setCurrentPlayer(GameEngine.getInstance().getPlayer(currPlayerIndex));
     }
@@ -40,5 +47,8 @@ public class StateUpdater {
     }
 
 
+    public void updatePlayerInit(PlayerInitState playerInitState) {
 
+
+    }
 }
