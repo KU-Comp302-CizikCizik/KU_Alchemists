@@ -29,7 +29,7 @@ public class GameUpdateService {
      * @param states
      */
     //This method crucial for establishing an unique communication channel with each client. Keep it explicit before refactoring
-    public void initClientIDs(List<State> states) {
+    public List<State> initClientIDs(List<State> states) {
         ArrayList<State> states1 = new ArrayList<>(states);
         GameEngineState gameEngineState = null;
 
@@ -50,5 +50,6 @@ public class GameUpdateService {
                 states.set(states1.indexOf(s), gameEngineState);
             }
         }
+        return states;
     }
 }

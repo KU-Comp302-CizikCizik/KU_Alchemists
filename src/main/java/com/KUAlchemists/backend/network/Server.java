@@ -3,13 +3,14 @@ package com.KUAlchemists.backend.network;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Server {
     private int port;
-    private Set<ClientHandler> clientHandlers = new HashSet<>();
+    private ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
     private ServerSocket serverSocket;
 
     private static final AtomicInteger numberOfPlayers = new AtomicInteger(1);
@@ -34,6 +35,7 @@ public class Server {
     public void broadcast(Object message) {
         for (ClientHandler clientHandler : clientHandlers) {
             try {
+                System.out.println("Sending message to client: " + clientHandler);
                 clientHandler.send(message);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -52,6 +54,10 @@ public class Server {
 
     public static int incrementNumberOfPlayers() {
         return numberOfPlayers.incrementAndGet();
+    }
+
+    public ArrayList<ClientHandler> getClientHandlers () {
+        return  clientHandlers;
     }
 
 

@@ -6,6 +6,7 @@ import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.*;
 import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.*;
+import com.KUAlchemists.ui.controllers.BoardController;
 
 import java.util.ArrayList;
 import java.util.Random;

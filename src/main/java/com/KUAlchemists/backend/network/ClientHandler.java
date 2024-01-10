@@ -42,7 +42,6 @@ public class ClientHandler implements Runnable {
 
     public void send(Object message) throws IOException {
         System.out.println("Sending message to client: " + message);
-        System.out.println("Players : " + GameEngine.getInstance().getPlayerList());
         outputStream.writeObject(message);
         outputStream.flush();
 

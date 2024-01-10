@@ -31,7 +31,7 @@ public class StateUpdater {
     public void updateGameEngine(GameEngineState gameEngineState) {
         // updates the game engine
         ArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
-        if(playerArrayList.size() == 0) return;
+        if(playerArrayList.size() == 0 || gameEngineState == null) return;
 
         GameEngine.getInstance().setPlayerList(playerArrayList);
         int currPlayerIndex = 0;
@@ -40,6 +40,11 @@ public class StateUpdater {
         }
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
         GameEngine.getInstance().setCurrentPlayer(GameEngine.getInstance().getPlayer(currPlayerIndex));
+        System.out.println(GameEngine.getInstance().getCurrentPlayer().getUserType() + " has the ");
+        System.out.println(GameEngine.getInstance().getCurrentPlayer().getId() + " id");
+        for(Player player: GameEngine.getInstance().getPlayerList()) {
+            System.out.println(player.getId());
+        }
     }
 
     public void updateBoard(BoardState boardState) {

@@ -6,6 +6,8 @@ import com.KUAlchemists.backend.handlers.NetworkHandler;
 import com.KUAlchemists.backend.states.GameEngineState;
 import com.KUAlchemists.backend.states.PlayerInitState;
 import com.KUAlchemists.backend.states.State;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameUpdateHandler {
@@ -28,23 +30,25 @@ public class GameUpdateHandler {
      * This method will be called when updated game came from server or client.
      */
     public void handleUpdateGame(List<State> states){
+        List<State> newStates = new ArrayList<>(states);
         if(GameEngine.getInstance().getUserType() == UserType.HOST){
-            handleInitializeClientIDS(states);
+            newStates.clear();
+            newStates.addAll(handleInitializeClientIDS(states));
+            service.update(newStates);
+            //NetworkHandler.getInstance().handleSendData();
         }
-        service.update(states);
+        else{
+            service.update(newStates);
+        }
 
     }
-
-    private void handleInitializeClientIDS(List<State> states){
-        initializeClientIDS(states);
-
-    }
-    private void initializeClientIDS(List<State> states){
+    private List<State> handleInitializeClientIDS(List<State> states){
         for (State s : states){
             if( s instanceof PlayerInitState){
-                service.initClientIDs(states);
-                return;
+                List<State> newStates = service.initClientIDs(states);
+                return newStates;
             }
         }
+        return states;
     }
 }
