@@ -31,15 +31,11 @@ public class GameUpdateHandler {
      */
     public void handleUpdateGame(List<State> states){
         List<State> newStates = new ArrayList<>(states);
-        if(GameEngine.getInstance().getUserType() == UserType.HOST){
+        if(GameEngine.getInstance().getUserType() == UserType.HOST) {
             newStates.clear();
             newStates.addAll(handleInitializeClientIDS(states));
-            service.update(newStates);
-            //NetworkHandler.getInstance().handleSendData();
         }
-        else{
             service.update(newStates);
-        }
 
     }
     private List<State> handleInitializeClientIDS(List<State> states){
