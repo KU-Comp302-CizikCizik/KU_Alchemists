@@ -46,12 +46,10 @@ public class UseArtifactHandler {
         return Arrays.asList("elixir_of_insight", "philosophers_compass", "magic_mortar", "printing_press", "wisdom_idol");
     }
     public void handleRemoveArtifact(String name){
-        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
-        useArtifactService.removeArtifactFromStorage(name, currentPlayer);
+        useArtifactService.removeArtifactFromStorage(name);
         usedArtifacts.add(name);
     }
     public List <String> handleStorageArtifact(){
-        //return buyArtifactService.getBoughtArtifacts();
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
         return useArtifactService.getStorageArtifacts(currentPlayer);
     }

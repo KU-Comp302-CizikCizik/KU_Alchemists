@@ -14,7 +14,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BuyArtifactController {
@@ -87,7 +86,7 @@ public class BuyArtifactController {
 
     private void initializeHandler(){
         List<String> boughtArtifactList = BuyArtifactHandler.getInstance().handleBoughtArtifacts();
-        System.out.println(boughtArtifactList.toString());
+        //System.out.println(boughtArtifactList.toString());
         for(String artifact: boughtArtifactList){
             for(Slot slot: artifactSlots){
                 if(slot.getId().equals(artifact)){
