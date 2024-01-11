@@ -29,13 +29,14 @@ public class GameUpdateHandler {
     /**
      * This method will be called when updated game came from server or client.
      */
-    public void handleUpdateGame(List<State> states){
+    public List<State> handleUpdateGame(List<State> states){
         List<State> newStates = new ArrayList<>(states);
         if(GameEngine.getInstance().getUserType() == UserType.HOST) {
             newStates.clear();
             newStates.addAll(handleInitializeClientIDS(states));
         }
             service.update(newStates);
+        return newStates;
 
     }
     private List<State> handleInitializeClientIDS(List<State> states){

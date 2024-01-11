@@ -6,7 +6,6 @@ public class PlayerInitState extends State{
 
     private Player player;
 
-
     public PlayerInitState(Player player){
         this.player = player;
     }

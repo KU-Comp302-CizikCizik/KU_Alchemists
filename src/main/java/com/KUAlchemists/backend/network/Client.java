@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
+
+import com.KUAlchemists.backend.states.GameEngineState;
 import com.KUAlchemists.backend.states.State;
 
 public class Client {
@@ -43,9 +46,34 @@ public class Client {
         if (socket.isConnected()) {
             System.out.println("Waiting for data from the server...");
             Object data = inputStream.readObject();
+            List<State> temp = getStatesTemp(data);
+            ArrayList<Player> list = getPlayerList(temp);
+            System.out.println(GameEngine.getInstance().getCurrentPlayer().getUserType() + " has the ");
+            System.out.println(GameEngine.getInstance().getCurrentPlayer().getId() + " id");
+            for(Player player: list) {
+                System.out.println("User type: " + player.getUserType() + " ID:" + player.getId());
+            }
             return data;
         }
         return null;
+    }
+
+    private ArrayList<Player> getPlayerList(List<State> temp) {
+        if(temp != null) {
+            for(State s : temp) {
+                if(s instanceof GameEngineState) {
+                    return ((GameEngineState) s).getPlayerArrayList();
+                }
+            }
+        }
+        return null;
+    }
+
+    private List<State> getStatesTemp(Object data) {
+            if(data instanceof List) {
+                return (List<State>) data;
+            }
+            return null;
     }
 
     public void closeConnection() throws IOException {
