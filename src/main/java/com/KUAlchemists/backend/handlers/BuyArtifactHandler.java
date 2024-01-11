@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Artifact;
+import com.KUAlchemists.backend.models.ArtifactShop;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.BuyArtifactService;
 
@@ -13,23 +15,18 @@ import java.util.List;
 public class BuyArtifactHandler {
 
     private final BuyArtifactService buyArtifactService;
-
     private static BuyArtifactHandler INSTANCE;
+    private ArtifactShop artifactShop = ArtifactShop.getInstance();
 
     public BuyArtifactHandler() {
         this.buyArtifactService = new BuyArtifactService();
     }
-
-
-
     public static BuyArtifactHandler getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new BuyArtifactHandler();
         }
         return INSTANCE;
     }
-
-
     /**
      * Handles a request to buy an artifact.
      *
@@ -44,9 +41,7 @@ public class BuyArtifactHandler {
      * Sends a list of bought artifact(s)
      * @return ArrayList <String>
      */
-
-    public List<String> handleGetArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
-
+    public List<String> handleGetArtifacts(){
         return buyArtifactService.getArtifacts() ;
     }
 
@@ -57,22 +52,21 @@ public class BuyArtifactHandler {
     public List<String> handleGetAllArtifacts(){
         return Arrays.asList("elixir_of_insight", "philosophers_compass", "magic_mortar", "printing_press", "wisdom_idol");
     }
-
     /**
-     * Returns the artifact's price
-     * @param artifactName (String)
-     * @return price (Integer)
+     * Returns all the artifacts that are bought by the player.
+     * @return List <String>
      */
-    public int handleGetPrice(String artifactName){
-        System.out.println(artifactName);
-        int price = 1; //Test case
-        return price;
-    }
     public List<String> handleBoughtArtifacts(){ //This method prevents user to buy an artifact that already have been bought.
-
         return buyArtifactService.getBoughtArtifacts();
-
     }
 
+    public int handleGetPrice(String artifactName) {
+        Artifact artifact = artifactShop.getArtifact(artifactName);
+        if (artifact != null) {
+            return artifact.getCost();
+        } else {
+            return -1; // Indicates artifact not found
+        }
+    }
 
 }

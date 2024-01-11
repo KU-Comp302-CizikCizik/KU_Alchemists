@@ -1,6 +1,5 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.backend.handlers.BuyArtifactHandler;
 import com.KUAlchemists.backend.handlers.UseArtifactHandler;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.collections.ObservableList;
@@ -71,6 +70,7 @@ public class UseArtifactController {
                         UseArtifactHandler.getInstance().handleRemoveArtifact(ELIXIR_OF_INSIGHT);
                     }
                     slot.setDisable();
+                    slot.isSelected = false;
                 }
         }
         initializeHelper();
@@ -95,8 +95,8 @@ public class UseArtifactController {
     private void initializeHelper(){
         List<String> usedArtifacts = UseArtifactHandler.getInstance().handleUsedArtifacts();
         List<String> boughtArtifacts = UseArtifactHandler.getInstance().handleStorageArtifact();
-        System.out.println("Used Artifacts: "+usedArtifacts.toString());
-        System.out.println("Bought Artifacts: "+ boughtArtifacts);
+//        System.out.println("Used Artifacts: "+usedArtifacts.toString());
+//        System.out.println("Bought Artifacts: "+ boughtArtifacts);
 
         for(Slot slot: artifactSlots){
             slot.setDisable();

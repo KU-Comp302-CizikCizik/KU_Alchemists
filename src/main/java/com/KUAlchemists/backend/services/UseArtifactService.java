@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.services;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.*;
 
 import java.util.ArrayList;
@@ -7,23 +8,22 @@ import java.util.List;
 
 public class UseArtifactService {
     private Deck deck;
-
     private PlayerService playerService;
-
     private ArtifactStorage artifactStorage;
-
+    private Artifact artifact;
+    private Board board;
 
     public UseArtifactService() {
         this.deck = Deck.getInstance();
         this.playerService = new PlayerService();
         this.artifactStorage = new ArtifactStorage();
+        this.board = Board.getInstance();
     }
     //this method puts rearranged cards to the top of the deck also deletes the used artifact from players storage.
     public void useElixirOfInsight(Player player, List<String> rearrangedTopThree) {
         List<Ingredient> rearrangedTopThreeIngredients = playerService.nameToIngredient(player, rearrangedTopThree);
         deck.rearrangeTopThreeIngredients(rearrangedTopThreeIngredients);
     }
-
     public ArrayList<String> peekTopThree() {
         ArrayList<Ingredient> topThreeIngredients = Deck.getInstance().peekTopThreeIngredients();
         ArrayList<String> topThreeIngredientsNames = new ArrayList<>();
@@ -33,7 +33,6 @@ public class UseArtifactService {
         }
         return topThreeIngredientsNames;
     }
-
     public ArrayList<String> getUsedArtifacts(){
         ArrayList<String> artifacts = new ArrayList<>();
         for(Artifact a : artifactStorage.getUsedArtifacts()){
@@ -42,23 +41,32 @@ public class UseArtifactService {
         return artifacts;
     }
 
-    public void removeArtifactFromStorage(String name, Player currentPlayer) {
-        ArtifactStorage storage = Board.getInstance().getArtifactStorage(currentPlayer);
-        storage.removeArtifact(artifactStorage.getArtifact(name));
-
-//        for(Artifact a : storage.getArtifactsList()){
-//               System.out.println(a.getName());
-//        }
+    public void removeArtifactFromStorage(String name) {
+        ArtifactStorage storage = board.getArtifactStorage(GameEngine.getInstance().getCurrentPlayer());
+        Artifact artifactToRemove = null;
+        for (Artifact artifact : storage.getArtifactList()) {
+            if (artifact.getName().equals(name)) {
+                artifactToRemove = artifact;
+                break;
+            }
+        }
+        if (artifactToRemove != null) {
+            storage.removeArtifact(artifactToRemove);
+            System.out.println("Removed artifact: " + name);
+            for (Artifact artifact : storage.getArtifactList()) {
+                System.out.println("Remaining artifact: " + artifact.getName());
+            }
+        } else {
+            System.out.println("Artifact not found in storage: " + name);
+        }
     }
 
         public ArrayList<String> getStorageArtifacts(Player player){
         ArrayList<String> artifacts = new ArrayList<>();
         ArtifactStorage storage = Board.getInstance().getArtifactStorage(player);
-        for(Artifact a : storage.getArtifactsList()){
+        for(Artifact a : storage.getArtifactList()){
             artifacts.add(a.getName());
         }
         return artifacts;
     }
-
-
 }
