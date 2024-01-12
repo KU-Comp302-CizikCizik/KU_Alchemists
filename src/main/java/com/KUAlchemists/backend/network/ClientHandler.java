@@ -41,13 +41,12 @@ public class ClientHandler implements Runnable {
                 for(Player player: list) {
                     System.out.println(player.getId());
                 }
-
                 server.broadcast(newStates);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            //server.removeClientHandler(this);
+            server.removeClientHandler(this);
             closeConnections();
         }
     }

@@ -6,12 +6,17 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Server {
     private int port;
-    private ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
+    //private ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
+    CopyOnWriteArraySet<ClientHandler> handlers = new CopyOnWriteArraySet<>();
+
     private ServerSocket serverSocket;
 
     private ExecutorService pool; // For handling multiple client connections
@@ -31,15 +36,14 @@ public class Server {
         while (true) {
             Socket clientSocket = serverSocket.accept();
             ClientHandler clientHandler = new ClientHandler(clientSocket, this);
-            clientHandlers.add(clientHandler);
+            handlers.add(clientHandler);
             pool.execute(clientHandler);
-//            new Thread(clientHandler).start();
             System.out.println("New client connected: " + clientSocket.getInetAddress());
         }
     }
 
     public void broadcast(Object message) {
-        for (ClientHandler clientHandler : clientHandlers) {
+        for (ClientHandler clientHandler : handlers) {
             try {
                 System.out.println("Sending message to client: " + clientHandler);
                 clientHandler.send(message);
@@ -50,7 +54,7 @@ public class Server {
     }
 
     public void removeClientHandler(ClientHandler clientHandler) {
-        clientHandlers.remove(clientHandler);
+        handlers.remove(clientHandler);
         System.out.println("Client disconnected: " + clientHandler.getClientSocket().getInetAddress());
     }
 
@@ -60,10 +64,6 @@ public class Server {
 
     public static int incrementNumberOfPlayers() {
         return numberOfPlayers.incrementAndGet();
-    }
-
-    public ArrayList<ClientHandler> getClientHandlers () {
-        return  clientHandlers;
     }
 
 

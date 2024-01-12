@@ -35,10 +35,21 @@ public class GameUpdateHandler {
             newStates.clear();
             newStates.addAll(handleInitializeClientIDS(states));
         }
-            service.update(newStates);
+        service.update(newStates);
         return newStates;
 
     }
+
+    private GameEngineState getGameEngineState(List<State> states){
+        for (State s : states){
+            if( s instanceof GameEngineState){
+                return (GameEngineState) s;
+            }
+        }
+        return null;
+
+    }
+
     private List<State> handleInitializeClientIDS(List<State> states){
         for (State s : states){
             if( s instanceof PlayerInitState){

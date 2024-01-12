@@ -46,6 +46,7 @@ public class Client {
         if (socket.isConnected()) {
             System.out.println("Waiting for data from the server...");
             Object data = inputStream.readObject();
+            //
             List<State> temp = getStatesTemp(data);
             ArrayList<Player> list = getPlayerList(temp);
             System.out.println(GameEngine.getInstance().getCurrentPlayer().getUserType() + " has the ");
@@ -53,6 +54,7 @@ public class Client {
             for(Player player: list) {
                 System.out.println("User type: " + player.getUserType() + " ID:" + player.getId());
             }
+            //
             return data;
         }
         return null;
