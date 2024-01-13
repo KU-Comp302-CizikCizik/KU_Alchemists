@@ -51,7 +51,6 @@ public class Alchemical {
         this.redAspect = redAspect;
     }
 
-
     public void setBlueAspect(Aspect blueAspect) {
         this.blueAspect = blueAspect;
     }
@@ -59,5 +58,46 @@ public class Alchemical {
     public void setGreenAspect(Aspect greenAspect) {
         this.greenAspect = greenAspect;
     }
+
+    /**
+     * Gets the aspect based on the specified color.
+     *
+     * @param color The color of the aspect to retrieve ("red", "green", "blue").
+     * @return The corresponding Aspect.
+     */
+    public Aspect getAspectByColor(String color) {
+        switch (color.toLowerCase()) {
+            case "red":
+                return this.redAspect;
+            case "green":
+                return this.greenAspect;
+            case "blue":
+                return this.blueAspect;
+            default:
+                throw new IllegalArgumentException("Invalid color: " + color);
+        }
+    }
+    /**
+     * Sets the aspect based on the specified color.
+     *
+     * @param color The color of the aspect to set ("red", "green", "blue").
+     * @param aspect The new aspect value to set.
+     */
+    public void setAspectByColor(String color, Aspect aspect) {
+        switch (color.toLowerCase()) {
+            case "red":
+                this.redAspect = aspect;
+                break;
+            case "green":
+                this.greenAspect = aspect;
+                break;
+            case "blue":
+                this.blueAspect = aspect;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid color: " + color);
+        }
+    }
+    // Bunların doğru olup olmadığından emin değilim.
 }
 

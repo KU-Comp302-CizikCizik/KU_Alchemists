@@ -65,6 +65,15 @@ public class PublishTheoryService {
             Board.getInstance().getPublishedTheoriesList().add(theory);
             player.getTheorySeals().remove(seals.get(0));
             return true;
+        } else if (!theoryExists && Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press").isActivated() & hasTheorySeal) {
+            HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
+            playerTheorySealsMap.put(player, seals.get(0));
+            Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
+            theory.setPublished(true);
+            player.setReputation(player.getReputation() + 1);
+            player.getPublishedTheories().add(theory);
+            Board.getInstance().getPublishedTheoriesList().add(theory);
+            player.getTheorySeals().remove(seals.get(0));
         }
         return false;
     }

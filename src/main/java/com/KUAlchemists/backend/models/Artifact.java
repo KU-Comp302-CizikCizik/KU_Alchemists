@@ -8,6 +8,7 @@ public class Artifact {
     private int cost;
     private String effect;
     private final int victoryPoints;
+    private boolean activated = false;
     /**
      * Constructor for the Artifact class.
      *
@@ -20,6 +21,7 @@ public class Artifact {
         this.cost = cost;
         this.effect = effect;
         this.victoryPoints = victoryPoints;
+        this.activated = false;
     }
     // Getters and setters for each field
     public String getName() {
@@ -42,5 +44,11 @@ public class Artifact {
     }
     public int getVictoryPoints() {
         return victoryPoints;
+    }
+    public boolean isActivated() {
+        return activated;
+    }
+    public void setActivated(boolean b) {
+        this.activated = b;
     }
 }
