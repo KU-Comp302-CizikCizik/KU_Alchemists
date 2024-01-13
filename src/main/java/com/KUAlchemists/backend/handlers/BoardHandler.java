@@ -5,11 +5,14 @@ import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BoardHandler {
 
 
     private static BoardHandler INSTANCE = null;
+
+    private HashMap<Player, String> playerIndexMap;
 
     private BoardHandler() {
     }
@@ -61,4 +64,5 @@ public class BoardHandler {
         }
         return avatarStrings;
     }
+    // add notification to the player
 }

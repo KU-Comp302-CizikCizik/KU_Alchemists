@@ -1,10 +1,14 @@
 package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.models.Player;
 
 public class MagicMortarService {
+
+    private String ingredientName1;
+    private String ingredientName2;
+    private String ingredientNameToRetain;
+
 
     public MagicMortarService() {
     }
@@ -17,16 +21,27 @@ public class MagicMortarService {
         if (Board.getInstance().getArtifactStorage(player).getArtifactByName("magic_mortar") != null) {
             Board.getInstance().getArtifactStorage(player).getArtifactByName("magic_mortar").setActivated(true);
         }
+        else {
+            throw new IllegalArgumentException("Player does not have the Magic Mortar artifact.");
+        }
     }
-    // magic mortar is used to keep one ingredient when you make a potion.
-    // this method is called when the player makes a potion.
-    // i need to implement a method to keep the ingredient.
-    // i need to send the ingredient names to the front end.
-    private void retainIngredient(Player player, Ingredient ingredient1, Ingredient ingredient2) {
-        // Logic to allow the player to retain one of the ingredients
-        // This could involve adding one ingredient back to the player's inventory
-        // You will need to decide which ingredient to retain.
+    public void setIngredientName1(String ingredientName1) {
+        this.ingredientName1 = ingredientName1;
     }
-
-
+    public void setIngredientName2(String ingredientName2) {
+        this.ingredientName2 = ingredientName2;
+    }
+    // I want to send these ingredient names to the MagicMortarHandler.
+    public String getIngredientName1() {
+        return ingredientName1;
+    }
+    public String getIngredientName2() {
+        return ingredientName2;
+    }
+    public String getIngredientNameToRetain() {
+        return ingredientNameToRetain;
+    }
+    public void setIngredientNameToRetain(String ingredientNameToRetain) {
+        this.ingredientNameToRetain = ingredientNameToRetain;
+    }
 }
