@@ -11,7 +11,8 @@ public class WisdomIdolService {
     private HashMap<Player, String> notificationMap;
 
     public WisdomIdolService() {
-        this.notificationMap = new HashMap<>();}
+        this.notificationMap = new HashMap<>();
+        }
 
     /**
      * Activates the Wisdom Idol for the given player.
@@ -36,6 +37,8 @@ public class WisdomIdolService {
     public HashMap<Player, String> getNotificationMap() {
         return notificationMap;
     }
+
+
 
 
 }

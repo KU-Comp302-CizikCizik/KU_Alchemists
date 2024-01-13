@@ -29,4 +29,8 @@ public class WisdomIdolHandler {
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
         wisdomIdolService.activateWisdomIdol(currentPlayer);
     }
+    public String getDebunkIngredientName() {
+        debunkIngredientName = "frog";
+        return debunkIngredientName;
+    }
 }
