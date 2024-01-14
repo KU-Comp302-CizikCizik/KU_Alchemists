@@ -17,6 +17,7 @@ public class BoardHandler {
     private HashMap<Player, ArrayList<Object>> notificationMap;
 
 
+
     private BoardHandler() {
         this.notificationMap = new HashMap<>();
     }
@@ -68,6 +69,7 @@ public class BoardHandler {
         }
         return avatarStrings;
     }
+
     // HashMap that has player that has the wisdom idol and the theory name (ingredient name) that is debunked
     public HashMap<Player, ArrayList<Object>> getNotificationMap() {
         return notificationMap;

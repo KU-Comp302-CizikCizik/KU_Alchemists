@@ -2,10 +2,9 @@ package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.managers.EventManager;
-import com.KUAlchemists.backend.models.Deck;
-import com.KUAlchemists.backend.models.Ingredient;
+import com.KUAlchemists.backend.models.*;
+import com.KUAlchemists.backend.services.MagicMortarService;
 import com.KUAlchemists.backend.services.PotionBrewingService;
-import com.KUAlchemists.backend.models.Potion;
 
 import java.util.ArrayList;
 
@@ -13,8 +12,8 @@ public class PotionBrewingAreaHandler {
 
 
     private static PotionBrewingAreaHandler INSTANCE;
-
     private ArrayList<String> ingredientsToBeBrewed;
+    private MagicMortarService magicMortarService;
 
 
     public static PotionBrewingAreaHandler getInstance() {
@@ -52,14 +51,32 @@ public class PotionBrewingAreaHandler {
         //add the potion to the player inventory
         PotionStorageHandler.getInstance().handleAddPotion(potion);
 
-        //remove the ingredients from the player inventory
-        IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient1NameFormatted);
-        IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient2NameFormatted);
+        //magic mortar effect... Backend agam buraya bi bakarsın
+        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        if(Board.getInstance().getArtifactStorage(currentPlayer).getArtifactByName("magic_mortar").isActivated()){
+            magicMortarService.setIngredientName1(ingredient1NameFormatted);
+            magicMortarService.setIngredientName2(ingredient2NameFormatted);
 
-        //add the ingredients back to the deck
-        Deck.getInstance().addIngredient(ingredient1);
-        Deck.getInstance().addIngredient(ingredient2);
 
+            if (ingredient1NameFormatted.equals(magicMortarService.getIngredientNameToRetain())){
+                IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient2NameFormatted);
+                Deck.getInstance().addIngredient(ingredient2);
+            }
+
+            else if (ingredient2NameFormatted.equals(magicMortarService.getIngredientNameToRetain())){
+                IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient1NameFormatted);
+                Deck.getInstance().addIngredient(ingredient1);
+            }
+
+        }
+        else{
+            //remove the ingredients from the player inventory
+            IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient1NameFormatted);
+            IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient2NameFormatted);
+            //add the ingredients back to the deck
+            Deck.getInstance().addIngredient(ingredient1);
+            Deck.getInstance().addIngredient(ingredient2);
+        }
         //get potionCode for UI
         String potionCode = potionBrewingService.getPotionCode(potion);
 
