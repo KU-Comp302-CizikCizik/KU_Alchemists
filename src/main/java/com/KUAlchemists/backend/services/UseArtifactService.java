@@ -5,7 +5,6 @@ import com.KUAlchemists.backend.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class UseArtifactService {
     private Deck deck;
     private PlayerService playerService;

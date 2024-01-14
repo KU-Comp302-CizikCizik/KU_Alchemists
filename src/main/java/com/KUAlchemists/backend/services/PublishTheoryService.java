@@ -65,6 +65,20 @@ public class PublishTheoryService {
             Board.getInstance().getPublishedTheoriesList().add(theory);
             player.getTheorySeals().remove(seals.get(0));
             return true;
+
+        }
+        // this condition is for printing press artifact.
+        // if the player has printing press artifact, he can publish a theory without paying gold.
+        else if (!theoryExists && Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press").isActivated() & hasTheorySeal) {
+            HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
+            playerTheorySealsMap.put(player, seals.get(0));
+            Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
+            theory.setPublished(true);
+            player.setReputation(player.getReputation() + 1);
+            player.getPublishedTheories().add(theory);
+            Board.getInstance().getPublishedTheoriesList().add(theory);
+            player.getTheorySeals().remove(seals.get(0));
+            return true;
         }
         return false;
     }

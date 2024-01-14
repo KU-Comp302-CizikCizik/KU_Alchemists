@@ -13,7 +13,9 @@ public class BoardHandler {
 
     private static BoardHandler INSTANCE = null;
 
+
     private WisdomIdolService wisdomIdolService;
+
 
     private BoardHandler() {
     }
@@ -65,6 +67,7 @@ public class BoardHandler {
         }
         return avatarStrings;
     }
+
     // HashMap that has player that has the wisdom idol and the theory name (ingredient name) that is debunked
     public HashMap<Player, String> getNotificationMap() {
         return wisdomIdolService.getNotificationMap();
