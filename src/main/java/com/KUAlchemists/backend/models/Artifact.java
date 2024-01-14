@@ -9,6 +9,7 @@ public class Artifact {
     private String effect;
     private final int victoryPoints;
     private boolean activated = false;
+
     /**
      * Constructor for the Artifact class.
      *
@@ -48,7 +49,7 @@ public class Artifact {
     public boolean isActivated() {
         return activated;
     }
-    public void setActivated(boolean b) {
-        this.activated = b;
+    public void setActivated(boolean activated) {
+        this.activated = activated;
     }
 }
