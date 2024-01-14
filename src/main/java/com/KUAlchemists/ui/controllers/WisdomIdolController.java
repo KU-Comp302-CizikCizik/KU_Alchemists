@@ -36,7 +36,7 @@ public class WisdomIdolController {
 
     @FXML
     void useArtifactClicked(ActionEvent event) {
-        WisdomIdolHandler.getInstance().useWisdomIdol();
+        WisdomIdolHandler.getInstance().handleActivateWisdomIdol();
     }
 
 }

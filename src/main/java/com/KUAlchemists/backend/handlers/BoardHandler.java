@@ -3,13 +3,17 @@ package com.KUAlchemists.backend.handlers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.observer.PlayerObserver;
+import com.KUAlchemists.backend.services.WisdomIdolService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BoardHandler {
 
 
     private static BoardHandler INSTANCE = null;
+
+    private WisdomIdolService wisdomIdolService;
 
     private BoardHandler() {
     }
@@ -60,5 +64,9 @@ public class BoardHandler {
             avatarStrings.add(player.getAvatar());
         }
         return avatarStrings;
+    }
+    // HashMap that has player that has the wisdom idol and the theory name (ingredient name) that is debunked
+    public HashMap<Player, String> getNotificationMap() {
+        return wisdomIdolService.getNotificationMap();
     }
 }

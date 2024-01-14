@@ -1,12 +1,19 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.services.WisdomIdolService;
+
 public class WisdomIdolHandler {
 
     private static WisdomIdolHandler instance = null;
 
+    private WisdomIdolService wisdomIdolService;
+
     private String debunkIngredientName;
 
     private WisdomIdolHandler() {
+        this.wisdomIdolService = new WisdomIdolService();
         debunkIngredientName = "";
     }
 
@@ -17,20 +24,13 @@ public class WisdomIdolHandler {
         return instance;
     }
 
-    public void setDebunkIngredientName(String ingredientName) {
-        debunkIngredientName = ingredientName;
+    // activating the wisdom idol
+    public void handleActivateWisdomIdol() {
+        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        wisdomIdolService.activateWisdomIdol(currentPlayer);
     }
-
     public String getDebunkIngredientName() {
-
-        //for testing purposes I have used frog as the ingredient name
-        //it should return the ingredient name that is debunked
-        return "frog";
-    }
-
-    public void useWisdomIdol() {
-        System.out.println("Wisdom Idol used");
-        //TO-DO: implement the useWisdomIdol method
-        //he shouldn't lose reputation if he uses the wisdom idol
+        debunkIngredientName = "frog";
+        return debunkIngredientName;
     }
 }

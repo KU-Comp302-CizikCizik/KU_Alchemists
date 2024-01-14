@@ -13,8 +13,10 @@ import java.util.HashMap;
 public class DebunkTheoryService {
 
     private final TheoryService theoryService;
+    private WisdomIdolService wisdomIdolService;
     public DebunkTheoryService() {
         this.theoryService = new TheoryService();
+        this.wisdomIdolService = new WisdomIdolService();
     }
     /**
      * Attempts to debunk a theory.
@@ -66,6 +68,27 @@ public class DebunkTheoryService {
             }
 
         }
+        // made a for loop for each player that checks if player has an active Wisdom Idol artifact
+        // if player has an active Wisdom Idol artifact, it returns the reputation points that the player lost
+        // calls wisdomIdolService.sendNotificationToBoardHandler(selectedTheory, player) to send a notification to the board handler
+        for (Player player : GameEngine.getInstance().getPlayerList()) {
+
+            if (Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol") != null && Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol").isActivated()) {
+                wisdomIdolService.sendNotificationToBoardHandler(selectedTheory, player);
+                TheorySeal theorySeal = playerTheorySealsMap.get(player);
+                if(theorySeal == TheorySeal.GOLD_STARRED){
+                    player.deduceReputationPoints(-5);
+                }
+                else if(theorySeal == TheorySeal.SILVER_STARRED){
+                    player.deduceReputationPoints(-3);
+                }
+                else if (theorySeal != correspondingSeal){
+                    player.deduceReputationPoints(-1);
+                }
+            }
+        }
+
+
     }
 
     private TheorySeal getCorrespondingSeal(String assertedAspectString) {
