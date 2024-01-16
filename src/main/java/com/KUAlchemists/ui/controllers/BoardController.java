@@ -359,45 +359,45 @@ public class BoardController  implements PlayerObserver {
     }
 
     @Override
-    public void onPlayerStatusChanged(String status) {
+    public void onPlayerStatusChanged(String status, int id) {
 
     }
 
     @Override
-    public void onPlayerSicknessLevelChanged(int sicknessLevel) {
+    public void onPlayerSicknessLevelChanged(int sicknessLevel, int id) {
 
     }
 
     @Override
-    public void onPlayerReputationChanged(int reputation) {
+    public void onPlayerReputationChanged(int reputation, int index) {
         Platform.runLater(() -> {
             // Assume playerIndex is available to determine which player's gold changed
-            AvatarCardController controller = playerControllers.get(GameEngine.getInstance().getCurrentPlayerIndex());
+            AvatarCardController controller = playerControllers.get(index);
             controller.setReputationPoint(reputation);
         });
     }
 
     @Override
-    public void onPlayerGoldChanged(int newGold) {
+    public void onPlayerGoldChanged(int newGold, int index) {
         Platform.runLater(() -> {
             // Assume playerIndex is available to determine which player's gold changed
-            AvatarCardController controller = playerControllers.get(GameEngine.getInstance().getCurrentPlayerIndex());
+            AvatarCardController controller = playerControllers.get(index);
             controller.setGoldPoint(newGold);
         });
     }
 
     @Override
-    public void onPlayerActionPointsChanged(int actionPoints) {
+    public void onPlayerActionPointsChanged(int actionPoints, int index) {
         Platform.runLater(() -> {
             // Assume playerIndex is available to determine which player's gold changed
-            AvatarCardController controller = playerControllers.get(GameEngine.getInstance().getCurrentPlayerIndex());
+            AvatarCardController controller = playerControllers.get(index);
             controller.setActionPoint(actionPoints);
         });
 
     }
 
     @Override
-    public void onPlayerNameChanged(String name) {
+    public void onPlayerNameChanged(String name, int id) {
 
     }
 

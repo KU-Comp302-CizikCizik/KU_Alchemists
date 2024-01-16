@@ -62,7 +62,7 @@ public class EndorseService {
     }
 
     public String getAlchemicalName() {
-        String result = "PATLADI";
+        String result = "not found";
         Aspect red = selectedTheory.getIngredient().getAlchemical().getRedAspect();
         Aspect green = selectedTheory.getIngredient().getAlchemical().getGreenAspect();
         Aspect blue = selectedTheory.getIngredient().getAlchemical().getBlueAspect();
@@ -90,9 +90,7 @@ public class EndorseService {
         if(red == Aspect.NEGATIVE_BIG && green == Aspect.POSITIVE_SMALL && blue == Aspect.NEGATIVE_SMALL) {
             return "alchemy8.png";
         }
-
         return result;
-
     }
 
 

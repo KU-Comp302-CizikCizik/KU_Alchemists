@@ -53,4 +53,8 @@ public class UseArtifactHandler {
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
         return useArtifactService.getStorageArtifacts(currentPlayer);
     }
+
+    public void deduceActionPoint(){
+        useArtifactService.decreaseActionPoint(GameEngine.getInstance().getCurrentPlayer());
+    }
 }

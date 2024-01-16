@@ -53,7 +53,9 @@ public class PotionBrewingAreaHandler {
 
         //magic mortar effect... Backend agam buraya bi bakarsın
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
-        if(Board.getInstance().getArtifactStorage(currentPlayer).getArtifactByName("magic_mortar").isActivated()){
+        currentPlayer.deduceActionPoints(1);
+        Artifact magicMortar=Board.getInstance().getArtifactStorage(currentPlayer).getArtifactByName("magic_mortar");
+        if(magicMortar != null && magicMortar.isActivated()){
             magicMortarService.setIngredientName1(ingredient1NameFormatted);
             magicMortarService.setIngredientName2(ingredient2NameFormatted);
 

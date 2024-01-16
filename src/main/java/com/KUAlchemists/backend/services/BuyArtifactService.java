@@ -27,6 +27,7 @@ public class BuyArtifactService {
         // If the artifact is not in the player's storage, then remove the artifact from the shop.
         if(player.getGold() >= artifactCost && !Board.getInstance().getArtifactStorage(player).getArtifactList().contains(artifact)){
             player.setGold(player.getGold() - artifactCost);
+            player.deduceActionPoints(1);
             Board.getInstance().addArtifactToStorage(player, artifact);
             artifactShop.removeArtifactFromSale(artifact);
             }
