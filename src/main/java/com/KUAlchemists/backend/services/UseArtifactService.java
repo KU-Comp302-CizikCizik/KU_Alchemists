@@ -59,13 +59,12 @@ public class UseArtifactService {
             System.out.println("Artifact not found in storage: " + name);
         }
     }
-
-        public ArrayList<String> getStorageArtifacts(Player player){
+    public ArrayList<String> getStorageArtifacts(Player player){
         ArrayList<String> artifacts = new ArrayList<>();
         ArtifactStorage storage = Board.getInstance().getArtifactStorage(player);
-        for(Artifact a : storage.getArtifactList()){
-            artifacts.add(a.getName());
-        }
+            for(Artifact a : storage.getArtifactList()){
+                artifacts.add(a.getName());
+            }
         return artifacts;
     }
 
