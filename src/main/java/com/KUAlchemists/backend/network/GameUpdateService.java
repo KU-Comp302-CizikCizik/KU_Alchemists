@@ -30,14 +30,13 @@ public class GameUpdateService {
      */
     //This method crucial for establishing an unique communication channel with each client. Keep it explicit before refactoring
     public List<State> initClientIDs(List<State> states) {
-        ArrayList<State> states1 = new ArrayList<>(states);
-        GameEngineState gameEngineState = null;
+        GameEngineState gameEngineState;
 
         ArrayList<State> result = new ArrayList<>();
 
         PlayerInitState playerState = null;
 
-        for (State s : states1){
+        for (State s : states){
             if (s instanceof PlayerInitState){
                 playerState = (PlayerInitState) s;
                 break;

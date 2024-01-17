@@ -52,7 +52,6 @@ public class OnlineGameInitializer implements OnlineInitializer{
 
     public void connectServer(int port, String ipAddress){
         NetworkHandler.getInstance().handleConnect(ipAddress, port);
-        NetworkHandler.getInstance().handleSendData();
         GameEngine.getInstance().getCurrentPlayer().setIDInitializedbyHost(false); // client's id is not initialized by host yet
     }
 
