@@ -26,6 +26,9 @@ public class DebunkTheoryService {
      * @return true if the theory was successfully debunked; false otherwise.
      */
     public boolean debunkTheory(Theory selectedTheory, String aspect, Ingredient actualIngredient) {
+        //Update action point of the player
+        GameEngine.getInstance().getCurrentPlayer().deduceActionPoints(1);
+
         Alchemical acutalAlchemical = actualIngredient.getAlchemical();
         Alchemical assertedAlchemical = selectedTheory.getIngredient().getAlchemical();
         Aspect actualAspect = getAspectByColor(aspect, acutalAlchemical);

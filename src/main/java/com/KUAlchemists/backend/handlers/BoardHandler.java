@@ -39,14 +39,19 @@ public class BoardHandler {
         ArrayList<Integer> result = GameEngine.getInstance().nextTour();
         //if it is final tour, then end the round return -1 -1
 
+        //if current player is first player, update action points to 5
+        if (GameEngine.getInstance().getCurrentPlayerIndex() == 0) {
+            for(Player player : GameEngine.getInstance().getPlayerList()){
+                player.setActionPoints(5);
+            }
+        }
         return result;
     }
 
     public void registerPlayerObserver(PlayerObserver playerObserver) {
-        Player player1 = GameEngine.getInstance().getPlayer(0);
-        player1.registerObserver(playerObserver);
-        Player player2 = GameEngine.getInstance().getPlayer(1);
-        player2.registerObserver(playerObserver);
+        for(Player player : GameEngine.getInstance().getPlayerList()){
+            player.registerObserver(playerObserver);
+        }
     }
 
     public Integer getPlayerGold(int playerIndex) {

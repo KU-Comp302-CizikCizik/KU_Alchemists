@@ -68,6 +68,7 @@ public class UseArtifactController {
         for(Slot slot:artifactSlots){
             if(slot != null)
                 if(slot.isSelected){
+                    UseArtifactHandler.getInstance().deduceActionPoint();
                     if(slot.getId().equals(ELIXIR_OF_INSIGHT)) {
                         SceneLoader.getInstance().loadElixirOfInsight();
                         UseArtifactHandler.getInstance().handleRemoveArtifact(ELIXIR_OF_INSIGHT);

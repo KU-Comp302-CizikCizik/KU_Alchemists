@@ -36,6 +36,7 @@ public class SellPotionService {
             if(p.getPotionsList().get(i).getPotionEffect().toString().equals(potionName)){
                 p.removePotion(p.getPotionsList().get(i));
                 player.addGold(price);
+                player.deduceActionPoints(1);
                 break;
             }
         }

@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.models;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.network.PlayerState;
@@ -32,6 +33,8 @@ public class Player implements Subject, Serializable {
     private int score;
     private List<PlayerObserver> observers;
     private String avatar; // this is the avatar of the player that will be displayed on the board
+
+
     public Player(){
         this("");
     }
@@ -43,7 +46,7 @@ public class Player implements Subject, Serializable {
         this.publishedTheories = new ArrayList<>();
         this.deductionBoard = new DeductionBoard();
         this.name = name;
-        this.actionPoints = 3;
+        this.actionPoints = 5;
         this.seal = PlayerSeal.getRandomSeal(); //random seal for indicating the player's color on endorsement
         this.theorySeals = TheorySeal.getSeals(); //default seals
         observers = new ArrayList<>();
@@ -97,6 +100,10 @@ public class Player implements Subject, Serializable {
     public Integer getActionPoints() {
         return actionPoints;
     }
+    public void setActionPoints(int actionPoints) {
+        this.actionPoints = actionPoints;
+        notifyObservers();
+    }
     public void setPlayerSeal(PlayerSeal seal){
         this.seal = seal;
     }
@@ -132,15 +139,18 @@ public class Player implements Subject, Serializable {
         observers.remove((PlayerObserver) observer);
     }
 
+    public int getIndex(){
+        return GameEngine.getInstance().getPlayerIndex(this);
+    }
     @Override
     public void notifyObservers() {
         for(Observer observer : observers){
-            ((PlayerObserver) observer).onPlayerStatusChanged(status);
-            ((PlayerObserver) observer).onPlayerSicknessLevelChanged(sicknessLevel);
-            ((PlayerObserver) observer).onPlayerReputationChanged(reputation);
-            ((PlayerObserver) observer).onPlayerGoldChanged(gold);
-            ((PlayerObserver) observer).onPlayerActionPointsChanged(actionPoints);
-            ((PlayerObserver) observer).onPlayerNameChanged(name);
+            ((PlayerObserver) observer).onPlayerStatusChanged(status, getIndex());
+            ((PlayerObserver) observer).onPlayerSicknessLevelChanged(sicknessLevel,getIndex());
+            ((PlayerObserver) observer).onPlayerReputationChanged(reputation,getIndex());
+            ((PlayerObserver) observer).onPlayerGoldChanged(gold,getIndex());
+            ((PlayerObserver) observer).onPlayerActionPointsChanged(actionPoints,getIndex());
+            ((PlayerObserver) observer).onPlayerNameChanged(name,getIndex());
         }
 
     }

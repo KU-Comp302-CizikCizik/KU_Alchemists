@@ -57,6 +57,9 @@ public class UseArtifactHandler {
         return useArtifactService.getStorageArtifacts(currentPlayer);
     }
 
+    public void deduceActionPoint(){
+        useArtifactService.decreaseActionPoint(GameEngine.getInstance().getCurrentPlayer());
+    }
     public void activateWisdomIdol() {
         wisdomIdolService.activateWisdomIdol(GameEngine.getInstance().getCurrentPlayer());
     }

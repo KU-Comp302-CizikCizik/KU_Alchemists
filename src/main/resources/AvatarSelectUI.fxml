@@ -19,22 +19,22 @@
             <Image url="@com.KUAlchemists/images/profile_p/avatar_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_5" fitHeight="138.0" fitWidth="109.0" layoutX="340.0" layoutY="392.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_2" fitHeight="138.0" fitWidth="109.0" layoutX="340.0" layoutY="392.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com.KUAlchemists/images/profile_p/avatar_2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_7" fitHeight="138.0" fitWidth="109.0" layoutX="650.0" layoutY="392.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_3" fitHeight="138.0" fitWidth="109.0" layoutX="650.0" layoutY="392.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com.KUAlchemists/images/profile_p/avatar_3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_8" fitHeight="136.0" fitWidth="109.0" layoutX="448.0" layoutY="257.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_4" fitHeight="136.0" fitWidth="109.0" layoutX="448.0" layoutY="257.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com.KUAlchemists/images/profile_p/avatar_4.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_3" fitHeight="136.0" fitWidth="109.0" layoutX="550.0" layoutY="258.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_5" fitHeight="136.0" fitWidth="109.0" layoutX="550.0" layoutY="258.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com.KUAlchemists/images/profile_p/avatar_5.png" />
          </image>
@@ -44,12 +44,12 @@
             <Image url="@com.KUAlchemists/images/profile_p/avatar_6.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_4" fitHeight="147.0" fitWidth="109.0" layoutX="650.0" layoutY="257.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_7" fitHeight="147.0" fitWidth="109.0" layoutX="650.0" layoutY="257.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com.KUAlchemists/images/profile_p/avatar_7.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar_2" fitHeight="135.0" fitWidth="109.0" layoutX="550.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatar_8" fitHeight="135.0" fitWidth="109.0" layoutX="550.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@com.KUAlchemists/images/profile_p/avatar_8.png" />
          </image>

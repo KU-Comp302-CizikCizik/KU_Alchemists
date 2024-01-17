@@ -54,11 +54,12 @@ public class PublishTheoryService {
 
         boolean hasTheorySeal = player.getTheorySeals().contains(seals.get(0));
 
-        if (!theoryExists && player.getGold() >= 1 & hasTheorySeal) {
+        if (!theoryExists && player.getGold() >= 1 & hasTheorySeal && player.getActionPoints()>0) {
             HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
             playerTheorySealsMap.put(player, seals.get(0));
             Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
             player.setGold(player.getGold() - 1);
+            player.deduceActionPoints(1);
             theory.setPublished(true);
             player.setReputation(player.getReputation() + 1);
             player.getPublishedTheories().add(theory);

@@ -68,4 +68,8 @@ public class UseArtifactService {
         }
         return artifacts;
     }
+
+    public void decreaseActionPoint(Player currentPlayer) {
+        currentPlayer.deduceActionPoints(1);
+    }
 }
