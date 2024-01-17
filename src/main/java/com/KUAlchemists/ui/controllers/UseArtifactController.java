@@ -31,6 +31,9 @@ public class UseArtifactController {
     private static final String PHILOSOPHERS_COMPASS = "philosophers_compass";
     private static final String HARD_BARGAIN = "hard_bargain";
 
+    private static final String WISDOM_IDOL = "wisdom_idol";
+    private static final String MAGIC_MORTAR = "magic_mortar";
+
     @FXML
     void handleMouseClicked(MouseEvent event) {
         Slot slot = getSlot((Pane) event.getSource());
@@ -69,6 +72,8 @@ public class UseArtifactController {
                     if(slot.getId().equals(ELIXIR_OF_INSIGHT)) {
                         SceneLoader.getInstance().loadElixirOfInsight();
                         UseArtifactHandler.getInstance().handleRemoveArtifact(ELIXIR_OF_INSIGHT);
+                    } else if (slot.getId().equals(WISDOM_IDOL)) {
+                        UseArtifactHandler.getInstance().activateWisdomIdol();
                     }
                     slot.setDisable();
                     slot.isSelected = false;

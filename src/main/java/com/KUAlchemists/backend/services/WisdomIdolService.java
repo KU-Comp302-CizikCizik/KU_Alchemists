@@ -1,17 +1,15 @@
 package com.KUAlchemists.backend.services;
 
+import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 
-import java.util.HashMap;
-
 public class WisdomIdolService {
 
-    private HashMap<Player, String> notificationMap;
 
     public WisdomIdolService() {
-        this.notificationMap = new HashMap<>();
+
         }
 
     /**
@@ -25,21 +23,13 @@ public class WisdomIdolService {
             Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol").setActivated(true);
         }
     }
-    public void sendNotificationToBoardHandler(Theory selectedTheory, Player player) {
-        String name = selectedTheory.getIngredient().getName();
-        notificationMap.put(player, name);
+    public void sendNotificationToBoardHandler(Theory selectedTheory, Player player, int deductionPoint) {
+        BoardHandler.getInstance().saveNotificationToBoardHandler(selectedTheory, player, deductionPoint);
     }
-    public void rewardPlayerAtGameEnd(Player player) {
-        if (Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol") != null) {
-            player.setReputation(1); // Assuming a method to add reputation points
-        }
+    public void applyWizardIdol(Player player, int deductedPoint) {
+        //TODO - kaybettiği kadar ekleme gyapması gerekiyor bazen 5 puan bazen 2 puan kaybediyor ve bence adını değiştirmek lazım (applyWizordIdol gibi)
+        //negate deductedPoint and add it to the player's reputation points
+        player.increaseReputationPoints(-deductedPoint);
     }
-    public HashMap<Player, String> getNotificationMap() {
-        return notificationMap;
-    }
-
-
-
-
 }
 

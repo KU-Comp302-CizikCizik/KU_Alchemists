@@ -30,13 +30,17 @@ public class WisdomIdolController {
 
     @FXML
     void keepArtifactClicked(ActionEvent event) {
-        Stage stage = (Stage) ingredientImage.getScene().getWindow();
-        stage.close();
+        closeWindow();
     }
 
     @FXML
     void useArtifactClicked(ActionEvent event) {
-        WisdomIdolHandler.getInstance().handleActivateWisdomIdol();
-    }
+        WisdomIdolHandler.getInstance().useWisdomIdol();
+        closeWindow();
 
+    }
+    private void closeWindow() {
+        Stage stage = (Stage) ingredientImage.getScene().getWindow();
+        stage.close();
+    }
 }

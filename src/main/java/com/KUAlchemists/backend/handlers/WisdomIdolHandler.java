@@ -1,8 +1,12 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Ingredient;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.WisdomIdolService;
+
+import java.time.chrono.MinguoEra;
+import java.util.ArrayList;
 
 public class WisdomIdolHandler {
 
@@ -25,12 +29,14 @@ public class WisdomIdolHandler {
     }
 
     // activating the wisdom idol
-    public void handleActivateWisdomIdol() {
-        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
-        wisdomIdolService.activateWisdomIdol(currentPlayer);
+    public void useWisdomIdol() {
+        ArrayList<Object> notfication = BoardHandler.getInstance().getNotificationMap().get(GameEngine.getInstance().getCurrentPlayer());
+        int deductedPoint = (int) notfication.get(1);
+        wisdomIdolService.applyWizardIdol(GameEngine.getInstance().getCurrentPlayer(),deductedPoint );
+        BoardHandler.getInstance().deleteNotification(notfication);
     }
     public String getDebunkIngredientName() {
-        debunkIngredientName = "frog";
-        return debunkIngredientName;
+        String ingredient = BoardHandler.getInstance().getNotificationMap().get(GameEngine.getInstance().getCurrentPlayer()).get(0).toString();
+        return ingredient;
     }
 }

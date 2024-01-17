@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.backend.services.WisdomIdolService;
 
@@ -13,11 +14,12 @@ public class BoardHandler {
 
     private static BoardHandler INSTANCE = null;
 
+    private HashMap<Player, ArrayList<Object>> notificationMap;
 
-    private WisdomIdolService wisdomIdolService;
 
 
     private BoardHandler() {
+        this.notificationMap = new HashMap<>();
     }
 
     public static BoardHandler getInstance() {
@@ -74,7 +76,31 @@ public class BoardHandler {
     }
 
     // HashMap that has player that has the wisdom idol and the theory name (ingredient name) that is debunked
-    public HashMap<Player, String> getNotificationMap() {
-        return wisdomIdolService.getNotificationMap();
+    public HashMap<Player, ArrayList<Object>> getNotificationMap() {
+        return notificationMap;
     }
+
+    public boolean isThereWisdomIdolNotification() {
+        if (notificationMap.size() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public void saveNotificationToBoardHandler(Theory selectedTheory, Player player, int deductionPoint) {
+        String ingredientName = selectedTheory.getIngredient().getName();
+        ArrayList<Object> notification = new ArrayList<>();
+        notification.add(ingredientName);
+        notification.add(deductionPoint);
+        notificationMap.put(player, notification);
+    }
+
+    public void deleteNotification(ArrayList<Object> notfication) {
+         for(Player player : notificationMap.keySet()) {
+                    if (notificationMap.get(player).equals(notfication)) {
+                        notificationMap.remove(player);
+                        break;
+                    }
+                }
+        }
 }

@@ -3,6 +3,7 @@ package com.KUAlchemists.backend.handlers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.UseArtifactService;
+import com.KUAlchemists.backend.services.WisdomIdolService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,12 +11,14 @@ import java.util.List;
 
 public class UseArtifactHandler {
     private final UseArtifactService useArtifactService;
+    private WisdomIdolService wisdomIdolService;
 
     private static ArrayList<String> usedArtifacts = new ArrayList<>();
     private static UseArtifactHandler INSTANCE;
 
     private UseArtifactHandler() {
         this.useArtifactService = new UseArtifactService();
+        this.wisdomIdolService = new WisdomIdolService();
 
     }
 
@@ -56,5 +59,8 @@ public class UseArtifactHandler {
 
     public void deduceActionPoint(){
         useArtifactService.decreaseActionPoint(GameEngine.getInstance().getCurrentPlayer());
+    }
+    public void activateWisdomIdol() {
+        wisdomIdolService.activateWisdomIdol(GameEngine.getInstance().getCurrentPlayer());
     }
 }

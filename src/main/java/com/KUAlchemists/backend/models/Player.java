@@ -181,6 +181,11 @@ public class Player implements Subject, Serializable {
         notifyObservers();
     }
 
+    public void increaseReputationPoints(int cost){
+        this.reputation += cost;
+        notifyObservers();
+    }
+
     public void setScore(int score) {
         this.score = score;
     }

@@ -137,7 +137,7 @@
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
       </Pane>
-      <Pane id="hard_bargain" layoutX="866.0" layoutY="119.0" onMouseClicked="#handleMouseClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/UseArtifactCSS.css">
+      <Pane id="wisdom_idol" layoutX="866.0" layoutY="119.0" onMouseClicked="#handleMouseClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/UseArtifactCSS.css">
          <children>
             <Pane id="wisdom_idol_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/UseArtifactCSS.css" />
             <Text layoutX="5.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_name" text="wisdom idol" textAlignment="CENTER" wrappingWidth="189.9830722808838">
