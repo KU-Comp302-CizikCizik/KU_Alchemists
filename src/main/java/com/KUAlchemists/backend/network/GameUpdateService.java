@@ -33,23 +33,26 @@ public class GameUpdateService {
         ArrayList<State> states1 = new ArrayList<>(states);
         GameEngineState gameEngineState = null;
 
+        ArrayList<State> result = new ArrayList<>();
+
+        PlayerInitState playerState = null;
+
         for (State s : states1){
             if (s instanceof PlayerInitState){
-                PlayerInitState playerState = (PlayerInitState) s;
-                Player player = playerState.getPlayer();
-                player.setPlayerID(Server.incrementNumberOfPlayers()-1);
-                player.setIDInitializedbyHost(true);
-                GameEngine.getInstance().addPlayer(player);
-                gameEngineState = new GameEngineState(GameEngine.getInstance().getPlayerList());
+                playerState = (PlayerInitState) s;
                 break;
             }
         }
 
-        for (State s : states1){
-            if (s instanceof GameEngineState){
-                states.set(states1.indexOf(s), gameEngineState);
-            }
-        }
-        return states;
+        Player player = playerState.getPlayer();
+        player.setPlayerID(Server.incrementNumberOfPlayers()-1);
+        player.setIDInitializedbyHost(true);
+        GameEngine.getInstance().addPlayer(player);
+        gameEngineState = new GameEngineState(GameEngine.getInstance().getPlayerList());
+
+        result.add(gameEngineState);
+
+        return result;
+
     }
 }
