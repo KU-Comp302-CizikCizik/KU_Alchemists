@@ -4,7 +4,9 @@ import com.KUAlchemists.backend.enums.*;
 import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.states.GameEngineState;
+import com.KUAlchemists.backend.states.GameTurnState;
 import com.KUAlchemists.backend.states.State;
 
 import java.util.ArrayList;
@@ -114,14 +116,7 @@ public class GameEngine {
         this.currentPlayerIndex = currentPlayerIndex;
     }
 
-    /**
-     * Get the next player
-     * @return the next player
-     */
-    public void nextPlayer(){
-        currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
-        currentPlayer = playerList.get(currentPlayerIndex);
-    }
+
     
 
     public Player getPlayer(String name){
@@ -141,7 +136,14 @@ public class GameEngine {
         ArrayList<Integer> round_tour_info = new ArrayList<>();
         round_tour_info.add(currentRound.getRound());
         round_tour_info.add(currentTour.getTour());
-        nextPlayer();
+
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            nextPlayerOffline();
+        }
+        else{
+            nextPlayerOnline();
+        }
+
         //if it is not the first player, do not proceed, all player should play their turns/tours
         if(GameEngine.getInstance().getCurrentPlayerIndex() != 0)return round_tour_info;
 
@@ -158,6 +160,25 @@ public class GameEngine {
 
     }
 
+    /**
+     * Proceed with the next player and notify the clients
+     */
+    private void nextPlayerOnline() {
+        currentClientID = (currentClientID + 1) % playerList.size();
+        GameTurnState gameTurnState = new GameTurnState(currentClientID);
+        ArrayList<State> states = new ArrayList<>();
+        states.add(gameTurnState);
+        NetworkHandler.getInstance().handleSendData(states);
+    }
+
+    /**
+     * Get the next player
+     * @return the next player
+     */
+    public void nextPlayerOffline(){
+        currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
+        currentPlayer = playerList.get(currentPlayerIndex);
+    }
     /**
      * Proceed with the next round
      */

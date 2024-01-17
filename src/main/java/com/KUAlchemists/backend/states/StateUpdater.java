@@ -20,7 +20,7 @@ public class StateUpdater {
 
         GameEngine.getInstance().setPlayerList(playerArrayList);
         int currPlayerIndex = 0;
-        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT){
+        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT && GameEngine.getInstance().getCurrentPlayerIndex() == 0){
             currPlayerIndex = GameEngine.getInstance().getPlayerList().size()-1;
         }
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);

@@ -469,7 +469,14 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
     public void onGameTurnChanged(int id) {
         //Updat the avaliable actions & UI accordingly
         System.out.println("Tamam kaptan : " + id);
-        System.out.println(GameEngine.getInstance().getCurrentPlayer().getId() == id);
+        System.out.println("Current player index: " + GameEngine.getInstance().getCurrentPlayerIndex());
+        System.out.println("Current client id: " + GameEngine.getInstance().getCurrentClientID());
+        System.out.println("Is it my turn: " + BoardHandler.getInstance().isItCurrentPlayerTurn());
+        System.out.println("Recieved id : " + id);
+        if(BoardHandler.getInstance().isItCurrentPlayerTurn()){
+            System.out.println("It is my turn");
+            //Update the UI
+        }
         /*
         Platform.runLater(() -> {
             // Assume playerIndex is available to determine which player's gold changed

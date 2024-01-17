@@ -62,6 +62,8 @@ public class BoardHandler {
                 player.setActionPoints(5);
             }
         }
+
+
         return result;
     }
 
