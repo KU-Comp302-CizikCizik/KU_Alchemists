@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.initializers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Aspect;
+import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.*;
 import com.KUAlchemists.backend.managers.EventManager;
@@ -15,6 +16,7 @@ public class OnlineGameInitializer implements OnlineInitializer{
 
     @Override
     public void onlineInitialize(int port, String ipAddress, UserType userType) {
+        GameEngine.getInstance().setGameMode(GameMode.ONLINE_GAME);
         initGame();
         initNetwork(port, ipAddress,userType);
 

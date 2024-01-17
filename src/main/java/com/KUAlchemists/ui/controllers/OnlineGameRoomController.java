@@ -27,7 +27,8 @@ public class OnlineGameRoomController {
         int port = 7777; // ask user for port
         OnlineGameRoomHandler.getInstance().startAsHost(port);
         // opens a new window for the host to wait for players to join
-        SceneLoader.getInstance().loadWaitingRoomScreen();
+        SceneLoader.getInstance().loadAvatarSelectScreen();
+
     }
 
     @FXML
@@ -40,13 +41,13 @@ public class OnlineGameRoomController {
         dialog.setHeaderText("Enter the IP address of the host:");
         dialog.setContentText("IP Address:");
 
-        int port = 7777; // ask user for port TO-DO
+        int port = 7777;
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(ipAddress -> {
             OnlineGameRoomHandler.getInstance().startAsClient(ipAddress,port);
         });
-        SceneLoader.getInstance().loadWaitingRoomScreen();
+        SceneLoader.getInstance().loadAvatarSelectScreen();
     }
 }
 

@@ -3,11 +3,6 @@ package com.KUAlchemists.backend.network;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -49,6 +44,26 @@ public class Server {
                 clientHandler.send(message);
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    public void broadcast(Object message,ClientHandler filter) {
+        for (ClientHandler clientHandler : handlers) {
+            try {
+                if(filter != clientHandler) {
+                    System.out.println("Sending message to client: " + clientHandler);
+                    clientHandler.send(message);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        synchronized (filter) {
+            try {
+                filter.send(message);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }

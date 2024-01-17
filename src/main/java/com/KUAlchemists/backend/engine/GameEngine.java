@@ -218,7 +218,7 @@ public class GameEngine {
     }
 
     public State getState() {
-        return new GameEngineState(playerList);
+        return new GameEngineState(new ArrayList<>(playerList));
     }
 
     public void setPlayerList(ArrayList<Player> playerArrayList) {

@@ -31,6 +31,7 @@ public class GameUpdateHandler {
      */
     public List<State> handleUpdateGame(List<State> states){
         List<State> newStates = new ArrayList<>(states);
+
         if(GameEngine.getInstance().getUserType() == UserType.HOST) {
             newStates.clear();
             newStates.addAll(handleInitializeClientIDS(states));

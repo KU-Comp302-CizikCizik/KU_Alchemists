@@ -41,7 +41,7 @@ public class ClientHandler implements Runnable {
                 for(Player player: list) {
                     System.out.println(player.getId());
                 }
-                server.broadcast(newStates);
+                server.broadcast(newStates,this);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

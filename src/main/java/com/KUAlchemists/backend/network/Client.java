@@ -44,7 +44,7 @@ public class Client {
 
     public Object receive() throws IOException, ClassNotFoundException {
         if (socket.isConnected()) {
-            System.out.println("Waiting for data from the server...");
+            System.out.println("Data recieved from the server:");
             Object data = inputStream.readObject();
             //
             List<State> temp = getStatesTemp(data);
@@ -92,6 +92,7 @@ public class Client {
             try {
                 while (!socket.isClosed()) {
                     Object data = receive();
+                    System.out.println("Received message from server: " + data);
                     handleReceivedMessage((List<State>) data);
                 }
             } catch (IOException | ClassNotFoundException e) {
