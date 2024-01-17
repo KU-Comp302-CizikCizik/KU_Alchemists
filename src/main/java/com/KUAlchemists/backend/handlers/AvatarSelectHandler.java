@@ -1,6 +1,10 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.ApplicationMode;
+import com.KUAlchemists.backend.enums.GameMode;
+import com.KUAlchemists.backend.enums.UserType;
+import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.services.AvatarSelectService;
 
 /**
@@ -38,7 +42,12 @@ public class AvatarSelectHandler {
      * @param avatar The avatar to be selected.
      */
     public void handleSetAvatar(String avatar,int currentPlayerIndex) {
-        avatarSelectService.setAvatar(GameEngine.getInstance().getPlayer(currentPlayerIndex), avatar);
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE){
+            avatarSelectService.setAvatar(GameEngine.getInstance().getCurrentPlayer(), avatar);
+            NetworkHandler.getInstance().handleSendData();
+        }else{
+            avatarSelectService.setAvatar(GameEngine.getInstance().getPlayer(currentPlayerIndex), avatar);
+        }
     }
 
 }

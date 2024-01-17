@@ -1,9 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
-import com.KUAlchemists.adapters.OnlineInitializationAdapter;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.ApplicationMode;
-import com.KUAlchemists.backend.initializers.OnlineGameInitializer;
 
 /**
  * This class is responsible for handling application mode requests.

@@ -6,8 +6,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
-import com.KUAlchemists.backend.network.State;
+
+import com.KUAlchemists.backend.states.GameEngineState;
+import com.KUAlchemists.backend.states.State;
+import com.KUAlchemists.ui.SceneLoader;
 
 public class Client {
 
@@ -22,13 +26,18 @@ public class Client {
         this.serverPort = serverPort;
     }
 
-    public void connect() throws IOException {
+    public void connect() {
         // Connect to the server
-        socket = new Socket(serverAddress, serverPort);
-        System.out.println("Connected to the server at " + serverAddress + ":" + serverPort);
-        // Setup streams
-        outputStream = new ObjectOutputStream(socket.getOutputStream());
-        inputStream = new ObjectInputStream(socket.getInputStream());
+        try {
+            socket = new Socket(serverAddress, serverPort);
+            System.out.println("Connected to the server at " + serverAddress + ":" + serverPort);
+            outputStream = new ObjectOutputStream(socket.getOutputStream());
+            inputStream = new ObjectInputStream(socket.getInputStream());
+        } catch (IOException e) {
+            SceneLoader.getInstance().loadGenericPopUp("Error: Could not connect to the server.");
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void send(Object data) throws IOException {
@@ -41,7 +50,7 @@ public class Client {
 
     public Object receive() throws IOException, ClassNotFoundException {
         if (socket.isConnected()) {
-            System.out.println("Waiting for data from the server...");
+            System.out.println("Data recieved from the server:");
             Object data = inputStream.readObject();
             return data;
         }
@@ -55,10 +64,6 @@ public class Client {
         System.out.println("Disconnected from the server.");
     }
 
-    // Example usage of the client to send a message
-    public void sendMessage(String text) throws IOException {
-        send(new Player(text));
-    }
 
     // Example method for receiving messages from the server
     public void listenForMessages() {
@@ -66,17 +71,14 @@ public class Client {
             try {
                 while (!socket.isClosed()) {
                     Object data = receive();
-                    handleReceivedMessage((List<State>) data);
+                    System.out.println("Received message from server: " + data);
+                    GameUpdateHandler.getInstance().handleUpdateGame((List<State>) data);
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }).start();
+
     }
 
-    // Implement how you want to handle the received message
-    private void handleReceivedMessage(List<State> states) {
-        // Update game state, UI, etc., based on the received message
-        GameUpdateHandler.getInstance().handleUpdateGame(states);
-    }
 }

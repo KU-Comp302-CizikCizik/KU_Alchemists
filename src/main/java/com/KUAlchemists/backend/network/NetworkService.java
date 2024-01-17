@@ -1,10 +1,9 @@
-package com.KUAlchemists.backend.services;
+package com.KUAlchemists.backend.network;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.network.Client;
-import com.KUAlchemists.backend.network.Server;
-import com.KUAlchemists.backend.network.State;
+import com.KUAlchemists.backend.states.State;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,13 +44,9 @@ public class NetworkService {
 
     public void connectToServer(String ip, int port){
         client = new Client(ip, port);
-        try {
-            client.connect();
-            client.listenForMessages(); // Start listening for messages from the server
-            // Once connected, change UI to the game room
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle this exception properly
-        }
+        client.connect();
+        client.listenForMessages(); // Start listening for messages from the server
+        // Once connected, change UI to the game room
     }
 
     public void sendDataToServer(){
@@ -68,11 +63,48 @@ public class NetworkService {
         server.broadcast(data);
     }
 
+    public void sendDataToClient(List<State> state){
+        Object data = state;
+        server.broadcast(data);
+    }
+
+    public void sendDataToServer(List<State> state){
+        Object data = state;
+        try {
+            client.send(data);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public List<State> getStates(){
         List<State> states = new ArrayList<>();
+        if(!GameEngine.getInstance().getCurrentPlayer().isIDInitializedbyHost()){
+            states.add(GameEngine.getInstance().getCurrentPlayer().getInitState()); // This is the state that will be sent to the server
+            return states;
+        }
         states.add(Board.getInstance().getState());
         states.add(GameEngine.getInstance().getCurrentPlayer().getState());
+        states.add(GameEngine.getInstance().getState());
         return states;
     }
 
+    public void sendData() {
+        if (GameEngine.getInstance().getUserType() == UserType.HOST) {
+            sendDataToClient();
+
+        }else {
+            sendDataToServer();
+        }
+    }
+
+    public void sendData(List<State> state){
+        if (GameEngine.getInstance().getUserType() == UserType.HOST) {
+            sendDataToClient(state);
+
+        }else {
+            sendDataToServer(state);
+        }
+
+    }
 }

@@ -39,6 +39,13 @@
     -fx-background-position: center center;
 }
 
+.waiting-roomBackground{
+    -fx-background-image: url("../com.KUAlchemists/images/Menu/MenuBackground.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
 .scroll {
     width:100%;
     max-width: 800px;

@@ -2,13 +2,13 @@ package com.KUAlchemists.backend.initializers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Aspect;
+import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.*;
 import com.KUAlchemists.backend.managers.EventManager;
-import com.KUAlchemists.backend.models.Alchemical;
-import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.*;
+import com.KUAlchemists.backend.network.NetworkHandler;
+import com.KUAlchemists.ui.controllers.WaitingRoomController;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,9 +16,14 @@ import java.util.Random;
 public class OnlineGameInitializer implements OnlineInitializer{
 
     @Override
-    public void onlineInitialize(int port, String ipAddress) {
-        UserType userType = GameEngine.getInstance().getUserType();
+    public void onlineInitialize(int port, String ipAddress, UserType userType) {
+        GameEngine.getInstance().setGameMode(GameMode.ONLINE_GAME);
         initGame();
+        initNetwork(port, ipAddress,userType);
+
+    }
+
+    private void initNetwork(int port, String ipAddress, UserType userType) {
         if(userType == UserType.HOST){
             startServer(port);
         }
@@ -28,7 +33,6 @@ public class OnlineGameInitializer implements OnlineInitializer{
         else{
             System.err.println("Error: Invalid user type");
         }
-
     }
 
     private void initGame() {
@@ -43,12 +47,12 @@ public class OnlineGameInitializer implements OnlineInitializer{
 
     public void startServer(int port){
         NetworkHandler.getInstance().handleStartServer(port);
+        GameEngine.getInstance().getCurrentPlayer().setIDInitializedbyHost(true);
     }
 
     public void connectServer(int port, String ipAddress){
         NetworkHandler.getInstance().handleConnect(ipAddress, port);
-        NetworkHandler.getInstance().handleSendDataToServer();
-
+        GameEngine.getInstance().getCurrentPlayer().setIDInitializedbyHost(false); // client's id is not initialized by host yet
     }
 
     private void initBoardStorages() {
@@ -60,12 +64,12 @@ public class OnlineGameInitializer implements OnlineInitializer{
         EventManager.getInstance().registerPotionBrewingObserver(DeductionBoardHandler.getInstance());
         EventManager.getInstance().registerPublicationTrackObserver(EndorseHandler.getInstance());
         EventManager.getInstance().registerPublicationTrackObserver(DebunkTheoryHandler.getInstance());
-
     }
 
 
     private void initGameObjects() {
        Player player = new Player();
+       player.setPlayerID(0);
        GameEngine.getInstance().addPlayer(player);
        GameEngine.getInstance().setCurrentPlayer(player);
 

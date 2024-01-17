@@ -4,6 +4,8 @@ import com.KUAlchemists.backend.enums.*;
 import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.states.GameEngineState;
+import com.KUAlchemists.backend.states.State;
 
 import java.util.ArrayList;
 
@@ -12,23 +14,22 @@ public class GameEngine {
     // singleton instance
     private static GameEngine INSTANCE;
 
+
     // player list that has initially two Player objects
     private static final ArrayList<Player> playerList = new ArrayList<>();
 
     private ApplicationMode mode; // OFFLINE or ONLINE
 
-    private UserType userType;
     private GameRound currentRound;
     private GameTour currentTour;
 
     // current player
-    private static Player currentPlayer;
+    private Player currentPlayer;
 
     // current player index
     private int currentPlayerIndex = 0;
 
     private GameMode currentGameMode;
-
 
     /**
      * Constructor for GameEngine
@@ -48,6 +49,7 @@ public class GameEngine {
         }
         return INSTANCE;
     }
+
 
     /**
      * Add a player to the player list
@@ -91,7 +93,7 @@ public class GameEngine {
      */
     public void setCurrentPlayer(Player player) {
         playerList.set(currentPlayerIndex, player);
-        GameEngine.currentPlayer = player;
+        currentPlayer = player;
     }
 
     /**
@@ -107,7 +109,7 @@ public class GameEngine {
      * @param currentPlayerIndex the index to be set as current player index
      */
     public void setCurrentPlayerIndex(int currentPlayerIndex) {
-        currentPlayerIndex = currentPlayerIndex;
+        this.currentPlayerIndex = currentPlayerIndex;
     }
 
     /**
@@ -194,11 +196,12 @@ public class GameEngine {
 
     }
 
-    public void setUserType(UserType type){
-        userType = type;
+    public void setUserTypeOfCurrentPlayer(UserType type){
+        currentPlayer.setUserType(type);
     }
 
     public UserType getUserType() {
+        UserType userType = currentPlayer.getUserType();
         return userType;
     }
 
@@ -214,6 +217,17 @@ public class GameEngine {
         currentTour = gameTour;
     }
 
+
+    public State getState() {
+        return new GameEngineState(new ArrayList<>(playerList));
+    }
+
+    public void setPlayerList(ArrayList<Player> playerArrayList) {
+        ArrayList<Player> playerArrayList1 = new ArrayList<>(playerArrayList);
+        playerList.clear();
+        playerList.addAll(playerArrayList1);
+    }
+  
     public int getGameRound() {
         return currentRound.getRound();
     }

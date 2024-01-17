@@ -6,7 +6,7 @@ public enum GameRound {
     SECOND_ROUND(2),
     THIRD_ROUND(3),
 
-    GAMEOVER_ROUND(-1);
+    GAMEOVER_ROUND(4);
 
     /*  Constructor for GameRound enum
         @param round: the round number

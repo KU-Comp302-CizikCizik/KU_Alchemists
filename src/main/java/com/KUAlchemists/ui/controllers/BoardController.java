@@ -3,7 +3,7 @@ import com.KUAlchemists.backend.engine.GameEngine;
 
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
-import com.KUAlchemists.backend.handlers.NetworkHandler;
+import com.KUAlchemists.backend.network.NetworkHandler;
 
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.observer.PlayerObserver;
@@ -219,7 +219,7 @@ public class BoardController  implements PlayerObserver {
 
         roundTitle.setText("Round " + round.toString());
         tourTitle.setText("Tour " + tour.toString());
-        //For game over screen, we have extra variable GAMEOVER_ROUND(-1);, check for round to be -1 or not
+        //For game over screen, we have extra variable GAMEOVER_ROUND(4);, check for round to be 4 or not
         //use for updating the UI
         //round_tour_info[0] = round
         //round_tour_info[1] = tour

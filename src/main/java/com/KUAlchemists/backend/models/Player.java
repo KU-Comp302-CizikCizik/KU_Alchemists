@@ -3,7 +3,9 @@ package com.KUAlchemists.backend.models;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
-import com.KUAlchemists.backend.network.PlayerState;
+import com.KUAlchemists.backend.enums.UserType;
+import com.KUAlchemists.backend.states.PlayerInitState;
+import com.KUAlchemists.backend.states.PlayerState;
 import com.KUAlchemists.backend.observer.Observer;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.backend.subjects.Subject;
@@ -22,7 +24,9 @@ public class Player implements Subject, Serializable {
     private DeductionBoard deductionBoard;
     private int actionPoints;
 
-    private int id = 0;
+    private int id;
+
+    private boolean isIDInitializedbyHost;
 
     //To indicate its color on endorse UI, each player has only one, and it is randomly assigned
     private PlayerSeal seal;
@@ -30,6 +34,9 @@ public class Player implements Subject, Serializable {
     //To indicate the seal of the theory, each player has multiple, they put seals on theories
     private ArrayList<TheorySeal> theorySeals;
     private String name;
+
+    private UserType userType;
+
     private int score;
     private List<PlayerObserver> observers;
     private String avatar; // this is the avatar of the player that will be displayed on the board
@@ -50,8 +57,9 @@ public class Player implements Subject, Serializable {
         this.seal = PlayerSeal.getRandomSeal(); //random seal for indicating the player's color on endorsement
         this.theorySeals = TheorySeal.getSeals(); //default seals
         observers = new ArrayList<>();
-        this.id++;
-
+        this.id = 0;
+        isIDInitializedbyHost = false;
+        userType = UserType.CLIENT; // does not matter since it will be updated by the network handler, not to cause any exceptions in offlineGame
     }
     public int getGold() {
         return gold;
@@ -165,11 +173,11 @@ public class Player implements Subject, Serializable {
 
 
     public PlayerState getState(){
-        return new PlayerState(id, gold);
+        return new PlayerState(id, gold,userType);
     }
 
-    public void updateState(PlayerState state){
-        setGold(state.getGold());
+    public PlayerInitState getInitState(){
+        return new PlayerInitState(this);
     }
 
     public int getId() {
@@ -197,5 +205,26 @@ public class Player implements Subject, Serializable {
     public void setName(String player1) {
         this.name = player1;
 
+    }
+
+    public void setPlayerID(int activePlayersCount) {
+        this.id = activePlayersCount;
+    }
+
+    public void setUserType(UserType type) {
+        this.userType = type;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+
+    public void setIDInitializedbyHost(boolean isIDInitializedbyHost) {
+        this.isIDInitializedbyHost = isIDInitializedbyHost;
+    }
+
+    public boolean isIDInitializedbyHost() {
+        return isIDInitializedbyHost;
     }
 }

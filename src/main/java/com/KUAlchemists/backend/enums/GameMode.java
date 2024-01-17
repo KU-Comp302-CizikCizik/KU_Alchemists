@@ -3,7 +3,9 @@ package com.KUAlchemists.backend.enums;
 public enum GameMode {
     TWO_PLAYER(2),
     THREE_PLAYER(3),
-    FOUR_PLAYER(4);
+    FOUR_PLAYER(4),
+
+    ONLINE_GAME(1);
 
     private int value;
 

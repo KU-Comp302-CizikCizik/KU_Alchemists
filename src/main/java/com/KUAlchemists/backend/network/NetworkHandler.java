@@ -1,10 +1,10 @@
-package com.KUAlchemists.backend.handlers;
+package com.KUAlchemists.backend.network;
 
-import com.KUAlchemists.adapters.OnlineInitializationAdapter;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
-import com.KUAlchemists.backend.initializers.OnlineGameInitializer;
-import com.KUAlchemists.backend.services.NetworkService;
+import com.KUAlchemists.backend.states.State;
+
+import java.util.List;
 
 public class NetworkHandler {
     private static NetworkHandler instance;
@@ -12,6 +12,7 @@ public class NetworkHandler {
 
     public static final String DEFAULT_IP = "localhost";
     public static final int DEFAULT_PORT = 7777;
+
 
     private NetworkHandler()
     {
@@ -27,33 +28,26 @@ public class NetworkHandler {
 
     public void handleConnect(String ip, int port){
         service.connectToServer(ip, port);
-        GameEngine.getInstance().setUserType(UserType.HOST);
+        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.CLIENT);
 
     }
 
     public void handleStartServer(int port){
         service.startServer(port);
-        GameEngine.getInstance().setUserType(UserType.CLIENT);
+        GameEngine.getInstance().setUserTypeOfCurrentPlayer(UserType.HOST);
     }
 
     /**
      * This method will be called by UI to send data
      */
     public void handleSendData(){
-
-        UserType userType = GameEngine.getInstance().getUserType();
-        if (userType == UserType.HOST){
-            handleSendDataToClient();
-        }
-        else{
-            handleSendDataToServer();
-        }
-    }
-    public void handleSendDataToServer(){
-        service.sendDataToServer();
+        service.sendData();
     }
 
-    public void handleSendDataToClient(){
-        service.sendDataToClient();
+    public void handleSendData(List<State> state){
+        service.sendData(state);
+
     }
+
+
 }

@@ -1,11 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
-import com.KUAlchemists.adapters.OnlineInitializationAdapter;
 import com.KUAlchemists.backend.handlers.OnlineGameRoomHandler;
-import com.KUAlchemists.backend.initializers.OnlineGameInitializer;
-import com.KUAlchemists.backend.network.Client;
-import com.KUAlchemists.backend.handlers.NetworkHandler;
-import com.KUAlchemists.backend.network.Server;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +27,8 @@ public class OnlineGameRoomController {
         int port = 7777; // ask user for port
         OnlineGameRoomHandler.getInstance().startAsHost(port);
         // opens a new window for the host to wait for players to join
-        SceneLoader.getInstance().loadWaitingRoomScreen();
+        SceneLoader.getInstance().loadAvatarSelectScreen();
+
     }
 
     @FXML
@@ -45,13 +41,13 @@ public class OnlineGameRoomController {
         dialog.setHeaderText("Enter the IP address of the host:");
         dialog.setContentText("IP Address:");
 
-        int port = 7777; // ask user for port TO-DO
+        int port = 7777;
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(ipAddress -> {
             OnlineGameRoomHandler.getInstance().startAsClient(ipAddress,port);
         });
-        SceneLoader.getInstance().loadWaitingRoomScreen();
+        SceneLoader.getInstance().loadAvatarSelectScreen();
     }
 }
 

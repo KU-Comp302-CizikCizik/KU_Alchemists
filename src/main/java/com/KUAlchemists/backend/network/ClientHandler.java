@@ -1,11 +1,16 @@
 package com.KUAlchemists.backend.network;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.states.GameEngineState;
+import com.KUAlchemists.backend.states.PlayerInitState;
+import com.KUAlchemists.backend.states.State;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientHandler implements Runnable {
@@ -27,8 +32,10 @@ public class ClientHandler implements Runnable {
             while (clientSocket.isConnected()) {
                 Object data = inputStream.readObject();
                 // Handle the message, broadcast to other clients
-                GameUpdateHandler.getInstance().handleUpdateGame((List<State>) data);
-                server.broadcast(data);
+                System.out.println("Received message from client: " + data);
+                List<State> newStates = new ArrayList<>();
+                newStates.addAll(GameUpdateHandler.getInstance().handleUpdateGame((List<State>) data));
+                server.broadcast(newStates,this);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -37,6 +44,7 @@ public class ClientHandler implements Runnable {
             closeConnections();
         }
     }
+
 
     public void send(Object message) throws IOException {
         System.out.println("Sending message to client: " + message);

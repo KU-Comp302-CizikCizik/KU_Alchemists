@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.handlers.AvatarSelectHandler;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
@@ -109,7 +110,13 @@ public class AvatarSelectController {
     @FXML
     void loadBoard(ActionEvent event) {
         // Logic to load the game board
-        SceneLoader.getInstance().loadBoard();
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE) {
+            SceneLoader.getInstance().loadWaitingRoomScreen();
+        }
+        else{
+            SceneLoader.getInstance().loadBoard();
+        }
+
     }
 
     @FXML void unglow(MouseEvent event) {

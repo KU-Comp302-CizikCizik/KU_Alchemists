@@ -1,7 +1,7 @@
 package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.engine.GameEngine;
-import com.KUAlchemists.backend.network.BoardState;
+import com.KUAlchemists.backend.states.BoardState;
 
 import java.util.ArrayList;
 import java.util.HashMap;
