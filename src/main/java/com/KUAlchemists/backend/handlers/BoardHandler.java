@@ -2,15 +2,12 @@ package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
-import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.PlayerObserver;
-import com.KUAlchemists.backend.services.WisdomIdolService;
 import com.KUAlchemists.backend.states.GameTurnState;
 import com.KUAlchemists.backend.states.State;
-import com.KUAlchemists.backend.subjects.GameTurnData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,11 +20,8 @@ public class BoardHandler {
     private HashMap<Player, ArrayList<Object>> notificationMap;
 
 
-
     private BoardHandler() {
         this.notificationMap = new HashMap<>();
-
-
         //notify the clients
         if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.HOST)
         {
@@ -37,15 +31,19 @@ public class BoardHandler {
             NetworkHandler.getInstance().handleSendData(states);
         }
 
-
-
     }
+
 
     public static BoardHandler getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new BoardHandler();
         }
         return INSTANCE;
+    }
+
+
+    public boolean isItCurrentPlayerTurn() {
+        return GameEngine.getInstance().getCurrentPlayer().getId() == GameEngine.getInstance().getCurrentClientID();
     }
 
     /**

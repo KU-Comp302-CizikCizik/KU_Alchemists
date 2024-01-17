@@ -46,6 +46,7 @@ public class StateUpdater {
     }
 
     public void updateGameTurn(GameTurnState gameTurnState) {
+        GameEngine.getInstance().setCurrentClientID(gameTurnState.getGameTurn());
         EventManager.getInstance().onGameTurnChanged(gameTurnState.getGameTurn());
     }
 }

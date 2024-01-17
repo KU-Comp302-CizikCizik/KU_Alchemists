@@ -31,6 +31,8 @@ public class GameEngine {
 
     private GameMode currentGameMode;
 
+    private int currentClientID = 0;
+
     /**
      * Constructor for GameEngine
      */
@@ -186,10 +188,19 @@ public class GameEngine {
     }
 
 
+    /**
+     * Get the current player ID
+     * @return the current player ID
+     */
+    public int getCurrentClientID() {
+        return currentClientID;
+    }
+
 
     public Integer getPlayerIndex(Player player) {
         return playerList.indexOf(player);
     }
+
 
     public GameMode getCurrentGameMode() {
         return currentGameMode;
@@ -227,9 +238,21 @@ public class GameEngine {
         playerList.clear();
         playerList.addAll(playerArrayList1);
     }
-  
+
+    /**
+     * Get the current round
+     * @return the current round
+     */
     public int getGameRound() {
         return currentRound.getRound();
     }
 
+
+    /**
+     * Set the current player ID
+     * @param gameTurn the current player ID to be set
+     */
+    public void setCurrentClientID(int gameTurn) {
+        currentClientID = gameTurn;
+    }
 }
