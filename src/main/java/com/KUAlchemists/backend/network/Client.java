@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.KUAlchemists.backend.states.GameEngineState;
 import com.KUAlchemists.backend.states.State;
+import com.KUAlchemists.ui.SceneLoader;
 
 public class Client {
 
@@ -25,13 +26,19 @@ public class Client {
         this.serverPort = serverPort;
     }
 
-    public void connect() throws IOException {
+    public void connect() {
         // Connect to the server
-        socket = new Socket(serverAddress, serverPort);
-        System.out.println("Connected to the server at " + serverAddress + ":" + serverPort);
-        // Setup streams
-        outputStream = new ObjectOutputStream(socket.getOutputStream());
-        inputStream = new ObjectInputStream(socket.getInputStream());
+        try {
+            socket = new Socket(serverAddress, serverPort);
+            System.out.println("Connected to the server at " + serverAddress + ":" + serverPort);
+            // Setup streams
+            outputStream = new ObjectOutputStream(socket.getOutputStream());
+            inputStream = new ObjectInputStream(socket.getInputStream());
+        } catch (IOException e) {
+            SceneLoader.getInstance().loadGenericPopUp("Error: Could not connect to the server.");
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void send(Object data) throws IOException {
