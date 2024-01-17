@@ -70,6 +70,17 @@ public class BoardHandler {
         return avatarStrings;
     }
 
+    public String getAvatarPath(int playerIndex){
+        for (int i = 0; i < GameEngine.getInstance().getPlayerList().size(); i++) {
+            if (i == playerIndex){
+                return GameEngine.getInstance().getPlayerList().get(i).getAvatar();
+            }
+        }
+        return "";
+    }
+
+
+
     // HashMap that has player that has the wisdom idol and the theory name (ingredient name) that is debunked
     public HashMap<Player, ArrayList<Object>> getNotificationMap() {
         return notificationMap;
