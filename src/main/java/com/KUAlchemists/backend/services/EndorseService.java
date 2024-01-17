@@ -4,6 +4,8 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.Aspect;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.models.Theory;
+import com.KUAlchemists.backend.strategy.AlchemicalNamingStrategy;
+import com.KUAlchemists.backend.strategy.AlchemicalNamingStrategyMap;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,7 +20,6 @@ public class EndorseService {
 
 
     }
-
 
     public void setSelectedTheory(Theory theory) {
         selectedTheory = theory;
@@ -61,6 +62,7 @@ public class EndorseService {
         return playerSeals;
     }
 
+    /**
     public String getAlchemicalName() {
         String result = "PATLADI";
         Aspect red = selectedTheory.getIngredient().getAlchemical().getRedAspect();
@@ -93,6 +95,16 @@ public class EndorseService {
 
         return result;
 
+    }
+     **/
+
+    public String getAlchemicalName() {
+        Aspect red = selectedTheory.getIngredient().getAlchemical().getRedAspect();
+        Aspect green = selectedTheory.getIngredient().getAlchemical().getGreenAspect();
+        Aspect blue = selectedTheory.getIngredient().getAlchemical().getBlueAspect();
+
+        AlchemicalNamingStrategy strategy = AlchemicalNamingStrategyMap.getStrategy(red, green, blue);
+        return strategy.getAlchemicalName(red, green, blue);
     }
 
 
