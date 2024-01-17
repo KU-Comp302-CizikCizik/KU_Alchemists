@@ -2,7 +2,6 @@ package com.KUAlchemists.backend.network;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
-import com.KUAlchemists.backend.handlers.NetworkHandler;
 import com.KUAlchemists.backend.states.GameEngineState;
 import com.KUAlchemists.backend.states.PlayerInitState;
 import com.KUAlchemists.backend.states.State;
@@ -14,9 +13,12 @@ public class GameUpdateHandler {
     private static GameUpdateHandler instance;
     private GameUpdateService service;
 
+    private boolean shouldIDInit;
+
 
     private GameUpdateHandler(){
         this.service = new GameUpdateService();
+        shouldIDInit = true;
     }
 
     public static GameUpdateHandler getInstance(){
@@ -32,22 +34,12 @@ public class GameUpdateHandler {
     public List<State> handleUpdateGame(List<State> states){
         List<State> newStates = new ArrayList<>(states);
 
-        if(GameEngine.getInstance().getUserType() == UserType.HOST) {
+        if(GameEngine.getInstance().getUserType() == UserType.HOST && shouldIDInit){
             newStates.clear();
             newStates.addAll(handleInitializeClientIDS(states));
         }
         service.update(newStates);
         return newStates;
-
-    }
-
-    private GameEngineState getGameEngineState(List<State> states){
-        for (State s : states){
-            if( s instanceof GameEngineState){
-                return (GameEngineState) s;
-            }
-        }
-        return null;
 
     }
 
@@ -59,5 +51,9 @@ public class GameUpdateHandler {
             }
         }
         return states;
+    }
+
+    public void setShouldIDInit(boolean shouldIDInit){
+        this.shouldIDInit = shouldIDInit;
     }
 }

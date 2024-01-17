@@ -35,12 +35,6 @@ public class ClientHandler implements Runnable {
                 System.out.println("Received message from client: " + data);
                 List<State> newStates = new ArrayList<>();
                 newStates.addAll(GameUpdateHandler.getInstance().handleUpdateGame((List<State>) data));
-                ArrayList<Player> list = getPlayerList(newStates);
-                System.out.println(GameEngine.getInstance().getCurrentPlayer().getUserType() + " has the ");
-                System.out.println(GameEngine.getInstance().getCurrentPlayer().getId() + " id");
-                for(Player player: list) {
-                    System.out.println(player.getId());
-                }
                 server.broadcast(newStates,this);
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -51,14 +45,6 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    private ArrayList<Player> getPlayerList(List<State> newStates) {
-        for (State s : newStates){
-            if( s instanceof GameEngineState){
-                return ((GameEngineState) s).getPlayerArrayList();
-            }
-        }
-        return null;
-    }
 
     public void send(Object message) throws IOException {
         System.out.println("Sending message to client: " + message);

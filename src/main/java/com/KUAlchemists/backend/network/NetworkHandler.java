@@ -1,11 +1,8 @@
-package com.KUAlchemists.backend.handlers;
+package com.KUAlchemists.backend.network;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
-import com.KUAlchemists.backend.services.NetworkService;
 import com.KUAlchemists.backend.states.State;
-
-import java.util.List;
 
 public class NetworkHandler {
     private static NetworkHandler instance;
@@ -42,20 +39,12 @@ public class NetworkHandler {
      * This method will be called by UI to send data
      */
     public void handleSendData(){
-        UserType userType = GameEngine.getInstance().getUserType();
-        if (userType == UserType.HOST){
-            handleSendDataToClient();
-        }
-        else{
-            handleSendDataToServer();
-        }
-    }
-    public void handleSendDataToServer(){
-        service.sendDataToServer();
+        service.sendData();
     }
 
-    public void handleSendDataToClient(){
-        service.sendDataToClient();
+    public void handleSendData(State state){
+        service.sendData(state);
+
     }
 
 

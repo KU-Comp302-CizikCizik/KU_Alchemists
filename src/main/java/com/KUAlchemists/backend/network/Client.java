@@ -31,7 +31,6 @@ public class Client {
         try {
             socket = new Socket(serverAddress, serverPort);
             System.out.println("Connected to the server at " + serverAddress + ":" + serverPort);
-            // Setup streams
             outputStream = new ObjectOutputStream(socket.getOutputStream());
             inputStream = new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
@@ -53,36 +52,10 @@ public class Client {
         if (socket.isConnected()) {
             System.out.println("Data recieved from the server:");
             Object data = inputStream.readObject();
-            //
-            List<State> temp = getStatesTemp(data);
-            ArrayList<Player> list = getPlayerList(temp);
-            System.out.println(GameEngine.getInstance().getCurrentPlayer().getUserType() + " has the ");
-            System.out.println(GameEngine.getInstance().getCurrentPlayer().getId() + " id");
-            for(Player player: list) {
-                System.out.println("User type: " + player.getUserType() + " ID:" + player.getId());
-            }
-            //
             return data;
         }
+        closeConnection();
         return null;
-    }
-
-    private ArrayList<Player> getPlayerList(List<State> temp) {
-        if(temp != null) {
-            for(State s : temp) {
-                if(s instanceof GameEngineState) {
-                    return ((GameEngineState) s).getPlayerArrayList();
-                }
-            }
-        }
-        return null;
-    }
-
-    private List<State> getStatesTemp(Object data) {
-            if(data instanceof List) {
-                return (List<State>) data;
-            }
-            return null;
     }
 
     public void closeConnection() throws IOException {
@@ -100,17 +73,18 @@ public class Client {
                 while (!socket.isClosed()) {
                     Object data = receive();
                     System.out.println("Received message from server: " + data);
-                    handleReceivedMessage((List<State>) data);
+                    GameUpdateHandler.getInstance().handleUpdateGame((List<State>) data);
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
         }).start();
+
+        try {
+            closeConnection();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    // Implement how you want to handle the received message
-    private void handleReceivedMessage(List<State> states) {
-        // Update game state, UI, etc., based on the received message
-        GameUpdateHandler.getInstance().handleUpdateGame(states);
-    }
 }

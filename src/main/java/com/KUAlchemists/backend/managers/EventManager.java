@@ -1,10 +1,13 @@
 package com.KUAlchemists.backend.managers;
 
 
+import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.models.Potion;
 import com.KUAlchemists.backend.models.Theory;
+import com.KUAlchemists.backend.observer.GameStatusObserver;
 import com.KUAlchemists.backend.observer.PotionBrewingObserver;
 import com.KUAlchemists.backend.observer.PublicationTrackObserver;
+import com.KUAlchemists.backend.subjects.GameStatusData;
 import com.KUAlchemists.backend.subjects.PotionBrewingData;
 import com.KUAlchemists.backend.subjects.PublicationTrackData;
 
@@ -16,6 +19,8 @@ public class EventManager {
     private PotionBrewingData potionBrewingData;
 
     private PublicationTrackData publicationTrackData;
+
+    private GameStatusData gameStatusData;
 
     /**
      * This method is used to get the instance of the class.
@@ -34,6 +39,7 @@ public class EventManager {
     private EventManager() {
         potionBrewingData = new PotionBrewingData();
         publicationTrackData = new PublicationTrackData();
+        gameStatusData = new GameStatusData();
     }
 
     /**
@@ -99,6 +105,40 @@ public class EventManager {
      */
     public void onTheorySelectedPerformed(Theory theory){
         notifyPublicationTrackObservers(theory);
+    }
+
+
+
+    /**
+     * This method is used to notify the observers when a game status is changed.
+     * @param gameStatus
+     */
+    private void notifyGameStatusObservers(GameStatus gameStatus) {
+        gameStatusData.onGameStatusChanged(gameStatus);
+    }
+
+    /**
+     * This method is used to notify the observers when a game status is changed.
+     * @param gameStatus
+     */
+    public void onGameStatusChanged(GameStatus gameStatus) {
+        notifyGameStatusObservers(gameStatus);
+    }
+
+    /**
+     * This method is used to register an observer.
+     * @param gameStatusObserver
+     */
+    public void registerGameStatusObserver(GameStatusObserver gameStatusObserver) {
+        gameStatusData.registerObserver(gameStatusObserver);
+    }
+
+    /**
+     * This method is used to remove an observer.
+     * @param gameStatusObserver
+     */
+    public void removeGameStatusObserver(GameStatusObserver gameStatusObserver) {
+        gameStatusData.removeObserver(gameStatusObserver);
     }
 
 

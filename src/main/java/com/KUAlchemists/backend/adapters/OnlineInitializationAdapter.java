@@ -1,7 +1,7 @@
 package com.KUAlchemists.backend.adapters;
 
 import com.KUAlchemists.backend.enums.UserType;
-import com.KUAlchemists.backend.handlers.NetworkHandler;
+import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.initializers.OfflineInitializer;
 import com.KUAlchemists.backend.initializers.OnlineInitializer;
 

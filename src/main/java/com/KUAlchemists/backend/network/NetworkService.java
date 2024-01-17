@@ -1,10 +1,8 @@
-package com.KUAlchemists.backend.services;
+package com.KUAlchemists.backend.network;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.network.Client;
-import com.KUAlchemists.backend.network.Server;
-import com.KUAlchemists.backend.states.GameEngineState;
 import com.KUAlchemists.backend.states.State;
 
 import java.io.IOException;
@@ -65,6 +63,20 @@ public class NetworkService {
         server.broadcast(data);
     }
 
+    public void sendDataToClient(State state){
+        Object data = state;
+        server.broadcast(data);
+    }
+
+    public void sendDataToServer(State state){
+        Object data = state;
+        try {
+            client.send(data);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public List<State> getStates(){
         List<State> states = new ArrayList<>();
         if(!GameEngine.getInstance().getCurrentPlayer().isIDInitializedbyHost()){
@@ -76,4 +88,22 @@ public class NetworkService {
         return states;
     }
 
+    public void sendData() {
+        if (GameEngine.getInstance().getUserType() == UserType.HOST) {
+            sendDataToClient();
+
+        }else {
+            sendDataToServer();
+        }
+    }
+
+    public void sendData(State state){
+        if (GameEngine.getInstance().getUserType() == UserType.HOST) {
+            sendDataToClient(state);
+
+        }else {
+            sendDataToServer(state);
+        }
+
+    }
 }

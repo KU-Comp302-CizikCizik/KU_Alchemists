@@ -3,7 +3,7 @@ import com.KUAlchemists.backend.engine.GameEngine;
 
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
-import com.KUAlchemists.backend.handlers.NetworkHandler;
+import com.KUAlchemists.backend.network.NetworkHandler;
 
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;

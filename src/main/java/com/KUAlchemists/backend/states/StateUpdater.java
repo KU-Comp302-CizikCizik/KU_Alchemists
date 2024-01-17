@@ -9,23 +9,7 @@ import java.util.ArrayList;
 
 public class StateUpdater {
     public void updatePlayer(PlayerState playerState) {
-        // updates the player
-        /*
-        int playerID = playerState.getId();
-        Player player = findPlayer(playerID);
-        player.setGold(playerState.getGold());
 
-         */
-    }
-
-    public Player findPlayer(int id) throws NullPointerException{
-        ArrayList<Player> players = GameEngine.getInstance().getPlayerList();
-        for (Player player : players){
-            if (player.getId() == id) {
-                return player;
-            }
-        }
-        return null;
     }
 
     public void updateGameEngine(GameEngineState gameEngineState) {
@@ -48,6 +32,11 @@ public class StateUpdater {
 
 
     public void updatePlayerInit(PlayerInitState playerInitState) {
+
+
+    }
+
+    public void updateGameStatus(GameStatusState state){
 
 
     }
