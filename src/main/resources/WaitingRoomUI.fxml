@@ -14,15 +14,8 @@
         </font>
     </Text>
 
-    <!-- Text at the center with stroke -->
-    <Text fx:id="numberofplayers" fill="#f5dc6a" layoutX="379.0" layoutY="428.0" stroke="black" strokeWidth="1.5" text="Number of players">
-        <font>
-            <Font name="Book Antiqua Bold" size="42.0" />
-        </font>
-    </Text>
-
     <!-- Button at the center -->
-    <Button fx:id="startButton" layoutX="472.0" layoutY="519.0" mnemonicParsing="false" onAction="#onStartGame" opacity="0.71" prefHeight="36.0" prefWidth="175.0" style="-fx-background-color: #B38B55;" text="Start the Game" textFill="#fff0b2">
+    <Button fx:id="startButton" ellipsisString="0" layoutX="460.0" layoutY="505.0" mnemonicParsing="false" onAction="#onStartGame" opacity="0.71" prefHeight="51.0" prefWidth="199.0" style="-fx-background-color: #B38B55;" text="Start the Game" textAlignment="CENTER" textFill="#fff0b2">
         <font>
             <Font name="Book Antiqua Bold" size="18.0" />
         </font>
