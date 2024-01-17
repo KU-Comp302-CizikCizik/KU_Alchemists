@@ -54,7 +54,6 @@ public class Client {
             Object data = inputStream.readObject();
             return data;
         }
-        closeConnection();
         return null;
     }
 
@@ -80,11 +79,6 @@ public class Client {
             }
         }).start();
 
-        try {
-            closeConnection();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }

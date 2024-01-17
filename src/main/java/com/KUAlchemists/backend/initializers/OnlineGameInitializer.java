@@ -8,6 +8,7 @@ import com.KUAlchemists.backend.handlers.*;
 import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.*;
 import com.KUAlchemists.backend.network.NetworkHandler;
+import com.KUAlchemists.ui.controllers.WaitingRoomController;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -64,7 +65,6 @@ public class OnlineGameInitializer implements OnlineInitializer{
         EventManager.getInstance().registerPotionBrewingObserver(DeductionBoardHandler.getInstance());
         EventManager.getInstance().registerPublicationTrackObserver(EndorseHandler.getInstance());
         EventManager.getInstance().registerPublicationTrackObserver(DebunkTheoryHandler.getInstance());
-
     }
 
 

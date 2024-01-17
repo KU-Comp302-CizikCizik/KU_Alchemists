@@ -63,12 +63,12 @@ public class NetworkService {
         server.broadcast(data);
     }
 
-    public void sendDataToClient(State state){
+    public void sendDataToClient(List<State> state){
         Object data = state;
         server.broadcast(data);
     }
 
-    public void sendDataToServer(State state){
+    public void sendDataToServer(List<State> state){
         Object data = state;
         try {
             client.send(data);
@@ -97,7 +97,7 @@ public class NetworkService {
         }
     }
 
-    public void sendData(State state){
+    public void sendData(List<State> state){
         if (GameEngine.getInstance().getUserType() == UserType.HOST) {
             sendDataToClient(state);
 

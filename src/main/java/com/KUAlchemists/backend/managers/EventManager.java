@@ -10,6 +10,7 @@ import com.KUAlchemists.backend.observer.PublicationTrackObserver;
 import com.KUAlchemists.backend.subjects.GameStatusData;
 import com.KUAlchemists.backend.subjects.PotionBrewingData;
 import com.KUAlchemists.backend.subjects.PublicationTrackData;
+import javafx.application.Platform;
 
 public class EventManager {
 
@@ -122,7 +123,8 @@ public class EventManager {
      * @param gameStatus
      */
     public void onGameStatusChanged(GameStatus gameStatus) {
-        notifyGameStatusObservers(gameStatus);
+        Platform.runLater(() -> notifyGameStatusObservers(gameStatus));
+
     }
 
     /**

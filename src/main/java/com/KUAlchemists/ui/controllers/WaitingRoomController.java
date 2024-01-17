@@ -4,9 +4,11 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.WaitingRoomHandler;
+import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.GameStatusObserver;
 import com.KUAlchemists.ui.SceneLoader;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -22,6 +24,7 @@ public class WaitingRoomController implements GameStatusObserver {
 
     // Initialize method (called after all @FXML annotated members are injected)
     public void initialize() {
+        EventManager.getInstance().registerGameStatusObserver(this);
         // Initially, disable the start game button until the room is full
         if (GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT) {
             startButton.setDisable(true);
@@ -42,6 +45,9 @@ public class WaitingRoomController implements GameStatusObserver {
 
     @Override
     public void onGameStatusChanged(GameStatus status) {
-        SceneLoader.getInstance().loadBoard();
+        if(status == GameStatus.START_GAME && GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT){
+           SceneLoader.getInstance().loadBoard();
+        }
+
     }
 }

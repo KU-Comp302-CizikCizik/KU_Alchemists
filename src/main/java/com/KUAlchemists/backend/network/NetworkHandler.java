@@ -4,6 +4,8 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.states.State;
 
+import java.util.List;
+
 public class NetworkHandler {
     private static NetworkHandler instance;
     private NetworkService service;
@@ -42,7 +44,7 @@ public class NetworkHandler {
         service.sendData();
     }
 
-    public void handleSendData(State state){
+    public void handleSendData(List<State> state){
         service.sendData(state);
 
     }

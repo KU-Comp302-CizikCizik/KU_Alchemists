@@ -13,4 +13,8 @@ public class GameStatusState extends State{
     public void update(StateUpdater stateUpdater) {
         stateUpdater.updateGameStatus(this);
     }
+
+    public GameStatus getStatus() {
+        return status;
+    }
 }

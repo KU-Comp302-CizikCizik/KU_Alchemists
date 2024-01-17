@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.states;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
+import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 
@@ -37,7 +38,10 @@ public class StateUpdater {
     }
 
     public void updateGameStatus(GameStatusState state){
-
+        if(GameEngine.getInstance().getUserType() == UserType.HOST){
+            return;
+        }
+        EventManager.getInstance().onGameStatusChanged(state.getStatus());
 
     }
 }
