@@ -2,13 +2,15 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.Aspect;
 
+import java.io.Serializable;
+
 /**
  * This class represents an alchemical essence associated with an ingredient.
  * It holds three aspects: red, green, and blue. Each aspect has a polarity (positive or negative)
  * and a size (big or small), which are important for gameplay mechanics, particularly when
  * combining alchemicals to produce various effects or potions.
  */
-public class Alchemical {
+public class Alchemical implements Serializable {
 
     // Define the three aspects of the alchemical, with size and polarity
     private Aspect redAspect;

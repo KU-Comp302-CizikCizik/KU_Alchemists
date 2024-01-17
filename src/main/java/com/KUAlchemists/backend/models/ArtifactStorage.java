@@ -1,12 +1,13 @@
 package com.KUAlchemists.backend.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Manages the collection of artifacts available in the game.
  */
-public class ArtifactStorage {
+public class ArtifactStorage implements Serializable {
     private ArrayList<Artifact> artifactsList = new ArrayList<>();
     private ArrayList<Artifact> usedArtifactsList = new ArrayList<>();
     public ArtifactStorage() {

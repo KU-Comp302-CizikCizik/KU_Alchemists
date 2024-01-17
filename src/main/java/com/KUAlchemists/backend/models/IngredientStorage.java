@@ -1,12 +1,13 @@
 package com.KUAlchemists.backend.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Holds various types of ingredients.
  *
  */
-public class IngredientStorage {
+public class IngredientStorage implements Serializable {
 
     /**
      * List of ingredients in the storage.

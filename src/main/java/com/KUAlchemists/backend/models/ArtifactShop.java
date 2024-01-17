@@ -1,14 +1,11 @@
 package com.KUAlchemists.backend.models;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class ArtifactShop {
+public class ArtifactShop implements Serializable {
     private ArrayList<Artifact> artifactsForSale;
     private ArrayList<Artifact> createdArtifacts;
 

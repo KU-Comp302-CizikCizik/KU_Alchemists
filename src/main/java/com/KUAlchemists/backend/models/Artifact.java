@@ -1,9 +1,11 @@
 package com.KUAlchemists.backend.models;
 
+import java.io.Serializable;
+
 /**
  * Represents an Artifact card in the game with its unique abilities or effects.
  */
-public class Artifact {
+public class Artifact implements Serializable {
     private String name;
     private int cost;
     private String effect;
