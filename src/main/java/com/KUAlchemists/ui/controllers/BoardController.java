@@ -94,6 +94,9 @@ public class BoardController  implements PlayerObserver {
         else{
             System.out.println("Error: Invalid number of players");
         }
+
+        //Assuming the game starts with round 1
+        loadRound1();
     }
 
 
@@ -220,22 +223,18 @@ public class BoardController  implements PlayerObserver {
         //round_tour_info[1] = tour
 
         //load the round when round is changed
-//        if (round == 3) {
-//            loadRound3();
-//        } else if (round == 2) {
-//            lodRound2();
-//        } else if (round == 1) {
-//            loadRound1();
-//        }
+        if (round == 1) {
+            loadRound1();
+        } else if (round == 2) {
+            lodRound2();
+        }
 
+        //check whether the tour is last
         if(tour == 3) {
             endRoundButton.setEffect(new DropShadow(30, Color.WHITE));
         }else {
             endRoundButton.setEffect(null);
         }
-
-        //check whether the tour is last
-
         changeAvatars();
     }
 
@@ -278,18 +277,6 @@ public class BoardController  implements PlayerObserver {
         avatar2Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+2)%3));
     }
 
-    @FXML
-    public void endTheRound() {
-        //check whether final round or not
-        if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == 1) {
-            SceneLoader.getInstance().loadFinalScore();
-        } else {
-            changeRound();
-            // send data to server, or if the player is host send data to other clients.
-            NetworkHandler.getInstance().handleSendData();
-        }
-    }
-
     private void changeTwoPlayerAvatars() {
         Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
 
@@ -307,6 +294,7 @@ public class BoardController  implements PlayerObserver {
     private void loadRound1() {
         disableButtons(sellPotionButton);
         disableButtons(publishTheoryButton);
+        disableButtons(publicationTrackButton);
     }
 
     private void activateButtons(Button button) {
@@ -346,12 +334,12 @@ public class BoardController  implements PlayerObserver {
     private void lodRound2() {
         activateButtons(sellPotionButton);
         activateButtons(publishTheoryButton);
+        activateButtons(publicationTrackButton);
+
 
     }
 
     private void loadRound3() {
-        System.out.println("Debunk button activated");
-        //activateButtons(debunkButton);
     }
 
     public BoardController() {

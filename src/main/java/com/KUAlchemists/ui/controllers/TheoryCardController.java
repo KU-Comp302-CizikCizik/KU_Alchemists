@@ -1,8 +1,12 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.PublicationTrackHandler;
+import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -23,6 +27,25 @@ public class TheoryCardController {
 
 
     private String ingredientName;
+
+    @FXML
+    private Button debunkButton;
+
+    @FXML
+    private Button endorseButton;
+
+    @FXML
+    void initialize() {
+       if(GameEngine.getInstance().getGameRound() != 3){
+          disableButton(debunkButton);
+          disableButton(endorseButton);
+       }
+    }
+
+    private void disableButton(Button button) {
+        button.setDisable(true);
+        button.setEffect(new GaussianBlur(4));
+    }
 
     public void setPlayername(String txt) {
         player_txt.setText(txt);
