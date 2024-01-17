@@ -6,6 +6,7 @@ import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.network.NetworkHandler;
 
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.observer.GameTurnObserver;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
@@ -29,7 +30,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BoardController  implements PlayerObserver {
+public class BoardController  implements PlayerObserver, GameTurnObserver {
 
     @FXML
     private AnchorPane avatar1Pane;
@@ -460,5 +461,18 @@ public class BoardController  implements PlayerObserver {
     @FXML
     void mouseExitedDeductionBoard(MouseEvent event) {
         deductionBoardButton.setEffect(null);
+    }
+
+    @Override
+    public void onGameTurnChanged(int id) {
+        //Updat the avaliable actions & UI accordingly
+        System.out.println("Tamam kaptan : " + id);
+        System.out.println(GameEngine.getInstance().getCurrentPlayer().getId() == id);
+        /*
+        Platform.runLater(() -> {
+            // Assume playerIndex is available to determine which player's gold changed
+            changeRound();
+        });
+         */
     }
 }

@@ -5,9 +5,11 @@ import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.models.Potion;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.observer.GameStatusObserver;
+import com.KUAlchemists.backend.observer.GameTurnObserver;
 import com.KUAlchemists.backend.observer.PotionBrewingObserver;
 import com.KUAlchemists.backend.observer.PublicationTrackObserver;
 import com.KUAlchemists.backend.subjects.GameStatusData;
+import com.KUAlchemists.backend.subjects.GameTurnData;
 import com.KUAlchemists.backend.subjects.PotionBrewingData;
 import com.KUAlchemists.backend.subjects.PublicationTrackData;
 import javafx.application.Platform;
@@ -22,6 +24,8 @@ public class EventManager {
     private PublicationTrackData publicationTrackData;
 
     private GameStatusData gameStatusData;
+
+    private GameTurnData gameTurnData;
 
     /**
      * This method is used to get the instance of the class.
@@ -41,6 +45,7 @@ public class EventManager {
         potionBrewingData = new PotionBrewingData();
         publicationTrackData = new PublicationTrackData();
         gameStatusData = new GameStatusData();
+        gameTurnData = new GameTurnData();
     }
 
     /**
@@ -142,6 +147,39 @@ public class EventManager {
     public void removeGameStatusObserver(GameStatusObserver gameStatusObserver) {
         gameStatusData.removeObserver(gameStatusObserver);
     }
+
+    /**
+     * This method is used to notify the observers when a game turn is changed.
+     * @param gameTurn
+     */
+    private void notifyGameTurnObservers(int gameTurn) {
+        gameTurnData.onGameTurnChangedPerformed(gameTurn);
+    }
+
+    /**
+     * This method is used to notify the observers when a game turn is changed.
+     * @param gameTurn
+     */
+    public void onGameTurnChanged(int gameTurn) {
+        notifyGameTurnObservers(gameTurn);
+    }
+
+    /**
+     * This method is used to register an observer.
+     * @param gameTurnObserver
+     */
+    public void registerGameTurnObserver(GameTurnObserver gameTurnObserver) {
+        gameTurnData.registerObserver(gameTurnObserver);
+    }
+
+    /**
+     * This method is used to remove an observer.
+     * @param gameTurnObserver
+     */
+    public void removeGameTurnObserver(GameTurnObserver gameTurnObserver) {
+        gameTurnData.removeObserver(gameTurnObserver);
+    }
+
 
 
 
