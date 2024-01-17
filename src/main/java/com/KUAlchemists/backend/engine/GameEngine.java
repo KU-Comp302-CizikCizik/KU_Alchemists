@@ -214,4 +214,8 @@ public class GameEngine {
         currentTour = gameTour;
     }
 
+    public int getGameRound() {
+        return currentRound.getRound();
+    }
+
 }
