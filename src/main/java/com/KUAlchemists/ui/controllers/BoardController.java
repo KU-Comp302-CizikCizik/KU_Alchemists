@@ -3,6 +3,7 @@ import com.KUAlchemists.backend.engine.GameEngine;
 
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
+import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.network.NetworkHandler;
 
 import com.KUAlchemists.backend.models.Player;
@@ -79,6 +80,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
 
     @FXML
     void initialize() {
+        EventManager.getInstance().registerGameTurnObserver(this);
         //TO-DO: set the avatar cards
         playerControllers = new ArrayList<>();
         cardBoxList = new ArrayList<>();

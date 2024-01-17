@@ -41,6 +41,7 @@ public class WaitingRoomController implements GameStatusObserver {
         }
         WaitingRoomHandler.getInstance().startGameForAllPlayers();
         SceneLoader.getInstance().loadBoard();
+
     }
 
     @Override

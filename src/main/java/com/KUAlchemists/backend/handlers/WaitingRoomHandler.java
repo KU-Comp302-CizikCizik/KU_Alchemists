@@ -30,10 +30,8 @@ public class WaitingRoomHandler {
         GameUpdateHandler.getInstance().setShouldIDInit(false);
         NetworkHandler.getInstance().handleSendData(); //send the most recent data to all players
         GameStatusState gameStatusState = new GameStatusState(GameStatus.START_GAME);
-        GameTurnState gameTurnState = new GameTurnState(0);
         List<State> states = new ArrayList<>();
         states.add(gameStatusState);
-        states.add(gameTurnState);
         NetworkHandler.getInstance().handleSendData(states); // send the game status to all players
     }
 }

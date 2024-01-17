@@ -131,15 +131,6 @@ public class SceneLoader {
         MainApplicationUI.stage.show();
     }
 
-    public void loadAvailableRoomsScreen(){
-        root = UILoader.loadFXML(UIConstants.AVAILABLE_ROOMS_UI_FXML);
-        Scene oldScene = MainApplicationUI.stage.getScene();
-        MainApplicationUI.scene = new Scene(root, UIConstants.WINDOW_WIDTH, UIConstants.WINDOW_HEIGHT);
-        MainApplicationUI.stage = (Stage) oldScene.getWindow();
-        MainApplicationUI.stage.setScene(MainApplicationUI.scene);
-        MainApplicationUI.stage.centerOnScreen();
-        MainApplicationUI.stage.show();
-    }
 
     public void loadAvatarSelectScreen(){
         root = UILoader.loadFXML(UIConstants.AVATAR_SELECT_UI_FXML);

@@ -51,19 +51,12 @@ public class Server {
     public void broadcast(Object message,ClientHandler filter) {
         for (ClientHandler clientHandler : handlers) {
             try {
-                if(filter != clientHandler) {
+                if (filter != clientHandler) {
                     System.out.println("Sending message to client: " + clientHandler);
                     clientHandler.send(message);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-        }
-        synchronized (filter) {
-            try {
-                filter.send(message);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
         }
     }
