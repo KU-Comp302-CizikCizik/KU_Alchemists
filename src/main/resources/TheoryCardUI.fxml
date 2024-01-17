@@ -7,22 +7,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: #12232bd9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.TheoryCardController">
    <children>
-      <HBox prefHeight="21.0" prefWidth="221.0">
-         <children>
-            <Text fx:id="player_txt" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Players Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="10.0" />
-               </HBox.margin>
-            </Text>
-         </children>
-      </HBox>
+      <HBox prefHeight="21.0" prefWidth="221.0" />
       <HBox prefHeight="114.0" prefWidth="209.0">
          <children>
             <ImageView fx:id="ingredient_image" fitHeight="89.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
@@ -47,12 +35,18 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Button mnemonicParsing="false" onAction="#endorseClicked" prefHeight="20.0" prefWidth="82.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="r" text="Endorse">
+                              <Button fx:id="endorseButton" mnemonicParsing="false" onAction="#endorseClicked" prefHeight="20.0" prefWidth="82.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="sofia" stylesheets="@CSS/style.css" text="Endorse">
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
                               </Button>
-                              <Button mnemonicParsing="false" onAction="#debunkClicked" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" text="Debunk" />
+                              <Button fx:id="debunkButton" mnemonicParsing="false" onAction="#debunkClicked" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" styleClass="sofia" stylesheets="@CSS/style.css" text="Debunk">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></Button>
                            </children>
                         </VBox>
                      </children>

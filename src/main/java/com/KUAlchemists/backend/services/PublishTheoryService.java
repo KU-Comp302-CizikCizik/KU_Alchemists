@@ -54,11 +54,26 @@ public class PublishTheoryService {
 
         boolean hasTheorySeal = player.getTheorySeals().contains(seals.get(0));
 
-        if (!theoryExists && player.getGold() >= 1 & hasTheorySeal) {
+        if (!theoryExists && player.getGold() >= 1 & hasTheorySeal && player.getActionPoints()>0) {
             HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
             playerTheorySealsMap.put(player, seals.get(0));
             Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
             player.setGold(player.getGold() - 1);
+            player.deduceActionPoints(1);
+            theory.setPublished(true);
+            player.setReputation(player.getReputation() + 1);
+            player.getPublishedTheories().add(theory);
+            Board.getInstance().getPublishedTheoriesList().add(theory);
+            player.getTheorySeals().remove(seals.get(0));
+            return true;
+
+        }
+        // this condition is for printing press artifact.
+        // if the player has printing press artifact, he can publish a theory without paying gold.
+        else if (!theoryExists && Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press").isActivated() & hasTheorySeal) {
+            HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
+            playerTheorySealsMap.put(player, seals.get(0));
+            Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
             theory.setPublished(true);
             player.setReputation(player.getReputation() + 1);
             player.getPublishedTheories().add(theory);

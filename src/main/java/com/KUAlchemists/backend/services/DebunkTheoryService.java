@@ -13,8 +13,10 @@ import java.util.HashMap;
 public class DebunkTheoryService {
 
     private final TheoryService theoryService;
+    private WisdomIdolService wisdomIdolService;
     public DebunkTheoryService() {
         this.theoryService = new TheoryService();
+        this.wisdomIdolService = new WisdomIdolService();
     }
     /**
      * Attempts to debunk a theory.
@@ -24,6 +26,9 @@ public class DebunkTheoryService {
      * @return true if the theory was successfully debunked; false otherwise.
      */
     public boolean debunkTheory(Theory selectedTheory, String aspect, Ingredient actualIngredient) {
+        //Update action point of the player
+        GameEngine.getInstance().getCurrentPlayer().deduceActionPoints(1);
+
         Alchemical acutalAlchemical = actualIngredient.getAlchemical();
         Alchemical assertedAlchemical = selectedTheory.getIngredient().getAlchemical();
         Aspect actualAspect = getAspectByColor(aspect, acutalAlchemical);
@@ -66,6 +71,30 @@ public class DebunkTheoryService {
             }
 
         }
+        // made a for loop for each player that checks if player has an active Wisdom Idol artifact
+        // if player has an active Wisdom Idol artifact, it returns the reputation points that the player lost
+        // calls wisdomIdolService.sendNotificationToBoardHandler(selectedTheory, player) to send a notification to the board handler
+        for (Player player : GameEngine.getInstance().getPlayerList()) {
+
+            if (Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol") != null && Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol").isActivated()) {
+                TheorySeal theorySeal = playerTheorySealsMap.get(player);
+                int deduction = 0;
+                if(theorySeal == TheorySeal.GOLD_STARRED){
+                    deduction = -5;
+                }
+                else if(theorySeal == TheorySeal.SILVER_STARRED){
+                    deduction = -3;
+                }
+                else if (theorySeal != correspondingSeal){
+                    deduction = -1;
+                }
+                player.deduceReputationPoints(deduction);
+                wisdomIdolService.sendNotificationToBoardHandler(selectedTheory, player, deduction);
+
+            }
+        }
+
+
     }
 
     private TheorySeal getCorrespondingSeal(String assertedAspectString) {

@@ -18,6 +18,7 @@ public class Board {
     private final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
     private final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
     private List<Theory> publishedTheoriesList = new ArrayList<>();
+    private ArtifactShop artifactShop = ArtifactShop.getInstance();
     private final Deck deck = Deck.getInstance();
 
     private Board (){
@@ -42,7 +43,6 @@ public class Board {
             createEmptyStoragesForPlayer(player);
         }
     }
-
     public IngredientStorage getIngredientStorage(Player player){
         return ingredientStorages.get(player);
     }
@@ -50,19 +50,9 @@ public class Board {
     public IngredientStorage getIngredientStorage(String playerName){
         return ingredientStorages.get(GameEngine.getInstance().getPlayer(playerName));
     }
-
     public HashMap<Player, IngredientStorage> getIngredientStorages(){
         return ingredientStorages;
     }
-
-    public ArtifactStorage getArtifactStorage(Player player){
-        return artifactStorages.get(player);
-    }
-
-    public void initializePlayer(Player player) {
-        artifactStorages.put(player, new ArtifactStorage());
-    }
-
     public Deck getDeck(){
         return deck;
     }
@@ -75,10 +65,16 @@ public class Board {
         return potionStorages.get(player);
     }
 
+    public void addArtifactToStorage(Player player, Artifact artifact){
+        artifactStorages.get(player).addArtifact(artifact);
+    }
+    public ArtifactStorage getArtifactStorage(Player player){
+        return artifactStorages.get(player);
+    }
+
     public void addPotionToStorage(Player player, Potion potion){
         potionStorages.get(player).addPotion(potion);
     }
-
     public ArrayList<Theory> getPublishedTheoriesList() {
         ArrayList<Theory> publishedTheoriesList = new ArrayList<>();
         for (Player player : GameEngine.getInstance().getPlayerList()) {
@@ -86,7 +82,6 @@ public class Board {
         }
         return publishedTheoriesList;
     }
-
     public void updateTheTheory(Theory selectedTheory) {
         //There is only one theory for each ingredient
         ArrayList<Theory> publishedTheoriesList = getPublishedTheoriesList();
@@ -98,21 +93,16 @@ public class Board {
             }
         }
     }
-
-
     public HashMap<Player, ArtifactStorage> getArtifactStorages() {
         return artifactStorages;
     }
-
     public void setPublishedTheoriesList(List<Theory> newList){
         this.publishedTheoriesList = newList;
         // TODO: notify observers
     }
-
     public BoardState getState(){
         return new BoardState(publishedTheoriesList);
     }
-
     public void updateState(BoardState state){
         setPublishedTheoriesList(state.getPublishedTheoriesList());
     }

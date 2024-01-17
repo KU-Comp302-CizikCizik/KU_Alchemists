@@ -13,19 +13,19 @@
             <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
          </image>
       </ImageView>
-      <Button fx:id="startButton" layoutX="65.0" layoutY="231.0" mnemonicParsing="false" onAction="#startGame" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" text="Start Game">
+      <Button fx:id="startButton" layoutX="65.0" layoutY="231.0" mnemonicParsing="false" onAction="#startGame" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" styleClass="sofia" text="Start Game">
          <font>
-            <Font name="Book Antiqua" size="12.0" />
+            <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="settingButton" layoutX="65.0" layoutY="308.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" text="Settings">
+      <Button fx:id="settingButton" layoutX="65.0" layoutY="308.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" styleClass="sofia" text="Settings">
          <font>
-            <Font name="Book Antiqua" size="12.0" />
+            <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="rulesButton" layoutX="64.0" layoutY="382.0" mnemonicParsing="false" onAction="#openRules" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" text="Rules">
+      <Button fx:id="rulesButton" layoutX="64.0" layoutY="382.0" mnemonicParsing="false" onAction="#openRules" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" styleClass="sofia" text="Rules">
          <font>
-            <Font name="Book Antiqua" size="12.0" />
+            <Font size="18.0" />
          </font>
       </Button>
    </children>

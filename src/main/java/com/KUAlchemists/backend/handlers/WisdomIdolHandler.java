@@ -1,12 +1,23 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Ingredient;
+import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.services.WisdomIdolService;
+
+import java.time.chrono.MinguoEra;
+import java.util.ArrayList;
+
 public class WisdomIdolHandler {
 
     private static WisdomIdolHandler instance = null;
 
+    private WisdomIdolService wisdomIdolService;
+
     private String debunkIngredientName;
 
     private WisdomIdolHandler() {
+        this.wisdomIdolService = new WisdomIdolService();
         debunkIngredientName = "";
     }
 
@@ -17,20 +28,15 @@ public class WisdomIdolHandler {
         return instance;
     }
 
-    public void setDebunkIngredientName(String ingredientName) {
-        debunkIngredientName = ingredientName;
-    }
-
-    public String getDebunkIngredientName() {
-
-        //for testing purposes I have used frog as the ingredient name
-        //it should return the ingredient name that is debunked
-        return "frog";
-    }
-
+    // activating the wisdom idol
     public void useWisdomIdol() {
-        System.out.println("Wisdom Idol used");
-        //TO-DO: implement the useWisdomIdol method
-        //he shouldn't lose reputation if he uses the wisdom idol
+        ArrayList<Object> notfication = BoardHandler.getInstance().getNotificationMap().get(GameEngine.getInstance().getCurrentPlayer());
+        int deductedPoint = (int) notfication.get(1);
+        wisdomIdolService.applyWizardIdol(GameEngine.getInstance().getCurrentPlayer(),deductedPoint );
+        BoardHandler.getInstance().deleteNotification(notfication);
+    }
+    public String getDebunkIngredientName() {
+        String ingredient = BoardHandler.getInstance().getNotificationMap().get(GameEngine.getInstance().getCurrentPlayer()).get(0).toString();
+        return ingredient;
     }
 }

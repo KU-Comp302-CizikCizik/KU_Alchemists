@@ -70,6 +70,7 @@ public class EndorseHandler implements PublicationTrackObserver {
         GameEngine.getInstance().getCurrentPlayer().removeTheorySeal(seal);
         selectedTheory.addEndorser(GameEngine.getInstance().getCurrentPlayer(),seal);
         Board.getInstance().updateTheTheory(selectedTheory);
+        GameEngine.getInstance().getCurrentPlayer().deduceActionPoints(1);
     }
 
     /**

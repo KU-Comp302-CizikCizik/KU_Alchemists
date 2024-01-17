@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ScoringHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -106,7 +107,8 @@ public class FinalScoringController {
             userSlots[i].getFinalPoint().setText("Final Point: " + String.valueOf(score));
             userSlots[i].getAlchemistName().setText("Alchemist Name: " + playerPosition.get(i));
             userSlots[i].getUserMainSlot().setVisible(true);
-            String imagePath = "/com.KUAlchemists/images/adventurer/" + "adventurer-photo-"+(i+1)+ ".png";
+            String avatar = BoardHandler.getInstance().getAvatarPath(rankingList.get(i));
+            String imagePath = "/com.KUAlchemists/images/profile_p/" + avatar + ".png";
             // Load the image using the class loader to ensure it works regardless of the build type
             try {
                 Image image = new Image(getClass().getResourceAsStream(imagePath));

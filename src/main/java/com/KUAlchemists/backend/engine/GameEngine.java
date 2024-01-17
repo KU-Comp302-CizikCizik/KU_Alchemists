@@ -217,6 +217,7 @@ public class GameEngine {
         currentTour = gameTour;
     }
 
+
     public State getState() {
         return new GameEngineState(new ArrayList<>(playerList));
     }
@@ -225,6 +226,10 @@ public class GameEngine {
         ArrayList<Player> playerArrayList1 = new ArrayList<>(playerArrayList);
         playerList.clear();
         playerList.addAll(playerArrayList1);
+    }
+  
+    public int getGameRound() {
+        return currentRound.getRound();
     }
 
 }

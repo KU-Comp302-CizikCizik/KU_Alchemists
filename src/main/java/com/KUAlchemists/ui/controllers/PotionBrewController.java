@@ -62,19 +62,6 @@ public class PotionBrewController {
         selectIngredients();
         PotionBrewingAreaHandler.getInstance().setIngredientsToBeBrewed(selectedIngredients.get(0), selectedIngredients.get(1));
         SceneLoader.getInstance().loadMakeExperiment();
-
-
-//        String imagePath = "com.KUAlchemists/images/potions/" + potion + ".png";
-        // Load the image using the class loader to ensure it works regardless of the build type
-
-//        try {
-//            Image image = new Image(getClass().getClassLoader().getResourceAsStream(imagePath));
-//            // Set the image to the ImageView
-//            potion_1.setImage(image);
-//
-//        }catch (Exception e){
-//            System.err.println(e.getMessage());
-//        }
     }
 
     @FXML

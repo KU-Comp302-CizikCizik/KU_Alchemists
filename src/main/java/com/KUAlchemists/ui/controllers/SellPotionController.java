@@ -175,20 +175,9 @@ public class SellPotionController{
                     }
                     SellPotionHandler.getInstance().setStatusNull();
                 }
-//                final Stage stage = (Stage) button.getScene().getWindow();
-//                stage.close();
         }
     }
 
-
-//    public void loadFinalScene(){
-//        if(SellPotionHandler.getInstance().getStatus().equals("bad")){
-//            scenerio.runScene5();
-//        }else if(SellPotionHandler.getInstance().getStatus().equals("good")){
-//            scenerio.runScene6();
-//        }
-//        SellPotionHandler.getInstance().setStatusNull();
-//    }
 
     public void mouseEntered(MouseEvent mouseEvent) {
         PotionSlot relevantSlot = null;

@@ -7,7 +7,8 @@ public class Artifact {
     private String name;
     private int cost;
     private String effect;
-    private int victoryPoints;
+    private final int victoryPoints;
+    private boolean activated = false;
 
     /**
      * Constructor for the Artifact class.
@@ -15,45 +16,40 @@ public class Artifact {
      * @param name          The name of the artifact.
      * @param cost          The cost to buy the artifact.
      * @param effect        The description of the effect of the artifact.
-     * @param victoryPoints The victory points the artifact contributes at the end of the game.
      */
     public Artifact(String name, int cost, String effect, int victoryPoints) {
         this.name = name;
         this.cost = cost;
         this.effect = effect;
         this.victoryPoints = victoryPoints;
+        this.activated = false;
     }
-
     // Getters and setters for each field
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getCost() {
         return cost;
     }
-
     public void setCost(int cost) {
         this.cost = cost;
     }
-
     public String getEffect() {
         return effect;
     }
-
     public void setEffect(String effect) {
         this.effect = effect;
     }
-
     public int getVictoryPoints() {
         return victoryPoints;
     }
-
-    public void setVictoryPoints(int victoryPoints) {
-        this.victoryPoints = victoryPoints;
+    public boolean isActivated() {
+        return activated;
+    }
+    public void setActivated(boolean activated) {
+        this.activated = activated;
     }
 }

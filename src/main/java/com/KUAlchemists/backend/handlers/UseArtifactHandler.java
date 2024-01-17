@@ -3,16 +3,22 @@ package com.KUAlchemists.backend.handlers;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.UseArtifactService;
+import com.KUAlchemists.backend.services.WisdomIdolService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UseArtifactHandler {
     private final UseArtifactService useArtifactService;
+    private WisdomIdolService wisdomIdolService;
+
+    private static ArrayList<String> usedArtifacts = new ArrayList<>();
     private static UseArtifactHandler INSTANCE;
 
     private UseArtifactHandler() {
         this.useArtifactService = new UseArtifactService();
+        this.wisdomIdolService = new WisdomIdolService();
 
     }
 
@@ -35,16 +41,26 @@ public class UseArtifactHandler {
     //new:: returns used artifacts list.
     public List<String> handleUsedArtifacts(){
 
-        return useArtifactService.getUsedArtifacts();
+//        return useArtifactService.getUsedArtifacts();
 
+        return usedArtifacts;
+    }
+    public List<String> handleGetAllArtifacts(){
+        return Arrays.asList("elixir_of_insight", "philosophers_compass", "magic_mortar", "printing_press", "wisdom_idol");
     }
     public void handleRemoveArtifact(String name){
-        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
-        useArtifactService.removeArtifactFromStorage(name, currentPlayer);
+        useArtifactService.removeArtifactFromStorage(name);
+        usedArtifacts.add(name);
     }
     public List <String> handleStorageArtifact(){
-        //return buyArtifactService.getBoughtArtifacts();
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
         return useArtifactService.getStorageArtifacts(currentPlayer);
+    }
+
+    public void deduceActionPoint(){
+        useArtifactService.decreaseActionPoint(GameEngine.getInstance().getCurrentPlayer());
+    }
+    public void activateWisdomIdol() {
+        wisdomIdolService.activateWisdomIdol(GameEngine.getInstance().getCurrentPlayer());
     }
 }
