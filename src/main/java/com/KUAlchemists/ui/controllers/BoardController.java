@@ -2,7 +2,6 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 
 import com.KUAlchemists.backend.enums.ApplicationMode;
-import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.BoardHandler;
@@ -10,9 +9,9 @@ import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
 
 import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.GameStatusObserver;
 import com.KUAlchemists.backend.observer.GameTurnObserver;
+import com.KUAlchemists.backend.observer.OnlinePlayersUpdateObserver;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
@@ -33,11 +32,10 @@ import javafx.util.Duration;
 
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BoardController  implements PlayerObserver, GameTurnObserver, GameStatusObserver {
+public class BoardController  implements PlayerObserver, GameTurnObserver, GameStatusObserver, OnlinePlayersUpdateObserver {
 
     @FXML
     private transient AnchorPane avatar1Pane;
@@ -106,6 +104,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         EventManager.getInstance().registerGameTurnObserver(this);
         EventManager.getInstance().registerGameStatusObserver(this);
         BoardHandler.getInstance().registerPlayerObserver(this);
+        EventManager.getInstance().registerOnlinePlayersUpdateObserver(this);
 
         //TO-DO: set the avatar cards
         playerControllers = new ArrayList<>();
@@ -611,13 +610,16 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             });
         }
 
-        Platform.runLater(() -> {
-            BoardHandler.getInstance().registerPlayerObserver(this);
-        });
+        //Platform.runLater(() -> EventManager.getInstance().registerOnlinePlayersUpdateObserver(this));
 
         Platform.runLater(() -> {
             changeAvatars();
         });
+
+    }
+
+    private void updateUI() {
+
 
     }
 
@@ -629,4 +631,14 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         }
     }
 
+    @Override
+    public void onUpdateOnlinePlayer() {
+        BoardHandler.getInstance().removeAllPlayerObservers();
+        BoardHandler.getInstance().registerPlayerObserver(this);
+        for(int i =0;i<playerControllers.size();i++){
+            playerControllers.get(i).setActionPoint(BoardHandler.getInstance().getPlayerActionPoints(i));
+            playerControllers.get(i).setGoldPoint(BoardHandler.getInstance().getPlayerGold(i));
+            playerControllers.get(i).setReputationPoint(BoardHandler.getInstance().getPlayerReputation(i));
+        }
+    }
 }

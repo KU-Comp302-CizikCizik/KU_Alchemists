@@ -280,9 +280,8 @@ public class GameEngine {
 
 
     public State getState() {
-        for (Player player : playerList) {
-            BoardHandler.getInstance().removeAllPlayerObservers(player);
-        }
+
+        BoardHandler.getInstance().removeAllPlayerObservers();
         return new GameEngineState(new CopyOnWriteArrayList<>(GameEngine.getInstance().getPlayerList()));
     }
 

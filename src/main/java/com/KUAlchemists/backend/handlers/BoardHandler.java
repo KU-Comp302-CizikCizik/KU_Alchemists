@@ -91,7 +91,7 @@ public class BoardHandler {
         }
     }
 
-    public void removeAllPlayerObservers(Player player) {
+    public void removeAllPlayerObservers() {
         for(Player player1 : GameEngine.getInstance().getPlayerList()){
             player1.removeAllObservers();
         }

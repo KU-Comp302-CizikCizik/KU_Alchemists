@@ -29,9 +29,9 @@ public class StateUpdater implements Serializable {
         GameEngine.getInstance().setPlayerList(new ArrayList<>(playerArrayList));
         GameEngine.getInstance().setCurrentPlayer(currPlayerIndex);
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
-        for(Player p: GameEngine.getInstance().getPlayerList()){
-            p.notifyObservers();
-        }
+
+        EventManager.getInstance().onUpdateOnlinePlayers();
+
     }
 
     public void updateBoard(BoardState boardState) {
