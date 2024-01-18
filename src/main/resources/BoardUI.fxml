@@ -34,19 +34,19 @@
             <Font size="32.0" />
          </font>
       </Button>
-      <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#helpButtonClicked" prefHeight="28.0" prefWidth="32.0" styleClass="HelpBackground" />
-      <Button layoutX="1044.0" layoutY="8.0" mnemonicParsing="false" onAction="#pauseButtonClicked" prefHeight="28.0" prefWidth="32.0" styleClass="PauseBackground" />
-      <Button layoutX="386.0" layoutY="362.0" mnemonicParsing="false" onAction="#ingredientStorageClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Ingredient Storage" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="helpButton" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#helpButtonClicked" prefHeight="28.0" prefWidth="32.0" styleClass="HelpBackground" />
+      <Button fx:id="pauseButton" layoutX="1044.0" layoutY="8.0" mnemonicParsing="false" onAction="#pauseButtonClicked" prefHeight="28.0" prefWidth="32.0" styleClass="PauseBackground" />
+      <Button fx:id="ingredientStorageButton" layoutX="386.0" layoutY="362.0" mnemonicParsing="false" onAction="#ingredientStorageClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Ingredient Storage" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="531.0" layoutY="197.0" mnemonicParsing="false" onAction="#buyArtifactClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text=" Buy Artifact" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="buyArtifactButton" layoutX="531.0" layoutY="197.0" mnemonicParsing="false" onAction="#buyArtifactClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text=" Buy Artifact" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="522.0" layoutY="362.0" mnemonicParsing="false" onAction="#useArtifactClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Use Artifact" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="useArtifactButton" layoutX="522.0" layoutY="362.0" mnemonicParsing="false" onAction="#useArtifactClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Use Artifact" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -71,7 +71,7 @@
             <DropShadow />
          </effect>
       </Text>
-      <Button layoutX="387.0" layoutY="194.0" mnemonicParsing="false" onAction="#forageIngredientClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Forage Ingredient" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="forageIngredientButton" layoutX="387.0" layoutY="194.0" mnemonicParsing="false" onAction="#forageIngredientClicked" prefHeight="128.0" prefWidth="103.0" styleClass="CardBackground" text="Forage Ingredient" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>

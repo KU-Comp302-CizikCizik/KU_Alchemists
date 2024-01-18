@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
@@ -68,6 +69,24 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
     @FXML
     private Button publicationTrackButton;
 
+    @FXML
+    private Button helpButton;
+
+    @FXML
+    private Button pauseButton;
+
+    @FXML
+    private Button forageIngredientButton;
+
+    @FXML
+    private Button buyArtifactButton;
+
+    @FXML
+    private Button useArtifactButton;
+
+    @FXML
+    private Button ingredientStorageButton;
+
 
     private Integer currentRound;
     private Integer currentTour;;
@@ -75,6 +94,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
     private ArrayList<AvatarCardController> playerControllers;
 
     private ArrayList<Pane> cardBoxList;
+
 
 
 
@@ -100,8 +120,14 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
             System.out.println("Error: Invalid number of players");
         }
 
-        //Assuming the game starts with round 1
-        loadRound1();
+        currentRound = 1;
+        currentTour = 1;
+        if(GameEngine.getInstance().getUserType() == UserType.HOST){
+            enableInteraction();
+        }
+        else{
+            disableInteraction();
+        }
     }
 
 
@@ -300,16 +326,6 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
         avatar4Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%2));
     }
 
-    private void disableButtons(Button button) {
-        button.setDisable(true);
-        button.setOpacity(0.5);
-    }
-
-    private void loadRound1() {
-        disableButtons(sellPotionButton);
-        disableButtons(publishTheoryButton);
-        disableButtons(publicationTrackButton);
-    }
 
     private void activateButtons(Button button) {
         if(!button.isDisable()){
@@ -343,17 +359,6 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
         // Add the KeyFrames to the Timeline
         timeline.getKeyFrames().addAll(startFrame, endFrame,startGlow,endGlow);
         timeline.play();
-    }
-
-    private void lodRound2() {
-        activateButtons(sellPotionButton);
-        activateButtons(publishTheoryButton);
-        activateButtons(publicationTrackButton);
-
-
-    }
-
-    private void loadRound3() {
     }
 
     public BoardController() {
@@ -465,6 +470,75 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
         deductionBoardButton.setEffect(null);
     }
 
+
+    private void enableInteraction() {
+        if(currentRound == 1){
+            loadRound1();
+        }
+        else if(currentRound == 2){
+            lodRound2();
+        }
+        else{
+            loadRound3();
+        }
+        loadDefaultActions();
+
+    }
+
+    private void loadRound1() {
+        enableButtons(forageIngredientButton);
+        enableButtons(ingredientStorageButton);
+        enableButtons(buyArtifactButton);
+        enableButtons(potionBewingButton);
+    }
+
+    private void lodRound2() {
+        activateButtons(sellPotionButton);
+        activateButtons(publishTheoryButton);
+        activateButtons(publicationTrackButton);
+
+    }
+
+    private void loadRound3() {
+
+    }
+
+    private void disableInteraction() {
+        disableButtons(publishTheoryButton);
+        disableButtons(publicationTrackButton);
+        disableButtons(deductionBoardButton);
+        disableButtons(potionBewingButton);
+        disableButtons(sellPotionButton);
+        disableButtons(helpButton);
+        disableButtons(pauseButton);
+        disableButtons(ingredientStorageButton);
+        disableButtons(buyArtifactButton);
+        disableButtons(useArtifactButton);
+        disableButtons(endRoundButton);
+        disableButtons(forageIngredientButton);
+
+    }
+
+    private void loadDefaultActions() {
+        //actions that are available regardless of the round
+        enableButtons(ingredientStorageButton);
+        enableButtons(useArtifactButton);
+        enableButtons(endRoundButton);
+        enableButtons(helpButton);
+        enableButtons(pauseButton);
+        enableButtons(deductionBoardButton);
+    }
+
+    private void enableButtons(Button button) {
+        button.setDisable(false);
+        button.setOpacity(1.0);
+    }
+
+    private void disableButtons(Button button) {
+        button.setDisable(true);
+        button.setOpacity(0.5);
+    }
+
     @Override
     public void onGameTurnChanged(int id) {
         //Updat the avaliable actions & UI accordingly
@@ -474,14 +548,16 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
         System.out.println("Is it my turn: " + BoardHandler.getInstance().isItCurrentPlayerTurn());
         System.out.println("Recieved id : " + id);
         if(BoardHandler.getInstance().isItCurrentPlayerTurn()){
-            System.out.println("It is my turn");
-            //Update the UI
+            Platform.runLater(() -> {
+                enableInteraction();
+            });
         }
-        /*
-        Platform.runLater(() -> {
-            // Assume playerIndex is available to determine which player's gold changed
-            changeRound();
-        });
-         */
+        else{
+            Platform.runLater(() -> {
+                disableInteraction();
+            });
+        }
     }
+
+
 }

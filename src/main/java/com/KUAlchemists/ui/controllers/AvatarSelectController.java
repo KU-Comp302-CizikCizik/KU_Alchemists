@@ -85,7 +85,7 @@ public class AvatarSelectController {
             // All players have selected, proceed to the main game
             txt.setText("You can start the game now!");
             startGameButton.setDisable(false); // Enable the Start Game button
-            startGameButton.setOpacity(1.0);
+            startGameButton.setOpacity(0.90);
 
        }
     }
@@ -105,7 +105,6 @@ public class AvatarSelectController {
         Glow selectGlow = new Glow(1.4f);
         clickedImage.setEffect(selectGlow);
 
-        // Your implementation for glow effect on hover (if needed)
     }
 
     @FXML

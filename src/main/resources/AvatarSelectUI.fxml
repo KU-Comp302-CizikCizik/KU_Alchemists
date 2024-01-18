@@ -57,6 +57,6 @@
             <Font name="Colonna MT" size="48.0" />
          </font>
       </Text>
-      <Button fx:id="startGameButton" disable="true" layoutX="458.0" layoutY="646.0" onAction="#loadBoard" opacity="0.85" prefHeight="60.0" prefWidth="161.0" style="-fx-background-color: #b38b55; -fx-text-fill: #ffffff;" styleClass="sofia-24" stylesheets="@CSS/style.css" text="Join" />
+      <Button fx:id="startGameButton" disable="true" layoutX="458.0" layoutY="646.0" onAction="#loadBoard" opacity="0.71" prefHeight="60.0" prefWidth="161.0" style="-fx-background-color: #b38b55; -fx-text-fill: #fff0b2;" styleClass="sofia-24" stylesheets="@CSS/style.css" text="Join" />
    </children>
 </AnchorPane>
