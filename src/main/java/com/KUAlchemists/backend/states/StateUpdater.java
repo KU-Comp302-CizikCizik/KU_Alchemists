@@ -2,6 +2,7 @@ package com.KUAlchemists.backend.states;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
+import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
@@ -27,6 +28,9 @@ public class StateUpdater implements Serializable {
         GameEngine.getInstance().setPlayerList(playerArrayList);
         GameEngine.getInstance().setCurrentPlayer(currPlayerIndex);
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
+        for(Player p: GameEngine.getInstance().getPlayerList()){
+            p.notifyObservers();
+        }
     }
 
     public void updateBoard(BoardState boardState) {

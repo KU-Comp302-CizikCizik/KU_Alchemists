@@ -615,22 +615,8 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             changeAvatars();
         });
 
-        Platform.runLater(() -> {
-            updateOnlineUI();
-        });
-
     }
 
-    private void updateOnlineUI() {
-        if(playerControllers == null) return;
-        for(int i =0;i <playerControllers.size();i++){
-            onPlayerReputationChanged(BoardHandler.getInstance().getPlayerReputation(i), i);
-            onPlayerActionPointsChanged(BoardHandler.getInstance().getPlayerActionPoints(i), i);
-            onPlayerGoldChanged(BoardHandler.getInstance().getPlayerGold(i), i);
-        }
-
-
-    }
 
     @Override
     public void onGameStatusChanged(GameStatus status) {
@@ -638,4 +624,5 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
            Platform.runLater(()-> SceneLoader.getInstance().loadFinalScoring());
         }
     }
+
 }
