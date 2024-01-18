@@ -1,10 +1,11 @@
 package com.KUAlchemists.backend.enums;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public enum PlayerSeal {
+public enum PlayerSeal implements Serializable {
 
     /**
      * Seal colors

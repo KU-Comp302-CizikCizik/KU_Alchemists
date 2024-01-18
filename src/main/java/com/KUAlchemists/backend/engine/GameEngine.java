@@ -8,6 +8,7 @@ import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.states.GameEngineState;
 import com.KUAlchemists.backend.states.GameTurnState;
 import com.KUAlchemists.backend.states.State;
+import javafx.application.Platform;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -190,7 +191,8 @@ public class GameEngine {
         GameTurnState gameTurnState = new GameTurnState(currentClientID);
         ArrayList<State> states = new ArrayList<>();
         states.add(gameTurnState);
-        NetworkHandler.getInstance().handleSendDataWith(states);
+        Platform.runLater(() ->NetworkHandler.getInstance().handleSendDataWith(states));
+
     }
 
     /**

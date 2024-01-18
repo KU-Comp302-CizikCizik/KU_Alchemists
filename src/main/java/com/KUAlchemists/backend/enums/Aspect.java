@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.enums;
 
-public enum Aspect {
+import java.io.Serializable;
+
+public enum Aspect implements Serializable {
     POSITIVE_BIG,
     NEGATIVE_BIG,
     POSITIVE_SMALL,
