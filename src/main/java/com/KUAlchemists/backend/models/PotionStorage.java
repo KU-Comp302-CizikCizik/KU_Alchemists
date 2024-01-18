@@ -2,9 +2,10 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.PotionEffect;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PotionStorage {
+public class PotionStorage implements Serializable {
 
     private ArrayList<Potion> potionsList = new ArrayList<Potion>();
 

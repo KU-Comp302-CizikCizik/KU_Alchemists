@@ -13,6 +13,21 @@ public enum GameMode {
         this.value = value;
     }
 
+    public static GameMode getGameModeByInteger(int size) {
+        if(size == 2){
+            return TWO_PLAYER;
+        }
+        else if(size == 3){
+            return THREE_PLAYER;
+        }
+        else if(size == 4){
+            return FOUR_PLAYER;
+        }
+        else{
+            throw new EnumConstantNotPresentException(GameMode.class, Integer.toString(size));
+        }
+    }
+
     public int getNumberOfPlayers(){
         return value;
     }

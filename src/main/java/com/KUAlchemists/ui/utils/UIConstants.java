@@ -7,7 +7,6 @@ public class UIConstants {
     public static final String NUMBER_OF_PLAYERS_UI_FXML = "NumberOfPlayersSelectUI.fxml";
     public static final String ONLINE_GAME_ROOM_UI_FXML = "OnlineGameRoomScreen.fxml";
 
-    public static final String AVAILABLE_ROOMS_UI_FXML = "AvailableRoomsUI.fxml";
     public static final String WAITING_ROOM_UI_FXML = "WaitingRoomUI.fxml";
     public static final String AVATAR_SELECT_UI_FXML = "AvatarSelectUI.fxml";
     public static final String WISDOMIDOL_UI_FXML = "WisdomIdolArtifact.fxml";

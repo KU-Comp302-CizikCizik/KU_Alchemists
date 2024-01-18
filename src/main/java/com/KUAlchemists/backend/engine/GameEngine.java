@@ -4,9 +4,13 @@ import com.KUAlchemists.backend.enums.*;
 import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.states.GameEngineState;
+import com.KUAlchemists.backend.states.GameTurnState;
 import com.KUAlchemists.backend.states.State;
+import javafx.application.Platform;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class GameEngine {
@@ -30,6 +34,8 @@ public class GameEngine {
     private int currentPlayerIndex = 0;
 
     private GameMode currentGameMode;
+
+    private int currentClientID = 0;
 
     /**
      * Constructor for GameEngine
@@ -97,6 +103,14 @@ public class GameEngine {
     }
 
     /**
+     * Set the current player
+     * @param index the index of the player to be set as current player
+     */
+    public void setCurrentPlayer(int index){
+        currentPlayer = playerList.get(index);
+    }
+
+    /**
      * Get the current player index
      * @return the current player index
      */
@@ -112,14 +126,7 @@ public class GameEngine {
         this.currentPlayerIndex = currentPlayerIndex;
     }
 
-    /**
-     * Get the next player
-     * @return the next player
-     */
-    public void nextPlayer(){
-        currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
-        currentPlayer = playerList.get(currentPlayerIndex);
-    }
+
     
 
     public Player getPlayer(String name){
@@ -135,11 +142,12 @@ public class GameEngine {
      * Proceed with the next tour
      * @return the next tour
      */
-    public ArrayList<Integer> nextTour() {
+    public ArrayList<Integer> nextTourOffline() {
         ArrayList<Integer> round_tour_info = new ArrayList<>();
         round_tour_info.add(currentRound.getRound());
         round_tour_info.add(currentTour.getTour());
-        nextPlayer();
+        nextPlayerOffline();
+
         //if it is not the first player, do not proceed, all player should play their turns/tours
         if(GameEngine.getInstance().getCurrentPlayerIndex() != 0)return round_tour_info;
 
@@ -156,6 +164,45 @@ public class GameEngine {
 
     }
 
+    public ArrayList<Integer> nextTourOnline() {
+        ArrayList<Integer> round_tour_info = new ArrayList<>();
+        round_tour_info.add(currentRound.getRound());
+        round_tour_info.add(currentTour.getTour());
+        nextPlayerOnline();
+
+        if (currentTour == GameTour.THIRD_TOUR) {
+            nextRound();
+            currentTour = GameTour.FIRST_TOUR;
+        }
+        else{
+            currentTour = GameTour.getNextTour(currentTour);
+        }
+        round_tour_info.set(0,currentRound.getRound());
+        round_tour_info.set(1,currentTour.getTour());
+        return round_tour_info;
+
+    }
+
+    /**
+     * Proceed with the next player and notify the clients
+     */
+    private void nextPlayerOnline() {
+        currentClientID = (currentClientID + 1) % playerList.size();
+        GameTurnState gameTurnState = new GameTurnState(currentClientID);
+        ArrayList<State> states = new ArrayList<>();
+        states.add(gameTurnState);
+        NetworkHandler.getInstance().handleSendData(states);
+
+    }
+
+    /**
+     * Get the next player
+     * @return the next player
+     */
+    public void nextPlayerOffline(){
+        currentPlayerIndex = (currentPlayerIndex + 1) % playerList.size();
+        currentPlayer = playerList.get(currentPlayerIndex);
+    }
     /**
      * Proceed with the next round
      */
@@ -186,10 +233,19 @@ public class GameEngine {
     }
 
 
+    /**
+     * Get the current player ID
+     * @return the current player ID
+     */
+    public int getCurrentClientID() {
+        return currentClientID;
+    }
+
 
     public Integer getPlayerIndex(Player player) {
         return playerList.indexOf(player);
     }
+
 
     public GameMode getCurrentGameMode() {
         return currentGameMode;
@@ -227,9 +283,23 @@ public class GameEngine {
         playerList.clear();
         playerList.addAll(playerArrayList1);
     }
-  
+
+    /**
+     * Get the current round
+     * @return the current round
+     */
     public int getGameRound() {
         return currentRound.getRound();
     }
+
+
+    /**
+     * Set the current player ID
+     * @param gameTurn the current player ID to be set
+     */
+    public void setCurrentClientID(int gameTurn) {
+        currentClientID = gameTurn;
+    }
+
 
 }

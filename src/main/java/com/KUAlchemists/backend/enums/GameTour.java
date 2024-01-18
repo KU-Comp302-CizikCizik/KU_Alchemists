@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.enums;
 
-public enum GameTour {
+import java.io.Serializable;
+
+public enum GameTour implements Serializable {
 
     FIRST_TOUR(1),
     SECOND_TOUR(2),

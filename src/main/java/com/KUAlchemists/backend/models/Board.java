@@ -3,6 +3,7 @@ package com.KUAlchemists.backend.models;
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.states.BoardState;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * Singleton Board Class
  * It has storages for ingredients, potions, and artifacts
  */
-public class Board {
+public class Board implements Serializable {
 
     private static Board Instance;
     private final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();

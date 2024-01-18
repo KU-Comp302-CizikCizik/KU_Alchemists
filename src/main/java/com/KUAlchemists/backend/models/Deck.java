@@ -2,15 +2,12 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.IngredientType;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Deck {
+public class Deck implements Serializable {
     private static Deck instance;
     private ArrayList<Ingredient> ingredientsList = new ArrayList<>();
     private Deck() {

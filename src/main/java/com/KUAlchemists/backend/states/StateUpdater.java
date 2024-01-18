@@ -6,9 +6,10 @@ import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class StateUpdater {
+public class StateUpdater implements Serializable {
     public void updatePlayer(PlayerState playerState) {
 
     }
@@ -18,13 +19,14 @@ public class StateUpdater {
         ArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
         if(playerArrayList.size() == 0 || gameEngineState == null) return;
 
-        GameEngine.getInstance().setPlayerList(playerArrayList);
-        int currPlayerIndex = 0;
-        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT){
-            currPlayerIndex = GameEngine.getInstance().getPlayerList().size()-1;
+        int currPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT && GameEngine.getInstance().getCurrentPlayerIndex() == 0){
+            currPlayerIndex = playerArrayList.size()-1;
         }
+
+        GameEngine.getInstance().setPlayerList(playerArrayList);
+        GameEngine.getInstance().setCurrentPlayer(currPlayerIndex);
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
-        GameEngine.getInstance().setCurrentPlayer(GameEngine.getInstance().getPlayer(currPlayerIndex));
     }
 
     public void updateBoard(BoardState boardState) {
@@ -41,7 +43,14 @@ public class StateUpdater {
         if(GameEngine.getInstance().getUserType() == UserType.HOST){
             return;
         }
+        System.out.println("Game status changed to " + state.getStatus());
         EventManager.getInstance().onGameStatusChanged(state.getStatus());
 
     }
+
+    public void updateGameTurn(GameTurnState gameTurnState) {
+        GameEngine.getInstance().setCurrentClientID(gameTurnState.getGameTurn());
+        EventManager.getInstance().onGameTurnChanged(gameTurnState.getGameTurn());
+    }
+
 }

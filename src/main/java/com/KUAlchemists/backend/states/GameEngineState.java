@@ -4,7 +4,7 @@ import com.KUAlchemists.backend.models.Player;
 
 import java.util.ArrayList;
 
-public class GameEngineState extends State{
+public class GameEngineState extends State {
     // game engine attributes
     private ArrayList<Player> playerArrayList;
 

@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.WaitingRoomHandler;
@@ -11,6 +12,10 @@ import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.effect.Glow;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -28,6 +33,7 @@ public class WaitingRoomController implements GameStatusObserver {
         // Initially, disable the start game button until the room is full
         if (GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT) {
             startButton.setDisable(true);
+            startButton.setEffect(new GaussianBlur(3.5f));
         }
     }
 
@@ -40,14 +46,21 @@ public class WaitingRoomController implements GameStatusObserver {
             return;
         }
         WaitingRoomHandler.getInstance().startGameForAllPlayers();
-        SceneLoader.getInstance().loadBoard();
+        Platform.runLater(() -> {
+            SceneLoader.getInstance().loadBoard();
+        });
+
     }
 
     @Override
     public void onGameStatusChanged(GameStatus status) {
         if(status == GameStatus.START_GAME && GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT){
-           SceneLoader.getInstance().loadBoard();
+            if(GameEngine.getInstance().getCurrentPlayerIndex() == 0){
+                GameEngine.getInstance().setCurrentPlayerIndex(GameEngine.getInstance().getPlayerList().size()-1);
+            }
+           Platform.runLater(() -> SceneLoader.getInstance().loadBoard());
         }
 
     }
+
 }

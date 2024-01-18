@@ -1,8 +1,9 @@
 package com.KUAlchemists.backend.enums;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public enum TheorySeal {
+public enum TheorySeal implements Serializable {
 
     RED_QUESTION("RQ"),
     BLUE_QUESTION("BQ"),

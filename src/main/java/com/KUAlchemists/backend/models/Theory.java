@@ -3,11 +3,12 @@ package com.KUAlchemists.backend.models;
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Theory {
+public class Theory implements Serializable {
     private Ingredient ingredient; // The ingredient this theory is about
     private Alchemical predictedAlchemical; // The predicted alchemical properties of the ingredient
     private boolean isPublished; // Indicates if the theory has been published

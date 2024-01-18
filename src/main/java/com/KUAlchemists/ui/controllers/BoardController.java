@@ -1,11 +1,18 @@
 package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 
+import com.KUAlchemists.backend.enums.ApplicationMode;
+import com.KUAlchemists.backend.enums.GameMode;
+import com.KUAlchemists.backend.enums.GameStatus;
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
-import com.KUAlchemists.backend.network.NetworkHandler;
+import com.KUAlchemists.backend.managers.EventManager;
 
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.network.NetworkHandler;
+import com.KUAlchemists.backend.observer.GameStatusObserver;
+import com.KUAlchemists.backend.observer.GameTurnObserver;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
@@ -26,10 +33,11 @@ import javafx.util.Duration;
 
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BoardController  implements PlayerObserver {
+public class BoardController  implements PlayerObserver, GameTurnObserver, GameStatusObserver {
 
     @FXML
     private AnchorPane avatar1Pane;
@@ -66,6 +74,24 @@ public class BoardController  implements PlayerObserver {
     @FXML
     private Button publicationTrackButton;
 
+    @FXML
+    private Button helpButton;
+
+    @FXML
+    private Button pauseButton;
+
+    @FXML
+    private Button forageIngredientButton;
+
+    @FXML
+    private Button buyArtifactButton;
+
+    @FXML
+    private Button useArtifactButton;
+
+    @FXML
+    private Button ingredientStorageButton;
+
 
     private Integer currentRound;
     private Integer currentTour;;
@@ -75,13 +101,15 @@ public class BoardController  implements PlayerObserver {
     private ArrayList<Pane> cardBoxList;
 
 
-
     @FXML
     void initialize() {
+        EventManager.getInstance().registerGameTurnObserver(this);
+        EventManager.getInstance().registerGameStatusObserver(this);
+        BoardHandler.getInstance().registerPlayerObserver(this);
+
         //TO-DO: set the avatar cards
         playerControllers = new ArrayList<>();
         cardBoxList = new ArrayList<>();
-        BoardHandler.getInstance().registerPlayerObserver(this);
         ArrayList<String> avatars = BoardHandler.getInstance().getAvatarStrings();
 
         if(avatars.size() == 2){
@@ -96,9 +124,22 @@ public class BoardController  implements PlayerObserver {
         else{
             System.out.println("Error: Invalid number of players");
         }
+        currentRound = 1;
+        currentTour = 1;
 
-        //Assuming the game starts with round 1
-        loadRound1();
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            disableInteractions();
+            enableInteractions();
+        }
+        else{
+            if(GameEngine.getInstance().getUserType() == UserType.HOST){
+                enableInteractions();
+            }
+            else{
+                disableInteractions();
+            }
+        }
+
     }
 
 
@@ -112,6 +153,8 @@ public class BoardController  implements PlayerObserver {
             controller.setActionPoint(BoardHandler.getInstance().getPlayerActionPoints(playerIndex));
             controller.setGoldPoint(BoardHandler.getInstance().getPlayerGold(playerIndex));
             controller.setReputationPoint(BoardHandler.getInstance().getPlayerReputation(playerIndex));
+
+            //UIElements
 
             cardBoxList.add(cardBox);
             return cardBox;
@@ -201,17 +244,61 @@ public class BoardController  implements PlayerObserver {
     @FXML
     public void endRoundButtonClicked() {
         //check whether final round or not
-        if (currentRound == 3 && currentTour == 3 && GameEngine.getInstance().getCurrentPlayerIndex() == GameEngine.getInstance().getPlayerList().size()-1) {
-            SceneLoader.getInstance().loadFinalScoring();
-        }else{
-            changeRound();
+        if (isFinalRound() && isCurrentPlayerOrClientLast()){
+            handleFinalRound();
+        } else {
+            handleNonFinalRound();
+        }
+    }
+
+    private boolean isFinalRound() {
+        return currentRound == 3 && currentTour == 3;
+    }
+
+    private boolean isCurrentPlayerOrClientLast() {
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE){
+            return GameEngine.getInstance().getCurrentClientID() == getLastPlayerID();
+        }
+        else{
+            return GameEngine.getInstance().getCurrentPlayerIndex() == getLastPlayerIndex();
         }
     }
 
 
+    private void handleNonFinalRound() {
+        if (GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE) {
+            disableInteractions();
+        }
+        changeRound();
+    }
+
+
+    private void handleFinalRound() {
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE){
+            BoardHandler.getInstance().notifyOtherClientsForFinalScoring();
+        }
+        SceneLoader.getInstance().loadFinalScoring();
+    }
+
+
+    private int getLastPlayerIndex() {
+        return GameEngine.getInstance().getPlayerList().size() - 1;
+    }
+
+    private int getLastPlayerID() {
+        return GameEngine.getInstance().getPlayerList().get(GameEngine.getInstance().getPlayerList().size() - 1).getId();
+    }
+
 
     public void changeRound() {
-        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
+        ArrayList<Integer> round_tour_info;
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            round_tour_info = BoardHandler.getInstance().endOfflineTour();
+        }
+        else{
+            round_tour_info = BoardHandler.getInstance().endOnlineTour();
+        }
+
         Integer round = round_tour_info.get(0);
         Integer tour = round_tour_info.get(1);
         currentRound = round;
@@ -224,11 +311,13 @@ public class BoardController  implements PlayerObserver {
         //round_tour_info[0] = round
         //round_tour_info[1] = tour
 
-        //load the round when round is changed
-        if (round == 1) {
-            loadRound1();
-        } else if (round == 2) {
-            lodRound2();
+        //check whether there is a notification from wisdom idol
+        boolean isThereWisdomIdolNotification = BoardHandler.getInstance().isThereWisdomIdolNotification();
+        if (isThereWisdomIdolNotification) {
+            HashMap<Player, ArrayList<Object>> notificationMap  = BoardHandler.getInstance().getNotificationMap();
+            if(notificationMap.containsKey(GameEngine.getInstance().getCurrentPlayer())){
+                SceneLoader.getInstance().loadWisdomIdol();
+            }
         }
 
         //check whether the tour is last
@@ -239,24 +328,27 @@ public class BoardController  implements PlayerObserver {
         }
         changeAvatars();
 
-        //check whether there is a notification from wisdom idol
-        boolean isThereWisdomIdolNotification = BoardHandler.getInstance().isThereWisdomIdolNotification();
-        if (isThereWisdomIdolNotification) {
-           HashMap<Player, ArrayList<Object>> notificationMap  = BoardHandler.getInstance().getNotificationMap();
-            if(notificationMap.containsKey(GameEngine.getInstance().getCurrentPlayer())){
-                SceneLoader.getInstance().loadWisdomIdol();
-            }
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            enableInteractions();
         }
+
     }
 
     private void changeAvatars() {
         int length = cardBoxList.size();
+        int currentIndex = -1;
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE){
+            currentIndex = GameEngine.getInstance().getCurrentClientID();
+        }
+        else{
+            currentIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+        }
         if(length== 4){
-            changeFourPlayerAvatars();
+            changeFourPlayerAvatars(currentIndex);
         }else if(length == 3){
-            changeThreePlayerAvatars();
+            changeThreePlayerAvatars(currentIndex);
         }else{
-            changeTwoPlayerAvatars();
+            changeTwoPlayerAvatars(currentIndex);
         }
        }
 
@@ -267,46 +359,33 @@ public class BoardController  implements PlayerObserver {
         avatar4Pane.getChildren().clear();
     }
 
-    private void changeFourPlayerAvatars() {
-        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+    private void changeFourPlayerAvatars(int currentIndex) {
 
         clearPanes();
 
-        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
-        avatar3Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%4));
-        avatar4Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+2)%4));
-        avatar2Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+3)%4));
+        avatar1Pane.getChildren().add(cardBoxList.get(currentIndex));
+        avatar3Pane.getChildren().add(cardBoxList.get((currentIndex+1)%4));
+        avatar4Pane.getChildren().add(cardBoxList.get((currentIndex+2)%4));
+        avatar2Pane.getChildren().add(cardBoxList.get((currentIndex+3)%4));
     }
 
-    private void changeThreePlayerAvatars() {
-        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+    private void changeThreePlayerAvatars(int currentIndex) {
 
         clearPanes();
 
-        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
-        avatar3Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%3));
-        avatar2Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+2)%3));
+        avatar1Pane.getChildren().add(cardBoxList.get(currentIndex));
+        avatar3Pane.getChildren().add(cardBoxList.get((currentIndex+1)%3));
+        avatar2Pane.getChildren().add(cardBoxList.get((currentIndex+2)%3));
     }
 
-    private void changeTwoPlayerAvatars() {
-        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+    private void changeTwoPlayerAvatars(int currentIndex) {
 
         clearPanes();
 
-        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
-        avatar4Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%2));
+        avatar1Pane.getChildren().add(cardBoxList.get(currentIndex));
+        avatar4Pane.getChildren().add(cardBoxList.get((currentIndex+1)%2));
     }
 
-    private void disableButtons(Button button) {
-        button.setDisable(true);
-        button.setOpacity(0.5);
-    }
-
-    private void loadRound1() {
-        disableButtons(sellPotionButton);
-        disableButtons(publishTheoryButton);
-        disableButtons(publicationTrackButton);
-    }
 
     private void activateButtons(Button button) {
         if(!button.isDisable()){
@@ -322,17 +401,17 @@ public class BoardController  implements PlayerObserver {
             button.setOpacity(0.5);
         });
 
-        KeyFrame endFrame = new KeyFrame(Duration.seconds(1), e -> {
+        KeyFrame endFrame = new KeyFrame(Duration.seconds(0.5), e -> {
             // Set the final opacity (1.0 for fully opaque)
             button.setOpacity(1.0);
         });
 
-        KeyFrame startGlow = new KeyFrame(Duration.seconds(1.1), e -> {
+        KeyFrame startGlow = new KeyFrame(Duration.seconds(0.6), e -> {
             // Set the final opacity (1.0 for fully opaque)
             button.setEffect(new Glow(0.3));
         });
 
-        KeyFrame endGlow = new KeyFrame(Duration.seconds(2), e -> {
+        KeyFrame endGlow = new KeyFrame(Duration.seconds(1), e -> {
             // Set the final opacity (1.0 for fully opaque)
             button.setEffect(null);
         });
@@ -340,17 +419,6 @@ public class BoardController  implements PlayerObserver {
         // Add the KeyFrames to the Timeline
         timeline.getKeyFrames().addAll(startFrame, endFrame,startGlow,endGlow);
         timeline.play();
-    }
-
-    private void lodRound2() {
-        activateButtons(sellPotionButton);
-        activateButtons(publishTheoryButton);
-        activateButtons(publicationTrackButton);
-
-
-    }
-
-    private void loadRound3() {
     }
 
     public BoardController() {
@@ -460,5 +528,114 @@ public class BoardController  implements PlayerObserver {
     @FXML
     void mouseExitedDeductionBoard(MouseEvent event) {
         deductionBoardButton.setEffect(null);
+    }
+
+
+    private void enableInteractions() {
+        if(currentRound == 1){
+            loadRound1();
+        }
+        else if(currentRound == 2){
+            loadRound1();
+            loadRound2();
+        }
+        else{
+            loadRound1();
+            loadRound2();
+            loadRound3();
+        }
+        loadDefaultActions();
+
+    }
+
+    private void loadRound1() {
+        enableButtons(forageIngredientButton);
+        enableButtons(ingredientStorageButton);
+        enableButtons(buyArtifactButton);
+        enableButtons(potionBewingButton);
+    }
+
+    private void loadRound2() {
+        activateButtons(sellPotionButton);
+        activateButtons(publishTheoryButton);
+        activateButtons(publicationTrackButton);
+
+    }
+
+    private void loadRound3() {
+
+    }
+
+    private void disableInteractions() {
+        disableButtons(publishTheoryButton);
+        disableButtons(publicationTrackButton);
+        disableButtons(deductionBoardButton);
+        disableButtons(potionBewingButton);
+        disableButtons(sellPotionButton);
+        disableButtons(pauseButton);
+        disableButtons(ingredientStorageButton);
+        disableButtons(buyArtifactButton);
+        disableButtons(useArtifactButton);
+        disableButtons(endRoundButton);
+        disableButtons(forageIngredientButton);
+
+    }
+
+    private void loadDefaultActions() {
+        //actions that are available regardless of the round
+        enableButtons(ingredientStorageButton);
+        enableButtons(useArtifactButton);
+        enableButtons(endRoundButton);
+        enableButtons(helpButton);
+        enableButtons(pauseButton);
+        enableButtons(deductionBoardButton);
+    }
+
+    private void enableButtons(Button button) {
+        button.setDisable(false);
+        button.setOpacity(1.0);
+    }
+
+    private void disableButtons(Button button) {
+        button.setDisable(true);
+        button.setOpacity(0.5);
+    }
+
+    @Override
+    public void onGameTurnChanged(int id) {
+        //Updat the avaliable actions & UI accordingly
+        if(BoardHandler.getInstance().isItCurrentPlayerTurn()){
+            //update the UI
+            Platform.runLater(() -> {
+                enableInteractions();
+            });
+        }
+
+        Platform.runLater(() -> {
+            changeAvatars();
+        });
+
+        Platform.runLater(() -> {
+            updateOnlineUI();
+        });
+
+    }
+
+    private void updateOnlineUI() {
+        if(playerControllers == null) return;
+        for(int i =0;i <playerControllers.size();i++){
+            onPlayerReputationChanged(BoardHandler.getInstance().getPlayerReputation(i), i);
+            onPlayerActionPointsChanged(BoardHandler.getInstance().getPlayerActionPoints(i), i);
+            onPlayerGoldChanged(BoardHandler.getInstance().getPlayerGold(i), i);
+        }
+
+
+    }
+
+    @Override
+    public void onGameStatusChanged(GameStatus status) {
+        if(status == GameStatus.END_GAME){
+           Platform.runLater(()-> SceneLoader.getInstance().loadFinalScoring());
+        }
     }
 }

@@ -1,10 +1,14 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
+import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.PlayerObserver;
-import com.KUAlchemists.backend.services.WisdomIdolService;
+import com.KUAlchemists.backend.states.GameTurnState;
+import com.KUAlchemists.backend.states.State;
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,10 +21,19 @@ public class BoardHandler {
     private HashMap<Player, ArrayList<Object>> notificationMap;
 
 
-
     private BoardHandler() {
         this.notificationMap = new HashMap<>();
+        //notify the clients
+        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.HOST)
+        {
+            ArrayList<State> states = new ArrayList<>();
+            GameTurnState gameTurnState = new GameTurnState(0);
+            states.add(gameTurnState);
+            NetworkHandler.getInstance().handleSendData(states);
+        }
+
     }
+
 
     public static BoardHandler getInstance() {
         if (INSTANCE == null) {
@@ -29,14 +42,19 @@ public class BoardHandler {
         return INSTANCE;
     }
 
+
+    public boolean isItCurrentPlayerTurn() {
+        return GameEngine.getInstance().getCurrentPlayer().getId() == GameEngine.getInstance().getCurrentClientID();
+    }
+
     /**
      * This method is called when a player wants to end the tour.
      * @return The next tour.
-     * @see GameEngine#nextTour()
+     * @see GameEngine#nextTourOffline()
      */
-    public ArrayList<Integer> endTheTour() {
+    public ArrayList<Integer> endOfflineTour() {
         //TODO: reset action points in backend
-        ArrayList<Integer> result = GameEngine.getInstance().nextTour();
+        ArrayList<Integer> result = GameEngine.getInstance().nextTourOffline();
         //if it is final tour, then end the round return -1 -1
 
         //if current player is first player, update action points to 5
@@ -45,6 +63,23 @@ public class BoardHandler {
                 player.setActionPoints(5);
             }
         }
+
+
+        return result;
+    }
+
+
+    /**
+     * This method is called when a player wants to end the tour.
+     * @return The next tour.
+     * @see GameEngine#nextTourOnline()
+     */
+
+    public ArrayList<Integer> endOnlineTour() {
+        ArrayList<Integer> result = GameEngine.getInstance().nextTourOnline();
+        System.out.println("PlayerList size: " + GameEngine.getInstance().getPlayerList().size());
+        //TO-DO Update action points
+
         return result;
     }
 
@@ -114,4 +149,10 @@ public class BoardHandler {
                     }
                 }
         }
+
+    public void notifyOtherClientsForFinalScoring() {
+        //TODO: notify other clients for final scoring
+
+
+    }
 }

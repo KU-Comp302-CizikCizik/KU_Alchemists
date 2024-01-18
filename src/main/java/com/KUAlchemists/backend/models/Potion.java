@@ -4,7 +4,9 @@ package com.KUAlchemists.backend.models;
 import com.KUAlchemists.backend.enums.PotionEffect;
 import com.KUAlchemists.backend.enums.PotionType;
 
-public class Potion {
+import java.io.Serializable;
+
+public class Potion implements Serializable {
 
     /**
      * PotionEffect

@@ -2,11 +2,13 @@ package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.IngredientType;
 
+import java.io.Serializable;
+
 /**
  * This class represents an ingredient in the game. Each ingredient is associated with a unique
  * alchemical that defines its properties for gameplay, such as potion crafting.
  */
-public class Ingredient {
+public class Ingredient implements Serializable {
     private final String name;  // name of the ingredient
     private  int value;  // value in gold
     private  String description; // description of the ingredient
