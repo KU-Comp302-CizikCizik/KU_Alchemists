@@ -101,6 +101,14 @@ public class GameEngine {
     }
 
     /**
+     * Set the current player
+     * @param index the index of the player to be set as current player
+     */
+    public void setCurrentPlayer(int index){
+        currentPlayer = playerList.get(index);
+    }
+
+    /**
      * Get the current player index
      * @return the current player index
      */

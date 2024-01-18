@@ -85,6 +85,7 @@ public class AvatarSelectController {
             // All players have selected, proceed to the main game
             txt.setText("You can start the game now!");
             startGameButton.setDisable(false); // Enable the Start Game button
+            startGameButton.setOpacity(1.0);
 
        }
     }

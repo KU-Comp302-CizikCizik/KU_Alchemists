@@ -18,13 +18,14 @@ public class StateUpdater {
         ArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
         if(playerArrayList.size() == 0 || gameEngineState == null) return;
 
-        GameEngine.getInstance().setPlayerList(playerArrayList);
         int currPlayerIndex = 0;
         if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT && GameEngine.getInstance().getCurrentPlayerIndex() == 0){
-            currPlayerIndex = GameEngine.getInstance().getPlayerList().size()-1;
+            currPlayerIndex = playerArrayList.size()-1;
         }
+
+        GameEngine.getInstance().setPlayerList(playerArrayList);
+        GameEngine.getInstance().setCurrentPlayer(currPlayerIndex);
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
-        GameEngine.getInstance().setCurrentPlayer(GameEngine.getInstance().getPlayer(currPlayerIndex));
     }
 
     public void updateBoard(BoardState boardState) {
@@ -41,6 +42,7 @@ public class StateUpdater {
         if(GameEngine.getInstance().getUserType() == UserType.HOST){
             return;
         }
+        System.out.println("Game status changed to " + state.getStatus());
         EventManager.getInstance().onGameStatusChanged(state.getStatus());
 
     }
@@ -49,4 +51,5 @@ public class StateUpdater {
         GameEngine.getInstance().setCurrentClientID(gameTurnState.getGameTurn());
         EventManager.getInstance().onGameTurnChanged(gameTurnState.getGameTurn());
     }
+
 }

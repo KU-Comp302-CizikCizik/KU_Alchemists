@@ -2,7 +2,7 @@ package com.KUAlchemists.backend.states;
 
 import com.KUAlchemists.backend.subjects.GameTurnData;
 
-public class GameTurnState extends State{
+public class GameTurnState extends State {
 
     private int gameTurn;
 

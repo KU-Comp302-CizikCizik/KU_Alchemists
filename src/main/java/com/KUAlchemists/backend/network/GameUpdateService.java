@@ -1,8 +1,7 @@
 package com.KUAlchemists.backend.network;
 
 import com.KUAlchemists.backend.engine.GameEngine;
-import com.KUAlchemists.backend.enums.UserType;
-import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.states.*;
 
@@ -29,6 +28,7 @@ public class GameUpdateService {
      * @param states
      */
     //This method crucial for establishing an unique communication channel with each client. Keep it explicit before refactoring
+    //Only host executes this method
     public List<State> initClientIDs(List<State> states) {
         GameEngineState gameEngineState;
 
@@ -45,10 +45,10 @@ public class GameUpdateService {
 
         Player player = playerState.getPlayer();
         player.setPlayerID(Server.incrementNumberOfPlayers()-1);
+        player.setPlayerSeal(PlayerSeal.getRandomSeal());
         player.setIDInitializedbyHost(true);
         GameEngine.getInstance().addPlayer(player);
         gameEngineState = new GameEngineState(GameEngine.getInstance().getPlayerList());
-
         result.add(gameEngineState);
 
         return result;

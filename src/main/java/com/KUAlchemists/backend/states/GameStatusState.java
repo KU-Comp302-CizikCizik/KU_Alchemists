@@ -2,7 +2,7 @@ package com.KUAlchemists.backend.states;
 
 import com.KUAlchemists.backend.enums.GameStatus;
 
-public class GameStatusState extends State{
+public class GameStatusState extends State {
 
     private GameStatus status;
 

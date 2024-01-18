@@ -18,7 +18,11 @@ public class GameUpdateHandler {
 
     private GameUpdateHandler(){
         this.service = new GameUpdateService();
-        shouldIDInit = true;
+
+        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.HOST)
+            shouldIDInit = true;
+        else
+            shouldIDInit = false;
     }
 
     public static GameUpdateHandler getInstance(){

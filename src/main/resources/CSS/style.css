@@ -107,5 +107,21 @@
 
 .sofia {
     -fx-font-family: "Sofia";
+    -fx-font-size: 18px;
+}
+
+.sofia-24 {
+    -fx-font-family: "Sofia";
+    -fx-font-size: 24px;
+}
+
+.sofia-48{
+    -fx-font-family: "Sofia";
+    -fx-font-size: 48px;
+}
+
+.sofia-avatarselect{
+    -fx-font-family: "Sofia";
+    -fx-font-size: 52px;
 }
 

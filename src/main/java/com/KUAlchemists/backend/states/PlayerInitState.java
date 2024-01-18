@@ -2,7 +2,7 @@ package com.KUAlchemists.backend.states;
 
 import com.KUAlchemists.backend.models.Player;
 
-public class PlayerInitState extends State{
+public class PlayerInitState extends State {
 
     private Player player;
 
