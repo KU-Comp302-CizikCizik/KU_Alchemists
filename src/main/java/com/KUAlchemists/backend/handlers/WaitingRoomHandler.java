@@ -6,6 +6,7 @@ import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.states.GameStatusState;
 import com.KUAlchemists.backend.states.GameTurnState;
 import com.KUAlchemists.backend.states.State;
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,6 @@ public class WaitingRoomHandler {
         GameStatusState gameStatusState = new GameStatusState(GameStatus.START_GAME);
         List<State> states = new ArrayList<>();
         states.add(gameStatusState);
-        NetworkHandler.getInstance().handleSendData(states); // send the game status to all players to start their game
+       Platform.runLater(() -> NetworkHandler.getInstance().handleSendData(states));  // send the game status to all players to start their game
     }
 }

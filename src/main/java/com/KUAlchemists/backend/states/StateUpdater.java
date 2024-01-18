@@ -6,9 +6,10 @@ import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class StateUpdater {
+public class StateUpdater implements Serializable {
     public void updatePlayer(PlayerState playerState) {
 
     }
@@ -18,7 +19,7 @@ public class StateUpdater {
         ArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
         if(playerArrayList.size() == 0 || gameEngineState == null) return;
 
-        int currPlayerIndex = 0;
+        int currPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
         if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT && GameEngine.getInstance().getCurrentPlayerIndex() == 0){
             currPlayerIndex = playerArrayList.size()-1;
         }

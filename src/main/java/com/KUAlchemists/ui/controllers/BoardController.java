@@ -2,6 +2,7 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 
 import com.KUAlchemists.backend.enums.ApplicationMode;
+import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.BoardHandler;
@@ -9,6 +10,7 @@ import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
 
 import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.GameStatusObserver;
 import com.KUAlchemists.backend.observer.GameTurnObserver;
 import com.KUAlchemists.backend.observer.PlayerObserver;
@@ -31,6 +33,7 @@ import javafx.util.Duration;
 
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -98,16 +101,15 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
     private ArrayList<Pane> cardBoxList;
 
 
-
-
     @FXML
     void initialize() {
         EventManager.getInstance().registerGameTurnObserver(this);
         EventManager.getInstance().registerGameStatusObserver(this);
+        BoardHandler.getInstance().registerPlayerObserver(this);
+
         //TO-DO: set the avatar cards
         playerControllers = new ArrayList<>();
         cardBoxList = new ArrayList<>();
-        BoardHandler.getInstance().registerPlayerObserver(this);
         ArrayList<String> avatars = BoardHandler.getInstance().getAvatarStrings();
 
         if(avatars.size() == 2){
@@ -151,6 +153,8 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             controller.setActionPoint(BoardHandler.getInstance().getPlayerActionPoints(playerIndex));
             controller.setGoldPoint(BoardHandler.getInstance().getPlayerGold(playerIndex));
             controller.setReputationPoint(BoardHandler.getInstance().getPlayerReputation(playerIndex));
+
+            //UIElements
 
             cardBoxList.add(cardBox);
             return cardBox;
@@ -294,6 +298,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         else{
             round_tour_info = BoardHandler.getInstance().endOnlineTour();
         }
+
         Integer round = round_tour_info.get(0);
         Integer tour = round_tour_info.get(1);
         currentRound = round;
@@ -605,9 +610,23 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
                 enableInteractions();
             });
         }
+
         Platform.runLater(() -> {
             changeAvatars();
         });
+
+
+    }
+
+    private void updateOnlineUI() {
+        if(playerControllers == null) return;
+        for(int i =0;i <playerControllers.size();i++){
+            onPlayerReputationChanged(BoardHandler.getInstance().getPlayerReputation(i), i);
+            onPlayerActionPointsChanged(BoardHandler.getInstance().getPlayerActionPoints(i), i);
+            onPlayerGoldChanged(BoardHandler.getInstance().getPlayerGold(i), i);
+        }
+
+
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.states.State;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NetworkHandler {
@@ -16,7 +17,7 @@ public class NetworkHandler {
 
     private NetworkHandler()
     {
-        this.service = NetworkService.getInstance();
+        this.service = new NetworkService();
     }
 
     public static NetworkHandler getInstance(){
@@ -50,4 +51,7 @@ public class NetworkHandler {
     }
 
 
+    public void handleSendDataWith(ArrayList<State> states) {
+        service.sendDataWith(states);
+    }
 }

@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.WaitingRoomHandler;
@@ -44,7 +45,7 @@ public class WaitingRoomController implements GameStatusObserver {
             SceneLoader.getInstance().loadGenericPopUp("There must be at least 2 players to start the game");
             return;
         }
-        Platform.runLater( () -> {WaitingRoomHandler.getInstance().startGameForAllPlayers();});
+        WaitingRoomHandler.getInstance().startGameForAllPlayers();
         Platform.runLater(() -> {
             SceneLoader.getInstance().loadBoard();
         });
@@ -57,7 +58,7 @@ public class WaitingRoomController implements GameStatusObserver {
             if(GameEngine.getInstance().getCurrentPlayerIndex() == 0){
                 GameEngine.getInstance().setCurrentPlayerIndex(GameEngine.getInstance().getPlayerList().size()-1);
             }
-           SceneLoader.getInstance().loadBoard();
+           Platform.runLater(() -> SceneLoader.getInstance().loadBoard());
         }
 
     }

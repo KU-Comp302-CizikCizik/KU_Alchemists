@@ -8,6 +8,7 @@ import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.backend.states.GameTurnState;
 import com.KUAlchemists.backend.states.State;
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,10 +68,16 @@ public class BoardHandler {
         return result;
     }
 
+
+    /**
+     * This method is called when a player wants to end the tour.
+     * @return The next tour.
+     * @see GameEngine#nextTourOnline()
+     */
+
     public ArrayList<Integer> endOnlineTour() {
         ArrayList<Integer> result = GameEngine.getInstance().nextTourOnline();
-
-
+        System.out.println("PlayerList size: " + GameEngine.getInstance().getPlayerList().size());
         //TO-DO Update action points
 
         return result;

@@ -15,16 +15,11 @@ import java.util.List;
 public class NetworkService {
     private Server server;
     private Client client;
-    private static NetworkService instance;
 
-    private NetworkService(){}
+    public NetworkService(){
 
-    public static NetworkService getInstance(){
-        if (instance == null){
-            instance = new NetworkService();
-        }
-        return instance;
     }
+
 
     /**
      * This method starts the server with the given port
@@ -84,7 +79,6 @@ public class NetworkService {
             return states;
         }
         states.add(Board.getInstance().getState());
-        states.add(GameEngine.getInstance().getCurrentPlayer().getState());
         states.add(GameEngine.getInstance().getState());
         return states;
     }
@@ -106,5 +100,10 @@ public class NetworkService {
             sendDataToServer(state);
         }
 
+    }
+
+    public void sendDataWith(ArrayList<State> states) {
+        states.addAll(getStates());
+        sendData(states);
     }
 }
