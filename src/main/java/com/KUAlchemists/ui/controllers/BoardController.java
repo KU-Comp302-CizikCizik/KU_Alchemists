@@ -612,6 +612,10 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         }
 
         Platform.runLater(() -> {
+            BoardHandler.getInstance().registerPlayerObserver(this);
+        });
+
+        Platform.runLater(() -> {
             changeAvatars();
         });
 

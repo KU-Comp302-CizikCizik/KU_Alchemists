@@ -3,6 +3,7 @@ package com.KUAlchemists.backend.engine;
 import com.KUAlchemists.backend.enums.*;
 import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.GameMode;
+import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.states.GameEngineState;
@@ -13,6 +14,7 @@ import javafx.application.Platform;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.logging.Handler;
 
 public class GameEngine {
 
@@ -189,10 +191,11 @@ public class GameEngine {
      */
     private void nextPlayerOnline() {
         currentClientID = (currentClientID + 1) % playerList.size();
-        GameEngineState gameEngineState = new GameEngineState(new CopyOnWriteArrayList<>(playerList));
+        GameEngineState gameEngineState = (GameEngineState) GameEngine.getInstance().getState();
         GameTurnState gameTurnState = new GameTurnState(currentClientID);
         ArrayList<State> states = new ArrayList<>();
         states.add(gameTurnState);
+        states.add(gameEngineState);
         NetworkHandler.getInstance().handleSendData(states);
 
     }
@@ -277,6 +280,9 @@ public class GameEngine {
 
 
     public State getState() {
+        for (Player player : playerList) {
+            BoardHandler.getInstance().removeAllPlayerObservers(player);
+        }
         return new GameEngineState(new CopyOnWriteArrayList<>(GameEngine.getInstance().getPlayerList()));
     }
 

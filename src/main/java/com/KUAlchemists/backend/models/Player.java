@@ -227,4 +227,8 @@ public class Player implements Subject, Serializable {
     public boolean isIDInitializedbyHost() {
         return isIDInitializedbyHost;
     }
+
+    public void removeAllObservers() {
+        observers.clear();
+    }
 }

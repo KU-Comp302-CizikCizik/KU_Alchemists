@@ -80,10 +80,6 @@ public class BoardHandler {
     public ArrayList<Integer> endOnlineTour() {
         ArrayList<Integer> result = GameEngine.getInstance().nextTourOnline();
         System.out.println("PlayerList size: " + GameEngine.getInstance().getPlayerList().size());
-        GameTurnState gameTurnState = new GameTurnState(GameEngine.getInstance().getCurrentClientID());
-        ArrayList<State> states = new ArrayList<>();
-        states.add(gameTurnState);
-        NetworkHandler.getInstance().handleSendData(states);
         //TO-DO Update action points
 
         return result;
@@ -92,6 +88,12 @@ public class BoardHandler {
     public void registerPlayerObserver(PlayerObserver playerObserver) {
         for(Player player : GameEngine.getInstance().getPlayerList()){
             player.registerObserver(playerObserver);
+        }
+    }
+
+    public void removeAllPlayerObservers(Player player) {
+        for(Player player1 : GameEngine.getInstance().getPlayerList()){
+            player1.removeAllObservers();
         }
     }
 
@@ -161,4 +163,7 @@ public class BoardHandler {
 
 
     }
+
+
+
 }
