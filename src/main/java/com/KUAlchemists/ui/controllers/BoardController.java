@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 
+import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
@@ -119,15 +120,21 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
         else{
             System.out.println("Error: Invalid number of players");
         }
-
         currentRound = 1;
         currentTour = 1;
-        if(GameEngine.getInstance().getUserType() == UserType.HOST){
+
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
             enableInteraction();
         }
         else{
-            disableInteraction();
+            if(GameEngine.getInstance().getUserType() == UserType.HOST){
+                enableInteraction();
+            }
+            else{
+                disableInteraction();
+            }
         }
+
     }
 
 
@@ -548,6 +555,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver {
         System.out.println("Is it my turn: " + BoardHandler.getInstance().isItCurrentPlayerTurn());
         System.out.println("Recieved id : " + id);
         if(BoardHandler.getInstance().isItCurrentPlayerTurn()){
+            //update the UI
             Platform.runLater(() -> {
                 enableInteraction();
             });
