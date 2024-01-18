@@ -6,12 +6,14 @@ import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.PlayerObserver;
+import com.KUAlchemists.backend.states.GameEngineState;
 import com.KUAlchemists.backend.states.GameTurnState;
 import com.KUAlchemists.backend.states.State;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BoardHandler {
 
@@ -78,6 +80,10 @@ public class BoardHandler {
     public ArrayList<Integer> endOnlineTour() {
         ArrayList<Integer> result = GameEngine.getInstance().nextTourOnline();
         System.out.println("PlayerList size: " + GameEngine.getInstance().getPlayerList().size());
+        GameTurnState gameTurnState = new GameTurnState(GameEngine.getInstance().getCurrentClientID());
+        ArrayList<State> states = new ArrayList<>();
+        states.add(gameTurnState);
+        NetworkHandler.getInstance().handleSendData(states);
         //TO-DO Update action points
 
         return result;

@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.observer;
 
-public interface PlayerObserver extends Observer {
+import java.io.Serializable;
+
+public interface PlayerObserver extends Observer, Serializable {
     void onPlayerStatusChanged(String status, int id);
     void onPlayerSicknessLevelChanged(int sicknessLevel, int id);
     void onPlayerReputationChanged(int reputation, int id);

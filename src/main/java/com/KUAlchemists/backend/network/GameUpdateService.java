@@ -7,6 +7,7 @@ import com.KUAlchemists.backend.states.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameUpdateService {
 
@@ -29,10 +30,10 @@ public class GameUpdateService {
      */
     //This method crucial for establishing an unique communication channel with each client. Keep it explicit before refactoring
     //Only host executes this method
-    public List<State> initClientIDs(List<State> states) {
+    public CopyOnWriteArrayList<State> initClientIDs(List<State> states) {
         GameEngineState gameEngineState;
 
-        ArrayList<State> result = new ArrayList<>();
+        CopyOnWriteArrayList<State> result = new CopyOnWriteArrayList<>();
 
         PlayerInitState playerState = null;
 
@@ -48,7 +49,7 @@ public class GameUpdateService {
         player.setPlayerSeal(PlayerSeal.getRandomSeal());
         player.setIDInitializedbyHost(true);
         GameEngine.getInstance().addPlayer(player);
-        gameEngineState = new GameEngineState(GameEngine.getInstance().getPlayerList());
+        gameEngineState = new GameEngineState(new CopyOnWriteArrayList<>(GameEngine.getInstance().getPlayerList()));
         result.add(gameEngineState);
 
         return result;

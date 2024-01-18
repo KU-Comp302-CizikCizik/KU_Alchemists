@@ -12,6 +12,7 @@ import javafx.application.Platform;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameEngine {
 
@@ -188,10 +189,11 @@ public class GameEngine {
      */
     private void nextPlayerOnline() {
         currentClientID = (currentClientID + 1) % playerList.size();
+        GameEngineState gameEngineState = new GameEngineState(new CopyOnWriteArrayList<>(playerList));
         GameTurnState gameTurnState = new GameTurnState(currentClientID);
         ArrayList<State> states = new ArrayList<>();
         states.add(gameTurnState);
-        NetworkHandler.getInstance().handleSendDataWith(states);
+        NetworkHandler.getInstance().handleSendData(states);
 
     }
 
@@ -275,7 +277,7 @@ public class GameEngine {
 
 
     public State getState() {
-        return new GameEngineState(new ArrayList<>(playerList));
+        return new GameEngineState(new CopyOnWriteArrayList<>(GameEngine.getInstance().getPlayerList()));
     }
 
     public void setPlayerList(ArrayList<Player> playerArrayList) {

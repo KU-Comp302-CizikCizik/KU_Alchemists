@@ -8,6 +8,7 @@ import com.KUAlchemists.backend.states.State;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameUpdateHandler {
     private static GameUpdateHandler instance;
@@ -36,7 +37,7 @@ public class GameUpdateHandler {
      * This method will be called when updated game came from server or client.
      */
     public List<State> handleUpdateGame(List<State> states){
-        List<State> newStates = new ArrayList<>(states);
+        CopyOnWriteArrayList<State> newStates = new CopyOnWriteArrayList<>(states);
 
         if(GameEngine.getInstance().getUserType() == UserType.HOST && shouldIDInit){
             newStates.clear();
@@ -50,7 +51,7 @@ public class GameUpdateHandler {
     private List<State> handleInitializeClientIDS(List<State> states){
         for (State s : states){
             if( s instanceof PlayerInitState){
-                List<State> newStates = service.initClientIDs(states);
+                CopyOnWriteArrayList<State> newStates = service.initClientIDs(states);
                 return newStates;
             }
         }
@@ -59,5 +60,9 @@ public class GameUpdateHandler {
 
     public void setShouldIDInit(boolean shouldIDInit){
         this.shouldIDInit = shouldIDInit;
+    }
+
+    public boolean getShouldIDInit() {
+        return shouldIDInit;
     }
 }

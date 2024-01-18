@@ -9,6 +9,7 @@ import com.KUAlchemists.backend.models.Player;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class StateUpdater implements Serializable {
     public void updatePlayer(PlayerState playerState) {
@@ -17,7 +18,7 @@ public class StateUpdater implements Serializable {
 
     public void updateGameEngine(GameEngineState gameEngineState) {
         // updates the game engine
-        ArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
+        CopyOnWriteArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
         if(playerArrayList.size() == 0 || gameEngineState == null) return;
 
         int currPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
@@ -25,7 +26,7 @@ public class StateUpdater implements Serializable {
             currPlayerIndex = playerArrayList.size()-1;
         }
 
-        GameEngine.getInstance().setPlayerList(playerArrayList);
+        GameEngine.getInstance().setPlayerList(new ArrayList<>(playerArrayList));
         GameEngine.getInstance().setCurrentPlayer(currPlayerIndex);
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
         for(Player p: GameEngine.getInstance().getPlayerList()){
