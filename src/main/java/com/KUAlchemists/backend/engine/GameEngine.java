@@ -140,20 +140,33 @@ public class GameEngine {
      * Proceed with the next tour
      * @return the next tour
      */
-    public ArrayList<Integer> nextTour() {
+    public ArrayList<Integer> nextTourOffline() {
         ArrayList<Integer> round_tour_info = new ArrayList<>();
         round_tour_info.add(currentRound.getRound());
         round_tour_info.add(currentTour.getTour());
-
-        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
-            nextPlayerOffline();
-        }
-        else{
-            nextPlayerOnline();
-        }
+        nextPlayerOffline();
 
         //if it is not the first player, do not proceed, all player should play their turns/tours
         if(GameEngine.getInstance().getCurrentPlayerIndex() != 0)return round_tour_info;
+
+        if (currentTour == GameTour.THIRD_TOUR) {
+            nextRound();
+            currentTour = GameTour.FIRST_TOUR;
+        }
+        else{
+            currentTour = GameTour.getNextTour(currentTour);
+        }
+        round_tour_info.set(0,currentRound.getRound());
+        round_tour_info.set(1,currentTour.getTour());
+        return round_tour_info;
+
+    }
+
+    public ArrayList<Integer> nextTourOnline() {
+        ArrayList<Integer> round_tour_info = new ArrayList<>();
+        round_tour_info.add(currentRound.getRound());
+        round_tour_info.add(currentTour.getTour());
+        nextPlayerOnline();
 
         if (currentTour == GameTour.THIRD_TOUR) {
             nextRound();
@@ -284,4 +297,6 @@ public class GameEngine {
     public void setCurrentClientID(int gameTurn) {
         currentClientID = gameTurn;
     }
+
+
 }

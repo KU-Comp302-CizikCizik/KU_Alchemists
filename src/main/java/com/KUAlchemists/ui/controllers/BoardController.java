@@ -126,6 +126,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         currentTour = 1;
 
         if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            disableInteractions();
             enableInteractions();
         }
         else{
@@ -286,7 +287,13 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
 
 
     public void changeRound() {
-        ArrayList<Integer> round_tour_info = BoardHandler.getInstance().endTheTour();
+        ArrayList<Integer> round_tour_info;
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            round_tour_info = BoardHandler.getInstance().endOfflineTour();
+        }
+        else{
+            round_tour_info = BoardHandler.getInstance().endOnlineTour();
+        }
         Integer round = round_tour_info.get(0);
         Integer tour = round_tour_info.get(1);
         currentRound = round;
@@ -324,12 +331,19 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
 
     private void changeAvatars() {
         int length = cardBoxList.size();
+        int currentIndex = -1;
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE){
+            currentIndex = GameEngine.getInstance().getCurrentClientID();
+        }
+        else{
+            currentIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+        }
         if(length== 4){
-            changeFourPlayerAvatars();
+            changeFourPlayerAvatars(currentIndex);
         }else if(length == 3){
-            changeThreePlayerAvatars();
+            changeThreePlayerAvatars(currentIndex);
         }else{
-            changeTwoPlayerAvatars();
+            changeTwoPlayerAvatars(currentIndex);
         }
        }
 
@@ -340,34 +354,31 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         avatar4Pane.getChildren().clear();
     }
 
-    private void changeFourPlayerAvatars() {
-        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+    private void changeFourPlayerAvatars(int currentIndex) {
 
         clearPanes();
 
-        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
-        avatar3Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%4));
-        avatar4Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+2)%4));
-        avatar2Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+3)%4));
+        avatar1Pane.getChildren().add(cardBoxList.get(currentIndex));
+        avatar3Pane.getChildren().add(cardBoxList.get((currentIndex+1)%4));
+        avatar4Pane.getChildren().add(cardBoxList.get((currentIndex+2)%4));
+        avatar2Pane.getChildren().add(cardBoxList.get((currentIndex+3)%4));
     }
 
-    private void changeThreePlayerAvatars() {
-        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+    private void changeThreePlayerAvatars(int currentIndex) {
 
         clearPanes();
 
-        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
-        avatar3Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%3));
-        avatar2Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+2)%3));
+        avatar1Pane.getChildren().add(cardBoxList.get(currentIndex));
+        avatar3Pane.getChildren().add(cardBoxList.get((currentIndex+1)%3));
+        avatar2Pane.getChildren().add(cardBoxList.get((currentIndex+2)%3));
     }
 
-    private void changeTwoPlayerAvatars() {
-        Integer currentPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
+    private void changeTwoPlayerAvatars(int currentIndex) {
 
         clearPanes();
 
-        avatar1Pane.getChildren().add(cardBoxList.get(currentPlayerIndex));
-        avatar4Pane.getChildren().add(cardBoxList.get((currentPlayerIndex+1)%2));
+        avatar1Pane.getChildren().add(cardBoxList.get(currentIndex));
+        avatar4Pane.getChildren().add(cardBoxList.get((currentIndex+1)%2));
     }
 
 
@@ -385,17 +396,17 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             button.setOpacity(0.5);
         });
 
-        KeyFrame endFrame = new KeyFrame(Duration.seconds(1), e -> {
+        KeyFrame endFrame = new KeyFrame(Duration.seconds(0.5), e -> {
             // Set the final opacity (1.0 for fully opaque)
             button.setOpacity(1.0);
         });
 
-        KeyFrame startGlow = new KeyFrame(Duration.seconds(1.1), e -> {
+        KeyFrame startGlow = new KeyFrame(Duration.seconds(0.6), e -> {
             // Set the final opacity (1.0 for fully opaque)
             button.setEffect(new Glow(0.3));
         });
 
-        KeyFrame endGlow = new KeyFrame(Duration.seconds(2), e -> {
+        KeyFrame endGlow = new KeyFrame(Duration.seconds(1), e -> {
             // Set the final opacity (1.0 for fully opaque)
             button.setEffect(null);
         });
@@ -594,11 +605,9 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
                 enableInteractions();
             });
         }
-        else{
-            Platform.runLater(() -> {
-                disableInteractions();
-            });
-        }
+        Platform.runLater(() -> {
+            changeAvatars();
+        });
     }
 
     @Override

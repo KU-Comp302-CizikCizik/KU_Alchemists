@@ -49,11 +49,11 @@ public class BoardHandler {
     /**
      * This method is called when a player wants to end the tour.
      * @return The next tour.
-     * @see GameEngine#nextTour()
+     * @see GameEngine#nextTourOffline()
      */
-    public ArrayList<Integer> endTheTour() {
+    public ArrayList<Integer> endOfflineTour() {
         //TODO: reset action points in backend
-        ArrayList<Integer> result = GameEngine.getInstance().nextTour();
+        ArrayList<Integer> result = GameEngine.getInstance().nextTourOffline();
         //if it is final tour, then end the round return -1 -1
 
         //if current player is first player, update action points to 5
@@ -63,6 +63,15 @@ public class BoardHandler {
             }
         }
 
+
+        return result;
+    }
+
+    public ArrayList<Integer> endOnlineTour() {
+        ArrayList<Integer> result = GameEngine.getInstance().nextTourOnline();
+
+
+        //TO-DO Update action points
 
         return result;
     }
