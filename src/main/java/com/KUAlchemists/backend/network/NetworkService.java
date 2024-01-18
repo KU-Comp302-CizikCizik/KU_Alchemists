@@ -78,7 +78,7 @@ public class NetworkService {
             states.add(GameEngine.getInstance().getCurrentPlayer().getInitState()); // This is the state that will be sent to the server
             return states;
         }
-        states.add(Board.getInstance().getState());
+        //states.add(Board.getInstance().getState());
         states.add(GameEngine.getInstance().getState());
         return states;
     }

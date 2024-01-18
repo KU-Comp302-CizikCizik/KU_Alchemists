@@ -615,6 +615,9 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             changeAvatars();
         });
 
+        Platform.runLater(() -> {
+            updateOnlineUI();
+        });
 
     }
 

@@ -191,7 +191,7 @@ public class GameEngine {
         GameTurnState gameTurnState = new GameTurnState(currentClientID);
         ArrayList<State> states = new ArrayList<>();
         states.add(gameTurnState);
-        Platform.runLater(() ->NetworkHandler.getInstance().handleSendDataWith(states));
+        NetworkHandler.getInstance().handleSendData(states);
 
     }
 
