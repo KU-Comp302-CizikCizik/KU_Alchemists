@@ -6,16 +6,17 @@ import com.KUAlchemists.backend.observer.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameStatusData implements Subject{
 
 
-    List<GameStatusObserver> observers;
+    CopyOnWriteArrayList<GameStatusObserver> observers;
 
     private GameStatus status;
 
     public GameStatusData(){
-        observers = new ArrayList<>();
+        observers = new CopyOnWriteArrayList<>();
 
     }
     @Override

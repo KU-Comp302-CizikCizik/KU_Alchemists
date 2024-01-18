@@ -133,4 +133,10 @@ public class BoardHandler {
                     }
                 }
         }
+
+    public void notifyOtherClientsForFinalScoring() {
+        //TODO: notify other clients for final scoring
+
+
+    }
 }

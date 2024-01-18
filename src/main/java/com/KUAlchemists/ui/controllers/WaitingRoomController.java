@@ -44,7 +44,7 @@ public class WaitingRoomController implements GameStatusObserver {
             SceneLoader.getInstance().loadGenericPopUp("There must be at least 2 players to start the game");
             return;
         }
-        WaitingRoomHandler.getInstance().startGameForAllPlayers();
+        Platform.runLater( () -> {WaitingRoomHandler.getInstance().startGameForAllPlayers();});
         Platform.runLater(() -> {
             SceneLoader.getInstance().loadBoard();
         });
