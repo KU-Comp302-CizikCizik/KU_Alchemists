@@ -54,31 +54,7 @@ public class PotionBrewingAreaHandler {
         //magic mortar effect... Backend agam buraya bi bakarsın
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
         currentPlayer.deduceActionPoints(1);
-        Artifact magicMortar=Board.getInstance().getArtifactStorage(currentPlayer).getArtifactByName("magic_mortar");
-        if(magicMortar != null && magicMortar.isActivated()){
-            magicMortarService.setIngredientName1(ingredient1NameFormatted);
-            magicMortarService.setIngredientName2(ingredient2NameFormatted);
-
-
-            if (ingredient1NameFormatted.equals(magicMortarService.getIngredientNameToRetain())){
-                IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient2NameFormatted);
-                Deck.getInstance().addIngredient(ingredient2);
-            }
-
-            else if (ingredient2NameFormatted.equals(magicMortarService.getIngredientNameToRetain())){
-                IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient1NameFormatted);
-                Deck.getInstance().addIngredient(ingredient1);
-            }
-
-        }
-        else{
-            //remove the ingredients from the player inventory
-            IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient1NameFormatted);
-            IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient2NameFormatted);
-            //add the ingredients back to the deck
-            Deck.getInstance().addIngredient(ingredient1);
-            Deck.getInstance().addIngredient(ingredient2);
-        }
+        MagicMortarHandler.getInstance().handlePerformMagicMortar(ingredient1,ingredient2,ingredient1NameFormatted,ingredient2NameFormatted);
         //get potionCode for UI
         String potionCode = potionBrewingService.getPotionCode(potion);
 
@@ -107,8 +83,8 @@ public class PotionBrewingAreaHandler {
         return ingredientsToBeBrewed;
     }
 
-    // burayı değişşşşşşşşş!!!!!!!!!!
     public boolean isMagicMortarActivated(){
-        return true;
+        Artifact magicMortar = Board.getInstance().getArtifactStorage(GameEngine.getInstance().getCurrentPlayer()).getArtifactByName("magic_mortar");
+        return magicMortar != null && magicMortar.isActivated();
     }
 }

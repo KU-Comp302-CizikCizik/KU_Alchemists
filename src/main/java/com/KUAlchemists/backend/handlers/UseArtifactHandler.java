@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.models.Artifact;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.services.UseArtifactService;
 import com.KUAlchemists.backend.services.WisdomIdolService;
@@ -51,11 +52,9 @@ public class UseArtifactHandler {
 
     //new:: returns used artifacts list.
     public List<String> handleUsedArtifacts(){
-
-//        return useArtifactService.getUsedArtifacts();
-
         return usedArtifacts;
     }
+
     public List<String> handleGetAllArtifacts(){
         return Arrays.asList("elixir_of_insight", "magic_mortar", "printing_press", "wisdom_idol");
     }
@@ -91,16 +90,6 @@ public class UseArtifactHandler {
         return currentPlayer.getActivatedArtifacts();
     }
 
-//    public boolean isMagicMortarActivated(){
-//        for(String artifact: activatedArtifacts){
-//            if (artifact.equals(MAGIC_MORTAR))
-//                return true;
-//        }
-//        return false;
-//    }
 
-//    public void deactivateArtifact(String artifactName){
-//        activatedArtifacts.remove(artifactName);
-//    }
 
 }

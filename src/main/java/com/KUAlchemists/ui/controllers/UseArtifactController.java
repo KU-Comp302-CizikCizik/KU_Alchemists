@@ -107,8 +107,7 @@ public class UseArtifactController {
         List<String> usedArtifacts = UseArtifactHandler.getInstance().handleUsedArtifacts();
         List<String> boughtArtifacts = UseArtifactHandler.getInstance().handleStorageArtifact();
         List<String> activeArtifacts = UseArtifactHandler.getInstance().getActivatedArtifacts();
-//        System.out.println("Used Artifacts: "+usedArtifacts.toString());
-//        System.out.println("Bought Artifacts: "+ boughtArtifacts);
+
 
         for(Slot slot: artifactSlots){
             slot.setDisable();
