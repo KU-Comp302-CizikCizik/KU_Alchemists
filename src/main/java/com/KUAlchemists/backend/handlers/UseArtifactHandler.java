@@ -91,4 +91,16 @@ public class UseArtifactHandler {
         return currentPlayer.getActivatedArtifacts();
     }
 
+//    public boolean isMagicMortarActivated(){
+//        for(String artifact: activatedArtifacts){
+//            if (artifact.equals(MAGIC_MORTAR))
+//                return true;
+//        }
+//        return false;
+//    }
+
+//    public void deactivateArtifact(String artifactName){
+//        activatedArtifacts.remove(artifactName);
+//    }
+
 }

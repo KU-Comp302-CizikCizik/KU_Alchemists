@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Sevillana';
+    src: url('Sevillana-font/Sevillana-Regular.ttf');
+}
+@font-face {
+    font-family: 'Caligruf';
+    src: url('caligruf-font/Caligruf-BWvDV.ttf');
+}
+
+
+.heading{
+    -fx-font-family: Caligruf;
+    -fx-font-size: 45px;
+    -fx-text-alignment: center;
+    -fx-fill: #FFD700;
+}
+.ingredient_name{
+    -fx-text-alignment: center;
+    -fx-font-family: Caligruf;
+    -fx-font-size: 30px;
+}
+
+Button{
+    -fx-background-color: #b80111;
+    -fx-font-family: Caligruf;
+    -fx-font-size: 27px;
+    -fx-text-fill: #FFFFFF;
+
+}
+Button:hover{
+    -fx-background-color: #7c0000;
+}
+.body{
+    -fx-background-image: url("../com.KUAlchemists/images/potion_brew_background.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: stretch;
+}

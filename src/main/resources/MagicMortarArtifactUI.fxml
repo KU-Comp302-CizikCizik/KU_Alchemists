@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="430.0" prefWidth="500.0" styleClass="body" stylesheets="@CSS/MagicMortarArtifactStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.MagicMortarArtifactController">
+   <children>
+      <Pane fx:id="ingredient1Pane" layoutX="25.0" layoutY="48.0" onMouseClicked="#handleMouseClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="312.0" prefWidth="212.0" styleClass="ingredient_pane">
+         <children>
+            <ImageView fx:id="ingredient1ImageView" fitHeight="312.0" fitWidth="212.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="ingredient1Text" layoutX="19.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Text" wrappingWidth="174.21630859375" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane fx:id="ingredient2Pane" layoutX="268.0" layoutY="47.0" onMouseClicked="#handleMouseClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="312.0" prefWidth="212.0" styleClass="ingredient_pane">
+         <children>
+            <ImageView fx:id="ingredient2ImageView" fitHeight="312.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="ingredient2Text" layoutX="19.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Text" wrappingWidth="174.21630859375" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Text layoutX="34.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="heading" text="Keep one of the ingreedients" wrappingWidth="429.21630859375" />
+      <Button fx:id="button" layoutX="144.0" layoutY="376.0" mnemonicParsing="false" onAction="#actionButton" prefHeight="40.0" prefWidth="212.0" text="Keep Selected Ingredient" />
+   </children>
+</AnchorPane>
