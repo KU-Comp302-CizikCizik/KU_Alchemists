@@ -38,7 +38,7 @@ public class MagicMortarHandler {
         }
         //this method is called when the player clicks on the ingredient to retain. UI should give the retained ingredient.
         public void handleRetainedIngredient(String ingredientName){
-            UseArtifactHandler.getInstance().deactivateArtifact("magic_mortar");
+//            UseArtifactHandler.getInstance().deactivateArtifact("magic_mortar");
             magicMortarService.setIngredientNameToRetain(ingredientName);
         }
 

@@ -106,9 +106,9 @@ public class PotionBrewingAreaHandler {
     public ArrayList<String> getIngredientsToBeBrewed(){
         return ingredientsToBeBrewed;
     }
-
+    // burayı değişşşşşşşşş!!!!!!!!!!
     public boolean isMagicMortarActivated(){
-        return UseArtifactHandler.getInstance().isMagicMortarActivated();
+        return true;
     }
 
 
