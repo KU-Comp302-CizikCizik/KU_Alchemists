@@ -27,10 +27,20 @@ public class IngredientCardController {
 
     @FXML
     public void setIngredientCard(String ingredientName) {
-        ingredient = ingredientName;
+        String[] words =  ingredientName.split(" ");
+        StringBuilder result = new StringBuilder();
 
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                result.append(Character.toLowerCase(word.charAt(0))).append(word.substring(1)).append(" ");
+            }
+        }
+
+        ingredient = result.toString().trim();
+        ingredientName=result.toString().trim();
+//C:\Users\arday\IdeaProjects\KU_Alchemists\src\main\resources\com.KUAlchemists\imag
         // Assuming your image files have a common extension like ".png" or ".jpg"
-        String imagePath = "/com.KUAlchemists/images/" + ingredientName + "-ingredient.jpg";
+        String imagePath = "/com.KUAlchemists/images/" +  ingredient + "-ingredient.jpg";
         // Load the image using the class loader to ensure it works regardless of the build type
         try {
             Image image = new Image(getClass().getResourceAsStream(imagePath));
