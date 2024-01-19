@@ -70,4 +70,7 @@ public class ArtifactShop implements Serializable {
         return new ArtifactShopState();
     }
 
+    public void addArtifactToSale(Artifact discardedMagicMortar) {
+        artifactsForSale.add(discardedMagicMortar);
+    }
 }

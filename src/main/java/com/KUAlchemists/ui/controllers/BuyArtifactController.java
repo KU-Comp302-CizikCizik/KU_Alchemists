@@ -1,6 +1,8 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.BuyArtifactHandler;
+import com.KUAlchemists.backend.models.Artifact;
+import com.KUAlchemists.backend.models.ArtifactShop;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -93,13 +95,12 @@ public class BuyArtifactController {
                     slot.setDisable();
                 }
             }
-
         }
-        List<String> allArficats = BuyArtifactHandler.getInstance().handleGetAllArtifacts();
+        List<Artifact> allArficats = ArtifactShop.getInstance().getArtifactsForSale();
         for(Slot slot : artifactSlots){
             boolean doesExist = false;
-            for(String arficat : allArficats){
-                if(slot.getId().equals(arficat)){
+            for(Artifact arficat : allArficats){
+                if(slot.getId().equals(arficat.getName())){
                     doesExist =true;
                     break;
                 }
