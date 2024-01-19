@@ -32,7 +32,7 @@ Text{
 .artifact_name{
     -fx-font-family: Caligruf;
     -fx-font-size: 40px;
-    -fx-font-style: bold;
+    -fx-font-weight: bold;
 }
 .artifact_information{
     -fx-font-size: 16px;

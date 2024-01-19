@@ -9,7 +9,8 @@ public class DeductionBoard implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    private HashMap<String, String> markedIngredients;
+    private HashMap<String, ArrayList<String>> markedIngredients;
+
     private ArrayList<String> markedAlchemicals;
 
     public DeductionBoard() {
@@ -17,16 +18,27 @@ public class DeductionBoard implements Serializable {
         markedAlchemicals = new ArrayList<>();
     }
 
-    public void setMarkedIngredients(HashMap<String, String> markedIngredients) {
+    public void setMarkedIngredients(HashMap<String, ArrayList<String>> markedIngredients) {
         this.markedIngredients = markedIngredients;
     }
 
-    public HashMap<String, String> getMarkedIngredients(){
+    public HashMap<String, ArrayList<String>> getMarkedIngredients(){
         return markedIngredients;
     }
 
     public void addMarkedIngredient(String potionEffect, String ingredientCode) {
-        markedIngredients.put(potionEffect, ingredientCode);
+        if(markedIngredients.containsKey(potionEffect)){
+            ArrayList<String> val = markedIngredients.get(potionEffect);
+            val.add(ingredientCode);
+            markedIngredients.put(potionEffect,val);
+        }
+        else{
+            ArrayList<String> val = new ArrayList<>();
+            val.add(ingredientCode);
+            markedIngredients.put(potionEffect, val);
+        }
+
+
     }
 
 

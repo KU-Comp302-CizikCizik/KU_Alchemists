@@ -56,7 +56,13 @@ public class AvatarSelectController {
         for (ImageView image : pictures) {
             image.setUserData(false); // Initially, no image is selected
         }
-        txt.setText("Player 1 Your turn!");
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE){
+            txt.setText("Select your avatar!");
+        }
+        else{
+            txt.setText("Player 1 Your turn!");
+        }
+
     }
 
     @FXML
@@ -81,9 +87,11 @@ public class AvatarSelectController {
             currentPlayer++;
             resetSelectionUI();
             txt.setText("Player " + currentPlayer + " Your turn!");
+
+
         } else {
             // All players have selected, proceed to the main game
-            txt.setText("You can start the game now!");
+            txt.setText("You can join the game now!");
             startGameButton.setDisable(false); // Enable the Start Game button
             startGameButton.setOpacity(0.90);
 
