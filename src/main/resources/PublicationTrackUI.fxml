@@ -13,12 +13,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.PublicationTrackController">
    <children>
-      <ImageView fitHeight="810.0" fitWidth="1157.0" layoutX="-1.0" layoutY="-4.0">
+      <ImageView fitHeight="840.0" fitWidth="1153.0" layoutX="-1.0" layoutY="-4.0">
          <image>
             <Image url="@com.KUAlchemists/images/theories.png" />
          </image>
       </ImageView>
-      <VBox id="v_box_big" layoutX="23.0" layoutY="23.0" prefHeight="766.0" prefWidth="1102.0">
+      <VBox id="v_box_big" layoutX="23.0" layoutY="23.0" prefHeight="799.0" prefWidth="1102.0">
          <children>
             <VBox id="v_box_1" fx:id="v_box_1" prefHeight="350.0" prefWidth="1102.0" style="-fx-background-color: rgba(194, 98, 64, 0.3);">
                <children>
