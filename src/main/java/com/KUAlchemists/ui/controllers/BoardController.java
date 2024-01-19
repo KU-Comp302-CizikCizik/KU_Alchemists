@@ -274,7 +274,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE){
             BoardHandler.getInstance().notifyOtherClientsForFinalScoring();
         }
-        SceneLoader.getInstance().loadFinalScoring();
+        Platform.runLater(() -> SceneLoader.getInstance().loadFinalScoring());
     }
 
 
@@ -635,7 +635,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
     @Override
     public void onGameStatusChanged(GameStatus status) {
         if(status == GameStatus.END_GAME){
-           Platform.runLater(()-> SceneLoader.getInstance().loadFinalScoring());
+           SceneLoader.getInstance().loadFinalScoring();
         }
     }
 

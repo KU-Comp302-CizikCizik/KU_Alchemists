@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Deck;
@@ -176,6 +177,10 @@ public class BoardHandler {
 
     public void notifyOtherClientsForFinalScoring() {
         //TODO: notify other clients for final scoring
+        GameStatusState gameStatusState = new GameStatusState(GameStatus.END_GAME);
+        ArrayList<State> states = new ArrayList<>();
+        states.add(gameStatusState);
+        NetworkHandler.getInstance().handleSendData(states);
 
 
     }

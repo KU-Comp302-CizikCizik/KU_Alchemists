@@ -99,7 +99,7 @@ public class ScoringService {
                 }
             }
         }
-        ArtifactStorage storage = storages.get(player);
+        ArtifactStorage storage = storages.get(p);
         int numberOfArtifacts = storage.getArtifactsTotalNumber();
         int artifactScore = 0;
         for(int i = 0; i < numberOfArtifacts; i++){
