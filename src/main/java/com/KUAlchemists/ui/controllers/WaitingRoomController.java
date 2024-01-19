@@ -55,9 +55,6 @@ public class WaitingRoomController implements GameStatusObserver {
     @Override
     public void onGameStatusChanged(GameStatus status) {
         if(status == GameStatus.START_GAME && GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT){
-            if(GameEngine.getInstance().getCurrentPlayerIndex() == 0){
-                GameEngine.getInstance().setCurrentPlayerIndex(GameEngine.getInstance().getPlayerList().size()-1);
-            }
            Platform.runLater(() -> SceneLoader.getInstance().loadBoard());
         }
 

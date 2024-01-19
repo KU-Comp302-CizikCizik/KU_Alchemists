@@ -4,6 +4,7 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.states.State;
+import javafx.application.Platform;
 
 import java.io.IOException;
 import java.util.ArrayList;

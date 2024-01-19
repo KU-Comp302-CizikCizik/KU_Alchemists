@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Player implements Subject, Serializable {
-    private static final long serialVersionUID = 1L;
     private int gold;
     private String status;
     private int sicknessLevel;
@@ -177,7 +176,7 @@ public class Player implements Subject, Serializable {
 
 
     public PlayerState getState(){
-        return new PlayerState(id, gold,userType);
+        return new PlayerState(id, gold, sicknessLevel, status, reputation, actionPoints, publishedTheories, theorySeals, deductionBoard, score, activatedArtifacts);
     }
 
     public PlayerInitState getInitState(){
@@ -232,6 +231,14 @@ public class Player implements Subject, Serializable {
         return isIDInitializedbyHost;
     }
 
+    public void removeAllObservers() {
+        observers.clear();
+    }
+
+    public void setDeductionBoard(DeductionBoard deductionBoard) {
+      this.deductionBoard = deductionBoard;
+      }
+
     // Artifact related methods to get activation status.
     public void activateArtifact(String artifactName) {
         activatedArtifacts.put(artifactName, true);
@@ -251,5 +258,10 @@ public class Player implements Subject, Serializable {
     }
     public void deactivateArtifact(String artifactName) {
         activatedArtifacts.put(artifactName, false);
+
+    }
+
+    public void setActivatedArtifacts(Map<String, Boolean> activatedArtifacts) {
+        this.activatedArtifacts = activatedArtifacts;
     }
 }

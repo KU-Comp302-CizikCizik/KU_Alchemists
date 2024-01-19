@@ -8,11 +8,8 @@ import com.KUAlchemists.backend.observer.GameStatusObserver;
 import com.KUAlchemists.backend.observer.GameTurnObserver;
 import com.KUAlchemists.backend.observer.PotionBrewingObserver;
 import com.KUAlchemists.backend.observer.PublicationTrackObserver;
-import com.KUAlchemists.backend.states.GameTurnState;
-import com.KUAlchemists.backend.subjects.GameStatusData;
-import com.KUAlchemists.backend.subjects.GameTurnData;
-import com.KUAlchemists.backend.subjects.PotionBrewingData;
-import com.KUAlchemists.backend.subjects.PublicationTrackData;
+import com.KUAlchemists.backend.observer.OnlinePlayersUpdateObserver;
+import com.KUAlchemists.backend.subjects.*;
 import javafx.application.Platform;
 
 public class EventManager {
@@ -27,6 +24,8 @@ public class EventManager {
     private GameStatusData gameStatusData;
 
     private GameTurnData gameTurnData;
+
+    private OnlinePlayersUpdateData onlinePlayersUpdateData;
 
     /**
      * This method is used to get the instance of the class.
@@ -47,6 +46,7 @@ public class EventManager {
         publicationTrackData = new PublicationTrackData();
         gameStatusData = new GameStatusData();
         gameTurnData = new GameTurnData();
+        onlinePlayersUpdateData = new OnlinePlayersUpdateData();
     }
 
     /**
@@ -180,6 +180,36 @@ public class EventManager {
     public void removeGameTurnObserver(GameTurnObserver gameTurnObserver) {
         gameTurnData.removeObserver(gameTurnObserver);
     }
+
+    /**
+     * This method is used to notify the observers when a player is updated.
+     */
+    public void registerOnlinePlayersUpdateObserver(OnlinePlayersUpdateObserver onlinePlayersUpdateObserver){
+        onlinePlayersUpdateData.registerObserver(onlinePlayersUpdateObserver);
+    }
+
+    /**
+     * This method is used to remove an observer.
+     * @param onlinePlayersUpdateObserver
+     */
+    public void removeOnlinePlayersUpdateObserver(OnlinePlayersUpdateObserver onlinePlayersUpdateObserver){
+        onlinePlayersUpdateData.removeObserver(onlinePlayersUpdateObserver);
+    }
+
+    /**
+     * This method is used to notify the observers when a player is updated.
+     */
+    private void notifyOnlinePlayersUpdateObservers() {
+        onlinePlayersUpdateData.updateOnlinePlayers();
+    }
+
+    /**
+     * This method is used to notify the observers when a player is updated.
+     */
+    public void onUpdateOnlinePlayers() {
+        notifyOnlinePlayersUpdateObservers();
+    }
+
 
 
 

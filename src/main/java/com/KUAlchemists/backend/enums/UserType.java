@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.enums;
 
-public enum UserType {
+import java.io.Serializable;
+
+public enum UserType implements Serializable {
 
     HOST("host"),
     CLIENT("client");
