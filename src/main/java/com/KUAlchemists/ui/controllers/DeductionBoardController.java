@@ -343,10 +343,12 @@ public class DeductionBoardController {
         alchemies.add(alchemy_8_1);alchemies.add(alchemy_8_2);alchemies.add(alchemy_8_3);alchemies.add(alchemy_8_4);alchemies.add(alchemy_8_5);alchemies.add(alchemy_8_6);alchemies.add(alchemy_8_7);alchemies.add(alchemy_8_8);
 
         ArrayList<String> markedAlchemicals = DeductionBoardHandler.getInstance().getMarkedAlchemicals();
-        HashMap<String, String> markedIngredients = DeductionBoardHandler.getInstance().getMarkedIngredients();
+        HashMap<String,ArrayList <String>> markedIngredients = DeductionBoardHandler.getInstance().getMarkedIngredients();
 
         for(String key: markedIngredients.keySet()){
-            updateImageByName(key, markedIngredients.get(key));
+            for(String ingredient: markedIngredients.get(key)){
+                updateImageByName(key, ingredient);
+            }
         }
 
         for (String alchemy : markedAlchemicals) {

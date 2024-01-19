@@ -34,6 +34,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class BoardController  implements PlayerObserver, GameTurnObserver, GameStatusObserver, OnlinePlayersUpdateObserver {
 
@@ -131,11 +132,9 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             enableInteractions();
         }
         else{
+            disableInteractions();
             if(GameEngine.getInstance().getUserType() == UserType.HOST){
                 enableInteractions();
-            }
-            else{
-                disableInteractions();
             }
         }
 
@@ -295,7 +294,6 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         else{
             round_tour_info = BoardHandler.getInstance().endOnlineTour();
         }
-
         Integer round = round_tour_info.get(0);
         Integer tour = round_tour_info.get(1);
         currentRound = round;
@@ -309,13 +307,8 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         //round_tour_info[1] = tour
 
         //check whether there is a notification from wisdom idol
-        boolean isThereWisdomIdolNotification = BoardHandler.getInstance().isThereWisdomIdolNotification();
-        if (isThereWisdomIdolNotification) {
-            HashMap<Player, ArrayList<Object>> notificationMap  = BoardHandler.getInstance().getNotificationMap();
-            if(notificationMap.containsKey(GameEngine.getInstance().getCurrentPlayer())){
-                SceneLoader.getInstance().loadWisdomIdol();
-            }
-        }
+        loadWisdomIdolNotificationIfExists();
+
 
         //check whether the tour is last
         if(tour == 3) {
@@ -323,12 +316,35 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         }else {
             endRoundButton.setEffect(null);
         }
+
         changeAvatars();
 
         if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
             enableInteractions();
         }
 
+    }
+
+    private void loadWisdomIdolNotificationIfExists() {
+        boolean isThereWisdomIdolNotification = BoardHandler.getInstance().isThereWisdomIdolNotification();
+
+        if (isThereWisdomIdolNotification) {
+            HashMap<Player, ArrayList<Object>> notificationMap  = BoardHandler.getInstance().getNotificationMap();
+            if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+                if(notificationMap.containsKey(GameEngine.getInstance().getCurrentPlayer())){
+                    SceneLoader.getInstance().loadWisdomIdol();
+                    return;
+                }
+            }
+            else{
+                for(Map.Entry<Player, ArrayList<Object>> entry : notificationMap.entrySet()){
+                    if(entry.getKey().getId() == GameEngine.getInstance().getCurrentPlayer().getId()){
+                        SceneLoader.getInstance().loadWisdomIdol();
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     private void checkWisdomIdol(){

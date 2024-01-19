@@ -50,4 +50,23 @@ public class AvatarSelectHandler {
         }
     }
 
+
+    /**
+     * Checks if the game is in online mode.
+     *
+     * @return True if the game is in the online mode, false otherwise.
+     */
+    public boolean isOnline() {
+        return GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE;
+    }
+
+
+    /**
+     * Checks if the current player is the host.
+     *
+     * @return True if the current player is the host, false otherwise.
+     */
+    public boolean isHost() {
+        return GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.HOST;
+    }
 }

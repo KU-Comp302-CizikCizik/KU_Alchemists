@@ -42,7 +42,7 @@ public class DeductionBoardHandler implements PotionBrewingObserver {
         GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().removeMarkedAlchemy(alcemicalName);
     }
 
-    public HashMap<String, String> getMarkedIngredients() {
+    public HashMap<String, ArrayList<String>> getMarkedIngredients() {
         return GameEngine.getInstance().getCurrentPlayer().getDeductionBoard().getMarkedIngredients();
     }
 
