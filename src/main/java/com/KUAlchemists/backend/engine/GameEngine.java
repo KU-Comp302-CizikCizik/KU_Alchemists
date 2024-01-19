@@ -276,7 +276,7 @@ public class GameEngine {
     public GameEngineState getState() {
 
         BoardHandler.getInstance().removeAllPlayerObservers();
-        return new GameEngineState(new CopyOnWriteArrayList<>(GameEngine.getInstance().getPlayerList()));
+        return new GameEngineState(new ArrayList<>(GameEngine.getInstance().getPlayerList()));
     }
 
     public void setPlayerList(ArrayList<Player> playerArrayList) {

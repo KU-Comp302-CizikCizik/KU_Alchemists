@@ -7,13 +7,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameEngineState extends State {
     // game engine attributes
-    private CopyOnWriteArrayList<Player> playerArrayList;
+    private ArrayList<Player> playerArrayList;
 
-    public GameEngineState(CopyOnWriteArrayList<Player> playerArrayList){
+    public GameEngineState(ArrayList<Player> playerArrayList){
         this.playerArrayList = playerArrayList;
     }
 
-    public CopyOnWriteArrayList<Player> getPlayerArrayList() {
+    public ArrayList<Player> getPlayerArrayList() {
         return playerArrayList;
     }
 

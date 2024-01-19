@@ -110,19 +110,57 @@ public class Board implements Serializable {
 
     //setIngredientStorage
     public void setIngredientStorages(HashMap<Player, IngredientStorage> newStorage){
+        HashMap<Player, IngredientStorage> storage = new HashMap<>();
+
+        for(Map.Entry<Player, IngredientStorage> oldEntry : ingredientStorages.entrySet()){
+            for(Map.Entry<Player, IngredientStorage> newEntry : newStorage.entrySet()){
+                Player oldPlayer = oldEntry.getKey();
+                Player newPlayer = newEntry.getKey();
+                if(oldPlayer.getId() == newPlayer.getId()) {
+                    storage.put(oldPlayer, newEntry.getValue());
+                    break;
+                }
+            }
+        }
+
         ingredientStorages.clear();
-        ingredientStorages.putAll(newStorage);
+        ingredientStorages.putAll(storage);
     }
 
-    public void setPotionStorages(HashMap<Player, PotionStorage> potionStorageMap){
+    public void setPotionStorages(HashMap<Player, PotionStorage> newStorage){
+        HashMap<Player, PotionStorage> storage = new HashMap<>();
+
+        for(Map.Entry<Player, PotionStorage> oldEntry : potionStorages.entrySet()){
+            for(Map.Entry<Player, PotionStorage> newEntry : newStorage.entrySet()){
+                Player oldPlayer = oldEntry.getKey();
+                Player newPlayer = newEntry.getKey();
+                if(oldPlayer.getId() == newPlayer.getId()) {
+                    storage.put(oldPlayer, newEntry.getValue());
+                    break;
+                }
+            }
+        }
         potionStorages.clear();
-        potionStorages.putAll(potionStorageMap);
+        potionStorages.putAll(storage);
     }
 
 
-    public void setArtifactStorages(HashMap<Player, ArtifactStorage> artifactStorageMap){
+    public void setArtifactStorages(HashMap<Player, ArtifactStorage> newStorage){
+
+        HashMap<Player, ArtifactStorage> storage = new HashMap<>();
+
+        for(Map.Entry<Player, ArtifactStorage> oldEntry : artifactStorages.entrySet()){
+            for(Map.Entry<Player, ArtifactStorage> newEntry : newStorage.entrySet()){
+                Player oldPlayer = oldEntry.getKey();
+                Player newPlayer = newEntry.getKey();
+                if(oldPlayer.getId() == newPlayer.getId()) {
+                    storage.put(oldPlayer, newEntry.getValue());
+                    break;
+                }
+            }
+        }
         artifactStorages.clear();
-        artifactStorages.putAll(artifactStorageMap);
+        artifactStorages.putAll(storage);
     }
 
     public void setPublishedTheoriesList(List<Theory> newList){

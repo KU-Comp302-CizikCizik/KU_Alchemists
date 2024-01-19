@@ -172,7 +172,7 @@ public class Player implements Subject, Serializable {
 
 
     public PlayerState getState(){
-        return new PlayerState(id, gold,userType);
+        return new PlayerState(id, gold, sicknessLevel, status, reputation, actionPoints, publishedTheories, theorySeals, deductionBoard, score);
     }
 
     public PlayerInitState getInitState(){
@@ -229,5 +229,9 @@ public class Player implements Subject, Serializable {
 
     public void removeAllObservers() {
         observers.clear();
+    }
+
+    public void setDeductionBoard(DeductionBoard deductionBoard) {
+
     }
 }

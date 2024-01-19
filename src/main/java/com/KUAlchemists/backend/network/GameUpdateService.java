@@ -52,7 +52,7 @@ public class GameUpdateService {
         player.setIDInitializedbyHost(true);
         GameEngine.getInstance().addPlayer(player);
         Board.getInstance().createStoragesForNewPlayer(player);
-        gameEngineState = new GameEngineState(new CopyOnWriteArrayList<>(GameEngine.getInstance().getPlayerList()));
+        gameEngineState = new GameEngineState(GameEngine.getInstance().getPlayerList());
         result.add(gameEngineState);
 
         return result;

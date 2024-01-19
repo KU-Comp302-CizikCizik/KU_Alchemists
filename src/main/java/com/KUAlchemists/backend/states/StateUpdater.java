@@ -14,12 +14,31 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class StateUpdater implements Serializable {
     public void updatePlayer(PlayerState playerState) {
+        Player p = null;
+        for(int i =0; i < GameEngine.getInstance().getPlayerList().size();i++){
+            if(playerState.getId() == GameEngine.getInstance().getPlayerList().get(i).getId()){
+                p = GameEngine.getInstance().getPlayerList().get(i);
+                break;
+            }
+        }
+        p.setGold(playerState.getGold());
+        p.setSicknessLevel(playerState.getSicknessLevel());
+        p.setStatus(playerState.getStatus());
+        p.setReputation(playerState.getReputation());
+        p.setActionPoints(playerState.getActionPoints());
+        p.setPublishedTheories(playerState.getPublishedTheories());
+        p.setTheorySeals(playerState.getTheorySeals());
+        p.setDeductionBoard(playerState.getDeductionBoard());
+        p.setActionPoints(playerState.getActionPoints());
+        p.setScore(playerState.getScore());
+
+        EventManager.getInstance().onUpdateOnlinePlayers();
 
     }
 
     public void updateGameEngine(GameEngineState gameEngineState) {
         // updates the game engine
-        CopyOnWriteArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
+        ArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
         if(playerArrayList.size() == 0 || gameEngineState == null) return;
         int currPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
         String avatar = GameEngine.getInstance().getCurrentPlayer().getAvatar();

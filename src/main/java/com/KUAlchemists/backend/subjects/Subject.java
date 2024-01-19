@@ -2,7 +2,9 @@ package com.KUAlchemists.backend.subjects;
 
 import com.KUAlchemists.backend.observer.Observer;
 
-public interface Subject {
+import java.io.Serializable;
+
+public interface Subject extends Serializable {
 
     void registerObserver(Observer observer);
     void removeObserver(Observer observer);
