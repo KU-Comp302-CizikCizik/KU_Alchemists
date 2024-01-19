@@ -53,9 +53,11 @@ public class PublishTheoryService {
                 .anyMatch(existingTheory -> existingTheory.getIngredient().getName().equals(ingredientName));
 
         boolean hasTheorySeal = player.getTheorySeals().contains(seals.get(0));
+        HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
+        //
+        if (!theoryExists && player.getGold() >= 1 & hasTheorySeal && player.getActionPoints()>0 &&
+                Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press") == null) {
 
-        if (!theoryExists && player.getGold() >= 1 & hasTheorySeal && player.getActionPoints()>0) {
-            HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
             playerTheorySealsMap.put(player, seals.get(0));
             Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
             player.setGold(player.getGold() - 1);
@@ -68,10 +70,28 @@ public class PublishTheoryService {
             return true;
 
         }
-        // this condition is for printing press artifact.
-        // if the player has printing press artifact, he can publish a theory without paying gold.
-        else if (!theoryExists && Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press").isActivated() & hasTheorySeal) {
-            HashMap<Player,TheorySeal> playerTheorySealsMap = new HashMap<>();
+        // printing press is owned by the player but not activated
+        else if (!theoryExists && player.getGold() >= 1 & hasTheorySeal && player.getActionPoints()>0 &&
+                Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press") != null &&
+                !Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press").isActivated()) {
+
+            playerTheorySealsMap.put(player, seals.get(0));
+            Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
+            player.setGold(player.getGold() - 1);
+            player.deduceActionPoints(1);
+            theory.setPublished(true);
+            player.setReputation(player.getReputation() + 1);
+            player.getPublishedTheories().add(theory);
+            Board.getInstance().getPublishedTheoriesList().add(theory);
+            player.getTheorySeals().remove(seals.get(0));
+            return true;
+        }
+
+        // if the player has printing press artifact and it is activated, he can publish a theory without paying gold and lose action point.
+        else if (!theoryExists && hasTheorySeal &&
+                Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press").isActivated() &&
+                Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press") != null) {
+
             playerTheorySealsMap.put(player, seals.get(0));
             Theory theory = new Theory(ingredient, predictedAlchemical, playerTheorySealsMap);
             theory.setPublished(true);
@@ -79,6 +99,10 @@ public class PublishTheoryService {
             player.getPublishedTheories().add(theory);
             Board.getInstance().getPublishedTheoriesList().add(theory);
             player.getTheorySeals().remove(seals.get(0));
+            Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press").setActivated(false); // Deactivate the artifact after use
+            player.deactivateArtifact("printing_press");
+            Artifact artifact = Board.getInstance().getArtifactStorage(player).getArtifactByName("printing_press");
+            Board.getInstance().getArtifactStorage(player).removeArtifact(artifact); // Remove the artifact from storage
             return true;
         }
         return false;

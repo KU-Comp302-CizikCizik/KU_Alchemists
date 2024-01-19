@@ -2,7 +2,6 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.engine.GameEngine;
 
 import com.KUAlchemists.backend.enums.ApplicationMode;
-import com.KUAlchemists.backend.enums.GameMode;
 import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.BoardHandler;
@@ -10,9 +9,9 @@ import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.managers.EventManager;
 
 import com.KUAlchemists.backend.models.Player;
-import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.GameStatusObserver;
 import com.KUAlchemists.backend.observer.GameTurnObserver;
+import com.KUAlchemists.backend.observer.OnlinePlayersUpdateObserver;
 import com.KUAlchemists.backend.observer.PlayerObserver;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
@@ -33,11 +32,10 @@ import javafx.util.Duration;
 
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BoardController  implements PlayerObserver, GameTurnObserver, GameStatusObserver {
+public class BoardController  implements PlayerObserver, GameTurnObserver, GameStatusObserver, OnlinePlayersUpdateObserver {
 
     @FXML
     private AnchorPane avatar1Pane;
@@ -49,7 +47,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
     private AnchorPane avatar3Pane;
 
     @FXML
-    private AnchorPane avatar4Pane;
+    private  AnchorPane avatar4Pane;
 
     @FXML
     private Text roundTitle;
@@ -78,7 +76,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
     private Button helpButton;
 
     @FXML
-    private Button pauseButton;
+    private  Button pauseButton;
 
     @FXML
     private Button forageIngredientButton;
@@ -106,6 +104,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         EventManager.getInstance().registerGameTurnObserver(this);
         EventManager.getInstance().registerGameStatusObserver(this);
         BoardHandler.getInstance().registerPlayerObserver(this);
+        EventManager.getInstance().registerOnlinePlayersUpdateObserver(this);
 
         //TO-DO: set the avatar cards
         playerControllers = new ArrayList<>();
@@ -153,8 +152,6 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             controller.setActionPoint(BoardHandler.getInstance().getPlayerActionPoints(playerIndex));
             controller.setGoldPoint(BoardHandler.getInstance().getPlayerGold(playerIndex));
             controller.setReputationPoint(BoardHandler.getInstance().getPlayerReputation(playerIndex));
-
-            //UIElements
 
             cardBoxList.add(cardBox);
             return cardBox;
@@ -277,7 +274,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.ONLINE){
             BoardHandler.getInstance().notifyOtherClientsForFinalScoring();
         }
-        SceneLoader.getInstance().loadFinalScoring();
+        Platform.runLater(() -> SceneLoader.getInstance().loadFinalScoring());
     }
 
 
@@ -332,6 +329,16 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             enableInteractions();
         }
 
+    }
+
+    private void checkWisdomIdol(){
+        boolean isThereWisdomIdolNotification = BoardHandler.getInstance().isThereWisdomIdolNotification();
+        if (isThereWisdomIdolNotification) {
+            HashMap<Player, ArrayList<Object>> notificationMap  = BoardHandler.getInstance().getNotificationMap();
+            if(notificationMap.containsKey(GameEngine.getInstance().getCurrentPlayer())){
+                SceneLoader.getInstance().loadWisdomIdol();
+            }
+        }
     }
 
     private void changeAvatars() {
@@ -611,31 +618,35 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             });
         }
 
+        //Platform.runLater(() -> EventManager.getInstance().registerOnlinePlayersUpdateObserver(this));
+
         Platform.runLater(() -> {
             changeAvatars();
         });
 
-        Platform.runLater(() -> {
-            updateOnlineUI();
-        });
+    }
+
+    private void updateUI() {
+
 
     }
 
-    private void updateOnlineUI() {
-        if(playerControllers == null) return;
-        for(int i =0;i <playerControllers.size();i++){
-            onPlayerReputationChanged(BoardHandler.getInstance().getPlayerReputation(i), i);
-            onPlayerActionPointsChanged(BoardHandler.getInstance().getPlayerActionPoints(i), i);
-            onPlayerGoldChanged(BoardHandler.getInstance().getPlayerGold(i), i);
-        }
-
-
-    }
 
     @Override
     public void onGameStatusChanged(GameStatus status) {
         if(status == GameStatus.END_GAME){
-           Platform.runLater(()-> SceneLoader.getInstance().loadFinalScoring());
+           SceneLoader.getInstance().loadFinalScoring();
+        }
+    }
+
+    @Override
+    public void onUpdateOnlinePlayer() {
+        BoardHandler.getInstance().removeAllPlayerObservers();
+        BoardHandler.getInstance().registerPlayerObserver(this);
+        for(int i =0;i<playerControllers.size();i++){
+            playerControllers.get(i).setActionPoint(BoardHandler.getInstance().getPlayerActionPoints(i));
+            playerControllers.get(i).setGoldPoint(BoardHandler.getInstance().getPlayerGold(i));
+            playerControllers.get(i).setReputationPoint(BoardHandler.getInstance().getPlayerReputation(i));
         }
     }
 }

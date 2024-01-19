@@ -4,18 +4,19 @@ import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.PlayerSeal;
 import com.KUAlchemists.backend.enums.TheorySeal;
 import com.KUAlchemists.backend.enums.UserType;
-import com.KUAlchemists.backend.states.PlayerInitState;
-import com.KUAlchemists.backend.states.PlayerState;
 import com.KUAlchemists.backend.observer.Observer;
 import com.KUAlchemists.backend.observer.PlayerObserver;
+import com.KUAlchemists.backend.states.PlayerInitState;
+import com.KUAlchemists.backend.states.PlayerState;
 import com.KUAlchemists.backend.subjects.Subject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Player implements Subject, Serializable {
-    private static final long serialVersionUID = 1L;
     private int gold;
     private String status;
     private int sicknessLevel;
@@ -40,6 +41,7 @@ public class Player implements Subject, Serializable {
     private int score;
     private List<PlayerObserver> observers;
     private String avatar; // this is the avatar of the player that will be displayed on the board
+    private Map<String, Boolean> activatedArtifacts;
 
 
     public Player(){
@@ -59,6 +61,7 @@ public class Player implements Subject, Serializable {
         observers = new ArrayList<>();
         this.id = 0;
         isIDInitializedbyHost = false;
+        this.activatedArtifacts = new HashMap<>();
         userType = UserType.CLIENT; // does not matter since it will be updated by the network handler, not to cause any exceptions in offlineGame
     }
     public int getGold() {
@@ -173,7 +176,7 @@ public class Player implements Subject, Serializable {
 
 
     public PlayerState getState(){
-        return new PlayerState(id, gold,userType);
+        return new PlayerState(id, gold, sicknessLevel, status, reputation, actionPoints, publishedTheories, theorySeals, deductionBoard, score, activatedArtifacts);
     }
 
     public PlayerInitState getInitState(){
@@ -226,5 +229,39 @@ public class Player implements Subject, Serializable {
 
     public boolean isIDInitializedbyHost() {
         return isIDInitializedbyHost;
+    }
+
+    public void removeAllObservers() {
+        observers.clear();
+    }
+
+    public void setDeductionBoard(DeductionBoard deductionBoard) {
+      this.deductionBoard = deductionBoard;
+      }
+
+    // Artifact related methods to get activation status.
+    public void activateArtifact(String artifactName) {
+        activatedArtifacts.put(artifactName, true);
+    }
+
+    public boolean isArtifactActivated(String artifactName) {
+        return activatedArtifacts.getOrDefault(artifactName, false);
+    }
+    public ArrayList<String> getActivatedArtifacts() {
+        ArrayList<String> activatedArtifactNames = new ArrayList<>();
+        for (Map.Entry<String, Boolean> entry : activatedArtifacts.entrySet()) {
+            if (entry.getValue()) {
+                activatedArtifactNames.add(entry.getKey());
+            }
+        }
+        return activatedArtifactNames;
+    }
+    public void deactivateArtifact(String artifactName) {
+        activatedArtifacts.put(artifactName, false);
+
+    }
+
+    public void setActivatedArtifacts(Map<String, Boolean> activatedArtifacts) {
+        this.activatedArtifacts = activatedArtifacts;
     }
 }

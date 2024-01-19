@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DebunkTheoryHandler implements PublicationTrackObserver {
 
-    private final DebunkTheoryService debunkTheoryService;
+    private DebunkTheoryService debunkTheoryService;
 
     private static DebunkTheoryHandler INSTANCE;
 
@@ -55,7 +55,8 @@ public class DebunkTheoryHandler implements PublicationTrackObserver {
     }
 
     private Ingredient getActualIngredient(Theory theory) {
-        ArrayList<Ingredient> ingredients = IngredientStorageHandler.getInstance().getAllIngredients();
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        ingredients.addAll(IngredientStorageHandler.getInstance().getAllIngredients());
         for (Ingredient ingredient : ingredients) {
             if (ingredient.getName().toLowerCase().equals(theory.getIngredient().getName().toLowerCase())) {
                 return ingredient;

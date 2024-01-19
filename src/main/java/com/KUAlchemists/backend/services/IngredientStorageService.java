@@ -69,7 +69,17 @@ public class IngredientStorageService {
         Player player = GameEngine.getInstance().getCurrentPlayer();
         ArrayList<Ingredient> ingredientsList = ingredientStorage.getIngredientsList();
         for (Ingredient ingredient : ingredientsList) {
-            if (ingredient.getName().equals(ingredientName)) {
+            String[] words= ingredient.getName().split(" ");
+            StringBuilder result = new StringBuilder();
+
+            for (String word : words) {
+                if (!word.isEmpty()) {
+                    result.append(Character.toLowerCase(word.charAt(0))).append(word.substring(1)).append(" ");
+                }
+            }
+            String ing=result.toString().trim();
+
+            if (ing.equals(ingredientName)) {
                 ingredientStorage.removeIngredient(ingredient);
                 player.setGold(player.getGold() + 1); //
                 return;

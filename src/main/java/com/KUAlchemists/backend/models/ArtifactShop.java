@@ -1,5 +1,8 @@
 package com.KUAlchemists.backend.models;
 
+import com.KUAlchemists.backend.states.ArtifactShopState;
+import com.KUAlchemists.backend.states.State;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -60,6 +63,11 @@ public class ArtifactShop implements Serializable {
     public void removeArtifactFromSale(Artifact artifact) {
         artifactsForSale.remove(artifact);
         boughtArtifacts.add(artifact.getName()); // Mark the artifact as bought
+    }
+
+
+    public State getState(){
+        return new ArtifactShopState();
     }
 
 }

@@ -24,6 +24,7 @@ public class UseArtifactService {
         deck.rearrangeTopThreeIngredients(rearrangedTopThreeIngredients);
     }
     public ArrayList<String> peekTopThree() {
+
         ArrayList<Ingredient> topThreeIngredients = Deck.getInstance().peekTopThreeIngredients();
         ArrayList<String> topThreeIngredientsNames = new ArrayList<>();
         for (int i = 0; i < topThreeIngredients.size(); i++){

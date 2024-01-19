@@ -1,5 +1,6 @@
 package com.KUAlchemists.backend.handlers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.services.PublishTheoryService;
 
 import java.util.List;
@@ -53,6 +54,9 @@ public class PublishTheoryHandler {
 
 
     public String handlePublishTheoryRequest() {
+        if (GameEngine.getInstance().getCurrentPlayer().getActionPoints() < 1) {
+            return "You don't have enough action points to publish a theory.";
+        }
         boolean success = publishTheoryService.publishTheory(
                 selectedIngredientName,
                 predictedRedAspectString,

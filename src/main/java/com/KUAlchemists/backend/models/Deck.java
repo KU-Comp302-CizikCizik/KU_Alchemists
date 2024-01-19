@@ -1,9 +1,12 @@
 package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.IngredientType;
+import com.KUAlchemists.backend.states.DeckState;
+import com.KUAlchemists.backend.states.State;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -12,6 +15,7 @@ public class Deck implements Serializable {
     private ArrayList<Ingredient> ingredientsList = new ArrayList<>();
     private Deck() {
         loadIngredientsFromResources();
+        Collections.shuffle(ingredientsList); // shuffle the deck
     }
 
     public static Deck getInstance() {
@@ -40,10 +44,8 @@ public class Deck implements Serializable {
     }
 
     public Ingredient drawIngredient(){
-        Random rand = new Random();
         if (!ingredientsList.isEmpty()) {
-            int index = rand.nextInt(ingredientsList.size());
-            return ingredientsList.remove(index);
+            return ingredientsList.remove(0); // en üstteki kartı çekiyor ve listeden siliyor
         }
         else {
             throw new RuntimeException("Deck is empty");
@@ -90,5 +92,9 @@ public class Deck implements Serializable {
                 ingredientsList.add(0, rearrangedIngredients.get(i));
             }
         }
+    }
+
+    public DeckState getState(){
+        return new DeckState(ingredientsList);
     }
 }

@@ -3,6 +3,7 @@ package com.KUAlchemists.backend.engine;
 import com.KUAlchemists.backend.enums.*;
 import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.enums.GameMode;
+import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.states.GameEngineState;
@@ -12,6 +13,8 @@ import javafx.application.Platform;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.logging.Handler;
 
 public class GameEngine {
 
@@ -188,10 +191,6 @@ public class GameEngine {
      */
     private void nextPlayerOnline() {
         currentClientID = (currentClientID + 1) % playerList.size();
-        GameTurnState gameTurnState = new GameTurnState(currentClientID);
-        ArrayList<State> states = new ArrayList<>();
-        states.add(gameTurnState);
-        NetworkHandler.getInstance().handleSendData(states);
 
     }
 
@@ -274,8 +273,10 @@ public class GameEngine {
     }
 
 
-    public State getState() {
-        return new GameEngineState(new ArrayList<>(playerList));
+    public GameEngineState getState() {
+
+        BoardHandler.getInstance().removeAllPlayerObservers();
+        return new GameEngineState(new ArrayList<>(GameEngine.getInstance().getPlayerList()));
     }
 
     public void setPlayerList(ArrayList<Player> playerArrayList) {

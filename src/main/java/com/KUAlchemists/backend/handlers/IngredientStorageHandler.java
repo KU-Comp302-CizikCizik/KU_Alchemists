@@ -76,23 +76,6 @@ public class IngredientStorageHandler {
         }
     }
 
-    /**
-     * Gets the description of an ingredient.
-     *
-     * @param ingredientName The name of the ingredient.
-     * @return The description of the ingredient.
-     */
-    public String handleGetIngredientDescription(String ingredientName) {
-        Player player = GameEngine.getInstance().getCurrentPlayer();
-        try {
-            return service.getIngredientDescription(player, ingredientName);
-            // Update UI with the ingredient details
-        } catch (IllegalArgumentException e) {
-            return "Ingredient not found";
-            // Update UI with error message
-        }
-
-    }
 
     /**
      * Gets the ingredients in the player's storage.

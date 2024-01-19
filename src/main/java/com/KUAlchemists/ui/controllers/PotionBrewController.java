@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -251,6 +252,8 @@ public class PotionBrewController {
     public void hmClickedBrewButton(){
         if(numOfSelected != 2) return;
         actionPerformed();
+        Stage stage = (Stage)ingredient_image1.getScene().getWindow();
+        stage.close();
     }
 
     public void selectIngredients(){

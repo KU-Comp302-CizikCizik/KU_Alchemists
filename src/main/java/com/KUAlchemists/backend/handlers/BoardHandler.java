@@ -1,17 +1,20 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.PlayerObserver;
-import com.KUAlchemists.backend.states.GameTurnState;
-import com.KUAlchemists.backend.states.State;
+import com.KUAlchemists.backend.states.*;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BoardHandler {
 
@@ -79,13 +82,34 @@ public class BoardHandler {
         ArrayList<Integer> result = GameEngine.getInstance().nextTourOnline();
         System.out.println("PlayerList size: " + GameEngine.getInstance().getPlayerList().size());
         //TO-DO Update action points
+        GameEngineState gameEngineState = GameEngine.getInstance().getState();
+        GameTurnState gameTurnState = new GameTurnState(GameEngine.getInstance().getCurrentClientID());
+        DeckState deckState = Deck.getInstance().getState();
+        BoardState boardState = Board.getInstance().getState();
+
+        ArrayList<State> states = new ArrayList<>();
+        states.add(gameTurnState);
+        for(int i =0; i< GameEngine.getInstance().getPlayerList().size(); i++){
+            states.add(GameEngine.getInstance().getPlayerList().get(i).getState());
+        }
+        states.add(boardState);
+        states.add(deckState);
+
+        NetworkHandler.getInstance().handleSendData(states);
 
         return result;
     }
 
+
     public void registerPlayerObserver(PlayerObserver playerObserver) {
         for(Player player : GameEngine.getInstance().getPlayerList()){
             player.registerObserver(playerObserver);
+        }
+    }
+
+    public void removeAllPlayerObservers() {
+        for(Player p : GameEngine.getInstance().getPlayerList()){
+            p.removeAllObservers();
         }
     }
 
@@ -152,7 +176,14 @@ public class BoardHandler {
 
     public void notifyOtherClientsForFinalScoring() {
         //TODO: notify other clients for final scoring
+        GameStatusState gameStatusState = new GameStatusState(GameStatus.END_GAME);
+        ArrayList<State> states = new ArrayList<>();
+        states.add(gameStatusState);
+        NetworkHandler.getInstance().handleSendData(states);
 
 
     }
+
+
+
 }

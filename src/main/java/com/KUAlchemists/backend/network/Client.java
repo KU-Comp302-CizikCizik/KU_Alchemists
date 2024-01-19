@@ -44,6 +44,7 @@ public class Client {
         if (socket.isConnected()) {
             outputStream.writeObject(data);
             outputStream.flush();
+            outputStream.reset();
             System.out.println("Data sent to the server: " + data);
         }
     }
