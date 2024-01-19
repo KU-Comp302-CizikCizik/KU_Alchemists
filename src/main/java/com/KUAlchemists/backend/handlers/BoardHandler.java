@@ -97,6 +97,12 @@ public class BoardHandler {
 
         NetworkHandler.getInstance().handleSendData(states);
 
+        if (GameEngine.getInstance().getCurrentClientID() == GameEngine.getInstance().getCurrentPlayer().getId()) {
+            for(Player player : GameEngine.getInstance().getPlayerList()){
+                player.setActionPoints(5);
+            }
+        }
+
         return result;
     }
 
@@ -151,6 +157,7 @@ public class BoardHandler {
     }
 
     public boolean isThereWisdomIdolNotification() {
+
         if (notificationMap.size() > 0) {
             return true;
         }
