@@ -16,6 +16,12 @@ public class UseArtifactHandler {
     private static ArrayList<String> usedArtifacts = new ArrayList<>();
     private static UseArtifactHandler INSTANCE;
 
+    private static String PRINTING_PRESS = "printing_press";
+    private static String WISDOM_IDOL = "wisdom_idol";
+    private static String MAGIC_MORTAR = "magic_mortar";
+    private static List<String> activatedArtifacts = new ArrayList<String>();
+
+
     private UseArtifactHandler() {
         this.useArtifactService = new UseArtifactService();
         this.wisdomIdolService = new WisdomIdolService();
@@ -46,7 +52,7 @@ public class UseArtifactHandler {
         return usedArtifacts;
     }
     public List<String> handleGetAllArtifacts(){
-        return Arrays.asList("elixir_of_insight", "philosophers_compass", "magic_mortar", "printing_press", "wisdom_idol");
+        return Arrays.asList("elixir_of_insight", "magic_mortar", "printing_press", "wisdom_idol");
     }
     public void handleRemoveArtifact(String name){
         useArtifactService.removeArtifactFromStorage(name);
@@ -62,5 +68,20 @@ public class UseArtifactHandler {
     }
     public void activateWisdomIdol() {
         wisdomIdolService.activateWisdomIdol(GameEngine.getInstance().getCurrentPlayer());
+        activatedArtifacts.add(WISDOM_IDOL);
+    }
+    public void activatePrintingPress(){
+        activatedArtifacts.add(PRINTING_PRESS);
+    }
+
+    public void activateMagicMortar(){
+        activatedArtifacts.add(MAGIC_MORTAR);
+    }
+    public List<String> getActivatedArtifacts(){
+        return activatedArtifacts;
+    }
+
+    public void deactivateArtifact(String artifactName){
+        activatedArtifacts.remove(artifactName);
     }
 }
