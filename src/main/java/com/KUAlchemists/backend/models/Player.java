@@ -264,4 +264,8 @@ public class Player implements Subject, Serializable {
     public void setActivatedArtifacts(Map<String, Boolean> activatedArtifacts) {
         this.activatedArtifacts = activatedArtifacts;
     }
+
+    public void removeActivedArtifact(String name) {
+        activatedArtifacts.remove(name);
+    }
 }

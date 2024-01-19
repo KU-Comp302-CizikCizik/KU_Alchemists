@@ -1,7 +1,7 @@
 package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
-import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.*;
 import com.KUAlchemists.backend.services.MagicMortarService;
 
 import java.util.ArrayList;
@@ -41,4 +41,38 @@ public class MagicMortarHandler {
             magicMortarService.setIngredientNameToRetain(ingredientName);
         }
 
+    public void handlePerformMagicMortar(Ingredient ingredient1, Ingredient ingredient2, String ingredient1NameFormatted, String ingredient2NameFormatted) {
+        Artifact magicMortar= Board.getInstance().getArtifactStorage(GameEngine.getInstance().getCurrentPlayer()).getArtifactByName("magic_mortar");
+        if(magicMortar != null && magicMortar.isActivated()){
+            magicMortarService.setIngredientName1(ingredient1NameFormatted);
+            magicMortarService.setIngredientName2(ingredient2NameFormatted);
+
+
+            if (ingredient1NameFormatted.toLowerCase().equals(magicMortarService.getIngredientNameToRetain())){
+                IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient2NameFormatted);
+                Deck.getInstance().addIngredient(ingredient2);
+            }
+
+            else if (ingredient2NameFormatted.toLowerCase().equals(magicMortarService.getIngredientNameToRetain())){
+                IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient1NameFormatted);
+                Deck.getInstance().addIngredient(ingredient1);
+            }
+
+            Board.getInstance().getArtifactStorage(GameEngine.getInstance().getCurrentPlayer()).getArtifactByName("magic_mortar").setActivated(false);
+            Board.getInstance().getArtifactStorage(GameEngine.getInstance().getCurrentPlayer()).removeArtifact(magicMortar);
+            GameEngine.getInstance().getCurrentPlayer().removeActivedArtifact("magic_mortar");
+
+
+
+
+        }
+        else{
+            //remove the ingredients from the player inventory
+            IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient1NameFormatted);
+            IngredientStorageHandler.getInstance().handleRemoveIngredient(ingredient2NameFormatted);
+            //add the ingredients back to the deck
+            Deck.getInstance().addIngredient(ingredient1);
+            Deck.getInstance().addIngredient(ingredient2);
+        }
+    }
 }

@@ -1,5 +1,7 @@
 package com.KUAlchemists.backend.models;
 
+import com.KUAlchemists.backend.engine.GameEngine;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

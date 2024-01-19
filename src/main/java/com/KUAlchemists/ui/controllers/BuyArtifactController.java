@@ -1,6 +1,8 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.BuyArtifactHandler;
+import com.KUAlchemists.backend.models.Artifact;
+import com.KUAlchemists.backend.models.ArtifactShop;
 import com.KUAlchemists.backend.handlers.SoundEffectHandler;
 import com.KUAlchemists.backend.handlers.SoundHandler;
 import com.KUAlchemists.backend.sound.SoundContrasts;
@@ -100,7 +102,23 @@ public class BuyArtifactController {
                 }
             }
         }
-    }
+        List<Artifact> allArficats = ArtifactShop.getInstance().getArtifactsForSale();
+        for(Slot slot : artifactSlots){
+            boolean doesExist = false;
+            for(Artifact arficat : allArficats){
+                if(slot.getId().equals(arficat.getName())){
+                    doesExist =true;
+                    break;
+                }
+            }
+            if(!doesExist)
+                slot.setDisable();
+        }
+
+
+        }
+
+
 
     private Slot getSlot(Pane pane){
         for(Slot slot:artifactSlots){
