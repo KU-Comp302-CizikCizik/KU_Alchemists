@@ -108,6 +108,8 @@ public class UseArtifactController {
         List<String> boughtArtifacts = UseArtifactHandler.getInstance().handleStorageArtifact();
         List<String> activeArtifacts = UseArtifactHandler.getInstance().getActivatedArtifacts();
 
+        resetUI();
+
 
         for(Slot slot: artifactSlots){
             slot.setDisable();
@@ -128,6 +130,13 @@ public class UseArtifactController {
                 }
             }
         }
+    }
+
+    private void resetUI() {
+        for(Slot slot: artifactSlots){
+            slot.setDisable();
+        }
+
     }
 
     private Slot getSlot(Pane pane){

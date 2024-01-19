@@ -93,8 +93,25 @@ public class BuyArtifactController {
                     slot.setDisable();
                 }
             }
+
         }
-    }
+        List<String> allArficats = BuyArtifactHandler.getInstance().handleGetAllArtifacts();
+        for(Slot slot : artifactSlots){
+            boolean doesExist = false;
+            for(String arficat : allArficats){
+                if(slot.getId().equals(arficat)){
+                    doesExist =true;
+                    break;
+                }
+            }
+            if(!doesExist)
+                slot.setDisable();
+        }
+
+
+        }
+
+
 
     private Slot getSlot(Pane pane){
         for(Slot slot:artifactSlots){

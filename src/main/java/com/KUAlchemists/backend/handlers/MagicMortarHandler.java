@@ -60,6 +60,9 @@ public class MagicMortarHandler {
 
             Board.getInstance().getArtifactStorage(GameEngine.getInstance().getCurrentPlayer()).getArtifactByName("magic_mortar").setActivated(false);
             Board.getInstance().getArtifactStorage(GameEngine.getInstance().getCurrentPlayer()).removeArtifact(magicMortar);
+            GameEngine.getInstance().getCurrentPlayer().removeActivedArtifact("magic_mortar");
+
+
 
         }
         else{
