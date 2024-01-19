@@ -58,11 +58,20 @@ public class PotionBrewController {
     private HashMap<ImageView, String> ingredientMap;
 
 
+    private ArrayList<String> ingredientList = new ArrayList<String>();
+
+
     public void actionPerformed(){
-        disableElements();
-        selectIngredients();
-        PotionBrewingAreaHandler.getInstance().setIngredientsToBeBrewed(selectedIngredients.get(0), selectedIngredients.get(1));
-        SceneLoader.getInstance().loadMakeExperiment();
+        if(ingredientList.size() == 0){
+            SceneLoader.getInstance().loadGenericPopUp("No ingredients available!");
+        }
+        else{
+            disableElements();
+            selectIngredients();
+            PotionBrewingAreaHandler.getInstance().setIngredientsToBeBrewed(selectedIngredients.get(0), selectedIngredients.get(1));
+            SceneLoader.getInstance().loadMakeExperiment();
+        }
+
     }
 
     @FXML
@@ -71,7 +80,7 @@ public class PotionBrewController {
         potion.setDisable(true);
         potion.setVisible(false);
 
-        ArrayList<String> ingredientList = PotionBrewingAreaHandler.getInstance().getIngredientList();
+        ingredientList = PotionBrewingAreaHandler.getInstance().getIngredientList();
         ingredientMap =  new HashMap<ImageView, String>();
         for(int i = 0; i < ingredientList.size(); i++){
 
