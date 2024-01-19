@@ -35,6 +35,7 @@ public class BuyArtifactHandler {
      */
     public void handleBuyArtifactRequest(String artifactName) {
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+
         buyArtifactService.buyArtifact(currentPlayer, artifactName);
     }
     /**

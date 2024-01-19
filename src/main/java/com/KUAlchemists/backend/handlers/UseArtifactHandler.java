@@ -19,7 +19,7 @@ public class UseArtifactHandler {
     private static String PRINTING_PRESS = "printing_press";
     private static String WISDOM_IDOL = "wisdom_idol";
     private static String MAGIC_MORTAR = "magic_mortar";
-    private static List<String> activatedArtifacts = new ArrayList<String>();
+
 
 
     private UseArtifactHandler() {
@@ -36,6 +36,9 @@ public class UseArtifactHandler {
     }
     // when use elixir of insight button clicked this handler method will be called
     public ArrayList<String> handlePeekTopThree(){
+        if(GameEngine.getInstance().getCurrentPlayer().getActionPoints() < 1){
+            return null;
+        }
         return useArtifactService.peekTopThree();
     }
 
@@ -67,21 +70,22 @@ public class UseArtifactHandler {
         useArtifactService.decreaseActionPoint(GameEngine.getInstance().getCurrentPlayer());
     }
     public void activateWisdomIdol() {
-        wisdomIdolService.activateWisdomIdol(GameEngine.getInstance().getCurrentPlayer());
-        activatedArtifacts.add(WISDOM_IDOL);
+        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        wisdomIdolService.activateWisdomIdol(currentPlayer);
+        currentPlayer.activateArtifact(WISDOM_IDOL);
     }
     public void activatePrintingPress(){
-        activatedArtifacts.add(PRINTING_PRESS);
+        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        currentPlayer.activateArtifact(PRINTING_PRESS);
     }
 
     public void activateMagicMortar(){
-        activatedArtifacts.add(MAGIC_MORTAR);
+        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        currentPlayer.activateArtifact(MAGIC_MORTAR);
     }
     public List<String> getActivatedArtifacts(){
-        return activatedArtifacts;
+        Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        return currentPlayer.getActivatedArtifacts();
     }
 
-    public void deactivateArtifact(String artifactName){
-        activatedArtifacts.remove(artifactName);
-    }
 }

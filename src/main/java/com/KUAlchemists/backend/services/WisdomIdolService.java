@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.services;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.BoardHandler;
+import com.KUAlchemists.backend.models.Artifact;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
@@ -19,7 +21,7 @@ public class WisdomIdolService {
      */
     public void activateWisdomIdol(Player player) {
         // TODO - implement WisdomIdolService.activateWisdomIdol
-        if (Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol") != null) {
+        if (Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol") != null && GameEngine.getInstance().getCurrentPlayer().getActionPoints() >= 1) {
             Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol").setActivated(true);
         }
     }
@@ -27,9 +29,14 @@ public class WisdomIdolService {
         BoardHandler.getInstance().saveNotificationToBoardHandler(selectedTheory, player, deductionPoint);
     }
     public void applyWizardIdol(Player player, int deductedPoint) {
-        //TODO - kaybettiği kadar ekleme gyapması gerekiyor bazen 5 puan bazen 2 puan kaybediyor ve bence adını değiştirmek lazım (applyWizordIdol gibi)
         //negate deductedPoint and add it to the player's reputation points
-        player.increaseReputationPoints(-deductedPoint);
+        if (Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol") != null && Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol").isActivated()) {
+            player.increaseReputationPoints(-deductedPoint);
+            Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol").setActivated(false); // Deactivate the artifact after use
+            player.deactivateArtifact("wisdom_idol");
+            Artifact artifact = Board.getInstance().getArtifactStorage(player).getArtifactByName("wisdom_idol");
+            Board.getInstance().getArtifactStorage(player).removeArtifact(artifact); // Remove the artifact from storage
+        }
     }
 }
 
