@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements Subject, Serializable {
-    private static final long serialVersionUID = 1L;
     private int gold;
     private String status;
     private int sicknessLevel;

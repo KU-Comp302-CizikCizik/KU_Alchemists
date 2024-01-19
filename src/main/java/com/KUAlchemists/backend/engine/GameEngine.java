@@ -191,12 +191,6 @@ public class GameEngine {
      */
     private void nextPlayerOnline() {
         currentClientID = (currentClientID + 1) % playerList.size();
-        GameEngineState gameEngineState = (GameEngineState) GameEngine.getInstance().getState();
-        GameTurnState gameTurnState = new GameTurnState(currentClientID);
-        ArrayList<State> states = new ArrayList<>();
-        states.add(gameTurnState);
-        states.add(gameEngineState);
-        NetworkHandler.getInstance().handleSendData(states);
 
     }
 
@@ -279,7 +273,7 @@ public class GameEngine {
     }
 
 
-    public State getState() {
+    public GameEngineState getState() {
 
         BoardHandler.getInstance().removeAllPlayerObservers();
         return new GameEngineState(new CopyOnWriteArrayList<>(GameEngine.getInstance().getPlayerList()));

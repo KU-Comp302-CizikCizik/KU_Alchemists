@@ -2,13 +2,13 @@ package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.UserType;
+import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.models.Theory;
 import com.KUAlchemists.backend.network.NetworkHandler;
 import com.KUAlchemists.backend.observer.PlayerObserver;
-import com.KUAlchemists.backend.states.GameEngineState;
-import com.KUAlchemists.backend.states.GameTurnState;
-import com.KUAlchemists.backend.states.State;
+import com.KUAlchemists.backend.states.*;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
@@ -81,9 +81,22 @@ public class BoardHandler {
         ArrayList<Integer> result = GameEngine.getInstance().nextTourOnline();
         System.out.println("PlayerList size: " + GameEngine.getInstance().getPlayerList().size());
         //TO-DO Update action points
+        GameEngineState gameEngineState = GameEngine.getInstance().getState();
+        GameTurnState gameTurnState = new GameTurnState(GameEngine.getInstance().getCurrentClientID());
+        DeckState deckState = Deck.getInstance().getState();
+        BoardState boardState = Board.getInstance().getState();
+
+        ArrayList<State> states = new ArrayList<>();
+        states.add(gameTurnState);
+        states.add(gameEngineState);
+        states.add(boardState);
+        states.add(deckState);
+
+        NetworkHandler.getInstance().handleSendData(states);
 
         return result;
     }
+
 
     public void registerPlayerObserver(PlayerObserver playerObserver) {
         for(Player player : GameEngine.getInstance().getPlayerList()){
@@ -92,8 +105,8 @@ public class BoardHandler {
     }
 
     public void removeAllPlayerObservers() {
-        for(Player player1 : GameEngine.getInstance().getPlayerList()){
-            player1.removeAllObservers();
+        for(Player p : GameEngine.getInstance().getPlayerList()){
+            p.removeAllObservers();
         }
     }
 

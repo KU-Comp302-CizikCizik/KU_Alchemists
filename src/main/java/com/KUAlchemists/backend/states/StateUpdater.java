@@ -5,6 +5,7 @@ import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.managers.EventManager;
 import com.KUAlchemists.backend.models.Board;
+import com.KUAlchemists.backend.models.Deck;
 import com.KUAlchemists.backend.models.Player;
 
 import java.io.Serializable;
@@ -20,23 +21,31 @@ public class StateUpdater implements Serializable {
         // updates the game engine
         CopyOnWriteArrayList<Player> playerArrayList = gameEngineState.getPlayerArrayList();
         if(playerArrayList.size() == 0 || gameEngineState == null) return;
-
         int currPlayerIndex = GameEngine.getInstance().getCurrentPlayerIndex();
-        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT && GameEngine.getInstance().getCurrentPlayerIndex() == 0){
-            currPlayerIndex = playerArrayList.size()-1;
-        }
-
+        String avatar = GameEngine.getInstance().getCurrentPlayer().getAvatar();
         GameEngine.getInstance().setPlayerList(new ArrayList<>(playerArrayList));
+
+        if(GameEngine.getInstance().getCurrentPlayer().getUserType() == UserType.CLIENT && currPlayerIndex == 0){
+            for(int i =0;i <GameEngine.getInstance().getPlayerList().size();i++){
+                if(GameEngine.getInstance().getPlayerList().get(i).getAvatar().equals(avatar)){
+                    currPlayerIndex = i;
+                    break;
+                }
+            }
+        }
         GameEngine.getInstance().setCurrentPlayer(currPlayerIndex);
         GameEngine.getInstance().setCurrentPlayerIndex(currPlayerIndex);
-
         EventManager.getInstance().onUpdateOnlinePlayers();
 
     }
 
     public void updateBoard(BoardState boardState) {
         Board.getInstance().setPublishedTheoriesList(boardState.getPublishedTheoriesList());
+        Board.getInstance().setIngredientStorages(boardState.getIngredientStorages());
+        Board.getInstance().setPotionStorages(boardState.getPotionStorages());
+        Board.getInstance().setArtifactStorages(boardState.getArtifactStorages());
     }
+
 
 
     public void updatePlayerInit(PlayerInitState playerInitState) {
@@ -55,7 +64,11 @@ public class StateUpdater implements Serializable {
 
     public void updateGameTurn(GameTurnState gameTurnState) {
         GameEngine.getInstance().setCurrentClientID(gameTurnState.getGameTurn());
+        System.out.println("Turn id : " + gameTurnState.getGameTurn());
         EventManager.getInstance().onGameTurnChanged(gameTurnState.getGameTurn());
     }
 
+    public void updateDeck(DeckState deckState) {
+        Deck.getInstance().setIngredientList(deckState.getIngredientList());
+    }
 }

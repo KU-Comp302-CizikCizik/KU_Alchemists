@@ -1,6 +1,8 @@
 package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.enums.IngredientType;
+import com.KUAlchemists.backend.states.DeckState;
+import com.KUAlchemists.backend.states.State;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -90,5 +92,9 @@ public class Deck implements Serializable {
                 ingredientsList.add(0, rearrangedIngredients.get(i));
             }
         }
+    }
+
+    public DeckState getState(){
+        return new DeckState(ingredientsList);
     }
 }

@@ -38,57 +38,57 @@ import java.util.HashMap;
 public class BoardController  implements PlayerObserver, GameTurnObserver, GameStatusObserver, OnlinePlayersUpdateObserver {
 
     @FXML
-    private transient AnchorPane avatar1Pane;
+    private AnchorPane avatar1Pane;
 
     @FXML
-    private transient AnchorPane avatar2Pane;
+    private AnchorPane avatar2Pane;
 
     @FXML
-    private transient AnchorPane avatar3Pane;
+    private AnchorPane avatar3Pane;
 
     @FXML
-    private transient  AnchorPane avatar4Pane;
+    private  AnchorPane avatar4Pane;
 
     @FXML
-    private transient Text roundTitle;
+    private Text roundTitle;
 
     @FXML
-    private transient Text tourTitle;
+    private Text tourTitle;
 
     @FXML
-    private transient Button endRoundButton;
+    private Button endRoundButton;
 
     @FXML
-    private transient Button publishTheoryButton;
+    private Button publishTheoryButton;
     @FXML
-    private transient Button sellPotionButton;
+    private Button sellPotionButton;
 
     @FXML
-    private transient Button deductionBoardButton;
+    private Button deductionBoardButton;
 
     @FXML
-    private transient Button potionBewingButton;
+    private Button potionBewingButton;
 
     @FXML
-    private transient Button publicationTrackButton;
+    private Button publicationTrackButton;
 
     @FXML
-    private transient Button helpButton;
+    private Button helpButton;
 
     @FXML
-    private transient  Button pauseButton;
+    private  Button pauseButton;
 
     @FXML
-    private transient Button forageIngredientButton;
+    private Button forageIngredientButton;
 
     @FXML
-    private transient Button buyArtifactButton;
+    private Button buyArtifactButton;
 
     @FXML
-    private transient Button useArtifactButton;
+    private Button useArtifactButton;
 
     @FXML
-    private transient Button ingredientStorageButton;
+    private Button ingredientStorageButton;
 
 
     private Integer currentRound;

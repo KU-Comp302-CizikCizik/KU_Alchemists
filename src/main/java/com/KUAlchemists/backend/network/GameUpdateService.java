@@ -2,6 +2,8 @@ package com.KUAlchemists.backend.network;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.PlayerSeal;
+import com.KUAlchemists.backend.handlers.BoardHandler;
+import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 import com.KUAlchemists.backend.states.*;
 
@@ -49,6 +51,7 @@ public class GameUpdateService {
         player.setPlayerSeal(PlayerSeal.getRandomSeal());
         player.setIDInitializedbyHost(true);
         GameEngine.getInstance().addPlayer(player);
+        Board.getInstance().createStoragesForNewPlayer(player);
         gameEngineState = new GameEngineState(new CopyOnWriteArrayList<>(GameEngine.getInstance().getPlayerList()));
         result.add(gameEngineState);
 

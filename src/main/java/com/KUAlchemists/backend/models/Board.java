@@ -1,12 +1,14 @@
 package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.states.BoardState;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Singleton Board Class
@@ -15,8 +17,8 @@ import java.util.List;
 public class Board implements Serializable {
 
     private static Board Instance;
-    private final HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
-    private final HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
+    private HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
+    private HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
     private final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
     private List<Theory> publishedTheoriesList = new ArrayList<>();
     private ArtifactShop artifactShop = ArtifactShop.getInstance();
@@ -97,15 +99,51 @@ public class Board implements Serializable {
     public HashMap<Player, ArtifactStorage> getArtifactStorages() {
         return artifactStorages;
     }
+
+    public BoardState getState(){
+        return new BoardState(publishedTheoriesList, ingredientStorages, potionStorages, artifactStorages);
+    }
+
+    //setIngredientStorage
+    public void setIngredientStorages(HashMap<Player, IngredientStorage> newStorage){
+        ingredientStorages.clear();
+        /*
+        HashMap<Player, IngredientStorage> map = new HashMap<>(ingredientStorages);
+        for (Map.Entry<Player, IngredientStorage> newEntry : newStorage.entrySet()) {
+            for(Map.Entry<Player, IngredientStorage> oldEntry : newStorage.entrySet()){
+                if(newEntry.getKey().getId() == oldEntry.getKey().getId()){
+                    map.put(oldEntry.getKey(), newEntry.getValue());
+                }
+
+            }
+        }
+         */
+        ingredientStorages.putAll(newStorage);
+    }
+
+    public void setPotionStorages(HashMap<Player, PotionStorage> potionStorageMap){
+        potionStorages.clear();
+        potionStorages.putAll(potionStorageMap);
+    }
+
+
+    public void setArtifactStorages(HashMap<Player, ArtifactStorage> artifactStorageMap){
+        artifactStorages.clear();
+        artifactStorages.putAll(artifactStorageMap);
+    }
+
     public void setPublishedTheoriesList(List<Theory> newList){
         this.publishedTheoriesList = newList;
         // TODO: notify observers
     }
-    public BoardState getState(){
-        return new BoardState(publishedTheoriesList);
-    }
-    public void updateState(BoardState state){
-        setPublishedTheoriesList(state.getPublishedTheoriesList());
+
+
+    public void createStoragesForNewPlayer(Player p) {
+        ingredientStorages.put(p, new IngredientStorage());
+        ForageForIngredientHandler.getInstance().forageForIngredient(p);
+        ForageForIngredientHandler.getInstance().forageForIngredient(p);
+        potionStorages.put(p, new PotionStorage());
+        artifactStorages.put(p, new ArtifactStorage());
     }
 }
 
