@@ -37,6 +37,9 @@ public class PotionBrewingAreaHandler {
      * @param ingredient1Name, ingredient2Name
      */
     public String brewPotion(String ingredient1Name, String ingredient2Name) {
+        if(GameEngine.getInstance().getCurrentPlayer().getActionPoints() < 1){
+            return null;
+        }
         String ingredient1NameFormatted = potionBrewingService.getFormattedName(ingredient1Name);
         String ingredient2NameFormatted = potionBrewingService.getFormattedName(ingredient2Name);
         //search for ingredient1 and ingredient2 in player inventory

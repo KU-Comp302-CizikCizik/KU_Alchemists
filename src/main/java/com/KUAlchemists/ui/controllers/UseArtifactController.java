@@ -69,7 +69,10 @@ public class UseArtifactController {
         for(Slot slot:artifactSlots){
             if(slot != null)
                 if(slot.isSelected){
-                    UseArtifactHandler.getInstance().deduceActionPoint();
+                    if(!UseArtifactHandler.getInstance().deduceActionPoint()) {
+                        SceneLoader.getInstance().loadGenericPopUp("Not enough action point");
+                        return;
+                    }
                     if(slot.getId().equals(ELIXIR_OF_INSIGHT)) {
                         SceneLoader.getInstance().loadElixirOfInsight();
                         UseArtifactHandler.getInstance().handleRemoveArtifact(ELIXIR_OF_INSIGHT);

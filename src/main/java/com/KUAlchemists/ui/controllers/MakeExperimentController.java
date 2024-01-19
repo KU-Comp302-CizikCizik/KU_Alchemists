@@ -4,6 +4,7 @@ import com.KUAlchemists.backend.handlers.MakeExperimentHandler;
 import com.KUAlchemists.backend.handlers.PotionBrewingAreaHandler;
 import com.KUAlchemists.backend.handlers.SoundEffectHandler;
 import com.KUAlchemists.backend.sound.SoundContrasts;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
@@ -45,6 +46,7 @@ public class MakeExperimentController {
         System.out.println(ingredient1Name + ingredient2Name);
 
         potionName  = PotionBrewingAreaHandler.getInstance().brewPotion(ingredient1Name, ingredient2Name);
+        if(potionName == null) SceneLoader.getInstance().loadGenericPopUp("No action points left!");
 
         String subPronounce = (person.equals(MASTER))? " You" : " Your student";
         String pronounce = (person.equals(MASTER))? " Are":" Is";

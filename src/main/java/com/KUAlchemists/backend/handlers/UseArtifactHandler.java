@@ -39,9 +39,6 @@ public class UseArtifactHandler {
     }
     // when use elixir of insight button clicked this handler method will be called
     public ArrayList<String> handlePeekTopThree(){
-        if(GameEngine.getInstance().getCurrentPlayer().getActionPoints() < 1){
-            return null;
-        }
         return useArtifactService.peekTopThree();
     }
 
@@ -67,8 +64,13 @@ public class UseArtifactHandler {
         return useArtifactService.getStorageArtifacts(currentPlayer);
     }
 
-    public void deduceActionPoint(){
+    public boolean deduceActionPoint(){
+        if(GameEngine.getInstance().getCurrentPlayer().getActionPoints() < 1)
+        {
+            return false;
+        }
         useArtifactService.decreaseActionPoint(GameEngine.getInstance().getCurrentPlayer());
+        return true;
     }
     public void activateWisdomIdol() {
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
