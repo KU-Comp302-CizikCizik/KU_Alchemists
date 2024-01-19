@@ -1,5 +1,6 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.PotionBrewingAreaHandler;
 import com.KUAlchemists.backend.handlers.PotionStorageHandler;
 import com.KUAlchemists.ui.SceneLoader;
@@ -71,7 +72,13 @@ public class PotionBrewController {
             disableElements();
             selectIngredients();
             PotionBrewingAreaHandler.getInstance().setIngredientsToBeBrewed(selectedIngredients.get(0), selectedIngredients.get(1));
-            SceneLoader.getInstance().loadMakeExperiment();
+            if(PotionBrewingAreaHandler.getInstance().isMagicMortarActivated()){
+                SceneLoader.getInstance().loadMagicMortarArtifact();
+            }
+            else{
+                SceneLoader.getInstance().loadMakeExperiment();
+
+            }
         }
     }
 

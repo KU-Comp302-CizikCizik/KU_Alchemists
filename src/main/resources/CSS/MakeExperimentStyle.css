@@ -33,7 +33,7 @@ Text{
     -fx-font-weight: normal;
     /*-fx-fill: #000000;*/
     visibility: hidden;
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
 }
 .text-pane{
 
