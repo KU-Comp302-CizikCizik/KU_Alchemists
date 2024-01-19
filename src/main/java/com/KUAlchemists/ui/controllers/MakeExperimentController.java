@@ -2,6 +2,8 @@ package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.MakeExperimentHandler;
 import com.KUAlchemists.backend.handlers.PotionBrewingAreaHandler;
+import com.KUAlchemists.backend.handlers.SoundEffectHandler;
+import com.KUAlchemists.backend.sound.SoundContrasts;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
@@ -36,6 +38,7 @@ public class MakeExperimentController {
 
 
     private void experiencePotion(String person){
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.POP_SOUND);
         ingredient1Name = MakeExperimentHandler.getInstance().getIngredientsToBeBrewed().get(0);
         ingredient2Name = MakeExperimentHandler.getInstance().getIngredientsToBeBrewed().get(1);
 

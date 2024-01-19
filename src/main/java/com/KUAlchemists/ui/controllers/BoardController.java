@@ -6,6 +6,7 @@ import com.KUAlchemists.backend.enums.GameStatus;
 import com.KUAlchemists.backend.enums.UserType;
 import com.KUAlchemists.backend.handlers.BoardHandler;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
+import com.KUAlchemists.backend.handlers.SoundEffectHandler;
 import com.KUAlchemists.backend.managers.EventManager;
 
 import com.KUAlchemists.backend.models.Player;
@@ -13,6 +14,7 @@ import com.KUAlchemists.backend.observer.GameStatusObserver;
 import com.KUAlchemists.backend.observer.GameTurnObserver;
 import com.KUAlchemists.backend.observer.OnlinePlayersUpdateObserver;
 import com.KUAlchemists.backend.observer.PlayerObserver;
+import com.KUAlchemists.backend.sound.SoundContrasts;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -180,12 +182,14 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
     @FXML
     void buyArtifactClicked(ActionEvent event) {
         SceneLoader.getInstance().loadBuyArtifact();
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.PAGE_SOUND);
 
     }
 
     @FXML
     void deductionBoardClicked(ActionEvent event) {
         SceneLoader.getInstance().loadDeductionBoard();
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.PAGE_SOUND);
     }
 
     @FXML
@@ -197,6 +201,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
         else{
             String message = "You have foraged " + ingredient + "!";
             SceneLoader.getInstance().loadForageIngredient(message, ingredient+"-ingredient.jpg");
+            SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.CLAIM_SOUND);
         }    }
 
     @FXML
@@ -207,6 +212,7 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
     @FXML
     void ingredientStorageClicked(ActionEvent event) {
         SceneLoader.getInstance().loadIngredientStorage();
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.PAGE_SOUND);
     }
 
     @FXML
@@ -217,26 +223,31 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
     @FXML
     void potionBrewingClicked(ActionEvent event) {
         SceneLoader.getInstance().loadPotionBrewing();
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.POTION_SOUND);
     }
 
     @FXML
     void publicationTrackClicked(ActionEvent event) {
         SceneLoader.getInstance().loadPublicationTrack();
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.PAGE_SOUND);
     }
-
     @FXML
     void publishTheoryClicked(ActionEvent event) {
         SceneLoader.getInstance().loadPublishTheory();
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.PAGE_SOUND);
     }
 
     @FXML
     void sellPotionClicked(ActionEvent event) {
         SceneLoader.getInstance().loadSellPotion();
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.COIN_SOUND);
+
     }
 
     @FXML
     void useArtifactClicked(ActionEvent event) {
         SceneLoader.getInstance().loadUseArtifact();
+        SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.PAGE_SOUND);
     }
     @FXML
     public void endRoundButtonClicked() {
@@ -245,6 +256,8 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             handleFinalRound();
         } else {
             handleNonFinalRound();
+            SoundEffectHandler.getInstance().handleSoundEffect(SoundContrasts.BOARD_FLIP);
+
         }
     }
 
