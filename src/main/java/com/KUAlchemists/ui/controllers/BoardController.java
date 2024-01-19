@@ -153,8 +153,6 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             controller.setGoldPoint(BoardHandler.getInstance().getPlayerGold(playerIndex));
             controller.setReputationPoint(BoardHandler.getInstance().getPlayerReputation(playerIndex));
 
-            //UIElements
-
             cardBoxList.add(cardBox);
             return cardBox;
         } catch (IOException e) {
@@ -331,6 +329,16 @@ public class BoardController  implements PlayerObserver, GameTurnObserver, GameS
             enableInteractions();
         }
 
+    }
+
+    private void checkWisdomIdol(){
+        boolean isThereWisdomIdolNotification = BoardHandler.getInstance().isThereWisdomIdolNotification();
+        if (isThereWisdomIdolNotification) {
+            HashMap<Player, ArrayList<Object>> notificationMap  = BoardHandler.getInstance().getNotificationMap();
+            if(notificationMap.containsKey(GameEngine.getInstance().getCurrentPlayer())){
+                SceneLoader.getInstance().loadWisdomIdol();
+            }
+        }
     }
 
     private void changeAvatars() {

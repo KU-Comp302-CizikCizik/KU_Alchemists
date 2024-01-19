@@ -17,15 +17,19 @@ import java.util.Map;
 public class Board implements Serializable {
 
     private static Board Instance;
-    private HashMap<Player, IngredientStorage> ingredientStorages = new HashMap<>();
-    private HashMap<Player, PotionStorage> potionStorages = new HashMap<>();
-    private final HashMap<Player, ArtifactStorage> artifactStorages = new HashMap<>();
-    private List<Theory> publishedTheoriesList = new ArrayList<>();
-    private ArtifactShop artifactShop = ArtifactShop.getInstance();
-    private final Deck deck = Deck.getInstance();
+    private HashMap<Player, IngredientStorage> ingredientStorages;
+    private HashMap<Player, PotionStorage> potionStorages;
+    private HashMap<Player, ArtifactStorage> artifactStorages;
+    private List<Theory> publishedTheoriesList;
+    private  Deck deck;
 
     private Board (){
-        // create empty storages for players
+        publishedTheoriesList =  new ArrayList<>();
+        artifactStorages =  new HashMap<>();
+        potionStorages = new HashMap<>();
+        ingredientStorages = new HashMap<>();
+        deck = Deck.getInstance();
+
     }
 
     public static Board getInstance(){
@@ -107,17 +111,6 @@ public class Board implements Serializable {
     //setIngredientStorage
     public void setIngredientStorages(HashMap<Player, IngredientStorage> newStorage){
         ingredientStorages.clear();
-        /*
-        HashMap<Player, IngredientStorage> map = new HashMap<>(ingredientStorages);
-        for (Map.Entry<Player, IngredientStorage> newEntry : newStorage.entrySet()) {
-            for(Map.Entry<Player, IngredientStorage> oldEntry : newStorage.entrySet()){
-                if(newEntry.getKey().getId() == oldEntry.getKey().getId()){
-                    map.put(oldEntry.getKey(), newEntry.getValue());
-                }
-
-            }
-        }
-         */
         ingredientStorages.putAll(newStorage);
     }
 
