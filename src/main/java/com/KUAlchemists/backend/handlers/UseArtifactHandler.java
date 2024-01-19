@@ -16,6 +16,8 @@ public class UseArtifactHandler {
     private static ArrayList<String> usedArtifacts = new ArrayList<>();
     private static UseArtifactHandler INSTANCE;
 
+
+
     private static String PRINTING_PRESS = "printing_press";
     private static String WISDOM_IDOL = "wisdom_idol";
     private static String MAGIC_MORTAR = "magic_mortar";
@@ -76,11 +78,12 @@ public class UseArtifactHandler {
     }
     public void activatePrintingPress(){
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        PrintingPressHandler.getInstance().handleActivatePrintingPress();
         currentPlayer.activateArtifact(PRINTING_PRESS);
     }
-
     public void activateMagicMortar(){
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+        MagicMortarHandler.getInstance().handleActivateMagicMortar();
         currentPlayer.activateArtifact(MAGIC_MORTAR);
     }
     public List<String> getActivatedArtifacts(){
