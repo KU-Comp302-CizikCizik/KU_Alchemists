@@ -111,8 +111,12 @@ public class OfflineGameInitializer implements OfflineInitializer{
         int length = possibleAlchemicals.size();
         for(int i =0;i<ingredientsList.size();i++){
             int index = rand.nextInt(length);
-            ingredientsList.get(i).setAlchemical(possibleAlchemicals.get(index));
+            for(int j =0;j<3;j++){
+                ingredientsList.get(i).setAlchemical(possibleAlchemicals.get(index));
+                i++;
+            }
             possibleAlchemicals.remove(index);
+
             length--;
         }
 
