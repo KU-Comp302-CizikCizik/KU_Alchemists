@@ -106,9 +106,4 @@ public class PotionBrewingAreaHandler {
     public ArrayList<String> getIngredientsToBeBrewed(){
         return ingredientsToBeBrewed;
     }
-
-
-
-
-
 }

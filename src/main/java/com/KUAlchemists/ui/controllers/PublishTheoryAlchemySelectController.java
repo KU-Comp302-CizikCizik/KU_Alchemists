@@ -6,12 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
-import javafx.scene.text.Text;
 public class PublishTheoryAlchemySelectController {
     private String blue;
     private String red;
@@ -68,7 +68,11 @@ public class PublishTheoryAlchemySelectController {
 
         if ("Failed to publish theory.".equals(result)) {
             txt.setText("You couldnt published the thoery");
-        } else {
+        }
+        else if ("You don't have enough action points to publish a theory.".equals(result)) {
+            txt.setText("You don't have enough action points to publish a theory.");
+        }
+        else {
             txt.setText("You succesfully published the theory");
         }
     }

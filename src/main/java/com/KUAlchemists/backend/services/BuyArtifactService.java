@@ -25,7 +25,7 @@ public class BuyArtifactService {
         // If the artifact is not in the player's storage, then add it.
         // If the artifact is not in the player's storage, then subtract the cost of the artifact from the player's gold.
         // If the artifact is not in the player's storage, then remove the artifact from the shop.
-        if(player.getGold() >= artifactCost && !Board.getInstance().getArtifactStorage(player).getArtifactList().contains(artifact)){
+        if(player.getGold() >= artifactCost && !Board.getInstance().getArtifactStorage(player).getArtifactList().contains(artifact) && player.getActionPoints() >= 1){
             player.setGold(player.getGold() - artifactCost);
             player.deduceActionPoints(1);
             Board.getInstance().addArtifactToStorage(player, artifact);

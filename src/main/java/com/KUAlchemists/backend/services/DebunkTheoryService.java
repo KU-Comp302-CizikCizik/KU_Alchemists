@@ -80,12 +80,15 @@ public class DebunkTheoryService {
                 TheorySeal theorySeal = playerTheorySealsMap.get(player);
                 int deduction = 0;
                 if(theorySeal == TheorySeal.GOLD_STARRED){
+                    player.deduceReputationPoints(5);
                     deduction = -5;
                 }
                 else if(theorySeal == TheorySeal.SILVER_STARRED){
+                    player.deduceReputationPoints(3);
                     deduction = -3;
                 }
                 else if (theorySeal != correspondingSeal){
+                    player.deduceReputationPoints(1);
                     deduction = -1;
                 }
                 player.deduceReputationPoints(deduction);

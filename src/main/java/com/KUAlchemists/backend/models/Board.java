@@ -67,6 +67,7 @@ public class Board implements Serializable {
     }
 
     public void addArtifactToStorage(Player player, Artifact artifact){
+
         artifactStorages.get(player).addArtifact(artifact);
     }
     public ArtifactStorage getArtifactStorage(Player player){

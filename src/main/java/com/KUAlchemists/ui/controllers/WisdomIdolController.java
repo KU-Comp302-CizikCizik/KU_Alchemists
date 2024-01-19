@@ -27,12 +27,10 @@ public class WisdomIdolController {
             System.err.println(e.getMessage());
         }
     }
-
     @FXML
     void keepArtifactClicked(ActionEvent event) {
         closeWindow();
     }
-
     @FXML
     void useArtifactClicked(ActionEvent event) {
         WisdomIdolHandler.getInstance().useWisdomIdol();
