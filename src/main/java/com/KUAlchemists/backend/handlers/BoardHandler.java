@@ -89,7 +89,6 @@ public class BoardHandler {
 
         ArrayList<State> states = new ArrayList<>();
         states.add(gameTurnState);
-//        states.add(gameEngineState);
         for(int i =0; i< GameEngine.getInstance().getPlayerList().size(); i++){
             states.add(GameEngine.getInstance().getPlayerList().get(i).getState());
         }

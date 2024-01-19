@@ -5,6 +5,7 @@ import com.KUAlchemists.backend.models.DeductionBoard;
 import com.KUAlchemists.backend.models.Theory;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class PlayerState extends State {
     // player attributes
@@ -26,7 +27,8 @@ public class PlayerState extends State {
 
     private DeductionBoard deductionBoard;
 
-    private int getActionPoints;
+    private Map<String, Boolean> activatedArtifacts;
+
 
     private int score;
 
@@ -38,7 +40,8 @@ public class PlayerState extends State {
                        ArrayList<Theory> publishedTheories,
                        ArrayList<TheorySeal> theorySeals,
                        DeductionBoard deductionBoard,
-                       int score){
+                       int score,
+                       Map<String, Boolean> activatedArtifacts){
         this.id = id;
         this.gold = gold;
         this.sicknessLevel = sicknessLevel;
@@ -49,6 +52,7 @@ public class PlayerState extends State {
         this.theorySeals = theorySeals;
         this.deductionBoard = deductionBoard;
         this.score = score;
+        this.activatedArtifacts = activatedArtifacts;
     }
 
     public int getGold(){
@@ -92,13 +96,12 @@ public class PlayerState extends State {
         return deductionBoard;
     }
 
-    public int getGetActionPoints() {
-        return getActionPoints;
-    }
-
     public int getScore() {
         return score;
     }
 
 
+    public Map<String, Boolean> getActivatedArtifacts() {
+        return activatedArtifacts;
+    }
 }

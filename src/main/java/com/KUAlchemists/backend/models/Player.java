@@ -176,7 +176,7 @@ public class Player implements Subject, Serializable {
 
 
     public PlayerState getState(){
-        return new PlayerState(id, gold, sicknessLevel, status, reputation, actionPoints, publishedTheories, theorySeals, deductionBoard, score);
+        return new PlayerState(id, gold, sicknessLevel, status, reputation, actionPoints, publishedTheories, theorySeals, deductionBoard, score, activatedArtifacts);
     }
 
     public PlayerInitState getInitState(){
@@ -236,7 +236,7 @@ public class Player implements Subject, Serializable {
     }
 
     public void setDeductionBoard(DeductionBoard deductionBoard) {
-      this.deductionBoard = deductionBoard
+      this.deductionBoard = deductionBoard;
       }
 
     // Artifact related methods to get activation status.
@@ -259,5 +259,9 @@ public class Player implements Subject, Serializable {
     public void deactivateArtifact(String artifactName) {
         activatedArtifacts.put(artifactName, false);
 
+    }
+
+    public void setActivatedArtifacts(Map<String, Boolean> activatedArtifacts) {
+        this.activatedArtifacts = activatedArtifacts;
     }
 }

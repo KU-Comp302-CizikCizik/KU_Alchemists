@@ -31,6 +31,7 @@ public class StateUpdater implements Serializable {
         p.setDeductionBoard(playerState.getDeductionBoard());
         p.setActionPoints(playerState.getActionPoints());
         p.setScore(playerState.getScore());
+        p.setActivatedArtifacts(playerState.getActivatedArtifacts());
 
         EventManager.getInstance().onUpdateOnlinePlayers();
 
