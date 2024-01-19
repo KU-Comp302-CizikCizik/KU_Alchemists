@@ -20,7 +20,6 @@ public class MagicMortarHandler {
             }
             return instance;
         }
-        //this method is called by Mahmut when the player clicks on the magic mortar artifact.
         public void handleActivateMagicMortar(){
             Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
             magicMortarService.activateMagicMortar(currentPlayer);
