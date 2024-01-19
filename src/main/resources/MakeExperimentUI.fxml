@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="587.0" prefWidth="900.0" styleClass="body" stylesheets="@CSS/MakeExperimentStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.MakeExperimentController">
+<AnchorPane prefHeight="597.0" prefWidth="901.0" styleClass="body" stylesheets="@CSS/MakeExperimentStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.MakeExperimentController">
    <children>
       <Pane id="master-image-pane" fx:id="masterPane" layoutX="69.0" layoutY="-23.0" onMouseClicked="#masterMouseClicked" onMouseEntered="#masterMouseEntered" onMouseExited="#masterMouseExited" prefHeight="580.0" prefWidth="533.0" styleClass="person-image-pane" stylesheets="@CSS/MakeExperimentStyle.css">
          <cursor>
@@ -22,11 +22,8 @@
          </cursor>
          <children>
             <Text fx:id="studentText" layoutX="91.0" layoutY="-18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test on your student" wrappingWidth="187.21630859375" />
-            <Pane fx:id="messagePane" layoutX="44.0" layoutY="197.0" prefHeight="151.0" prefWidth="218.0" styleClass="text-pane" stylesheets="@CSS/MakeExperimentStyle.css">
-               <children>
-                  <Text id="message" fx:id="message" layoutX="8.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="message" text="Omg! Is your student okay? Your student is looking like got poisoned. That means the potion is NEGATIVE and venomous." wrappingWidth="200.0" />
-               </children>
-            </Pane>
+            <Pane fx:id="messagePane" layoutX="44.0" layoutY="197.0" prefHeight="151.0" prefWidth="218.0" styleClass="text-pane" stylesheets="@CSS/MakeExperimentStyle.css" />
+            <Text id="message" fx:id="message" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="message" text="Omg! Is your student okay? Your student is looking like got poisoned. That means the potion is NEGATIVE and venomous." wrappingWidth="295.0" />
          </children>
       </Pane>
       <Pane id="red-potion" fx:id="redPotionPane" layoutX="541.0" layoutY="402.0" prefHeight="161.0" prefWidth="87.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
