@@ -349,7 +349,6 @@ public class DeductionBoardController {
             for(String ingredient: markedIngredients.get(key)){
                 updateImageByName(key, ingredient);
             }
-
         }
 
         for (String alchemy : markedAlchemicals) {

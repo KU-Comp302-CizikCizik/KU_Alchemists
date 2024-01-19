@@ -27,8 +27,10 @@ public class DeductionBoard implements Serializable {
     }
 
     public void addMarkedIngredient(String potionEffect, String ingredientCode) {
-        if(markedAlchemicals.contains(potionEffect)){
-            markedIngredients.put(potionEffect, markedIngredients.get(potionEffect)).add(ingredientCode);
+        if(markedIngredients.containsKey(potionEffect)){
+            ArrayList<String> val = markedIngredients.get(potionEffect);
+            val.add(ingredientCode);
+            markedIngredients.put(potionEffect,val);
         }
         else{
             ArrayList<String> val = new ArrayList<>();
