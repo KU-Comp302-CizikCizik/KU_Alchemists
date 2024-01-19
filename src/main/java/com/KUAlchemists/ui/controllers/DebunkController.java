@@ -1,6 +1,8 @@
 package com.KUAlchemists.ui.controllers;
 
+import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.handlers.DebunkTheoryHandler;
+import com.KUAlchemists.ui.SceneLoader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -96,7 +98,17 @@ public class DebunkController {
         if(selectedAspect == null) {
             return;
         }
-        String checkedAspect = DebunkTheoryHandler.getInstance().checkAspect(selectedAspect);
+        String checkedAspect="";
+        System.out.println(GameEngine.getInstance().getCurrentPlayer().getActionPoints());
+        if(GameEngine.getInstance().getCurrentPlayer().getActionPoints()>1){
+           checkedAspect = DebunkTheoryHandler.getInstance().checkAspect(selectedAspect);
+        }
+        else{
+
+                SceneLoader.getInstance().loadGenericPopUp("No enough action points");
+
+        }
+
 
         String imagePath = "/com.KUAlchemists/images/alchemy/" + checkedAspect;
         Image  newImage = null;

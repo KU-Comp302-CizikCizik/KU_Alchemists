@@ -1,6 +1,7 @@
 package com.KUAlchemists.ui.controllers;
 
 import com.KUAlchemists.backend.handlers.PotionBrewingAreaHandler;
+import com.KUAlchemists.backend.handlers.PotionStorageHandler;
 import com.KUAlchemists.ui.SceneLoader;
 import javafx.fxml.FXML;
 import javafx.scene.effect.DropShadow;
@@ -62,6 +63,7 @@ public class PotionBrewController {
 
 
     public void actionPerformed(){
+
         if(ingredientList.size() == 0){
             SceneLoader.getInstance().loadGenericPopUp("No ingredients available!");
         }
@@ -71,7 +73,6 @@ public class PotionBrewController {
             PotionBrewingAreaHandler.getInstance().setIngredientsToBeBrewed(selectedIngredients.get(0), selectedIngredients.get(1));
             SceneLoader.getInstance().loadMakeExperiment();
         }
-
     }
 
     @FXML

@@ -3,7 +3,7 @@ package com.KUAlchemists.backend.services;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
 
-public class MagicMortarService {
+public class  MagicMortarService {
 
     private String ingredientName1;
     private String ingredientName2;
