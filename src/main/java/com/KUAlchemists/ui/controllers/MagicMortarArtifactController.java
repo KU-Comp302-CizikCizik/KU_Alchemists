@@ -41,8 +41,8 @@ public class MagicMortarArtifactController {
     @FXML
     private Text ingredient2Text;
 
-    private final Effect glowEffectHover = new Glow(0.4);
-    private final Effect glowEffectSelected = new Glow(0.6);
+    private final Effect glowEffectHover = new Glow(0.5);
+    private final Effect glowEffectSelected = new Glow(0.9);
     private final Effect dropShadowEffect = new DropShadow();
 
     private int selected = -1;
@@ -60,7 +60,7 @@ public class MagicMortarArtifactController {
             ingredient1Text.setText(ingredients.get(0).replace("-", " "));
             image = new Image(getClass().getResourceAsStream(photo2Url));
             ingredient2ImageView.setImage(image);
-            ingredient2Text.setText(ingredients.get(0).replace("-", " "));
+            ingredient2Text.setText(ingredients.get(1).replace("-", " "));
         } catch (Exception e){
             System.err.println(e.getMessage());
         }

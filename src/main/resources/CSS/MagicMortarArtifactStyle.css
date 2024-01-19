@@ -15,7 +15,6 @@
     -fx-fill: #FFD700;
 }
 .ingredient_name{
-    -fx-fill: white;
     -fx-text-alignment: center;
     -fx-font-family: Caligruf;
     -fx-font-size: 30px;
@@ -32,7 +31,7 @@ Button:hover{
     -fx-background-color: #7c0000;
 }
 .body{
-    -fx-background-image: url("../com.KUAlchemists/images/artifact/use_artifact_background.PNG");
+    -fx-background-image: url("../com.KUAlchemists/images/potion_brew_background.jpg");
     -fx-background-size: cover;
     -fx-background-repeat: stretch;
 }
