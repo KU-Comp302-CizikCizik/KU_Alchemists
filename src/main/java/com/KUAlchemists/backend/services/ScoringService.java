@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.models.ArtifactStorage;
 import com.KUAlchemists.backend.models.Board;
 import com.KUAlchemists.backend.models.Player;
@@ -87,6 +88,17 @@ public class ScoringService {
      */
     public int artifactScore(Player player){
         HashMap<Player, ArtifactStorage> storages = Board.getInstance().getArtifactStorages();
+        Player p = null;
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            p = player;
+        }
+        else{
+            for(Map.Entry<Player, ArtifactStorage> entry : storages.entrySet()){
+                if(entry.getKey().getId() == player.getId()){
+                    p = entry.getKey();
+                }
+            }
+        }
         ArtifactStorage storage = storages.get(player);
         int numberOfArtifacts = storage.getArtifactsTotalNumber();
         int artifactScore = 0;
