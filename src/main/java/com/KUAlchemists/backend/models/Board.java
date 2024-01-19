@@ -1,6 +1,7 @@
 package com.KUAlchemists.backend.models;
 
 import com.KUAlchemists.backend.engine.GameEngine;
+import com.KUAlchemists.backend.enums.ApplicationMode;
 import com.KUAlchemists.backend.handlers.ForageForIngredientHandler;
 import com.KUAlchemists.backend.states.BoardState;
 
@@ -51,7 +52,20 @@ public class Board implements Serializable {
         }
     }
     public IngredientStorage getIngredientStorage(Player player){
-        return ingredientStorages.get(player);
+
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            return ingredientStorages.get(player);
+        }
+        else{
+            for(Map.Entry<Player, IngredientStorage> entry : ingredientStorages.entrySet()){
+                if(entry.getKey().getId() == player.getId()){
+                    return entry.getValue();
+                }
+            }
+        }
+        System.out.println("Bro");
+        return null;
+
     }
 
     public IngredientStorage getIngredientStorage(String playerName){
@@ -65,22 +79,72 @@ public class Board implements Serializable {
     }
 
     public void addPotionToStorage(Potion potion){
-        potionStorages.get(GameEngine.getInstance().getCurrentPlayer()).addPotion(potion);
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            potionStorages.get(GameEngine.getInstance().getCurrentPlayer()).addPotion(potion);
+        }
+        else{
+            for(Map.Entry<Player, PotionStorage> entry : potionStorages.entrySet()){
+                if(entry.getKey().getId() == GameEngine.getInstance().getCurrentPlayer().getId()){
+                    entry.getValue().addPotion(potion);
+                    return;
+                }
+            }
+        }
     }
 
     public PotionStorage getPotionStorage(Player player){
-        return potionStorages.get(player);
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            return potionStorages.get(player);
+        }
+        else{
+            for(Map.Entry<Player, PotionStorage> entry : potionStorages.entrySet()){
+                if(entry.getKey().getId() == player.getId()){
+                    return entry.getValue();
+                }
+            }
+        }
+        return null;
     }
 
     public void addArtifactToStorage(Player player, Artifact artifact){
-        artifactStorages.get(player).addArtifact(artifact);
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            artifactStorages.get(player).addArtifact(artifact);
+        }
+        else{
+            for(Map.Entry<Player, ArtifactStorage> entry : artifactStorages.entrySet()){
+                if(entry.getKey().getId() == player.getId()){
+                    entry.getValue().addArtifact(artifact);
+                    return;
+                }
+            }
+        }
     }
     public ArtifactStorage getArtifactStorage(Player player){
-        return artifactStorages.get(player);
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            return artifactStorages.get(player);
+        }
+        else{
+            for(Map.Entry<Player, ArtifactStorage> entry : artifactStorages.entrySet()){
+                if(entry.getKey().getId() == player.getId()){
+                    return entry.getValue();
+                }
+            }
+        }
+        return null;
     }
 
     public void addPotionToStorage(Player player, Potion potion){
-        potionStorages.get(player).addPotion(potion);
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){
+            potionStorages.get(player).addPotion(potion);
+        }
+        else{
+            for(Map.Entry<Player, PotionStorage> entry : potionStorages.entrySet()){
+                if(entry.getKey().getId() == player.getId()){
+                    entry.getValue().addPotion(potion);
+                    return;
+                }
+            }
+        }
     }
     public ArrayList<Theory> getPublishedTheoriesList() {
         ArrayList<Theory> publishedTheoriesList = new ArrayList<>();
@@ -101,7 +165,23 @@ public class Board implements Serializable {
         }
     }
     public HashMap<Player, ArtifactStorage> getArtifactStorages() {
-        return artifactStorages;
+        if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE)
+            return artifactStorages;
+        else{
+            HashMap<Player, ArtifactStorage> storage = new HashMap<>();
+
+            for(Map.Entry<Player, ArtifactStorage> oldEntry : artifactStorages.entrySet()){
+                for(Map.Entry<Player, ArtifactStorage> newEntry : artifactStorages.entrySet()){
+                    Player oldPlayer = oldEntry.getKey();
+                    Player newPlayer = newEntry.getKey();
+                    if(oldPlayer.getId() == newPlayer.getId()) {
+                        storage.put(oldPlayer, newEntry.getValue());
+                        break;
+                    }
+                }
+            }
+            return storage;
+        }
     }
 
     public BoardState getState(){
@@ -110,57 +190,21 @@ public class Board implements Serializable {
 
     //setIngredientStorage
     public void setIngredientStorages(HashMap<Player, IngredientStorage> newStorage){
-        HashMap<Player, IngredientStorage> storage = new HashMap<>();
-
-        for(Map.Entry<Player, IngredientStorage> oldEntry : ingredientStorages.entrySet()){
-            for(Map.Entry<Player, IngredientStorage> newEntry : newStorage.entrySet()){
-                Player oldPlayer = oldEntry.getKey();
-                Player newPlayer = newEntry.getKey();
-                if(oldPlayer.getId() == newPlayer.getId()) {
-                    storage.put(oldPlayer, newEntry.getValue());
-                    break;
-                }
-            }
-        }
-
         ingredientStorages.clear();
-        ingredientStorages.putAll(storage);
+        ingredientStorages.putAll(newStorage);
+
     }
 
     public void setPotionStorages(HashMap<Player, PotionStorage> newStorage){
-        HashMap<Player, PotionStorage> storage = new HashMap<>();
-
-        for(Map.Entry<Player, PotionStorage> oldEntry : potionStorages.entrySet()){
-            for(Map.Entry<Player, PotionStorage> newEntry : newStorage.entrySet()){
-                Player oldPlayer = oldEntry.getKey();
-                Player newPlayer = newEntry.getKey();
-                if(oldPlayer.getId() == newPlayer.getId()) {
-                    storage.put(oldPlayer, newEntry.getValue());
-                    break;
-                }
-            }
-        }
         potionStorages.clear();
-        potionStorages.putAll(storage);
+        potionStorages.putAll(newStorage);
     }
 
 
     public void setArtifactStorages(HashMap<Player, ArtifactStorage> newStorage){
-
-        HashMap<Player, ArtifactStorage> storage = new HashMap<>();
-
-        for(Map.Entry<Player, ArtifactStorage> oldEntry : artifactStorages.entrySet()){
-            for(Map.Entry<Player, ArtifactStorage> newEntry : newStorage.entrySet()){
-                Player oldPlayer = oldEntry.getKey();
-                Player newPlayer = newEntry.getKey();
-                if(oldPlayer.getId() == newPlayer.getId()) {
-                    storage.put(oldPlayer, newEntry.getValue());
-                    break;
-                }
-            }
-        }
         artifactStorages.clear();
-        artifactStorages.putAll(storage);
+        artifactStorages.putAll(newStorage);
+
     }
 
     public void setPublishedTheoriesList(List<Theory> newList){

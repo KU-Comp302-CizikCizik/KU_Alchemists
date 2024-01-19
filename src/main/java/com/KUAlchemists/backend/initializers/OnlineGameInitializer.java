@@ -78,6 +78,7 @@ public class OnlineGameInitializer implements OnlineInitializer{
     private void initPlayerAssets() {
         GameEngine.getInstance().getCurrentPlayer().setGold(10);
         ForageForIngredientHandler.getInstance().forageForIngredient(GameEngine.getInstance().getCurrentPlayer());
+        ForageForIngredientHandler.getInstance().forageForIngredient(GameEngine.getInstance().getCurrentPlayer());
 
     }
 
