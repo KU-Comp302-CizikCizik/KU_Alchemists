@@ -16,19 +16,19 @@
             <Image url="@com.KUAlchemists/images/PublicationTrack/alc.png" />
          </image>
       </ImageView>
-      <GridPane fx:id="box" layoutX="107.0" layoutY="90.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="357.0">
+      <GridPane fx:id="box" layoutX="74.0" layoutY="98.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="359.0" prefWidth="440.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="552.0" minWidth="10.0" prefWidth="297.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="552.0" minWidth="10.0" prefWidth="297.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="543.0" minWidth="0.0" prefWidth="297.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="543.0" minWidth="10.0" prefWidth="297.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="329.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="319.0" minHeight="0.0" prefHeight="150.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="183.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="200.0" minHeight="0.0" prefHeight="183.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Text fill="YELLOW" layoutX="133.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Choose an Ingredient" wrappingWidth="327.0">
+      <Text fill="YELLOW" layoutX="221.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Choose an Ingredient" wrappingWidth="152.0">
          <font>
             <Font name="Colonna MT" size="36.0" />
          </font>

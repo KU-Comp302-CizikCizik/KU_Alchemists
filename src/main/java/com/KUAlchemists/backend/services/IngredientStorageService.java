@@ -2,10 +2,7 @@ package com.KUAlchemists.backend.services;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.enums.IngredientType;
-import com.KUAlchemists.backend.models.Board;
-import com.KUAlchemists.backend.models.Ingredient;
-import com.KUAlchemists.backend.models.IngredientStorage;
-import com.KUAlchemists.backend.models.Player;
+import com.KUAlchemists.backend.models.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -81,6 +78,7 @@ public class IngredientStorageService {
 
             if (ing.equals(ingredientName)) {
                 ingredientStorage.removeIngredient(ingredient);
+                Deck.getInstance().addIngredient(ingredient);
                 player.setGold(player.getGold() + 1); //
                 return;
             }

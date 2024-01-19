@@ -3,6 +3,10 @@ package com.KUAlchemists.ui.controllers;
 import com.KUAlchemists.backend.handlers.BuyArtifactHandler;
 import com.KUAlchemists.backend.models.Artifact;
 import com.KUAlchemists.backend.models.ArtifactShop;
+import com.KUAlchemists.backend.handlers.SoundEffectHandler;
+import com.KUAlchemists.backend.handlers.SoundHandler;
+import com.KUAlchemists.backend.sound.SoundContrasts;
+import com.KUAlchemists.backend.sound.SoundUI;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -27,6 +31,8 @@ public class BuyArtifactController {
     private Text useButton;
 
     private ArrayList<Slot> artifactSlots;
+
+    private int num = 0;
 
     @FXML
     void handleMouseClicked(MouseEvent event) {
