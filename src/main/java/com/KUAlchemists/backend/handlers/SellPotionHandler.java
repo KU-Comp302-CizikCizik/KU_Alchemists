@@ -2,7 +2,6 @@ package com.KUAlchemists.backend.handlers;
 
 import com.KUAlchemists.backend.engine.GameEngine;
 import com.KUAlchemists.backend.services.SellPotionService;
-import com.KUAlchemists.ui.controllers.SellPotionController;
 
 import java.util.ArrayList;
 
@@ -28,7 +27,9 @@ public class SellPotionHandler {
         return service.getPlayersPotions(GameEngine.getInstance().getCurrentPlayer());
     }
     public void handleSellPotion(String potionName, int price){
-        service.sellPotion(GameEngine.getInstance().getCurrentPlayer(), potionName, price);
+        if(GameEngine.getInstance().getCurrentPlayer().getActionPoints() >= 1) {
+            service.sellPotion(GameEngine.getInstance().getCurrentPlayer(), potionName, price);
+        }
     }
     public String handleGetPotionType(String potionName) {
         return service.getPotionType(potionName, GameEngine.getInstance().getCurrentPlayer());

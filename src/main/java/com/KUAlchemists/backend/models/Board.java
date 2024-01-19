@@ -118,6 +118,7 @@ public class Board implements Serializable {
                 }
             }
         }
+
     }
     public ArtifactStorage getArtifactStorage(Player player){
         if(GameEngine.getInstance().getApplicationMode() == ApplicationMode.OFFLINE){

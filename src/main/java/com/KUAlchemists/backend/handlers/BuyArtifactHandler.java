@@ -35,6 +35,7 @@ public class BuyArtifactHandler {
      */
     public void handleBuyArtifactRequest(String artifactName) {
         Player currentPlayer = GameEngine.getInstance().getCurrentPlayer();
+
         buyArtifactService.buyArtifact(currentPlayer, artifactName);
     }
     /**
@@ -50,7 +51,7 @@ public class BuyArtifactHandler {
      * @return List <String>
      */
     public List<String> handleGetAllArtifacts(){
-        return Arrays.asList("elixir_of_insight", "philosophers_compass", "magic_mortar", "printing_press", "wisdom_idol");
+        return Arrays.asList("elixir_of_insight", "magic_mortar", "printing_press", "wisdom_idol");
     }
     /**
      * Returns all the artifacts that are bought by the player.

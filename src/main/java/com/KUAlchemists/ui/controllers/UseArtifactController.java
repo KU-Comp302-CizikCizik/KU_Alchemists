@@ -33,6 +33,7 @@ public class UseArtifactController {
 
     private static final String WISDOM_IDOL = "wisdom_idol";
     private static final String MAGIC_MORTAR = "magic_mortar";
+    private static final String PRINTING_PRESS = "printing_press";
 
     @FXML
     void handleMouseClicked(MouseEvent event) {
@@ -74,6 +75,10 @@ public class UseArtifactController {
                         UseArtifactHandler.getInstance().handleRemoveArtifact(ELIXIR_OF_INSIGHT);
                     } else if (slot.getId().equals(WISDOM_IDOL)) {
                         UseArtifactHandler.getInstance().activateWisdomIdol();
+                    } else if (slot.getId().equals(MAGIC_MORTAR)){
+                        UseArtifactHandler.getInstance().activateMagicMortar();
+                    } else if (slot.getId().equals(PRINTING_PRESS)){
+                        UseArtifactHandler.getInstance().activatePrintingPress();
                     }
                     slot.setDisable();
                     slot.isSelected = false;
@@ -101,6 +106,7 @@ public class UseArtifactController {
     private void initializeHelper(){
         List<String> usedArtifacts = UseArtifactHandler.getInstance().handleUsedArtifacts();
         List<String> boughtArtifacts = UseArtifactHandler.getInstance().handleStorageArtifact();
+        List<String> activeArtifacts = UseArtifactHandler.getInstance().getActivatedArtifacts();
 //        System.out.println("Used Artifacts: "+usedArtifacts.toString());
 //        System.out.println("Bought Artifacts: "+ boughtArtifacts);
 
@@ -112,6 +118,14 @@ public class UseArtifactController {
             for(Slot slot: artifactSlots){
                 if(slot.getId().equals(artifact) && !usedArtifacts.contains(slot.getId())){
                     slot.setEnable();
+                }
+            }
+        }
+
+        for(String artifact: activeArtifacts){
+            for(Slot slot: artifactSlots){
+                if(slot.getId().equals(artifact)){
+                    slot.setActive();
                 }
             }
         }
@@ -137,6 +151,7 @@ public class UseArtifactController {
 
         private final Effect glowEffectHover = new Glow(0.4);
         private final Effect glowEffectSelected = new Glow(0.6);
+        private final Effect glowEffectActive = new Glow(0.8);
         private final Effect dropShadowEffect = new DropShadow();
         private final Effect boxBlurEffect = new BoxBlur(5, 5, 2);
 
@@ -182,6 +197,12 @@ public class UseArtifactController {
             this.getPane().setEffect(glowEffectSelected);
             this.setStatus("Selected");
             this.isSelected = true;
+        }
+
+        public void setActive(){
+            this.setStatus("Activated");
+            this.getPane().setDisable(true);
+            this.getPane().setEffect(glowEffectActive);
         }
         public void setHover(){
             this.getPane().setEffect(glowEffectHover);
