@@ -283,6 +283,10 @@ public class SceneLoader {
 
     public void loadDebunk() { loadPopUp(UIConstants.DEBUNK_UI_FXML); }
 
+    public void loadMagicMortarArtifact(){
+        loadPopUpUndecorated(UIConstants.MAGIC_MORTAR_UI_FXML);
+    }
+
 
     public void loadForageIngredient(String message, String ingredientImage) {
         Dialog<Void> dialog = new Dialog<>();

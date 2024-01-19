@@ -10,6 +10,7 @@ public class UIConstants {
     public static final String WAITING_ROOM_UI_FXML = "WaitingRoomUI.fxml";
     public static final String AVATAR_SELECT_UI_FXML = "AvatarSelectUI.fxml";
     public static final String WISDOMIDOL_UI_FXML = "WisdomIdolArtifact.fxml";
+    public static final String MAGIC_MORTAR_UI_FXML = "MagicMortarArtifactUI.fxml";
 
     private UIConstants() {
     }

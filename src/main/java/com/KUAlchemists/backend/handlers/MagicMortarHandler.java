@@ -28,15 +28,17 @@ public class MagicMortarHandler {
 
     //this returns the ingredient names in the potion brewing area. It is called by Mahmut.
         public ArrayList<String> handleGetIngredientNames(){
-            ArrayList<String> ingredientNames = new ArrayList<>();
-            String ingredientName1 = magicMortarService.getIngredientName1();
-            String ingredientName2 = magicMortarService.getIngredientName2();
-            ingredientNames.add(ingredientName1);
-            ingredientNames.add(ingredientName2);
-                return ingredientNames;
+//            ArrayList<String> ingredientNames = new ArrayList<>();
+//            String ingredientName1 = magicMortarService.getIngredientName1();
+//            String ingredientName2 = magicMortarService.getIngredientName2();
+//            ingredientNames.add(ingredientName1);
+//            ingredientNames.add(ingredientName2);
+//                return ingredientNames;
+            return PotionBrewingAreaHandler.getInstance().getIngredientsToBeBrewed();
         }
         //this method is called when the player clicks on the ingredient to retain. UI should give the retained ingredient.
         public void handleRetainedIngredient(String ingredientName){
+            UseArtifactHandler.getInstance().deactivateArtifact("magic_mortar");
             magicMortarService.setIngredientNameToRetain(ingredientName);
         }
 
