@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="body" fx:id="anchorPane" prefHeight="596.0" prefWidth="935.0" stylesheets="@CSS/BuyArtifactCSS.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.BuyArtifactController">
+    <children>
+        <Pane id="elixir_of_insight" layoutX="48.0" layoutY="80.0" onMouseClicked="#handleMouseClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/BuyArtifactCSS.css">
+            <children>
+                <Pane id="elixir_of_insight_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/BuyArtifactCSS.css" />
+                <Text layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_name" text="elixir of insight" textAlignment="CENTER" wrappingWidth="171.9830722808838">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                </Text>
+                <Text layoutX="10.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_information" text="open your eyes and see the best three cards in of the ingredient deck and rearrange them in any order" textAlignment="JUSTIFY" wrappingWidth="180.0">
+                    <font>
+                        <Font name="Book Antiqua" size="15.0" />
+                    </font>
+                </Text>
+                <Text layoutX="75.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" wrappingWidth="114.98307228088379">
+                    <font>
+                        <Font name="Book Antiqua" size="16.0" />
+                    </font>
+                </Text>
+            <Text id="price_1" layoutX="10.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price_section" text="3 Golds" wrappingWidth="59.45199966430664">
+               <font>
+                  <Font name="Book Antiqua" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="-3.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_status" text="Ready to Buy" textAlignment="CENTER" wrappingWidth="180.0" />
+            </children>
+            <cursor>
+                <Cursor fx:constant="OPEN_HAND" />
+            </cursor>
+            <effect>
+                <DropShadow />
+            </effect>
+        </Pane>
+        <Pane id="hard_bargain" layoutX="261.0" layoutY="80.0" onMouseClicked="#handleMouseClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/BuyArtifactCSS.css">
+            <children>
+                <Pane id="magic_mortar_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/BuyArtifactCSS.css" />
+                <Text layoutX="5.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_name" text="magic mortar" textAlignment="CENTER" wrappingWidth="189.9830722808838">
+                    <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                    </font>
+                </Text>
+                <Text layoutX="7.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_information" text="keep one of the ingredients after you use for brewing a potion." wrappingWidth="189.9830722808838">
+                    <font>
+                        <Font name="Book Antiqua" size="15.0" />
+                    </font>
+                </Text>
+                <Text layoutX="80.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" wrappingWidth="114.98307228088379">
+                    <font>
+                        <Font name="Book Antiqua" size="15.0" />
+                    </font>
+                </Text>
+            <Text id="price_3" layoutX="6.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price_section" text="2 Golds" wrappingWidth="59.45199966430664">
+               <font>
+                  <Font name="Book Antiqua" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="-3.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_status" text="Ready to Buy" textAlignment="CENTER" wrappingWidth="180.0" />
+            </children>
+            <effect>
+                <DropShadow />
+            </effect>
+            <cursor>
+                <Cursor fx:constant="OPEN_HAND" />
+            </cursor>
+        </Pane>
+      <Pane id="hard_bargain" layoutX="475.0" layoutY="80.0" onMouseClicked="#handleMouseClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/BuyArtifactCSS.css">
+         <children>
+            <Pane id="printing_press_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/BuyArtifactCSS.css" />
+            <Text layoutX="5.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_name" text="printing press" textAlignment="CENTER" wrappingWidth="189.9830722808838">
+               <font>
+                  <Font name="Book Antiqua" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="7.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_information" text="publish a theory free of charge! you don't need to pay 1 gold  to the bank" wrappingWidth="189.9830722808838">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="82.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" wrappingWidth="114.98307228088379">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Text>
+            <Text id="hb_price_seciton" layoutX="6.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price_section" text="2 Golds" wrappingWidth="59.45199966430664">
+               <font>
+                  <Font name="Book Antiqua" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="-3.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_status" text="Ready to Buy" textAlignment="CENTER" wrappingWidth="180.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Pane>
+      <Pane id="hard_bargain" layoutX="687.0" layoutY="80.0" onMouseClicked="#handleMouseClicked" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="393.0" prefWidth="200.0" styleClass="artifact_frame" stylesheets="@CSS/BuyArtifactCSS.css">
+         <children>
+            <Pane id="wisdom_idol_photo_frame" layoutX="10.0" layoutY="9.0" prefHeight="166.0" prefWidth="180.0" styleClass="artifact_photo_frame" stylesheets="@CSS/BuyArtifactCSS.css" />
+            <Text layoutX="5.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_name" text="wisdom idol" textAlignment="CENTER" wrappingWidth="189.9830722808838">
+               <font>
+                  <Font name="Book Antiqua" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="7.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_information" text="you will not lose reputation point after your theory is proven to be wrong. if you hold this artifact at the end of the game, you will earn one reputation point" wrappingWidth="189.9830722808838">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="85.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you can do it only once, make your decisions visely" wrappingWidth="114.98307228088379">
+               <font>
+                  <Font name="Book Antiqua" size="15.0" />
+               </font>
+            </Text>
+            <Text id="price_5" layoutX="6.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="price_section" text="2 Golds" wrappingWidth="59.45199966430664">
+               <font>
+                  <Font name="Book Antiqua" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="-3.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="artifact_status" text="Ready to Buy" textAlignment="CENTER" wrappingWidth="180.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </Pane>
+        <Text id="use_button" fx:id="useButton" layoutX="723.0" layoutY="543.0" onMouseClicked="#handleBuy" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="use_button" text="Buy" textAlignment="CENTER" wrappingWidth="128.9830722808838">
+            <font>
+                <Font name="Book Antiqua" size="62.0" />
+            </font>
+        </Text>
+    </children>
+</AnchorPane>

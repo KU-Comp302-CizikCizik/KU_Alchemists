@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #061016;" styleClass="menu-Background" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.MenuController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="startButton" layoutX="65.0" layoutY="231.0" mnemonicParsing="false" onAction="#startGame" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" styleClass="sofia" text="Start Game">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="settingButton" layoutX="65.0" layoutY="308.0" mnemonicParsing="false" onAction="#openSettings" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" styleClass="sofia" text="Settings">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="rulesButton" layoutX="64.0" layoutY="382.0" mnemonicParsing="false" onAction="#openRules" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #fccb58;" styleClass="sofia" text="Rules">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+
+
+</AnchorPane>

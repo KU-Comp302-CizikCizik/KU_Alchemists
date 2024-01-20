@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="waiting-roomBackground" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.WaitingRoomController">
+
+    <!-- Text at the center with stroke -->
+    <Text fill="#f5dc6a" layoutX="169.0" layoutY="306.0" stroke="black" strokeWidth="0.99" text="Waiting for other players..." styleClass="sofia-64">
+    </Text>
+
+    <!-- Button at the center -->
+    <Button fx:id="startButton" ellipsisString="0" layoutX="460.0" layoutY="505.0" mnemonicParsing="false" onAction="#onStartGame" opacity="0.71" prefHeight="51.0" prefWidth="199.0" style="-fx-background-color: #B38B55;" styleClass="sofia-24" text="Start the Game" textAlignment="CENTER" textFill="#fff0b2">
+        <font>
+            <Font name="Book Antiqua Bold" size="18.0" />
+        </font>
+        <cursor>
+            <Cursor fx:constant="DEFAULT" />
+        </cursor>
+    </Button>
+
+</AnchorPane>

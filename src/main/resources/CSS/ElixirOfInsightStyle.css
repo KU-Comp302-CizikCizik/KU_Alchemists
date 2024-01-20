@@ -1,0 +1,35 @@
+Text{
+    -fx-font-family: "Times New Roman";
+    -fx-font-style: italic;
+}
+
+.anchor-pane{
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/use_artifact_background.PNG");
+    -fx-background-size: cover;
+    -fx-background-repeat: stretch;
+}
+.ingredient-main-pane{
+    /*-fx-border-style: solid;*/
+    /*-fx-effect: "DropShadow" #000000;*/
+    /*-fx-background-image: url("../com.KUAlchemists/images/feather-ingredient.jpg");*/
+    -fx-background-size: contain;
+    -fx-background-repeat: stretch;
+}
+.order-text{
+    -fx-text-alignment: center;
+    -fx-font-size: 40px;
+    -fx-fill: #db9e42;
+}
+.submit-button{
+    -fx-text-alignment: center;
+    -fx-font-size: 25px;
+    -fx-fill: #db9e42;
+}
+.submit-button:hover{
+    -fx-fill: #f5dc6a;
+}
+
+.ingredient-name{
+    -fx-text-alignment: center;
+    -fx-font-size: 17px;
+}

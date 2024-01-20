@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Caligruf';
+    src: url('caligruf-font/Caligruf-BWvDV.ttf');
+}
+
+.body{
+    -fx-background-color: #b6651d;
+}
+
+.slot{
+    -fx-background-color: #db9e42;
+    -fx-border-style: solid;
+}
+Text{
+    -fx-font-family: Caligruf;
+    -fx-text-origin: center;
+}
+.number-order{
+    -fx-font-size: 100px;
+}
+
+.player-name, .final-point, .additional-slot{
+    -fx-font-size: 40px;
+}
+
+.draw-message {
+    -fx-font-size: 40px; /* Larger font size */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-text-fill: #000000; /* Text color, change as needed */
+    /* Add more styling as needed */
+}

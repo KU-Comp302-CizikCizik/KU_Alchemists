@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: #12232bd9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.TheoryCardController">
+   <children>
+      <HBox prefHeight="21.0" prefWidth="221.0" />
+      <HBox prefHeight="114.0" prefWidth="209.0">
+         <children>
+            <ImageView fx:id="ingredient_image" fitHeight="89.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/frog-ingredient-square.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox prefHeight="137.0" prefWidth="185.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="153.0">
+                           <children>
+                              <ImageView fx:id="alchemy" fitHeight="44.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                              <Button fx:id="endorseButton" mnemonicParsing="false" onAction="#endorseClicked" prefHeight="20.0" prefWidth="82.0" style="-fx-background-radius: 15; -fx-background-color: F5DC6A;" styleClass="sofia" stylesheets="@CSS/style.css" text="Endorse">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="debunkButton" mnemonicParsing="false" onAction="#debunkClicked" prefHeight="24.0" prefWidth="82.0" style="-fx-background-color: F5DC6A; -fx-background-radius: 15;" styleClass="sofia" stylesheets="@CSS/style.css" text="Debunk">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font></Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

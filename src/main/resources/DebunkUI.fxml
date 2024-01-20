@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" styleClass="debunk" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.DebunkController">
+   <children>
+      <ImageView fx:id="ingredient" fitHeight="248.0" fitWidth="161.0" layoutX="497.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="497.0" AnchorPane.rightAnchor="47.66666666666663">
+         <image>
+            <Image url="@com.KUAlchemists/images/bell.png" />
+         </image>
+         <effect>
+            <InnerShadow blurType="GAUSSIAN" choke="0.11" height="83.29" radius="27.517500000000002" width="28.78" />
+         </effect>
+      </ImageView>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <ImageView fx:id="redAspect" fitHeight="54.0" fitWidth="72.0" layoutX="490.0" layoutY="279.0" onMouseClicked="#redAspectClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/alchemy/RED.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blueAspect" fitHeight="54.0" fitWidth="72.0" layoutX="544.0" layoutY="279.0" onMouseClicked="#blueAspectClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/alchemy/BLUE.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="greenAspect" fitHeight="54.0" fitWidth="72.0" layoutX="595.0" layoutY="279.0" onMouseClicked="#greenAspectClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/alchemy/GREEN.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="debunkButton" onMouseExited="#debunkButtononMouseExited" onMouseEntered="#debunkButtononMouseEntered" layoutX="546.0" layoutY="331.0" mnemonicParsing="false" onAction="#debunkButtonClicked" opacity="0.62" style="-fx-background-color: #2D5F6E;" text="Debunk" textFill="WHITE">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font name="Book Antiqua" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

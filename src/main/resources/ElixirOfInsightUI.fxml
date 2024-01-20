@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="422.0" prefWidth="789.0" styleClass="anchor-pane" stylesheets="@CSS/ElixirOfInsightStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.ElixirOfInsightController">
+   <children>
+      <Pane fx:id="ingredient1_pane" layoutX="33.0" layoutY="54.0" onMouseClicked="#ingredient1MouseClicked" onMouseEntered="#ingredient1MouseEntered" onMouseExited="#ingredient1MouseExited" prefHeight="312.0" prefWidth="212.0" styleClass="ingredient-main-pane" stylesheets="@CSS/ElixirOfInsightStyle.css">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <children>
+            <ImageView fx:id="ingredient1_image" fitHeight="312.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="ingredient1_name" layoutX="53.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient-name" wrappingWidth="105.21630859375" />
+         </children>
+      </Pane>
+      <Pane fx:id="ingredient2_pane" layoutX="289.0" layoutY="54.0" onMouseClicked="#ingredient2MouseClicked" onMouseEntered="#ingredient2MouseEntered" onMouseExited="#ingredient2MouseExited" prefHeight="312.0" prefWidth="212.0" styleClass="ingredient-main-pane" stylesheets="@CSS/ElixirOfInsightStyle.css">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <children>
+            <ImageView fx:id="ingredient2_image" fitHeight="312.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="ingredient2_name" layoutX="53.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient-name" wrappingWidth="105.21630859375" />
+         </children>
+      </Pane>
+      <Pane fx:id="ingredient3_pane" layoutX="545.0" layoutY="54.0" onMouseClicked="#ingredient3MouseClicked" onMouseEntered="#ingredient3MouseEntered" onMouseExited="#ingredient3MouseExited" prefHeight="312.0" prefWidth="212.0" styleClass="ingredient-main-pane" stylesheets="@CSS/ElixirOfInsightStyle.css">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <children>
+            <ImageView fx:id="ingredient3_image" fitHeight="312.0" fitWidth="212.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="ingredient3_name" layoutX="53.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient-name" wrappingWidth="105.21630859375" />
+         </children>
+      </Pane>
+      <Text layoutX="116.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="order-text" text="1." wrappingWidth="45.21630859375" />
+      <Text layoutX="372.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="order-text" text="2." wrappingWidth="45.21630859375" />
+      <Text layoutX="628.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="order-text" text="3." wrappingWidth="45.21630859375" />
+      <Text layoutX="534.0" layoutY="408.0" onMouseClicked="#buttonClicked" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="submit-button" text="Order Ingredients" wrappingWidth="246.21630859375" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="597.0" prefWidth="901.0" styleClass="body" stylesheets="@CSS/MakeExperimentStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.MakeExperimentController">
+   <children>
+      <Pane id="master-image-pane" fx:id="masterPane" layoutX="69.0" layoutY="-23.0" onMouseClicked="#masterMouseClicked" onMouseEntered="#masterMouseEntered" onMouseExited="#masterMouseExited" prefHeight="580.0" prefWidth="533.0" styleClass="person-image-pane" stylesheets="@CSS/MakeExperimentStyle.css">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <children>
+            <Text fx:id="masterText" layoutX="476.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test on yourself" wrappingWidth="164.21630859375" />
+         </children>
+      </Pane>
+      <Pane id="student-image-pane" fx:id="studentPane" layoutX="567.0" layoutY="177.0" onMouseClicked="#studentMouseClicked" onMouseEntered="#studentMouseEntered" onMouseExited="#studentMouseExited" prefHeight="420.0" prefWidth="295.0" styleClass="person-image-pane" stylesheets="@CSS/MakeExperimentStyle.css">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <children>
+            <Text fx:id="studentText" layoutX="91.0" layoutY="-18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Test on your student" wrappingWidth="187.21630859375" />
+            <Pane fx:id="messagePane" layoutX="44.0" layoutY="197.0" prefHeight="151.0" prefWidth="218.0" styleClass="text-pane" stylesheets="@CSS/MakeExperimentStyle.css" />
+            <Text id="message" fx:id="message" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="message" text="Omg! Is your student okay? Your student is looking like got poisoned. That means the potion is NEGATIVE and venomous." wrappingWidth="295.0" />
+         </children>
+      </Pane>
+      <Pane id="red-potion" fx:id="redPotionPane" layoutX="541.0" layoutY="402.0" prefHeight="161.0" prefWidth="87.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Pane>
+      <Pane id="green-potion" fx:id="greenPotionPane" layoutX="539.0" layoutY="419.0" prefHeight="151.0" prefWidth="155.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Pane>
+      <Pane id="gray-potion" fx:id="grayPotionPane" layoutX="546.0" layoutY="422.0" prefHeight="137.0" prefWidth="98.0" styleClass="potion" stylesheets="@CSS/MakeExperimentStyle.css">
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

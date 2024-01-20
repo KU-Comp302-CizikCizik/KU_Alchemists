@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.OnlineGameRoomController">
+    <children>
+        <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="createRoomButton" layoutX="49.0" layoutY="270.0" mnemonicParsing="false" onAction="#createRoom" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" styleClass="sofia" stylesheets="@CSS/style.css" text="Create Room">
+            <font>
+                <Font name="Book Antiqua" size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="joinRoomButton" layoutX="49.0" layoutY="340.0" mnemonicParsing="false" onAction="#joinRoom" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" styleClass="sofia" stylesheets="@CSS/style.css" text="Join Room">
+            <font>
+                <Font name="Book Antiqua" size="18.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

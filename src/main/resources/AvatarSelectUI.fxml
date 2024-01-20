@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1073.0" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.AvatarSelectController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1080.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatar_1" fitHeight="136.0" fitWidth="110.0" layoutX="338.0" layoutY="258.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatar_2" fitHeight="138.0" fitWidth="109.0" layoutX="340.0" layoutY="392.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatar_3" fitHeight="138.0" fitWidth="109.0" layoutX="650.0" layoutY="392.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatar_4" fitHeight="136.0" fitWidth="109.0" layoutX="448.0" layoutY="257.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_4.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatar_5" fitHeight="136.0" fitWidth="109.0" layoutX="550.0" layoutY="258.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_5.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatar_6" fitHeight="136.0" fitWidth="109.0" layoutX="448.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_6.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatar_7" fitHeight="147.0" fitWidth="109.0" layoutX="650.0" layoutY="257.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_7.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatar_8" fitHeight="135.0" fitWidth="109.0" layoutX="550.0" layoutY="393.0" onMouseClicked="#clicked" onMouseEntered="#glow" onMouseExited="#unglow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/profile_p/avatar_8.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="txt" fill="WHITE" layoutX="250.0" layoutY="81.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="sofia-48" text="sdgladksmgfalkmflakmsflamdfsk">
+         <font>
+            <Font name="Colonna MT" size="48.0" />
+         </font>
+      </Text>
+      <Button fx:id="startGameButton" disable="true" layoutX="458.0" layoutY="646.0" onAction="#loadBoard" opacity="0.71" prefHeight="60.0" prefWidth="161.0" style="-fx-background-color: #b38b55; -fx-text-fill: #fff0b2;" styleClass="sofia-24" stylesheets="@CSS/style.css" text="Join" />
+   </children>
+</AnchorPane>

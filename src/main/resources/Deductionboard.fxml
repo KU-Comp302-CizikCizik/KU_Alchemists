@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="760.0" style="-fx-background-color: #300900;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.DeductionBoardController">
+    <children>
+      <AnchorPane prefHeight="354.0" prefWidth="790.0">
+         <children>
+              <ImageView id="mushroom_feather" fitHeight="362.0" fitWidth="760.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@com.KUAlchemists/images/DeductionBoard/deductionboard.png" />
+                  </image>
+              </ImageView>
+            <ImageView id="mushroom" fx:id="mushroom_feather" fitHeight="43.0" fitWidth="41.0" layoutX="364.0" layoutY="7.0" onMouseClicked="#setCircle" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/Resim1.png" />
+               </image></ImageView>
+            <ImageView id="mushroom" fx:id="mushroom_scorpion" fitHeight="43.0" fitWidth="47.0" layoutX="339.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_feather" fitHeight="46.0" fitWidth="47.0" layoutX="388.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_root" fitHeight="50.0" fitWidth="43.0" layoutX="307.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_scorpion" fitHeight="45.0" fitWidth="41.0" layoutX="364.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_feather" fitHeight="44.0" fitWidth="46.0" layoutX="412.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_flower" fitHeight="56.0" fitWidth="44.0" layoutX="284.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_root" fitHeight="56.0" fitWidth="45.0" layoutX="335.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_scorpion" fitHeight="41.0" fitWidth="45.0" layoutX="390.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="birdfeet" fx:id="birdfeet_feather" fitHeight="49.0" fitWidth="44.0" layoutX="443.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_flower" fitHeight="49.0" fitWidth="54.0" layoutX="305.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_root" fitHeight="47.0" fitWidth="46.0" layoutX="362.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="birdfeet" fx:id="birdfeet_scorpion" fitHeight="47.0" fitWidth="53.0" layoutX="417.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_15" fx:id="flower_feather" fitHeight="56.0" fitWidth="47.0" layoutX="467.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_frog" fitHeight="46.0" fitWidth="45.0" layoutX="232.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_birdfeet" fitHeight="43.0" fitWidth="48.0" layoutX="283.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_flower" fitHeight="43.0" fitWidth="48.0" layoutX="337.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_19" fx:id="birdfeet_root" fitHeight="49.0" fitWidth="45.0" layoutX="387.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_20" fx:id="flower_scorpion" fitHeight="43.0" fitWidth="45.0" layoutX="442.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_21" fx:id="root_feather" fitHeight="43.0" fitWidth="41.0" layoutX="494.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_plant" fitHeight="47.0" fitWidth="45.0" layoutX="206.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="plant" fx:id="plant_frog" fitHeight="72.0" fitWidth="45.0" layoutX="255.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="frog" fx:id="frog_birdfeet" fitHeight="47.0" fitWidth="45.0" layoutX="313.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_25" fx:id="birdfeet_flower" fitHeight="47.0" fitWidth="45.0" layoutX="365.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_26" fx:id="flower_root" fitHeight="46.0" fitWidth="56.0" layoutX="411.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_27" fx:id="root_scorpion" fitHeight="49.0" fitWidth="45.0" layoutX="468.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="circle_28" fx:id="scorpion_feather" fitHeight="49.0" fitWidth="45.0" layoutX="520.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="mushroom" fx:id="mushroom_birdfeet" fitHeight="45.0" fitWidth="44.0" layoutX="256.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="342.0" prefWidth="760.0" style="-fx-background-color: #300900;">
+            <children>
+            <ImageView fitHeight="347.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/DeductionBoard/Adsız%20tasarım%20(2).png" />
+               </image>
+            </ImageView>
+            <VBox maxWidth="-Infinity" prefHeight="399.0" prefWidth="52.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="49.0">
+                     <children>
+                        <ImageView id="alchemy_1_1" fx:id="alchemy_1_1" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_1_2" fx:id="alchemy_1_2" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_1_3" fx:id="alchemy_1_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="52.0">
+                     <children>
+                        <ImageView id="alchemy_1_4" fx:id="alchemy_1_4" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_1_5" fx:id="alchemy_1_5" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="53.0">
+                     <children>
+                        <ImageView id="alchemy_1_6" fx:id="alchemy_1_6" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="59.0">
+                     <children>
+                        <ImageView id="alchemy_1_7" fx:id="alchemy_1_7" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_1_8" fx:id="alchemy_1_8" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+               <opaqueInsets>
+                  <Insets left="20.0" />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="345.0" prefWidth="57.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="54.0">
+                     <children>
+                        <ImageView id="alchemy_2_1" fx:id="alchemy_2_1" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_2_2" fx:id="alchemy_2_2" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="58.0">
+                     <children>
+                        <ImageView id="alchemy_2_3" fx:id="alchemy_2_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="60.0">
+                     <children>
+                        <ImageView id="alchemy_2_4" fx:id="alchemy_2_4" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_2_5" fx:id="alchemy_2_5" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="53.0">
+                     <children>
+                        <ImageView id="alchemy_2_6" fx:id="alchemy_2_6" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="59.0">
+                     <children>
+                        <ImageView id="alchemy_2_7" fx:id="alchemy_2_7" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_2_8" fx:id="alchemy_2_8" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="336.0" prefWidth="42.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="54.0">
+                     <children>
+                        <ImageView id="alchemy_3_1" fx:id="alchemy_3_1" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_3_2" fx:id="alchemy_3_2" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="49.0">
+                     <children>
+                        <ImageView id="alchemy_3_3" fx:id="alchemy_3_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="49.0">
+                     <children>
+                        <ImageView id="alchemy_3_4" fx:id="alchemy_3_4" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_3_5" fx:id="alchemy_3_5" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="53.0">
+                     <children>
+                        <ImageView id="alchemy_3_6" fx:id="alchemy_3_6" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_3_7" fx:id="alchemy_3_7" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#alchemyClicked" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_3_8" fx:id="alchemy_3_8" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="336.0" prefWidth="19.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="54.0">
+                     <children>
+                        <ImageView id="alchemy_4_1" fx:id="alchemy_4_1" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_4_2" fx:id="alchemy_4_2" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_4_3" fx:id="alchemy_4_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_4_4" fx:id="alchemy_4_4" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_4_5" fx:id="alchemy_4_5" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="48.0">
+                     <children>
+                        <ImageView id="alchemy_4_6" fx:id="alchemy_4_6" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_4_7" fx:id="alchemy_4_7" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_4_8" fx:id="alchemy_4_8" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="336.0" prefWidth="34.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="54.0">
+                     <children>
+                        <ImageView id="alchemy_5_1" fx:id="alchemy_5_1" fitHeight="41.0" fitWidth="41.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="46.0">
+                     <children>
+                        <ImageView id="alchemy_5_2" fx:id="alchemy_5_2" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_5_3" fx:id="alchemy_5_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="48.0">
+                     <children>
+                        <ImageView id="alchemy_5_4" fx:id="alchemy_5_4" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_5_5" fx:id="alchemy_5_5" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="46.0">
+                     <children>
+                        <ImageView id="alchemy_5_6" fx:id="alchemy_5_6" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="49.0">
+                     <children>
+                        <ImageView id="alchemy_5_7" fx:id="alchemy_5_7" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_5_8" fx:id="alchemy_5_8" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="336.0" prefWidth="28.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="54.0">
+                     <children>
+                        <ImageView id="alchemy_6_1" fx:id="alchemy_6_1" fitHeight="43.0" fitWidth="41.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_6_2" fx:id="alchemy_6_2" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="52.0">
+                     <children>
+                        <ImageView id="alchemy_6_3" fx:id="alchemy_6_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="52.0">
+                     <children>
+                        <ImageView id="alchemy_6_4" fx:id="alchemy_6_4" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_6_5" fx:id="alchemy_6_5" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="53.0">
+                     <children>
+                        <ImageView id="alchemy_6_6" fx:id="alchemy_6_6" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane id="alchemy_6_7" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="49.0">
+                     <children>
+                        <ImageView fx:id="alchemy_6_7" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_6_8" fx:id="alchemy_6_8" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="336.0" prefWidth="48.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="54.0">
+                     <children>
+                        <ImageView id="alchemy_7_1" fx:id="alchemy_7_1" fitHeight="41.0" fitWidth="46.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="46.0">
+                     <children>
+                        <ImageView id="alchemy_7_2" fx:id="alchemy_7_2" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="49.0">
+                     <children>
+                        <ImageView id="alchemy_7_3" fx:id="alchemy_7_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_7_4" fx:id="alchemy_7_4" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_7_5" fx:id="alchemy_7_5" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="43.0">
+                     <children>
+                        <ImageView id="alchemy_7_6" fx:id="alchemy_7_6" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="49.0">
+                     <children>
+                        <ImageView id="alchemy_7_7" fx:id="alchemy_7_7" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="51.0">
+                     <children>
+                        <ImageView id="alchemy_7_8" fx:id="alchemy_7_8" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox maxWidth="-Infinity" prefHeight="336.0" prefWidth="42.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="44.0">
+                     <children>
+                        <ImageView id="alchemy_8_1" fx:id="alchemy_8_1" fitHeight="43.0" fitWidth="45.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="47.0">
+                     <children>
+                        <ImageView id="alchemy_8_2" fx:id="alchemy_8_2" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="48.0">
+                     <children>
+                        <ImageView id="alchemy_8_3" fx:id="alchemy_8_3" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy3.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="49.0">
+                     <children>
+                        <ImageView id="alchemy_8_4" fx:id="alchemy_8_4" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy4.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="50.0">
+                     <children>
+                        <ImageView id="alchemy_8_5" fx:id="alchemy_8_5" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="53.0">
+                     <children>
+                        <ImageView id="alchemy_8_6" fx:id="alchemy_8_6" fitHeight="43.0" fitWidth="41.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="47.0">
+                     <children>
+                        <ImageView id="alchemy_8_7" fx:id="alchemy_8_7" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="44.0">
+                     <children>
+                        <ImageView id="alchemy_8_8" fx:id="alchemy_8_8" fitHeight="43.0" fitWidth="49.0" layoutX="4.0" layoutY="4.0" onMouseClicked="#alchemyClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@com.KUAlchemists/images/alchemy/alchemy8.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <ImageView fitHeight="349.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@com.KUAlchemists/images/DeductionBoard/2213.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="21.0" />
+               </HBox.margin>
+            </ImageView>
+            </children>
+         <opaqueInsets>
+            <Insets right="100.0" />
+         </opaqueInsets>
+        </HBox>
+    </children>
+</VBox>

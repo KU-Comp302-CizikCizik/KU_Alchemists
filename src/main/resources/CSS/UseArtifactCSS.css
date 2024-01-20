@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Sevillana';
+    src: url('Sevillana-font/Sevillana-Regular.ttf');
+}
+@font-face {
+    font-family: 'Caligruf';
+    src: url('caligruf-font/Caligruf-BWvDV.ttf');
+}
+
+Text{
+    -fx-font-family: Sevillana;
+}
+.artifact_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/IngredientStorage/card_background.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.artifact_photo_frame {
+    -fx-background-size: cover;
+    -fx-background-repeat: stretch;
+}
+
+.use_button{
+    -fx-fill: #db9e42;
+    -fx-font-family: Caligruf;
+    -fx-font-size: 70px;
+}
+.use_button:hover{
+    -fx-fill: #f5dc6a;
+}
+.artifact_name{
+    -fx-font-family: Caligruf;
+    -fx-font-size: 40px;
+}
+.artifact_information{
+    -fx-font-size: 16px;
+}
+
+.artifact_status{
+    -fx-font-size: 35px;
+    -fx-text-alignment: center;
+    -fx-font-family: Caligruf;
+    -fx-fill: #FFD700;
+}
+
+.price_section{
+    -fx-fill: #FFD700;
+    -fx-font-size: 30px;
+    -fx-font-family: Caligruf;
+    visibility: hidden;
+}
+
+
+#elixir_of_insight_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/elixir_of_insight.png");
+}
+#compass_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/compass_artifact.png");
+}
+#bargain_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/money_purse.png");
+}
+#magic_mortar_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/magic_mortar.png");
+}
+#printing_press_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/printing_press.png");
+}
+#wisdom_idol_photo_frame{
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/wisdom_idol.png");
+}
+
+#body{
+    -fx-background-image: url("../com.KUAlchemists/images/artifact/use_artifact_background.PNG");
+    -fx-background-size: cover;
+    -fx-background-repeat: stretch;
+}

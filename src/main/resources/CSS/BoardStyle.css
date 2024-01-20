@@ -1,0 +1,67 @@
+@font-face {
+    -fx-font-family: "Sofia";
+    src: url("Sofia/Sofia-Regular.ttf");
+}
+
+.ButtonBackground{
+    -fx-background-image: url("../com.KUAlchemists/images/Board/Button.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-font-family: "Sofia";
+    -fx-font-size: 18px;
+}
+
+.CardBackground{
+    -fx-background-image: url("../com.KUAlchemists/images/Board/Card.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-font-family: "Sofia";
+}
+
+.HelpBackground{
+    -fx-background-image: url("../com.KUAlchemists/images/Board/HelpButton.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.PauseBackground{
+    -fx-background-image: url("../com.KUAlchemists/images/Board/PauseButton.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.BoardPane {
+    -fx-background-image: url("../com.KUAlchemists/images/Board/BoardBackground.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
+.continueRoundButton{
+    -fx-background-image: url("../com.KUAlchemists/images/Board/ContinueButton.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.sevilla{
+    -fx-font-family: "Sevillana";
+}
+
+.sofia{
+    -fx-font-family: "Sofia";
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+

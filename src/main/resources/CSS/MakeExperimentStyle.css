@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Netherfield';
+    src: url('netherfield-font/NetherfieldPersonalUse-z8e04.otf');
+}
+.body{
+    -fx-background-image: url("../com.KUAlchemists/images/make-experiment-background-3x2.png");
+    -fx-background-size: contain;
+    -fx-background-repeat: stretch;
+}
+
+#master-image-pane{
+    -fx-background-image: url("../com.KUAlchemists/images/master.png");
+    -fx-background-size: cover;
+}
+
+#student-image-pane{
+    -fx-background-image: url("../com.KUAlchemists/images/student-e.png");
+    -fx-background-size: cover;
+}
+
+Text{
+    /*-fx-font-family: "Times New Roman";*/
+    /*-fx-font-style: italic;*/
+    /*-fx-font-weight: bold;*/
+    -fx-font-family: "Netherfield";
+    -fx-font-size: 30px;
+    -fx-fill: "#FFD700";
+    -fx-text-alignment: center;
+    visibility: hidden;
+}
+.message{
+   -fx-text-alignment: justify;
+    -fx-font-weight: normal;
+    /*-fx-fill: #000000;*/
+    visibility: hidden;
+    -fx-font-size: 18px;
+}
+.text-pane{
+
+    /*-fx-background-image: url("../com.KUAlchemists/images/card_background.jpg");*/
+    /*-fx-background-size: cover;*/
+    visibility: hidden;
+}
+
+
+.potion{
+    -fx-background-size: contain;
+    -fx-background-repeat: stretch;
+}
+#red-potion{
+    -fx-background-image: url("../com.KUAlchemists/images/potions/red-potion.png");
+    visibility: hidden;
+}
+#green-potion{
+    -fx-background-image: url("../com.KUAlchemists/images/potions/green-potion.png");
+    visibility: hidden;
+}
+#gray-potion{
+    -fx-background-image: url("../com.KUAlchemists/images/potions/gray-potion.png");
+    visibility: hidden;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="453.0" style="-fx-background-color: #300900;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.HelpScreenController">
+    <children>
+        <ImageView fitHeight="453.0" fitWidth="594.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@com.KUAlchemists/images/table_of_alchemist,_messy,_drawing_style.png" />
+            </image>
+        </ImageView>
+      <ScrollPane layoutX="54.0" layoutY="47.0" opacity="0.7" prefHeight="350.0" prefWidth="356.0" style="-fx-background-color: #774342;">
+         <content>
+            <TextFlow fx:id="text_flow" prefHeight="349.0" prefWidth="355.0" style="-fx-background-color: #261615;" styleClass="sofia" stylesheets="@CSS/style.css">
+               <children>
+                  <Text fx:id="text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="import javafx.scene.text.Text;import javafx.scene.text.Text;import javafx.scene.text.Text;import javafx.scene.text.Text;" wrappingWidth="347.689453125" />
+               </children>
+            </TextFlow>
+         </content>
+      </ScrollPane>
+    </children>
+</AnchorPane>

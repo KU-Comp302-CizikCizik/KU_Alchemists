@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="287.0" prefWidth="400.0" style="-fx-background-color: F4BB67;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.GenericWindowController">
+   <children>
+      <TextArea fx:id="description" editable="false" layoutX="18.0" layoutY="182.0" prefHeight="55.0" prefWidth="425.0" style="-fx-background-color: #F4BB67;" stylesheets="@CSS/style.css" text="interdum. Morbi he" wrapText="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="182.0">
+         <font>
+            <Font name="Book Antiqua" size="12.0" />
+         </font>
+         <styleClass>
+            <String fx:value="textarea" />
+            <String fx:value="sofia" />
+         </styleClass>
+      </TextArea>
+      <ImageView fx:id="notifacationImage" fitHeight="150.0" fitWidth="150.0" layoutX="155.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="115.66666666666669" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="154.173708597819" AnchorPane.topAnchor="21.0">
+         <image>
+            <Image url="@com.KUAlchemists/images/sadAlchemist.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="body" prefHeight="650.0" prefWidth="900.0" styleClass="body" stylesheets="@CSS/PotionBrewStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.PotionBrewController">
+   <children>
+      <Pane id="ingredient1" fx:id="ingredient1" layoutX="123.0" layoutY="150.0" onMouseClicked="#hmClickedIngredient1" onMouseEntered="#hmEnteredIngredient1" onMouseExited="#hmExitedIngredient1" prefHeight="66.0" prefWidth="232.0" styleClass="ingredient" stylesheets="@CSS/PotionBrewStyle.css">
+         <children>
+            <Pane id="ingredient1_photo" layoutY="3.0" prefHeight="69.0" prefWidth="67.0" styleClass="ingredient_photo" stylesheets="@CSS/BuyArtifactCSS.css">
+               <children>
+                  <ImageView fx:id="ingredient_image1" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
+            <Text layoutX="60.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Name" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Ingredient: " wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Type:" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane id="ingredient2" fx:id="ingredient2" layoutX="123.0" layoutY="221.0" onMouseClicked="#hmClickedIngredient2" onMouseEntered="#hmEnteredIngredient2" onMouseExited="#hmExitedIngredient2" prefHeight="66.0" prefWidth="232.0" styleClass="ingredient" stylesheets="@CSS/PotionBrewStyle.css">
+         <children>
+            <Pane id="ingredient2_photo" layoutY="3.0" prefHeight="69.0" prefWidth="67.0" styleClass="ingredient_photo" stylesheets="@CSS/BuyArtifactCSS.css">
+               <children>
+                  <ImageView fx:id="ingredient_image2" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
+            <Text layoutX="60.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Name" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Ingredient: " wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Type:" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane id="ingredient3" fx:id="ingredient3" layoutX="123.0" layoutY="292.0" onMouseClicked="#hmClickedIngredient3" onMouseEntered="#hmEnteredIngredient3" onMouseExited="#hmExitedIngredient3" prefHeight="66.0" prefWidth="232.0" styleClass="ingredient" stylesheets="@CSS/PotionBrewStyle.css">
+         <children>
+            <Pane id="ingredient3_photo" layoutY="3.0" prefHeight="69.0" prefWidth="67.0" styleClass="ingredient_photo" stylesheets="@CSS/BuyArtifactCSS.css">
+               <children>
+                  <ImageView fx:id="ingredient_image3" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
+            <Text layoutX="60.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Name" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Ingredient: " wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Type:" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane id="ingredient3" fx:id="ingredient4" layoutX="123.0" layoutY="364.0" onMouseClicked="#hmClickedIngredient4" onMouseEntered="#hmEnteredIngredient4" onMouseExited="#hmExitedIngredient4" prefHeight="66.0" prefWidth="232.0" styleClass="ingredient" stylesheets="@CSS/PotionBrewStyle.css">
+         <children>
+            <Pane id="ingredient4_photo" layoutY="3.0" prefHeight="69.0" prefWidth="67.0" styleClass="ingredient_photo" stylesheets="@CSS/BuyArtifactCSS.css">
+               <children>
+                  <ImageView fx:id="ingredient_image4" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
+            <Text layoutX="60.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Name" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Ingredient: " wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Type:" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane id="ingredient5" fx:id="ingredient5" layoutX="123.0" layoutY="436.0" onMouseClicked="#hmClickedIngredient5" onMouseEntered="#hmEnteredIngredient5" onMouseExited="#hmExitedIngredient5" prefHeight="66.0" prefWidth="232.0" styleClass="ingredient" stylesheets="@CSS/PotionBrewStyle.css">
+         <children>
+            <Pane id="ingredient5_photo" layoutY="3.0" prefHeight="69.0" prefWidth="67.0" styleClass="ingredient_photo" stylesheets="@CSS/BuyArtifactCSS.css">
+               <children>
+                  <ImageView fx:id="ingredient_image5" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
+            <Text layoutX="60.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Name" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Ingredient: " wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Type:" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane id="potion_pane" fx:id="potion" layoutX="568.0" layoutY="292.0" prefHeight="66.0" prefWidth="232.0" styleClass="potion_pane" stylesheets="@CSS/PotionBrewStyle.css">
+         <children>
+            <Pane id="potion" layoutY="3.0" prefHeight="69.0" prefWidth="67.0" styleClass="potion" stylesheets="@CSS/BuyArtifactCSS.css">
+               <children>
+                  <ImageView fx:id="potion_1" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
+            <Text layoutX="60.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Name" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Ingredient: " wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="ingredient_name" text="Type:" wrappingWidth="170.21630859375">
+               <font>
+                  <Font name="Snell Roundhand" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Text id="brew_button" fx:id="brewButton" layoutX="621.0" layoutY="598.0" onMouseClicked="#hmClickedBrewButton" onMouseEntered="#hmEnteredBrewButton" onMouseExited="#hmExitedBrewButton" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="brew_button" text="Merge &amp; Brew" wrappingWidth="247.21630859375">
+         <font>
+            <Font name="Snell Roundhand" size="25.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

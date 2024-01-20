@@ -1,0 +1,77 @@
+@font-face {
+    font-family: 'Caligruf';
+    src: url('caligruf-font/Caligruf-BWvDV.ttf');
+}
+
+.body, .adventurer-pane{
+    -fx-background-size: cover;
+}
+.body{
+    -fx-background-image: url("../com.KUAlchemists/images/sell-potion-background.png");
+}
+
+Text{
+    -fx-font-size: 20px;
+    -fx-text-alignment: justify;
+    -fx-font-family: "Caligruf";
+    -fx-text-origin: center;
+}
+
+.big-Text{
+    -fx-font-size: 40px;
+    -fx-text-alignment: justify;
+    -fx-font-family: "Caligruf";
+    -fx-text-origin: center;
+}
+Pane{
+    visibility: hidden;
+    -fx-background-image: url("../com.KUAlchemists/images/text-background.png");
+    -fx-background-size: cover;
+}
+
+.price-offer{
+    -fx-background-color: #F5DC6A;
+    visibility: hidden;
+}
+.potion-section{
+    visibility: visible;
+    -fx-background-image: none;
+}
+
+Button{
+    -fx-background-color: #AB6E3C;
+    -fx-text-fill: #000000;
+}
+Button:hover{
+    -fx-background-color: #723B1C;
+    -fx-text-fill: #FFD700;
+}
+Button:pressed{
+    -fx-background-color: #3E301F;
+}
+
+#sell-potion-name, #sell-potion-type, #sell-potion-offered-price{
+    -fx-text-alignment: left;
+}
+
+
+.button{
+    -fx-text-alignment: center;
+    -fx-fill: #000000;
+}
+.button:hover{
+    -fx-fill: #000000;
+}
+.potion-name, .potion-type{
+    -fx-text-alignment: center;
+    -fx-font-size: 30px;
+}
+.potion-name{
+    -fx-font-size: 27px;
+}
+#cancel-button{
+    -fx-background-color: #b80111;
+}
+#cancel-button:hover{
+    -fx-background-color: #7c0000;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="loginBackground" stylesheets="@CSS/style.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.LoginController">
+   <children>
+      <Label layoutX="510.0" layoutY="211.0" prefHeight="31.0" prefWidth="207.0" styleClass="sofia-24" stylesheets="@CSS/style.css" text="Alchemists Name" textFill="#f5dc6a">
+         <font>
+            <Font name="Book Antiqua" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="590.0" layoutY="256.0" prefHeight="31.0" prefWidth="111.0" styleClass="sofia-24" text="Password" textFill="#f5dc6a">
+         <font>
+            <Font name="Book Antiqua" size="24.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passwordTextField" layoutX="735.0" layoutY="269.0" opacity="0.8" prefHeight="25.0" prefWidth="300.0" />
+      <TextField fx:id="userNameTextField" layoutX="735.0" layoutY="225.0" opacity="0.8" prefHeight="26.0" prefWidth="300.0" />
+      <Button fx:id="loginButton" layoutX="888.0" layoutY="329.0" mnemonicParsing="false" onAction="#loginButtonOnAction" opacity="0.71" prefHeight="36.0" prefWidth="135.0" style="-fx-background-color: #B38B55;" styleClass="sofia" text="Login " textFill="#f5dc6a">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></Button>
+      <Label fx:id="loginMessageLabel" layoutX="10.0" layoutY="10.0" text="" />
+   </children>
+</fx:root>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.NumberOfPlayerSelectController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@com.KUAlchemists/images/Menu/MenuBackground.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="two_player" layoutX="49.0" layoutY="270.0" mnemonicParsing="false" onAction="#onPlayerSelect" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" styleClass="sofia" stylesheets="@CSS/style.css" text="2 Player">
+         <font>
+            <Font name="Book Antiqua" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="three_player" layoutX="49.0" layoutY="340.0" mnemonicParsing="false" onAction="#onPlayerSelect" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" styleClass="sofia" stylesheets="@CSS/style.css" text="3 Player">
+         <font>
+            <Font name="Book Antiqua" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="four_player" layoutX="49.0" layoutY="410.0" mnemonicParsing="false" onAction="#onPlayerSelect" prefHeight="53.0" prefWidth="227.0" style="-fx-background-color: #FCCB58;" styleClass="sofia" stylesheets="@CSS/style.css" text="4 Player">
+         <font>
+            <Font name="Book Antiqua" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

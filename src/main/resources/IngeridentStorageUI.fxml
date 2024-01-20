@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="500.0" prefWidth="499.0" styleClass="ingredientStrogeBackground" stylesheets="@CSS/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.KUAlchemists.ui.controllers.InventoryStorageController">
+   <children>
+      <Text fill="#f5dc6a" layoutX="28.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sofia" text="Ingredient Storage" wrappingWidth="409.2222900390625" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="6.32421875">
+         <font>
+            <Font name="Bookman Old Style" size="40.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="28.0" layoutY="118.0" prefHeight="262.0" prefWidth="440.0" style="-fx-background-color: #12232bd9; -fx-border-color: #12232bd9;" styleClass="scroll" stylesheets="@CSS/style.css" vbarPolicy="NEVER" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="118.0">
+         <content>
+            <GridPane fx:id="cardContainer" gridLinesVisible="true" prefHeight="400.0" prefWidth="110.0" style="-fx-background-color: #12232bd9; -fx-border-color: #12232bd9;">
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </GridPane>
+         </content>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ScrollPane>
+   </children>
+</AnchorPane>

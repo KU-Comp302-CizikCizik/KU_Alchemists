@@ -1,0 +1,132 @@
+@font-face {
+    -fx-font-family: "Caligruf";
+    src: url("caligruf-font/Caligruf-BWvDV.ttf");
+}
+
+@font-face {
+    -fx-font-family: "Sevillana";
+    src: url("Sevillana/Sevillana-Regular.ttf");
+}
+
+@font-face {
+    -fx-font-family: "Sofia";
+    src: url("Sofia/Sofia-Regular.ttf");
+}
+.transparent {
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.round-layout{
+    -fx-border-radius: 50;
+}
+
+.ingredientStrogeBackground{
+   -fx-background-image: url("../com.KUAlchemists/images/IngredientStorage/IngredientInventoryBackground.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: LEFT CENTER;
+    -fx-background-color: rgba(19,35,43);
+}
+
+.backgorundOpacity{
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
+.endorse-Background{
+    -fx-background-image: url("../com.KUAlchemists/images/Endorse/endorse-background.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
+.waiting-roomBackground{
+    -fx-background-image: url("../com.KUAlchemists/images/Menu/MenuBackground.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
+.scroll {
+    width:100%;
+    max-width: 800px;
+    height: 262px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.text-area *.text {
+    -fx-text-alignment: center;
+}
+
+.redATextField {
+    -fx-text-fill: rgba(142, 6, 6, 1);
+}
+
+.blueATextField {
+    -fx-text-fill: #3a7caf;
+}
+
+.loginBackground {
+    -fx-background-image: url("../com.KUAlchemists/images/Login/LoginBackground.png");
+}
+
+.opac {
+    -fx-opacity: 0.5;
+}
+
+.debunk{
+    -fx-background-image: url("../com.KUAlchemists/images/Debunk/DebunkUI.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: contain;
+    -fx-background-position: center center;
+}
+
+.caligruf {
+    -fx-font-family: "Caligruf";
+}
+
+.sevillana {
+    -fx-font-family: "Sevillana";
+}
+
+.sofia {
+    -fx-font-family: "Sofia";
+    -fx-font-size: 16px;
+}
+
+.sofia-24 {
+    -fx-font-family: "Sofia";
+    -fx-font-size: 24px;
+}
+
+.sofia-48{
+    -fx-font-family: "Sofia";
+    -fx-font-size: 48px;
+}
+
+.sofia-avatarselect{
+    -fx-font-family: "Sofia";
+    -fx-font-size: 52px;
+}
+
+.sofia-64{
+    -fx-font-family: "Sofia";
+    -fx-font-size: 64px;
+}
+
