@@ -36,7 +36,9 @@ public class Deck implements Serializable {
                 String description = parts[2];
                 IngredientType type = IngredientType.valueOf(parts[3]);
                 Ingredient ingredient = new Ingredient(name, value, description, type);
-                ingredientsList.add(ingredient);
+                for (int i = 0; i < 4; i++) {
+                    ingredientsList.add(ingredient);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

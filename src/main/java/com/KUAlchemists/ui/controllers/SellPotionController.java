@@ -284,7 +284,7 @@ public class SellPotionController{
 
         private String scene1Button = "Continue";
         private String scene2Button = "Yes";
-        private String scene3Button = "Understood, check the inventory";
+        private String scene3Button = "Understood";
         private String scene4Button = "Offer a price";
 
         private String SCENE_1_ADV_PHOTO_NAME = "adventurer-photo-1";
